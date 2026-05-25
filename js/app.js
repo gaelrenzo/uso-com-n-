@@ -4,6 +4,8 @@ const tunnelGrid = document.querySelector("#tunnel-grid");
 const workflowList = document.querySelector("#workflow-list");
 const githubGrid = document.querySelector("#github-grid");
 const sshGithubGrid = document.querySelector("#ssh-github-grid");
+const mgitGrid = document.querySelector("#mgit-grid");
+const shortcutsGrid = document.querySelector("#shortcuts-grid");
 const toolsTable = document.querySelector("#tools-table");
 const resultList = document.querySelector("#result-list");
 const futureNotes = document.querySelector("#future-notes");
@@ -395,6 +397,127 @@ function buildSshGithubSections(ctx) {
     }
   ];
 }
+
+function buildMgitSections(ctx) {
+  return [
+    {
+      title: "1. Que es MGit",
+      description: "MGit es una app Android para clonar, revisar cambios, hacer commits, pull y push con GitHub usando interfaz grafica.",
+      commands: [
+        "Repositorio web: " + ctx.githubWeb,
+        "HTTPS para MGit: " + ctx.httpsRemote,
+        "SSH para Termux/Ubuntu: " + ctx.sshRemote
+      ]
+    },
+    {
+      title: "2. Clonar en MGit por HTTPS",
+      description: "Es la forma mas simple dentro de MGit. Si GitHub pide acceso, usa un Personal Access Token, no tu contrasena normal.",
+      commands: [
+        "Abrir MGit",
+        "Tocar + o Clone",
+        "Pegar: " + ctx.httpsRemote,
+        "Elegir carpeta del almacenamiento Android",
+        "Confirmar Clone"
+      ]
+    },
+    {
+      title: "3. Usar SSH en MGit",
+      description: "MGit no siempre puede leer la clave de /root/.ssh. Si quieres SSH en MGit, crea o importa una clave dentro de MGit y registra su publica en GitHub.",
+      commands: [
+        "MGit > Settings > SSH keys",
+        "Generar o importar una clave en MGit",
+        "Copiar la clave publica de MGit",
+        "GitHub > Settings > SSH and GPG keys > New SSH key",
+        "Clonar con: " + ctx.sshRemote
+      ]
+    },
+    {
+      title: "4. Flujo normal en MGit",
+      description: "Haz Pull antes de editar y Push al terminar. Esto evita conflictos cuando tambien trabajas desde Termux o Ubuntu.",
+      commands: [
+        "Pull",
+        "Editar archivos",
+        "Status",
+        "Stage/Add",
+        "Commit: avance",
+        "Push"
+      ]
+    },
+    {
+      title: "5. Si editas desde Termux y MGit",
+      description: "No edites dos copias sin sincronizar. Antes de cambiar algo, trae los ultimos cambios; despues de terminar, subelos.",
+      commands: [
+        "Antes de editar: Pull en MGit o git pull en Termux",
+        "Despues de editar: Commit + Push",
+        "Si aparece conflicto: no borres archivos; revisa el archivo marcado y resuelve las diferencias"
+      ]
+    },
+    {
+      title: "6. Ruta importante",
+      description: "Tu repo principal de Ubuntu esta en /root/Workspace/html. El clon de MGit estara en otra carpeta de Android si lo clonas desde la app.",
+      commands: [
+        "Ubuntu/Termux: " + ctx.projectPath,
+        "Clon alternativo terminal: /root/workspace/" + ctx.repoName,
+        "MGit: carpeta elegida dentro del almacenamiento Android"
+      ]
+    }
+  ];
+}
+
+function buildShortcutSections(ctx) {
+  return [
+    {
+      title: "1. Atajo para servir la pagina",
+      description: "En vez de escribir cd y live-server, ejecuta un solo comando. Puedes pasar otro puerto si quieres.",
+      commands: [
+        "html-serve",
+        "html-serve " + ctx.port,
+        ctx.localUrl
+      ]
+    },
+    {
+      title: "2. Atajo para guardar y subir cambios",
+      description: "Hace pull con rebase, agrega archivos, crea commit solo si hay cambios y hace push. El texto entre comillas es opcional.",
+      commands: [
+        "html-push",
+        "html-push \"avance\"",
+        "html-push \"actualiza guia MGit\""
+      ]
+    },
+    {
+      title: "3. Atajo para revisar estado",
+      description: "Muestra rama, cambios pendientes, remoto y ultimos commits sin escribir varios comandos.",
+      commands: [
+        "html-status"
+      ]
+    },
+    {
+      title: "4. Atajo para publicar temporalmente",
+      description: "Abre un tunel publico con localhost.run hacia tu live-server. Manten esa terminal abierta mientras uses el enlace.",
+      commands: [
+        "html-public",
+        "html-public " + ctx.port
+      ]
+    },
+    {
+      title: "5. Atajo para clonar o actualizar copia",
+      description: "Si no existe /root/workspace/uso-com-n-, lo clona. Si ya existe, entra y hace pull.",
+      commands: [
+        "html-clone"
+      ]
+    },
+    {
+      title: "6. Si el comando no aparece",
+      description: "Los atajos quedaron instalados en /usr/local/bin. Si tu shell no los detecta, abre otra terminal o verifica la ruta.",
+      commands: [
+        "command -v html-serve",
+        "command -v html-push",
+        "ls -la /usr/local/bin/html-*"
+      ]
+    }
+  ];
+}
+
 function buildResults(ctx) {
   return [
     `Servidor local activo en ${ctx.localUrl}`,
@@ -404,7 +527,9 @@ function buildResults(ctx) {
     "Formulario conectado a todos los pasos",
     "HTML separado de CSS y JavaScript",
     "Comandos copiables sin simbolo de prompt",
-    "GitHub listo mediante Git + SSH"
+    "GitHub listo mediante Git + SSH",
+    "MGit documentado para usar desde Android",
+    "Atajos html-serve, html-push, html-status, html-public y html-clone instalados"
   ];
 }
 
@@ -419,7 +544,8 @@ function buildFutureNotes(ctx) {
         `GitHub web: ${ctx.githubWeb}`,
         `GitHub SSH: ${ctx.sshRemote}`,
         `GitHub HTTPS: ${ctx.httpsRemote}`,
-        "Archivos clave: index.html, css/style.css, js/content.js, js/app.js"
+        "Archivos clave: index.html, css/style.css, js/content.js, js/app.js",
+        "Atajos: html-serve, html-push, html-status, html-public, html-clone"
       ]
     },
     {
@@ -441,6 +567,8 @@ function clearDynamicSections() {
   workflowList.innerHTML = "";
   githubGrid.innerHTML = "";
   sshGithubGrid.innerHTML = "";
+  mgitGrid.innerHTML = "";
+  shortcutsGrid.innerHTML = "";
   resultList.innerHTML = "";
   futureNotes.innerHTML = "";
 }
@@ -496,6 +624,8 @@ function renderDynamicSections() {
   renderWorkflow(ctx);
   renderCommandCards(githubGrid, buildGithubSections(ctx));
   renderCommandCards(sshGithubGrid, buildSshGithubSections(ctx));
+  renderCommandCards(mgitGrid, buildMgitSections(ctx));
+  renderCommandCards(shortcutsGrid, buildShortcutSections(ctx));
   renderResults(ctx);
   renderFutureNotes(ctx);
 }
