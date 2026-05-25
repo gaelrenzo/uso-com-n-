@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Android Dev Workstation</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header class="topbar">
+    <div>
+      <p class="eyebrow">Termux + Ubuntu + IA</p>
+      <h1>Android Dev Workstation</h1>
+    </div>
+    <nav class="topnav" aria-label="Navegacion principal">
+      <a class="repo-link" href="#configuracion">Configurar</a>
+      <a class="repo-link" href="#servidor">Servidor</a>
+      <a class="repo-link" href="#publico">Acceso publico</a>
+      <a class="repo-link" href="#github">GitHub</a>
+      <a class="repo-link" href="#ssh-github">SSH GitHub</a>
+      <a class="repo-link" href="#resumen">Resumen</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="hero-copy">
+        <p class="eyebrow">Mini workstation Linux portatil</p>
+        <h2 id="hero-title">Tu Android como entorno completo de desarrollo web</h2>
+        <p>
+          Edita proyectos, sirve paginas con autorecarga, usa IA, sincroniza con Drive,
+          controla versiones con Git y publica desde el celular o tablet.
+        </p>
+      </div>
+
+      <div class="terminal" aria-label="Arquitectura del sistema">
+        <span>Android</span>
+        <span>Termux</span>
+        <span>Ubuntu proot</span>
+        <span>NodeJS + npm</span>
+        <span>Codex / OpenCode</span>
+        <span>Workspace</span>
+        <span>live-server</span>
+        <span>Google Drive + GitHub</span>
+      </div>
+    </section>
+
+    <section id="configuracion" class="section" aria-labelledby="config-title">
+      <div class="section-heading">
+        <p class="eyebrow">Datos editables</p>
+        <h2 id="config-title">Datos que actualizan todos los pasos</h2>
+      </div>
+      <div class="config-layout">
+        <form id="config-form" class="config-panel" autocomplete="off">
+          <label>
+            <span>Nombre Git</span>
+            <input name="gitName" type="text" value="ENZO" placeholder="Ej: Enzo Dev">
+          </label>
+          <label>
+            <span>Correo GitHub</span>
+            <input name="gitEmail" type="email" value="renzomamanigalindo@gmail.com" placeholder="correo@ejemplo.com">
+          </label>
+          <label>
+            <span>URL del repo GitHub</span>
+            <input name="repoUrl" type="url" value="https://github.com/gaelrenzo/uso-com-n-" placeholder="https://github.com/usuario/repo">
+          </label>
+          <label>
+            <span>Usuario GitHub</span>
+            <input name="githubUser" type="text" value="gaelrenzo" placeholder="tu_usuario">
+          </label>
+          <label>
+            <span>Repositorio</span>
+            <input name="repoName" type="text" value="uso-com-n-" placeholder="mi-web">
+          </label>
+          <label>
+            <span>Ruta del proyecto</span>
+            <input name="projectPath" type="text" value="/root/Workspace/html" placeholder="/root/Workspace/html">
+          </label>
+          <label>
+            <span>Puerto local</span>
+            <input name="port" type="number" min="1" max="65535" value="8080" placeholder="8080">
+          </label>
+        </form>
+      </div>
+    </section>
+
+    <section id="servidor" class="section" aria-labelledby="server-title">
+      <div class="section-heading">
+        <p class="eyebrow">Servidor local</p>
+        <h2 id="server-title">HTML con autorecarga</h2>
+      </div>
+      <div id="server-grid" class="github-grid"></div>
+    </section>
+
+    <section id="publico" class="section" aria-labelledby="public-title">
+      <div class="section-heading">
+        <p class="eyebrow">SSH tunnel</p>
+        <h2 id="public-title">Compartir el servidor con localhost.run</h2>
+      </div>
+      <div id="tunnel-grid" class="github-grid"></div>
+    </section>
+
+    <section class="section" aria-labelledby="modules-title">
+      <div class="section-heading">
+        <p class="eyebrow">Componentes</p>
+        <h2 id="modules-title">Sistema completo</h2>
+      </div>
+      <div id="modules-grid" class="grid"></div>
+    </section>
+
+    <section id="flujo-diario" class="section split" aria-labelledby="workflow-title">
+      <div class="section-heading">
+        <p class="eyebrow">Uso real</p>
+        <h2 id="workflow-title">Flujo diario recomendado</h2>
+      </div>
+      <ol id="workflow-list" class="steps"></ol>
+    </section>
+
+    <section id="github" class="section" aria-labelledby="github-title">
+      <div class="section-heading">
+        <p class="eyebrow">GitHub</p>
+        <h2 id="github-title">Publicar y sincronizar repos</h2>
+      </div>
+      <div id="github-grid" class="github-grid"></div>
+    </section>
+
+    <section id="ssh-github" class="section" aria-labelledby="ssh-github-title">
+      <div class="section-heading">
+        <p class="eyebrow">SSH configurado</p>
+        <h2 id="ssh-github-title">Clave Ed25519 para GitHub</h2>
+      </div>
+      <div id="ssh-github-grid" class="github-grid"></div>
+    </section>
+
+    <section class="section" aria-labelledby="installed-title">
+      <div class="section-heading">
+        <p class="eyebrow">Instalado</p>
+        <h2 id="installed-title">Herramientas detectadas</h2>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Herramienta</th>
+              <th>Estado / funcion</th>
+            </tr>
+          </thead>
+          <tbody id="tools-table"></tbody>
+        </table>
+      </div>
+    </section>
+
+    <section id="resumen" class="section result" aria-labelledby="result-title">
+      <p class="eyebrow">Resumen</p>
+      <h2 id="result-title">Para futuras interacciones</h2>
+      <div id="result-list" class="result-grid"></div>
+      <div id="future-notes" class="notes"></div>
+    </section>
+  </main>
+
+  <script src="js/content.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
