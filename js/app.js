@@ -1,5 +1,6 @@
 const modulesGrid = document.querySelector("#modules-grid");
 const serverGrid = document.querySelector("#server-grid");
+const termuxGrid = document.querySelector("#termux-grid");
 const tunnelGrid = document.querySelector("#tunnel-grid");
 const workflowList = document.querySelector("#workflow-list");
 const githubGrid = document.querySelector("#github-grid");
@@ -152,6 +153,68 @@ function loadConfig() {
   } catch (error) {
     localStorage.removeItem(storageKey);
   }
+}
+
+function buildTermuxSections(ctx) {
+  return [
+    {
+      title: "1. Instalar herramientas en Termux",
+      description: "Actualiza Termux e instala Git, Node.js, SSH, nano, tmux y live-server.",
+      commands: [
+        "pkg update && pkg upgrade",
+        "pkg install git nodejs-lts openssh curl nano tmux",
+        "npm install -g live-server"
+      ]
+    },
+    {
+      title: "2. Clonar este repositorio",
+      description: "Crea una carpeta de trabajo y trae la pagina desde GitHub.",
+      commands: [
+        "mkdir -p ~/workspace",
+        "cd ~/workspace",
+        "git clone " + ctx.httpsRemote,
+        "cd " + ctx.repoName
+      ]
+    },
+    {
+      title: "3. Encender la pagina",
+      description: "Sirve el HTML con autorecarga para verlo desde el navegador Android.",
+      commands: [
+        "live-server --host=127.0.0.1 --port=" + ctx.port,
+        ctx.localUrl
+      ]
+    },
+    {
+      title: "4. Usar Ubuntu proot",
+      description: "Si prefieres trabajar dentro de Ubuntu en Termux, instala proot-distro y entra al sistema.",
+      commands: [
+        "pkg install proot-distro",
+        "proot-distro install ubuntu",
+        "proot-distro login ubuntu",
+        "apt update && apt upgrade -y",
+        "apt install -y git curl nano openssh-client nodejs npm"
+      ]
+    },
+    {
+      title: "5. Editar y guardar cambios",
+      description: "Edita los archivos principales y publica el avance en GitHub.",
+      commands: [
+        "nano index.html",
+        "nano js/content.js",
+        "nano css/style.css",
+        "git add . && git commit -m \"avance\" && git push"
+      ]
+    },
+    {
+      title: "6. Mantener la sesion activa",
+      description: "Usa wake-lock y tmux para que el trabajo no se corte en sesiones largas.",
+      commands: [
+        "termux-wake-lock",
+        "tmux",
+        "termux-wake-unlock"
+      ]
+    }
+  ];
 }
 
 function buildServerSections(ctx) {
@@ -563,6 +626,7 @@ function buildFutureNotes(ctx) {
 
 function clearDynamicSections() {
   serverGrid.innerHTML = "";
+  termuxGrid.innerHTML = "";
   tunnelGrid.innerHTML = "";
   workflowList.innerHTML = "";
   githubGrid.innerHTML = "";
@@ -619,6 +683,7 @@ function renderFutureNotes(ctx) {
 function renderDynamicSections() {
   const ctx = getContext();
   clearDynamicSections();
+  renderCommandCards(termuxGrid, buildTermuxSections(ctx));
   renderCommandCards(serverGrid, buildServerSections(ctx));
   renderCommandCards(tunnelGrid, buildTunnelSections(ctx));
   renderWorkflow(ctx);
