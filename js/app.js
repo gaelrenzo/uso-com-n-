@@ -6,6 +6,7 @@ const githubGrid = document.querySelector("#github-grid");
 const sshGithubGrid = document.querySelector("#ssh-github-grid");
 const mgitGrid = document.querySelector("#mgit-grid");
 const shortcutsGrid = document.querySelector("#shortcuts-grid");
+const fccGrid = document.querySelector("#fcc-grid");
 const toolsTable = document.querySelector("#tools-table");
 const resultList = document.querySelector("#result-list");
 const futureNotes = document.querySelector("#future-notes");
@@ -101,7 +102,8 @@ function getConfigValues() {
     githubUser: values.githubUser?.trim() || "gaelrenzo",
     repoName: values.repoName?.trim() || "uso-com-n-",
     projectPath: values.projectPath?.trim() || "/root/Workspace/html",
-    port: values.port?.trim() || "8080"
+    port: values.port?.trim() || "8080",
+    fccPort: values.fccPort?.trim() || "8082"
   };
 }
 
@@ -518,6 +520,55 @@ function buildShortcutSections(ctx) {
   ];
 }
 
+function buildFccSections(ctx) {
+  return [
+    {
+      title: "1. Iniciar el Servidor Proxy",
+      description: "Ejecuta el servidor proxy en segundo plano en el puerto indicado.",
+      commands: [
+        `# Para Windows (PowerShell):`,
+        `$env:Path = "C:\\Users\\renzo\\.local\\bin;$env:Path"`,
+        `fcc-server --port ${ctx.fccPort}`,
+        `# Para Linux / Android Termux (Ubuntu):`,
+        `fcc-server --port ${ctx.fccPort}`
+      ]
+    },
+    {
+      title: "2. Configurar en el Admin UI",
+      description: "Abre el panel de administración local en tu navegador para configurar las API Keys de los proveedores (ej: Gemini, OpenRouter).",
+      commands: [
+        `URL de administracion:`,
+        `http://127.0.0.1:${ctx.fccPort}/admin`,
+        `# 1. Pega tu API Key en GEMINI_API_KEY`,
+        `# 2. Configura MODEL con gemini/models/gemini-2.5-flash`,
+        `# 3. Presiona Validate y luego Apply`
+      ]
+    },
+    {
+      title: "3. Ejecutar Claude Code",
+      description: "Inicia el asistente Claude Code configurado para usar el proxy local de Inteligencia Artificial.",
+      commands: [
+        `# Para Windows (PowerShell):`,
+        `fcc-claude`,
+        `# Para Linux / Android Termux (Ubuntu):`,
+        `fcc-claude`
+      ]
+    },
+    {
+      title: "4. Integración en VS Code (settings.json)",
+      description: "Configura la extensión de Claude Code en tu editor para redirigir sus peticiones al proxy.",
+      commands: [
+        `"claudeCode.environmentVariables": [`,
+        `  { "name": "ANTHROPIC_BASE_URL", "value": "http://localhost:${ctx.fccPort}" },`,
+        `  { "name": "ANTHROPIC_AUTH_TOKEN", "value": "freecc" },`,
+        `  { "name": "CLAUDE_CODE_ENABLE_GATEWAY_MODEL_DISCOVERY", "value": "1" },`,
+        `  { "name": "CLAUDE_CODE_AUTO_COMPACT_WINDOW", "value": "190000" }`,
+        `]`
+      ]
+    }
+  ];
+}
+
 function buildResults(ctx) {
   return [
     `Servidor local activo en ${ctx.localUrl}`,
@@ -529,7 +580,8 @@ function buildResults(ctx) {
     "Comandos copiables sin simbolo de prompt",
     "GitHub listo mediante Git + SSH",
     "MGit documentado para usar desde Android",
-    "Atajos html-serve, html-push, html-status, html-public y html-clone instalados"
+    "Atajos html-serve, html-push, html-status, html-public y html-clone instalados",
+    `Free Claude Code configurado y listo en el puerto ${ctx.fccPort}`
   ];
 }
 
@@ -545,7 +597,8 @@ function buildFutureNotes(ctx) {
         `GitHub SSH: ${ctx.sshRemote}`,
         `GitHub HTTPS: ${ctx.httpsRemote}`,
         "Archivos clave: index.html, css/style.css, js/content.js, js/app.js",
-        "Atajos: html-serve, html-push, html-status, html-public, html-clone"
+        "Atajos: html-serve, html-push, html-status, html-public, html-clone",
+        `Free Claude Code: http://127.0.0.1:${ctx.fccPort}`
       ]
     },
     {
@@ -569,6 +622,7 @@ function clearDynamicSections() {
   sshGithubGrid.innerHTML = "";
   mgitGrid.innerHTML = "";
   shortcutsGrid.innerHTML = "";
+  fccGrid.innerHTML = "";
   resultList.innerHTML = "";
   futureNotes.innerHTML = "";
 }
@@ -626,6 +680,7 @@ function renderDynamicSections() {
   renderCommandCards(sshGithubGrid, buildSshGithubSections(ctx));
   renderCommandCards(mgitGrid, buildMgitSections(ctx));
   renderCommandCards(shortcutsGrid, buildShortcutSections(ctx));
+  renderCommandCards(fccGrid, buildFccSections(ctx));
   renderResults(ctx);
   renderFutureNotes(ctx);
 }

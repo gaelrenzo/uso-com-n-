@@ -225,7 +225,8 @@ const workstationContent = {
     ["termux-wake-lock", "instalado: evita suspension en sesiones largas"],
     ["nano", "instalado: editor simple"],
     ["python3", "instalado: scripting"],
-    ["curl / wget", "instalado: descargas y pruebas HTTP"]
+    ["curl / wget", "instalado: descargas y pruebas HTTP"],
+    ["free-claude-code", "instalado: proxy local para desviar llamadas de claude a otros proveedores (Gemini, etc.)"]
   ],
   results: [
     "Servidor local activo en 127.0.0.1:8080",
