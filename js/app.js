@@ -583,53 +583,39 @@ function buildShortcutSections(ctx) {
   ];
 }
 
-function buildFccSections(ctx) {
-  return [
-    {
-      title: "1. Iniciar el Servidor Proxy",
-      description: "Ejecuta el servidor proxy en segundo plano en el puerto indicado.",
-      commands: [
-        `# Para Windows (PowerShell):`,
-        `$env:Path = "C:\\Users\\renzo\\.local\\bin;$env:Path"`,
-        `fcc-server --port ${ctx.fccPort}`,
-        `# Para Linux / Android Termux (Ubuntu):`,
-        `fcc-server --port ${ctx.fccPort}`
-      ]
-    },
-    {
-      title: "2. Configurar en el Admin UI",
-      description: "Abre el panel de administración local en tu navegador para configurar las API Keys de los proveedores (ej: Gemini, OpenRouter).",
-      commands: [
-        `URL de administracion:`,
-        `http://127.0.0.1:${ctx.fccPort}/admin`,
-        `# 1. Pega tu API Key en GEMINI_API_KEY`,
-        `# 2. Configura MODEL con gemini/models/gemini-2.5-flash`,
-        `# 3. Presiona Validate y luego Apply`
-      ]
-    },
-    {
-      title: "3. Ejecutar Claude Code",
-      description: "Inicia el asistente Claude Code configurado para usar el proxy local de Inteligencia Artificial.",
-      commands: [
-        `# Para Windows (PowerShell):`,
-        `fcc-claude`,
-        `# Para Linux / Android Termux (Ubuntu):`,
-        `fcc-claude`
-      ]
-    },
-    {
-      title: "4. Integración en VS Code (settings.json)",
-      description: "Configura la extensión de Claude Code en tu editor para redirigir sus peticiones al proxy.",
-      commands: [
-        `"claudeCode.environmentVariables": [`,
-        `  { "name": "ANTHROPIC_BASE_URL", "value": "http://localhost:${ctx.fccPort}" },`,
-        `  { "name": "ANTHROPIC_AUTH_TOKEN", "value": "freecc" },`,
-        `  { "name": "CLAUDE_CODE_ENABLE_GATEWAY_MODEL_DISCOVERY", "value": "1" },`,
-        `  { "name": "CLAUDE_CODE_AUTO_COMPACT_WINDOW", "value": "190000" }`,
-        `]`
-      ]
-    }
-  ];
+function updateFccStaticSections(ctx) {
+  document.querySelectorAll(".fcc-port-cmd").forEach((el) => {
+    el.textContent = `fcc-server --port ${ctx.fccPort}`;
+  });
+  document.querySelectorAll(".fcc-admin-url").forEach((el) => {
+    el.textContent = `http://127.0.0.1:${ctx.fccPort}/admin`;
+  });
+  document.querySelectorAll(".fcc-settings-url").forEach((el) => {
+    el.textContent = `  { "name": "ANTHROPIC_BASE_URL", "value": "http://localhost:${ctx.fccPort}" },`;
+  });
+
+  document.querySelectorAll("#fcc-grid .copy-block").forEach((block) => {
+    const button = block.querySelector(".copy-btn");
+    if (!button) return;
+    const codeLines = Array.from(block.querySelectorAll("pre code")).map(c => c.textContent);
+    const codeText = codeLines.join("\n");
+
+    const newButton = button.cloneNode(true);
+    button.parentNode.replaceChild(newButton, button);
+
+    newButton.addEventListener("click", async () => {
+      try {
+        await navigator.clipboard.writeText(codeText);
+        newButton.textContent = "Copiado";
+      } catch (error) {
+        newButton.textContent = "Error";
+      }
+
+      setTimeout(() => {
+        newButton.textContent = "Copiar";
+      }, 1400);
+    });
+  });
 }
 
 function buildResults(ctx) {
@@ -686,7 +672,6 @@ function clearDynamicSections() {
   sshGithubGrid.innerHTML = "";
   mgitGrid.innerHTML = "";
   shortcutsGrid.innerHTML = "";
-  fccGrid.innerHTML = "";
   resultList.innerHTML = "";
   futureNotes.innerHTML = "";
 }
@@ -745,7 +730,7 @@ function renderDynamicSections() {
   renderCommandCards(sshGithubGrid, buildSshGithubSections(ctx));
   renderCommandCards(mgitGrid, buildMgitSections(ctx));
   renderCommandCards(shortcutsGrid, buildShortcutSections(ctx));
-  renderCommandCards(fccGrid, buildFccSections(ctx));
+  updateFccStaticSections(ctx);
   renderResults(ctx);
   renderFutureNotes(ctx);
 }

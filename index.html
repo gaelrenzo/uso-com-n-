@@ -187,7 +187,42 @@
         <p class="eyebrow">Proxy local para IA</p>
         <h2 id="fcc-title">Free Claude Code - Setup y Uso</h2>
       </div>
-      <div id="fcc-grid" class="github-grid"></div>
+      <div id="fcc-grid" class="github-grid">
+        <article class="github-card">
+          <h3>1. Iniciar el Servidor Proxy</h3>
+          <p>Ejecuta el servidor proxy en segundo plano en el puerto indicado.</p>
+          <div class="copy-block">
+            <button class="copy-btn" type="button">Copiar</button>
+            <pre><code># Para Windows (PowerShell):</code><code>$env:Path = "C:\Users\renzo\.local\bin;$env:Path"</code><code class="fcc-port-cmd">fcc-server --port 8082</code><code># Para Linux / Android Termux (Ubuntu):</code><code class="fcc-port-cmd">fcc-server --port 8082</code></pre>
+          </div>
+        </article>
+
+        <article class="github-card">
+          <h3>2. Configurar en el Admin UI</h3>
+          <p>Abre el panel de administración local en tu navegador para configurar las API Keys de los proveedores (ej: Gemini, OpenRouter).</p>
+          <div class="copy-block">
+            <button class="copy-btn" type="button">Copiar</button>
+            <pre><code>URL de administracion:</code><code class="fcc-admin-url">http://127.0.0.1:8082/admin</code><code># 1. Pega tu API Key en GEMINI_API_KEY</code><code># 2. Configura MODEL con gemini/models/gemini-2.5-flash</code><code># 3. Presiona Validate y luego Apply</code></pre>
+          </div>
+        </article>
+
+        <article class="github-card">
+          <h3>3. Ejecutar Claude Code</h3>
+          <p>Inicia el asistente Claude Code configurado para usar el proxy local de Inteligencia Artificial.</p>
+          <div class="copy-block">
+            <button class="copy-btn" type="button">Copiar</button>
+            <pre><code># Para Windows (PowerShell):</code><code>fcc-claude</code><code># Para Linux / Android Termux (Ubuntu):</code><code>fcc-claude</code></pre>
+          </div>
+        </article>
+
+        <article class="github-card">
+          <h3>4. Integración en VS Code (settings.json)</h3>
+          <p>Configura la extensión de Claude Code en tu editor para redirigir sus peticiones al proxy.</p>
+          <div class="copy-block">
+            <pre><code>"claudeCode.environmentVariables": [</code><code class="fcc-settings-url">  { "name": "ANTHROPIC_BASE_URL", "value": "http://localhost:8082" },</code><code>  { "name": "ANTHROPIC_AUTH_TOKEN", "value": "freecc" },</code><code>  { "name": "CLAUDE_CODE_ENABLE_GATEWAY_MODEL_DISCOVERY", "value": "1" },</code><code>  { "name": "CLAUDE_CODE_AUTO_COMPACT_WINDOW", "value": "190000" }</code><code>]</code></pre>
+          </div>
+        </article>
+      </div>
     </section>
 
     <section id="resumen" class="section result" aria-labelledby="result-title">
