@@ -20,6 +20,7 @@
       <a class="repo-link" href="#ssh-github">SSH GitHub</a>
       <a class="repo-link" href="#mgit">MGit</a>
       <a class="repo-link" href="#atajos">Atajos</a>
+      <a class="repo-link" href="#fcc">Free Claude Code</a>
       <a class="repo-link" href="#resumen">Resumen</a>
     </nav>
   </header>
@@ -81,6 +82,10 @@
           <label>
             <span>Puerto local</span>
             <input name="port" type="number" min="1" max="65535" value="8080" placeholder="8080">
+          </label>
+          <label>
+            <span>Puerto Free Claude Code</span>
+            <input name="fccPort" type="number" min="1" max="65535" value="8082" placeholder="8082">
           </label>
         </form>
       </div>
@@ -166,6 +171,14 @@
           <tbody id="tools-table"></tbody>
         </table>
       </div>
+    </section>
+
+    <section id="fcc" class="section" aria-labelledby="fcc-title">
+      <div class="section-heading">
+        <p class="eyebrow">Proxy local para IA</p>
+        <h2 id="fcc-title">Free Claude Code - Setup y Uso</h2>
+      </div>
+      <div id="fcc-grid" class="github-grid"></div>
     </section>
 
     <section id="resumen" class="section result" aria-labelledby="result-title">
