@@ -37,3 +37,28 @@ html-clone() {
     cd uso-com-n-
   fi
 }
+
+skills-sync() {
+  local repo_dir
+  repo_dir="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
+  echo "📥 Actualizando repositorio de dotfiles/skills..."
+  cd "$repo_dir" || return
+  git pull --rebase
+  if [ -f "./install-agent-skills.sh" ]; then
+    bash "./install-agent-skills.sh"
+  fi
+  source ~/.bashrc
+  echo "🚀 ¡Sincronizacion completada!"
+}
+
+skills-push() {
+  local msg="${1:-update skills}"
+  local repo_dir
+  repo_dir="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
+  echo "📤 Subiendo cambios de skills a GitHub..."
+  cd "$repo_dir" || return
+  git add skills/agent-skills/
+  git commit -m "$msg"
+  git push
+}
+
