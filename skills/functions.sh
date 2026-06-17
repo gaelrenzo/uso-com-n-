@@ -55,9 +55,9 @@ skills-push() {
   local msg="${1:-update skills}"
   local repo_dir
   repo_dir="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
-  echo "📤 Subiendo cambios de skills a GitHub..."
+  echo "📤 Subiendo cambios de skills a GitHub (modo seguro, solo agrega)..."
   cd "$repo_dir" || return
-  git add skills/agent-skills/
+  git add --ignore-removal skills/agent-skills/
   git commit -m "$msg"
   git push
 }

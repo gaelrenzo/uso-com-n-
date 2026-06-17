@@ -566,19 +566,33 @@ function buildShortcutSections(ctx) {
       ]
     },
     {
-      title: "5. Atajo para clonar o actualizar copia",
+      title: "5. Sincronizar y Enlazar Skills",
+      description: "Descarga los ultimos cambios de skills desde GitHub y las vuelve a enlazar en todos tus agentes.",
+      commands: [
+        "skills-sync"
+      ]
+    },
+    {
+      title: "6. Subir nuevas Skills (Modo Seguro)",
+      description: "Sube nuevas skills o modificaciones a GitHub. Solo agrega archivos nuevos/cambiados, nunca elimina nada en GitHub.",
+      commands: [
+        "skills-push",
+        "skills-push \"mensaje de commit opcional\""
+      ]
+    },
+    {
+      title: "7. Atajo para clonar o actualizar copia",
       description: "Si no existe /root/workspace/uso-com-n-, lo clona. Si ya existe, entra y hace pull.",
       commands: [
         "html-clone"
       ]
     },
     {
-      title: "6. Si el comando no aparece",
-      description: "Los atajos quedaron instalados en /usr/local/bin. Si tu shell no los detecta, abre otra terminal o verifica la ruta.",
+      title: "8. Si el comando no aparece",
+      description: "Los atajos quedaron instalados en /usr/local/bin o en tu perfil de PowerShell. Verifica con estos comandos.",
       commands: [
-        "command -v html-serve",
-        "command -v html-push",
-        "ls -la /usr/local/bin/html-*"
+        "command -v html-serve  # En Linux/Termux",
+        "Get-Command html-serve  # En Windows PowerShell"
       ]
     }
   ];
