@@ -1,0 +1,46 @@
+# ==========================================
+# MOTD - MENSAJE DE BIENVENIDA
+# ==========================================
+
+clear
+echo -e "\e[35m=====================================================\e[0m"
+echo -e "        🚀 \e[32mBienvenido de vuelta\e[0m 🚀"
+echo -e "        \e[33mTermux + Ubuntu Container\e[0m"
+echo -e "\e[35m=====================================================\e[0m\n"
+
+echo -e "\e[36m📅 Fecha:\e[0m      $(date +'%A, %d %B %Y')"
+echo -e "\e[36m⏰ Hora:\e[0m       $(date +'%I:%M %p')"
+echo -e "\e[36m📁 Directorio:\e[0m $(pwd)"
+echo -e "\e[36m🧠 Memoria:\e[0m    $(free -m | awk 'NR==2{printf "%.2fG / %.2fG (%.2f%%)", $3/1024, $2/1024, $3*100/$2}' 2>/dev/null || echo "N/A")\n"
+
+echo -e "\e[33m⚡ Comandos rapidos:\e[0m"
+echo -e "  \e[32mupdate\e[0m   = Actualiza paquetes"
+echo -e "  \e[32mcls\e[0m      = Limpia y recarga"
+echo -e "  \e[32mll\e[0m       = Lista detallada"
+echo -e "  \e[32muni\e[0m      = Ir a universida-datos"
+echo -e "  \e[32mweather\e[0m  = Clima en Puno"
+echo -e "  \e[32msysinfo\e[0m  = Info del sistema"
+echo -e "  \e[32meditui\e[0m   = Editar skills\n"
+
+echo -e "\e[33m🤖 IA y Codigo:\e[0m"
+echo -e "  \e[32mcodex\e[0m / \e[32mcodex-full\e[0m   = Codex"
+echo -e "  \e[32manti\e[0m  / \e[32manti-full\e[0m    = Antigravity"
+echo -e "  \e[32mcl\e[0m    / \e[32mcl-full\e[0m      = Claude Code"
+echo -e "  \e[32mocode\e[0m / \e[32mocode-full\e[0m   = OpenCode\n"
+
+echo -e "\e[33m🌐 Funciones HTML:\e[0m"
+echo -e "  \e[32mhtml-serve\e[0m  = Servir pagina local"
+echo -e "  \e[32mhtml-push\e[0m   = Git add + commit + push"
+echo -e "  \e[32mhtml-status\e[0m = Estado del repo"
+echo -e "  \e[32mhtml-public\e[0m = Tunel publico SSH"
+echo -e "  \e[32mhtml-clone\e[0m  = Clonar o actualizar repo\n"
+
+echo -e "\e[33m🤖 Skills de Agentes:\e[0m"
+echo -e "  skills/agents/claude/   = Reglas para Claude Code"
+echo -e "  skills/agents/opencode/ = Skills para OpenCode"
+echo -e "  skills/agents/codex/    = Instrucciones para Codex"
+echo -e "  skills/agents/agy/      = Config para Antigravity"
+echo -e "  \e[32minstall-agent-skills.sh\e[0m = Instalar todas\n"
+
+echo -e "\e[33m💡 Skills sincronizadas via GitHub\e[0m"
+echo -e "\e[35m=====================================================\e[0m"

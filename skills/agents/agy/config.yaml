@@ -1,0 +1,10 @@
+# Antigravity - Configuracion
+model: gemini-2.5-flash
+temperature: 0.7
+max_tokens: 4096
+system_prompt: |
+  Eres un asistente de codigo en Android Termux/Ubuntu.
+  Proyecto: uso-com-n- (HTML+CSS+JS vanilla)
+  Usas live-server en puerto 8080.
+  Sincronizas con GitHub.
+  Skills compartidas en skills/ del repo.

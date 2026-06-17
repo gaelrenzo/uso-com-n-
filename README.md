@@ -204,6 +204,35 @@ Incluye:
 - **MOTD:** fecha, hora, directorio, memoria, comandos rápidos y frase del día
 - **Anti-duplicado:** verifica si ya está instalado antes de escribir
 
+## Skills sincronizadas
+
+Las skills viven en `skills/` y se sincronizan entre dispositivos via GitHub.
+
+```
+skills/
+├── aliases.sh       # alias generales
+├── ia-tools.sh      # alias de IA
+├── functions.sh     # funciones html-serve, html-push, etc.
+├── motd.sh          # mensaje de bienvenida
+└── skills.sh        # entry point (sourcea los demas)
+```
+
+**Flujo:**
+```bash
+# En cualquier dispositivo
+cd ~/mis-dotfiles && git pull
+source ~/.bashrc
+
+# Despues de editar skills
+cd ~/mis-dotfiles
+git add skills/
+git commit -m "update skills"
+git push
+
+# En los otros dispositivos
+cd ~/mis-dotfiles && git pull && source ~/.bashrc
+```
+
 ## Resumen
 
 1. Abre Termux.
