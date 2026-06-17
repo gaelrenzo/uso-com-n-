@@ -187,6 +187,23 @@ Liberar wake lock:
 termux-wake-unlock
 ```
 
+## Instalación automática del entorno (dotfiles)
+
+`install.sh` inyecta aliases, configuración de herramientas IA y un MOTD personalizado en `~/.bashrc` para entornos Termux/Ubuntu.
+
+```bash
+git clone https://github.com/gaelrenzo/uso-com-n- ~/mis-dotfiles
+chmod +x ~/mis-dotfiles/install.sh
+~/mis-dotfiles/install.sh
+source ~/.bashrc
+```
+
+Incluye:
+- **Alias:** `update`, `cls`, `ll`, `uni`, `weather` (Puno), `sysinfo`, `editui`
+- **IA tools:** `codex`/`codex-full`, `anti`/`anti-full`, `cl`/`cl-full`, `ocode`/`ocode-full`
+- **MOTD:** fecha, hora, directorio, memoria, comandos rápidos y frase del día
+- **Anti-duplicado:** verifica si ya está instalado antes de escribir
+
 ## Resumen
 
 1. Abre Termux.
@@ -195,3 +212,7 @@ termux-wake-unlock
 4. Abre `http://127.0.0.1:8080`.
 5. Edita archivos y guarda cambios.
 6. Publica con `git add . && git commit -m "avance" && git push`.
+
+## Dotfiles
+
+El archivo [install.sh](install.sh) funciona como dotfiles auto-instalables para configurar el entorno de trabajo en segundos.
