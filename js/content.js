@@ -314,13 +314,13 @@ const workstationContent = {
     },
     {
       title: "Sincronizacion",
-      description: "Las skills viven en la carpeta skills/ del repo. Se sincronizan con git pull en cualquier dispositivo.",
-      file: "skills/skills.sh",
+      description: "Las skills viven en skills/agent-skills/ del repo. Sincronizacion automatica y segura entre dispositivos.",
+      file: "skills/sync-agent-skills.*",
       items: [
-        "Editas en un dispositivo",
-        "git add + git commit + git push",
-        "En el otro: git pull",
-        "source ~/.bashrc y listo"
+        "skills-sync - descarga y vuelve a enlazar todas las skills",
+        "skills-push - sube cambios a GitHub (modo seguro, solo agrega)",
+        "Usa Symlinks en Unix (Termux/Ubuntu) y Junctions en Windows",
+        "Los cambios locales se reflejan al instante en todos tus agentes"
       ]
     },
     {
