@@ -261,5 +261,102 @@ const workstationContent = {
         "Crea una version instalable como plantilla"
       ]
     }
+  ],
+  skills: [
+    {
+      title: "Aliases generales",
+      description: "Comandos cortos para el dia a dia en Termux/Ubuntu.",
+      file: "skills/aliases.sh",
+      items: [
+        "update - actualizar paquetes",
+        "cls - limpiar y recargar bashrc",
+        "ll - listar archivos detallado",
+        "uni - ir a universida-datos",
+        "weather - clima en Puno",
+        "sysinfo - info del sistema",
+        "editui - editar bashrc"
+      ]
+    },
+    {
+      title: "Herramientas IA",
+      description: "Acceso rapido a agentes de IA para codigo.",
+      file: "skills/ia-tools.sh",
+      items: [
+        "codex / codex-full",
+        "anti / anti-full (Antigravity)",
+        "cl / cl-full (Claude Code)",
+        "ocode / ocode-full (OpenCode)"
+      ]
+    },
+    {
+      title: "Funciones HTML",
+      description: "Funciones bash para servir, publicar y versionar el proyecto web.",
+      file: "skills/functions.sh",
+      items: [
+        "html-serve [puerto] - servir pagina",
+        "html-push [mensaje] - git push rapido",
+        "html-status - estado del repo",
+        "html-public [puerto] - tunel SSH",
+        "html-clone - clonar o actualizar"
+      ]
+    },
+    {
+      title: "MOTD personalizado",
+      description: "Pantalla de bienvenida con fecha, memoria y comandos rapidos al abrir terminal.",
+      file: "skills/motd.sh",
+      items: [
+        "Fecha y hora actual",
+        "Directorio de trabajo",
+        "Uso de memoria",
+        "Lista de comandos disponibles",
+        "Frase del dia"
+      ]
+    },
+    {
+      title: "Sincronizacion",
+      description: "Las skills viven en la carpeta skills/ del repo. Se sincronizan con git pull en cualquier dispositivo.",
+      file: "skills/skills.sh",
+      items: [
+        "Editas en un dispositivo",
+        "git add + git commit + git push",
+        "En el otro: git pull",
+        "source ~/.bashrc y listo"
+      ]
+    },
+    {
+      title: "Claude Code",
+      description: "Reglas de proyecto y herramientas para Claude Code.",
+      file: "skills/agents/claude/",
+      items: [
+        "01-project.md - contexto del proyecto",
+        "02-rules.md - reglas de trabajo",
+        "03-tools.md - herramientas disponibles"
+      ]
+    },
+    {
+      title: "OpenCode",
+      description: "Skills JavaScript e instrucciones para OpenCode.",
+      file: "skills/agents/opencode/",
+      items: [
+        "skills.js - funciones exportables",
+        "instrucciones.md - prompt de sistema"
+      ]
+    },
+    {
+      title: "Codex",
+      description: "Instrucciones para Codex CLI en entorno Android.",
+      file: "skills/agents/codex/",
+      items: [
+        "instrucciones.md - prompt de sistema"
+      ]
+    },
+    {
+      title: "Antigravity",
+      description: "Configuracion YAML para agy (Antigravity).",
+      file: "skills/agents/agy/",
+      items: [
+        "config.yaml - modelo, temperatura, system prompt"
+      ]
+    }
   ]
 };

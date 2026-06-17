@@ -8,6 +8,7 @@ const sshGithubGrid = document.querySelector("#ssh-github-grid");
 const mgitGrid = document.querySelector("#mgit-grid");
 const shortcutsGrid = document.querySelector("#shortcuts-grid");
 const fccGrid = document.querySelector("#fcc-grid");
+const skillsGrid = document.querySelector("#skills-grid");
 const toolsTable = document.querySelector("#tools-table");
 const resultList = document.querySelector("#result-list");
 const futureNotes = document.querySelector("#future-notes");
@@ -739,6 +740,35 @@ function renderStaticSections() {
   workstationContent.modules.forEach((module) => {
     modulesGrid.appendChild(createModuleCard(module));
   });
+
+  workstationContent.skills.forEach((skill) => {
+    const card = document.createElement("article");
+    card.className = "github-card";
+
+    const title = document.createElement("h3");
+    title.textContent = skill.title;
+
+    const description = document.createElement("p");
+    description.textContent = skill.description;
+
+    const file = document.createElement("p");
+    file.className = "skill-file";
+    file.textContent = "📁 " + skill.file;
+
+    const list = document.createElement("ul");
+    skill.items.forEach((item) => {
+      const li = document.createElement("li");
+      li.textContent = item;
+      list.appendChild(li);
+    });
+
+    card.append(title, description, file, list);
+    skillsGrid.appendChild(card);
+  });
+
+  document.getElementById("skills-aliases-count").textContent = "7 alias";
+  document.getElementById("skills-ia-count").textContent = "8 alias";
+  document.getElementById("skills-fn-count").textContent = "5 funciones";
 
   workstationContent.tools.forEach(([tool, purpose]) => {
     const row = document.createElement("tr");
