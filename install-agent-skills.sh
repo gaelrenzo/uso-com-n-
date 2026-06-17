@@ -55,6 +55,12 @@ else
   echo "  ⏭️  Antigravity no instalado"
 fi
 
+# ─── Shared Agent Skills (api-design-principles, bom, etc.) ───
+if [ -f "$SCRIPT_DIR/skills/sync-agent-skills.sh" ]; then
+  bash "$SCRIPT_DIR/skills/sync-agent-skills.sh"
+fi
+
 echo ""
 echo "🎉 Skills de agentes instaladas."
 echo "   Para actualizar: cd $(dirname "$0") && git pull && bash install-agent-skills.sh"
+

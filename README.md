@@ -204,34 +204,58 @@ Incluye:
 - **MOTD:** fecha, hora, directorio, memoria, comandos rápidos y frase del día
 - **Anti-duplicado:** verifica si ya está instalado antes de escribir
 
-## Skills sincronizadas
+## Skills sincronizadas (Agentes IA y Terminal)
 
-Las skills viven en `skills/` y se sincronizan entre dispositivos via GitHub.
+Las skills de terminal y de agentes IA viven en `skills/` y se sincronizan entre todos tus dispositivos (celular, tablet, laptop) a través de GitHub.
 
-```
+### Estructura de Carpetas
+
+```text
 skills/
-├── aliases.sh       # alias generales
-├── ia-tools.sh      # alias de IA
-├── functions.sh     # funciones html-serve, html-push, etc.
-├── motd.sh          # mensaje de bienvenida
-└── skills.sh        # entry point (sourcea los demas)
+├── agent-skills/          # Todas las skills compartidas de agentes IA (api-design-principles, bom, etc.)
+│   ├── api-design-principles/
+│   ├── bom/
+│   ├── changelog-automation/
+│   └── ... (21 skills en total)
+├── agents/                # Configuraciones y reglas específicas de cada agente
+│   ├── agy/               # Antigravity config
+│   ├── claude/            # Reglas de Claude Code
+│   ├── codex/             # Reglas de Codex
+│   └── opencode/          # Reglas/skills de OpenCode
+├── aliases.sh             # Alias generales de bash
+├── functions.sh           # Funciones personalizadas (html-serve, skills-sync, etc.)
+├── ia-tools.sh            # Alias para herramientas IA
+├── motd.sh                # Mensaje de bienvenida (MOTD)
+├── skills.sh              # Entrypoint de bash (sourcea aliases, functions, etc.)
+├── sync-agent-skills.sh   # Sincronizador para Linux/Termux/Ubuntu (Symlinks)
+└── sync-agent-skills.ps1  # Sincronizador para Windows/Laptop (Junctions)
 ```
 
-**Flujo:**
+### Funcionamiento de la Sincronización
+
+Para lograr que cada agente tenga las mismas skills en todos los dispositivos de manera automatizada:
+1. **Windows (Laptop):** `sync-agent-skills.ps1` crea *Junctions* (uniones de directorios) desde `skills/agent-skills/` a las carpetas correspondientes de tus agentes instalados (Claude, Codex, Antigravity, OpenCode, Cursor, Copilot, etc.). No requiere permisos de administrador.
+2. **Linux/Termux/Ubuntu (Celular, Tablet):** `sync-agent-skills.sh` crea *Symlinks* (enlaces simbólicos) equivalentes.
+
+**Ventaja:** Al usar symlinks/junctions, cualquier cambio que un agente haga a una skill (o que tú hagas editando los archivos en el repo) se refleja al instante en todas partes en ese dispositivo sin necesidad de copiar archivos manualmente.
+
+### Comandos Rápidos de Terminal
+
+Hemos añadido funciones de automatización para simplificar tu flujo diario:
+
+- **`skills-sync`**: Actualiza el repositorio local desde GitHub (`git pull --rebase`), instala las configuraciones de agentes y sincroniza todos los enlaces simbólicos de skills de agentes de forma automática.
+- **`skills-push "[mensaje]"`**: Sube todos tus cambios de skills locales en `agent-skills/` a GitHub con un solo comando.
+
+### Flujo de Trabajo Sincronizado
+
 ```bash
-# En cualquier dispositivo
-cd ~/mis-dotfiles && git pull
-source ~/.bashrc
+# 1. En cualquier dispositivo (después de modificar o crear skills)
+skills-push "agregada skill de ingenieria electromecanica"
 
-# Despues de editar skills
-cd ~/mis-dotfiles
-git add skills/
-git commit -m "update skills"
-git push
-
-# En los otros dispositivos
-cd ~/mis-dotfiles && git pull && source ~/.bashrc
+# 2. En tus otros dispositivos (para recibir los cambios y aplicarlos)
+skills-sync
 ```
+
 
 ## Resumen
 
