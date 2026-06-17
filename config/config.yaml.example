@@ -1,0 +1,28 @@
+# Configuración del Desarrollador (UCN)
+developer:
+  name: "Nombre del Desarrollador"
+  email: "desarrollador@email.com"
+
+# Directorio base para el espacio de trabajo (se expande a home del usuario)
+workspace: "~/workspace"
+
+# Configuración e instalación de Habilidades (Skills) para Agentes de IA
+agents:
+  claude:
+    enabled: true
+    path: "~/.claude-code"
+  codex:
+    enabled: true
+    path: "~/.codex"
+  antigravity:
+    enabled: true
+    path: "~/.antigravity"
+  opencode:
+    enabled: false
+    path: "~/opencode"
+
+# Ajustes generales de automatización
+settings:
+  auto_pull_on_sync: true
+  safe_push_ignore_removal: true
+  weather_city: "Puno"
