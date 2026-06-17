@@ -1,0 +1,24 @@
+# Configuración local sensible e individual
+config/config.yaml
+config/.env
+
+# Binarios y compilaciones de Go
+ucn/ucn
+ucn/ucn.exe
+bin/
+*.exe
+*.exe~
+*.dll
+*.so
+*.dylib
+*.test
+*.out
+__debug_bin
+
+# Dependencias y temporales
+node_modules/
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.log
