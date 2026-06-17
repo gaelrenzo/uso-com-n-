@@ -206,29 +206,29 @@ Incluye:
 
 ## Skills sincronizadas (Agentes IA y Terminal)
 
-Las skills de terminal y de agentes IA viven en `skills/` y se sincronizan entre todos tus dispositivos (celular, tablet, laptop) a través de GitHub.
+Las skills de agentes IA viven en `skills/` y la configuracion de terminal vive en `termux-bash/`, sincronizandose entre todos tus dispositivos a traves de GitHub.
 
 ### Estructura de Carpetas
 
 ```text
-skills/
-├── agent-skills/          # Todas las skills compartidas de agentes IA (api-design-principles, bom, etc.)
-│   ├── api-design-principles/
-│   ├── bom/
-│   ├── changelog-automation/
-│   └── ... (21 skills en total)
-├── agents/                # Configuraciones y reglas específicas de cada agente
-│   ├── agy/               # Antigravity config
-│   ├── claude/            # Reglas de Claude Code
-│   ├── codex/             # Reglas de Codex
-│   └── opencode/          # Reglas/skills de OpenCode
-├── aliases.sh             # Alias generales de bash
-├── functions.sh           # Funciones personalizadas (html-serve, skills-sync, etc.)
-├── ia-tools.sh            # Alias para herramientas IA
-├── motd.sh                # Mensaje de bienvenida (MOTD)
-├── skills.sh              # Entrypoint de bash (sourcea aliases, functions, etc.)
-├── sync-agent-skills.sh   # Sincronizador para Linux/Termux/Ubuntu (Symlinks)
-└── sync-agent-skills.ps1  # Sincronizador para Windows/Laptop (Junctions)
+├── termux-bash/           # Configuracion y entorno de terminal para Termux/Ubuntu
+│   ├── aliases.sh         # Alias generales de bash
+│   ├── functions.sh       # Funciones personalizadas (html-serve, skills-sync, etc.)
+│   ├── ia-tools.sh        # Alias para herramientas IA
+│   ├── motd.sh            # Mensaje de bienvenida (MOTD)
+│   └── termux-bash.sh     # Entrypoint de bash (sourcea los demas)
+├── skills/                # Entorno de Skills para Agentes IA
+│   ├── agent-skills/      # Todas las skills compartidas de agentes IA (api-design-principles, bom, etc.)
+│   │   ├── api-design-principles/
+│   │   ├── bom/
+│   │   └── ... (21 skills en total)
+│   ├── agents/            # Configuraciones y reglas especificas de cada agente
+│   │   ├── agy/           # Antigravity config
+│   │   ├── claude/        # Reglas de Claude Code
+│   │   ├── codex/         # Reglas de Codex
+│   │   └── opencode/      # Reglas/skills de OpenCode
+│   ├── sync-agent-skills.sh   # Sincronizador para Linux/Termux/Ubuntu (Symlinks)
+│   └── sync-agent-skills.ps1  # Sincronizador para Windows/Laptop (Junctions)
 ```
 
 ### Funcionamiento de la Sincronización
