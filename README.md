@@ -206,7 +206,7 @@ Incluye:
 
 ## Skills sincronizadas (Agentes IA y Terminal)
 
-Las skills de agentes IA viven en `skills/` y la configuracion de terminal vive en `termux-bash/`, sincronizandose entre todos tus dispositivos a traves de GitHub.
+Las skills de agentes IA viven en `skills/` y la configuracion de terminal vive en `termux-bash/`, sincronizandose entre todos tus dispositivos (celular, tablet, laptop) a traves de GitHub.
 
 ### Estructura de Carpetas
 
@@ -217,6 +217,8 @@ Las skills de agentes IA viven en `skills/` y la configuracion de terminal vive 
 │   ├── ia-tools.sh        # Alias para herramientas IA
 │   ├── motd.sh            # Mensaje de bienvenida (MOTD)
 │   └── termux-bash.sh     # Entrypoint de bash (sourcea los demas)
+├── laptop-powershell/     # Configuracion y entorno de terminal para Windows (Laptop)
+│   └── Microsoft.PowerShell_profile.ps1 # Copia de seguridad del perfil de PowerShell
 ├── skills/                # Entorno de Skills para Agentes IA
 │   ├── agent-skills/      # Todas las skills compartidas de agentes IA (api-design-principles, bom, etc.)
 │   │   ├── api-design-principles/
@@ -231,20 +233,21 @@ Las skills de agentes IA viven en `skills/` y la configuracion de terminal vive 
 │   └── sync-agent-skills.ps1  # Sincronizador para Windows/Laptop (Junctions)
 ```
 
-### Funcionamiento de la Sincronización
+### Funcionamiento de la Sincronización de Skills
 
 Para lograr que cada agente tenga las mismas skills en todos los dispositivos de manera automatizada:
-1. **Windows (Laptop):** `sync-agent-skills.ps1` crea *Junctions* (uniones de directorios) desde `skills/agent-skills/` a las carpetas correspondientes de tus agentes instalados (Claude, Codex, Antigravity, OpenCode, Cursor, Copilot, etc.). No requiere permisos de administrador.
+1. **Windows (Laptop):** `sync-agent-skills.ps1` crea *Junctions* (uniones de directorios) desde `skills/agent-skills/` a las carpetas correspondientes de tus agentes instalados (Claude, Codex, Antigravity, OpenCode, Cursor, Copilot, etc.). No requiere privilegios de administrador.
 2. **Linux/Termux/Ubuntu (Celular, Tablet):** `sync-agent-skills.sh` crea *Symlinks* (enlaces simbólicos) equivalentes.
 
 **Ventaja:** Al usar symlinks/junctions, cualquier cambio que un agente haga a una skill (o que tú hagas editando los archivos en el repo) se refleja al instante en todas partes en ese dispositivo sin necesidad de copiar archivos manualmente.
 
-### Comandos Rápidos de Terminal
+### Comandos de Sincronización de Terminal
 
 Hemos añadido funciones de automatización para simplificar tu flujo diario:
 
-- **`skills-sync`**: Actualiza el repositorio local desde GitHub (`git pull --rebase`), instala las configuraciones de agentes y sincroniza todos los enlaces simbólicos de skills de agentes de forma automática.
-- **`skills-push "[mensaje]"`**: Sube todos tus cambios de skills locales en `agent-skills/` a GitHub con un solo comando.
+*   **`skills-sync`**: Actualiza el repositorio local desde GitHub (`git pull --rebase`), actualiza las configuraciones de agentes y sincroniza todos los enlaces simbólicos/junctions de skills de agentes de forma automática.
+*   **`skills-push "[mensaje]"`**: Sube todos tus cambios de skills locales en `agent-skills/` a GitHub con un solo comando.
+    *   **🛡️ Modo Seguro (Solo Agregar, No Eliminar):** El comando `skills-push` utiliza internamente `git add --ignore-removal` para registrar archivos nuevos o modificados de tus skills, pero **ignora cualquier eliminacion local**. Si borras una skill o un archivo localmente, no se borrara en GitHub cuando hagas push, protegiendo tu coleccion de habilidades contra pérdidas accidentales.
 
 ### Flujo de Trabajo Sincronizado
 
@@ -256,8 +259,38 @@ skills-push "agregada skill de ingenieria electromecanica"
 skills-sync
 ```
 
+---
 
-## Resumen
+## Personalización de Terminales (Laptop y Móvil)
+
+Hemos unificado la experiencia visual y los comandos entre todos tus dispositivos:
+
+### 📱 Terminal Móvil (Termux / Ubuntu proot)
+La configuracion del bashrc se instala con el instalador mecanico del repositorio. Muestra un mensaje de bienvenida (MOTD) dinamico con la fecha, hora, uso de RAM actual, accesos rapidos y frase del dia.
+*   **Instalacion:**
+    ```bash
+    git clone https://github.com/gaelrenzo/uso-com-n- ~/mis-dotfiles
+    chmod +x ~/mis-dotfiles/install.sh
+    ~/mis-dotfiles/install.sh
+    source ~/.bashrc
+    ```
+
+### 💻 Terminal Laptop (Windows PowerShell)
+El perfil personalizado para Windows PowerShell replica la misma experiencia visual (MOTD) adaptada a tu hardware y añade alias equivalentes.
+*   **Instalacion en una nueva laptop:**
+    Abre PowerShell y ejecuta los siguientes comandos:
+    ```powershell
+    # Habilitar ejecucion de scripts de usuario
+    Set-ExecutionPolicy RemoteSigned -Scope CurrentUser
+    # Crear carpeta del perfil si no existe
+    New-Item -ItemType Directory -Path (Split-Path -Parent $PROFILE) -Force
+    # Copiar el perfil del repositorio
+    Copy-Item -Path .\laptop-powershell\Microsoft.PowerShell_profile.ps1 -Destination $PROFILE -Force
+    ```
+
+---
+
+## Resumen de Uso Rápido de la Web
 
 1. Abre Termux.
 2. Entra al repo con `cd ~/workspace/uso-com-n-` o `cd /root/Workspace/html`.
@@ -266,6 +299,3 @@ skills-sync
 5. Edita archivos y guarda cambios.
 6. Publica con `git add . && git commit -m "avance" && git push`.
 
-## Dotfiles
-
-El archivo [install.sh](install.sh) funciona como dotfiles auto-instalables para configurar el entorno de trabajo en segundos.
