@@ -1,301 +1,150 @@
-# uso-com-n-
+# uso-com-n- (UCN)
+> Guía web y entorno portable de desarrollo para Android (Termux/Ubuntu proot), Linux y Windows, con sincronización de Habilidades (Skills) para Agentes de IA.
 
-Guia web para usar Android como entorno de desarrollo con Termux, Ubuntu proot,
-Node.js, GitHub y un servidor local con autorecarga.
+---
 
-## Uso rapido en Termux
+## 🚀 ¿Qué es UCN?
+**UCN** es un entorno portable y un conjunto de herramientas diseñadas para unificar tu experiencia de desarrollo en cualquier dispositivo. Te permite:
+*   **Tener la misma terminal:** Mantener alias, variables y mensajes de bienvenida coherentes entre Android, Linux y Windows.
+*   **Centralizar Habilidades de IA:** Compartir y sincronizar de forma nativa tus *habilidades* (skills) de agentes de IA (como Claude, Codex, Antigravity, OpenCode, Cursor, etc.).
+*   **Desacoplar secretos:** Configurar datos del desarrollador en un único archivo YAML funcional y secretos en un archivo de variables de entorno `.env` seguro.
+*   **Exposición Segura:** Levantar túneles de red seguros en local a través de **Cloudflare Tunnels**.
+*   **Escribir una vez, correr en todos lados:** Gestionar todo el flujo mediante un binario CLI multiplataforma único desarrollado en Go (`ucn`).
 
-Abre Termux y actualiza paquetes:
+---
 
+## 📂 Estructura del Proyecto
+
+```text
+├── config/                # Plantillas y configuraciones locales (.gitignoreado)
+│   ├── README.md          # Manual del sistema de configuración
+│   ├── .env.example       # Plantilla de variables sensibles y API Keys
+│   └── config.yaml.example# Plantilla de configuración funcional de alias y agentes
+├── termux-bash/           # Configuración del entorno de terminal para Termux/Ubuntu
+│   ├── aliases.sh         # Alias generales de terminal
+│   ├── functions.sh       # Funciones personalizadas
+│   ├── ia-tools.sh        # Accesos y atajos para herramientas IA
+│   ├── motd.sh            # Mensaje de bienvenida (clima, RAM, comandos rápidos)
+│   └── termux-bash.sh     # Script de inicio principal
+├── laptop-powershell/     # Configuración y duplicado de entorno en Windows
+│   └── Microsoft.PowerShell_profile.ps1 # Perfil de Windows PowerShell
+├── ucn/                   # Motor Core escrito en Go (Multiplataforma)
+│   ├── README.md          # Documentación interna y compilación
+│   ├── go.mod             # Módulo de Go
+│   ├── cmd/ucn/           # Entrypoint del CLI
+│   └── internal/          # Lógica interna (config, sync, git, doctor, tunnel)
+├── skills/                # Directorio de habilidades para tus agentes de IA
+│   └── agent-skills/      # Biblioteca de skills compartidas (api-design-principles, postgresql, etc.)
+└── index.html             # Interfaz de la guía web interactiva (con estilos en css/ y js/)
+```
+
+---
+
+## 🛠️ Instalación y Configuración del CLI `ucn`
+
+Para utilizar la herramienta de gestión multiplataforma `ucn`:
+
+### 1. Prerrequisitos
+Debes tener instalado **Go (GoLang)**:
+*   **Windows (PowerShell):** `winget install GoLang.Go`
+*   **Ubuntu / Linux:** `sudo apt update && sudo apt install golang -y`
+*   **Android (Termux):** `pkg update && pkg install golang -y`
+
+### 2. Compilar el CLI
+Ingresa al directorio `ucn` y construye el binario ejecutable:
 ```bash
-pkg update && pkg upgrade
-pkg install git nodejs-lts openssh curl nano tmux
+cd ucn
+# En Windows:
+go build -o ucn.exe cmd/ucn/main.go
+# En Linux/Termux:
+go build -o ucn cmd/ucn/main.go
+```
+*Tip: Te recomendamos añadir el binario compilado a tu variable de entorno PATH para poder llamarlo con `ucn` desde cualquier directorio.*
+
+### 3. Crear Configuraciones Locales
+Genera tus archivos de parámetros a partir de las plantillas provistas:
+```bash
+cp config/config.yaml.example config/config.yaml
+cp config/.env.example config/.env
+```
+> [!IMPORTANT]
+> Edita `config/config.yaml` para añadir tu nombre de desarrollador, correo y activar/desactivar las carpetas de tus agentes locales. Agrega tus tokens de API en `config/.env`.
+
+---
+
+## 🕹️ Comandos del CLI `ucn`
+
+El binario compilado te da acceso a las siguientes automatizaciones:
+
+### 1. Sincronizar Skills (`ucn sync`)
+Actualiza el repositorio remoto (`git pull --rebase` automático si está activo en tu YAML) y reconstruye todos los enlaces simbólicos de tus agentes instalados:
+```bash
+ucn sync
+```
+*En Linux/Android crea **Symlinks** y en Windows crea **Junctions** (uniones de directorios) de forma segura y sin requerir permisos de administrador.*
+
+### 2. Safe GitOps Push (`ucn push "[mensaje]"`)
+Agrega y sube los cambios que realices a tus configuraciones o skills locales a GitHub.
+```bash
+ucn push "agregada nueva skill de diseño"
+```
+*Utiliza de forma interna `git add --ignore-removal` para registrar nuevos archivos u modificaciones, ignorando y protegiéndote contra eliminaciones accidentales de archivos locales en el repositorio remoto.*
+
+### 3. Diagnóstico del Sistema (`ucn doctor`)
+Ejecuta un diagnóstico completo para validar la salud de tu entorno de desarrollo:
+```bash
+ucn doctor
+```
+*Verifica la instalación de `git`, `node`, `npm`, `live-server`, `cloudflared`, revisa el estado de tus ficheros `.yaml`/`.env` locales y detecta enlaces simbólicos rotos.*
+
+### 4. Túnel de Exposición Seguro (`ucn tunnel [nombre_tunel]`)
+Expone tu servidor local (`live-server` u otros) hacia la red pública mediante Cloudflare Tunnel utilizando el token configurado en tu `.env`:
+```bash
+ucn tunnel
+```
+
+---
+
+## 📱 Guía Rápida para Dispositivos Móviles (Termux / Ubuntu)
+
+### 1. Configurar Terminal Termux
+Ejecuta la actualización inicial e instala los paquetes base en Termux:
+```bash
+pkg update && pkg upgrade -y
+pkg install git nodejs-lts openssh curl nano tmux -y
 npm install -g live-server
 ```
 
-Clona este repositorio:
-
+### 2. Clonar e Instalar
 ```bash
-mkdir -p ~/workspace
-cd ~/workspace
-git clone https://github.com/gaelrenzo/uso-com-n-.git
-cd uso-com-n-
-```
-
-Inicia la pagina local:
-
-```bash
-live-server --host=127.0.0.1 --port=8080
-```
-
-Abre en el navegador de Android:
-
-```text
-http://127.0.0.1:8080
-```
-
-## Uso con Ubuntu en Termux
-
-Si trabajas dentro de Ubuntu proot:
-
-```bash
-pkg install proot-distro
-proot-distro install ubuntu
-proot-distro login ubuntu
-```
-
-Dentro de Ubuntu:
-
-```bash
-apt update && apt upgrade -y
-apt install -y git curl nano openssh-client nodejs npm
-npm install -g live-server
-```
-
-Clona y ejecuta:
-
-```bash
-mkdir -p /root/Workspace
-cd /root/Workspace
-git clone https://github.com/gaelrenzo/uso-com-n-.git html
-cd html
-live-server --host=127.0.0.1 --port=8080
-```
-
-Luego abre:
-
-```text
-http://127.0.0.1:8080
-```
-
-## Editar el proyecto
-
-Archivos principales:
-
-```text
-index.html        estructura de la pagina
-css/style.css     estilos visuales
-js/content.js     textos, listas y comandos fijos
-js/app.js         formulario, render y botones de copiar
-```
-
-Editar desde terminal:
-
-```bash
-nano index.html
-nano js/content.js
-nano css/style.css
-```
-
-Mientras `live-server` este encendido, el navegador se recarga al guardar cambios.
-
-## Guardar cambios en GitHub
-
-Configura tu identidad:
-
-```bash
-git config --global user.name "ENZO"
-git config --global user.email "renzomamanigalindo@gmail.com"
-git config --global init.defaultBranch main
-```
-
-Flujo diario:
-
-```bash
-git pull
-git status
-git add .
-git commit -m "avance"
-git push
-```
-
-## Usar SSH con GitHub
-
-Crea una clave:
-
-```bash
-ssh-keygen -t ed25519 -C "renzomamanigalindo@gmail.com"
-cat ~/.ssh/id_ed25519.pub
-```
-
-Copia la clave publica completa y agregala en:
-
-```text
-GitHub > Settings > SSH and GPG keys > New SSH key
-```
-
-Verifica:
-
-```bash
-ssh -T git@github.com
-```
-
-Si GitHub responde con autenticacion correcta, puedes cambiar el remoto a SSH:
-
-```bash
-git remote set-url origin git@github.com:gaelrenzo/uso-com-n-.git
-git remote -v
-```
-
-## Compartir la pagina con una URL publica
-
-Primero deja corriendo el servidor:
-
-```bash
-live-server --host=127.0.0.1 --port=8080
-```
-
-En otra sesion de Termux o tmux:
-
-```bash
-ssh -R 80:localhost:8080 nokey@localhost.run
-```
-
-`localhost.run` mostrara una URL publica HTTPS. La URL funciona mientras esa
-terminal siga abierta.
-
-## Consejos para Termux
-
-Mantener sesiones largas:
-
-```bash
-termux-wake-lock
-tmux
-```
-
-Crear una nueva ventana en tmux:
-
-```text
-Ctrl+b c
-```
-
-Cambiar de ventana:
-
-```text
-Ctrl+b n
-```
-
-Salir de Ubuntu proot:
-
-```bash
-exit
-```
-
-Liberar wake lock:
-
-```bash
-termux-wake-unlock
-```
-
-## Instalación automática del entorno (dotfiles)
-
-`install.sh` inyecta aliases, configuración de herramientas IA y un MOTD personalizado en `~/.bashrc` para entornos Termux/Ubuntu.
-
-```bash
-git clone https://github.com/gaelrenzo/uso-com-n- ~/mis-dotfiles
-chmod +x ~/mis-dotfiles/install.sh
-~/mis-dotfiles/install.sh
+git clone https://github.com/gaelrenzo/uso-com-n-.git ~/workspace/uso-com-n-
+cd ~/workspace/uso-com-n-
+# Ejecutar instalador de terminal (dotfiles)
+chmod +x install.sh
+./install.sh
 source ~/.bashrc
 ```
 
-Incluye:
-- **Alias:** `update`, `cls`, `ll`, `uni`, `weather` (Puno), `sysinfo`, `editui`
-- **IA tools:** `codex`/`codex-full`, `anti`/`anti-full`, `cl`/`cl-full`, `ocode`/`ocode-full`
-- **MOTD:** fecha, hora, directorio, memoria, comandos rápidos y frase del día
-- **Anti-duplicado:** verifica si ya está instalado antes de escribir
-
-## Skills sincronizadas (Agentes IA y Terminal)
-
-Las skills de agentes IA viven en `skills/` y la configuracion de terminal vive en `termux-bash/`, sincronizandose entre todos tus dispositivos (celular, tablet, laptop) a traves de GitHub.
-
-### Estructura de Carpetas
-
-```text
-├── termux-bash/           # Configuracion y entorno de terminal para Termux/Ubuntu
-│   ├── aliases.sh         # Alias generales de bash
-│   ├── functions.sh       # Funciones personalizadas (html-serve, skills-sync, etc.)
-│   ├── ia-tools.sh        # Alias para herramientas IA
-│   ├── motd.sh            # Mensaje de bienvenida (MOTD)
-│   └── termux-bash.sh     # Entrypoint de bash (sourcea los demas)
-├── laptop-powershell/     # Configuracion y entorno de terminal para Windows (Laptop)
-│   └── Microsoft.PowerShell_profile.ps1 # Copia de seguridad del perfil de PowerShell
-├── skills/                # Entorno de Skills para Agentes IA
-│   ├── agent-skills/      # Todas las skills compartidas de agentes IA (api-design-principles, bom, etc.)
-│   │   ├── api-design-principles/
-│   │   ├── bom/
-│   │   └── ... (21 skills en total)
-│   ├── agents/            # Configuraciones y reglas especificas de cada agente
-│   │   ├── agy/           # Antigravity config
-│   │   ├── claude/        # Reglas de Claude Code
-│   │   ├── codex/         # Reglas de Codex
-│   │   └── opencode/      # Reglas/skills de OpenCode
-│   ├── sync-agent-skills.sh   # Sincronizador para Linux/Termux/Ubuntu (Symlinks)
-│   └── sync-agent-skills.ps1  # Sincronizador para Windows/Laptop (Junctions)
-```
-
-### Funcionamiento de la Sincronización de Skills
-
-Para lograr que cada agente tenga las mismas skills en todos los dispositivos de manera automatizada:
-1. **Windows (Laptop):** `sync-agent-skills.ps1` crea *Junctions* (uniones de directorios) desde `skills/agent-skills/` a las carpetas correspondientes de tus agentes instalados (Claude, Codex, Antigravity, OpenCode, Cursor, Copilot, etc.). No requiere privilegios de administrador.
-2. **Linux/Termux/Ubuntu (Celular, Tablet):** `sync-agent-skills.sh` crea *Symlinks* (enlaces simbólicos) equivalentes.
-
-**Ventaja:** Al usar symlinks/junctions, cualquier cambio que un agente haga a una skill (o que tú hagas editando los archivos en el repo) se refleja al instante en todas partes en ese dispositivo sin necesidad de copiar archivos manualmente.
-
-### Comandos de Sincronización de Terminal
-
-Hemos añadido funciones de automatización para simplificar tu flujo diario:
-
-*   **`skills-sync`**: Actualiza el repositorio local desde GitHub (`git pull --rebase`), actualiza las configuraciones de agentes y sincroniza todos los enlaces simbólicos/junctions de skills de agentes de forma automática.
-*   **`skills-push "[mensaje]"`**: Sube todos tus cambios de skills locales en `agent-skills/` a GitHub con un solo comando.
-    *   **🛡️ Modo Seguro (Solo Agregar, No Eliminar):** El comando `skills-push` utiliza internamente `git add --ignore-removal` para registrar archivos nuevos o modificados de tus skills, pero **ignora cualquier eliminacion local**. Si borras una skill o un archivo localmente, no se borrara en GitHub cuando hagas push, protegiendo tu coleccion de habilidades contra pérdidas accidentales.
-
-### Flujo de Trabajo Sincronizado
-
+### 3. Lanzar Servidor Local
 ```bash
-# 1. En cualquier dispositivo (después de modificar o crear skills)
-skills-push "agregada skill de ingenieria electromecanica"
-
-# 2. En tus otros dispositivos (para recibir los cambios y aplicarlos)
-skills-sync
+live-server --host=127.0.0.1 --port=8080
 ```
+Y abre en tu navegador de Android: `http://127.0.0.1:8080`.
 
 ---
 
-## Personalización de Terminales (Laptop y Móvil)
+## 💻 Guía Rápida para Windows (PowerShell)
 
-Hemos unificado la experiencia visual y los comandos entre todos tus dispositivos:
+Para replicar la misma terminal interactiva (MOTD) y alias en tu Laptop:
 
-### 📱 Terminal Móvil (Termux / Ubuntu proot)
-La configuracion del bashrc se instala con el instalador mecanico del repositorio. Muestra un mensaje de bienvenida (MOTD) dinamico con la fecha, hora, uso de RAM actual, accesos rapidos y frase del dia.
-*   **Instalacion:**
-    ```bash
-    git clone https://github.com/gaelrenzo/uso-com-n- ~/mis-dotfiles
-    chmod +x ~/mis-dotfiles/install.sh
-    ~/mis-dotfiles/install.sh
-    source ~/.bashrc
-    ```
-
-### 💻 Terminal Laptop (Windows PowerShell)
-El perfil personalizado para Windows PowerShell replica la misma experiencia visual (MOTD) adaptada a tu hardware y añade alias equivalentes.
-*   **Instalacion en una nueva laptop:**
-    Abre PowerShell y ejecuta los siguientes comandos:
+1.  Abre PowerShell como Administrador y habilita la ejecución de scripts locales:
     ```powershell
-    # Habilitar ejecucion de scripts de usuario
     Set-ExecutionPolicy RemoteSigned -Scope CurrentUser
-    # Crear carpeta del perfil si no existe
+    ```
+2.  Crea la carpeta del perfil si no existe y copia el script personalizado:
+    ```powershell
     New-Item -ItemType Directory -Path (Split-Path -Parent $PROFILE) -Force
-    # Copiar el perfil del repositorio
+    # Desde la carpeta raíz del proyecto clonado:
     Copy-Item -Path .\laptop-powershell\Microsoft.PowerShell_profile.ps1 -Destination $PROFILE -Force
     ```
-
----
-
-## Resumen de Uso Rápido de la Web
-
-1. Abre Termux.
-2. Entra al repo con `cd ~/workspace/uso-com-n-` o `cd /root/Workspace/html`.
-3. Ejecuta `live-server --host=127.0.0.1 --port=8080`.
-4. Abre `http://127.0.0.1:8080`.
-5. Edita archivos y guarda cambios.
-6. Publica con `git add . && git commit -m "avance" && git push`.
-
+3.  Cierra y vuelve a abrir PowerShell para visualizar tu panel interactivo de bienvenida.
