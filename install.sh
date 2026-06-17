@@ -4,18 +4,24 @@
 # ==============================================================================
 
 SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
-SKILLS_DIR="$SCRIPT_DIR/skills"
-LINE="source \"$SKILLS_DIR/skills.sh\""
+BASH_DIR="$SCRIPT_DIR/termux-bash"
+LINE="source \"$BASH_DIR/termux-bash.sh\""
 
-echo "🚀 Instalando skills en ~/.bashrc..."
+echo "🚀 Instalando configuracion de Termux en ~/.bashrc..."
 
-if grep -q "skills/skills.sh" ~/.bashrc; then
-  echo "⚠️  Skills ya instaladas en bashrc"
+# Actualizar configuracion antigua si existe
+if grep -q "skills/skills.sh" ~/.bashrc 2>/dev/null; then
+  echo "🔄 Actualizando ruta antigua en ~/.bashrc..."
+  sed -i 's|skills/skills.sh|termux-bash/termux-bash.sh|g' ~/.bashrc 2>/dev/null
+fi
+
+if grep -q "termux-bash/termux-bash.sh" ~/.bashrc 2>/dev/null; then
+  echo "⚠️  Configuracion ya instalada en ~/.bashrc"
 else
   echo "" >> ~/.bashrc
-  echo "# SKILLS sincronizadas via GitHub" >> ~/.bashrc
+  echo "# Configuracion Termux sincronizada via GitHub" >> ~/.bashrc
   echo "$LINE" >> ~/.bashrc
-  echo "✅ Skills anadidas a ~/.bashrc"
+  echo "✅ Configuracion anadida a ~/.bashrc"
 fi
 
 # Instalar skills para agentes IA

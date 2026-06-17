@@ -266,7 +266,7 @@ const workstationContent = {
     {
       title: "Aliases generales",
       description: "Comandos cortos para el dia a dia en Termux/Ubuntu.",
-      file: "skills/aliases.sh",
+      file: "termux-bash/aliases.sh",
       items: [
         "update - actualizar paquetes",
         "cls - limpiar y recargar bashrc",
@@ -280,7 +280,7 @@ const workstationContent = {
     {
       title: "Herramientas IA",
       description: "Acceso rapido a agentes de IA para codigo.",
-      file: "skills/ia-tools.sh",
+      file: "termux-bash/ia-tools.sh",
       items: [
         "codex / codex-full",
         "anti / anti-full (Antigravity)",
@@ -291,7 +291,7 @@ const workstationContent = {
     {
       title: "Funciones HTML",
       description: "Funciones bash para servir, publicar y versionar el proyecto web.",
-      file: "skills/functions.sh",
+      file: "termux-bash/functions.sh",
       items: [
         "html-serve [puerto] - servir pagina",
         "html-push [mensaje] - git push rapido",
@@ -303,7 +303,7 @@ const workstationContent = {
     {
       title: "MOTD personalizado",
       description: "Pantalla de bienvenida con fecha, memoria y comandos rapidos al abrir terminal.",
-      file: "skills/motd.sh",
+      file: "termux-bash/motd.sh",
       items: [
         "Fecha y hora actual",
         "Directorio de trabajo",

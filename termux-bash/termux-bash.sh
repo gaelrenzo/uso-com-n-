@@ -1,5 +1,5 @@
 # ==========================================
-# SKILLS - PUNTO DE ENTRADA PRINCIPAL
+# TERMUX BASH - PUNTO DE ENTRADA PRINCIPAL
 # Sincronizado via GitHub entre dispositivos
 # ==========================================
 
