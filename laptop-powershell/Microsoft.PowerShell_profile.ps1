@@ -3,7 +3,7 @@
 # Sincronizado y adaptado de la Workstation
 # ==========================================
 
-$RepoDir = "C:\Users\renzo\uso-com-n-"
+$RepoDir = "C:\Users\renzo\workspace\uso-com-n"
 
 # --- ALIASES ---
 Set-Alias -Name ll -Value Get-ChildItem -Option ReadOnly
@@ -60,6 +60,14 @@ function ocode-full {
 
 function codex-full {
     codex --dangerously-skip-permissions $args
+}
+
+function hermes {
+    & "C:\Users\renzo\AppData\Local\hermes\hermes-agent\venv\Scripts\hermes.exe" $args
+}
+
+function hermes-full {
+    & "C:\Users\renzo\AppData\Local\hermes\hermes-agent\venv\Scripts\hermes.exe" --yolo $args
 }
 
 # --- HTML FUNCTIONS ---
@@ -147,6 +155,7 @@ function Show-MOTD {
     Write-Host "  anti  / anti-full        = Antigravity (agy)" -ForegroundColor Green
     Write-Host "  cl    / cl-full          = Claude Code" -ForegroundColor Green
     Write-Host "  ocode / ocode-full       = OpenCode" -ForegroundColor Green
+    Write-Host "  hermes / hermes-full     = Hermes Agent" -ForegroundColor Green
     Write-Host ""
     
     Write-Host "  [HTML & WEB]" -ForegroundColor Yellow
