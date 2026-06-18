@@ -27,7 +27,7 @@ echo -e "  \e[32mcodex\e[0m / \e[32mcodex-full\e[0m   = Codex"
 echo -e "  \e[32manti\e[0m  / \e[32manti-full\e[0m    = Antigravity"
 echo -e "  \e[32mcl\e[0m    / \e[32mcl-full\e[0m      = Claude Code"
 echo -e "  \e[32mocode\e[0m / \e[32mocode-full\e[0m   = OpenCode"
-echo -e "  \e[32mhermes\e[0m                      = Hermes Agent\n"
+echo -e "  \e[32mhermes\e[0m / \e[32mhermes-full\e[0m  = Hermes Agent\n"
 
 echo -e "\e[33m🌐 Funciones HTML:\e[0m"
 echo -e "  \e[32mhtml-serve\e[0m  = Servir pagina local"
