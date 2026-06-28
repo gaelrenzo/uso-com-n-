@@ -3,7 +3,7 @@
 # ==========================================
 
 alias codex="codex"
-alias codex-full="codex --dangerously-skip-permissions"
+alias codex-full="codex --dangerously-bypass-approvals-and-sandbox"
 alias anti="agy"
 alias anti-full="agy --dangerously-skip-permissions"
 alias cl="claude"

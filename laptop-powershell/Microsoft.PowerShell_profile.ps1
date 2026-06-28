@@ -59,7 +59,7 @@ function ocode-full {
 }
 
 function codex-full {
-    codex --dangerously-skip-permissions $args
+    codex --dangerously-bypass-approvals-and-sandbox $args
 }
 
 function hermes {

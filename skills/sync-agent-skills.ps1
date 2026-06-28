@@ -17,6 +17,8 @@ $TargetDirs = @(
     (Join-Path $HomeDir ".config\opencode\skills"),
     (Join-Path $HomeDir ".copilot\skills"),
     (Join-Path $HomeDir ".cursor\skills"),
+    (Join-Path $HomeDir ".hermes\skills"),
+    (Join-Path $HomeDir ".antigravitycli\skills"),
     (Join-Path $HomeDir ".gemini\skills"),
     (Join-Path $HomeDir ".gemini\antigravity-cli\skills")
 )
