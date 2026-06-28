@@ -17,6 +17,8 @@ TARGET_DIRS=(
   "$HOME/.config/opencode/skills"
   "$HOME/.copilot/skills"
   "$HOME/.cursor/skills"
+  "$HOME/.hermes/skills"
+  "$HOME/.antigravitycli/skills"
   "$HOME/.gemini/skills"
   "$HOME/.gemini/antigravity-cli/skills"
 )

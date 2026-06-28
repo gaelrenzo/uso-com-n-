@@ -61,6 +61,8 @@ func CheckHealth(cfg *config.Config, repoRoot string) {
 			filepath.Join(home, ".config", "opencode", "skills"),
 			filepath.Join(home, ".copilot", "skills"),
 			filepath.Join(home, ".cursor", "skills"),
+			filepath.Join(home, ".hermes", "skills"),
+			filepath.Join(home, ".antigravitycli", "skills"),
 			filepath.Join(home, ".gemini", "skills"),
 			filepath.Join(home, ".gemini", "antigravity-cli", "skills"),
 		}
