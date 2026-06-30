@@ -34,9 +34,7 @@
 │   ├── cmd/ucn/           # Entrypoint del CLI
 │   └── internal/          # Lógica interna (config, sync, git, doctor, tunnel)
 ├── skills/                # Directorio de habilidades para tus agentes de IA
-│   └── agent-skills/      # Biblioteca de skills compartidas (api-design-principles, postgresql, etc.)
-│       ├── freedomain/    # [NEW] Dominios gratuitos - DigitalPlat FreeDomain
-│       └── rtk/           # [NEW] Reductor de tokens LLM - rtk-ai/rtk
+│   └── agent-skills/      # 31 skills de agentes de IA (electrónica, dev, diseño, IA...)
 └── index.html             # Interfaz de la guía web interactiva (con estilos en css/ y js/)
 ```
 
@@ -153,24 +151,67 @@ Para replicar la misma terminal interactiva (MOTD) y alias en tu Laptop:
 
 ---
 
-## 📦 Skills Instaladas (Extraídas de)
+## 📦 Skills Instaladas (31 total)
 
-| Skill | Repositorio Fuente | Licencia | Descripción |
-|-------|-------------------|----------|-------------|
-| **freedomain** | [DigitalPlatDev/FreeDomain](https://github.com/DigitalPlatDev/FreeDomain) | AGPL-3.0 | Dominios gratuitos (.dpdns.org, .us.kg, .qzz.io, .xx.kg, .qd.je) |
-| **rtk** | [rtk-ai/rtk](https://github.com/rtk-ai/rtk) | Apache-2.0 | Proxy CLI que reduce consumo de tokens LLM en 60-90% |
+> **Nota**: Estas skills se sincronizan automáticamente mediante `ucn sync` y están disponibles para todos los agentes de IA configurados (OpenCode, Claude, Codex, Cursor).
 
-### Freedomain
-- **Qué hace**: Permite registrar dominios gratuitos para proyectos web
-- **Dashboard**: https://dash.domain.digitalplat.org/
-- **Autor**: Edward Hsing (DigitalPlat Foundation)
-- **Stars**: 181k+
+### 🌐 Internet & Plataformas
 
-### RTK (Rust Token Killer)
-- **Qué hace**: Filtra y comprime salidas de comandos antes de llegar al contexto del LLM
-- **Ahorro**: ~80% de tokens en sesiones de desarrollo
-- **Instalación**: `brew install rtk` o `curl -fsSL https://raw.githubusercontent.com/rtk-ai/rtk/refs/heads/master/install.sh | sh`
-- **Sitio web**: https://www.rtk-ai.app
-- **Stars**: 67.1k+
+| Skill | Descripción | Fuente |
+|-------|-------------|--------|
+| **agent-reach** | Router de internet para 13 plataformas (búsqueda, redes sociales, carreras, dev, web, video) | [Panniantong/Agent-Reach](https://github.com/Panniantong/Agent-Reach) |
+| **freedomain** | Dominios gratuitos (.dpdns.org, .us.kg, .qzz.io, .xx.kg, .qd.je) | [DigitalPlatDev/FreeDomain](https://github.com/DigitalPlatDev/FreeDomain) ⭐181k |
+| **notebooklm** | API completa de Google NotebookLM — notebooks, fuentes, podcasts, videos | [teng-lin/notebooklm-py](https://github.com/teng-lin/notebooklm-py) |
 
-> **Nota**: Estas skills se sincronizan automáticamente mediante `ucn sync` y están disponibles para todos los agentes de IA configurados (OpenCode, Claude, Codex, etc.).
+### ⚡ Electrónica & PCB
+
+| Skill | Descripción | Fuente |
+|-------|-------------|--------|
+| **bom** | Gestión de BOM — orquesta DigiKey, Mouser, LCSC, element14, JLCPCB, PCBWay, KiCad | Interna |
+| **datasheets** | Extracción de specs de datasheets PDF — pinouts, características eléctricas | Interna |
+| **digikey** | Búsqueda en DigiKey — fuente principal para prototipos | Interna |
+| **element14** | Búsqueda en Newark/Farnell/element14 — API unificada US/UK/EU/APAC | Interna |
+| **emc** | Análisis EMC pre-compliance — 18 categorías, 44 reglas, CISPR/FCC/MIL-STD | Interna |
+| **jlcpcb** | Fabricación y ensamblaje JLCPCB — BOM/CPL, partes básicas/extendidas | Interna |
+| **kicad** | Análisis de proyectos KiCad — schematics, PCB, DRC/ERC, BOM, power trees | Interna |
+| **kidoc** | Documentación de ingeniería desde KiCad — HDD, CE, ICD, design reviews | Interna |
+| **lcsc** | Búsqueda en LCSC — API gratuita jlcsearch, sin auth, biblioteca JLCPCB | Interna |
+| **mouser** | Búsqueda en Mouser — fuente secundaria para prototipos | Interna |
+| **pcbway** | Fabricación y ensamblaje PCBWay — turnkey/consignado, alternativa a JLCPCB | Interna |
+| **spice** | Simulaciones SPICE automáticas — filtros, dividers, opamps, cristales | Interna |
+
+### 🛠️ Desarrollo & Código
+
+| Skill | Descripción | Fuente |
+|-------|-------------|--------|
+| **api-design-principles** | Principios de diseño REST y GraphQL — APIs intuitivas y escalables | Interna |
+| **changelog-automation** | Generación automática de changelogs desde commits, PRs y releases | Interna |
+| **find-skills** | Descubrir e instalar skills del ecosistema via `npx skills` | Interna |
+| **postgresql** | Diseño de schemas PostgreSQL — tipos, índices, constraints, rendimiento | Interna |
+| **systematic-debugging** | Debug sistemático — proceso de 4 fases para bugs y fallos | Interna |
+
+### 🎨 Diseño & Visual
+
+| Skill | Descripción | Fuente |
+|-------|-------------|--------|
+| **floor-plan-generator** | Generar planos con solver de IA y dimensiones de habitaciones | [z-aqib/Floor-Plan-Generator](https://github.com/z-aqib/Floor-Plan-Generator-Using-AI) |
+| **visual-design-foundations** | Tipografía, teoría del color, espaciado e iconografía para diseños cohesivos | Interna |
+
+### 🧠 Agentes & Productividad
+
+| Skill | Descripción | Fuente |
+|-------|-------------|--------|
+| **professor-synapse** | Invocar y orquestar agentes expertos para tareas de dominio específico | Interna |
+| **ponytail** | Solución más simple que funciona — YAGNI, stdlib primero, una línea antes de cincuenta | [DietrichGebert/ponytail](https://github.com/DietrichGebert/ponytail) ⭐MIT |
+| **ponytail-audit** | Auditoría completa de repo por over-engineering — qué borrar, simplificar | [DietrichGebert/ponytail](https://github.com/DietrichGebert/ponytail) ⭐MIT |
+| **ponytail-debt** | Ledger de deuda pendiente — recoge comentarios `ponytail:` en deuda | [DietrichGebert/ponytail](https://github.com/DietrichGebert/ponytail) ⭐MIT |
+| **ponytail-gain** | Impacto medido de ponytail — scoreboard compacto de ahorro | [DietrichGebert/ponytail](https://github.com/DietrichGebert/ponytail) ⭐MIT |
+| **ponytail-help** | Tarjeta de referencia rápida de todos los modos y comandos ponytail | [DietrichGebert/ponytail](https://github.com/DietrichGebert/ponytail) ⭐MIT |
+| **ponytail-review** | Revisión de código enfocada en over-engineering — qué eliminar, deps innecesarias | [DietrichGebert/ponytail](https://github.com/DietrichGebert/ponytail) ⭐MIT |
+| **rtk** | Proxy CLI que reduce consumo de tokens LLM en 60-90% | [rtk-ai/rtk](https://github.com/rtk-ai/rtk) ⭐67k Apache-2.0 |
+
+### 🔧 Ingeniería
+
+| Skill | Descripción | Fuente |
+|-------|-------------|--------|
+| **ingenieria-electromecanica** | Asistente de ingeniería mecánica-eléctrica, CAD, circuitos y simulación | Interna |
