@@ -35,6 +35,8 @@
 │   └── internal/          # Lógica interna (config, sync, git, doctor, tunnel)
 ├── skills/                # Directorio de habilidades para tus agentes de IA
 │   └── agent-skills/      # Biblioteca de skills compartidas (api-design-principles, postgresql, etc.)
+│       ├── freedomain/    # [NEW] Dominios gratuitos - DigitalPlat FreeDomain
+│       └── rtk/           # [NEW] Reductor de tokens LLM - rtk-ai/rtk
 └── index.html             # Interfaz de la guía web interactiva (con estilos en css/ y js/)
 ```
 
@@ -148,3 +150,27 @@ Para replicar la misma terminal interactiva (MOTD) y alias en tu Laptop:
     Copy-Item -Path .\laptop-powershell\Microsoft.PowerShell_profile.ps1 -Destination $PROFILE -Force
     ```
 3.  Cierra y vuelve a abrir PowerShell para visualizar tu panel interactivo de bienvenida.
+
+---
+
+## 📦 Skills Instaladas (Extraídas de)
+
+| Skill | Repositorio Fuente | Licencia | Descripción |
+|-------|-------------------|----------|-------------|
+| **freedomain** | [DigitalPlatDev/FreeDomain](https://github.com/DigitalPlatDev/FreeDomain) | AGPL-3.0 | Dominios gratuitos (.dpdns.org, .us.kg, .qzz.io, .xx.kg, .qd.je) |
+| **rtk** | [rtk-ai/rtk](https://github.com/rtk-ai/rtk) | Apache-2.0 | Proxy CLI que reduce consumo de tokens LLM en 60-90% |
+
+### Freedomain
+- **Qué hace**: Permite registrar dominios gratuitos para proyectos web
+- **Dashboard**: https://dash.domain.digitalplat.org/
+- **Autor**: Edward Hsing (DigitalPlat Foundation)
+- **Stars**: 181k+
+
+### RTK (Rust Token Killer)
+- **Qué hace**: Filtra y comprime salidas de comandos antes de llegar al contexto del LLM
+- **Ahorro**: ~80% de tokens en sesiones de desarrollo
+- **Instalación**: `brew install rtk` o `curl -fsSL https://raw.githubusercontent.com/rtk-ai/rtk/refs/heads/master/install.sh | sh`
+- **Sitio web**: https://www.rtk-ai.app
+- **Stars**: 67.1k+
+
+> **Nota**: Estas skills se sincronizan automáticamente mediante `ucn sync` y están disponibles para todos los agentes de IA configurados (OpenCode, Claude, Codex, etc.).
