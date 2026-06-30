@@ -34,7 +34,7 @@
 │   ├── cmd/ucn/           # Entrypoint del CLI
 │   └── internal/          # Lógica interna (config, sync, git, doctor, tunnel)
 ├── skills/                # Directorio de habilidades para tus agentes de IA
-│   └── agent-skills/      # 31 skills de agentes de IA (electrónica, dev, diseño, IA...)
+│   └── agent-skills/      # 42 skills de agentes de IA (electrónica, dev, AI, diseño, escritura...)
 └── index.html             # Interfaz de la guía web interactiva (con estilos en css/ y js/)
 ```
 
@@ -151,7 +151,7 @@ Para replicar la misma terminal interactiva (MOTD) y alias en tu Laptop:
 
 ---
 
-## 📦 Skills Instaladas (31 total)
+## 📦 Skills Instaladas (42 total)
 
 > **Nota**: Estas skills se sincronizan automáticamente mediante `ucn sync` y están disponibles para todos los agentes de IA configurados (OpenCode, Claude, Codex, Cursor).
 
@@ -161,6 +161,7 @@ Para replicar la misma terminal interactiva (MOTD) y alias en tu Laptop:
 |-------|-------------|--------|
 | **agent-reach** | Router de internet para 13 plataformas (búsqueda, redes sociales, carreras, dev, web, video) | [Panniantong/Agent-Reach](https://github.com/Panniantong/Agent-Reach) |
 | **freedomain** | Dominios gratuitos (.dpdns.org, .us.kg, .qzz.io, .xx.kg, .qd.je) | [DigitalPlatDev/FreeDomain](https://github.com/DigitalPlatDev/FreeDomain) ⭐181k |
+| **last30days** | Motor de búsqueda AI — Reddit, X, YouTube, TikTok, HN, Polymarket, GitHub en paralelo | [mvanhorn/last30days-skill](https://github.com/mvanhorn/last30days-skill) MIT |
 | **notebooklm** | API completa de Google NotebookLM — notebooks, fuentes, podcasts, videos | [teng-lin/notebooklm-py](https://github.com/teng-lin/notebooklm-py) |
 
 ### ⚡ Electrónica & PCB
@@ -186,8 +187,12 @@ Para replicar la misma terminal interactiva (MOTD) y alias en tu Laptop:
 |-------|-------------|--------|
 | **api-design-principles** | Principios de diseño REST y GraphQL — APIs intuitivas y escalables | Interna |
 | **changelog-automation** | Generación automática de changelogs desde commits, PRs y releases | Interna |
+| **codegraph** | Inteligencia semántica de código — tree-sitter, SQLite, knowledge graph para agents | [colbymchenry/codegraph](https://github.com/colbymchenry/codegraph) MIT |
 | **find-skills** | Descubrir e instalar skills del ecosistema via `npx skills` | Interna |
+| **karpathy-guidelines** | 4 principios de Andrej Karpathy — pensar antes, simplicidad, cambios quirúrgicos, meta-clara | [multica-ai/andrej-karpathy-skills](https://github.com/multica-ai/andrej-karpathy-skills) MIT |
 | **postgresql** | Diseño de schemas PostgreSQL — tipos, índices, constraints, rendimiento | Interna |
+| **spec-kit** | Spec-Driven Development by GitHub — specs ejecutables, planes, tareas para 30+ agents | [github/spec-kit](https://github.com/github/spec-kit) MIT |
+| **superpowers** | Metodología completa de desarrollo — 14 skills composables, TDD, subagents, workflow | [obra/superpowers](https://github.com/obra/superpowers) MIT |
 | **systematic-debugging** | Debug sistemático — proceso de 4 fases para bugs y fallos | Interna |
 
 ### 🎨 Diseño & Visual
@@ -195,20 +200,31 @@ Para replicar la misma terminal interactiva (MOTD) y alias en tu Laptop:
 | Skill | Descripción | Fuente |
 |-------|-------------|--------|
 | **floor-plan-generator** | Generar planos con solver de IA y dimensiones de habitaciones | [z-aqib/Floor-Plan-Generator](https://github.com/z-aqib/Floor-Plan-Generator-Using-AI) |
+| **frontend-design** | Diseño frontend — UIs web hermosas, responsive, componentes, accesibilidad | [anthropics/skills](https://github.com/anthropics/skills) Apache-2.0 |
 | **visual-design-foundations** | Tipografía, teoría del color, espaciado e iconografía para diseños cohesivos | Interna |
 
 ### 🧠 Agentes & Productividad
 
 | Skill | Descripción | Fuente |
 |-------|-------------|--------|
+| **claude-mem** | Memoria persistente para Claude — captura observaciones, resume, inyecta contexto | [thedotmack/claude-mem](https://github.com/thedotmack/claude-mem) Apache-2.0 |
+| **claude-plugins** | Directorio oficial de plugins Anthropic — gestión, modernización, seguridad, integraciones | [anthropics/claude-plugins-official](https://github.com/anthropics/claude-plugins-official) Apache-2.0 |
+| **obsidian-skills** | 5 skills para Obsidian — markdown, bases, canvas, CLI, extracción web | [kepano/obsidian-skills](https://github.com/kepano/obsidian-skills) MIT |
 | **professor-synapse** | Invocar y orquestar agentes expertos para tareas de dominio específico | Interna |
-| **ponytail** | Solución más simple que funciona — YAGNI, stdlib primero, una línea antes de cincuenta | [DietrichGebert/ponytail](https://github.com/DietrichGebert/ponytail) ⭐MIT |
-| **ponytail-audit** | Auditoría completa de repo por over-engineering — qué borrar, simplificar | [DietrichGebert/ponytail](https://github.com/DietrichGebert/ponytail) ⭐MIT |
-| **ponytail-debt** | Ledger de deuda pendiente — recoge comentarios `ponytail:` en deuda | [DietrichGebert/ponytail](https://github.com/DietrichGebert/ponytail) ⭐MIT |
-| **ponytail-gain** | Impacto medido de ponytail — scoreboard compacto de ahorro | [DietrichGebert/ponytail](https://github.com/DietrichGebert/ponytail) ⭐MIT |
-| **ponytail-help** | Tarjeta de referencia rápida de todos los modos y comandos ponytail | [DietrichGebert/ponytail](https://github.com/DietrichGebert/ponytail) ⭐MIT |
-| **ponytail-review** | Revisión de código enfocada en over-engineering — qué eliminar, deps innecesarias | [DietrichGebert/ponytail](https://github.com/DietrichGebert/ponytail) ⭐MIT |
+| **ponytail** | Solución más simple que funciona — YAGNI, stdlib primero, una línea antes de cincuenta | [DietrichGebert/ponytail](https://github.com/DietrichGebert/ponytail) MIT |
+| **ponytail-audit** | Auditoría completa de repo por over-engineering — qué borrar, simplificar | [DietrichGebert/ponytail](https://github.com/DietrichGebert/ponytail) MIT |
+| **ponytail-debt** | Ledger de deuda pendiente — recoge comentarios `ponytail:` en deuda | [DietrichGebert/ponytail](https://github.com/DietrichGebert/ponytail) MIT |
+| **ponytail-gain** | Impacto medido de ponytail — scoreboard compacto de ahorro | [DietrichGebert/ponytail](https://github.com/DietrichGebert/ponytail) MIT |
+| **ponytail-help** | Tarjeta de referencia rápida de todos los modos y comandos ponytail | [DietrichGebert/ponytail](https://github.com/DietrichGebert/ponytail) MIT |
+| **ponytail-review** | Revisión de código enfocada en over-engineering — qué eliminar, deps innecesarias | [DietrichGebert/ponytail](https://github.com/DietrichGebert/ponytail) MIT |
 | **rtk** | Proxy CLI que reduce consumo de tokens LLM en 60-90% | [rtk-ai/rtk](https://github.com/rtk-ai/rtk) ⭐67k Apache-2.0 |
+| **skillspector** | Scanner de seguridad para skills — 68 patrones, 17 categorías, análisis LLM opcional | [NVIDIA/SkillSpector](https://github.com/NVIDIA/SkillSpector) Apache-2.0 |
+
+### 📝 Escritura & Academia
+
+| Skill | Descripción | Fuente |
+|-------|-------------|--------|
+| **thesis-writing** | Escritura de tesis — scope, outline, draft, review, 5 modos, undergraduate-doctoral | [santifs/thesis-writing-skill](https://github.com/santifs/thesis-writing-skill) MIT |
 
 ### 🔧 Ingeniería
 

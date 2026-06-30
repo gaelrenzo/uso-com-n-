@@ -1,0 +1,86 @@
+# UCN Skills Manager
+version: "1.0.0"
+last_updated: "2026-06-30"
+total_skills: 42
+
+# Sources
+repositories:
+  - name: DigitalPlatDev/FreeDomain
+    url: https://github.com/DigitalPlatDev/FreeDomain
+    license: AGPL-3.0
+    skills: [freedomain]
+  - name: rtk-ai/rtk
+    url: https://github.com/rtk-ai/rtk
+    license: Apache-2.0
+    skills: [rtk]
+  - name: NVIDIA/SkillSpector
+    url: https://github.com/NVIDIA/SkillSpector
+    license: Apache-2.0
+    skills: [skillspector]
+  - name: github/spec-kit
+    url: https://github.com/github/spec-kit
+    license: MIT
+    skills: [spec-kit]
+  - name: colbymchenry/codegraph
+    url: https://github.com/colbymchenry/codegraph
+    license: MIT
+    skills: [codegraph]
+  - name: multica-ai/andrej-karpathy-skills
+    url: https://github.com/multica-ai/andrej-karpathy-skills
+    license: MIT
+    skills: [karpathy-guidelines]
+  - name: anthropics/claude-plugins-official
+    url: https://github.com/anthropics/claude-plugins-official
+    license: Apache-2.0
+    skills: [claude-plugins]
+  - name: obra/superpowers
+    url: https://github.com/obra/superpowers
+    license: MIT
+    skills: [superpowers]
+  - name: mvanhorn/last30days-skill
+    url: https://github.com/mvanhorn/last30days-skill
+    license: MIT
+    skills: [last30days]
+  - name: santifs/thesis-writing-skill
+    url: https://github.com/santifs/thesis-writing-skill
+    license: MIT
+    skills: [thesis-writing]
+  - name: kepano/obsidian-skills
+    url: https://github.com/kepano/obsidian-skills
+    license: MIT
+    skills: [obsidian-skills]
+  - name: thedotmack/claude-mem
+    url: https://github.com/thedotmack/claude-mem
+    license: Apache-2.0
+    skills: [claude-mem]
+  - name: anthropics/skills
+    url: https://github.com/anthropics/skills
+    license: Apache-2.0
+    skills: [frontend-design]
+  - name: z-aqib/Floor-Plan-Generator-Using-AI
+    url: https://github.com/z-aqib/Floor-Plan-Generator-Using-AI
+    license: MIT
+    skills: [floor-plan-generator]
+  - name: DietrichGebert/ponytail
+    url: https://github.com/DietrichGebert/ponytail
+    license: MIT
+    skills: [ponytail, ponytail-audit, ponytail-debt, ponytail-gain, ponytail-help, ponytail-review]
+  - name: Panniantong/Agent-Reach
+    url: https://github.com/Panniantong/Agent-Reach
+    license: MIT
+    skills: [agent-reach]
+  - name: teng-lin/notebooklm-py
+    url: https://github.com/teng-lin/notebooklm-py
+    license: MIT
+    skills: [notebooklm]
+
+# Agents supported
+agents:
+  - name: claude
+    path: ~/.claude/skills
+  - name: cursor
+    path: ~/.cursor/skills
+  - name: codex
+    path: ~/.codex/skills
+  - name: opencode
+    path: ~/.config/opencode/skills
