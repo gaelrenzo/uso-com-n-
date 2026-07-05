@@ -1,4 +1,12 @@
 # uso-com-n- (UCN)
+
+## Guia de productividad academica y tecnica
+
+Este repo incluye una guia operativa para organizar laptop, tablet y celular con Google Drive, GitHub, VS Code, Termux y agentes IA:
+
+- [Flujo de productividad academica y tecnica](docs/flujo-productividad-academica-tecnica.md)
+
+---
 > Guía web y entorno portable de desarrollo para Android (Termux/Ubuntu proot), Linux y Windows, con sincronización de Habilidades (Skills) para Agentes de IA.
 
 ---
