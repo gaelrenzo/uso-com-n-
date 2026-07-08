@@ -41,24 +41,48 @@ html-clone() {
 skills-sync() {
   local repo_dir
   repo_dir="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
-  echo "📥 Actualizando repositorio de dotfiles/skills..."
+  echo "Actualizando repositorio de dotfiles/skills..."
   cd "$repo_dir" || return
   git pull --rebase
   if [ -f "./install-agent-skills.sh" ]; then
     bash "./install-agent-skills.sh"
   fi
   source ~/.bashrc
-  echo "🚀 ¡Sincronizacion completada!"
+  echo "Sincronizacion completada"
 }
 
 skills-push() {
   local msg="${1:-update skills}"
   local repo_dir
   repo_dir="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
-  echo "📤 Subiendo cambios de skills a GitHub (modo seguro, solo agrega)..."
+  echo "Subiendo cambios de skills a GitHub (modo seguro)..."
   cd "$repo_dir" || return
   git add --ignore-removal skills/agent-skills/
   git commit -m "$msg"
   git push
 }
 
+# ==========================================
+# FUNCIONES UCN (Mochila Digital)
+# ==========================================
+
+ucn-note() {
+  bash ~/workspace/uso-com-n-/scripts/ucn-note.sh "$@"
+}
+
+ucn-clase() {
+  bash ~/workspace/uso-com-n-/scripts/ucn-clase.sh "$@"
+}
+
+ucn-informe() {
+  bash ~/workspace/uso-com-n-/scripts/ucn-informe.sh "$@"
+}
+
+ucn-update() {
+  cd ~/workspace/uso-com-n- && git pull && bash install.sh && source ~/.bashrc
+  echo "UCN actualizado"
+}
+
+ucn-install-all() {
+  bash ~/workspace/uso-com-n-/scripts/ucn-install-all.sh
+}
