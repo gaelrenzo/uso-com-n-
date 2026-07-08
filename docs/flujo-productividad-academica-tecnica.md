@@ -880,3 +880,87 @@ Que cambie hoy?
 Que falta hacer?
 Que debo entregar?
 ```
+## Anexo: Referencia rapida UCN
+
+### Base del sistema
+
+- **Dispositivo:** Tablet Android + Laptop Windows
+- **Terminal:** Termux (F-Droid) + Ubuntu proot
+- **Control de versiones:** GitHub
+- **Sincronizacion:** Syncthing / Rclone
+- **Agentes IA:** OpenCode, Claude Code, Codex, Antigravity
+
+---
+
+## Flujo diario
+
+### 1. Iniciar sesion
+
+```bash
+ucn sync       # traer ultimas skills y config
+ucn doctor     # verificar que todo esta bien
+ucn clase      # ir a carpeta de universidad
+```
+
+### 2. Durante clase/estudio
+
+```bash
+ucn note "tema"   # crear nota rapida en Markdown
+```
+
+### 3. Para trabajos e informes
+
+```bash
+ucn informe "titulo"   # genera plantilla LaTeX/Markdown
+```
+
+### 4. Subir avances
+
+```bash
+ucn push "avance: tema completado"
+```
+
+---
+
+## Estructura de carpetas sugerida
+
+```
+/storage/emulated/0/
+├── universida-datos/       # Carpeta principal de estudios
+│   ├── cursos/             # Por curso/materia
+│   ├── informes/           # Trabajos e informes
+│   ├── laboratorios/       # Datos de laboratorio
+│   └── notas/              # Notas diarias
+├── workspace/              # Proyectos de codigo
+│   └── uso-com-n-/         # UCN repo
+└── Documents/              # Documentos generales
+```
+
+---
+
+## Comandos UCN
+
+| Comando | Accion |
+|---------|--------|
+| `ucn sync` | Sincroniza skills desde GitHub |
+| `ucn push "msg"` | Sube cambios seguros |
+| `ucn doctor` | Diagnostica el entorno |
+| `ucn tunnel` | Tunnel Cloudflare |
+| `ucn note "tema"` | Crea nota rapida |
+| `ucn clase` | Abre carpeta universidad |
+| `ucn informe "t"` | Genera plantilla de informe |
+
+---
+
+## Herramientas por tarea
+
+| Tarea | Herramienta |
+|-------|-------------|
+| Tomar apuntes | Markor / `ucn note` |
+| Escribir informe | `ucn informe` + LaTeX |
+| Graficar datos | Python + matplotlib |
+| Simular circuitos | Ngspice / Skill SPICE |
+| Disenar PCB | KiCad + Skills EDA |
+| Programar | VS Code / Neovim |
+| Publicar web | `html-serve` + `html-public` |
+| Sync respaldo | Syncthing / `ucn push` |

@@ -1,4 +1,4 @@
-# Configuración del Desarrollador (UCN)
+# Configuracion del Desarrollador (UCN)
 developer:
   name: "Nombre del Desarrollador"
   email: "desarrollador@email.com"
@@ -6,7 +6,15 @@ developer:
 # Directorio base para el espacio de trabajo (se expande a home del usuario)
 workspace: "~/workspace"
 
-# Configuración e instalación de Habilidades (Skills) para Agentes de IA
+# Rutas de la Mochila Digital
+paths:
+  clase: "/storage/emulated/0/universida-datos"
+  notas: "/storage/emulated/0/universida-datos/notas"
+  informes: "/storage/emulated/0/universida-datos/informes"
+  cursos: "/storage/emulated/0/universida-datos/cursos"
+  laboratorios: "/storage/emulated/0/universida-datos/laboratorios"
+
+# Configuracion e instalacion de Habilidades (Skills) para Agentes de IA
 agents:
   claude:
     enabled: true
@@ -21,7 +29,7 @@ agents:
     enabled: false
     path: "~/opencode"
 
-# Ajustes generales de automatización
+# Ajustes generales de automatizacion
 settings:
   auto_pull_on_sync: true
   safe_push_ignore_removal: true
