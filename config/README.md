@@ -38,7 +38,7 @@ cp config/.env.example config/.env
 
 ### Sección `agents`
 Lista de agentes de IA instalados en el sistema. Puedes habilitar/deshabilitar la sincronización para cada uno cambiando el parámetro `enabled` y establecer su ruta local de instalación:
-*   **`claude`**: Configuración de Claude Code (habitualmente en `~/.claude-code` o `~/.claude`).
+*   **`claude`**: Configuración de Claude Code (habitualmente en `~/.claude`).
 *   **`codex`**: Configuración de Codex CLI (`~/.codex`).
 *   **`antigravity`**: Configuración de Antigravity (`~/.antigravity` o `~/.gemini/antigravity-cli`).
 *   **`opencode`**: Configuración de OpenCode.

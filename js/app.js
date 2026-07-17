@@ -103,7 +103,7 @@ function getConfigValues() {
     repoUrl: values.repoUrl?.trim() || "https://github.com/gaelrenzo/uso-com-n-",
     githubUser: values.githubUser?.trim() || "gaelrenzo",
     repoName: values.repoName?.trim() || "uso-com-n-",
-    projectPath: values.projectPath?.trim() || "/root/Workspace/html",
+    projectPath: values.projectPath?.trim() || "~/workspace/uso-com-n-",
     port: values.port?.trim() || "8080",
     fccPort: values.fccPort?.trim() || "8082"
   };
@@ -520,10 +520,10 @@ function buildMgitSections(ctx) {
     },
     {
       title: "6. Ruta importante",
-      description: "Tu repo principal de Ubuntu esta en /root/Workspace/html. El clon de MGit estara en otra carpeta de Android si lo clonas desde la app.",
+      description: "Tu repo principal de Ubuntu esta en ~/workspace/uso-com-n-. El clon de MGit estara en otra carpeta de Android si lo clonas desde la app.",
       commands: [
         "Ubuntu/Termux: " + ctx.projectPath,
-        "Clon alternativo terminal: /root/workspace/" + ctx.repoName,
+        "Clon alternativo terminal: ~/workspace/" + ctx.repoName,
         "MGit: carpeta elegida dentro del almacenamiento Android"
       ]
     }

@@ -5,7 +5,7 @@ export const skills = [
     execute: async () => {
       return {
         project: "uso-com-n-",
-        path: "/root/Workspace/html",
+        path: "~/workspace/uso-com-n-",
         server: "http://127.0.0.1:8080",
         repo: "https://github.com/gaelrenzo/uso-com-n-",
         stack: "HTML + CSS + JS vanilla",

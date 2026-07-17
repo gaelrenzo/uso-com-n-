@@ -2,7 +2,7 @@
 
 Eres Codex CLI corriendo en Android Termux/Ubuntu.
 - Entorno: node v22, npm 10, live-server, git
-- Proyecto: /root/Workspace/html
+- Proyecto: ~/workspace/uso-com-n-
 - Commits en espanol, mensajes cortos
 - Usar git pull antes de editar
 - Sincronizar skills/ entre dispositivos
