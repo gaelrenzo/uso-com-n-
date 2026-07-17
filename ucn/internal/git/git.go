@@ -19,13 +19,21 @@ func Pull(repoRoot string) error {
 }
 
 // SafePush runs "git add --ignore-removal", commits with a message, and pushes
-func SafePush(repoRoot string, message string) error {
+func SafePush(repoRoot string, message string, ignoreRemoval bool) error {
 	if message == "" {
 		message = "sync: actualización automática de skills"
 	}
 
-	fmt.Println("🛡️ Preparando cambios en modo seguro (git add --ignore-removal)...")
-	addCmd := exec.Command("git", "add", "--ignore-removal", ".")
+	addArgs := []string{"add"}
+	if ignoreRemoval {
+		fmt.Println("🛡️ Preparando cambios en modo seguro (git add --ignore-removal)...")
+		addArgs = append(addArgs, "--ignore-removal", ".")
+	} else {
+		fmt.Println("📝 Preparando cambios con git add . ...")
+		addArgs = append(addArgs, ".")
+	}
+
+	addCmd := exec.Command("git", addArgs...)
 	addCmd.Dir = repoRoot
 	if output, err := addCmd.CombinedOutput(); err != nil {
 		return fmt.Errorf("error en git add: %v\nOutput: %s", err, string(output))

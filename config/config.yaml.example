@@ -18,7 +18,7 @@ paths:
 agents:
   claude:
     enabled: true
-    path: "~/.claude-code"
+    path: "~/.claude"
   codex:
     enabled: true
     path: "~/.codex"

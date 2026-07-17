@@ -60,7 +60,7 @@ func main() {
 		if len(os.Args) > 2 {
 			commitMsg = strings.Join(os.Args[2:], " ")
 		}
-		if err := git.SafePush(repoRoot, commitMsg); err != nil {
+		if err := git.SafePush(repoRoot, commitMsg, cfg.Settings.SafePushIgnoreRemoval); err != nil {
 			fmt.Printf("❌ Error en safe push: %v\n", err)
 			os.Exit(1)
 		}

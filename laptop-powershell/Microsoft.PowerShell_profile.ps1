@@ -3,7 +3,8 @@
 # Sincronizado y adaptado de la Workstation
 # ==========================================
 
-$RepoDir = "C:\Users\renzo\workspace\uso-com-n"
+$RepoDir = Join-Path $env:USERPROFILE "workspace\uso-com-n-"
+$HermesExe = Join-Path $env:LOCALAPPDATA "hermes\hermes-agent\venv\Scripts\hermes.exe"
 
 # --- ALIASES ---
 Set-Alias -Name ll -Value Get-ChildItem -Option ReadOnly
@@ -63,11 +64,11 @@ function codex-full {
 }
 
 function hermes {
-    & "C:\Users\renzo\AppData\Local\hermes\hermes-agent\venv\Scripts\hermes.exe" $args
+    & $HermesExe $args
 }
 
 function hermes-full {
-    & "C:\Users\renzo\AppData\Local\hermes\hermes-agent\venv\Scripts\hermes.exe" --yolo $args
+    & $HermesExe --yolo $args
 }
 
 # --- HTML FUNCTIONS ---
@@ -103,7 +104,7 @@ function skills-sync {
     Write-Host "[Sync] Actualizando repositorio y sincronizando skills de agentes..." -ForegroundColor Cyan
     Set-Location $RepoDir
     git pull --rebase
-    powershell -File (Join-Path $RepoDir "skills\sync-agent-skills.ps1")
+    powershell -ExecutionPolicy Bypass -File (Join-Path $RepoDir "skills\sync-agent-skills.ps1")
     Write-Host "[Sync] Sincronizacion de skills completada!" -ForegroundColor Green
 }
 

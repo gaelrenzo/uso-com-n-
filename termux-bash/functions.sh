@@ -2,20 +2,26 @@
 # FUNCIONES PERSONALIZADAS
 # ==========================================
 
+repo_root() {
+  git rev-parse --show-toplevel 2>/dev/null || printf '%s\n' "${UCN_REPO_DIR:-$HOME/workspace/uso-com-n-}"
+}
+
 html-serve() {
   local port=${1:-8080}
-  cd /root/Workspace/html 2>/dev/null || cd ~/workspace/uso-com-n- 2>/dev/null
+  cd "$(repo_root)" || return
   live-server --host=127.0.0.1 --port="$port"
 }
 
 html-push() {
   local msg="${1:-avance}"
+  cd "$(repo_root)" || return
   git pull --rebase
   git add .
   git commit -m "$msg" && git push
 }
 
 html-status() {
+  cd "$(repo_root)" || return
   echo "=== RAMA ===" && git branch
   echo "=== ESTADO ===" && git status
   echo "=== REMOTO ===" && git remote -v
@@ -28,13 +34,14 @@ html-public() {
 }
 
 html-clone() {
-  if [ -d /root/workspace/uso-com-n- ]; then
-    cd /root/workspace/uso-com-n- && git pull
+  local target="${UCN_REPO_DIR:-$HOME/workspace/uso-com-n-}"
+  if [ -d "$target/.git" ]; then
+    cd "$target" && git pull
   else
-    mkdir -p /root/workspace
-    cd /root/workspace
+    mkdir -p "$(dirname "$target")"
+    cd "$(dirname "$target")" || return
     git clone git@github.com:gaelrenzo/uso-com-n-.git
-    cd uso-com-n-
+    cd uso-com-n- || return
   fi
 }
 
@@ -61,7 +68,6 @@ skills-push() {
   git commit -m "$msg"
   git push
 }
-
 # ==========================================
 # FUNCIONES UCN (Mochila Digital)
 # ==========================================

@@ -2,9 +2,9 @@ const workstationContent = {
   server: [
     {
       title: "1. Carpeta del proyecto HTML",
-      description: "Aqui vive esta pagina modular. Edita index.html, css/style.css o los archivos dentro de js/.",
+      description: "Aqui vive este proyecto. Edita index.html, css/style.css o los archivos dentro de js/.",
       commands: [
-        "cd /root/Workspace/html",
+        "cd ~/workspace/uso-com-n-",
         "ls -la",
         "find . -maxdepth 3 -type f"
       ]
@@ -13,7 +13,7 @@ const workstationContent = {
       title: "2. Encender el servidor",
       description: "live-server sirve la pagina y recarga el navegador cuando guardas cambios.",
       commands: [
-        "cd /root/Workspace/html",
+        "cd ~/workspace/uso-com-n-",
         "live-server --host=127.0.0.1 --port=8080"
       ]
     },
@@ -46,7 +46,7 @@ const workstationContent = {
       title: "6. Servidor actual",
       description: "En esta sesion el servidor ya esta corriendo en 127.0.0.1:8080.",
       commands: [
-        "Serving /root/Workspace/html at http://127.0.0.1:8080",
+        "Serving ~/workspace/uso-com-n- at http://127.0.0.1:8080",
         "Ready for changes"
       ]
     }
@@ -80,7 +80,7 @@ const workstationContent = {
       title: "Flujo recomendado",
       description: "Primero enciende live-server. Luego abre otra terminal o panel tmux para ejecutar el tunel SSH.",
       commands: [
-        "cd /root/Workspace/html",
+        "cd ~/workspace/uso-com-n-",
         "live-server --host=127.0.0.1 --port=8080",
         "ssh -R 80:localhost:8080 nokey@localhost.run"
       ]
@@ -119,8 +119,8 @@ const workstationContent = {
     {
       title: "Workspace",
       description: "Carpeta principal donde viven proyectos, repositorios, scripts, apps y documentos.",
-      items: ["/root/Workspace/html", "~/workspace", "repos GitHub", "documentos"],
-      command: "cd /root/Workspace/html"
+      items: ["~/workspace/uso-com-n-", "~/workspace", "repos GitHub", "documentos"],
+      command: "cd ~/workspace/uso-com-n-"
     },
     {
       title: "Google Drive + rclone",
@@ -145,7 +145,7 @@ const workstationContent = {
     ["Abrir Termux", "termux-wake-lock"],
     ["Entrar a Ubuntu si vas a trabajar ahi", "proot-distro login ubuntu"],
     ["Abrir tmux", "tmux"],
-    ["Ir al proyecto HTML", "cd /root/Workspace/html"],
+    ["Ir al proyecto HTML", "cd ~/workspace/uso-com-n-"],
     ["Encender servidor", "live-server --host=127.0.0.1 --port=8080"],
     ["Abrir navegador", "http://127.0.0.1:8080"],
     ["Editar contenido modular", "nano js/content.js"],
@@ -174,7 +174,7 @@ const workstationContent = {
       title: "3. Subir proyecto nuevo",
       description: "Inicializa Git localmente y conecta el repo creado en GitHub.",
       commands: [
-        "cd /root/Workspace/html",
+        "cd ~/workspace/uso-com-n-",
         "git init",
         "git add .",
         "git commit -m \"primer commit\"",
@@ -231,7 +231,7 @@ const workstationContent = {
   results: [
     "Servidor local activo en 127.0.0.1:8080",
     "Acceso publico temporal con localhost.run por SSH",
-    "Proyecto modular en /root/Workspace/html",
+    "Proyecto modular en ~/workspace/uso-com-n-",
     "Formulario que adapta comandos a tus datos",
     "HTML separado de CSS y JavaScript",
     "Comandos en recuadros copiables",
@@ -242,7 +242,7 @@ const workstationContent = {
     {
       title: "Estado actual",
       commands: [
-        "Proyecto: /root/Workspace/html",
+        "Proyecto: ~/workspace/uso-com-n-",
         "Servidor: http://127.0.0.1:8080",
         "Tunel publico: ssh -R 80:localhost:8080 nokey@localhost.run",
         "Entrada principal: index.html",
@@ -325,37 +325,42 @@ const workstationContent = {
     },
     {
       title: "Claude Code",
-      description: "Reglas de proyecto y herramientas para Claude Code.",
-      file: "skills/agents/claude/",
+      description: "Claude consume las skills compartidas sincronizadas desde el repo.",
+      file: "skills/agent-skills/",
       items: [
-        "01-project.md - contexto del proyecto",
-        "02-rules.md - reglas de trabajo",
-        "03-tools.md - herramientas disponibles"
+        "agent-reach/ - busqueda y navegacion",
+        "ponytail/ - enfoque minimalista",
+        "kicad/ - analisis de hardware"
       ]
     },
     {
       title: "OpenCode",
-      description: "Skills JavaScript e instrucciones para OpenCode.",
-      file: "skills/agents/opencode/",
+      description: "OpenCode usa la misma biblioteca compartida de skills.",
+      file: "skills/agent-skills/",
       items: [
-        "skills.js - funciones exportables",
-        "instrucciones.md - prompt de sistema"
+        "frontend-design/ - interfaces web",
+        "visual-design-foundations/ - sistema visual",
+        "api-design-principles/ - diseño de APIs"
       ]
     },
     {
       title: "Codex",
-      description: "Instrucciones para Codex CLI en entorno Android.",
-      file: "skills/agents/codex/",
+      description: "Codex también se alimenta del mismo directorio sincronizado.",
+      file: "skills/agent-skills/",
       items: [
-        "instrucciones.md - prompt de sistema"
+        "systematic-debugging/ - resolver bugs",
+        "postgresql/ - modelado de datos",
+        "changelog-automation/ - releases"
       ]
     },
     {
       title: "Antigravity",
-      description: "Configuracion YAML para agy (Antigravity).",
-      file: "skills/agents/agy/",
+      description: "Antigravity recibe las skills compartidas y su propia config local.",
+      file: "skills/agent-skills/",
       items: [
-        "config.yaml - modelo, temperatura, system prompt"
+        "claude-mem/ - memoria persistente",
+        "superpowers/ - flujo de trabajo",
+        "rtk/ - ahorro de tokens"
       ]
     }
   ]
