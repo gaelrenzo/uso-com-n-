@@ -174,6 +174,24 @@ bash /storage/emulated/0/universida-datos/uso-com-n-/scripts/ucn-install-all.sh
 
 Esto instala: paquetes base, Ubuntu proot, Python cientifico, agentes IA, librerias de ingenieria y UCN.
 
+### Instalar Cloudflared (opcional)
+
+Cloudflared permite exponer servicios locales a internet mediante tuneles seguros:
+
+```bash
+pkg install cloudflared
+```
+
+Para configurar el tunel, edita `config/.env` y agrega tu token:
+```
+CLOUDFLARE_TUNNEL_TOKEN=tu_token_aqui
+```
+
+Luego ejecuta:
+```bash
+ucn tunnel
+```
+
 ### En Windows
 
 ```powershell
@@ -257,3 +275,84 @@ ucn push "avance"  # subir cambios
 
 Para mas detalle: `docs/flujo-productividad-academica-tecnica.md`
 Guia de instalacion completa: `docs/mochila-digital.md`
+
+---
+
+## Troubleshooting
+
+### Permisos de scripts en FAT32 (sdcard)
+
+Los scripts en `/storage/emulated/0/` o `/mnt/sdcard/` no conservan permisos `+x` porque la sdcard usa FAT32. Solucion:
+
+```bash
+# Ejecutar con bash directamente
+bash scripts/ucn-note.sh "tema"
+
+# O usar el alias (ya configurado)
+ucn-note "tema"
+```
+
+### Debian + XFCE no inicia
+
+**Error: "Cannot open display"**
+```bash
+# Verificar que termux-x11 este corriendo
+ps aux | grep termux-x11
+
+# Reiniciar si es necesario
+termux-x11 :0 -ac &
+sleep 3
+```
+
+**Error: "Bus address not found"**
+```bash
+# Dentro de Debian, reiniciar dbus
+service dbus restart
+```
+
+**Error: "PulseAudio no conecta"**
+```bash
+# Verificar PulseAudio
+pulseaudio --kill
+pulseaudio --start --exit-idle-time=-1
+pacmd load-module module-native-protocol-tcp auth-ip-acl=127.0.0.1 auth-anonymous=1
+```
+
+**Pantalla negra en Termux:X11**
+```bash
+# Verificar que XFCE este instalado
+proot-distro login debian -- apt list --installed | grep xfce4
+
+# Si no esta, reinstalar
+proot-distro login debian -- apt install -y xfce4
+```
+
+### UCN CLI no encuentra el repositorio
+
+Asegurate de estar dentro del directorio del proyecto o ejecutar desde la raiz:
+```bash
+cd /mnt/sdcard/universida-datos/uso-com-n-
+ucn doctor
+```
+
+### Skills no aparecen despues de sincronizar
+
+```bash
+# Forzar resincronizacion
+ucn sync
+
+# Verificar enlaces
+ls -la ~/.claude/skills/
+ls -la ~/.config/opencode/skills/
+```
+
+### Git pull falla en Termux
+
+```bash
+# Configurar git si no esta configurado
+git config --global user.name "Tu Nombre"
+git config --global user.email "tu@email.com"
+
+# Verificar conexion
+git remote -v
+```
