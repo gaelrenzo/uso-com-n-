@@ -2,8 +2,10 @@
 # FUNCIONES PERSONALIZADAS
 # ==========================================
 
+UCN_DIR="/mnt/sdcard/universida-datos/uso-com-n-"
+
 repo_root() {
-  git rev-parse --show-toplevel 2>/dev/null || printf '%s\n' "${UCN_REPO_DIR:-$HOME/workspace/uso-com-n-}"
+  git rev-parse --show-toplevel 2>/dev/null || printf '%s\n' "${UCN_REPO_DIR:-$UCN_DIR}"
 }
 
 html-serve() {
@@ -34,7 +36,7 @@ html-public() {
 }
 
 html-clone() {
-  local target="${UCN_REPO_DIR:-$HOME/workspace/uso-com-n-}"
+  local target="${UCN_REPO_DIR:-$UCN_DIR}"
   if [ -d "$target/.git" ]; then
     cd "$target" && git pull
   else
@@ -73,22 +75,22 @@ skills-push() {
 # ==========================================
 
 ucn-note() {
-  bash ~/workspace/uso-com-n-/scripts/ucn-note.sh "$@"
+  bash $UCN_DIR/scripts/ucn-note.sh "$@"
 }
 
 ucn-clase() {
-  bash ~/workspace/uso-com-n-/scripts/ucn-clase.sh "$@"
+  bash $UCN_DIR/scripts/ucn-clase.sh "$@"
 }
 
 ucn-informe() {
-  bash ~/workspace/uso-com-n-/scripts/ucn-informe.sh "$@"
+  bash $UCN_DIR/scripts/ucn-informe.sh "$@"
 }
 
 ucn-update() {
-  cd ~/workspace/uso-com-n- && git pull && bash install.sh && source ~/.bashrc
+  cd $UCN_DIR && git pull && bash install.sh && source ~/.bashrc
   echo "UCN actualizado"
 }
 
 ucn-install-all() {
-  bash ~/workspace/uso-com-n-/scripts/ucn-install-all.sh
+  bash $UCN_DIR/scripts/ucn-install-all.sh
 }
