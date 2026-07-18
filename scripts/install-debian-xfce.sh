@@ -23,7 +23,7 @@ echo "[2/5] Instalando Debian via proot-distro..."
 if proot-distro list 2>/dev/null | grep -q debian; then
   echo "  ✅ Debian ya instalado, saltando..."
 else
-  proot-distro install debian
+  proot-distro install debian || true
 fi
 
 # --- 3. Configurar Debian (XFCE + usuario) ---
