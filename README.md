@@ -137,8 +137,8 @@ Ejecuta la actualización inicial e instala los paquetes base en Termux:
 ```bash
 pkg update && pkg upgrade -y
 pkg install git -y
-git clone https://github.com/gaelrenzo/uso-com-n-.git ~/workspace/uso-com-n-
-cd ~/workspace/uso-com-n-
+git clone https://github.com/gaelrenzo/uso-com-n-.git /storage/emulated/0/universida-datos/uso-com-n-
+cd /storage/emulated/0/universida-datos/uso-com-n-
 bash install.sh
 source ~/.bashrc
 ```
@@ -146,7 +146,7 @@ source ~/.bashrc
 ### Instalacion completa (todo incluido)
 
 ```bash
-bash ~/workspace/uso-com-n-/scripts/ucn-install-all.sh
+bash /storage/emulated/0/universida-datos/uso-com-n-/scripts/ucn-install-all.sh
 ```
 
 Esto instala: paquetes base, Ubuntu proot, Python cientifico, agentes IA, librerias de ingenieria y UCN.
