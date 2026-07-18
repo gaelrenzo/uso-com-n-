@@ -22,6 +22,8 @@ alias ucn-informe="bash $UCN_DIR/scripts/ucn-informe.sh"
 alias ucn-install-all="bash $UCN_DIR/scripts/ucn-install-all.sh"
 alias ucn-update="cd $UCN_DIR && git pull && bash install.sh && source ~/.bashrc"
 alias ucn-logs="tail -f $UCN_DIR/ucn/ucn.log 2>/dev/null || echo 'No logs'"
+alias ucn-debian="bash ~/.shortcuts/start-debian-xfce.sh"
+alias ucn-install-debian="bash $UCN_DIR/scripts/install-debian-xfce.sh"
 
 # ==========================================
 # ALIASES DE PRODUCTIVIDAD
