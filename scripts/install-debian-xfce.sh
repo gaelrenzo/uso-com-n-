@@ -20,7 +20,11 @@ termux-setup-storage
 
 # --- 2. Instalar Debian ---
 echo "[2/5] Instalando Debian via proot-distro..."
-proot-distro install debian
+if proot-distro list 2>/dev/null | grep -q debian; then
+  echo "  ✅ Debian ya instalado, saltando..."
+else
+  proot-distro install debian
+fi
 
 # --- 3. Configurar Debian (XFCE + usuario) ---
 echo "[3/5] Configurando Debian: XFCE y usuario 'user'..."

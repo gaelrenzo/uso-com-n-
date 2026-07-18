@@ -20,7 +20,11 @@ pkg install -y \
 
 # 2. Ubuntu proot
 echo "[2/5] Ubuntu via proot-distro..."
-proot-distro install ubuntu || true
+if proot-distro list 2>/dev/null | grep -q ubuntu; then
+  echo "  ✅ Ubuntu ya instalado, saltando..."
+else
+  proot-distro install ubuntu
+fi
 
 # 3. Herramientas IA
 echo "[3/5] Agentes IA..."
