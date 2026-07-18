@@ -3,7 +3,7 @@
 Entorno portable de productividad academica y tecnica para Android (Termux), Linux y Windows, con sincronizacion de Skills para Agentes de IA.
 
 ```
-Termux + Ubuntu + GitHub + Syncthing + Skills IA + Scripts
+Termux + Ubuntu + Debian/ XFCE + GitHub + Syncthing + Skills IA + Scripts
 ```
 
 ---
@@ -41,13 +41,15 @@ UCN/
 │   ├── ucn-note.sh        # Nota rapida Markdown
 │   ├── ucn-clase.sh       # Abrir carpeta universidad
 │   ├── ucn-informe.sh     # Plantilla de informe
-│   └── ucn-install-all.sh # Instalacion completa
+│   ├── ucn-install-all.sh # Instalacion completa
+│   └── install-debian-xfce.sh  # Instalador Debian + XFCE
 ├── config/
 │   ├── config.yaml.example
 │   └── .env.example
 ├── docs/
-│   ├── mochila-digital.md              # Guia completa de instalacion
-│   └── flujo-productividad-academica-tecnica.md
+│   ├── mochila-digital.md                  # Guia completa de instalacion
+│   ├── flujo-productividad-academica-tecnica.md # Flujo diario
+│   └── escritorio-debian-xfce.md          # Escritorio Debian+ XFCE en Termux
 ├── css/ / js/ / index.html            # Interfaz web
 └── install.sh                          # Instalador principal
 ```
@@ -143,6 +145,27 @@ bash install.sh
 source ~/.bashrc
 ```
 
+### Escritorio Debian + XFCE (Termux:X11)
+
+Ejecuta un escritorio Linux completo en Android, sin root, con la app Termux:X11.
+
+**Instalacion:**
+```bash
+ucn-install-debian
+# o directamente
+bash /mnt/sdcard/universida-datos/uso-com-n-/scripts/install-debian-xfce.sh
+```
+
+**Arranque:**
+```bash
+ucn-debian
+# o directamente
+bash ~/.shortcuts/start-debian-xfce.sh
+```
+
+> Requiere la app **Termux:X11** descargada desde GitHub (buscar nightly release).
+> Guia completa y solucion de problemas: `docs/escritorio-debian-xfce.md`
+
 ### Instalacion completa (todo incluido)
 
 ```bash
@@ -173,6 +196,8 @@ Copy-Item -Path .\laptop-powershell\Microsoft.PowerShell_profile.ps1 -Destinatio
 | `ucn informe "t"` | Genera plantilla de informe |
 | `ucn update` | Actualiza UCN desde GitHub |
 | `ucn-install-all` | Instalacion completa del sistema |
+| `ucn-debian` | Arranca escritorio Debian + XFCE |
+| `ucn-install-debian` | Instala Debian + XFCE en Termux |
 
 ---
 
