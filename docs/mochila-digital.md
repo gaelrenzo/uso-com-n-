@@ -96,10 +96,17 @@ pip install aider-chat
 ## Clonar e instalar UCN
 
 ```bash
-git clone https://github.com/gaelrenzo/uso-com-n-.git ~/workspace/uso-com-n-
-cd ~/workspace/uso-com-n-
+git clone https://github.com/gaelrenzo/uso-com-n-.git /storage/emulated/0/universida-datos/uso-com-n-
+cd /storage/emulated/0/universida-datos/uso-com-n-
 bash install.sh
 source ~/.bashrc
+```
+
+Si prefieres una ruta corta, puedes crear un enlace simbólico apuntando al repo real:
+
+```bash
+mkdir -p ~/workspace
+ln -s /storage/emulated/0/universida-datos/uso-com-n- ~/workspace/uso-com-n-
 ```
 
 ---

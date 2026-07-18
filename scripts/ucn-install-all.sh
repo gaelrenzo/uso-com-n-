@@ -4,6 +4,9 @@
 
 set -e
 
+REPO_DIR="${UCN_REPO_DIR:-/storage/emulated/0/universida-datos/uso-com-n-}"
+FALLBACK_REPO_DIR="$HOME/workspace/uso-com-n-"
+
 echo "=== Instalacion completa UCN ==="
 
 # 1. Paquetes base Termux
@@ -32,11 +35,15 @@ pip install pint control slycot CoolProp fluids ht 2>/dev/null || true
 
 # 5. Clonar e instalar UCN
 echo "[5/5] Instalando UCN..."
-if [ ! -d ~/workspace/uso-com-n- ]; then
-  mkdir -p ~/workspace
-  git clone https://github.com/gaelrenzo/uso-com-n-.git ~/workspace/uso-com-n-
+if [ ! -d "$REPO_DIR/.git" ] && [ ! -d "$FALLBACK_REPO_DIR/.git" ]; then
+  mkdir -p "$(dirname "$REPO_DIR")"
+  git clone https://github.com/gaelrenzo/uso-com-n-.git "$REPO_DIR"
 fi
-cd ~/workspace/uso-com-n-
+if [ -d "$REPO_DIR/.git" ]; then
+  cd "$REPO_DIR"
+else
+  cd "$FALLBACK_REPO_DIR"
+fi
 bash install.sh
 source ~/.bashrc
 
@@ -44,4 +51,5 @@ echo ""
 echo "Instalacion completada."
 echo "Ejecuta: source ~/.bashrc"
 echo "Luego:   proot-distro login ubuntu"
+echo "Ruta recomendada en Android: /storage/emulated/0/universida-datos/uso-com-n-"
 echo "Para actualizar: ucn sync"
