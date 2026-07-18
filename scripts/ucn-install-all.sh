@@ -23,7 +23,7 @@ echo "[2/5] Ubuntu via proot-distro..."
 if proot-distro list 2>/dev/null | grep -q ubuntu; then
   echo "  ✅ Ubuntu ya instalado, saltando..."
 else
-  proot-distro install ubuntu
+  proot-distro install ubuntu || true
 fi
 
 # 2b. Debian proot
@@ -31,7 +31,7 @@ echo "[2b/5] Debian via proot-distro..."
 if proot-distro list 2>/dev/null | grep -q debian; then
   echo "  ✅ Debian ya instalado, saltando..."
 else
-  proot-distro install debian
+  proot-distro install debian || true
 fi
 
 # 3. Herramientas IA
