@@ -26,6 +26,14 @@ else
   proot-distro install ubuntu
 fi
 
+# 2b. Debian proot
+echo "[2b/5] Debian via proot-distro..."
+if proot-distro list 2>/dev/null | grep -q debian; then
+  echo "  ✅ Debian ya instalado, saltando..."
+else
+  proot-distro install debian
+fi
+
 # 3. Herramientas IA
 echo "[3/5] Agentes IA..."
 npm install -g @openai/codex 2>/dev/null || true
