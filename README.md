@@ -42,14 +42,16 @@ UCN/
 │   ├── ucn-clase.sh       # Abrir carpeta universidad
 │   ├── ucn-informe.sh     # Plantilla de informe
 │   ├── ucn-install-all.sh # Instalacion completa
-│   └── install-debian-xfce.sh  # Instalador Debian + XFCE
+│   ├── install-debian-xfce.sh # Instalador Debian + XFCE
+│   └── install-arch-xfce.sh   # Instalador Arch Linux ARM + XFCE (CachyOS Style)
 ├── config/
 │   ├── config.yaml.example
 │   └── .env.example
 ├── docs/
 │   ├── mochila-digital.md                  # Guia completa de instalacion
 │   ├── flujo-productividad-academica-tecnica.md # Flujo diario
-│   └── escritorio-debian-xfce.md          # Escritorio Debian+ XFCE en Termux
+│   ├── escritorio-debian-xfce.md          # Escritorio Debian + XFCE en Termux
+│   └── escritorio-arch-xfce.md            # Escritorio Arch Linux ARM (CachyOS Style) en Termux
 ├── css/ / js/ / index.html            # Interfaz web
 └── install.sh                          # Instalador principal
 ```
