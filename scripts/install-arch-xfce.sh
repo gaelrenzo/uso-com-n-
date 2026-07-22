@@ -63,7 +63,14 @@ pulseaudio --start --exit-idle-time=-1 2>/dev/null || true
 pacmd load-module module-native-protocol-tcp auth-ip-acl=127.0.0.1 auth-anonymous=1 2>/dev/null || true
 termux-x11 :0 -ac &
 sleep 3
-proot-distro login archlinux --user user --shared-tmp -- bash -lc 'export DISPLAY=:0; export PULSE_SERVER=tcp:127.0.0.1; dbus-launch --exit-with-session startxfce4'
+CONTAINER_NAME="archlinuxarm"
+if proot-distro list 2>/dev/null | grep -q "archlinux"; then
+  if proot-distro list 2>/dev/null | grep -q "^  \* archlinux$"; then
+    CONTAINER_NAME="archlinux"
+  fi
+fi
+
+proot-distro login "$CONTAINER_NAME" --user user --shared-tmp -- bash -lc 'export DISPLAY=:0; export PULSE_SERVER=tcp:127.0.0.1; dbus-launch --exit-with-session startxfce4'
 SHEOF
 chmod +x ~/.shortcuts/start-arch-xfce.sh
 
