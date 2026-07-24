@@ -1,0 +1,9556 @@
+# Arbol de archivos
+
+- **01_Universidad_FIME/**
+  - **1 semestre/**
+    - 001 MatemáticaBásica Funciones2022II (1).pdf
+    - Manual de fracciones parciales.pdf
+    - **Calculo diferencial/**
+      - tarea de cálculo diferencial..pdf
+    - **Comprensión y argumentación/**
+      - tarea 3 comprensión y argumentación
+      - **Carátula/**
+        - guia para la carátula de cada trabajo
+    - **geometria analitica/**
+      - Geometría analítica, 2014, (1ª Edición) - Benjamín Garza Olvera.pdf
+    - **Calculo 1/**
+      - Calculo – Purcell ( PDFDrive ).pdf
+      - GUIA2_UNIDAD2_Derivada_CALCULO_DIFERENCIAL_EPIME_2022-2 (1).pdf
+      - Analisis_Matematico_1_-_Ricardo_Figueroa.pdf
+      - Calculo diferencial e integral CONAMAT.pdf
+      - LÍMITES Y DERIVADAS MATE 1.pdf
+      - LibroCalculoVol1.pdf
+      - **Lic blanquita/**
+        - LimitesInfinitos_CalculoDiferenc_EPIME_2022-2 (1).pdf
+        - Trabajo_Encargado_01_Calculo_Diferencial_EPIME_2022-2 (1).pdf
+        - CA lim. infinitos (1).pdf
+        - Examen_Parcial_01_Calculo_Diferencial_EPIME_2022-2 (1).pdf
+        - Trabajo_Encargado_02_Calculo_Diferencial_EPIME_2022-2 (1).pdf
+        - Guia1_Limite_de_Funciones_CalcDiferencial_EPIME 2022-2 (1).pdf
+        - Práctica_Calificada_02_Grupal_Calculo_Diferencial_EPIME_2022-2 (1).pdf
+        - Trabajo_Encargado_03_Calculo_Diferencial_EPIME_2022-2 (1) (1).pdf
+        - Guia_Aplicaciones_de_la_Derivada_CalculoDiferencial_EPIME_2022-2 (1).pdf
+        - Trabajo_Encargado_05_Rectas_Tangentes_Calculo_Diferencial_EPIME_2022-2 (1) (1).pdf
+        - e41926d7-6a69-4277-89eb-77fd020b8429 (1).pdf
+        - ExamenParcialConocimientos_03_Calculo_Diferencial_EPIME_2022-2 (1).pdf
+        - Retroalimentacion_Examen_Parcial_03_Calculo_Diferencial_EPIME_2022-2 (1).pdf
+        - GUIA2_UNIDAD2_Derivada_CALCULO_DIFERENCIAL_EPIME_2022-2 (1).pdf
+    - **Algebra/**
+      - Álgebra - Raimondi.pdf-1.pdf
+      - Baldor_Algebra.pdf
+      - Álgebra-500-Ejercicios-Resueltos.pdf
+      - Álgebra Esencial (1).pdf
+      - Álgebra Esencial.pdf
+      - ÁLGEBRA AVANZADO l.pdf
+      - ALGEBRA_TRIGONOMETRIA_Y_GEOMETRIA_ANALITICA_3RA_EDICION.pdf
+      - ÁLGEBRA - RACSO.pdf
+      - **Algebra lineal/**
+        - Álgebra lineal - Stephen Friedberg.pdf
+        - álgebra lineal.pdf
+    - **Matemática básica/**
+      - Matemática Básica - Armando Venero.pdf
+      - **Tareas de transcripción/**
+        - tarea 7..pdf
+        - tarea 3.pdf
+        - tarea 9 ..pdf
+        - tarea 5..pdf
+        - tarea 6..pdf
+      - **Ticona/**
+        - 001 MatBasica Sistema de los números reales 2022Nuevo Mecanica (1).pdf
+        - Ecuacioneslinealesycuadraticas (1) (1).pdf
+        - Ecuacioneslinealesycuadraticas (1).pdf
+        - 001 MatBasica Sistema de los números reales 2022II 1 (1).pdf
+        - 001 MatBasica Sistema de los números reales 2022II mecanica (1).pdf
+        - 001 MatBasica Sistema de los números reales 2022II 1-1 (1).pdf
+        - Inecuacioneslinealesycuadraticas (2) (1).pdf
+        - 001 MatBasica Sistema de los números reales 2022II 1-2 (1).pdf
+        - 001 MatBasica Sistema de los números reales 2022II mecanica1 (1).pdf
+        - 2022 001 Matemática Básica Practica calificada 01 (1).pdf
+        - 001 MatBasica Sistema de los números reales 2022II 2 (1).pdf
+        - 001 MatBasica Sistema de los números reales 2022II 2 (1) (1).pdf
+        - Valorabsoluto (1).pdf
+        - 001 MatBasica Sistema de los números reales1 (1).pdf
+        - Planocartesiano (1).pdf
+        - 2022 II Matemática Básica Evaluación Parcial 02 MecSol1 (1).pdf
+        - LugargeometricoyRectas (1).pdf
+        - 01 Monografia Matrices1 (1).pdf
+        - 01 Monografia MatricesClaseMiercoles (1).pdf
+        - Larectaycircunferencia (1) (1).pdf
+        - ZSolucionario1 (1).pdf
+        - 03 Monografia Determinates1 (1) (1).pdf
+        - 03 Monografia Determinates1 (2) (1).pdf
+        - DefinicionypropiedadesdeunaDeterminante (1).pdf
+        - Sistemaslineales (1).pdf
+        - PropiedadesdeSistemaslineales (1).pdf
+        - Ejercicio Determinante 4x4 (1).pdf
+        - Ecuacionesconradicales (1).pdf
+        - 001 MatBasica Sistema de los números reales 2022II Mecanica2 (1).pdf
+        - Funciones (1).pdf
+        - 2022 II Matemática Básica Práctica calificada 03 Mec (1).pdf
+        - 00MatBasicaExamenes_FinalSolucionario (1).pdf
+  - **2 semestre/**
+    - **geometria descriptiva/**
+      - LAMINA RECTA VM, PEND..pdf
+      - LAMINA RECTA VM y PENDIENTE.pdf
+      - LAMINA PARALELISMO.pdf
+      - LAMINA PLANO GD-2023-I. EPIME.pdf
+      - examen 2.jpeg
+      - LAMINA RECTAS Y PLANO PERPENDICULARES.pdf
+      - SOLIDOS ISOMETRICOS  y H F P.pdf
+      - CONST SOLIDOS N°..  2023-I.pdf
+      - examen 2 unidad.jpeg
+      - VISIBILIDA TUBERIAS.pdf
+      - LAMINAS RECTAS Y PLANOS PARALELOS.pdf
+      - PROY AUXILIARES lamina.pdf
+      - **teoria/**
+        - Geometría Descriptiva - Jorge Nakamura [www.libreriaingeniero.com].pdf
+    - **Calculo 2/**
+      - Tecnicas de Integracion (1).pdf
+      - Manual de fracciones parciales.pdf
+      - tarea calculo finalll.pdf
+      - mECANICA.pdf
+      - mECANICA1.pdf
+      - dokumen.tips_analisis-matematico-ii-2-eduardo-espinoza-ramos-56813104d3b1a.pdf
+      - Resolucion de Integrales.pdf
+      - Calculo_Integral_CONAMAT.pdf
+      - Calculo de una Variable - James Stewart - Septima Edición-1.pdf
+      - 2023 I CalculoIntegral Evaluación Parcial 01.pdf
+      - 2023 I CalculoIntegral Evaluación Parcial 03.pdf
+      - 2023 I CalculoIntegral Evaluación Parcial 04.pdf
+      - 13 CalIntegral Moisés Lázaro Carrión2.pdf
+      - 12 Tópicos de Cálculo Vol. 2 - Máximo Mitacc %26 Luis Toro.pdf
+      - 11 CalIntegral Santiago Acosta 1Ed 2008.pdf
+      - tabla de integrales.pdf
+      - 001 CalDif Integrales Indefinidas 2023-5.pdf
+      - **Ticona/**
+        - 008 CalDif Aplic integrales Volumenes 2023Fabi01.pdf
+        - 008 CalDif Aplic integrales Volumenes 2023Fabi01-1.pdf
+        - 006 CalDif Integrales Definidas 2023 Fabi.pdf
+        - 006 CalDif Integrales Definidas 2023 Fabi-1.pdf
+        - 008 CalDif Aplic integrales Volumenes 2023Fabi.pdf
+        - 008 CalDif Aplic integrales Volumenes 2023Fabi-1.pdf
+        - 008 CalDif Aplic integrales Volumenes 2023Fabi-2.pdf
+        - 008 CalDif Aplic integrales Volumenes 2023Fabi-3.pdf
+        - 001 CalDif Integrales Indefinidas 2023.pdf
+        - 001 CalDif Integrales Indefinidas 2023-1.pdf
+        - 001 CalDif Integrales Indefinidas 2023-2.pdf
+        - 001 CalDif Integrales Indefinidas 2023-3.pdf
+        - 001 CalDif Integrales Indefinidas 2023-5.pdf
+        - 005 CalDif Integrales Indefinidas 2023 Fabi Aplicaciones-1.pdf
+        - Examen_Parcial_01_Calculo_Integral_EPIME_2022-2 (1).pdf
+        - 005 CalDif Integrales Indefinidas 2023 Fabi Aplicaciones.pdf
+      - **calculo integral/**
+        - Tecnicas de Integracion (1).pdf
+        - 001 CalDif Integrales Indefinidas 2023-4.pdf
+        - **calculo integral/**
+          - mECANICA.pdf
+          - mECANICA1.pdf
+          - 008 CalDif Aplic integrales Volumenes 2023Fabi.pdf
+    - **Ingeniería de los materiales/**
+      - fdocuments.es_solucionario-de-ciencia-e-ingenieria-de-los-materiales.pdf
+      - Ciencia e ingeniería de materiales, 6ta Edición - Donald R. Askeland [LIBRO ESPAÑOL].pdf
+    - **ciencia e ingenieria de los materiales/**
+      - fdocuments.es_solucionario-de-ciencia-e-ingenieria-de-los-materiales.pdf
+      - Ciencia e ingeniería de materiales, 6ta Edición - Donald R. Askeland [LIBRO ESPAÑOL].pdf
+      - **tarea 1/**
+        - 01_Problemas_estructura_de_materiales (1).pdf
+    - **fisica/**
+      - analisis dimensional y vectores.pdf
+      - vectores y matrices.pdf
+      - estc3a1tica-de-russel-hibbeler-12va-edicic3b3n.pdf
+      - fisica universitaria.pdf
+      - **fisica cinematica y dinamica/**
+        - Física I.pdf
+        - 1000 proble resueltos de fisica.pdf
+        - fisica universitaria.pdf
+        - **ejercicios/**
+          - 1 (12).jpeg
+          - 1 (11).jpeg
+          - 1 (1).jpeg
+          - 1 (10).jpeg
+          - 1 (9).jpeg
+          - 1 (5).jpeg
+          - 1 (8).jpeg
+          - 1 (6).jpeg
+          - 1 (7).jpeg
+          - 1 (4).jpeg
+          - 1 (3).jpeg
+          - 1 (2).jpeg
+      - **Solucionario Ing Estática Hibbeler 12va edicion (www.libreriaingeniero.com)/**
+        - Copia de Chapter 4.PDF
+        - Copia de Chapter 5.pdf
+        - Copia de Chapter 11.pdf
+        - Copia de Chapter 6.pdf
+        - Copia de CHapter 9.pdf
+        - Copia de Chapter 10.pdf
+        - Copia de Chapter 8.pdf
+        - Copia de Chapter 7.1.pdf
+        - Copia de Chapter 3.PDF
+        - Copia de Chapter 2.PDF
+        - Copia de Chapter 7.2.pdf
+    - generar_informe.py
+    - informe.txt
+    - html.html
+  - **3 semestre/**
+    - **MÁQUINAS HERRAMIENTAS/**
+      - Ley_N__29783.pdf LEY DE SEGURIDAD Y SALUD EN EL TRABAJO.pdf
+      - MÁQUINAS HERRAMIENTAS.rar
+    - **Estática/**
+      - Análisis_Estructural_Biaggo_Arbulú_G_UNI_www_libreriaingeniero_c.pdf
+      - estc3a1tica-de-russel-hibbeler-12va-edicic3b3n.pdf
+      - Solucionario Ing Estática Hibbeler 12va edicion (www.libreriaingeniero.com)-20240112T000138Z-001.zip
+      - Ingeniería Mecánica Estática - William Riley, Sturges.pdf
+      - Ingeniería Mecánica Estática - Andrew Pytel.pdf
+      - Diagramas Fuerza Cortante, Momento Flector en PÓRTICO  Método de CORTES.pdf
+      - dic 2023 ESTAT  DIAG  V Y M  EN  VIGAS CON CARG CONCNT Y  DIST  dic   2023 II.pdf
+      - **Solucionario Ing Estática Hibbeler 12va edicion (www.libreriaingeniero.com)/**
+        - Copia de Chapter 2.PDF
+        - Copia de Chapter 7.2.pdf
+        - Copia de Chapter 10.pdf
+        - Copia de Chapter 5.pdf
+        - Copia de Chapter 4.PDF
+        - Copia de Chapter 8.pdf
+        - Copia de Chapter 11.pdf
+        - Copia de Chapter 3.PDF
+        - Copia de CHapter 9.pdf
+        - Copia de Chapter 7.1.pdf
+        - Copia de Chapter 6.pdf
+      - **mecanica de materiales/**
+        - Mecánica de Materiales, 8va Ed - James M. Gere & Barry J. Goodno.pdf
+        - Mecánica de Materiales, 6ta Ed - James Gere.pdf
+        - Mecánica de materiales 6ta Ed (solucionario completo).pdf
+    - **DISEÑO MECANICO/**
+      - 2023_Cuaderno de ejercicios para principiantes de AutoCAD® 2024_Shrock.epub
+      - Traducción clavetea.docx
+      - Traducción clavetea GRUPAL.docx
+      - parte guido.docx
+      - clavetea solido.SLDPRT
+      - Pieza1.SLDPRT
+      - proyacto 1.SLDPRT
+      - SolidWorks 2024 SP0.1 Full Premium Multilanguage x64.torrent
+      - **proyectos/**
+        - console.log
+        - **proyecto 2/**
+          - proyecto 2.SLDPRT
+          - proyecto 2.SLDDRW
+          - proyecto 2.pdf
+          - proyecto 2 por MAMANI GALINDO RENZO GABRIEL 228447.rar
+        - **proyecto 1/**
+          - proyecto 1.SLDPRT
+          - proyecto 1 MAMANI GALINDO RENZO GABRIEL 228447.SLDPRT
+          - proyecto   1.SLDDRW
+          - proyecto 1 MAMANI GALINDO RENZO GABRIEL 228447.pdf
+          - proyecto 1 de MAMANI GALINDO RENZO GABRIEL 228447.rar
+        - **PROYECTO 3/**
+          - console.log
+          - proyecto 3 MAMANI GALINDO RENZO GABRIEL.SLDDRW
+          - proyecto 3 MAMANI GALINDO RENZO GABRIEL.pdf
+          - respuesta .png
+          - proyecto 3 MAMANI GALINDO RENZO GABRIEL.SLDPRT
+        - **PROYECTO 4/**
+          - PIN  .SLDPRT
+          - Pieza1.SLDPRT
+          - final.SLDDRW
+          - console.log
+        - **proyecto 5/**
+          - Pieza 5.SLDPRT
+          - console.log
+          - proyecto 5 MAMANI GALINDO RENZO GABRIEL 228447.SLDPRT
+          - proyecto 5 MAMANI GALINDO RENZO GABRIEL 228447.SLDDRW
+          - proyecto 5 MAMANI GALINDO RENZO GABRIEL 228447.pdf
+        - **proyecto 6/**
+          - proyecto 6.SLDPRT
+          - proyecto 6.SLDDRW
+          - proyecto 6.pdf
+          - console.log
+        - **PARA ENVIAR/**
+          - proyectos 1 Y 2 POR MAMANI GALINDO RENZO GABRIEL 228447.rar
+          - proyectos 3 y 4 MAMANI GALINDO RENZO GABRIEL 228447.rar
+          - proyecto 5 y 6 MAMANI GALINDO RENZO GABRIEL 228447.rar
+          - ejercicio 179 MAMANI GALINDO RENZO GABRIEL 228447.rar
+        - **Nueva carpeta/**
+          - console.log
+          - examen.SLDPRT
+          - examen.pdf
+          - examen.SLDDRW
+          - **ejercicio 179 MAMANI GALINDO RENZO GABRIEL 228447/**
+            - ejercicio 179 MAMANI GALINDO RENZO GABRIEL 228447.SLDPRT
+            - ejercicio 179 MAMANI GALINDO RENZO GABRIEL 228447.pdf
+            - console.log
+      - **libro de proyectos/**
+        - 2019_200 ejercicios de Solidworks_Para SolidWorks y otro software de modelado basado en funciones_JHA.pdf
+        - **resueltos/**
+          - 127.SLDPRT
+          - 58.SLDPRT
+          - 183.SLDPRT
+      - **U/**
+        - copia de segurida 11 01 2024.docx
+        - shrocks 2024.docx
+    - **SEGURIDAD Y DEFENSA NACIONAL/**
+      - SDN trabajo G02.docx
+      - SEGURIDAD Y DEFENSA NACIONAL.rar
+    - **Calculo vectorial/**
+      - Libro Funciones vectoriales2.pdf
+      - Silabo Calculo Vectorial Ing Mecanica JRTP.pdf
+      - 001 CalVect Algebra de Vectores 2023.pdf
+      - 002 CalVect Rectas y planos en R^3 2023.pdf
+      - FORMULARIO_CALCULO VECTORIAL - Acceso directo.lnk
+      - 2020II 05 Funciones vectoriales. Parametrizaciones y reparametrizaciones.pdf
+      - Cálculo de varias Variables Trascendentes Tempranas.pdf
+      - cálculo vectorial 20 de setiembre parametrización de la parábola y cicloide.pdf
+      - geometria-analitica-vectorial-pdf.pdf
+      - analisis matematico III EDUARDO ESPINOZA RAMOS.pdf
+      - Calculo vectorial - Mikhail Malakhaltsev.pdf
+      - 013 CalDifIntII Larson Rony Edwards Bruce  10Ed 2016.pdf
+      - 004 CalDifIntII W Mora 1Ed 2020.pdf
+      - Calculo Vectorial - Susan Jane Colley.pdf
+      - Dennis_G_Zill,_Warren_S_Wright_Single_Variable_Calculus_Early_Transcendentals.pdf
+      - 016 CalDifIntII Moises Lazaro III.pdf
+      - 006 CalVec Funciones vectoriales. Longitud de un camino 2023.pdf
+      - 002 CalVect Rectas y planos en R^3 2023-1.pdf
+      - 008 CalVec Funciones vectoriales. Triedro de Frenet 2023.pdf
+      - final final.docx
+      - informe_de_calculo[1].docx
+      - FORMULARIO CALCULO VECTORIAL - SHARENDI YAZARET RODRIGUEZ BUST.pdf
+      - Documento de ....pdf
+      - CALCULO VECTORIAL.rar
+      - 003 CalVect Funciones vectoriales2023.pdf
+      - 2020II 11 CapIII Cilindros y superficies cuadráticas.pdf
+      - Copia de Calculo_Vectorial_5ta_Edicion_Jerrold_E..pdf
+      - **geogebra/**
+      - **PDFs Jesus Roberto Ticona/**
+        - 003 CalVect Funciones vectoriales2023.pdf
+        - 002 CalVect Rectas y planos en R^3 2023-1.pdf
+        - 002 CalVect Rectas y planos en R^3 2023.pdf
+        - 001 CalVect Algebra de Vectores 2023.pdf
+        - 2020II 05 Funciones vectoriales. Parametrizaciones y reparametrizaciones.pdf
+        - 2020II 11 CapIII Cilindros y superficies cuadráticas.pdf
+        - Documento de ... (1).pdf
+        - 010 CalVec Derivadas Parciales de orden dos y superior 2023.pdf
+        - 013 CalVec Trabajo encargado 2023.pdf
+        - 011 CalVec Derivadas implicitas y derivada direccional 2023.pdf
+        - 008 CalVec Funciones vectoriales. Triedro de Frenet 2023.pdf
+        - Solucionario Mecanica1.pdf
+        - 009 CalVec Derivadas Parciales 2023.pdf
+        - Documento de ....pdf
+        - 006 CalVec Funciones vectoriales. Longitud de un camino 2023.pdf
+        - 008 CalVec Funciones de varias variables 2023.pdf
+        - 2023 CapIII Funciones de varias variables.pdf
+        - Libro Funciones vectoriales2.pdf
+      - **presnetacion de aplicacion/**
+        - Calculo vectorial.pptx
+        - Calculo vectorial final .pptx
+        - cambio de variable en circular
+        - cambio de variable en circular.ggb
+        - tarea presentacion final.ggb
+        - definitiva.pptx
+        - definitiva - copia.pptx
+        - final de la final.pptx
+        - final final.pptx
+    - **diseño electrico/**
+      - Código_Nacional_de_Electricidad__Utilización__compressed.pdf
+      - R M  y CNE 2011.pdf
+      - silabo.pdf
+      - pdf-marco-teorico-instalacion-electrica_compress.pdf
+      - 168.pdf
+      - METODOS-DE-CONEXION-ESTRELLA-Y-DELTA-INDICADOS-EN-EL-CNE-PARA.pptx
+      - trabajo de CNE.docx
+      - Presentación sobre Electricidad Profesional Negro Amarillo.pptx
+  - **4 semestre/**
+    - **programacion eelectromecanica/**
+      - Python 3.12 (64-bit).lnk
+      - IDLE (Python 3.12 64-bit).lnk
+      - Python 3.12 Module Docs (64-bit).lnk
+      - **progrmas para instalar/**
+        - python-3.12.3-amd64.exe
+      - **intentos/**
+        - intento 1.py
+        - TODOS.py
+      - **gramatica/**
+        - Constancia.pdf
+        - link de las publicaciones.txt
+      - **hpuser edit/**
+        - examen por Renzo gabriel mamani galindo.zip
+        - examen por Renzo gabriel mamani galindo.rar
+        - **program/**
+          - hpuseredit6a2.exe
+        - **ejercicios/**
+          - 2014_Algoritmos resueltos con diagramas de flujo y pseudocódigo_Pinales.pdf
+          - ejercicios por RENZO GABRIEL MAMANI GALINDO.rar
+          - PROBLEMAS PROPUESTOS  UNIDAD 2 DEL 1 AL 23 POR RENZO GABRIEL MAMANI GALINDO 228447.rar
+          - Ejemplo 3.1 al 3.15 POR RENZO GABRIEL MAMANI GALINDO 228447.rar
+          - EJERCICIOS PROPUESTOS  3.1 AL 3.21POR RENZO GABRIEL MAMANI GALINDO 228447.rar
+          - **TRABAJO PROGRAMACION/**
+            - RJ 01 (demo constructor).adb
+            - RJ ejercico 1.1.adb
+            - RJ ejercico 1.2.adb
+            - RJ ejercico 1.3.adb
+            - RJ ejercico 2.1.adb
+            - RJ ejercico 2.2.adb
+            - RJ ejercico 2.3.adb
+            - RJ ejercico 2.4.adb
+            - RJ ejercico 2.5.adb
+            - RJ ejercico 2.6.adb
+            - RJ ejercico 2.7.adb
+            - RJ ejercico 2.8.adb
+            - RJ ejercico 2.9.adb
+            - RJ ejercico 2.10.adb
+            - RJ ejercico 2.11.adb
+            - RJ ejercico 3.1.adb
+            - RJ ejercico 3.2.adb
+            - RJ ejercico 3.3.adb
+            - RJ ejercico 3.4.adb
+            - RJ PROBLEMA 2.1.adb
+            - RJ PROBLEMA 2.2.adb
+            - RJ PROBLEMA 2.3.adb
+            - RJ PROBLEMA 2.4.adb
+            - RJ PROBLEMA 2.5.adb
+            - RJ PROBLEMA 2.6.adb
+            - RJ PROBLEMA 2.7.adb
+            - RJ PROBLEMA 2.8.adb
+            - RJ PROBLEMA 2.9.adb
+            - RJ PROBLEMA 2.10.adb
+            - RJ PROBLEMA 2.11.adb
+            - RJ PROBLEMA 2.12.adb
+            - RJ PROBLEMA 2.13.adb
+            - RJ PROBLEMA 2.14.adb
+            - RJ PROBLEMA 2.15.adb
+            - RJ PROBLEMA 2.16.adb
+            - RJ PROBLEMA 2.22.adb
+            - RJ PROBLEMA 2.21.adb
+            - RJ PROBLEMA 2.23.adb
+            - RJ PROBLEMA 2.17.adb
+            - RJ PROBLEMA 2.20.adb
+            - RJ PROBLEMA 2.19.adb
+            - RJ PROBLEMA 2.18.adb
+            - RJ ejercico 3.5.adb
+            - RJ ejercico 3.6.adb
+            - RJ ejercico 3.7.adb
+            - RJ ejercico 3.8.adb
+            - RJ ejercico 3.9.adb
+            - RJ ejercico 3.10.adb
+            - RJ ejercico 3.11.adb
+            - RJ ejercico 3.12.adb
+            - RJ ejercico 3.13.adb
+            - RJ ejercico 3.14.adb
+            - RJ ejercico 3.15.adb
+            - RJ PROBLEMA 3.20.adb
+          - **ejercicios por RENZO GABRIEL MAMANI GALINDO/**
+            - ejemplo2.1 RENZO GABRIEL MAMANI GALINDO .adb
+            - ejemplo2.3 RENZO GABRIEL MAMANI GALINDO.adb
+            - ejemplo2.4 RENZO GABRIEL MAMANI GALINDO.adb
+            - ejemplo2.5 RENZO GABRIEL MAMANI GALINDO.adb
+            - ejemplo2.6 RENZO GABRIEL MAMANI GALINDO.adb
+            - ejemplo2.7 RENZO GABRIEL MAMANI GALINDO.adb
+            - ejemplo2.8 RENZO GABRIEL MAMANI GALINDO.adb
+            - ejemplo2.9 RENZO GABRIEL MAMANI GALINDO.adb
+            - ejemplo2.10 RENZO GABRIEL MAMANI GALINDO.adb
+            - ejemplo2.11 RENZO GABRIEL MAMANI GALINDO.adb
+            - ejemplo2.2 RENZO GABRIEL MAMANI GALINDO.adb
+          - **PROBLEMAS PROPUESTOS  UNIDAD 2 DEL 1 AL 23 POR RENZO GABRIEL MAMANI GALINDO 228447/**
+            - **PROPUESTO 2.1/**
+              - PROPUESTO 2.1 POR RENZO MAMANI GALINDO 228447.adb
+              - PROPUESTO 2.1 POR RENZO MAMANI GALINDO 228447.hpprg
+            - **PROPUESTO 2.2/**
+              - PROPUESTO 2.2 POR RENZO MAMANI GALINDO .adb
+              - PROPUESTO 2.2 POR RENZO MAMANI GALINDO .hpprg
+            - **PROPUESTO 2.3/**
+              - PROPUESTO 2.3 POR RENZO GABRIEL MAMANI GALINDO 228447.hpprg
+              - PROPUESTO 2.3 POR RENZO GABRIEL MAMANI GALINDO 228447.adb
+            - **PROPUESTO 2.4/**
+              - PROPUESTO 2.4POR RENZO GABRIEL MAMANI GALINDO 228447.hpprg
+              - PROPUESTO 2.4POR RENZO GABRIEL MAMANI GALINDO 228447.adb
+            - **PROPUESTO 2.5/**
+              - PROPUESTO 2.5 POR RENZO GABRIEL MAMANI GALINDO 228447.hpprg
+              - PROPUESTO 2.5 POR RENZO GABRIEL MAMANI GALINDO 228447.adb
+            - **PROPUESTO 2.8/**
+              - PROPUESTO 2.8 POR RENZO GABRIEL MAMANI GALINDO 228447.hpprg
+              - PROPUESTO 2.8 POR RENZO GABRIEL MAMANI GALINDO 228447.adb
+            - **PROPUESTO 2.12/**
+              - PROPUESTO 2.12 POR RENZO GABRIEL MAMANI GALINDO 228447.hpprg
+              - PROPUESTO 2.12 POR RENZO GABRIEL MAMANI GALINDO 228447.adb
+            - **PROPUESTO 2.20/**
+              - PROPUESTO 2.20 POR RENZO GABRIEL MAMANI GALINDO 228447.hpprg
+              - PROPUESTO 2.20 POR RENZO GABRIEL MAMANI GALINDO 228447.adb
+            - **PROPUESTO 2.19/**
+              - PROPUESTO 2.19 POR RENZO GABRIEL MAMANI GALINDO 228447.adb
+              - PROPUESTO 2.19 POR RENZO GABRIEL MAMANI GALINDO 228447.hpprg
+            - **PROPUESTO 2.23/**
+              - PROPUESTA 2.23 POR RENZO GABRIEL MAMANI GALINDO 228447.adb
+              - PROPUESTA 2.23 POR RENZO GABRIEL MAMANI GALINDO 228447.hpprg
+            - **PROPUESTO 2.11/**
+              - PROPUESTO 2.11 POR RENZO GABRIEL MAMANI GALINDO 228447.adb
+              - PROPUESTO 2.11 POR RENZO GABRIEL MAMANI GALINDO 228447.hpprg
+            - **PROPUESTO 2.15/**
+              - PROPUESTO 2.15 POR RENZO GABRIEL MAMANI GALINDO 228447.adb
+              - PROPUESTO 2.15 POR RENZO GABRIEL MAMANI GALINDO 228447.hpprg
+            - **PROPUESTO 2.22/**
+              - PROPUESTA 2.22 POR RENZO GABRIEL MAMANI GALINDO 228447.hpprg
+              - PROPUESTA 2.22 POR RENZO GABRIEL MAMANI GALINDO 228447.adb
+            - **PROPUESTO 2.10/**
+              - PROPUESTO 2.10 POR RENZO GABRIEL MAMANI GALINDO 228447.hpprg
+              - PROPUESTO 2.10 POR RENZO GABRIEL MAMANI GALINDO 228447.adb
+            - **PROPUESTO 2.14/**
+              - PROPUESTO 2.14 POR RENZO GABRIEL MAMANI GALINDO 228447.hpprg
+              - PROPUESTO 2.14 POR RENZO GABRIEL MAMANI GALINDO 228447.adb
+            - **PROPUESTO 2.21/**
+              - PROPUESTO 2.21 POR RENZO GABRIEL MAMANI GALINDO 228447.hpprg
+              - PROPUESTO 2.21 POR RENZO GABRIEL MAMANI GALINDO 228447.adb
+            - **PROPUESTO 2.16/**
+              - PROPUESTO 2.16 POR RENZO GABRIEL MAMANI GALINDO 228447.adb
+              - PROPUESTO 2.16 POR RENZO GABRIEL MAMANI GALINDO 228447.hpprg
+            - **PROPUESTO 2.18/**
+              - PROPUESTO 2.18 POR RENZO GABRIEL MAMANI GALINDO 228447.hpprg
+              - PROPUESTO 2.18 POR RENZO GABRIEL MAMANI GALINDO 228447.adb
+            - **PROPUESTO 2.17/**
+              - PROPUESTO 2.17 POR RENZO GABRIEL MAMANI GALINDO 228447.adb
+              - PROPUESTO 2.17 POR RENZO GABRIEL MAMANI GALINDO 228447.hpprg
+            - **PROPUESTO 2.13/**
+              - PROPUESTO 2.13 POR RENZO GABRIEL MAMANI GALINDO 228447.adb
+              - PROPUESTO 2.13 POR RENZO GABRIEL MAMANI GALINDO 228447.hpprg
+            - **PROPUESTO 2.9/**
+              - PROPUESTO 2.9 POR RENZO GABRIEL MAMANI GALINDO 228447.hpprg
+              - PROPUESTO 2.9 POR RENZO GABRIEL MAMANI GALINDO 228447.adb
+            - **PROPUESTO 2.7/**
+              - PROPUESTO 2.7 POR RENZO GABRIEL MAMANI GALINDO 228447.adb
+              - PROPUESTO 2.7 POR RENZO GABRIEL MAMANI GALINDO 228447.hpprg
+            - **PROPUESTO 2.6/**
+              - PROPUESTO 2.6 POR RENZO GABRIEL MAMANI GALINDO 228447.hpprg
+              - PROPUESTO 2.6 POR RENZO GABRIEL MAMANI GALINDO 228447.adb
+          - **Ejemplo 3.1 al 3.15 POR RENZO GABRIEL MAMANI GALINDO 228447/**
+            - EJEMPLO3.1 RENZO GABRIEL MAMANI GALINDO 228447.adb
+            - EJEMPLO3.2 RENZO GABRIEL MAMANI GALINDO 228447.adb
+            - EJEMPLO3.3 RENZO GABRIEL MAMANI GALINDO 228447.adb
+            - EJEMPLO3.4 RENZO GABRIEL MAMANI GALINDO 228447.adb
+            - EJEMPLO3.5.1 RENZO GABRIEL MAMANI GALINDO 228447.adb
+            - EJEMPLO3.5.2 RENZO GABRIEL MAMANI GALINDO 228447.adb
+            - EJEMPLO3.6.1 RENZO GABRIEL MAMANI GALINDO 228447.adb
+            - EJEMPLO3.6.2 RENZO GABRIEL MAMANI GALINDO 228447.adb
+            - EJEMPLO3.6.3 RENZO GABRIEL MAMANI GALINDO 228447.adb
+            - EJEMPLO3.7 RENZO GABRIEL MAMANI GALINDO 228447.adb
+            - EJEMPLO3.8 RENZO GABRIEL MAMANI GALINDO 228447.adb
+            - EJEMPLO3.9 RENZO GABRIEL MAMANI GALINDO 228447.adb
+            - EJEMPLO3.10 RENZO GABRIEL MAMANI GALINDO 228447.adb
+            - EJEMPLO3.11 RENZO GABRIEL MAMANI GALINDO 228447.adb
+            - EJEMPLO3.12 RENZO GABRIEL MAMANI GALINDO 228447.adb
+            - EJEMPLO3.13 RENZO GABRIEL MAMANI GALINDO 228447.adb
+            - EJEMPLO3.14 RENZO GABRIEL MAMANI GALINDO 228447.adb
+            - EJEMPLO3.15 RENZO GABRIEL MAMANI GALINDO 228447.adb
+          - **PROPUESTO 4/**
+            - propuestos 4.rar
+            - **Rj propuestos cap 4/**
+              - RJ PROPUESTOS 4.14.adb
+              - RJ PROPUESTOS 4.16.adb
+              - RJ PROPUESTOS 4.17.adb
+              - RJ PROPUESTOS 4.13.adb
+              - RJ PROPUESTOS 4.15.adb
+              - RJ PROPUESTOS 4.1.adb
+              - RJ PROPUESTOS 4.8.adb
+              - RJ PROPUESTOS 4.9.adb
+              - RJ PROPUESTOS 4.10.adb
+              - RJ PROPUESTOS 4.3.adb
+              - RJ PROPUESTOS 4.7.adb
+              - RJ PROPUESTOS 4.12.adb
+              - RJ PROPUESTOS 4.4.adb
+              - RJ PROPUESTOS 4.2.adb
+              - RJ PROPUESTOS 4.18.adb
+              - RJ PROPUESTOS 4.19.adb
+              - RJ PROPUESTOS 4.20.adb
+              - RJ PROPUESTOS 4.21.adb
+              - RJ PROPUESTOS 4.11.adb
+              - RJ PROPUESTOS 4.22.adb
+              - RJ PROPUESTOS 4.5.adb
+              - RJ PROPUESTOS 4.6.adb
+          - **EJERCICIOS PROPUESTOS  3.1 AL 3.21POR RENZO GABRIEL MAMANI GALINDO 228447/**
+            - PROPUESTOS 3.1 POR RENZO GABRIEL MAMANI GALINDO 228447.adb
+            - PROPUESTOS 3.2 POR RENZO GABRIEL MAMANI GALINDO 228447.adb
+            - PROPUESTOS 3.3 POR RENZO GABRIEL MAMANI GALINDO 228447.adb
+            - PROPUESTOS 3.4 POR RENZO GABRIEL MAMANI GALINDO 228447.adb
+            - PROPUESTOS 3.5 POR RENZO GABRIEL MAMANI GALINDO 228447.adb
+            - PROPUESTOS 3.6 POR RENZO GABRIEL MAMANI GALINDO 228447.adb
+            - PROPUESTOS 3.7 POR RENZO GABRIEL MAMANI GALINDO 228447.adb
+            - PROPUESTOS 3.8 POR RENZO GABRIEL MAMANI GALINDO 228447.adb
+            - PROPUESTOS 3.9 POR RENZO GABRIEL MAMANI GALINDO 228447.adb
+            - PROPUESTOS 3.10 POR RENZO GABRIEL MAMANI GALINDO 228447.adb
+            - PROPUESTOS 3.11 POR RENZO GABRIEL MAMANI GALINDO 228447.adb
+            - PROPUESTOS 3.12 POR RENZO GABRIEL MAMANI GALINDO 228447.adb
+            - PROPUESTOS 3.13 POR RENZO GABRIEL MAMANI GALINDO 228447.adb
+            - PROPUESTOS 3.15 POR RENZO GABRIEL MAMANI GALINDO 228447.adb
+            - PROPUESTOS 3.16 POR RENZO GABRIEL MAMANI GALINDO 228447.adb
+            - PROPUESTOS 3.17 POR RENZO GABRIEL MAMANI GALINDO 228447.adb
+            - PROPUESTOS 3.18 POR RENZO GABRIEL MAMANI GALINDO 228447.adb
+            - PROPUESTOS 3.19 POR RENZO GABRIEL MAMANI GALINDO 228447.adb
+            - PROPUESTOS 3.20 POR RENZO GABRIEL MAMANI GALINDO 228447.adb
+            - PROPUESTOS 3.21 POR RENZO GABRIEL MAMANI GALINDO 228447.adb
+            - PROPUESTOS 3.14 POR RENZO GABRIEL MAMANI GALINDO 228447.adb
+          - **Examen de programacion POR RENZO GABRIEL MAMANI GALINDO 228447/**
+            - problema 1 POR RENZO GABRIEL MAMANI GALINDO 228447.adb
+            - problema 2 POR RENZO GABRIEL MAMANI GALINDO 228447.adb
+            - Problema 3 POR RENZO GABRIEL MAMANI GALINDO 228447.adb
+            - problema 4 POR RENZO GABRIEL MAMANI GALINDO 228447.adb
+            - problema 5 POR RENZO GABRIEL MAMANI GALINDO 228447.adb
+          - **examen/**
+            - Examen de programacion POR RENZO GABRIEL MAMANI GALINDO 228447.rar
+            - **Examen de programacion POR RENZO GABRIEL MAMANI GALINDO 228447/**
+              - problema 1 POR RENZO GABRIEL MAMANI GALINDO 228447.adb
+              - problema 2 POR RENZO GABRIEL MAMANI GALINDO 228447.adb
+              - problema 4 POR RENZO GABRIEL MAMANI GALINDO 228447.adb
+              - Problema 3 POR RENZO GABRIEL MAMANI GALINDO 228447.adb
+              - problema 5 POR RENZO GABRIEL MAMANI GALINDO 228447.adb
+        - **res/**
+          - TRABAJO_COMPLETO_DE_PROGRAMACION_RESUELTOS_Y_PROPUESTOS_Edyxon.rar
+        - **examen por Renzo gabriel mamani galindo/**
+          - 2 SERIE PARALELO PARA CAPACITORES.adb
+          - 5 TALLAS.adb
+          - 4 notas del alumno.adb
+          - 1 Divisor DE VOLTAJE.adb
+          - 3 mayor de edad.adb
+      - **PARA PRESENTAR/**
+        - PROPUESTO 3.14.adb
+        - CALIFICACION ALFABETICA.adb
+      - **EXPO/**
+        - ANESH.pptx
+    - **electricidad y electromagnetismo/**
+      - Física 2. Electricidad y Magnetismo - Eliezer Braun.pdf
+      - Fundamentos_de_electricidad_y_magnetismo_Arthur_F_Kip_1ed.pdf
+      - Berkeley_physics_course_volumen_2_Electricidad_y_magnetismo_Edward.pdf
+      - Electricidad_y_Magnetismo_Raymond_A_Serway_John_W_Jewett,_Jr.pdf
+      - Electricidad y Magnetismo Luis Cantú.pdf
+      - 77273822.pdf
+      - 7203-16 FISICA Ondas Electromagneticas.pdf
+      - ELECTROSTATICA_Y_MAGNETISMO_LEYVA.pdf
+      - Libro física para ciencias e ingenieria Serway 7ed vol 2 by Eury Peralta.pdf
+      - PROBLEMAS RESUELTOS DE ELECTRICIDAD Y ELECTROMAGNETISMO.pdf
+      - Serway & Jewett - Physics for Scientists and Engineers with Modern Physics 9th c2014 solutions ISM.pdf
+      - para entregar neyra.docx
+      - FISICA-1-118.pdf
+      - **trabajos de red=solucion del neyra/**
+      - **material extra/**
+        - CAMPO MAGNETICO (APAZA CHAMBI EDYXON).pdf
+        - CORRIENTE ELÉCTRICA (EDYXON APAZA CHAMBI).pdf
+        - CONDENSADORES Y DIELÉCTRICOS (EDYXON APAZA CHAMBI).pdf
+      - **examen final/**
+        - EXAMEN FINAL ELECTRICIDAD Y ELECTROMAGNETISMO.pdf
+      - **formulario/**
+        - eduardo.docx
+        - gaussjordan.hpprgm
+        - ELECTROSTATICA_Y_MAGNETISMO_LEYVA-206-732.pdf
+        - 77273822-119-340.pdf
+        - Libro1.csv
+        - formulario completa.docx
+        - Ley de gauss.docx
+    - **ecuaciones diferenciales/**
+      - Ecuaciones_diferenciales_Schaum.pdf
+      - Ecuaciones diferenciales.pdf
+      - 13 Ecuaciones Diferenciales y sus Aplicaciones.pdf
+      - zill_d_g_ecuaciones_diferenciales_con_aplicaciones_de_modelado_cengage.pdf
+      - Solucionario_Ecuaciones_Diferenciales.pdf
+      - Ecuaciones diferenciales para ingenieria y ciencias.pdf
+      - Matemáticas_V_Ecuaciones_diferenciales.pdf
+      - Libroedo.pdf
+      - Ecuaciones_diferenciales_con_problemas_de_valores_en_la_Dennis_G.pdf
+      - Análisis Matemático IV - Eduardo Espinoza Ramos - 2ed.pdf
+      - Solucionario_Análisis_Matemático_IV_Eduardo_Espinoza_Ramos.pdf
+      - **EDO tú terror/**
+        - 03EdoPrimerOrdenAplicacionesNuevo2024Vacacional.pdf
+        - 02EdoPrimerOrdenNuevo2024Vacacional.pdf
+        - 05Edo de orden superior Nuevo 2024 Vacacional.pdf
+        - 07Edo Transformada de Laplace Nuevo 2024 Vacacional.pdf
+        - 01EdoIntroduccionNuevo1.pdf
+      - **lista/**
+        - lista 2.pdf
+      - **Libro del Lic ing/**
+        - Ecuaciones diferenciales ordinarias.pdf
+      - **TRABAJO DE APLICACIONES DE LA EDO/**
+        - MOVIMIENTO DE UNA PARTICULA EN CAMPO ELECTRICO.pdf
+        - MOVIMIENTO DE UNA PARTICULA EN CAMPO ELECTRICO.aux
+        - MOVIMIENTO DE UNA PARTICULA EN CAMPO ELECTRICO.tex
+        - extra.pyg
+        - extra.log
+        - extra.tex
+        - gggggggggggggggggggggggggggggggggggggggggg.toc
+        - MOVIMIENTO DE UNA PARTICULA EN CAMPO ELECTRICO.log
+        - MOVIMIENTO DE UNA PARTICULA EN CAMPO ELECTRICO esta si.tex
+        - MOVIMIENTO DE UNA PARTICULA EN CAMPO ELECTRICO esta si.synctex.gz
+        - MOVIMIENTO DE UNA PARTICULA EN CAMPO ELECTRICO esta si.log
+        - MOVIMIENTO DE UNA PARTICULA EN CAMPO ELECTRICO esta si.aux
+        - MOVIMIENTO DE UNA PARTICULA EN CAMPO ELECTRICO esta si.pdf
+        - en aca mejorarlo.tex
+        - aplicaciones_Campo electrico y trayectoria de la particula_renzo_gabriel_mamani_galindo.py
+        - aplicacion  de la EDO campo electrico y trayectoria de la particula en 2d por renzo gabriel mamani galindo.py
+        - gggggggggggggggggggggggggggggggggggggggggg.tex
+        - gggggggggggggggggggggggggggggggggggggggggg.aux
+        - gggggggggggggggggggggggggggggggggggggggggg.out
+        - gggggggggggggggggggggggggggggggggggggggggg.log
+        - gggggggggggggggggggggggggggggggggggggggggg.pdf
+        - gggggggggggggggggggggggggggggggggggggggggg.synctex.gz
+        - en aca mejorarlo.toc
+        - en aca mejorarlo.aux
+        - en aca mejorarlo.log
+        - en aca mejorarlo.pdf
+        - en aca mejorarlo.synctex.gz
+      - **formulario/**
+        - formulario.tex
+        - formulario.aux
+        - formulario.pdf
+        - formulario.synctex.gz
+        - formulario.log
+      - **solucionario del examen/**
+        - SOLUCIONARIO CON ESTEROIDES.tex
+        - SOLUCIONARIO CON ESTEROIDES.aux
+        - SOLUCIONARIO CON ESTEROIDES.pdf
+        - SOLUCIONARIO CON ESTEROIDES.synctex.gz
+        - SOLUCIONARIO CON ESTEROIDES.log
+        - solucionario del examen.log
+        - solucionario del examen.aux
+        - solucionario del examen.synctex.gz
+        - **fino/**
+          - solucionario del examen.pdf
+          - solucionario del examen.tex
+      - **paso a pso de ecuaciones diferenciales/**
+        - LibroED.pdf
+        - Libro Ecuaciones Diferenciales Ordinarias.pdf
+      - **RESUMEN 6/**
+        - RESUMEN 6.pdf
+        - texput.log
+        - document.tex
+        - document.out
+        - document.aux
+        - document.synctex.gz
+        - document.log
+        - document.pdf
+        - IMPRI.pdf
+    - **seguridad y salud industrial/**
+      - **flaller/**
+        - SAFESTAR.pptx
+        - **FLAYER/**
+          - flyer GRUPO 8.PNG
+          - **FLAYER/**
+            - Diapositiva1.PNG
+      - **PPT PARA EXPONER EL EL COLEGIO/**
+        - CHARLA_SAFESTART_JAMES_BALDWIN_FINAL[1].pptx
+      - **TRABAJO DE CHARLA/**
+        - OficioAllSeguridad_IV_2024[1].pdf
+        - Imagen de WhatsApp 2024-05-23 a las 22.37.38_391837ca.jpg
+        - Imagen de WhatsApp 2024-05-25 a las 23.57.57_1ae91b93.jpg
+        - FLAYER.pptx
+        - CamScanner 15-05-2024 15.10.pdf
+        - TESt EVALUATIVO SAFESTART.pdf
+        - Imagen de WhatsApp 2024-05-25 a las 23.59.11_b4ae1b87.jpg
+        - CHARLA_SAFESTART_JAMES_BALDWIN_FINAL[1][1].pptx
+        - lista de asistencia de la charla .pdf
+        - para la gigantografia final final esta si es ya.png
+        - esta s fin a no me naadie ya esta ya por fin.png
+        - lista de asistencia .jpg
+        - flyer final.pdf
+        - final final para la giganto grafia.png
+        - ya esta fina giganto grafia.png
+        - **foto charla balwin/**
+          - Imagen de WhatsApp 2024-05-28 a las 11.59.50_1e62bd6c.jpg
+          - Imagen de WhatsApp 2024-05-28 a las 11.59.49_2c3373a8.jpg
+          - Imagen de WhatsApp 2024-05-27 a las 18.03.37_ca9a2af5.jpg
+          - Imagen de WhatsApp 2024-05-27 a las 18.07.05_b41c2d1c.jpg
+          - Imagen de WhatsApp 2024-05-27 a las 18.07.05_7d0bc626.jpg
+          - Imagen de WhatsApp 2024-05-27 a las 18.09.43_99352d04.jpg
+          - Imagen de WhatsApp 2024-05-28 a las 11.59.01_7fe4301c.jpg
+          - Imagen de WhatsApp 2024-05-28 a las 11.59.01_bde23055.jpg
+          - Imagen de WhatsApp 2024-05-28 a las 11.59.00_d2efe723.jpg
+          - Imagen de WhatsApp 2024-05-28 a las 11.56.18_2267e98a.jpg
+          - Imagen de WhatsApp 2024-05-28 a las 11.56.18_9015bca6.jpg
+          - Imagen de WhatsApp 2024-05-28 a las 11.56.18_d28a609a.jpg
+          - Imagen de WhatsApp 2024-05-28 a las 11.56.19_41c558e7.jpg
+          - Imagen de WhatsApp 2024-05-28 a las 11.59.51_a434afa9.jpg
+          - Imagen de WhatsApp 2024-05-27 a las 18.05.02_74865670.jpg
+          - Imagen de WhatsApp 2024-05-29 a las 16.43.37_865db98d.jpg
+          - Imagen de WhatsApp 2024-05-29 a las 16.44.19_b457cba9.jpg
+          - Imagen de WhatsApp 2024-05-29 a las 16.44.29_f0d8dcfa.jpg
+          - Imagen de WhatsApp 2024-05-29 a las 16.44.41_a84036d6.jpg
+          - Imagen de WhatsApp 2024-05-29 a las 16.44.57_81eaa3c9.jpg
+          - Imagen de WhatsApp 2024-05-29 a las 16.45.16_891aa92a.jpg
+          - Imagen de WhatsApp 2024-05-29 a las 16.46.24_42625122.jpg
+          - Imagen de WhatsApp 2024-05-29 a las 16.46.42_34e2456b.jpg
+          - Imagen de WhatsApp 2024-05-29 a las 16.45.50_4f8f525b.jpg
+          - Imagen de WhatsApp 2024-05-29 a las 16.45.50_25129507.jpg
+          - Imagen de WhatsApp 2024-05-29 a las 16.45.51_cac004bf.jpg
+          - Imagen de WhatsApp 2024-05-29 a las 16.47.40_9f06c745.jpg
+          - Imagen de WhatsApp 2024-05-29 a las 16.46.08_f4adc2a5.jpg
+          - Imagen de WhatsApp 2024-05-29 a las 16.45.53_cc76b630.jpg
+          - Imagen de WhatsApp 2024-05-29 a las 16.45.55_2b6a9268.jpg
+          - Imagen de WhatsApp 2024-05-29 a las 16.45.55_2dd12532.jpg
+          - Imagen de WhatsApp 2024-05-29 a las 16.45.54_7e0164c9.jpg
+      - **trabajo de scopus/**
+        - revista RGMG.xlsx
+        - resumen del video.docx
+        - ejemplo.pdf
+        - articulo de revision con citas.docx
+        - ejemplo2.pdf
+        - ~WRL0003.tmp
+        - RESUMEN DE LOS ARTICULOS.docx
+        - esquema del articulo de revision y palabras clave .docx
+        - articulo de revisicion.docx
+        - **20 iniciales/**
+          - 1 Automation system of railway leve.txt
+          - Data_Driven_Decentralized_Control_of_Inverter_Based_Renewable_Energy_Sources_Using_Safe_Guaranteed_Multi-Agent_Deep_Reinforcement_Learning.pdf
+          - jp3c04940_si_001.pdf
+          - ars-20-131-2023.pdf
+          - 17261-34563-1-SM_revised-Copy.pdf
+          - Pedro6.pdf
+          - MAMANI GALINDO RENZO GABRIEL.docx
+          - ceramics-07-00047-v2.pdf
+          - Collaborative_Control_of_Reactive_Power_and_Voltag.pdf
+          - energies-15-01879-v2.pdf
+          - Energy Science   Engineering - 2023 - Liu - Research on the capacity cost allocation and the electricity capacity price.pdf
+          - fenrg-12-1363267.pdf
+          - TV_30_2023_4_1234-1240.pdf
+          - Savytskyy_TH500_Manuscript.pdf
+          - Naumov_2022_IOP_Conf._Ser.__Earth_Environ._Sci._1045_012145.pdf
+          - PS-06072.pdf
+          - 3076a944-c565-4bb1-ac89-79f7b7ccab28.pdf
+          - RM-111-2013-MEM-DM.pdf
+          - GUIA-SSOMA.pdf
+          - Almanza Guzmán, Murcia Robayo y Segura Segura-2020.pdf
+          - DISEÑO DE UN SISTEMA DE CONTROL Y PROTECCION INTEGRADO PARA SUBESTACIONES DE ALTA TENSION_Laura Solano Merino.pdf
+          - Castillo_Rocío_Trabajo_Suficiencia_2019.pdf.crdownload.pdf
+          - TABLA DE AUTORES Y ESO.xlsx
+        - **los 40 con mejoras/**
+          - filtrar_estudios.py
+          - PARA MEJORALO.py
+          - My Collection.bib
+          - los articulos.rar
+          - bibliografia.bib
+          - articulo de revision final.docx
+          - esta tabla definitiva.xlsx
+          - **los articulos/**
+            - 21-energies-13-00601-v2.pdf
+            - 25-ars-20-131-2023.pdf
+            - 22-High Voltage - 2024 - Li - Defect recognition of oil‐pressboard insulation based on frequent arc reignition phenomenon.pdf
+            - 23-1-s2.0-S2214157X23010833-main.pdf
+            - 24-IET Generation Trans   Dist - 2023 - Zhang - An improved decision tree‐based method for evaluating transient overvoltage.pdf
+            - 26-IET Generation Trans   Dist - 2023 - Zhang - Bird pecking damage risk assessment of UHV transmission line composite.pdf
+            - 27-1-s2.0-S0142061523000042-main.pdf
+            - 28-energies-16-00847.pdf
+            - 29-infrastructures-07-00171.pdf
+            - 30-IET Generation Trans   Dist - 2022 - Guo - Fast and accurate evaluation method of commutation failure in line‐commutated.pdf
+            - 31-energies-15-07702.pdf
+            - 32-High Voltage - 2022 - Peesapati - Investigation of incipient faults in 66 kV oil‐filled cable sealing ends.pdf
+            - 33-Geomagnetically_Induced_Current_Analysis_in_Malaysian_Power_Transmission_System.pdf
+            - 34-IET Generation Trans   Dist - 2022 - Wu - Analysis of influencing factors on buffer layer discharge for high‐voltage XLPE.pdf
+            - 35-1-s2.0-S0304388622000080-main.pdf
+            - 36-energies-14-07808.pdf
+            - 37-energies-14-04742.pdf
+            - 38-High Voltage - 2021 - Tamma - High voltage power transformer condition assessment considering the health index value and.pdf
+            - 39-energies-14-00977-v3.pdf
+            - 40-IET Generation Trans   Dist - 2020 - Wu - Control strategy for large‐scale fires near power transmission lines and its.pdf
+            - 41-1566.pdf
+            - 42-Study_on_the_Construction_and_Application_of_Digital_Twins_on_High_Voltage_Transmission_Line_Live_Working_Scenes.pdf
+            - 43-energies-13-01146-v2.pdf
+            - 2-Risk_Assessment_of_Polluted_Glass_Insulator_Using_Leakage_Current_Index_Under_Different_Operating_Conditions.pdf
+            - 1-Monitoring_and_Risk_Assessment_of_Wildfires_in_the_Corridors_of_High-Voltage_Transmission_Lines.pdf
+            - 3-Mathematical Problems in Engineering - 2020 - Li - Operation Motion Planning and Principle Prototype Design of.pdf
+            - 4-energies-13-01424-v2.pdf
+            - 5-04_AEE_1_2020.pdf
+            - 6-energies-13-00296-v3.pdf
+            - 7-High Voltage - 2019 - Gu - Study on lightning risk assessment and early warning for UHV DC transmission channel.pdf
+            - 8-Risk Analysis - 2018 - Oughton - A Risk Assessment Framework for the Socioeconomic Impacts of Electricity Transmission.pdf
+            - 9-A_Holistic_Approach_to_Risk-Based_Maintenance_Scheduling_for_HV_Cables.pdf
+            - 10-sensors-18-01941-v2.pdf
+            - 11-Geomagnetically_Induced_Currents_in_Ethiopia_Power_Grid_Calculation_and_Analysis.pdf
+            - 12-18040503.pdf
+            - 13-energies-11-00083.pdf
+            - 15-energies-10-01661.pdf
+            - 16-energies-10-01523-v3.pdf
+            - 17-energies-10-00013.pdf
+            - 18-urbani-izziv-en-2016-27-01-001.pdf
+            - 19-IET Generation Trans   Dist - 2015 - Li - Capacity optimisation method of distribution static synchronous compensator.pdf
+            - 20-mathematics-11-03143.pdf
+            - 14-Monitoring_and_Risk_Assessment_of_Wildfires_in_the_Corridors_of_High-Voltage_Transmission_Lines.pdf
+          - **subtema 1/**
+            - 2-Risk_Assessment_of_Polluted_Glass_Insulator_Using_Leakage_Current_Index_Under_Different_Operating_Conditions.pdf
+            - 1-Monitoring_and_Risk_Assessment_of_Wildfires_in_the_Corridors_of_High-Voltage_Transmission_Lines.pdf
+            - 3-Mathematical Problems in Engineering - 2020 - Li - Operation Motion Planning and Principle Prototype Design of.pdf
+            - 4-energies-13-01424-v2.pdf
+            - 5-04_AEE_1_2020.pdf
+            - 6-energies-13-00296-v3.pdf
+            - 10-sensors-18-01941-v2.pdf
+            - 11-Geomagnetically_Induced_Currents_in_Ethiopia_Power_Grid_Calculation_and_Analysis.pdf
+            - 12-18040503.pdf
+            - 13-energies-11-00083.pdf
+            - 1extra 1-s2.0-S0921344921002007-main.pdf
+            - 2extra1-s2.0-S1364032122009649-main.pdf
+            - 3 extra 1-s2.0-S0301479719308552-main.pdf
+            - 4 extra 1-s2.0-S0921344921000197-mainext.pdf
+            - 4 extra sustainability-15-06691.pdf
+            - 5 extra1-s2.0-S0951832021005834-main.pdf
+            - 6 extra 1-s2.0-S0142061521006712-main.pdf
+            - 7 1-s2.0-S0142061520301617-main.pdf
+            - 8 1-s2.0-S0951832019307008-main.pdf
+            - 9  energies-12-02601.pdf
+            - 14  1-s2.0-S0142061517301175-main.pdf
+          - **subtema 2/**
+            - 21-energies-13-00601-v2.pdf
+            - 22-High Voltage - 2024 - Li - Defect recognition of oil‐pressboard insulation based on frequent arc reignition phenomenon.pdf
+            - 23-1-s2.0-S2214157X23010833-main.pdf
+            - 14-Monitoring_and_Risk_Assessment_of_Wildfires_in_the_Corridors_of_High-Voltage_Transmission_Lines.pdf
+            - 15-energies-10-01661.pdf
+            - 16-energies-10-01523-v3.pdf
+            - 17-energies-10-00013.pdf
+            - 18-urbani-izziv-en-2016-27-01-001.pdf
+            - 19-IET Generation Trans   Dist - 2015 - Li - Capacity optimisation method of distribution static synchronous compensator.pdf
+            - 20-mathematics-11-03143.pdf
+            - 24   1-s2.0-S014206151833713X-main.pdf
+        - **para una mejor busqueda/**
+          - Libro1.xlsx
+          - scopus_open_access_results.xlsx
+          - scopus_search.py
+          - scopus_search2.py
+          - scopus_open_access_results.csv
+          - **para buscar con python/**
+            - xd.txt
+            - el cpdigo.txt
+          - **pasos para usar el codigo/**
+            - pasos.txt
+        - **las diapositivas/**
+          - 19.04.24 REGLAS DE VIDA.pdf
+          - LAS PREGUNTAS.docx
+      - **archivos varios/**
+        - Libro-Conocer-para-Prevenir-II.pdf
+        - Análisis de la gestión de seguridad y salud en el trabajo, en obras por contrata - caso empresa Tutupaca - región Puno.pdf
+        - Guía para la coordinación de la seguridad y salud en obras de construcción  ramon de paco cararron.pdf
+        - gestion de la coordinacion en materia de la seguridad y salud en obras de edificacion TESIS_MASTER_SANTIAGO_IZQUIERDO.pdf
+        - tratamiento y recubrimiento de superficies José Luis García Jiménez, Autor ; José Martín Navarro, Autor ; José Martín Navarro, Autor ; José Martín Navarro, Autor ; Eduardo Águeda Casa.pdf
+        - Sistemas_de_Gestión_de_Seguridad_y_Salud_en_el_Trabajo.pdf
+        - modelo de gestion de la seguridad y salud en el trabajo para la prevencion de riesgos laborales en la municipalidades destritales de LIMA.pdf
+        - “Eficacia de la Ley N°29783 y Decreto Supremo N°024-2016-EM.pdf
+        - implantacion de un nuevo sistema administrativo como una herramienta desarrolladora  de las actividades en grupo multisistemas de seguridad industrial.pdf
+        - propuestas de medidas de prevencion y control para disminuir los riesgos psicosociales causantes de estrez laboral en los conductores profesionales de camionetas de transporte.pdf
+        - library renzo gabriel mamani galindo.bib
+        - Safe-Start-Un-programa-para-prevenir-accidentes-y-lesiones-en-el-lugar-de-trabajo.pptx
+        - Efecto Netflix.pptx
+        - 106 Efecto disney.pptx
+        - Video de WhatsApp 2024-05-03 a las 17.14.57_89f357f7.mp4
+        - Imagen de WhatsApp 2024-05-03 a las 17.21.59_74231d9c.jpg
+        - IMAGEN.jpg
+        - SSI INFROME DE SAFE START.docx
+        - INFORME DE SEGURIDAD Y SALUD INDUSTRIAL.pdf
+      - **seguridad/**
+        - Conductas_Seguras[1].pptx
+        - GRUPO 8 PRESENTACION DE SAFESTART.pptx
+        - FLAYER.pptx
+        - informe de seguridad guia.docx
+        - CHARLA_SAFESTART_JAMES_BALDWIN_FINAL[1][1].pptx
+        - INFORME DE SEGURIDAD Y SALUD INDUSTRIAL.docx
+    - **dinamica/**
+      - Dinamica Clasica - Rañada.pdf
+      - Lumbreras Fisica Dinamica.pdf
+      - Mecanica.Vectorial.para.ingenieros-Dinamica_9na.Ed_Jhonston..pdf
+      - Dynamics.pdf
+      - cinetica cuerpo rigido.pdf
+      - **hibeler/**
+        - Hibbeler_Engineering_Mechanics_Dynamics_12th_solucionario.pdf
+        - Ingenieria Mecanica Dinamica Hibbeler 12va Ed.pdf
+        - Ingenieria Mecanica Dinamica Hibbeler 12va Ed.rar
+        - Hibbeler_Engineering_Mechanics_Dynamics_12th_solucionario.rar
+        - contraseña.txt
+      - **guia dinamica/**
+        - Cinematicadelaparticula.pdf
+      - **trabajos/**
+        - TRABAJO GRUPAL DINAMICA FINAL.pdf
+        - TRABAJO_GRUPAL_DINAMICA_FINAL_CORREGIDO[1].pdf
+        - Ingenieria_Mecanica_Dinamica_-_W.F._Riley.pdf
+        - problemas propuestos.docx
+      - **Bedford/**
+        - mecanica-para-ingenieria-dinamica-anthony-bedford-5-edicion-solucionario.pdf
+      - **archivos profesor/**
+        - Cinematicadelaparticula.pdf
+        - GuiaN01Cinematicadelaparticula.pdf
+        - Clase20042024.pdf
+        - Cinematicadelcuerporigido.pdf
+        - Cinematicadelcuerporigido1.pdf
+        - Cinematicadelcuerporigido2.pdf
+      - **riley/**
+        - Ingenieria_Mecanica_Dinamica_-_W.F._Riley.pdf
+      - **PROPUESTA PROBABLEMENTE EXAMEN/**
+        - problemas propuestos.docx
+        - Ingenieria_Mecanica_Dinamica_-_W.F._Riley.pdf
+        - SOLUCIONARIO_DE_INGENIERIA_MECANICA_DINA.pdf
+    - **resistencia de materiales/**
+      - programa de M y V.xlsx
+      - programa_M_V.zip
+      - **pampa/**
+        - IMG-20240418-WA0030.jpg
+        - IMG-20240418-WA0031.jpg
+        - IMG-20240418-WA0032.jpg
+        - IMG-20240418-WA0033.jpg
+        - IMG-20240418-WA0034.jpg
+        - IMG-20240418-WA0035.jpg
+        - IMG-20240418-WA0036.jpg
+        - IMG-20240418-WA0037.jpg
+        - IMG-20240418-WA0038.jpg
+        - IMG-20240418-WA0039.jpg
+        - IMG-20240418-WA0040.jpg
+        - IMG-20240418-WA0041.jpg
+        - IMG-20240418-WA0048.jpg
+        - IMG-20240418-WA0049.jpg
+        - IMG-20240418-WA0050.jpg
+        - IMG-20240418-WA0051.jpg
+        - IMG-20240418-WA0052.jpg
+        - IMG-20240418-WA0053.jpg
+        - IMG-20240418-WA0054.jpg
+        - IMG-20240418-WA0055.jpg
+        - VID-20240418-WA0002.mp4
+        - VID-20240418-WA0003.mp4
+        - IMG-20240418-WA0056.jpg
+        - IMG-20240418-WA0057.jpg
+        - IMG-20240418-WA0058.jpg
+        - IMG-20240418-WA0059.jpg
+        - IMG-20240418-WA0060.jpg
+        - IMG-20240418-WA0061.jpg
+        - IMG-20240418-WA0062.jpg
+        - IMG-20240418-WA0063.jpg
+        - IMG-20240418-WA0064.jpg
+        - IMG-20240418-WA0065.jpg
+        - IMG-20240418-WA0066.jpg
+        - IMG-20240418-WA0067.jpg
+        - IMG-20240418-WA0068.jpg
+        - IMG-20240418-WA0069.jpg
+        - IMG-20240418-WA0070.jpg
+        - VID-20240418-WA0004.mp4
+        - VID-20240418-WA0005.mp4
+        - IMG-20240419-WA0057.jpg
+        - IMG-20240419-WA0058.jpg
+        - IMG-20240419-WA0059.jpg
+        - IMG-20240419-WA0060.jpg
+        - IMG-20240419-WA0061.jpg
+        - IMG-20240419-WA0062.jpg
+        - IMG-20240419-WA0063.jpg
+        - IMG-20240419-WA0064.jpg
+        - IMG-20240419-WA0065.jpg
+        - IMG-20240419-WA0066.jpg
+        - IMG-20240419-WA0067.jpg
+        - IMG-20240419-WA0068.jpg
+        - IMG-20240419-WA0069.jpg
+        - IMG-20240419-WA0070.jpg
+        - IMG-20240419-WA0071.jpg
+        - IMG-20240419-WA0072.jpg
+        - ejemplo de gtraccion.pdf
+      - **INFORME/**
+        - INFORMES  DE LABORATORIO DE ING. MECANICA I.docx
+        - Documento A4 Portada Informe Mensual Empresa Corporativo Azul oscuro.pdf
+        - Documento A4 Portada Informe Mensual Empresa Corporativo Azul oscuro.png
+        - Documento A4 Portada Informe Mensual Empresa Corporativo Azul oscuro (1).png
+        - DIBUJO DE INFORME.SLDDRW
+        - console.log
+      - **PLANOS DE UNA TUERCA/**
+        - tuerca pampin.SLDPRT
+        - ROTULO OFICIAL PARA TODO.SLDDRW
+        - ROTULO OFICIAL PARA TODO.pdf
+        - ROTULO PDF DEL PERNO.SLDDRW
+        - ROTULO PDF DEL PERNO.pdf
+      - **ppts pampin/**
+        - TORSION EJES  POTENCIA Y ESFUERZO NOV 2019 II.pptx
+        - ESFUERZO TERMICO 2022 I.pptx
+        - 22 4 24.pdf
+        - RSST ESF DIRECTOS  2024 I 10 ABRL.pdf
+        - dic 2023 ESTAT  DIAG  V Y M  EN  VIGAS CON CARG CONCNT Y  DIST  dic   2023 II.pdf
+        - REST    DIAG V Y M CARGA CONCENTRADA  JUN   2021 I.pdf
+        - RESIT  VyM CAR DIST  ESF 2024.pdf
+        - RST ESF VIGAS  2024 6 jun.pdf
+      - **libros/**
+        - RESISTENCIA DE MATERIALES PIRATEADO POR LOS BACK.pdf
+        - Mecanica_de_Materiales_8_Edicion_Russell.pdf
+      - **para la hp prime/**
+        - VigaPRO.hpappdir.rar
+        - para el momento flector.txt
+        - ANESH PRO.rar
+        - ANESH .rar
+        - **VigaPRO.hpappdir/**
+          - VigaPRO.hpapp
+          - icon.png
+          - VigaPRO.hpappprgm
+        - **ANESH PRO/**
+          - Raices.hpprgm
+          - Indicaciones De Instalación Correcta.txt
+          - **ANESH Pro.hpappdir/**
+            - ANESH Pro.hpappnote
+            - ANESH Pro.hpappprgm
+            - icon.png
+            - ANESH Pro.hpapp
+        - **ANESH Pro.hpappdir/**
+          - ANESH Pro.hpappnote
+          - ANESH Pro.hpappprgm
+          - icon.png
+          - ANESH Pro.hpapp
+        - **para armaduras/**
+          - para armadura.txt
+      - **recopilacion/**
+        - EXAMEN DE RECUPERACIÓN DE RESISTENCIA DE MATERIALES.pdf
+        - examen 2da unidad recuperacion.pdf
+      - **informe de lab/**
+        - informe de laboratorio resistencia de materiales.docx
+    - **termodinamica 1/**
+      - informacion sobre las tabla de termodinamica en excel.txt
+      - main.tex
+      - Welcome.frm
+      - Welcome.frx
+      - codigo de exel.docx
+      - extra.docx
+      - TABLAS_VAPOR_V1.2.xlsm
+      - tabla.docx
+      - **libros en uso/**
+        - Termodinámica 9 edicion-2.pdf
+        - Termodinamica Basica para ingenieros.pdf
+        - tabla de termodinámica cengel.pdf
+        - Tablas y graficos.pdf
+        - Solucionario Termodinamica 8ed-2-2041-1.pdf
+        - guia digitalizada I2DT1 práctica.pdf
+      - **tabla excel/**
+      - **formulario/**
+        - F. TERMODINAMICA.pdf
+      - **TRABAJO DE INVESTIGACION/**
+        - Mecanica Electrica.png
+        - TAREA DE INVESTIGACIÓN FORMATIVA 01 2024-I.docx
+        - trabajo de investigacion de BIOMASA.pdf
+        - Imagen de WhatsApp 2024-05-29 a las 08.54.25_746f285c.jpg
+        - Imagen de WhatsApp 2024-05-29 a las 08.54.25_1e365361.jpg
+        - Imagen de WhatsApp 2024-05-29 a las 09.22.26_e42cce42.jpg
+        - BIOMASA.tex
+        - BIOMASA.out
+        - BIOMASA.aux
+        - BIOMASA.log
+        - MAS COMPLETO.tex
+        - MAS COMPLETO.aux
+        - MAS COMPLETO.log
+        - MAS COMPLETO.out
+        - MAS COMPLETO.pdf
+        - MAS COMPLETO.synctex.gz
+        - escudo.jpg
+        - esto presentamos gaaaaaa.pdf
+        - esquema.jpg
+        - esquema2.jpg
+        - esta si final.pdf
+        - ya casi se termina.tex
+        - ya casi se termina.log
+        - ya casi se termina.aux
+        - ya casi se termina.pdf
+        - ya casi se termina.out
+        - ya casi se termina.synctex.gz
+        - **esta puede ser/**
+          - FINAL.pdf
+          - FINAL.tex
+          - talvez.tex
+          - talvez.aux
+          - talvez.out
+          - talvez.log
+          - talvez.pdf
+          - talvez.synctex.gz
+        - **2 investigacion/**
+          - listo.pdf
+          - GRUPO 4 .pdf
+          - investigacion.tex
+          - investigacion.pdf
+          - investigacion.aux
+          - investigacion.out
+          - investigacion.log
+          - investigacion.synctex.gz
+      - **examen/**
+        - Examen II termo.pdf
+      - ~$TABLAS_VAPOR_V1.2.xlsm
+      - ~$tion Explicit.docx
+  - **5 semestre/**
+    - EXAMEN MAMANI GALINDO RENZO GABRIEL.rar
+    - curso solido.SLDPRT
+    - **EXAMEN MAMANI GALINDO RENZO GABRIEL/**
+      - COSTOS RENZO.xlsx
+    - **metodos numericos/**
+      - Métodos_Numéricos_Con_Introducción_Al_Método_De_Adomian_Y_Las_Series.pdf
+      - Analisis-numerico.pdf
+      - Solicitud_Laboratorio_Computacion_5to_Semestre_Grupo_A.docx
+      - Solicitud_Formal_Laboratorio_Computacion_5to_Semestre_Grupo_A.docx
+      - solicitud al director de carrera.docx
+      - 5.jpg
+      - PARA EL BENITO.zip
+      - PLANTILLA.zip
+      - **libros de metodos numericos/**
+        - funciones_matlab.pdf
+        - 2.- MathRocks Métodos Numéricos - Burden.pdf
+        - Matheus_Fin_numerico.pdf
+        - funciones_matlab extra.pdf
+        - Métodos Numéricos_Chapra.pdf
+        - Programacion_en_MATLAB_1-2-3-4.pdf
+      - **formato de entrega/**
+        - 3f0238e0-1ecf-474c-8ae2-ea7fcf9ee19c.docx
+      - **talleres/**
+        - taller 1.docx
+        - taller 1 POR MAMANI GALINDO RENZO GABRIEL 228447.docx
+        - taller 1 POR MAMANI GALINDO RENZO GABRIEL 228447.pdf
+        - dda07e9f-6234-47fa-8f5a-2eee6eaa6afb.zip
+        - **4/**
+          - dda07e9f-6234-47fa-8f5a-2eee6eaa6afb.zip
+          - bisec.png
+          - mec.png
+          - example.log
+          - natnumurl.bst
+          - example.tex
+          - library.bib
+          - template_config.tex
+          - template.tex
+          - main.tex
+          - main.log
+          - main.lol
+          - main.lof
+          - main.lot
+          - main.aux
+          - main.toc
+          - main.synctex.gz
+          - main.pdf
+          - **con texstudio/**
+            - semana4.tex
+            - template.tex
+            - example.tex
+            - template_config.log
+            - template_config.tex
+            - library.bib
+            - semana4.pdf
+            - semana4.toc
+            - semana4.aux
+            - semana4.lof
+            - semana4.lot
+            - semana4.lol
+            - semana4.synctex.gz
+            - semana4.log
+            - example.log
+          - **img/**
+            - **departamentos/**
+              - Logometodos.png
+              - Logometodos.pdf
+            - **ejemplos/**
+              - bisec.png
+              - bise1.png
+              - test-image.png
+              - test-image-wrap.jpg
+              - portrait.pdf
+          - **enviar/**
+            - semana 4 tallerpdf.pdf
+            - Taller2 por Renzo gabriel mamani galindo.pdf
+          - **taller 2 completo/**
+            - 2comple.zip
+            - 2comple.pdf
+        - **formato/**
+          - template.tex
+          - template_config.tex
+          - main.tex
+          - library.bib
+          - mec.png
+          - example.tex
+          - natnumurl.bst
+          - bisec.png
+          - main.lof
+          - main.lot
+          - main.lol
+          - main.synctex.gz
+          - main.log
+          - main.aux
+          - main.toc
+          - main.pdf
+          - **img/**
+            - **departamentos/**
+              - Logometodos.pdf
+              - Logometodos.png
+            - **ejemplos/**
+              - test-image-wrap.jpg
+              - bisec.png
+              - bise1.png
+              - portrait.pdf
+              - test-image.png
+        - **semana 5/**
+          - parcial.pdf
+        - **semana 6/**
+          - Newton.txt
+          - Taller 04 Métodos numéricos.pdf
+      - **libro en latex por mi/**
+        - Reny geremay Calsina cochuirumi.pdf
+        - Reny geremay Calsina cochuirumi 2.zip
+        - libro 2 unidad.zip
+        - **examen/**
+          - natnumurl.bst
+          - mec.png
+          - template.tex
+          - template_config.tex
+          - main.log
+          - main.aux
+          - main.synctex.gz
+          - examen.synctex.gz
+          - principal.toc
+          - principal.tex
+          - principal.log
+          - principal.synctex(busy)
+          - principal.aux
+          - principal.pdf
+          - **img/**
+            - **departamentos/**
+              - Logometodos.pdf
+              - Logometodos.png
+            - **ejemplos/**
+              - bisec.png
+              - esfera.png
+              - 1.png
+              - 2.png
+              - 3.png
+              - 4.png
+              - 5.png
+          - **resolucion/**
+            - examen9.tex
+            - examen7.tex
+            - examen6.tex
+            - examen8.tex
+            - examen2.tex
+            - examen5.tex
+            - examen4.tex
+            - examen3.tex
+            - examen1.tex
+        - **libro en proceso/**
+          - main.log.tex
+          - library.bib
+          - bisec.png
+          - mec.png
+          - natnumurl.bst
+          - example.log
+          - main.lof
+          - template.tex
+          - template_config.tex
+          - main.lol
+          - MamaniRenzo_bic_fals 30.zip
+          - example.tex
+          - main.tex
+          - main.synctex(busy)
+          - main.aux
+          - main.log
+          - main.toc
+          - main.synctex.gz
+          - main.pdf
+          - **img/**
+            - **departamentos/**
+              - Logometodos.pdf
+              - Logometodos.png
+            - **ejemplos/**
+              - 12.png
+              - 13.png
+              - 14.png
+              - 15.png
+              - 5.png
+              - 3.png
+              - 4.png
+              - 6.png
+              - 10.png
+              - 11.png
+              - 1.png
+              - 2.png
+              - 7.png
+              - portrait.pdf
+              - test-image.png
+              - test-image-wrap.jpg
+              - 9.png
+              - bise1.png
+              - bisec.png
+              - 8.png
+              - esfera.png
+              - 16.png
+              - 17.png
+              - 18.png
+          - **aumento/**
+            - extra1.tex
+            - extra2.tex
+            - extra3.tex
+            - extra4.tex
+            - extra5.tex
+            - extra6.tex
+        - **pdfs para enviar/**
+          - MamaniRenzo_bic_fals.pdf
+          - MamaniReno_newton.pdf
+          - MamaniRenzo_recuperacion.pdf
+          - MamaniRenzo_trabajo final .pdf
+          - MamaniRenzo_metodo_secante.pdf
+          - MamaniRenzo_sistemas lineales.pdf
+          - MamaniRenzo_minimos.pdf
+          - MamaniRenzo_ajuste de curvaas.pdf
+        - **respaldos/**
+          - 21 de octubre.rar
+        - **libro 2 unidad/**
+          - main.log.tex
+          - natnumurl.bst
+          - library.bib
+          - mec.png
+          - bisec.png
+          - example.log
+          - main.lof
+          - template.tex
+          - template_config.tex
+          - main.lol
+          - MamaniRenzo_bic_fals 30.zip
+          - img.rar
+          - example.tex
+          - main.tex
+          - main.aux
+          - main.toc
+          - main.log
+          - main.pdf
+          - main.synctex.gz
+          - **img/**
+            - **departamentos/**
+              - Logometodos.png
+              - Logometodos.pdf
+            - **ejemplos/**
+              - min1.png
+              - min2.png
+              - a.png
+              - 1.png
+              - 6.png
+              - c.png
+              - b.png
+              - ejem3.png
+              - e.png
+              - min4.png
+              - 2.png
+              - 3.png
+              - ejem1.png
+              - 4.png
+              - d.png
+              - 5.png
+              - ejem2.png
+              - pol1.png
+              - min5.png
+              - min3.png
+              - min6.png
+              - min7.png
+          - **aumento/**
+            - extra4.tex
+            - extra1.pdf
+            - extra1.synctex.gz
+            - extra1.log
+            - extra6.tex
+            - extra3.tex
+            - extra1.tex
+            - extra5.tex
+            - extra2.tex
+          - **pdfs echos/**
+            - 14 de noviembre 2024.pdf
+            - 28 de noviembre.pdf
+            - 2 de diciembre.pdf
+        - **real steven/**
+          - main.log.tex
+          - mec.png
+          - bisec.png
+          - library.bib
+          - natnumurl.bst
+          - example.log
+          - main.lof
+          - template.tex
+          - template_config.tex
+          - main.lol
+          - MamaniRenzo_bic_fals 30.zip
+          - img.rar
+          - example.tex
+          - main.toc
+          - main.tex
+          - main.log
+          - main.pdf
+          - main.aux
+          - main.synctex.gz
+          - **img/**
+            - **departamentos/**
+              - Logometodos.pdf
+              - Logometodos.png
+            - **ejemplos/**
+              - portrait.pdf
+              - test-image.png
+              - test-image-wrap.jpg
+              - esfera.png
+              - 1.png
+              - 2.png
+              - 3.png
+              - 5.png
+              - 6.png
+              - 4.png
+              - a.png
+              - b.png
+              - c.png
+              - d.png
+              - e.png
+          - **pdfs echos/**
+            - 14 de noviembre 2024.pdf
+          - **aumento/**
+            - extra5.tex
+            - extra4.tex
+            - extra1.pdf
+            - extra1.synctex.gz
+            - extra1.log
+            - extra6.tex
+            - extra3.tex
+            - extra2.tex
+            - extra1.tex
+        - **Reny geremay Calsina cochuirumi 2/**
+          - main.log.tex
+          - library.bib
+          - bisec.png
+          - natnumurl.bst
+          - main.lof
+          - template.tex
+          - template_config.tex
+          - mec.png
+          - main.lol
+          - example.log
+          - main.tex
+          - example.tex
+          - Reny geremay Calsina cochuirumi.pdf
+          - main.log
+          - main.aux
+          - main.toc
+          - main.pdf
+          - main.synctex.gz
+          - Reny geremay Calsina cochuirumi 2.pdf
+          - **img/**
+            - **departamentos/**
+              - Logometodos.pdf
+              - Logometodos.png
+            - **ejemplos/**
+              - min1.png
+              - min2.png
+              - min4.png
+              - min3.png
+              - min5.png
+              - min6.png
+              - min7.png
+              - ejem1.png
+              - ejem2.png
+              - ejem3.png
+          - **aumento/**
+            - extra5.tex
+            - extra4.tex
+            - extra1.pdf
+            - extra1.synctex.gz
+            - extra1.log
+            - extra6.tex
+            - extra2.tex
+            - extra3.tex
+            - extra1.tex
+      - **2 unidad/**
+        - Minimos_cuadrados-Excel.pdf
+        - Minimos_cuadrados-Matlab.pdf
+        - AjusteDeCurvas.pdf
+        - **simpson 13/**
+          - metodos.pdf
+          - simpson 13.tex
+          - simpson 13.toc
+          - simpson 13.snm
+          - simpson 13.nav
+          - simpson 13.aux
+          - simpson 13.out
+          - simpson 13.pdf
+          - simpson 13.log
+          - simpson 13.synctex.gz
+      - **PLANTILLA/**
+        - Reny geremay Calsina cochuirumi.pdf
+        - Reny geremay Calsina cochuirumi.zip
+        - Erick Carlos Yana Benito.zip
+        - Erick Carlos Yana Benito.pdf
+        - **plantilla/**
+          - main.log.tex
+          - bisec.png
+          - library.bib
+          - natnumurl.bst
+          - mec.png
+          - main.lof
+          - template.tex
+          - template_config.tex
+          - main.lol
+          - example.log
+          - example.tex
+          - main.toc
+          - main.tex
+          - main.log
+          - main.pdf
+          - main.aux
+          - main.synctex.gz
+          - **img/**
+            - **departamentos/**
+              - Logometodos.png
+              - Logometodos.pdf
+            - **ejemplos/**
+              - min1.png
+              - min2.png
+              - min4.png
+              - min3.png
+              - min5.png
+              - min6.png
+              - min7.png
+              - ejem1.png
+              - ejem2.png
+              - ejem3.png
+              - exa1.png
+              - exa2.png
+              - exa3.png
+              - exa4.png
+          - **aumento/**
+            - extra5.tex
+            - extra1.synctex.gz
+            - extra1.pdf
+            - extra1.log
+            - extra6.tex
+            - extra3.tex
+            - extra2.tex
+            - extra1.tex
+            - extra4.tex
+      - **para benito 2/**
+        - main.pdf
+      - **examen/**
+        - MamaniRenzo_examen.pdf
+      - **codigos para metodos numericos/**
+        - metodo de biseccion.txt
+        - metodo de falsa posicion.txt
+        - Newton Rhapson.txt
+        - metodo secante.txt
+        - sistemas tineales.txt
+        - minimos cuadrados.txt
+        - interpolacion lagrange.txt
+        - Método de Diferencias Finitas.txt
+        - Método de Runge-Kutta (RK4).txt
+        - Método de Euler.txt
+        - Método de Gauss-Seidel.txt
+        - Método de Jacobi.txt
+        - Métodos de Ajuste No Lineal.txt
+        - Método de Simpson.txt
+        - Método del Trapecio.txt
+        - Método de Regula Falsi (Modificado).txt
+        - Método de Splines.txt
+    - **laboratorio de ingenieria mecanica I/**
+      - medicion de potencia.pdf
+      - medicion de potencia 2.pdf
+      - medicion de potencia 2-5-8.pdf
+      - palli.pdf
+      - alex.pdf
+      - **informe del centro meteorologico/**
+        - Manual del observador CP PUNO.pdf
+        - guia_de_informe de ingenieria mecanica_J_A.pdf
+        - Informe_Extendido_Laboratorio_Ingenieria_Mecanica.pdf
+        - MamaniRenzo_informe de laboratorio de mecánica 1.docx
+        - Informe_Extendido_Laboratorio_Ingenieria_Mecanica.docx
+        - MamaniRenzo_informe de laboratorio de mecánica 1.pdf
+        - **IMAGEES/**
+          - IMG-20241009-WA0029.jpg
+          - IMG-20241009-WA0030.jpg
+          - IMG-20241009-WA0031.jpg
+          - IMG-20241009-WA0032.jpg
+          - IMG-20241009-WA0033.jpg
+          - IMG-20241009-WA0034.jpg
+          - IMG-20241009-WA0035.jpg
+          - IMG-20241009-WA0036.jpg
+          - IMG-20241009-WA0037.jpg
+          - IMG-20241009-WA0038.jpg
+          - IMG-20241009-WA0039.jpg
+          - IMG-20241009-WA0040.jpg
+          - IMG-20241009-WA0041.jpg
+          - IMG-20241009-WA0042.jpg
+          - IMG-20241009-WA0043.jpg
+          - IMG-20241009-WA0044.jpg
+          - IMG-20241009-WA0045.jpg
+          - IMG-20241009-WA0046.jpg
+          - IMG-20241009-WA0047.jpg
+          - IMG-20241009-WA0048.jpg
+          - IMG-20241009-WA0049.jpg
+          - IMG-20241009-WA0050.jpg
+          - IMG-20241009-WA0051.jpg
+          - IMG-20241009-WA0052.jpg
+          - IMG-20241009-WA0053.jpg
+          - IMG-20241009-WA0054.jpg
+          - IMG-20241009-WA0055.jpg
+          - IMG-20241009-WA0056.jpg
+          - IMG-20241009-WA0057.jpg
+          - IMG-20241009-WA0058.jpg
+          - IMG-20241009-WA0059.jpg
+          - IMG-20241009-WA0060.jpg
+          - IMG-20241009-WA0061.jpg
+          - IMG-20241009-WA0062.jpg
+          - IMG-20241009-WA0063.jpg
+          - IMG-20241009-WA0064.jpg
+          - IMG-20241009-WA0065.jpg
+          - IMG-20241009-WA0066.jpg
+          - IMG-20241009-WA0067.jpg
+          - HELIOGRAFO.jpg
+          - Microbarógrafo.jpg
+          - Tanque de Evaporación Tipo 'A'.jpg
+          - termometro de suelo.jpg
+      - **informe de la maquina de pricipio de funcionamiento de la turbina pelton/**
+        - mec.png
+        - natnumurl.bst
+        - template.tex
+        - template_config.tex
+        - main.log
+        - examen.synctex.gz
+        - principal.toc
+        - template.synctex(busy)
+        - template.pdf
+        - template.log
+        - principal.bbl
+        - principal.blg
+        - main.aux
+        - main.synctex.gz
+        - principal.aux
+        - principal.log
+        - principal.synctex.gz
+        - informe.blg
+        - informe.bbl
+        - biblioapa.log
+        - biblioapa.bib
+        - informe.tex
+        - informe.log
+        - informe.aux
+        - informe.pdf
+        - informe.synctex.gz
+        - **img/**
+          - **departamentos/**
+            - Logometodos.pdf
+            - Logometodos.png
+          - **ejemplos/**
+            - IMG20241029131902.jpg
+            - IMG20241029131923.jpg
+            - IMG20241029131926.jpg
+            - IMG20241029131928.jpg
+            - IMG20241029131934.jpg
+            - IMG20241029131941.jpg
+            - IMG20241029132003.jpg
+            - IMG20241029131951.jpg
+            - IMG20241029132013.jpg
+            - IMG20241029132630.jpg
+            - IMG20241029132147.jpg
+            - IMG20241029133409.jpg
+            - IMG20241029133420.jpg
+            - IMG20241029133300.jpg
+            - IMG20241029133527.jpg
+            - IMG20241029133540.jpg
+            - IMG20241029133641.jpg
+            - IMG20241029133821.jpg
+            - IMG20241029134733.jpg
+            - IMG20241029134737.jpg
+            - IMG20241029134746.jpg
+            - IMG20241029140444.jpg
+            - IMG20241029140451.jpg
+            - IMG_20241029_131916.jpg
+            - IMG_20241029_131929.jpg
+            - paso 1.jpg
+            - Módulo base para ensayos HM-150.jpg
+            - modulo.png
+            - 1.png
+            - 2.png
+            - 1730685114748.jpg
+            - VID_20241029_133439.mp4
+            - 1730685114771.jpg
+            - 1730685114784.jpg
+            - 1730685114796.jpg
+            - 1730685114805.jpg
+            - 1730685114821.jpg
+            - 1730685114831.jpg
+            - 1730685114842.jpg
+            - 1730685114852.jpg
+            - 1730685114863.jpg
+            - 1730685114874.jpg
+            - 1730685114884.jpg
+            - 1730685114894.jpg
+            - 1730685114902.jpg
+            - 1730685114916.jpg
+            - TurbinaPelton.jpg
+            - digitalTacometro.jpg
+            - IMG_20241029_131945.jpg
+            - IMG_20241029_131931.jpg
+            - IMG_20241029_131938.jpg
+            - IMG_20241029_132015.jpg
+            - IMG_20241029_131951.jpg
+            - IMG_20241029_132007.jpg
+            - IMG_20241029_132004.jpg
+            - IMG_20241029_133104.jpg
+            - IMG_20241029_133047.jpg
+            - IMG_20241029_133051.jpg
+            - IMG_20241029_133702.jpg
+            - IMG_20241029_133419.jpg
+            - IMG_20241029_133655.jpg
+            - IMG_20241029_133827.jpg
+            - IMG_20241029_134718.jpg
+            - IMG_20241029_133709.jpg
+            - IMG_20241029_141449.jpg
+            - IMG_20241029_140915.jpg
+            - IMG_20241029_140151.jpg
+            - IMG_20241029_140144.jpg
+            - 1730685114668.jpg
+            - 1730685114674.jpg
+            - 1730685114679.jpg
+            - 1730685114687.jpg
+            - 1730685114703.jpg
+            - 1730685114712.jpg
+            - 1730685114723.jpg
+            - 1730685114736.jpg
+        - **resolucion/**
+          - 6.tex
+          - 7.tex
+          - 7.log
+          - 2.log
+          - 3.tex
+          - 2.tex
+          - 4.tex
+          - 5.tex
+          - 1.tex
+        - **informacion de la maquina/**
+          - HM-150.19-Principio-de-funcionamiento-de-una-turbina-Pelton-gunt-566-pdf_1_es-ES.pdf
+          - pdf-informe-n1docx_compress.pdf
+      - **informe de bombas en serie/**
+        - pdf-curva-caracteristica-de-bombas-conectadas-en-paralelo-con-el-modulo-hm-15016_compress.pdf
+        - HM-150.16-Conexion-en-serie-y-en-paralelo-de-bombas-gunt-563-pdf_1_es-ES.pdf
+        - MmaniRenzo_bomba.pdf
+        - este informe esta mejor.zip
+        - datos recopilados.xlsx
+        - **para un informe/**
+          - principal.toc
+          - principal.synctex.gz
+          - template.tex
+          - principal.pdf
+          - principal.log
+          - main.aux
+          - mec.png
+          - natnumurl.bst
+          - template_config.tex
+          - principal.aux
+          - main.synctex.gz
+          - main.log
+          - examen.synctex.gz
+          - bomba labaratorio.synctex(busy).gz
+          - biblioapa.log
+          - template.pdf
+          - template.synctex.gz
+          - template.log
+          - biblioapa.bib
+          - texput.log
+          - bomba labaratorio.bbl
+          - bomba labaratorio.blg
+          - bomba labaratorio.aux
+          - bomba labaratorio.bcf
+          - bomba labaratorio.pdf
+          - bomba labaratorio.run.xml
+          - bomba labaratorio.tex
+          - bomba labaratorio.log
+          - **img/**
+            - Curvas-caracteristicas-de-una-bomba-centrifuga.png
+            - **departamentos/**
+              - Logometodos.pdf
+              - Logometodos.png
+            - **ejemplos/**
+              - paso 1.jpg
+              - IMG20241029131934.jpg
+              - IMG20241029132013.jpg
+              - IMG20241029131928.jpg
+              - IMG20241029132630.jpg
+              - G1.jpg
+              - IMG20241029131926.jpg
+              - O3.jpg
+              - IMG20241029131951.jpg
+              - IMG20241029131902.jpg
+              - IMG20241029132147.jpg
+              - 1.png
+              - Turbina Pelton.jpg
+              - IMG20241029133420.jpg
+              - IMG20241029133409.jpg
+              - digital tacometro.jpg
+              - IMG20241029133527.jpg
+              - IMG20241029133300.jpg
+              - 2.png
+              - P1.png
+              - P2.png
+              - P3.png
+              - P4.png
+              - P5.png
+              - Z1.jpg
+              - Z2.jpg
+              - Z3.jpg
+              - O1.png
+              - O2.png
+              - G2.png
+              - G3.png
+              - IMG_20241105_132840.jpg
+              - IMG_20241105_132847.jpg
+              - J10.jpg
+              - IMG_20241105_132908.jpg
+              - IMG_20241105_132925.jpg
+              - IMG_20241105_132957.jpg
+              - IMG_20241105_133011.jpg
+              - IMG_20241105_133020.jpg
+              - IMG_20241105_133023.jpg
+              - IMG_20241105_133033.jpg
+              - IMG_20241105_133945.jpg
+              - IMG_20241105_133956.jpg
+              - IMG_20241105_134017.jpg
+              - IMG_20241105_134749.jpg
+              - IMG_20241105_135300.jpg
+              - IMG_20241105_135451.jpg
+              - IMG_20241105_135453.jpg
+              - IMG_20241105_135954.jpg
+              - J11.jpg
+              - IMG_20241105_140850.jpg
+              - IMG_20241105_140859.jpg
+              - IMG_20241105_141056.jpg
+              - IMG_20241105_142153.jpg
+              - IMG_20241105_142159.jpg
+              - IMG_20241105_143248.jpg
+              - modulo.jpg
+              - hm15016.jpg
+              - curva.png
+              - J1.png
+              - IMG_20241105_132903.jpg
+              - N1.png
+              - N2.png
+              - J12.png
+              - J9.png
+              - J2.png
+              - L1.png
+              - J3.png
+              - Z4.jpg
+              - Z5.jpg
+              - Z6.png
+              - IMG20241029133821.jpg
+              - IMG_20241105_141429.jpg
+              - IMG20241029140444.jpg
+              - IMG20241029133641.jpg
+              - IMG20241029133540.jpg
+              - J5.jpg
+              - J8.jpg
+              - Módulo base para ensayos HM-150.jpg
+              - IMG20241029134733.jpg
+              - IMG_20241105_141652.jpg
+              - IMG_20241105_141100.jpg
+              - J4.jpg
+              - IMG_20241105_141433.jpg
+              - J7.jpg
+              - J6.jpg
+              - IMG20241029140451.jpg
+              - IMG20241029134746.jpg
+              - IMG20241029132003.jpg
+              - IMG_20241029_131916.jpg
+              - IMG_20241105_141646.jpg
+              - IMG_20241029_131929.jpg
+              - modulo.png
+              - curvamat.png
+          - **resolucion/**
+            - 7.log
+            - 2.log
+            - 3.tex
+            - 2.tex
+            - 1.tex
+            - 4.tex
+            - 5.tex
+            - 7.tex
+            - 6.tex
+        - **este informe esta mejor/**
+          - referencias.bib
+          - laboratorioinforme.tex
+          - laboratorioinforme.synctex.gz
+          - laboratorioinforme.log
+          - laboratorioinforme.bcf
+          - laboratorioinforme.run.xml
+          - laboratorioinforme.aux
+          - laboratorioinforme.pdf
+          - **aumento/**
+            - 7.log
+            - 2.log
+            - 3.tex
+            - 2.tex
+            - 1.tex
+            - 4.tex
+            - 5.tex
+            - 6.tex
+            - 7.tex
+          - **img/**
+            - Curvas-caracteristicas-de-una-bomba-centrifuga.png
+            - **departamentos/**
+              - Logometodos.png
+              - Logometodos.pdf
+            - **ejemplos/**
+              - G1.jpg
+              - IMG20241029131902.jpg
+              - paso 1.jpg
+              - O3.jpg
+              - IMG20241029131928.jpg
+              - IMG20241029131926.jpg
+              - IMG_20241029_131916.jpg
+              - IMG20241029134746.jpg
+              - IMG20241029140444.jpg
+              - Turbina Pelton.jpg
+              - IMG20241029133420.jpg
+              - IMG20241029133409.jpg
+              - modulo.png
+              - 1.png
+              - digital tacometro.jpg
+              - 2.png
+              - IMG20241029134733.jpg
+              - P2.png
+              - P4.png
+              - P5.png
+              - G2.png
+              - G3.png
+              - IMG_20241105_132840.jpg
+              - IMG_20241105_132847.jpg
+              - IMG_20241105_132908.jpg
+              - IMG_20241105_132925.jpg
+              - IMG_20241105_132957.jpg
+              - IMG_20241105_133011.jpg
+              - IMG_20241105_133020.jpg
+              - IMG_20241105_133023.jpg
+              - IMG_20241105_133033.jpg
+              - IMG_20241105_133945.jpg
+              - IMG_20241105_133956.jpg
+              - IMG_20241105_134017.jpg
+              - IMG_20241105_134749.jpg
+              - IMG_20241105_135453.jpg
+              - IMG_20241105_135954.jpg
+              - IMG_20241105_140850.jpg
+              - IMG_20241105_140859.jpg
+              - IMG_20241105_141056.jpg
+              - IMG_20241105_141100.jpg
+              - IMG_20241105_141429.jpg
+              - IMG_20241105_141652.jpg
+              - modulo.jpg
+              - hm15016.jpg
+              - curva.png
+              - J1.png
+              - J3.png
+              - IMG_20241105_132903.jpg
+              - J12.png
+              - J6.jpg
+              - J8.jpg
+              - IMG20241029131934.jpg
+              - IMG20241029131951.jpg
+              - IMG20241029132147.jpg
+              - J5.jpg
+              - J4.jpg
+              - IMG_20241029_131929.jpg
+              - J7.jpg
+              - N2.png
+              - O1.png
+              - N1.png
+              - L1.png
+              - Z2.jpg
+              - Z3.jpg
+              - Z4.jpg
+              - O2.png
+              - Z6.png
+              - IMG20241029140451.jpg
+              - IMG20241029132003.jpg
+              - IMG20241029132630.jpg
+              - IMG20241029133821.jpg
+              - J2.png
+              - Módulo base para ensayos HM-150.jpg
+              - IMG20241029133300.jpg
+              - Z5.jpg
+              - IMG20241029132013.jpg
+              - IMG_20241105_141646.jpg
+              - Z1.jpg
+              - IMG20241029133540.jpg
+              - J10.jpg
+              - P3.png
+              - mec.png
+              - IMG20241029133527.jpg
+              - IMG_20241105_142159.jpg
+              - J11.jpg
+              - J9.png
+              - IMG_20241105_142153.jpg
+              - P1.png
+              - IMG_20241105_143248.jpg
+              - IMG20241029133641.jpg
+              - IMG_20241105_135451.jpg
+              - IMG_20241105_141433.jpg
+              - IMG_20241105_135300.jpg
+              - Curvas-caracteristicas-de-una-bomba-centrifuga.png
+              - curvamat.png
+      - **informe de medicion de potencia/**
+        - referencias.bib
+        - medicion de potencia.tex
+        - medicion de potencia.synctex(busy)
+        - medicion de potencia.pdf
+        - medicion de potencia.log
+        - medicion de potencia.aux
+        - medicion de potencia.bcf
+        - **imagenes/**
+      - informe de medicion de potencia.zip
+    - **diseño de elementos de maquinas I/**
+      - MACHINE ELEMENTS IN MECHANICAL DESING.pdf
+      - Documento de . (2).pdf
+      - Documento de . (1).pdf
+      - Documento de ..pdf
+      - para un informe.rar
+      - pernos y fajas.pdf
+      - **para un informe/**
+        - template.tex
+        - principal.toc
+        - template_config.tex
+        - main.log
+        - examen.synctex.gz
+        - main.aux
+        - main.synctex.gz
+        - natnumurl.bst
+        - mec.png
+        - principal.aux
+        - principal.log
+        - principal.pdf
+        - principal.synctex.gz
+        - MamaniRenzo_informe_de_laboratorio.tex
+        - MamaniRenzo_informe_de_laboratorio.aux
+        - MamaniRenzo_informe_de_laboratorio.log
+        - MamaniRenzo_informe_de_laboratorio.pdf
+        - MamaniRenzo_informe_de_laboratorio.synctex.gz
+        - **img/**
+          - **departamentos/**
+            - Logometodos.pdf
+            - Logometodos.png
+          - **ejemplos/**
+            - 1 (1).jpg
+            - 1 (2).jpg
+            - 1 (3).jpg
+            - 1 (4).jpg
+            - 1 (5).jpg
+            - 1 (6).jpg
+            - 1 (7).jpg
+            - 1 (8).jpg
+            - 1 (9).jpg
+        - **resolucion/**
+          - 3Fundamento Teórico.log
+          - 3Fundamento Teórico.tex
+          - 2Objetivos.tex
+          - 5Procedimiento Experimental.tex
+          - 8Conclusiones.tex
+          - 4Equipos y Materiales.tex
+          - 7Análisis de Resultados.tex
+          - 6Resultados.tex
+          - 1Resumen.tex
+      - **silabo/**
+        - 08dcb65e-95ed-42f4-8453-0d32a0cb4cf2.pdf
+      - **temas de unid 2/**
+        - ilovepdf_split-range.zip
+    - **analisis de circuitos electricos I/**
+      - **para imprimir/**
+        - Cap.I- Prob-Circ. I.pdf
+        - Circ. I - Semana 1.pdf
+        - Circ.I - Semana 2.pdf
+        - Circ.I - Semana 3.pdf
+        - todos lo archivos de hasta la sem 3.pdf
+      - **trabajo de tipeo en latex/**
+        - MamaniRenzo_tipeo.snm
+        - MamaniRenzo_tipeo.out
+        - MamaniRenzo_tipeo.toc
+        - MamaniRenzo_tipeo.nav
+        - MamaniRenzo_tipeo.tex
+        - MamaniRenzo_tipeo.aux
+        - MamaniRenzo_tipeo.pdf
+        - MamaniRenzo_tipeo.log
+        - MamaniRenzo_tipeo.synctex.gz
+        - **imagenes que tipeare/**
+          - IMG-20241014-WA0050.jpg
+          - IMG-20241014-WA0051.jpg
+          - IMG-20241014-WA0052.jpg
+          - IMG-20241014-WA0054.jpg
+          - IMG-20241014-WA0055.jpg
+          - IMG-20241014-WA0056.jpg
+          - IMG-20241014-WA0057.jpg
+          - IMG-20241014-WA0058.jpg
+          - IMG-20241014-WA0059.jpg
+          - IMG-20241014-WA0060.jpg
+          - IMG-20241014-WA0061.jpg
+          - IMG-20241014-WA0062.jpg
+          - IMG-20241014-WA0053.jpg
+          - 1📌.jpg
+          - 2📌.jpg
+          - 3📌.jpg
+          - 4📌.jpg
+          - 5📌.jpg
+          - 6📌.jpg
+          - 7📌.jpg
+          - 8📌.jpg
+          - 9📌.jpg
+          - 10📌.jpg
+          - 88.jpg
+          - 89.jpg
+          - 90.jpg
+          - 11📌.jpg
+        - **ejemplo/**
+          - Parte6A-Circuitikz.tex
+          - Parte6A-Circuitikz.synctex.gz
+          - Parte6A-Circuitikz.log
+          - Parte6A-Circuitikz.pdf
+          - Parte6A-Circuitikz.aux
+          - Parte6A-Circuitikz.synctex(busy)
+      - **tipeo en ppt/**
+        - Presentación1.pptx
+        - **imagenes que tipeare/**
+          - 9📌.jpg
+          - 8📌.jpg
+          - 10📌.jpg
+          - 89.jpg
+          - 88.jpg
+          - 90.jpg
+          - 11📌.jpg
+          - IMG-20241014-WA0054.jpg
+          - IMG-20241014-WA0055.jpg
+          - IMG-20241014-WA0056.jpg
+          - IMG-20241014-WA0057.jpg
+          - IMG-20241014-WA0058.jpg
+          - IMG-20241014-WA0059.jpg
+          - IMG-20241014-WA0060.jpg
+          - IMG-20241014-WA0061.jpg
+          - IMG-20241014-WA0062.jpg
+          - 1📌.jpg
+          - 3📌.jpg
+          - 2📌.jpg
+          - 4📌.jpg
+          - 5📌.jpg
+          - 6📌.jpg
+          - 7📌.jpg
+          - liso.jpg
+          - hecho.jpg
+          - hechjj.jpg
+          - nyjyjyjtyj.jpg
+      - **material/**
+        - EXAMEN FINAL ELECTRICIDAD Y ELECTROMAGNETISMO.pdf
+        - photo_2024-06-15_16-44-28.jpg
+        - Circuitos Eléctricos (Mora).pdf
+        - Circ.I - Semana 3.pdf
+        - Libro-Circ.Elect.I.pdf
+        - UNIDADES.doc
+        - Uso correcto de las unidades eléctricas.doc
+        - Sist. Unidades Elect..doc
+        - Sistema Internacional de Unidades.doc
+        - Unid. Sist. Elect..doc
+        - Sist. Unidades.docx
+        - Unid. en Circ. Elecr..docx
+        - Fundamentals_of_Electric_Circuits.pdf
+        - Solution Manual for F.O.E.C..pdf
+        - circuitos electricos,Intr.Analisis y Diseño-Richard Dorf.pdf
+        - Circ.I - Semana 3.ppt
+        - Circ.I - Semana 2.ppt
+        - Cap.I- Prob-Circ. I.ppt
+        - Circ. I - Semana 1.ppt
+      - **grupo dilmar/**
+        - circuito 30 a 31.docx
+    - **neumatica e hibraulica/**
+      - monografia de ambos proyectos.zip
+      - monografia_de_ambos_proyectos.pdf
+      - **libros de neumatica e hidraulica/**
+        - neumatica-festo.pdf
+        - vdocuments.site_problemas-de-hidraulica-nekrasov.pdf
+        - GENERALIDADES.pdf
+      - **unidad 1/**
+        - **proyecto/**
+          - **para la presentacion 15 DE OCTUBRE/**
+            - MamaniRenzo_planos-de-cortadora-neumatica_compress.pdf
+            - Mamani_Renzo_PROPUESTA DE PROYECTO_cortadora de papas.pdf
+            - Cortadora de papas.mp4
+            - MamaniRenzo_ESQUEMA NEUMATICO EN FLUIDSIM.tif
+            - MamaniRenzo_ESQUEMA NEUMATICO EN FLUIDSIM.dxf
+            - MamaniRenzo_ESQUEMA NEUMATICO EN FLUIDSIM.ct
+            - MamaniRenzo_ESQUEMA NEUMATICO EN FLUIDSIM.bak
+            - ESQUEMA NEUMATICO EN AUTOCAD.dwl
+            - ESQUEMA NEUMATICO EN AUTOCAD.bak
+            - ESQUEMA NEUMATICO EN AUTOCAD.dwg
+            - ESQUEMA NEUMATICO EN AUTOCAD.dwl2
+            - cortadora de papas.pptx
+          - **TODOS LOS DOCUMENTOS DEL ESQUEMA/**
+            - esquemas.pdf
+            - esquemas.dxf
+            - parapresentar.dxf
+            - plano de neumatica.pdf
+            - saved2266958.tmp
+            - atmpde784b06.dwg
+            - UNIVERSIDAD NACIONAL DEL ALTIPLANO PUNO.pdf
+            - cortadora de papas.pptx
+            - final.pptx
+            - sistema neumatico.pptx
+            - cortadora de papas.docx
+            - DIAGRAMA ESTADO 16 DE OCTUBRE.pdf
+            - ESQUEMA NEUMATICO EN AUTOCAD 16 DE OCTUBRE.pdf
+            - plot.log
+            - esquemas.ct
+            - esquemas.bak
+        - **semana 5/**
+          - ESQUEMASNEUMATICOSNORMATIVAVALVULAS01.pdf
+        - **LO QUE NO PUDE ENVIAR/**
+          - **compresores/**
+            - compresores.docx
+            - comporesores.tex
+            - comporesores.pdf
+            - comporesores.aux
+            - comporesores.out
+            - comporesores.log
+            - comporesores.synctex.gz
+            - **imagenes/**
+              - figura1.jpg
+              - figura2.jpg
+              - figura3.jpg
+              - figura4.jpg
+              - figura5.png
+            - **bibliografia/**
+              - Compresores axiales.pdf
+              - bibliografia de compresores.txt
+          - **proyecto/**
+            - Proyecto_compressed.pdf
+            - CD-5664.pdf
+            - IV_FIN_112_TE_Salcedo_Gonzalez_2023.pdf
+            - pdf-planos-de-cortadora-neumatica_compress.pdf
+            - pdf-planos-de-cortadora-neumatica.docx
+            - **para enviar/**
+              - ~WRL1496.tmp
+              - planos-de-cortadora-neumatica_compress.pdf
+              - UNIVERSIDAD NACIONAL DEL ALTIPLANO PUNO.pdf
+              - final presentar.pdf
+              - esquema.txt
+              - pos.txt
+              - esquema del circuito.tif
+              - esquema del circuito.bak
+              - esquema del circuito.ct
+              - esquema del circuito.dxf
+              - B-Cajetin DIN A4 HZ.dwg
+              - esquem neumatico.dxf
+              - plot.log
+              - Presiones para Componentes de la Máquina Re.docx
+              - esquem neumatico.dwg
+              - esquem neumatico.bak
+              - esquema del circuito_recover.dwg
+              - B-Cajetin DIN A4 HZ.dwl2
+              - B-Cajetin DIN A4 HZ.dwl
+              - UNIVERSIDAD NACIONAL DEL ALTIPLANO PUNO.docx
+              - **AUMENTO/**
+                - esquem neumatico.pdf
+                - EXTRA.pdf
+              - **APLICACION 3/**
+                - Ejemplo aplicacion 3.dxf
+                - Ejemplo aplicacion 3.pdf
+                - Ejemplo aplicacion 3.bak
+                - Ejemplo aplicacion 3.ct
+                - plot.log
+              - **APLICACIÓN 4/**
+                - Ejemplo aplicacion 4.ct
+                - Ejemplo aplicacion 4.dxf
+                - Ejemplo aplicacion 4.pdf
+                - plot.log
+              - **con mejoras/**
+                - noname.dxf
+                - pos.txt
+      - **unidad 2/**
+        - **Laboratorio de neumática/**
+          - PRACTICASDELABORATORIO.pdf
+          - formato.docx
+          - **Vídeos/**
+            - VID20241031135723.mp4
+            - VID20241031135809.mp4
+            - IMG20241031135954.jpg
+        - **libr/**
+          - VALVULAS.pdf
+        - **PROYECTO 2 DE HIDRAULICA/**
+          - **planos fluidsim/**
+            - noname.ct
+            - plot.log
+            - ESQUEMA HIDRAULICO.pdf
+            - plano.bak
+            - plano.ct
+            - FINAL.pdf
+            - 10 de noviembre.ct
+            - 10 de noviembre.bak
+            - esquema neumático.pdf
+          - **presentacion/**
+            - presentaciones.pdf
+            - PRENSA HIDRÁULICA SEMIAUTOMÁTICA TIPO H.pptx
+            - **presentacion/**
+              - presentaciones.tex
+              - presentaciones.out
+              - presentaciones.aux
+              - presentaciones.toc
+              - presentaciones.snm
+              - presentaciones.nav
+              - presentaciones.log
+              - presentaciones.pdf
+              - presentaciones.synctex.gz
+              - **img/**
+                - pascal.png
+                - esquema.png
+                - plc.png
+                - t2.png
+                - t1.png
+                - bombas.png
+                - cilindroSE.png
+                - motorMG.png
+                - deposito.png
+                - filtros.png
+                - prensa.png
+          - **documentos/**
+            - TGT_1320.pdf
+            - PRENSA HIDRÁULICA SEMIAUTOMÁTICA TIPO H.docx
+            - sistema hidraulico.pdf
+            - MamaniRenzo_hidraulica.pdf
+            - **para propuesta de proyecto/**
+              - mec.png
+              - natnumurl.bst
+              - template.tex
+              - template_config.tex
+              - main.aux
+              - main.synctex.gz
+              - main.log
+              - examen.synctex.gz
+              - principal.toc
+              - principal.tex
+              - principal.aux
+              - principal.out
+              - principal.log
+              - principal.synctex.gz
+              - principal.pdf
+              - **img/**
+                - **departamentos/**
+                  - Logometodos.pdf
+                  - Logometodos.png
+                - **ejemplos/**
+                  - 1.png
+                  - 2.png
+                  - 3.png
+                  - 4.png
+                  - 5.png
+                  - 6.png
+                  - 7.png
+                  - 8.png
+                  - 9.png
+                  - a.png
+                  - b.png
+                  - bombas.png
+                  - V1.png
+                  - V2.png
+                  - V3.png
+                  - V4.png
+                  - V5.png
+                  - V6.png
+                  - deposito.png
+                  - caudales.png
+                  - cilindro.png
+                  - reticulante.png
+                  - retorno.png
+                  - condiciones.png
+              - **resolucion/**
+                - 7.tex
+                - 8.tex
+                - 3.tex
+                - 2.tex
+                - 4.tex
+                - 6.tex
+                - 5.tex
+                - 1.tex
+      - **monografia de ambos proyectos/**
+        - carrero.png
+        - DIAGRAMA ESTADO 16 DE OCTUBRE.pdf
+        - monografia.docx
+        - document.synctex(busy) (2).gz
+        - ESQUEMA_NEUMATICO.pdf
+        - ESQUEMA_HIDRAULICO.pdf
+        - document.ttt
+        - document.synctex(busy) (1).gz
+        - document.synctex(busy).gz
+        - h.png
+        - n.png
+        - document.tex
+        - document.out
+        - document.fff
+        - document.aux
+        - document.toc
+        - document.log
+        - document.pdf
+        - document.synctex.gz
+        - imprimir.pdf
+    - **termodinamica II/**
+      - MamaniRenzo_trabajo2.pdf
+      - **LIBROS DE TERMO 2/**
+        - Combustion.pdf
+      - **1 unid/**
+        - **investigacion/**
+          - latex_document.tex
+          - latex_document.log
+          - **documento/**
+            - document.out
+            - document.pdf
+            - document.aux
+            - document.log
+            - document.synctex.gz
+            - MamaniRenzo_Orsat.tex
+            - MamaniRenzo_Orsat.out
+            - MamaniRenzo_Orsat.log
+            - MamaniRenzo_Orsat.aux
+            - MamaniRenzo_Orsat.pdf
+            - MamaniRenzo_Orsat.synctex.gz
+            - **articulo/**
+              - LTJournalArticle.cls
+              - LaTeXTemplates_journal-article_v2.0.zip
+              - sample.bib
+              - template.tex
+              - template.log
+              - template.aux
+              - template.bcf
+              - template.run.xml
+              - template.synctex.gz
+              - template.out
+              - template.pdf
+              - articulo.zip
+              - **Figures/**
+                - Tolmukapea.jpg
+                - Fibroblastid.jpg
+                - 1.png
+                - 2.jpg
+                - 3.jpg
+                - 4.jpg
+          - **bibliografia/**
+            - LBTU_LatviaResRuralDev_29th_2023-37-40.pdf
+            - EEC-20.pdf
+            - S0021967313009163.bib
+            - citations-20240925T004625.bibtex
+            - citationexport.bib
+            - Figure.ppt
+            - orsat.bib
+          - **codigo para buscar en scopus/**
+            - codigo.py
+        - **para enviar/**
+          - MamaniRenzo_Orsat.pdf
+        - **primera unidad  trabajo/**
+          - LaTeX14TrabajoDeTermodinamicaII(2024-II).pdf
+          - **codigo latex/**
+            - 1.png
+            - MamaniRenzo_trabajo1.bbl
+            - MamaniRenzo_trabajo1.blg
+            - MamaniRenzo_trabajo1.synctex(busy).gz
+            - MamaniRenzo_trabajo1.tex
+            - MamaniRenzo_trabajo1.out
+            - MamaniRenzo_trabajo1.aux
+            - MamaniRenzo_trabajo1.pdf
+            - MamaniRenzo_trabajo1.log
+            - MamaniRenzo_trabajo1.synctex.gz
+            - esta mas estetico.tex
+            - **fotos/**
+              - 1.png
+          - **para enviar/**
+            - mamani renzo gabriel.pdf
+            - MamaniRenzo_trabajo1.pdf
+            - renzo.pdf
+        - **articulo de investigacion de la 2 unidad/**
+          - mec.png
+          - natnumurl.bst
+          - template.tex
+          - template_config.tex
+          - main.aux
+          - main.synctex.gz
+          - main.log
+          - examen.synctex.gz
+          - principal.toc
+          - principal.aux
+          - principal.pdf
+          - principal.synctex(busy)
+          - principal.log
+          - MamaniRenzo_investigacion.tex
+          - **img/**
+            - **departamentos/**
+              - Logometodos.pdf
+              - Logometodos.png
+            - **ejemplos/**
+              - bisec.png
+              - esfera.png
+              - 1.png
+              - 2.png
+              - 3.png
+              - 4.png
+              - 5.png
+          - **resolucion/**
+            - examen6.tex
+            - examen7.tex
+            - examen8.tex
+            - examen9.tex
+            - examen2.tex
+            - examen3.tex
+            - examen4.tex
+            - examen5.tex
+            - examen1.tex
+      - **2 unid/**
+        - **resolucion del examen/**
+          - LaTeX6ExamenDeTermodinamicaII  (2024-II).pdf
+          - LaTeX3ExamenDeTermodinamicaII24-II.pdf
+          - MamaniRenzo_resoluciones .pdf
+        - **investigacion/**
+          - **material/**
+            - e62b6c36-973d-4e0f-93ed-d2c22620a3e3.pdf
+            - 4ab3ef7c-d441-4f82-95bc-41aa5c7255d9.pdf
+            - c36df44e-0dc4-4a80-b1eb-9e938508be34.docx
+            - 8bde185a-c695-4d2b-b98d-7cd89dd62f50.pdf
+            - 40b14934-3215-486d-8c84-31745837531f.pdf
+          - **articulo/**
+            - LTJournalArticle.cls
+            - LaTeXTemplates_journal-article_v2.0.zip
+            - articulo.zip
+            - sample.bib
+            - template.aux
+            - template.run.xml
+            - template.out
+            - template.bcf
+            - template.log
+            - template.synctex.gz
+            - template.pdf
+            - template.tex
+            - **Figures/**
+              - caldera_de_recuperacion.jpg
+              - ciclo_combinado.png
+              - caldera_de_recuperacion.png
+              - economizador.jpg
+              - evaporador.png
+              - sobrecanlentador.jpg
+          - **para enviar/**
+            - MamaniRenzo_cicloCombinado.pdf
+        - **trabajosfinales/**
+          - LaTeXTrabajoII_UNIDAD_De_TermodinamicaII.pdf
+          - MamaniRenzo_trabajo2.pdf
+        - **resumen de la tesis/**
+          - PAREDES_ISMAEL_REFRIGERACION_EVAPORACION_COMPRESOR.pdf
+          - **articulo/**
+            - LTJournalArticle.cls
+            - LaTeXTemplates_journal-article_v2.0.zip
+            - articulo.zip
+            - sample.bib
+            - template.tex
+            - template.aux
+            - template.out
+            - template.bcf
+            - template.toc
+            - template.run.xml
+            - template.pdf
+            - template.log
+            - template.synctex.gz
+            - **Figures/**
+              - caldera_de_recuperacion.jpg
+              - ciclo_combinado.png
+              - caldera_de_recuperacion.png
+              - economizador.jpg
+              - evaporador.png
+              - sobrecanlentador.jpg
+      - **para avanzar rapido/**
+        - Libro1.xlsx
+        - Libro1.pdf
+        - diagrad mas de interpolacon.pdf
+    - **mecanica de fluidos/**
+      - mecánica de fluidos prac.pdf
+      - labratorio pelton.rar
+      - labratorio pelton.zip
+      - resolucion  diego.zip
+      - **libros de mecanica de fluidos/**
+        - Copia de 10 Mecánica de fluidos.pdf
+        - 234 mecanica-de-fluidos-robert-mott-6ta-edicion.pdf
+        - Solucionario_Mecanica_de_Fluidos.rar
+        - Mecanica_de_los_Fluidos.rar
+        - Mecanica de los Fluidos.pdf
+        - Solucionario Ingenieria de mecanica de fluidos -  CROWE.pdf
+        - Solucionario Mecanica de fluidos - MASSEY.pdf
+        - Solucionario Mecanica de los Fluidos - FOX .pdf
+        - Mecanica_de_Fluidos_Fundamentos_y_Aplica.pdf
+        - Presion-ejercicios[1].pdf
+        - Mecánica de los Fluidos (Streeter) - 9° Edición [Solucionario].pdf
+        - SOLUCIONARIO ROBERT MOTT.pdf
+        - SOLUCIONARIO FRANK WHITE.pdf
+        - Mecánica de los Fluidos - Streeter - 9 Edición.pdf
+        - Hidraulica_General_Vol_1_Fundamentos_Gil.pdf
+        - mecanica-de-fluidos-e-hidraulica-schaum.pdf
+        - SOLUCIONARIO.pdf
+        - INTRODUCCION ALA MECANICA DE FLUIDOS .pdf
+        - Mecánica de Fluidos Cengel Solutions Manual.pdf
+        - Mecanica_de_Fluidos_Cengel_Cimbala_1ra_E.pdf
+        - pdfslide.tips_solucionario-de-mecanica-de-fluidos-e-hidraulica-de-ronald-v-giles-mecanica.pdf
+        - Mecanica de Fluidos - 3ra Edicion - Irving H. Shames.pdf
+        - fluidos-mott-6ed.pdf
+        - ejercicios_resueltos_de_mecanica_de_los.pdf
+        - Mecanica_de_los_fluidos_Solucionario_Irv.pdf
+        - **Mecanica_de_los_Fluidos/**
+          - Leeme.txt
+          - Mecanica de los Fluidos.pdf
+        - **documentos usados en clase/**
+          - Robert L. Mott  Joseph A. Untener MECANICA DE FLUIDOS.pdf
+          - Mecanica de Fluidos - 3ra Edicion - Irving H. Shames.pdf
+          - Viscosidad .pdf
+          - S1.pdf
+          - 20240911-090009.pdf
+          - Flujo de masa .pdf
+          - pdf_1728054544060.pdf
+          - FENOMENOS_DE_TRANSPORTE_Bird_2a_Edicion.pdf
+          - pdf-mecanica-de-fluidos_compress.pdf
+          - mecanica-de-fluidos-i-francisco-ugarte_compress.pdf
+      - **fff/**
+        - Imagen de WhatsApp 2024-10-15 a las 07.38.14_9dd95c54.jpg
+      - **navier stokes/**
+        - Capitulo 2.pdf
+      - **resolucion de problemas/**
+        - 1.jpg
+        - resoll.pdf
+        - 1.png
+        - prob 2.tex
+        - prob 2.log
+        - prob 2.aux
+        - prob 2.pdf
+        - prob 2.synctex.gz
+        - final.pdf
+      - **segunda unidad/**
+        - Ejercicio seleccion de bombas.pdf
+        - tema 5_seleccion de bombas.pdf
+        - TEMA 4_EJEMPLOS.pdf
+        - Cinemática.pdf
+        - Tema_3_EJERCICIOS_RESUELTOS_BERNOULLI_VACIADO_Y_LLENADO_DE_TANQUES.pdf
+        - Ejercicio N°2. salida por un orificio _TEMA 3.pdf
+        - Dinamica_Tema 3.pdf
+        - Ejercicio N°1 - TEMA 3.pdf
+        - TEMA N°2. EJERCICIOS.pdf
+        - TEMA  4_FLUJO EN  TUBERIAS.pdf
+      - **dopt/**
+        - escudo.png
+        - diametro.png
+        - [1library.co] diámetro económico y normas para tuberias.pdf
+        - final final finalisinma.pdf
+        - dopty.tex
+        - dopty.aux
+        - dopty.toc
+        - dopty.out
+        - dopty.pdf
+        - dopty.log
+        - dopty.synctex.gz
+        - dopt mejorado.pdf
+      - **labratorio pelton/**
+        - carrero.png
+        - pelton.png
+        - rotor.png
+        - esquema_del_modulo.png
+        - tablero.png
+        - document.tex
+        - document.log
+        - document.pdf
+        - document.aux
+        - document.out
+        - document.synctex.gz
+        - guia_de_laboratorio.pdf
+      - **resolucion  diego/**
+        - resolución.tex
+        - resolución.toc
+        - resolución.aux
+        - resolución.log
+        - resolución.synctex.gz
+        - resolución.pdf
+        - resolución por diego charaja mamani.pdf
+        - **imagenes/**
+          - 2.jpg
+          - 3.jpg
+          - 4.jpg
+    - **PARA PLANOS/**
+      - plano de neumatica.dwg
+      - plano de neumatica.bak
+      - MamaniRenzo_planoA4horizontal.dwg
+      - MamaniRenzo_planoA4horizontal.bak
+    - **piezas del curso solidworks/**
+      - Pieza2.SLDPRT
+      - Pieza3.SLDPRT
+  - **6 Semestre/**
+    - VANESSA.html
+    - **Costos y Presupuestos/**
+      - planos.bak
+      - planos.dwl
+      - planos.dwl2
+      - planos.dxf
+      - **Materiales/**
+        - Costos y presupuestos.pdf
+        - 2018_Costos y presupuestos para edificaciones con Excel, S10 y Project_Eyzaguirre_1.pdf
+        - 2018_Evaluación privada de proyectos_extracto_Beltrán.pdf
+        - 1er Examen_Costos y presupuestos_Recuperación_2025-I.pdf
+      - **Tareas/**
+        - **unidad 1/**
+          - Costos_Maquinaria_Con_Formulas.xlsx
+          - ejemplo_1.xlsx
+          - ejemplo de ladrillos .xlsx
+          - Tareas.rar
+          - ejemplo V1.xlsx
+          - sr jimenez.xlsx
+          - 1er Examen_Costos y presupuestos_2025-I.pdf
+          - exa costo Mamani Galindo Renzo gabriel.xlsx
+          - examen de costos Mamani Galindo Renzo.rar
+          - EXAMEN MAMANI GALINDO RENZO GABRIEL.rar
+          - **pagina 28/**
+            - Proyecto_VAN_Casos_AyB.xlsx
+            - Proyecto_VAN_Precio_17.xlsx
+            - Eyzaguirre 2018 página 28_Mamani Galindo Renzo Gabriel.xlsx
+          - **clase 30 de abril/**
+            - renzo proy a y b.xlsx
+          - **07 de abril/**
+            - Libro1.xlsx
+            - metrado por renzo gabriel.xlsx
+            - reny.xlsx
+          - **reny/**
+            - Certificado_del_curso.pdf
+          - **excel curso/**
+            - 1. Funciones Matemáticas - Ejercicios.xlsx
+          - **diego/**
+            - EJERCICO 1 COSTOS DIEGO.xlsx
+            - COSTOS PRESUPUESTOS TRABAJO DIEGO CHARAJA.xlsx
+            - EJERCICIO  NRO DE COSTOS.xlsx
+            - TRABAJO DE COSTOS CHARAJA MAMANI DIEGO.xlsx
+            - trabajo costsoo.xlsx
+            - EJERCICIO DE PROYECTOS Y COSTOS DIEGO CHARAJA COSTOS.xlsx
+            - trabajo de costos.xlsx
+          - **examen de costos Mamani Galindo Renzo/**
+            - exa costo Mamani Galindo Renzo gabriel.xlsx
+          - **proyecto/**
+            - **Desktop/**
+              - CARATULA Y SEPARADORES PROYECTO AYAVIRI PUCARA.docx
+              - **Expediente Tecnico/**
+                - **VOL. I FICHA TECNICA/**
+                  - Ficha Tecnica.docx
+                - **VOL. II RESUMEN EJECUTIVO/**
+                  - Resumen Ejecutivo.docx
+                - **VOL. III MEMORIA DESCRIPTIVA/**
+                  - Memoria Descriptiva.docx
+                - **VOL. IV  EETT SUMINISTRO Y MONTAJE/**
+                  - ESPECIFICACIONES Tec Suministro-LP AYAVIRI 22,9.docx
+                  - ESPECIFICACIONES Tec Suministro-LP AYAVIRI 22,9..docx
+                  - ESPECIFICACIONES Tec Montaje-LT AYAVIRI-22,9.docx
+                - **VOL. IX  ANALISIS DE FLUJO DEL SISTEMA/**
+                  - ECP AYAVIRI PUCARA.docx
+                  - ECP AYAVIRI PUCARA.pdf
+                  - DIgSILENT Grid.pdf
+                - **VOL. V METRADO Y PRESUPUESTO/**
+                  - CRONOGRAMA.mpp
+                  - PRESUPUESTO PROYECTO AYAVIRI v3 Rev.xlsx
+                - **VOL. VI CALCULOS JUSTIFICATIVOS/**
+                  - Anexo 3 CALCULO PUESTA A TIERRA.xlsx
+                  - DIgSILENT Grid.pdf
+                  - Anexo 4 CMC.xlsx
+                  - Anexo 7 Cálculo Mecánico de Retenidas.xlsx
+                  - Anexo 1 SELECCION DE AISLADORES.xls
+                  - Anexo 2 Aislamiento y Pararrayos.xlsx
+                  - Anexo 6 CME_CMR_ALUMINIO_AAAC.xlsx
+                  - Anexo 5 Calculo Cimentacion.xlsm
+                  - 0 Cap II- Calculos Justificativos.docx
+                - **VOL. VII PLANOS Y LAMINAS DE DETALLE/**
+                  - DETALLES DE ARMADOS AYAVIRI REV 0.bak
+                  - PLANOS DE PERFIL AYAVIRI - PUCARA.bak
+                  - LP DERIVACION TUMIGRANDE.bak
+                  - POLIGONAL LP AYAVIRI.bak
+                  - PLANO DE UBICACION.bak
+                  - 1.PLANOS DE PLANTA AYAVIRI - PUCARA.bak
+                  - DETALLES DE ARMADOS AYAVIRI REV 0 (1).bak
+                  - 1.PLANOS DE PLANTA AYAVIRI - PUCARA.dwg
+                  - 1.PLANOS DE DESMONTAJE.bak
+                  - PLANOS DE PERFIL AYAVIRI - PUCARA.dwg
+                  - PLANO DE UBICACION.dwg
+                  - LP DERIVACION TUMIGRANDE.dwg
+                  - POLIGONAL LP AYAVIRI.dwg
+                  - DETALLES DE ARMADOS AYAVIRI REV 0 (1).dwg
+                  - 1.PLANOS DE DESMONTAJE.dwg
+                  - plot.log
+                - **VOL. VIII ESTUDIO DE GEOLOGIA Y GEOTECNICA/**
+                  - INFORME GEOLOG.docx
+                  - **ANEXO/**
+                    - A058-Boletin_Velille-30s_Yauri-30t_Ayaviri-30u_Azangaro-30v.PDF
+                    - **3. Plano/**
+                    - **2. CIM/**
+                - **VOL. X ESTRUCTURA DE PERSONAL REQUERIDO/**
+                  - 4.11.1 - EJECUTOR DE OBRA VF.docx
+                  - 4.11.2 - SUPERVISOR DE OBRA VF.docx
+                - **VOL. XI ANEXOS/**
+                  - PANEL FOTOGRAFICO DEL PROYECTO.docx
+                  - COT. SIPA AYAVIRI (4).pdf
+                  - CEL 1626-06-22 RUC 10238807251 - OCHOA QUISPE PERCY.pdf
+                  - COTIZ POSTES  PERCY OCHOA QUISPE ESTUDIO (4).pdf
+                  - **gestion de riesgos/**
+                    - CAP 03 GESTIÓN DE RIESGOS.docx
+                    - FORMATO ASIGNACION DE RIESGOS AMPLIACIONES.xls
+                  - **CIRA/**
+                    - CIRA 207 - 21 - FIRMADO.pdf
+                  - **DIA/**
+                    - RD 055-2022 DREM PUNO 2.pdf
+            - Desktop.rar
+        - **unidad 2/**
+          - RED-CAD.rar
+          - plano de postes.dwg
+          - plano de postes.dxf
+          - **Proyecto/**
+            - CARATULA Y SEPARADORES PROYECTO AYAVIRI PUCARA.docx
+            - PLANO DE UBICACION.dxf
+            - **Expediente Tecnico/**
+              - **VOL. I FICHA TECNICA/**
+                - Ficha Tecnica.docx
+              - **VOL. III MEMORIA DESCRIPTIVA/**
+                - Memoria Descriptiva.docx
+              - **VOL. IX  ANALISIS DE FLUJO DEL SISTEMA/**
+                - ECP AYAVIRI PUCARA.docx
+                - ECP AYAVIRI PUCARA.pdf
+                - DIgSILENT Grid.pdf
+              - **VOL. VII PLANOS Y LAMINAS DE DETALLE/**
+                - DETALLES DE ARMADOS AYAVIRI REV 0.bak
+                - PLANOS DE PERFIL AYAVIRI - PUCARA.bak
+                - LP DERIVACION TUMIGRANDE.bak
+                - POLIGONAL LP AYAVIRI.bak
+                - PLANO DE UBICACION.bak
+                - 1.PLANOS DE PLANTA AYAVIRI - PUCARA.bak
+                - DETALLES DE ARMADOS AYAVIRI REV 0 (1).bak
+                - 1.PLANOS DE PLANTA AYAVIRI - PUCARA.dwg
+                - PLANOS DE PERFIL AYAVIRI - PUCARA.dwg
+                - PLANO DE UBICACION.dwg
+                - LP DERIVACION TUMIGRANDE.dwg
+                - POLIGONAL LP AYAVIRI.dwg
+                - DETALLES DE ARMADOS AYAVIRI REV 0 (1).dwg
+                - plot.log
+                - 1.PLANOS DE PLANTA AYAVIRI - PUCARA.dxf
+                - 1.PLANOS DE PLANTA AYAVIRI - PUCARA_recover.dwg
+                - DETALLES DE ARMADOS AYAVIRI REV 0 (1)_recover.dwg
+                - 1.PLANOS DE PLANTA AYAVIRI - PUCARA.dwl2
+                - 1.PLANOS DE PLANTA AYAVIRI - PUCARA.dwl
+                - 1.PLANOS DE DESMONTAJE.dwg
+                - 1.PLANOS DE DESMONTAJE.bak
+                - 1.PLANOS DE PLANTA AYAVIRI - PUCARA_recover000.dwg
+              - **VOL. VIII ESTUDIO DE GEOLOGIA Y GEOTECNICA/**
+                - INFORME GEOLOG.docx
+                - **ANEXO/**
+                  - A058-Boletin_Velille-30s_Yauri-30t_Ayaviri-30u_Azangaro-30v.PDF
+                  - **3. Plano/**
+                    - CALICATAS.bak
+                    - CALICATAS.dwg
+                  - **2. CIM/**
+                    - Calculo cimentacion resultado.xlsx
+              - **VOL. VI CALCULOS JUSTIFICATIVOS/**
+                - Anexo 3 CALCULO PUESTA A TIERRA.xlsx
+                - DIgSILENT Grid.pdf
+                - Anexo 4 CMC.xlsx
+                - Anexo 7 Cálculo Mecánico de Retenidas.xlsx
+                - Anexo 1 SELECCION DE AISLADORES.xls
+                - Anexo 2 Aislamiento y Pararrayos.xlsx
+                - Anexo 6 CME_CMR_ALUMINIO_AAAC.xlsx
+                - Anexo 5 Calculo Cimentacion.xlsm
+                - 0 Cap II- Calculos Justificativos.docx
+              - **VOL. X ESTRUCTURA DE PERSONAL REQUERIDO/**
+                - 4.11.1 - EJECUTOR DE OBRA VF.docx
+                - 4.11.2 - SUPERVISOR DE OBRA VF.docx
+              - **VOL. IV  EETT SUMINISTRO Y MONTAJE/**
+                - ESPECIFICACIONES Tec Suministro-LP AYAVIRI 22,9.docx
+                - ESPECIFICACIONES Tec Suministro-LP AYAVIRI 22,9..docx
+                - ESPECIFICACIONES Tec Montaje-LT AYAVIRI-22,9.docx
+              - **VOL. V METRADO Y PRESUPUESTO/**
+                - CRONOGRAMA.mpp
+                - PRESUPUESTO PROYECTO AYAVIRI v3 Rev.xlsx
+                - metrado redcad.xlsx
+              - **VOL. XI ANEXOS/**
+                - PANEL FOTOGRAFICO DEL PROYECTO.docx
+                - COT. SIPA AYAVIRI (4).pdf
+                - CEL 1626-06-22 RUC 10238807251 - OCHOA QUISPE PERCY.pdf
+                - COTIZ POSTES  PERCY OCHOA QUISPE ESTUDIO (4).pdf
+                - **CIRA/**
+                  - CIRA 207 - 21 - FIRMADO.pdf
+                - **DIA/**
+                  - RD 055-2022 DREM PUNO 2.pdf
+                - **gestion de riesgos/**
+                  - CAP 03 GESTIÓN DE RIESGOS.docx
+                  - FORMATO ASIGNACION DE RIESGOS AMPLIACIONES.xls
+              - **VOL. II RESUMEN EJECUTIVO/**
+                - Resumen Ejecutivo.docx
+          - **RED-CAD/**
+            - GoogleEarthProSetup.exe
+            - Trial18d_REDCAD-REDLIN-PRESIO-TOPOMAGIC_20220515.exe
+            - REDCAD-Trial-2023-4.8.24.276-Setup.exe
+          - **curso red cad/**
+            - Piruyo.dxf
+            - Armados BT-Peru-DGE-RD023-2003.pdf
+            - Armados MT-Peru-DGE-RD024-2003.pdf
+      - **Apuntes/**
+        - FLUJO_DE_CAJA[1].docx
+      - **Exámenes/**
+        - 03-UNTAVE GRANDE SE.03.dwg
+        - 12-LLAULLINCA SE 02.dwg
+        - Mamani Galindo Renzo Gabriel_METRADO.xlsx
+        - **examen de costos Mamani Galindo Renzo/**
+          - exa costo Mamani Galindo Renzo gabriel.xlsx
+        - **EXAMEN MAMANI GALINDO RENZO GABRIEL/**
+          - COSTOS RENZO.xlsx
+      - **certificados/**
+        - Certificado_del_curso.pdf
+        - Certificado_Excel_Intermedio.pdf
+        - Certificado_Excel_Avanzado.pdf
+    - **Laboratorio de Circuitos Eléctricos I/**
+      - **Materiales/**
+        - LABORATORIO_N° 01_SEGURIDAD.pdf
+        - IPER.pdf
+      - **Tareas/**
+        - lab 11.zip
+        - LABORATORIO Nº 14_Maxima transferencia de potencia_20.pdf
+        - **Lab 2/**
+          - LABORATORIO Nº 02_RECONOCIMIENTO EQUIPOS.pdf
+          - informe de lab_MAmani _renzo.pdf
+          - **informe 1/**
+            - principal.bcf
+            - principal.run.xml
+            - principal.synctex(busy).gz
+            - principal.bbl
+            - principal.blg
+            - template_config.tex
+            - natnumurl.bst
+            - template.pdf
+            - template.synctex.gz
+            - main.aux
+            - principal.toc
+            - main.log
+            - examen.synctex.gz
+            - template.log
+            - main.synctex.gz
+            - template.tex
+            - mec.png
+            - principal.tex
+            - principal.out
+            - principal.aux
+            - principal.log
+            - principal.synctex.gz
+            - principal.pdf
+            - **IMG/**
+              - IMG20250415081411.jpg
+              - IMG20250415081410.jpg
+              - IMG20250415081842.jpg
+              - IMG20250415081403.jpg
+              - IMG20250415081941.jpg
+              - IMG20250415082152.jpg
+              - IMG20250415081928.jpg
+              - IMG20250415082150.jpg
+              - IMG20250415081733.jpg
+              - IMG20250415081739.jpg
+              - Multimetro_Amprobe_AM220.jpg
+              - Multímetro_Sanwa_CD772.jpg
+              - Medidor_Corriente_Chauvin_Arnoux.jpg
+              - IMG20250415081443.jpg
+              - PeakTech_3280_Resistance_Decade_Box.jpg
+              - Resistencias.jpg
+              - multimetro_pr85.jpg
+              - elenco_xp750.jpg
+              - peaktech_3280.jpg
+              - voltimetro.png
+              - amperimetro.png
+              - ohmimetro.png
+            - **referencias/**
+              - referencias.bib
+            - **config/**
+              - configuracion_estilos.tex
+              - configuracion_fechas_referencias.tex
+              - configuracion_pdf_inclusion.tex
+              - configuracion_matematica.tex
+              - configuracion_tablas_listados.tex
+              - configuracion_codigo_fuente.tex
+              - configuracion_tikz.tex
+              - configuracion_graficos.tex
+              - configuracion_general.tex
+            - **divisiones/**
+              - V.py
+              - 3objetivos.tex
+              - 5metodologia.tex
+              - 1resumen.tex
+              - 4introduccion.tex
+              - 6resultados_y_discusion.tex
+              - 7conclusiones.tex
+              - 8referencias.tex
+              - 2antecedentes.tex
+          - **IMG/**
+            - IMG20250415081224.jpg
+            - IMG20250415081227.jpg
+            - IMG20250415081350.jpg
+            - IMG20250415081403.jpg
+            - IMG20250415081410.jpg
+            - IMG20250415081411.jpg
+            - IMG20250415081442.jpg
+            - IMG20250415081443.jpg
+            - IMG20250415081725.jpg
+            - IMG20250415081733.jpg
+            - IMG20250415081739.jpg
+            - IMG20250415081756.jpg
+            - IMG20250415081838.jpg
+            - IMG20250415081842.jpg
+            - IMG20250415081928.jpg
+            - IMG20250415081936.jpg
+            - IMG20250415081941.jpg
+            - IMG20250415082150.jpg
+            - IMG20250415082152.jpg
+          - **manuakes/**
+            - Multimetro Digital PR-85 PRASEK.pdf
+        - **Lab 1/**
+          - informe.docx
+          - informe.pdf
+          - **informe 1/**
+            - principal.synctex(busy).gz
+            - principal.toc
+            - template.pdf
+            - natnumurl.bst
+            - template.log
+            - examen.synctex.gz
+            - template.synctex.gz
+            - main.synctex.gz
+            - principal.bcf
+            - main.aux
+            - main.log
+            - principal.run.xml
+            - mec.png
+            - template_config.tex
+            - template.tex
+            - principal.bbl
+            - principal.blg
+            - principal.tex
+            - principal.out
+            - principal.log
+            - principal.aux
+            - principal.pdf
+            - principal.synctex.gz
+            - **IMG/**
+            - **referencias/**
+              - referencias.bib
+            - **divisiones/**
+              - V.py
+              - 1resumen.tex
+              - 2antecedentes.tex
+              - 7conclusiones.tex
+              - 8referencias.tex
+              - 3objetivos.tex
+              - 4introduccion.tex
+              - 5metodologia.tex
+              - 6resultados_y_discusion.tex
+            - **config/**
+              - configuracion_estilos.tex
+              - configuracion_fechas_referencias.tex
+              - configuracion_pdf_inclusion.tex
+              - configuracion_matematica.tex
+              - configuracion_tablas_listados.tex
+              - configuracion_codigo_fuente.tex
+              - configuracion_tikz.tex
+              - configuracion_graficos.tex
+              - configuracion_general.tex
+        - **Lab 3/**
+          - LABORATORIO Nº 03 errores.pdf
+          - Sesión 4_errores.pdf
+          - LAB 3_ MamaniRenzo.pdf
+          - **informe/**
+            - principal.synctex(busy).gz
+            - main.aux
+            - examen.synctex.gz
+            - principal.toc
+            - template.synctex.gz
+            - template.log
+            - main.synctex.gz
+            - template.pdf
+            - principal.bcf
+            - principal.run.xml
+            - main.log
+            - natnumurl.bst
+            - template_config.tex
+            - mec.png
+            - template.tex
+            - principal.bbl
+            - principal.blg
+            - principal.tex
+            - principal.log
+            - principal.aux
+            - principal.out
+            - principal.synctex.gz
+            - principal.pdf
+            - **config/**
+              - configuracion_fechas_referencias.tex
+              - configuracion_general.tex
+              - configuracion_matematica.tex
+              - configuracion_graficos.tex
+              - configuracion_pdf_inclusion.tex
+              - configuracion_tablas_listados.tex
+              - configuracion_estilos.tex
+              - configuracion_codigo_fuente.tex
+              - configuracion_tikz.tex
+            - **referencias/**
+              - referencias.bib
+            - **IMG/**
+              - ohmimetro.png
+              - multimetro_pr85.jpg
+              - Resistencias.jpg
+            - **divisiones/**
+              - V.py
+              - 1resumen.tex
+              - 3objetivos.tex
+              - 2antecedentes.tex
+              - 7conclusiones.tex
+              - 4introduccion.tex
+              - 6resultados_y_discusion.tex
+              - 5metodologia.tex
+              - 8referencias.tex
+        - **lab 4/**
+          - LABORATORIO Nº 04_Codigo de colores.pdf
+          - photo_2025-05-14_09-51-19.jpg
+          - lab 4 codigo de coloresMamaniRenzo.pdf
+          - **informe/**
+            - principal.bcf
+            - principal.run.xml
+            - principal.synctex(busy).gz
+            - natnumurl.bst
+            - template_config.tex
+            - template.tex
+            - principal.toc
+            - template.pdf
+            - main.aux
+            - template.synctex.gz
+            - mec.png
+            - main.synctex.gz
+            - examen.synctex.gz
+            - main.log
+            - template.log
+            - principal.tex
+            - principal.aux
+            - principal.out
+            - principal.bbl
+            - principal.blg
+            - principal.pdf
+            - principal.log
+            - principal.synctex.gz
+            - **referencias/**
+              - referencias.bib
+            - **config/**
+              - configuracion_estilos.tex
+              - configuracion_fechas_referencias.tex
+              - configuracion_pdf_inclusion.tex
+              - configuracion_matematica.tex
+              - configuracion_tablas_listados.tex
+              - configuracion_codigo_fuente.tex
+              - configuracion_tikz.tex
+              - configuracion_graficos.tex
+              - configuracion_general.tex
+            - **IMG/**
+              - multimetro_pr85.jpg
+              - ohmimetro.png
+              - Resistencias.jpg
+              - 1.jpg
+              - 2.jpg
+              - 3.png
+            - **divisiones/**
+              - V.py
+              - 2antecedentes.tex
+              - 8referencias.tex
+              - 5metodologia.tex
+              - 3objetivos.tex
+              - 4introduccion.tex
+              - 7conclusiones.tex
+              - 1resumen.tex
+              - 6resultados_y_discusion.tex
+        - **LAB 5/**
+          - LABORATORIO Nº 05_RESISTENCIAS_SERIE_PARALELO.pdf
+          - Laboratorio5.tex
+          - informe de laboratorio 5 MamaniRenzo.pdf
+          - informe de laboratorio 5 MamaniRenzo con demostracion.pdf
+          - **informe/**
+            - natnumurl.bst
+            - mec.png
+            - template.tex
+            - template_config.tex
+            - main.aux
+            - main.synctex.gz
+            - main.log
+            - examen.synctex.gz
+            - principal.toc
+            - template.pdf
+            - template.synctex.gz
+            - template.log
+            - principal.bcf
+            - principal.run.xml
+            - principal.synctex(busy).gz
+            - principal.blg
+            - principal.bbl
+            - principal.tex
+            - principal.log
+            - principal.pdf
+            - principal.aux
+            - principal.out
+            - principal.synctex.gz
+            - **referencias/**
+              - referencias.bib
+            - **config/**
+              - configuracion_estilos.tex
+              - configuracion_fechas_referencias.tex
+              - configuracion_pdf_inclusion.tex
+              - configuracion_matematica.tex
+              - configuracion_tablas_listados.tex
+              - configuracion_codigo_fuente.tex
+              - configuracion_tikz.tex
+              - configuracion_graficos.tex
+              - configuracion_general.tex
+            - **IMG/**
+              - multimetro_pr85.jpg
+              - ohmimetro.png
+              - Resistencias.jpg
+              - 1.jpg
+              - 2.jpg
+              - 3.png
+              - paralelo.jpg
+              - serie.jpg
+            - **divisiones/**
+              - V.py
+              - 3objetivos.tex
+              - 4introduccion.tex
+              - 5metodologia.tex
+              - 7conclusiones.tex
+              - 1resumen.tex
+              - 2antecedentes.tex
+              - 8referencias.tex
+              - 6resultados_y_discusion.tex
+        - **lab 6/**
+          - LABORATORIO Nº 06_Estrella Triangulo.pdf
+          - lab 6 de circuitos electricos 1 MamaniRenzo.pdf
+          - **informe/**
+            - mec.png
+            - natnumurl.bst
+            - template.tex
+            - template_config.tex
+            - main.aux
+            - main.synctex.gz
+            - main.log
+            - examen.synctex.gz
+            - principal.toc
+            - principal.bcf
+            - principal.run.xml
+            - principal.synctex(busy).gz
+            - principal.bbl
+            - principal.blg
+            - template.pdf
+            - template.synctex.gz
+            - template.log
+            - principal.tex
+            - principal.out
+            - principal.aux
+            - principal.pdf
+            - principal.synctex.gz
+            - principal.log
+            - **referencias/**
+              - referencias.bib
+            - **config/**
+              - configuracion_estilos.tex
+              - configuracion_fechas_referencias.tex
+              - configuracion_pdf_inclusion.tex
+              - configuracion_matematica.tex
+              - configuracion_tablas_listados.tex
+              - configuracion_codigo_fuente.tex
+              - configuracion_tikz.tex
+              - configuracion_graficos.tex
+              - configuracion_general.tex
+            - **IMG/**
+              - multimetro_pr85.jpg
+              - ohmimetro.png
+              - Resistencias.jpg
+              - 1.jpg
+              - 2.jpg
+              - 3.png
+              - paralelo.jpg
+              - serie.jpg
+              - configuracion delta.jpg
+              - configuracion estrella.jpg
+              - estrella.png
+              - delta.png
+            - **divisiones/**
+              - V.py
+              - 4introduccion.tex
+              - 3objetivos.tex
+              - 6resultados_y_discusion.tex
+              - 7conclusiones.tex
+              - 2antecedentes.tex
+              - 8referencias.tex
+              - 1resumen.tex
+              - 5metodologia.tex
+        - **Lab 7/**
+          - LABORATORIO Nº 07 Ley de Ohm.pdf
+          - lab 7 ley de ohm MamaniRenzo.pdf
+          - informe.zip
+          - **informe 7/**
+            - mec.png
+            - natnumurl.bst
+            - template.tex
+            - template_config.tex
+            - main.aux
+            - main.synctex.gz
+            - main.log
+            - examen.synctex.gz
+            - principal.toc
+            - principal.bcf
+            - principal.run.xml
+            - principal.synctex(busy).gz
+            - template.log
+            - template.pdf
+            - template.synctex.gz
+            - principal.tex
+            - principal.bbl
+            - principal.blg
+            - principal.out
+            - principal.aux
+            - principal.pdf
+            - principal.log
+            - principal.synctex.gz
+            - **referencias/**
+              - referencias.bib
+            - **config/**
+              - configuracion_estilos.tex
+              - configuracion_fechas_referencias.tex
+              - configuracion_pdf_inclusion.tex
+              - configuracion_matematica.tex
+              - configuracion_tablas_listados.tex
+              - configuracion_codigo_fuente.tex
+              - configuracion_tikz.tex
+              - configuracion_graficos.tex
+              - configuracion_general.tex
+            - **IMG/**
+              - multimetro_pr85.jpg
+              - ohmimetro.png
+              - Resistencias.jpg
+              - 1.jpg
+              - 2.jpg
+              - 3.png
+              - paralelo.jpg
+              - serie.jpg
+              - configuracion delta.jpg
+              - configuracion estrella.jpg
+              - estrella.png
+              - delta.png
+            - **divisiones/**
+              - V.py
+              - 4introduccion.tex
+              - 3objetivos.tex
+              - 6resultados_y_discusion.tex
+              - 7conclusiones.tex
+              - 8referencias.tex
+              - 1resumen.tex
+              - 2antecedentes.tex
+              - 5metodologia.tex
+            - **out/**
+              - **config/**
+              - **divisiones/**
+        - **lab 8/**
+          - LABORATORIO Nº 08_1°_Ley de KIRCHHOFF.pdf
+          - lab 8 primera ley de kichhof mamani galindo renzo.pdf
+          - **informe/**
+            - mec.png
+            - natnumurl.bst
+            - template.tex
+            - template_config.tex
+            - main.aux
+            - main.synctex.gz
+            - main.log
+            - examen.synctex.gz
+            - principal.toc
+            - principal.bcf
+            - principal.run.xml
+            - principal.synctex(busy).gz
+            - template.log
+            - template.pdf
+            - template.synctex.gz
+            - principal.tex
+            - principal.bbl
+            - principal.blg
+            - principal.log
+            - principal.pdf
+            - principal.out
+            - principal.aux
+            - principal.synctex.gz
+            - **divisiones/**
+              - V.py
+              - 8referencias.tex
+              - 1resumen.tex
+              - 2antecedentes.tex
+              - 4introduccion.tex
+              - 3objetivos.tex
+              - 5metodologia.tex
+              - 7conclusiones.tex
+              - 6resultados_y_discusion.tex
+            - **IMG/**
+              - multimetro_pr85.jpg
+              - ohmimetro.png
+              - Resistencias.jpg
+              - 1.jpg
+              - 2.jpg
+              - 3.png
+              - paralelo.jpg
+              - serie.jpg
+              - configuracion delta.jpg
+              - configuracion estrella.jpg
+              - estrella.png
+              - delta.png
+            - **referencias/**
+              - referencias.bib
+            - **config/**
+              - configuracion_estilos.tex
+              - configuracion_fechas_referencias.tex
+              - configuracion_pdf_inclusion.tex
+              - configuracion_matematica.tex
+              - configuracion_tablas_listados.tex
+              - configuracion_codigo_fuente.tex
+              - configuracion_tikz.tex
+              - configuracion_graficos.tex
+              - configuracion_general.tex
+        - **lab 9/**
+          - LABORATORIO Nº 9_2°_Ley de KIRCHHOFF.pdf
+          - lab9 mamani renzo.pdf
+          - **informe/**
+            - natnumurl.bst
+            - mec.png
+            - template.tex
+            - template_config.tex
+            - main.aux
+            - main.synctex.gz
+            - main.log
+            - examen.synctex.gz
+            - principal.toc
+            - principal.bcf
+            - principal.run.xml
+            - principal.synctex(busy).gz
+            - template.pdf
+            - template.synctex.gz
+            - template.log
+            - principal.tex
+            - principal.bbl
+            - principal.blg
+            - principal.aux
+            - principal.out
+            - principal.log
+            - principal.pdf
+            - principal.synctex.gz
+            - **IMG/**
+              - multimetro_pr85.jpg
+              - ohmimetro.png
+              - Resistencias.jpg
+              - 1.jpg
+              - 2.jpg
+              - 3.png
+              - paralelo.jpg
+              - serie.jpg
+              - configuracion delta.jpg
+              - configuracion estrella.jpg
+              - estrella.png
+              - delta.png
+            - **referencias/**
+              - referencias.bib
+            - **config/**
+              - configuracion_estilos.tex
+              - configuracion_fechas_referencias.tex
+              - configuracion_pdf_inclusion.tex
+              - configuracion_matematica.tex
+              - configuracion_tablas_listados.tex
+              - configuracion_codigo_fuente.tex
+              - configuracion_tikz.tex
+              - configuracion_graficos.tex
+              - configuracion_general.tex
+            - **divisiones/**
+              - V.py
+              - 8referencias.tex
+              - 5metodologia.tex
+              - 3objetivos.tex
+              - 4introduccion.tex
+              - 2antecedentes.tex
+              - 1resumen.tex
+              - 6resultados_y_discusion.tex
+              - 7conclusiones.tex
+        - **lab 10/**
+          - LABORATORIO N°11_Superpocisión.pdf
+          - MamaniRenzo_lab 10.pdf
+          - **informe/**
+            - natnumurl.bst
+            - mec.png
+            - template.tex
+            - template_config.tex
+            - main.aux
+            - main.synctex.gz
+            - main.log
+            - examen.synctex.gz
+            - principal.toc
+            - principal.bcf
+            - principal.run.xml
+            - principal.synctex(busy).gz
+            - template.pdf
+            - template.synctex.gz
+            - template.log
+            - principal.tex
+            - principal.bbl
+            - principal.blg
+            - principal.out
+            - principal.aux
+            - principal.pdf
+            - principal.synctex.gz
+            - principal.log
+            - **IMG/**
+              - multimetro_pr85.jpg
+              - ohmimetro.png
+              - Resistencias.jpg
+              - 1.jpg
+              - 2.jpg
+              - 3.png
+              - paralelo.jpg
+              - serie.jpg
+              - configuracion delta.jpg
+              - configuracion estrella.jpg
+              - estrella.png
+              - delta.png
+            - **referencias/**
+              - referencias.bib
+            - **config/**
+              - configuracion_estilos.tex
+              - configuracion_fechas_referencias.tex
+              - configuracion_pdf_inclusion.tex
+              - configuracion_matematica.tex
+              - configuracion_tablas_listados.tex
+              - configuracion_codigo_fuente.tex
+              - configuracion_tikz.tex
+              - configuracion_graficos.tex
+              - configuracion_general.tex
+            - **divisiones/**
+              - V.py
+              - 8referencias.tex
+              - 1resumen.tex
+              - 2antecedentes.tex
+              - 3objetivos.tex
+              - 4introduccion.tex
+              - 5metodologia.tex
+              - 7conclusiones.tex
+              - 6resultados_y_discusion.tex
+        - **lab 11/**
+          - MamaniRenzo_lab 10.pdf
+          - LABORATORIO N°12_Thevenin.pdf
+          - MamaniRenzo_lab 11.pdf
+          - **informe/**
+            - mec.png
+            - natnumurl.bst
+            - template.tex
+            - template_config.tex
+            - main.aux
+            - main.synctex.gz
+            - main.log
+            - examen.synctex.gz
+            - principal.toc
+            - principal.bcf
+            - principal.run.xml
+            - principal.synctex(busy).gz
+            - principal.tex
+            - template.pdf
+            - template.log
+            - template.synctex.gz
+            - principal.bbl
+            - principal.blg
+            - principal.synctex.gz
+            - principal.log
+            - principal.aux
+            - principal.out
+            - principal.pdf
+            - **IMG/**
+              - multimetro_pr85.jpg
+              - ohmimetro.png
+              - Resistencias.jpg
+              - 1.jpg
+              - 2.jpg
+              - 3.png
+              - paralelo.jpg
+              - serie.jpg
+              - configuracion delta.jpg
+              - configuracion estrella.jpg
+              - estrella.png
+              - delta.png
+            - **referencias/**
+              - referencias.bib
+            - **config/**
+              - configuracion_estilos.tex
+              - configuracion_fechas_referencias.tex
+              - configuracion_pdf_inclusion.tex
+              - configuracion_matematica.tex
+              - configuracion_tablas_listados.tex
+              - configuracion_codigo_fuente.tex
+              - configuracion_tikz.tex
+              - configuracion_graficos.tex
+              - configuracion_general.tex
+            - **divisiones/**
+              - V.py
+              - 8referencias.tex
+              - 1resumen.tex
+              - 2antecedentes.tex
+              - 3objetivos.tex
+              - 4introduccion.tex
+              - 5metodologia.tex
+              - 7conclusiones.tex
+              - 6resultados_y_discusion.tex
+        - **lab 12/**
+          - LABORATORIO N°11_Superpocisión.pdf
+          - MamaniRenzo_lab 10.pdf
+          - **informe/**
+            - mec.png
+            - natnumurl.bst
+            - template.tex
+            - template_config.tex
+            - main.aux
+            - main.synctex.gz
+            - main.log
+            - examen.synctex.gz
+            - principal.toc
+            - principal.bcf
+            - principal.run.xml
+            - principal.synctex(busy).gz
+            - template.pdf
+            - template.synctex.gz
+            - template.log
+            - principal.tex
+            - principal.bbl
+            - principal.blg
+            - principal.out
+            - principal.aux
+            - principal.pdf
+            - principal.synctex.gz
+            - principal.log
+            - **IMG/**
+              - multimetro_pr85.jpg
+              - ohmimetro.png
+              - Resistencias.jpg
+              - 1.jpg
+              - 2.jpg
+              - 3.png
+              - paralelo.jpg
+              - serie.jpg
+              - configuracion delta.jpg
+              - configuracion estrella.jpg
+              - estrella.png
+              - delta.png
+            - **referencias/**
+              - referencias.bib
+            - **config/**
+              - configuracion_estilos.tex
+              - configuracion_fechas_referencias.tex
+              - configuracion_pdf_inclusion.tex
+              - configuracion_matematica.tex
+              - configuracion_tablas_listados.tex
+              - configuracion_codigo_fuente.tex
+              - configuracion_tikz.tex
+              - configuracion_graficos.tex
+              - configuracion_general.tex
+            - **divisiones/**
+              - V.py
+              - 8referencias.tex
+              - 1resumen.tex
+              - 2antecedentes.tex
+              - 3objetivos.tex
+              - 4introduccion.tex
+              - 5metodologia.tex
+              - 7conclusiones.tex
+              - 6resultados_y_discusion.tex
+      - **Apuntes/**
+      - **Exámenes/**
+    - **Análisis de Circuitos Eléctricos II/**
+      - **Materiales/**
+        - sedrasmithcircuitosmicroelectronicos.pdf
+      - **Tareas/**
+        - puesta_a_tierra.pdf
+      - **Apuntes/**
+      - **Exámenes/**
+    - **Circuitos Electrónicos y Digitales/**
+      - **Materiales/**
+        - Electronica_Boylestad_10a_Ed.pdf
+        - LIBROTOCCISISTEMASDIGITALES.pdf
+      - **Tareas/**
+        - **unida 1/**
+          - Simuladores de Circuitos Eléctricos y Electrónicos.pdf
+          - 4 ejemplos de rectificadores Mamani Galindo Renzo Gabriel .pdf
+          - **informe DE LOS SIMULADORES/**
+            - principal.bcf
+            - principal.run.xml
+            - principal.synctex(busy).gz
+            - template_config.tex
+            - natnumurl.bst
+            - main.aux
+            - main.log
+            - examen.synctex.gz
+            - mec.png
+            - template.synctex.gz
+            - template.pdf
+            - template.log
+            - template.tex
+            - principal.toc
+            - main.synctex.gz
+            - principal.tex
+            - principal.blg
+            - principal.bbl
+            - principal.aux
+            - principal.out
+            - principal.log
+            - principal.synctex.gz
+            - principal.pdf
+            - **IMG/**
+              - phet_circuito.png
+              - circuitlab_circuito.png
+              - dcaclab_circuito.png
+              - masterplc_circuito.png
+            - **referencias/**
+              - referencias.bib
+            - **config/**
+              - configuracion_general.tex
+              - configuracion_estilos.tex
+              - configuracion_fechas_referencias.tex
+              - configuracion_pdf_inclusion.tex
+              - configuracion_matematica.tex
+              - configuracion_tablas_listados.tex
+              - configuracion_codigo_fuente.tex
+              - configuracion_tikz.tex
+              - configuracion_graficos.tex
+            - **divisiones/**
+              - 8referencias.tex
+              - 1objetivos.tex
+              - 3materiales_y_metodos.tex
+              - 5analisis_de_resultados.tex
+              - 2marco_teorico.tex
+              - 6conclusiones.tex
+              - 7apendice.tex
+              - 4resultados.tex
+          - **informe/**
+            - texstudio_zSONZT.tex
+            - texstudio_zSONZT.blg
+            - texstudio_zSONZT.bbl
+            - texstudio_zSONZT.log
+            - texstudio_zSONZT.aux
+            - texstudio_zSONZT.out
+            - texstudio_zSONZT.pdf
+            - texstudio_zSONZT.synctex.gz
+            - **IMG/**
+              - phet_circuito.png
+              - circuitlab_circuito.png
+              - dcaclab_circuito.png
+              - masterplc_circuito.png
+              - spotlight-ltspice-basics.jpg
+              - buzzer_proteus.PNG
+              - tinkercad.png
+              - everycircuit.png
+              - qucs-circuito.png
+              - descarga.jpeg
+          - **mallas 1 y 2/**
+            - MCuTEWKuzjIKYHIxxBIpIN (1).pdf
+          - **historia del diodo/**
+            - Historia del Diodo Reny geremay Calsina cochuirumi .pptx
+            - Historia del Diodo.pptx
+          - **Nueva carpeta/**
+          - **informe de labratoi 1/**
+            - 20250428_174946.jpg
+            - 20250428_175014.jpg
+            - 20250428_175003.jpg
+            - 20250428_175124.jpg
+            - 20250428_174608.jpg
+            - 20250428_174950.jpg
+            - 20250428_175006.jpg
+            - 20250428_175117.jpg
+            - 20250428_174939.jpg
+            - 20250428_174727.jpg
+            - IMG_20250428_175105.jpg
+            - IMG_20250428_175237.jpg
+            - IMG_20250428_175315.jpg
+            - IMG_20250428_175244.jpg
+            - IMG_20250428_175242.jpg
+            - IMG_20250428_175331.jpg
+            - IMG_20250428_175111.jpg
+            - IMG_20250428_175210.jpg
+            - IMG_20250428_174942.jpg
+          - **trabajos de mallas con laplace/**
+            - malla 1 y 2 laplace.pdf
+        - **unidad 2/**
+          - contadores.pdf
+          - EJEMPLOSRESUELTOSPARALASPRACTICAS_copia.pdf
+          - **grupo 1/**
+            - DIAPOSITIVAS EDUARDO ANDDRE QUISPE CRUZ SISTEMAS Y CODIGOS DE NUMERACION.pptx
+            - RESUMEN 2da PARTE EDUARDO ANDDRE QUISPE CRUZ.docx
+          - **para enviar/**
+            - Contadores_Digitales_Clasificación_y_Diseño_Mamani Galindo Renzo gabriel.pdf
+            - RESUMEN_GRUPO_5_PARTE_2_RENZO_MAMANI.pdf
+            - DIAPOSITIVAS_GRUPO_5_PARTE_2_RENZO_MAMANI.pptx
+          - **material para la exposicion/**
+            - CONTADOR 3 BITS ASCENDENTE CON FLIP FLOP.png
+            - CONTADOR 3 BITS ASCENDENTE CON FLIP FLOP.pdf
+            - bom.csv
+            - Contador Asíncrono de 4 Bits con flip-flop JK.png
+            - Contador Asíncrono de 4 Bits con flip-flop JK.pdf
+            - bom (1).csv
+            - 3 bits.xlsx
+            - contadores_resumen_creativo.pdf
+            - guion.pdf
+            - **guion de exposicion/**
+              - document.blg
+              - document.bbl
+              - document.tex
+              - document.out
+              - document.log
+              - document.aux
+              - document.pdf
+              - document.synctex.gz
+          - **reumen del contadores/**
+            - contadores_resumen.tex
+            - contadores_resumen.pdf
+            - contadores_resumen.aux
+            - contadores_resumen.out
+            - contadores_resumen.toc
+            - contadores_resumen.synctex.gz
+            - contadores_resumen.log
+            - contadores_resumen_creativo.tex
+            - contadores_resumen_creativo.out
+            - contadores_resumen_creativo.log
+            - contadores_resumen_creativo.aux
+            - contadores_resumen_creativo.synctex.gz
+            - Grupo5_parte2_MamaniRenzo.pdf
+            - **IMG/**
+              - flipflop.png
+              - 3bit_counter.png
+              - 4bit_counter.jpg
+              - CONTADOR 3 BITS ASCENDENTE CON FLIP FLOP.png
+              - Contador Asíncrono de 4 Bits con flip-flop JK.png
+          - **escritura amano/**
+            - El diseño de circuitos lógicos es una disciplina fundamental en la ingeniería electrónica y la informática.docx
+            - El diseño de circuitos lógicos es una disciplina fundamental en la ingeniería electrónica y la informática.pdf
+            - parte 2.docx
+            - parte 2.pdf
+            - parte 3.pdf
+            - parte 3.docx
+      - **Apuntes/**
+        - Exp_B_Gu_a_Te_rica_Rectificadores_Trif_sicos_No_Controlados.pdf
+        - TRANSISTORES (1).pdf
+        - pdf de dinamica de gase.pdf
+        - Principios_de_Electronica_7a_edicion_Mal[1].pdf
+        - rectif.pdf
+        - elo381_capitulo_03_rectificadores.pdf
+        - FORMULARIO.pdf
+      - **Exámenes/**
+        - 1750135843930.jpg
+      - **programas para circuitos/**
+        - **Gallery.hpappdir/**
+          - icon.png
+          - transistores.jpg
+          - Gallery.hpappprgm
+          - formulario.jpg
+          - rectificador de media onda.jpg
+          - caracteristicas de transistor.jpg
+          - temperatura en transistor.jpg
+          - rectificador de onda completa.jpg
+          - rectif de onda completa RL.jpg
+          - 8.jpg
+          - 7.jpg
+          - 9.jpg
+          - 5.jpg
+          - ejercicio parte2.jpg
+          - 4.jpg
+          - ejercicio.jpg
+          - 1.jpg
+          - 6.jpg
+          - polariza realimentacion en colectorr.jpg
+          - polarizacion fija.jpg
+          - polarizacion por divisor de voltaje.jpg
+          - polarizacion de emisor.jpg
+          - Gallery.hpapp
+          - Gallery.hpappnote
+        - **problemas resueltos.hpappdir/**
+          - problemas resueltos.hpapp
+          - problemas resueltos.hpappnote
+          - 1.png
+          - 2.png
+          - 3.png
+          - 4.png
+          - 5.png
+          - 6.png
+          - 7.png
+          - 8.png
+          - icon.png
+          - problemas resueltos.hpappprgm
+          - 9.png
+        - **FORMULAX.hpappdir/**
+          - FORMULAX.hpapp
+          - FORMULAX.hpappnote
+          - 1.png
+          - 10.png
+          - 11.png
+          - 12.png
+          - 13.png
+          - 2.png
+          - 3.png
+          - 4.png
+          - 5.png
+          - 6.png
+          - 7.png
+          - 8.png
+          - 9.png
+          - icon.png
+          - FORMULAX.hpappprgm
+        - **FORMULA.hpappdir/**
+          - FORMULAX.hpapp
+          - FORMULAX.hpappnote
+          - 10.png
+          - 11.png
+          - 12.png
+          - 13.png
+          - 5.png
+          - 6.png
+          - 7.png
+          - 9.png
+          - icon.png
+          - FORMULAX.hpappprgm
+      - **hp prime/**
+        - TRANSFORMADOR_VM_RECTIFICADOR.hpprgm
+        - kachapolanco.hpprgm
+        - tuneado.txt
+        - **15 17/**
+          - kachapolanco.hpprgm
+        - **15 28/**
+          - kachapolanco.hpprgm
+        - **15 42/**
+        - **imagenes.hpappdir/**
+          - imagenes.hpappnote
+          - icon.png
+          - imagenes.hpapp
+          - imagenes.hpappprgm
+          - Imagen de WhatsApp 2025-07-15 a las 07.53.59_c6108ce8.jpg
+          - Imagen de WhatsApp 2025-07-15 a las 07.53.59_cc2a18d2.jpg
+          - Imagen de WhatsApp 2025-07-15 a las 07.53.59_b5849432.jpg
+      - **programa de simulacion protoboard/**
+        - SimuladorDigital_095.exe
+      - **remy/**
+        - b358beca-c522-4336-901e-dc9939d601c9.jpg
+        - Shift-registers.jpg
+        - Ring-counter.png
+        - Johnson counter.jpg
+        - document.tex
+        - document.aux
+        - document.log
+        - document.pdf
+        - document.synctex.gz
+        - reny registro de desplazacmiento.pdf
+        - Registros_de_Desplazamiento_y_Diagnóstico_de_Fallas_en_Electrónica_Digital.pptx
+        - **neumatica/**
+          - Introducción_a_los_Sistemas_Neumáticos.pptx
+          - Introducción_a_los_Sistemas_Neumáticos.pdf
+          - sddefault.jpg
+          - maxresdefault.jpg
+          - componentes-circuito-neumatico.jpg
+          - cilindroSE.jpg
+          - DE.jpg
+          - double-acting-cylinder.png
+          - Captura de pantalla 2025-06-19 081922.png
+          - Captura de pantalla 2025-06-19 082319.png
+          - tipos de compresores.png
+          - document.out
+          - document.toc
+          - document.tex
+          - document.aux
+          - document.log
+          - document.pdf
+          - document.synctex.gz
+          - ejemplo y seleccion.pdf
+          - reny articulos cientificos.pdf
+        - **articulos/**
+          - articulo_estrategico_1.tex
+          - document.tex
+    - **Control de Procesos I/**
+      - **Materiales/**
+        - ingenieria-de-control-moderna-ogata-5ed.pdf
+        - apuntes_simulink_2013_0.pdf
+        - Control_Automatico_Procesos_Industriales_Alfredo_Roca_2daEd.pdf
+        - Sistemas_Control_Automatico_Guia3_MATLAB.pdf
+        - **reglas de algebra de bloques/**
+          - updated_Reglas-de-bloques.pdf
+        - **bloques/**
+          - document.tex
+          - document.log
+          - document.aux
+        - **PDF del controlador PID/**
+          - PID.pdf
+      - **Tareas/**
+        - **unida 2/**
+          - Trabajo_encargado_unidad_2_-_1ra_parte.pdf
+          - **Video de las prácticas/**
+            - Video osito.rar
+            - **Video osito/**
+              - **Video osito/**
+                - sistema_control.js
+                - Prom3.html
+                - Prom7.html
+                - Prom9.html
+                - Prom2.html
+                - Prom4.html
+                - Prom5.html
+                - Prom6.html
+                - Prom1.html
+                - Index.html
+                - Prom10.html
+                - Prom8.html
+                - **Imagenes/**
+                  - step_response_ej2.png
+                  - diagrama_sistema.png
+                  - segundo_orden.png
+                  - diagrama_bloques.png
+                  - enunciado_rootlocus.png
+                  - enunciado_prom10.png
+          - **MamaniRenzo_control de procesos/**
+            - link.txt
+            - mamaniRenzo_1.mkv
+            - MamaniRenzo_2.mkv
+            - MamaniRenzo_3.mkv
+            - MamaniRenzo_4.mkv
+            - MamaniRenzo_5.mkv
+            - MamaniRenzo_6.mkv
+            - MamaniRenzo_7.mkv
+            - MamaniRenzo_8.mkv
+            - MamaniaRenzo_9.mkv
+        - **unidad 1/**
+          - Practica Calificada 2.pdf
+          - Practica Calificada 1.pdf
+          - b2GMpXhIPSwd8BMGAdJcvE (2)-16-30.pdf
+          - ilovepdf_split-range.zip
+          - solucion practica 1.pdf
+          - solucion practica 2.pdf
+      - **Apuntes/**
+      - **Exámenes/**
+        - Informe Final_ Sistema de Monitoreo y Control para Invernadero Automatizado.pdf
+        - 1750135895785.jpg
+    - **Dinámica de Gases/**
+      - **Materiales/**
+      - **Tareas/**
+        - **1 unidad/**
+          - LaTeX25TrabajoIUNIDADDINAMICA_DE_GASES_2025-I.pdf
+          - **investigacion/**
+            - **material/**
+              - c36df44e-0dc4-4a80-b1eb-9e938508be34.docx
+              - masnus.pdf
+            - **para enviar/**
+              - MamaniRenzo_perdidas primarias y perdidas secundarias.pdf
+            - **articulo/**
+              - LaTeXTemplates_journal-article_v2.0.zip
+              - articulo.zip
+              - sample.bib
+              - LTJournalArticle.cls
+              - template.synctex(busy).gz
+              - template.blg
+              - template.bbl
+              - template.synctex.gz
+              - template.aux
+              - template.run.xml
+              - template.pdf
+              - template.tex
+              - template.bcf
+              - template.out
+              - template.log
+              - **Figures/**
+                - economizador.jpg
+                - sobrecanlentador.jpg
+                - caldera_de_recuperacion.jpg
+                - caldera_de_recuperacion.png
+                - evaporador.png
+                - ciclo_combinado.png
+                - Diagrama_de_Moody.png
+        - **2 unidad/**
+          - LaTeX55TrabajoDeDinamicaDeGases(25-I).pdf
+          - MamaniRenzo_bombas centrifugas.pdf
+          - **articulo/**
+            - LTJournalArticle.cls
+            - LaTeXTemplates_journal-article_v2.0.zip
+            - articulo.zip
+            - template.synctex(busy) (1).gz
+            - template.synctex(busy).gz
+            - template.blg
+            - template.bbl
+            - sample.bib
+            - template.tex
+            - template.out
+            - template.aux
+            - template.run.xml
+            - template.log
+            - template.pdf
+            - template.bcf
+            - template.synctex.gz
+            - **Figures/**
+              - caldera_de_recuperacion.jpg
+              - ciclo_combinado.png
+              - caldera_de_recuperacion.png
+              - economizador.jpg
+              - evaporador.png
+              - sobrecanlentador.jpg
+              - Diagrama_de_Moody.png
+              - BOMBAS DE DESPLAZAMIENTO POSITIVO.png
+      - **Apuntes/**
+        - calculo de caudal en una tuberia.blg
+        - calculo de caudal en una tuberia.bbl
+        - calculo de caudal en una tuberia.aux
+        - calculo de caudal en una tuberia.tex
+        - calculo de caudal en una tuberia.pdf
+        - calculo de caudal en una tuberia.log
+        - calculo de caudal en una tuberia.synctex.gz
+      - **Exámenes/**
+    - **Diseño de Elementos de Máquinas II/**
+      - **Materiales/**
+      - **Tareas/**
+      - **Apuntes/**
+      - **Exámenes/**
+        - 1750135969680.jpg
+        - storage emulated 0 Android data com.miui.gallery cache SecurityShare 1750135969684.jpg
+    - **mi letra/**
+      - Calligraphr-Template.zip
+      - 1.png
+      - 2.png
+      - RenzoGabriel-Regular.ttf
+      - Calligraphr-Template_1.png
+      - Calligraphr-Template_2.png
+      - **prueba 2/**
+        - Calligraphr-Template.zip
+        - pru 1.png
+        - pru 2.png
+        - MiLetraArreglado-Regular.ttf
+        - Calligraphr-Template_2.png
+        - Calligraphr-Template_1.png
+        - para hacer problemas matematicos.txt
+  - **tesis/**
+    - **borradores/**
+      - 📝 Título Propuesto.gdoc
+  - INFORME_COMPLETO.txt
+  - **pruebas para codex/**
+    - **Laboratorio_Medidas_Electricas/**
+      - Informe_Lab3.zip
+      - Informe_Lab1.zip
+      - Informe_Lab1.pdf
+      - Informe_Lab3.pdf
+  - **7 Semestre/**
+    - **Laboratorio de Circuitos Eléctricos II/**
+      - **Materiales/**
+        - Solucion_Ciclo_Diesel_Mamani_Galindo_Renzo_Gabriel.pdf
+      - **Tareas/**
+        - informe_1_mamani_galindo.pdf
+        - informe_2_mamani_galindo.pdf
+        - **informe 1/**
+          - principal.bcf
+          - principal.run.xml
+          - principal.synctex(busy).gz
+          - principal.bbl
+          - principal.blg
+          - template_config.tex
+          - natnumurl.bst
+          - template.pdf
+          - template.synctex.gz
+          - main.aux
+          - principal.toc
+          - main.log
+          - examen.synctex.gz
+          - template.log
+          - main.synctex.gz
+          - template.tex
+          - mec.png
+          - principal.tex
+          - principal.out
+          - principal.aux
+          - principal.log
+          - principal.synctex.gz
+          - principal.pdf
+          - **IMG/**
+            - IMG20250415081411.jpg
+            - IMG20250415081410.jpg
+            - IMG20250415081842.jpg
+            - IMG20250415081403.jpg
+            - IMG20250415081941.jpg
+            - IMG20250415082152.jpg
+            - IMG20250415081928.jpg
+            - IMG20250415082150.jpg
+            - IMG20250415081733.jpg
+            - IMG20250415081739.jpg
+            - Multimetro_Amprobe_AM220.jpg
+            - Multímetro_Sanwa_CD772.jpg
+            - Medidor_Corriente_Chauvin_Arnoux.jpg
+            - IMG20250415081443.jpg
+            - PeakTech_3280_Resistance_Decade_Box.jpg
+            - Resistencias.jpg
+            - multimetro_pr85.jpg
+            - elenco_xp750.jpg
+            - peaktech_3280.jpg
+            - voltimetro.png
+            - amperimetro.png
+            - ohmimetro.png
+          - **referencias/**
+            - referencias.bib
+          - **config/**
+            - configuracion_estilos.tex
+            - configuracion_fechas_referencias.tex
+            - configuracion_pdf_inclusion.tex
+            - configuracion_matematica.tex
+            - configuracion_tablas_listados.tex
+            - configuracion_codigo_fuente.tex
+            - configuracion_tikz.tex
+            - configuracion_graficos.tex
+            - configuracion_general.tex
+          - **divisiones/**
+            - V.py
+            - 3objetivos.tex
+            - 5metodologia.tex
+            - 1resumen.tex
+            - 4introduccion.tex
+            - 6resultados_y_discusion.tex
+            - 7conclusiones.tex
+            - 8referencias.tex
+            - 2antecedentes.tex
+          - **guia de laboratorio/**
+            - Lab._Cktos_Electricos_II_02.pdf
+        - **informe 2/**
+          - principal.bcf
+          - principal.run.xml
+          - principal.synctex(busy).gz
+          - principal.bbl
+          - principal.blg
+          - template_config.tex
+          - natnumurl.bst
+          - template.pdf
+          - template.synctex.gz
+          - main.aux
+          - principal.toc
+          - main.log
+          - examen.synctex.gz
+          - template.log
+          - main.synctex.gz
+          - template.tex
+          - mec.png
+          - principal.tex
+          - principal.out
+          - principal.aux
+          - principal.log
+          - principal.synctex.gz
+          - informe_2_mamanigalindo.pdf
+          - **IMG/**
+            - v0.png
+            - 1.png
+            - Screenshot 2025-10-17 195449.png
+            - 2.png
+            - pruebas (1).png
+            - pruebas (2).png
+            - pruebas (3).png
+            - pruebas (4).png
+            - pruebas (5).png
+            - pruebas (6).png
+          - **referencias/**
+            - referencias.bib
+          - **config/**
+            - configuracion_estilos.tex
+            - configuracion_fechas_referencias.tex
+            - configuracion_pdf_inclusion.tex
+            - configuracion_matematica.tex
+            - configuracion_tablas_listados.tex
+            - configuracion_codigo_fuente.tex
+            - configuracion_tikz.tex
+            - configuracion_graficos.tex
+            - configuracion_general.tex
+          - **divisiones/**
+            - V.py
+            - 3objetivos.tex
+            - 5metodologia.tex
+            - 1resumen.tex
+            - 4introduccion.tex
+            - 6resultados_y_discusion.tex
+            - 7conclusiones.tex
+            - 8referencias.tex
+            - 2antecedentes.tex
+          - **guia de laboratorio/**
+            - Lab._Cktos_Electricos_II_02 (1).pdf
+      - **Apuntes/**
+      - **Exámenes/**
+    - **Laboratorio de Ingeniería Mecánica II/**
+      - **Materiales/**
+      - **Tareas/**
+        - **Nueva carpeta/**
+        - **Lab 1/**
+          - lab1_mec2_MamaniRenzo.pdf
+          - **informe 1/**
+            - principal.synctex(busy).gz
+            - principal.toc
+            - template.pdf
+            - natnumurl.bst
+            - template.log
+            - examen.synctex.gz
+            - template.synctex.gz
+            - main.synctex.gz
+            - principal.bcf
+            - main.aux
+            - main.log
+            - principal.run.xml
+            - mec.png
+            - template_config.tex
+            - template.tex
+            - principal.bbl
+            - principal.blg
+            - principal.tex
+            - principal.out
+            - principal.log
+            - principal.aux
+            - principal.pdf
+            - principal.synctex(busy) (1).gz
+            - **IMG/**
+              - manometro.jpg
+              - modulo.jpg
+              - digitalTacometro.jpg
+              - IMG20241029134737.jpg
+              - pelton y sus partes.png
+              - cucharas del pelton.png
+              - TurbinaPelton.jpg
+              - Logo_UNAP.png
+              - mec.png
+            - **referencias/**
+              - referencias.bib
+            - **divisiones/**
+              - V.py
+              - 1resumen.tex
+              - 2antecedentes.tex
+              - 7conclusiones.tex
+              - 8referencias.tex
+              - 3objetivos.tex
+              - 4introduccion.tex
+              - 5metodologia.tex
+              - 6resultados_y_discusion.tex
+            - **config/**
+              - configuracion_estilos.tex
+              - configuracion_fechas_referencias.tex
+              - configuracion_pdf_inclusion.tex
+              - configuracion_matematica.tex
+              - configuracion_tablas_listados.tex
+              - configuracion_codigo_fuente.tex
+              - configuracion_tikz.tex
+              - configuracion_graficos.tex
+              - configuracion_general.tex
+        - **lab 2/**
+          - lab1_mec2_MamaniRenzo.pdf
+          - lab2_mec2_MamaniRenzo.pdf
+          - **informe 1/**
+            - principal.synctex(busy).gz
+            - principal.toc
+            - template.pdf
+            - natnumurl.bst
+            - template.log
+            - examen.synctex.gz
+            - template.synctex.gz
+            - main.synctex.gz
+            - principal.bcf
+            - main.aux
+            - main.log
+            - principal.run.xml
+            - mec.png
+            - template_config.tex
+            - template.tex
+            - principal.bbl
+            - principal.blg
+            - principal.tex
+            - principal.out
+            - principal.log
+            - principal.aux
+            - principal.pdf
+            - principal.synctex(busy) (1).gz
+            - principal.synctex.gz
+            - **IMG/**
+              - modulo.jpg
+              - digitalTacometro.jpg
+              - caudal.jpg
+              - Logo_UNAP.png
+              - mec.png
+              - labfrancis.jpg
+              - IMG-20251006-WA0024.jpg
+              - IMG-20251006-WA0026.jpg
+              - presion.jpg
+              - IMG-20251006-WA0027.jpg
+              - IMG-20251006-WA0025.jpg
+              - francis.png
+            - **referencias/**
+              - referencias.bib
+            - **divisiones/**
+              - V.py
+              - 1resumen.tex
+              - 2antecedentes.tex
+              - 7conclusiones.tex
+              - 8referencias.tex
+              - 3objetivos.tex
+              - 4introduccion.tex
+              - 5metodologia.tex
+              - 6resultados_y_discusion.tex
+            - **config/**
+              - configuracion_estilos.tex
+              - configuracion_fechas_referencias.tex
+              - configuracion_pdf_inclusion.tex
+              - configuracion_matematica.tex
+              - configuracion_tablas_listados.tex
+              - configuracion_codigo_fuente.tex
+              - configuracion_tikz.tex
+              - configuracion_graficos.tex
+              - configuracion_general.tex
+      - **Apuntes/**
+      - **Exámenes/**
+    - **Control de Procesos II/**
+      - exa.txt
+      - **Materiales/**
+        - Jose_Ramos_T_01.pdf
+        - operaciones_controladores.pdf
+        - servosistema_tipo_1_sin_integ.pdf
+        - Ingeniería de Control Moderna by Katsuhiko Ogata (z-lib.org).pdf
+        - Obs_ord_comp_servosist.pdf
+        - Examen parcial 2025-II.pdf
+      - **Tareas/**
+        - generar_informe.py
+        - listado_archivos.txt
+        - creacion.py
+        - **ArchivosDesordenados/**
+          - fuzzy.fis
+          - **motor_sincrono/**
+            - motor_mamani_galindo.mlx
+            - motor_mamani_galindo.pdf
+            - creacion_simulink.m
+          - **examen/**
+            - examen_1_mamani_galindo.mlx
+            - examen_2_mamani_galindo.mlx
+            - examen_3_mamani_galindo.mlx
+            - examen_4_mamani_galindo.mlx
+            - examen_5_mamani_galindo.mlx
+            - examen_1_mamani_galindo.pdf
+            - simulinkcod_blo.m
+            - prob_1_simulink.slx
+            - examen_2_mamani_galindo.pdf
+            - examen_3_mamani_galindo.pdf
+            - examen_4_mamani_galindo.pdf
+            - examen_5_mamani_galindo.pdf
+          - **tarea 3/**
+            - tarea3.mlx
+            - tarea3simulink.slx
+            - untitled2.m
+            - tarea3simulink.slx.original
+          - **inicio/**
+            - t1.mlx
+            - t1.pdf
+            - trabajo2_16_09_2025.mlx
+            - trabajo2_16_09_2025.pdf
+            - trabajo1_Mamani_Renzo.mlx
+            - simulink_espacio_de_estado.slx
+            - trabajo1_Mamani_Renzo.pdf
+          - **talleres en clase/**
+            - **taller 1/**
+              - variables_de_estado_.slx
+              - T3.mlx
+            - **taller 2/**
+              - untitled.mlx
+              - untitled.pdf
+              - taller2_.mlx
+              - taller2_.pdf
+              - taller_2_mamani_galindo.slx
+            - **taller 3/**
+              - TALLER3_PARTE1_2.slx
+              - TALLER3agregando_un_integrador.slx
+              - TALLER3_agregando_un_integrador.slx
+              - taller3_parte_general.mlx
+              - taller3_parte_general.pdf
+              - **INFORME/**
+                - TALLER3_MAMANIGALINDO.tex
+                - TALLER3_MAMANIGALINDO.log
+                - TALLER3_MAMANIGALINDO.synctex.gz
+                - TALLER3_MAMANIGALINDO.aux
+                - TALLER3_MAMANIGALINDO.pdf
+                - TALLER3_MAMANIGALINDO.toc
+                - 1.png
+                - 2.png
+                - 3.png
+            - **taller 4/**
+              - taller4.mlx
+              - Taller 03_2025_II.pdf
+              - taller4_mamani_galindo.mlx
+              - DISENO_Y_SIMULACION_DE_UN_OBSERVADOR_DE_ESTADOS_DE_ORDEN_COMPLETO.mlx
+          - **fuzzy tare2/**
+            - simulink_2.slx
+            - matlab.mat
+            - TRABAJO por Mamani Galindo Renzo Gabriel.pdf
+          - **FUZZY TAREA1/**
+            - matlab.mat
+            - codigo_de_creacion.m
+            - fuzzy1chat.mat
+            - CODIGO_QUE_GENERA_SIMULINK.m
+            - fuzzy_1_simulink.slx
+          - **automatizacion/**
+            - codigogeneral.m
+          - **fuzzy 4/**
+            - simulink_fuzzy_4.slx
+        - **pruebas/**
+          - import os.py
+          - Resultado_Proyecto_Fuzzy.zip
+          - **Proyecto_Control_Fuzzy_vcontrol/**
+            - vcontrol_init.m
+            - vcontrol.fis
+            - Informe_Proyecto.md
+        - **T! y T2/**
+          - Nuevo acceso directo.lnk
+      - **Apuntes/**
+        - Pieza1.SLDPRT
+        - Pieza1.STL
+        - UCP_Pieza1.3mf
+        - reduccion.STL
+        - pieza 1de bola.SLDPRT
+        - pieza 1de bola.STL
+        - Pieza2 de bola.SLDPRT
+        - Pieza2 de bola.STL
+      - **Examenes/**
+        - python crear_estructura.py
+        - detector_monedas.rar
+        - detector_universal.zip
+        - detector_universal - copia.rar
+        - **2/**
+          - RÚBRICA POR PREGUNTA.pdf
+          - DATOS - CONTROL.xlsx
+          - datos_fechas_actualizadas.csv
+          - Examen.pdf
+          - generador_examen.py
+        - **examen final/**
+          - 1.py
+          - PROYECTO_CONTROL_II_RENZO_MAMANI_REAL.zip
+          - 2.py
+          - PROYECTO_CONTROL_FUZZY_RENZO_MAMANI.zip
+          - 3.py
+          - PROYECTO_ANN_SOLAR_RENZO_MAMANI_FINAL.zip
+          - 4.py
+          - PROYECTO_LSTM_MATLAB_RENZO_MAMANI.zip
+          - 5.py
+          - PROYECTO_LSTM_OPTIMIZADA_MATLAB_RENZO.zip
+          - **1_PROYECTO_CONTROL_II_RENZO_MAMANI_REAL/**
+            - LEEME_ANTES.txt
+            - datos_fechas_actualizadas.csv
+            - **MATLAB/**
+              - main_control_pid.m
+              - datos_planta.xlsx
+              - **Resultados/**
+                - parametros_control.mat
+            - **Simulink/**
+            - **Informe/**
+              - Informe_Proyecto.md
+            - **Resultados/**
+            - **Extras/**
+          - **2_PROYECTO_CONTROL_FUZZY_RENZO_MAMANI/**
+            - LEEME_ANTES.txt
+            - **MATLAB/**
+              - main_control_fuzzy.m
+              - datos_planta.xlsx
+              - **Resultados/**
+                - datos_fuzzy.mat
+              - **FIS/**
+                - controlador_termico.fis
+            - **Simulink/**
+            - **FIS/**
+            - **Informe/**
+              - Informe_Fuzzy.md
+            - **Resultados/**
+            - **Extras/**
+          - **3_PROYECTO_ANN_SOLAR_RENZO_MAMANI_FINAL/**
+            - LEEME_ANTES.txt
+            - **MATLAB_Code/**
+              - main_ann_solar.m
+              - datos_fechas_actualizadas.csv
+            - **Python_Code/**
+              - main_ann_solar.py
+            - **Informe/**
+              - Informe_ANN.md
+            - **Resultados/**
+            - **Datos/**
+              - datos_fechas_actualizadas.csv
+          - **4_PROYECTO_LSTM_MATLAB_RENZO_MAMANI/**
+            - LEEME_ANTES.txt
+            - **MATLAB_Code/**
+              - main_lstm_solar.m
+            - **Informe/**
+              - Informe_LSTM.md
+            - **Resultados/**
+              - resultado_lstm_matlab.png
+            - **Datos/**
+              - datos_fechas_actualizadas.csv
+          - **5_PROYECTO_LSTM_OPTIMIZADA_MATLAB_RENZO/**
+            - LEEME_ANTES.txt
+            - **MATLAB_Code/**
+              - main_lstm_opt_matlab.m
+            - **Informe/**
+              - Informe_Optimizacion_MATLAB.md
+            - **Resultados/**
+            - **Datos/**
+              - datos_fechas_actualizadas.csv
+          - **PROYECTO_LSTM_OPTIMIZADA_MATLAB_RENZO/**
+            - LEEME_ANTES.txt
+            - **MATLAB_Code/**
+              - main_lstm_opt_matlab.m
+            - **Informe/**
+              - Informe_Optimizacion_MATLAB.md
+            - **Resultados/**
+              - resultado_optimo_lite.png
+            - **Datos/**
+              - datos_fechas_actualizadas.csv
+        - **EXAMEN CON RUBRICA CON TODO/**
+          - EXAMEN1.py
+          - EXAMEN2.py
+          - EXAMEN3.py
+          - EXAMEN4.py
+          - EXAMEN5.py
+          - **1/**
+            - UNO_EXA.mlx
+            - datos_fechas_actualizadas.csv
+            - datos_planta.xlsx
+            - UNO_simu.slx
+            - UNO_simu.slxc
+            - creador_de_simu.m
+            - PID_Planta_Real.slx
+            - **Resultados/**
+              - 1_Datos_Experimentales.png
+              - 2_Identificacion_Planta.png
+              - 3_Respuesta_PID.png
+              - variables_PID.mat
+              - Respuesta_Fuzzy.png
+              - datos_fuzzy.mat
+            - **FIS/**
+              - controlador_termico.fis
+            - **slprj/**
+              - **sim/**
+                - **varcache/**
+                  - **UNO_simu/**
+                    - checksumOfCache.mat
+                    - varInfo.mat
+                    - **tmwinternal/**
+                  - **PID_Planta_Identificada/**
+                    - checksumOfCache.mat
+                    - varInfo.mat
+                    - **tmwinternal/**
+          - **2/**
+            - dos_EXA.mlx
+            - datos_fechas_actualizadas.csv
+            - datos_planta.xlsx
+          - **3/**
+            - untitled3.mlx
+            - TRES_EXA.mlx
+            - datos_fechas_actualizadas.csv
+            - datos_planta.xlsx
+          - **4/**
+            - cuatro_exa.mlx
+            - datos_fechas_actualizadas.csv
+            - datos_planta.xlsx
+          - **5/**
+            - cinco_exa.m
+            - datos_fechas_actualizadas.csv
+            - datos_planta.xlsx
+    - **Transferencia de Calor/**
+      - **Materiales/**
+        - Emailing transferencia-de-calor-holman.pdf
+        - Emailing problemas-resueltos-de-transferencia-de-calor-antonio-valiente.pdf
+        - EJERCICIOS RESUELTOS DE TRANSFERENCIA DE CALOR.pdf
+        - transferencia de calor PUCP .pdf
+        - tablas .pdf
+        - tbla de Bessel.pdf
+        - Aletas.pdf
+        - Tablas Bessel mejor.pdf
+        - placas planas.pdf
+        - WhatsApp Image 2025-10-16 at 22.32.32_2248f463.jpg
+        - libro de transferencia de calor y masa.pdf
+        - ~$casita h.pptx
+        - casita h.pptx
+      - **Tareas/**
+        - practica_transferencia_de_calor_1 (2).pdf
+        - Ficha Matricula.pdf
+        - constancia_66992578.pdf
+        - practica_transferencia_de_calor_3_163.pdf
+        - Presentación1.pptx
+        - **numero adimencionales/**
+          - document.tex
+          - document.log
+          - document.synctex.gz
+          - document.pdf
+          - document.aux
+          - document.out
+          - document.toc
+      - **Apuntes/**
+        - Lis de aL (TRANSFERENCIA DE CALOR).xlsx
+        - texstudio_rQEefv.pdf
+        - document.tex
+      - **Exámenes/**
+    - **Teoría de Máquinas y Mecanismos/**
+      - **Materiales/**
+      - **Tareas/**
+        - piezza que sostiene el lapicero.SLDPRT
+        - piezza que sostiene el lapicero.STL
+      - **Apuntes/**
+      - **Exámenes/**
+    - **Máquinas Eléctricas I/**
+      - **Materiales/**
+        - maquinas-electricas-estaticas_compress.pdf
+      - **Tareas/**
+        - AUTOTRANSFORMADORES.pdf
+        - ✨para un informe 2.zip
+        - articulo.zip
+        - **articulo/**
+          - LTJournalArticle.cls
+          - LaTeXTemplates_journal-article_v2.0.zip
+          - articulo.zip
+          - template.synctex(busy) (1).gz
+          - template.synctex(busy).gz
+          - template.blg
+          - template.bbl
+          - sample.bib
+          - template.tex
+          - template.out
+          - template.aux
+          - template.run.xml
+          - template.log
+          - template.pdf
+          - template.bcf
+          - template.synctex.gz
+          - template.pdf.tex
+          - **Figures/**
+            - caldera_de_recuperacion.jpg
+            - ciclo_combinado.png
+            - caldera_de_recuperacion.png
+            - economizador.jpg
+            - evaporador.png
+            - sobrecanlentador.jpg
+            - Diagrama_de_Moody.png
+            - BOMBAS DE DESPLAZAMIENTO POSITIVO.png
+        - **✨para un informe 2/**
+          - principal.bcf
+          - principal.run.xml
+          - principal.bbl
+          - principal.blg
+          - principal.synctex(busy).gz
+          - natnumurl.bst
+          - template_config.tex
+          - template.tex
+          - template.synctex.gz
+          - template.pdf
+          - main.aux
+          - examen.synctex.gz
+          - principal.toc
+          - main.log
+          - main.synctex.gz
+          - template.log
+          - mec.png
+          - crear.py
+          - principal.tex
+          - principal.aux
+          - principal.out
+          - principal.log
+          - principal.pdf
+          - principal.synctex.gz
+          - principal.pdf.tex
+          - **IMG/**
+          - **referencias/**
+            - referencias.bib
+          - **divisiones/**
+            - 8referencias.tex
+            - 1objetivos.tex
+            - 2marco_teorico.tex
+            - 3materiales_y_metodos.tex
+            - 7apendice.tex
+            - 4resultados.tex
+            - 5analisis_de_resultados.tex
+            - 6conclusiones.tex
+          - **config/**
+            - configuracion_general.tex
+            - configuracion_estilos.tex
+            - configuracion_fechas_referencias.tex
+            - configuracion_pdf_inclusion.tex
+            - configuracion_matematica.tex
+            - configuracion_tablas_listados.tex
+            - configuracion_codigo_fuente.tex
+            - configuracion_tikz.tex
+            - configuracion_graficos.tex
+        - **transformador proyecto/**
+          - IMG_20251222_190855.jpg
+          - IMG_20251222_190846.jpg
+          - IMG_20251222_190746.jpg
+          - IMG_20251219_192923.jpg
+          - IMG_20251219_192731.jpg
+          - IMG_20251219_192727.jpg
+          - IMG_20251219_192625.jpg
+          - IMG_20251219_185908.jpg
+          - cambio.py
+          - prueba_continuidad_multimetro.jpg
+          - proceso_bobinado_manual.jpg
+          - barniz_aislante_anypsa.jpg
+          - detalle_aislamiento_bobina.jpg
+          - bobina_secundaria_terminada.jpg
+          - uso_de_molde_cilindrico.jpg
+          - limpieza_nucleo_barnizado_1.jpg
+          - limpieza_nucleo_barnizado_2.jpg
+          - aplicacion_barniz_protector.jpg
+          - IMG_20251219_180829.jpg
+          - IMG_20251219_192622.jpg
+          - IMG_20251219_192624.jpg
+          - IMG_20251219_192725.jpg
+          - PROYECTOTRANSFORMADOR.pptx
+      - **Apuntes/**
+      - **Exámenes/**
+    - **Medidas Eléctricas/**
+      - **Materiales/**
+        - medidas para ankki.csv
+        - tarjetas basicas.csv
+      - **Tareas/**
+        - Analisis Tecnico y Comparativo de Subestaciones Electricas de Distribución.docx
+        - Analisis Tecnico y Comparativo de Subestaciones Electricas de Distribución.pdf
+        - puesta_a_tierra.pdf
+        - ~$OSCILOSCOPIO_MULTIMETRO_PINZA_por MamaniRenzo.pptx
+        - 14, Equipos de Medición Osciloscopio y Multímetro, Mamani Galindo Renzo Gabriel.pptx
+        - medidas_electricidad.pdf
+      - **Apuntes/**
+      - **Exámenes/**
+    - **Máquinas Térmicas I/**
+      - **Materiales/**
+        - Solucion_Ciclo_Diesel_Mamani_Galindo_Renzo_Gabriel.pdf
+        - IMG-20251015-WA0147.jpg
+        - IMG-20251015-WA0145.jpg
+        - IMG-20251015-WA0146.jpg
+        - IMG-20251015-WA0149.jpg
+        - IMG-20251015-WA0148.jpg
+        - 10.pdf
+        - cloze termicas.csv
+        - basico termicas.csv
+      - **Tareas/**
+        - presentacion del curso de maquinas termicas.html
+        - presentacion del curso de maquinas termicas.improved.html
+        - presentacion del curso de maquinas termicas.original.html
+        - example.tex
+        - main.tex
+        - template.tex
+        - template_config.tex
+        - library.bib
+        - natnumurl.bst
+        - **presentacion/**
+          - presentacion_maquinas_termicas.tex
+          - presentacion_maquinas_termicas.log
+          - presentacion_maquinas_termicas.synctex.gz
+          - MAMANI_GALINDO_RENZO_presentacion_maquinas_termicas.pdf
+          - presentacion_maquinas_termicas.aux
+          - presentacion_maquinas_termicas.out
+          - presentacion_maquinas_termicas.nav
+          - presentacion_maquinas_termicas.toc
+          - presentacion_maquinas_termicas.snm
+          - fig2.png
+          - fig3.png
+          - fig4.png
+          - fig1.png
+        - **img/**
+          - **departamentos/**
+            - fcfm.pdf
+            - diqbtm.pdf
+            - dimec3.pdf
+            - dimec2.pdf
+            - dcc.pdf
+            - dfi.pdf
+            - uchile.pdf
+            - dimec.pdf
+            - dcc2.pdf
+            - fcfm3.pdf
+            - uchile2.pdf
+            - die.pdf
+            - uchile3.pdf
+            - fcfm2.pdf
+            - dic.pdf
+            - fcfm4.pdf
+            - dfi2.pdf
+            - dic3.pdf
+            - dic2.pdf
+            - postgrado.pdf
+            - dgf.pdf
+            - dim.pdf
+            - minas.pdf
+            - dii.pdf
+            - dgf2.pdf
+            - dii2.pdf
+            - das.pdf
+            - geo.pdf
+            - adh.pdf
+          - **ejemplos/**
+            - portrait.pdf
+            - test-image-wrap.jpg
+            - test-image.png
+        - **informe mejotr/**
+          - Template-Informe.zip
+          - example.tex
+          - main.tex
+          - template.tex
+          - template_config.tex
+          - library.bib
+          - natnumurl.bst
+          - main.log
+          - main.aux
+          - main.pdf
+          - main.toc
+          - main.synctex.gz
+          - main.lof
+          - main.lot
+          - main.lol
+          - main.blg
+          - main.bbl
+          - **img/**
+            - **departamentos/**
+              - fcfm.pdf
+              - diqbtm.pdf
+              - dimec3.pdf
+              - dimec2.pdf
+              - dcc.pdf
+              - dfi.pdf
+              - uchile.pdf
+              - dimec.pdf
+              - dcc2.pdf
+              - fcfm3.pdf
+              - uchile2.pdf
+              - die.pdf
+              - uchile3.pdf
+              - fcfm2.pdf
+              - dic.pdf
+              - fcfm4.pdf
+              - dfi2.pdf
+              - dic3.pdf
+              - dic2.pdf
+              - postgrado.pdf
+              - dgf.pdf
+              - dim.pdf
+              - minas.pdf
+              - dii.pdf
+              - dgf2.pdf
+              - dii2.pdf
+              - das.pdf
+              - geo.pdf
+              - adh.pdf
+              - Logo_UNAP.png
+            - **ejemplos/**
+              - portrait.pdf
+              - IMG_20251223_073728.jpg
+              - IMG_20251223_074115.jpg
+              - IMG_20251223_075241.jpg
+              - IMG_20251223_080524.jpg
+              - IMG_20251223_083052_1.jpg
+              - cambio.py
+        - **otro informe mejor/**
+          - iLCSS_Working_Paper_Template.zip
+          - ilcss-sample.bib
+          - ilcss.cls
+          - ilcssworkingpaper.sty
+          - main.tex
+          - net_red.png
+          - main.log
+      - **Apuntes/**
+      - **Exámenes/**
+- **02_Software_y_Herramientas/**
+  - **Colab Notebooks/**
+    - aplicaciones de la EDO  RENZO GABRIEL MAMANI GABRIEL .ipynb
+    - Untitled0.ipynb
+    - Untitled1.ipynb
+    - Untitled2.ipynb
+    - Untitled3.ipynb
+    - Untitled4.ipynb
+    - Untitled5.ipynb
+    - Untitled6.ipynb
+    - Untitled7.ipynb
+    - Untitled8.ipynb
+    - curso control 2 .ipynb
+  - **appsheet/**
+    - **data/**
+      - **NewApp-771824579/**
+        - empty.txt
+  - **Colab Notebooks_1/**
+    - Untitled0.ipynb
+  - **Google AI Studio_1/**
+  - **codigo latex/**
+    - latex_apa7.txt
+  - **organizador de archivos/**
+    - generar_estructura.py
+    - **OrganizadorTransferencia/**
+      - **ArchivosDesordenados/**
+        - **Psicologia_y_Desarrollo/**
+          - 6. Manejo de emociones.pptx
+          - 6. Manejo de emociones-1.pptx
+          - 7. Inteligencia Emocional.pptx
+          - 7. Inteligencia Emocional-1.pptx
+          - 8. Práctica proyecto de vida, motivación y afectividad humana.pptx
+          - 8. Práctica proyecto de vida, motivación y afectividad humana-1.pptx
+          - 4. Afectos sentimientos emociones-1.pptx
+          - 5. Aproximaciones teóricas al concepto de bienestar-1.pptx
+          - el_arte_de_ser_feliz.pdf
+          - 01. Psicoanálisis. Teoría de la técnica autor Rómulo Lander.pdf
+          - 1. Proyecto de vida.pptx
+          - 2. PSICOANÁLISIS.pptx
+          - 3. Motivación.pptx
+          - 4. Afectos sentimientos emociones.pptx
+          - 5. Aproximaciones teóricas al concepto de bienestar.pptx
+          - El poder de los hábitos ( PDFDrive ).pdf
+        - **Otros/**
+          - 16-10-2021.pdf
+          - 25-oclusion-funcional-ideal.pdf
+          - 100 relatos cientificos- jose antonio lozano teruel.pdf
+          - 130-Fuera-de-serie.-Por-qué-unas-personas-tienen-éxito-y-otras-no-Malcolm-Gladwell.pdf
+          - 27927_Como realizar un viaje astral.pdf
+          - 10768083.pdf
+          - 1612574513292_SEGUNDA TRANSMISION VIA FACEBOOK.pdf
+          - 1636045946964_258295-Perú Reversión.xlsx
+          - 9788484452065.pdf
+          - 9788490774809.pdf
+          - ab2_2015_g_01.pdf
+          - ab2_2016_t_01.pdf
+          - ab2_2016_x_01.pdf
+          - ANTROPOLOGIA LINGÜÍSTICA , Resumen I Unidad.pdf
+          - aparato digestivo.pdf
+          - aparato urinario.pdf
+          - archivo fiore.pdf
+          - articulo 20.pdf
+          - BASICO 1Y 2 FEBRERO.xlsx
+          - bea94b43-f916-4313-b5b6-d6c3cd95086d.pdf
+          - Bineando. By Project V.pdf
+          - biografía melany.docx
+          - 1_5177254853927239998.pdf
+          - 2. Uso del tiempo libre.pptx
+          - 4_5783830989197279873.pdf
+          - 1688-9339-ode-19-30-00029.pdf
+          - advisement-sp.pdf
+          - ÁNGULOS VERTICALES-intro.pdf
+          - Biomédicas A-F1-2021.pdf
+          - black-shark-4.pdf
+          - BONO PARA TODOS.pdf
+          - Cardeado rapido.pdf
+          - Cardin dell.pdf
+          - CEPREUNSA I FASE I EVALUACION.docx
+          - CIVILTRAFFICSANCTIONSCHEDU.pdf
+          - como perduadir y vender mas.pdf
+          - Crear cuenta pp.pdf
+          - DIRECTORIO DE PADRES.docx
+          - Ejercicios 04 Ref c4.pdf
+          - ESTEQUIOMETRIA.pdf
+          - ficha_sintomatologica.pdf
+          - fraude online casino.pdf
+          - gando en la red.pdf
+          - GASSES IDEALES.pdf
+          - Geometría - CONTRUCCION DE TRIANGULOS.pdf
+          - glosario.pdf
+          - Information report (03 mayo 2021 (20_26_26)).pdf
+          - ING MISCELÁNEA II 2021 OK.pdf
+          - Ingles - Aduni 2018.pdf
+          - juego el ahorcado.pdf
+          - MARATON 29 ÁREAS.pdf
+          - MATERIAL DE GEOMETRIA.pdf
+          - MISCELÁNEA RM.pdf
+          - MISCELANIA RV II.png
+          - null.pdf
+          - null-1.pdf
+          - organizacion de la clase.xlsx
+          - pdf_73807279_18092021.011916pm (2).pdf
+          - POLINOMIOS PRODUCTOS DIVISION.docx.pdf
+          - por que no vendo.pdf
+          - Recibo_MovistarMovil_Octubre2021.pdf
+          - Recibo_MovistarMovil_Septiembre2021.pdf
+          - REPASO - NUMERACIÓN - DIVISIBILIDAD.pdf
+          - REPASO - ORGANICA  INGE.docx
+          - repo_resultados_Ingresantes_ceprunsa.pdf
+          - repo_resultados_Ingresantes_SocialesRR.pdf
+          - resultados_biomedicas.txt
+          - RM N°10.pdf
+          - RM_AUNI_Sem13_Diri.pdf
+          - RM_AUNI_Sem14_Diri.pdf
+          - RM_AUNI_Sem15_Diri.pdf
+          - s25artesecundaria3-4y5losritualesdemicomunidadentiemposactualesfrancisco10.09.pdf
+          - s26aarte-secundaria3-4y5reflexionamossobrenuestrosaprendizajefranciscopdf.pdf
+          - s27arte-secundaria3-4y5elarteylosalimentosdemiregion.pdf
+          - Sem 5  GENÉTICA MEDELIANA.pdf
+          - SEMINARIO DE GEOGRAFÍA.pdf
+          - SEMINARIO GEOMETRÍA 6-11.pdf
+          - SEMINARIO RM 2021.pdf
+          - SESIÓN 1.pdf
+          - SILABUS DE CIENCIAS.pdf
+          - SILABUS DE LETRAS.pdf
+          - sistema endocrino.pdf
+          - sistema financiero.pdf
+          - sistema tdc.pdf
+          - solucionario20072.pdf
+          - tema3_m2_2019.pdf
+          - TEORIA.pdf
+          - (2) Cuzcano - Logaritmos (1).pdf
+          - (2) Cuzcano - Logaritmos.pdf
+          - triangulos.pdf
+          - ULTIMO.pdf
+          - 10 Prisma - Pirámide (1).pdf
+          - VIRTUAL ORDINARIO II FASE.docx
+          - WXLog.log
+          - 11 Cilindro - Cono (1).pdf
+          - 11 Cilindro - Cono.pdf
+          - 11 Rectas y planos.pdf
+          - 12 DINÁMICA CIRCULAR (1).pdf
+          - 12 DINÁMICA CIRCULAR.pdf
+          - 12 Esfera - Teorema de Pappus (1).pdf
+          - 12 Esfera - Teorema de Pappus.pdf
+          - 13 Polígonos regulares - Simetría (1).pdf
+          - 13 Polígonos regulares - Simetría.pdf
+          - 14. ELECTROSTÁTICA I (1).pdf
+          - 14. ELECTROSTÁTICA I.pdf
+          - 17 Electrostática.pdf
+          - 24 Matrices (1).pdf
+          - 24 Matrices.pdf
+          - 025-Los_Secretos_De_La_Mente_Millonaria- Harv_Eker (1).pdf
+          - 025-Los_Secretos_De_La_Mente_Millonaria- Harv_Eker.pdf
+          - 25 Determinantes (1).pdf
+          - 25 Determinantes.pdf
+          - 26 Matriz inversa (1).pdf
+          - 26 Matriz inversa.pdf
+          - 27 Sistema de ecuaciones lineales (1).pdf
+          - 27 Sistema de ecuaciones lineales.pdf
+          - 100 Ideas for Lesson Planning (1).pdf
+          - 100 Ideas for Lesson Planning.pdf
+          - 86020052017 (1).pdf
+          - 86020052017.pdf
+          - Actitudinales...F (1).pdf
+          - Actitudinales...F.pdf
+          - advisement-sp (1).pdf
+          - AE97 (1).pdf
+          - AE97.pdf
+          - SINÓNIMOS SI.pdf
+          - ACFrOgAePDHTghbZ6jaUQvrBKhLmcRajZiPzfCE35SdMtEpEdt7OTRr0i0rKsHVQnzdX0XTmExBBnAxc9OgbyZrzN3w-0abF-s1iUz1eyxSxefmUQp4szeJu5UU-ynAsNFVCFLaOfHyTZp4ZgGmA.pdf
+          - ACFrOgCe8fSHyOAe-4pwNlS0D8zGw972Mclilu8zgsSfG_aPpu6UNOJcW7fvuV7zJ_yR5iH9uXUkM309TM_6ovMEgI_h180GNVv3qlE0835vv3lEMRS8DHr3rYVOSjlWpPVgE4Lh87NpXSehMaJz.pdf
+          - ACFrOgDQgHGEbVb1vRYZIAa94w2T356xj2NVCk1vvPS8P3Hg4JR7P28zz6ioGS4qHR79ncgU9tnREzQ3QEOnendKuvDDDKOOo7lodJSSzzCXDUotk6z_7iMbZbVWGncYTOnu-pOdIgtZQJSc8_Rg.pdf
+          - ACFrOgCYTWmnUYmmmM4CL_8aY1Ogq8h6A5x9HsTlsQi9RMWaz5dtDa2T4nNzboAwcDfBbNRDy7UTflv52KbD8H9Wkp7s66vejRog93_VXfCmUmi-djPhB8j8EBiepSBuf0fWD7oqlno7DYgfK8sB.pdf
+          - Calligraphr-Template.pdf
+          - MiLetraRenzoAMano-Regular.ttf
+          - MiLetraRenzoAMano-Regular.otf
+          - 1.  geografía mega  repaso.pdf
+          - 1_5006086817905115406.pdf
+          - 1_5006086817905115407.pdf
+          - 1_5006086817905115408.pdf
+          - 1_5006086817905115409.pdf
+          - 1_5006086817905115410.pdf
+          - 1_5006086817905115411.pdf
+          - 1_5055380995079930103.pdf
+          - 1_5055380995079930104.pdf
+          - 1_5055380995079930106.pdf
+          - 1_5055380995079930107.pdf
+          - 1_5154910046051631592.pdf
+          - 1_5168016692806156666.pdf
+          - 1_5181719700064698670.pdf
+          - 1_5186211754819977565.pdf
+          - 1_5186211754819977566.pdf
+          - 1_5186211754819977570.pdf
+          - 1_5186211754819977571.pdf
+          - 1_5186211754819977572.pdf
+          - 1_5186211754819977574.pdf
+          - 1_5186211754819977575.pdf
+          - 1_5186211754819977578.pdf
+          - 4_5951535262944200885.pdf
+          - 6. APRENDIZAJE.pptx
+          - CALAPENSHKO-REG.AD2021.OFICIAL.pdf
+          - ciclo bioquímico.pdf
+          - Circunferencia Trigonométrica.pdf
+          - COM_. LEY GENERAL DE ADUANAS.pdf
+          - Copia de Sem05_G_ISM.pdf
+          - download (48).pdf
+          - ECONOMIA Y CIVICA ANUAL UNI 2016 CESAR VALLEJO red 1.pdf
+          - ecuaciones diferenciales.pdf
+          - Ecuaciones trigonométricas.pdf
+          - el club de lA CINCO DE LA.pdf
+          - El_Efecto_Compuesto_Darren_Hardy.pdf
+          - estadistica y muestreo  martines bencardio.pdf
+          - Folleto Etimologia.pdf
+          - Formulario - Pamer.pdf
+          - Formulario- Lexus.pdf
+          - Foto a PDF_2021-01-08_15-55-57.pdf
+          - fotos origen de la vida.docx
+          - Funciones trigonométricas directas.pdf
+          - Funciones trigonométricas inversas.pdf
+          - fundamentos de la robótica.pdf
+          - movimiento vertical de caida libre.pdf
+        - **Material_Academico/**
+          - 007. FISICA 1  GUÍA 1 VERANO  2021.pdf
+          - 7Factorizacion-algebra.pdf
+          - 008. FÍSICA II  GUÍA VERANO 1 - 2021.pdf
+          - 009. FÍSICA III  GUÍA VERANO 1 2021.pdf
+          - 010. ANATOMIA  GUÍA VERANO 1 2021.pdf
+          - 011. BIOLOGIA I GUIA VERANO 1 2020.pdf
+          - 012. BIOLOGIA II GUIA VERANO 1 2021.pdf
+          - 019. LENGUAJE II   GUÍA 1 VERANO 2021.pdf
+          - 020. LITERATURA GUIA VERANO 1 2021.pdf
+          - 021. GEOGRAFIA I GUÍA VERANO 12021.pdf
+          - 024. HISTORIA UNIV.  II  GUÍA 1 VERANO 2021.pdf
+          - 027. PSICOLOGIA  GUÍA 1 VERANO 2021.pdf
+          - 028. PSICOTÉCNICO GUÍA VERANO  1 2021-1.pdf
+          - 029. RAZ MATEMATICO II   GUÍA 1 VERANO 2021.pdf
+          - ALGEBRA Pre-Universitaria.pdf
+          - Anual Uni-Semana 02 Trigonometría.pdf
+          - Anual Uni-Semana 15 RM.pdf
+          - Aritmética - Uniciencia Sapiens.pdf
+          - Aritmética esencial.pdf
+          - BANCO DE EXAMENES - 2014 - 2019.pdf
+          - Biología y Anatomía.pdf
+          - _RAz VErbal.pdf
+          - 001. ARITMÉTICA GUÍA 1 VERANO 2020 F.pdf
+          - 002. ALGEBRA GUÍA VERANO  1 - 2021.pdf
+          - 013. QUÍMICA I GUÍA VERANO 1 2021.pdf
+          - 014. QUÍMICA II GUÍA VERANO 2021.pdf
+          - 015. QUÍMICA III GUÍA VERANO 2021.pdf
+          - 15s Física.pdf
+          - 016. RAZ VERBAL I   GUÍA 1 VERANO 2021.pdf
+          - 017. RAZ VERBAL II  GUÍA 1 VERANO 2021.pdf
+          - 018. LENGUAJE I- VERANO 1 - 2021.pdf
+          - 022. ECONOMIA  GUÍA 1 VERANO 2021.pdf
+          - 023. HISTORIA I GUÍA 1 VERANO 2021.pdf
+          - 025. CÍVICA GUÍA VERANO 1 2021.pdf
+          - 026. FILOSOFIA  GUÍA 1 VERANO 1 2021.pdf
+          - abc biología.pdf
+          - Anual SM Semana 03- RM.pdf
+          - biología 1 cepreuna.pdf
+          - biología en cepreuna.pdf
+          - COMUNICADO-SIMULACRO-DE-ADMISION-UNIVERSIDAD-CONTINENTAL-DREP-UGELP-2020.pdf
+          - cuadernillo COMUNICACIÓN 1ra semana.pdf
+          - EXAMEN AREA BIOMEDICAS.pdf
+          - examenUNSA-IIordinario2020-biomedicas.pdf
+          - FIJAS QUÍMICA- UNMSM.pdf
+          - guia de estrategia paraa marketing digital.pdf
+          - guia para ganar 200 dólares diarios.pdf
+          - guia para marketing digital.pdf
+          - guiaa para usar WhatsApp en marketing digital.pdf
+          - Historia del Peru.3(Los Incas)-FASCICULO 3 OKKKK.docx
+          - Libro Libre - Biología - Teoría (Completa) Ejercicios resueltos.pdf
+          - MARATÓN FÍSICA 2021.pdf
+          - MARATÓN QUIMICA 2021.pdf
+          - matematica semana 36..pdf
+          - MATERIAL DE ARITMÉTICA.pdf
+          - quimica s11.pdf
+          - razonamiento matemático en cepreuna.pdf
+          - resultado razonamiento matemático.pdf
+          - Sem 1 BIOLOGIA COMO CIENCIA.pdf
+          - SEMINARIO DE BIOLOGÍA.pdf
+          - SILABUS DE MATEMÁTICA.pdf
+          - SIMULACRO 2020 CONCURSO DE BECAS.pdf
+          - 10Analisis-combinatorio-algebra (1).pdf
+          - 10Analisis-combinatorio-algebra.pdf
+          - 11Binomio-de-newton-algebra (1).pdf
+          - 11Binomio-de-newton-algebra.pdf
+          - 12Numeros-reales-algebra (1).pdf
+          - 12Numeros-reales-algebra.pdf
+          - 13Numeros-complejos-algebra (1).pdf
+          - 13Numeros-complejos-algebra.pdf
+          - 23 Física Moderna.pdf
+          - 2022 001 Matemática Básica Practica calificada 01 (1).pdf
+          - 2022 001 Matemática Básica Practica calificada 01.pdf
+          - 2022 II Matemática Básica Evaluación Parcial 02 MecSol1 (1).pdf
+          - 2022 II Matemática Básica Evaluación Parcial 02 MecSol1.pdf
+          - 2022 II Matemática Básica Práctica calificada 03 Mec (1).pdf
+          - 2022 II Matemática Básica Práctica calificada 03 Mec.pdf
+          - algebra - LUMBRERAS - ROJO MODERNO (1).pdf
+          - algebra - LUMBRERAS - ROJO MODERNO.pdf
+          - Algebra 500 Ejercicios Resueltos lumbreras (1).pdf
+          - Algebra 500 Ejercicios Resueltos lumbreras.pdf
+          - Álgebra I - Lumbreras (1).pdf
+          - Álgebra I - Lumbreras.pdf
+          - Algebra I (UNI)-lumbreras.pdf
+          - Álgebra II - Lumbreras-8 (1).pdf
+          - 1.-TOP MATHROCKS FÍSICA - Sternheim.pdf
+          - 2.- TOP MATHROCKS FÍSICA - Landau-Lifshitz.pdf
+          - 3.- TOP MATHROCKS FÍSICA - Sears-Zemansky Vol1.pdf
+          - 3.- TOP MATHROCKS FÍSICA - Sears-Zemansky Vol2.pdf
+          - 4.- TOP MATHROCKS FÍSICA - Serway.pdf
+          - 5.- TOP MATHROCKS FÍSICA - Giancoli Vol1.pdf
+          - 5.- TOP MATHROCKS FÍSICA - Giancoli Vol2.pdf
+          - 6.-TOP MATHROCKS FÍSICA - Volkenshtein.pdf
+          - 7.-TOP MATHROCKS FÍSICA - Resnick.pdf
+          - SEMANA 2 PROCESO FORMTIVO DE PALABRAS RV.pdf
+          - Mate 2 SEMANA 6 pdf.pdf
+          - 004. GEOMETRIA PLANA GUÍA  1 VERANO 2021.pdf
+          - 005. TRIGONOMETRIA  GUÍA 1 VERANO  2021.pdf
+          - 006. RAZ MATEMATICO I - VERANO  1 - 2021.pdf
+          - Bryce Guia Completa.pdf
+          - Chang - Quimica general  - 7ma edición(AMOR A SOFIA).pdf
+          - compendio de biología.pdf
+          - Física - Custodio.pdf
+          - Física - Jorge Mendoza Dueñas.pdf
+          - Física - Racso.pdf
+          - Física - Trilce.pdf
+          - Física - UNICIENCIA.pdf
+          - Física Custodio García SECUNDARIA - copia.pdf
+          - fisica esencial  LUmBRERAS.pdf
+          - Física I - Lumbreras.pdf
+          - Física I.pdf
+          - Física II - Lumbreras.pdf
+          - Física III - Lumbreras.pdf
+          - fisica para ingeniería.pdf
+          - fisica universitaria.pdf
+          - fisica vision analítica del movimiento.pdf
+          - FORMULARIO DE QUIMICA.pdf
+        - **Marketing_y_Finanzas/**
+          - 25 consejo para tener libertad financiera.pdf
+          - 100 publicaciones marketing.pdf
+          - 100-Anuncios-Para-Promocionar (1).pdf
+          - bitcoins.pdf
+          - Bypass a PayPal y numeros de verificacion.pdf
+          - cashout paypal 4.pdf
+          - Cashout PayPal.pdf
+          - cobrando tarjetas.pdf
+          - embudo para ventas.pdf
+          - grupos para gana bitcoin.pdf
+          - hackeando tarjetas de credito.pdf
+          - Hacking Paypal.pdf
+          - manejar tarjetas.pdf
+          - trafico por Facebook en marketing.pdf
+          - usar redes a tu favor en marketing digital.pdf
+        - **Tecnologia_y_Software/**
+          - autocad.pdf
+          - Anonimato en el Carding.pdf
+          - Carding Amazon.pdf
+          - Carding basico para noobs 2.pdf
+          - Carding Basico para noobs.pdf
+          - Carding desde 0.pdf
+          - Carding en area local.pdf
+          - carding instore.pdf
+          - Carding Medio 1 HORUS.pdf
+          - Carding Medio.pdf
+          - carding,tenicas y conceptos.pdf
+          - Cashout cc,cvv.pdf
+          - Cashout metodo 2.pdf
+          - cashout PP ccv.pdf
+          - confirmando cashout.pdf
+          - Hacking con Python.pdf
+          - Ingenierías B-F1-2021.pdf
+          - estructura de datos en c++ por lusi jovanes aguilar.pdf
+        - **Libros_y_Lecturas/**
+          - Curso De Viaje Astral by Pritchard, Mark (z-lib.org).pdf
+          - LIBROS_181.pdf
+          - The 48 Laws of Power by Robert Greene (z-lib.org).epub
+          - 100 maneras de criar hijos felices Una guía para padres ocupados (Spanish Edition) (Timothy J. Sharp [Sharp, Timothy J.]) (z-lib.org) (1).pdf
+          - 100 maneras de criar hijos felices Una guía para padres ocupados (Spanish Edition) (Timothy J. Sharp [Sharp, Timothy J.]) (z-lib.org).pdf
+          - 166-Psicología de las Masas - Gustave Le Bon (1).pdf
+          - 166-Psicología de las Masas - Gustave Le Bon.pdf
+          - Consigue una memoria asombrosa T©♭cnicas y consejos que cambiar©Łn tu vida by Di©♭guez Di©♭guez, RemediosO Brien, Dominic (z-lib.org).epub
+          - Diario de Greg_ dia de perros ( PDFDrive ).pdf
+          - diarios-alejandra-pizarnik.pdf
+          - El Arte de Negociar y Persuadir (2da Edición) ( PDFDrive ).pdf
+          - el libro de la ingenieria .pdf
+          - El príncipe by Nicolás Maquiavelo (z-lib.org).pdf
+      - organizador_generado_por_ia.py
+      - generar_informe.py
+      - PROMPT_IA_CHATGPT.txt
+      - readme.txt
+      - listado_archivos.txt
+  - organizador de archivos.rar
+  - **Google AI Studio/**
+    - applet_access_history.json
+    - IMG-20260722-WA0172.jpg
+  - **APP recote electro/**
+    - APP.py
+  - organizador.py
+  - Codigo_Fuente_Resolvedor_V2_UI.txt
+  - **uso-com-n-/**
+    - README.md
+    - **config/**
+      - README.md
+      - config.yaml.example
+    - **css/**
+      - style.css
+    - index.html
+    - install-agent-skills.sh
+    - install-skills.ps1
+    - install-skills.sh
+    - install.sh
+    - **js/**
+      - app.js
+      - content.js
+    - **laptop-powershell/**
+      - Microsoft.PowerShell_profile.ps1
+    - **skills/**
+      - **agent-skills/**
+        - **agent-reach/**
+          - SKILL.md
+          - SKILL_en.md
+          - **references/**
+            - career.md
+            - dev.md
+            - search.md
+            - social.md
+            - video.md
+            - web.md
+        - **api-design-principles/**
+          - SKILL.md
+        - **bom/**
+          - SKILL.md
+          - **references/**
+            - kicad-fields.md
+            - ordering-and-fabrication.md
+            - part-number-conventions.md
+          - **scripts/**
+            - bom_manager.py
+            - edit_properties.py
+            - kicad_sexp.py
+            - sync_datasheet_urls.py
+        - **changelog-automation/**
+          - SKILL.md
+        - **claude-mem/**
+          - SKILL.md
+        - **claude-plugins/**
+          - SKILL.md
+        - **codegraph/**
+          - SKILL.md
+        - **datasheets/**
+          - SKILL.md
+          - **references/**
+            - consumer-api.md
+            - extraction-schema.md
+            - field-extraction-guide.md
+            - quality-scoring.md
+          - **scripts/**
+            - datasheet_extract_cache.py
+            - datasheet_features.py
+            - datasheet_page_selector.py
+            - datasheet_score.py
+            - datasheet_verify.py
+        - **digikey/**
+          - SKILL.md
+          - **scripts/**
+            - fetch_datasheet_digikey.py
+            - sync_datasheets_digikey.py
+        - **element14/**
+          - SKILL.md
+          - **scripts/**
+            - fetch_datasheet_element14.py
+            - sync_datasheets_element14.py
+        - **emc/**
+          - SKILL.md
+          - **references/**
+            - emc-methodology.md
+            - emc-standards.md
+            - pcb-emc-rules.md
+          - **scripts/**
+            - analyze_emc.py
+            - emc_formulas.py
+            - emc_rules.py
+            - emc_spice.py
+        - **find-skills/**
+          - SKILL.md
+        - **floor-plan-generator/**
+          - SKILL.md
+        - **freedomain/**
+          - SKILL.md
+        - **frontend-design/**
+          - SKILL.md
+        - **ingenieria-electromecanica/**
+          - SKILL.md
+        - **jlcpcb/**
+          - SKILL.md
+        - **karpathy-guidelines/**
+          - SKILL.md
+        - **kicad/**
+          - SKILL.md
+          - **references/**
+            - config-reference.md
+            - datasheet-verification.md
+            - design-intent.md
+            - diff-analysis.md
+            - file-formats.md
+            - gerber-parsing.md
+            - manual-gerber-parsing.md
+            - manual-pcb-parsing.md
+            - manual-schematic-parsing.md
+            - net-tracing.md
+            - output-schema.md
+            - pcb-layout-analysis.md
+            - pdf-schematic-extraction.md
+            - report-generation.md
+            - schematic-analysis.md
+            - standards-compliance.md
+            - supplementary-data-sources.md
+            - what-if.md
+          - **scripts/**
+            - README.md
+            - analysis_cache.py
+            - analyze_gerbers.py
+            - analyze_pcb.py
+            - analyze_schematic.py
+            - analyze_thermal.py
+            - cross_analysis.py
+            - cross_verify.py
+            - detection_schema.py
+            - detector_helpers.py
+            - diff_analysis.py
+            - domain_detectors.py
+            - export_issues.py
+            - fab_release_gate.py
+            - finding_schema.py
+            - kicad_types.py
+            - kicad_utils.py
+            - lifecycle_audit.py
+            - methodology_gerbers.md
+            - methodology_pcb.md
+            - methodology_schematic.md
+            - netlist_queries.py
+            - output_filters.py
+            - pcb_connectivity.py
+            - project_config.py
+            - sexp_parser.py
+            - signal_detectors.py
+            - summarize_findings.py
+            - validation_detectors.py
+            - what_if.py
+        - **kidoc/**
+          - SKILL.md
+          - **references/**
+            - document-structure.md
+            - rendering-notes.md
+            - report-ce.md
+            - report-design-review.md
+            - report-hdd.md
+            - report-icd.md
+            - report-manufacturing.md
+          - **scripts/**
+            - README.md
+            - **default_specs/**
+              - ce_technical_file.json
+              - design_review.json
+              - emc_report.json
+              - hdd.json
+              - icd.json
+              - manufacturing.json
+              - power_analysis.json
+              - schematic_review.json
+            - **figures/**
+              - __init__.py
+              - **generators/**
+                - __init__.py
+                - _mpl_common.py
+                - **architecture/**
+                  - __init__.py
+                - **bus_topology/**
+                  - __init__.py
+                - **emc_severity/**
+                  - __init__.py
+                - **monte_carlo/**
+                  - __init__.py
+                - **pcb_views/**
+                  - __init__.py
+                - **pinout/**
+                  - __init__.py
+                - **power_tree/**
+                  - __init__.py
+                - **schematic_crop/**
+                  - __init__.py
+                - **schematic_overview/**
+                  - __init__.py
+                - **spice_validation/**
+                  - __init__.py
+                - **thermal_margin/**
+                  - __init__.py
+              - **lib/**
+                - __init__.py
+                - analysis_helpers.py
+                - color_theme.py
+                - layer_presets.py
+                - schematic_constants.py
+                - styles.py
+                - svg_builder.py
+                - svg_embed.py
+                - svg_to_png.py
+                - theme.py
+              - registry.py
+              - **renderers/**
+                - __init__.py
+                - _path_setup.py
+                - pcb.py
+                - pcb_graphics.py
+                - sch_graphics.py
+                - schematic.py
+              - runner.py
+            - kicad_cli.py
+            - kidoc_datasheet.py
+            - kidoc_diagrams.py
+            - kidoc_docx.py
+            - kidoc_generate.py
+            - kidoc_html.py
+            - kidoc_md_parser.py
+            - kidoc_narrative.py
+            - kidoc_narrative_augment.py
+            - kidoc_narrative_config.py
+            - kidoc_narrative_extractors.py
+            - kidoc_odt.py
+            - kidoc_orchestrator.py
+            - kidoc_pdf.py
+            - kidoc_raster.py
+            - kidoc_scaffold.py
+            - kidoc_sections.py
+            - kidoc_spec.py
+            - kidoc_tables.py
+            - kidoc_templates.py
+            - kidoc_venv.py
+            - requirements.txt
+        - **last30days/**
+          - SKILL.md
+        - **lcsc/**
+          - SKILL.md
+          - **scripts/**
+            - fetch_datasheet_lcsc.py
+            - sync_datasheets_lcsc.py
+        - **mouser/**
+          - SKILL.md
+          - **scripts/**
+            - fetch_datasheet_mouser.py
+            - sync_datasheets_mouser.py
+        - **notebooklm/**
+          - SKILL.md
+        - **obsidian-skills/**
+          - SKILL.md
+        - **pcbway/**
+          - SKILL.md
+        - **ponytail-audit/**
+          - SKILL.md
+        - **ponytail-debt/**
+          - SKILL.md
+        - **ponytail-gain/**
+          - SKILL.md
+        - **ponytail-help/**
+          - SKILL.md
+        - **ponytail-review/**
+          - SKILL.md
+        - **ponytail/**
+          - SKILL.md
+        - **postgresql/**
+          - SKILL.md
+        - **professor-synapse/**
+          - SKILL.md
+          - **agents/**
+            - INDEX.md
+            - domain-researcher.md
+            - memory-agent.md
+          - **references/**
+            - agent-template.md
+            - changelog.md
+            - convener-protocol.md
+            - domain-expertise.md
+            - memory-data-model.md
+            - memory-protocol.md
+            - scripts-protocol.md
+            - self-check.md
+            - summon-agent-protocol.md
+          - **scripts/**
+            - _pluginpaths.py
+            - memory.py
+            - rebuild-index.sh
+            - summon.py
+        - **rtk/**
+          - SKILL.md
+        - **skillspector/**
+          - SKILL.md
+        - **spec-kit/**
+          - SKILL.md
+        - **spice/**
+          - SKILL.md
+          - **references/**
+            - simulation-models.md
+          - **scripts/**
+            - extract_parasitics.py
+            - simulate_subcircuits.py
+            - spice_model_cache.py
+            - spice_model_generator.py
+            - spice_models.py
+            - spice_part_library.py
+            - spice_results.py
+            - spice_simulator.py
+            - spice_spec_fetcher.py
+            - spice_templates.py
+            - spice_tolerance.py
+        - **superpowers/**
+          - SKILL.md
+        - **systematic-debugging/**
+          - SKILL.md
+        - **thesis-writing/**
+          - SKILL.md
+        - **visual-design-foundations/**
+          - SKILL.md
+      - **agents/**
+        - **agy/**
+          - config.yaml
+        - **claude/**
+          - 01-project.md
+          - 02-rules.md
+          - 03-tools.md
+        - **codex/**
+          - instrucciones.md
+        - **opencode/**
+          - instrucciones.md
+          - skills.js
+      - skills-manifest.yaml
+      - sync-agent-skills.ps1
+      - sync-agent-skills.sh
+    - **termux-bash/**
+      - aliases.sh
+      - functions.sh
+      - ia-tools.sh
+      - motd.sh
+      - termux-bash.sh
+    - **ucn/**
+      - README.md
+      - **cmd/**
+        - **ucn/**
+          - main.go
+      - go.mod
+      - **internal/**
+        - **config/**
+          - config.go
+        - **doctor/**
+          - doctor.go
+        - **git/**
+          - git.go
+        - **sync/**
+          - sync.go
+        - **tunnel/**
+          - tunnel.go
+    - **docs/**
+      - flujo-productividad-academica-tecnica.md
+    - **prompts/**
+      - planificacion-dia.md
+      - lectura-paper.md
+      - revision-codigo.md
+      - editor-academico.md
+      - repaso-activo.md
+    - **templates/**
+      - checklist-cierre-diario.md
+  - **uso-com-n-.worktrees/**
+    - **agents-productivity-workflow-design/**
+      - README.md
+      - **config/**
+        - README.md
+        - config.yaml.example
+      - **css/**
+        - style.css
+      - index.html
+      - install-agent-skills.sh
+      - install-skills.ps1
+      - install-skills.sh
+      - install.sh
+      - **js/**
+        - app.js
+        - content.js
+      - **laptop-powershell/**
+        - Microsoft.PowerShell_profile.ps1
+      - **skills/**
+        - **agent-skills/**
+          - **agent-reach/**
+            - SKILL.md
+            - SKILL_en.md
+            - **references/**
+              - career.md
+              - dev.md
+              - search.md
+              - social.md
+              - video.md
+              - web.md
+          - **api-design-principles/**
+            - SKILL.md
+          - **bom/**
+            - SKILL.md
+            - **references/**
+              - kicad-fields.md
+              - ordering-and-fabrication.md
+              - part-number-conventions.md
+            - **scripts/**
+              - bom_manager.py
+              - edit_properties.py
+              - kicad_sexp.py
+              - sync_datasheet_urls.py
+          - **changelog-automation/**
+            - SKILL.md
+          - **claude-mem/**
+            - SKILL.md
+          - **claude-plugins/**
+            - SKILL.md
+          - **codegraph/**
+            - SKILL.md
+          - **datasheets/**
+            - SKILL.md
+            - **references/**
+              - consumer-api.md
+              - extraction-schema.md
+              - field-extraction-guide.md
+              - quality-scoring.md
+            - **scripts/**
+              - datasheet_extract_cache.py
+              - datasheet_features.py
+              - datasheet_page_selector.py
+              - datasheet_score.py
+              - datasheet_verify.py
+          - **digikey/**
+            - SKILL.md
+            - **scripts/**
+              - fetch_datasheet_digikey.py
+              - sync_datasheets_digikey.py
+          - **element14/**
+            - SKILL.md
+            - **scripts/**
+              - fetch_datasheet_element14.py
+              - sync_datasheets_element14.py
+          - **emc/**
+            - SKILL.md
+            - **references/**
+              - emc-methodology.md
+              - emc-standards.md
+              - pcb-emc-rules.md
+            - **scripts/**
+              - analyze_emc.py
+              - emc_formulas.py
+              - emc_rules.py
+              - emc_spice.py
+          - **find-skills/**
+            - SKILL.md
+          - **floor-plan-generator/**
+            - SKILL.md
+          - **freedomain/**
+            - SKILL.md
+          - **frontend-design/**
+            - SKILL.md
+          - **ingenieria-electromecanica/**
+            - SKILL.md
+          - **jlcpcb/**
+            - SKILL.md
+          - **karpathy-guidelines/**
+            - SKILL.md
+          - **kicad/**
+            - SKILL.md
+            - **references/**
+              - config-reference.md
+              - datasheet-verification.md
+              - design-intent.md
+              - diff-analysis.md
+              - file-formats.md
+              - gerber-parsing.md
+              - manual-gerber-parsing.md
+              - manual-pcb-parsing.md
+              - manual-schematic-parsing.md
+              - net-tracing.md
+              - output-schema.md
+              - pcb-layout-analysis.md
+              - pdf-schematic-extraction.md
+              - report-generation.md
+              - schematic-analysis.md
+              - standards-compliance.md
+              - supplementary-data-sources.md
+              - what-if.md
+            - **scripts/**
+              - README.md
+              - analysis_cache.py
+              - analyze_gerbers.py
+              - analyze_pcb.py
+              - analyze_schematic.py
+              - analyze_thermal.py
+              - cross_analysis.py
+              - cross_verify.py
+              - detection_schema.py
+              - detector_helpers.py
+              - diff_analysis.py
+              - domain_detectors.py
+              - export_issues.py
+              - fab_release_gate.py
+              - finding_schema.py
+              - kicad_types.py
+              - kicad_utils.py
+              - lifecycle_audit.py
+              - methodology_gerbers.md
+              - methodology_pcb.md
+              - methodology_schematic.md
+              - netlist_queries.py
+              - output_filters.py
+              - pcb_connectivity.py
+              - project_config.py
+              - sexp_parser.py
+              - signal_detectors.py
+              - summarize_findings.py
+              - validation_detectors.py
+              - what_if.py
+          - **kidoc/**
+            - SKILL.md
+            - **references/**
+              - document-structure.md
+              - rendering-notes.md
+              - report-ce.md
+              - report-design-review.md
+              - report-hdd.md
+              - report-icd.md
+              - report-manufacturing.md
+            - **scripts/**
+              - README.md
+              - **default_specs/**
+                - ce_technical_file.json
+                - design_review.json
+                - emc_report.json
+                - hdd.json
+                - icd.json
+                - manufacturing.json
+                - power_analysis.json
+                - schematic_review.json
+              - **figures/**
+                - __init__.py
+                - **generators/**
+                  - __init__.py
+                  - _mpl_common.py
+                  - **architecture/**
+                    - __init__.py
+                  - **bus_topology/**
+                    - __init__.py
+                  - **emc_severity/**
+                    - __init__.py
+                  - **monte_carlo/**
+                    - __init__.py
+                  - **pcb_views/**
+                    - __init__.py
+                  - **pinout/**
+                    - __init__.py
+                  - **power_tree/**
+                    - __init__.py
+                  - **schematic_crop/**
+                    - __init__.py
+                  - **schematic_overview/**
+                    - __init__.py
+                  - **spice_validation/**
+                    - __init__.py
+                  - **thermal_margin/**
+                    - __init__.py
+                - **lib/**
+                  - __init__.py
+                  - analysis_helpers.py
+                  - color_theme.py
+                  - layer_presets.py
+                  - schematic_constants.py
+                  - styles.py
+                  - svg_builder.py
+                  - svg_embed.py
+                  - svg_to_png.py
+                  - theme.py
+                - registry.py
+                - **renderers/**
+                  - __init__.py
+                  - _path_setup.py
+                  - pcb.py
+                  - pcb_graphics.py
+                  - sch_graphics.py
+                  - schematic.py
+                - runner.py
+              - kicad_cli.py
+              - kidoc_datasheet.py
+              - kidoc_diagrams.py
+              - kidoc_docx.py
+              - kidoc_generate.py
+              - kidoc_html.py
+              - kidoc_md_parser.py
+              - kidoc_narrative.py
+              - kidoc_narrative_augment.py
+              - kidoc_narrative_config.py
+              - kidoc_narrative_extractors.py
+              - kidoc_odt.py
+              - kidoc_orchestrator.py
+              - kidoc_pdf.py
+              - kidoc_raster.py
+              - kidoc_scaffold.py
+              - kidoc_sections.py
+              - kidoc_spec.py
+              - kidoc_tables.py
+              - kidoc_templates.py
+              - kidoc_venv.py
+              - requirements.txt
+          - **last30days/**
+            - SKILL.md
+          - **lcsc/**
+            - SKILL.md
+            - **scripts/**
+              - fetch_datasheet_lcsc.py
+              - sync_datasheets_lcsc.py
+          - **mouser/**
+            - SKILL.md
+            - **scripts/**
+              - fetch_datasheet_mouser.py
+              - sync_datasheets_mouser.py
+          - **notebooklm/**
+            - SKILL.md
+          - **obsidian-skills/**
+            - SKILL.md
+          - **pcbway/**
+            - SKILL.md
+          - **ponytail-audit/**
+            - SKILL.md
+          - **ponytail-debt/**
+            - SKILL.md
+          - **ponytail-gain/**
+            - SKILL.md
+          - **ponytail-help/**
+            - SKILL.md
+          - **ponytail-review/**
+            - SKILL.md
+          - **ponytail/**
+            - SKILL.md
+          - **postgresql/**
+            - SKILL.md
+          - **professor-synapse/**
+            - SKILL.md
+            - **agents/**
+              - INDEX.md
+              - domain-researcher.md
+              - memory-agent.md
+            - **references/**
+              - agent-template.md
+              - changelog.md
+              - convener-protocol.md
+              - domain-expertise.md
+              - memory-data-model.md
+              - memory-protocol.md
+              - scripts-protocol.md
+              - self-check.md
+              - summon-agent-protocol.md
+            - **scripts/**
+              - _pluginpaths.py
+              - memory.py
+              - rebuild-index.sh
+              - summon.py
+          - **rtk/**
+            - SKILL.md
+          - **skillspector/**
+            - SKILL.md
+          - **spec-kit/**
+            - SKILL.md
+          - **spice/**
+            - SKILL.md
+            - **references/**
+              - simulation-models.md
+            - **scripts/**
+              - extract_parasitics.py
+              - simulate_subcircuits.py
+              - spice_model_cache.py
+              - spice_model_generator.py
+              - spice_models.py
+              - spice_part_library.py
+              - spice_results.py
+              - spice_simulator.py
+              - spice_spec_fetcher.py
+              - spice_templates.py
+              - spice_tolerance.py
+          - **superpowers/**
+            - SKILL.md
+          - **systematic-debugging/**
+            - SKILL.md
+          - **thesis-writing/**
+            - SKILL.md
+          - **visual-design-foundations/**
+            - SKILL.md
+        - **agents/**
+          - **agy/**
+            - config.yaml
+          - **claude/**
+            - 01-project.md
+            - 02-rules.md
+            - 03-tools.md
+          - **codex/**
+            - instrucciones.md
+          - **opencode/**
+            - instrucciones.md
+            - skills.js
+        - skills-manifest.yaml
+        - sync-agent-skills.ps1
+        - sync-agent-skills.sh
+      - **termux-bash/**
+        - aliases.sh
+        - functions.sh
+        - ia-tools.sh
+        - motd.sh
+        - termux-bash.sh
+      - **ucn/**
+        - README.md
+        - **cmd/**
+          - **ucn/**
+            - main.go
+        - go.mod
+        - **internal/**
+          - **config/**
+            - config.go
+          - **doctor/**
+            - doctor.go
+          - **git/**
+            - git.go
+          - **sync/**
+            - sync.go
+          - **tunnel/**
+            - tunnel.go
+- **03_Idiomas_y_Cursos/**
+  - constancia_80410021.pdf
+- **04_Comites_y_Proyectos/**
+  - **asme/**
+    - **varios/**
+      - ASME Student Group Membership Application Information.gform
+      - Copia de ASME_Student_Group_Membership_Spreadsheet(1).xls
+      - Formulario sin título.gform
+      - visita técnica (respuestas).gsheet
+      - Formulario ASME cachimbos .gform
+      - Copia de Copia de Formulario asme (respuestas).gsheet
+      - Copia de Copia de Formulario asme  (1).gform
+      - **excel de formulario/**
+        - excel de membresias cachimbos.gsheet
+        - Formulario asme cachimbos 2024 II.gform
+        - ASME FORMULARIO 2025 I (respuestas).gsheet
+        - ASME FORMULARIO 2025 I.gform
+      - Copia de Copia de Formulario asme .gform
+      - Copia de Formulario ASME cachimbos  .gform
+      - asme cachimbos.gform
+      - Copia de Formulario asme (respuestas).gsheet
+    - **OFICIAL ASME UNAP/**
+      - MVI_2246.MP4
+      - MVI_2254.MP4
+      - MVI_2255.MP4
+      - MVI_2229.MP4
+      - MVI_2227.MP4
+      - MVI_2232.MP4
+      - MVI_2234.MP4
+      - MVI_2233.MP4
+      - MVI_2235.MP4
+      - MVI_2247.MP4
+      - MVI_2231.MP4
+      - MVI_2248.MP4
+      - MVI_2236.MP4
+      - MVI_2250.MP4
+      - MVI_2251.MP4
+      - MVI_2249.MP4
+      - MVI_2252.MP4
+      - MVI_2253.MP4
+      - MVI_2262.MP4
+      - MVI_2261.MP4
+      - MVI_2256.MP4
+      - **dia del expocision 25 de julio/**
+        - IMG_2244.JPG
+        - IMG_2257.JPG
+        - IMG_2258.JPG
+        - IMG_2271.JPG
+        - IMG_2272.JPG
+        - IMG_2273.JPG
+        - IMG_2274.JPG
+        - IMG_2276.JPG
+        - IMG_2277.JPG
+        - IMG_2278.JPG
+        - IMG_2279.JPG
+        - IMG_2283.JPG
+        - IMG_2284.JPG
+        - IMG_2285.JPG
+        - IMG_2286.JPG
+        - IMG_2287.JPG
+        - IMG_2288.JPG
+        - IMG_2290.JPG
+        - IMG_2291.JPG
+        - IMG_2292.JPG
+        - IMG_2293.JPG
+        - IMG_2294.JPG
+        - IMG_2296.JPG
+        - IMG_2297.JPG
+        - IMG_2298.JPG
+        - IMG_2299.JPG
+        - IMG_2300.JPG
+        - IMG_2301.JPG
+        - IMG_2302.JPG
+        - IMG_2303.JPG
+        - IMG_2304.JPG
+        - IMG_2305.JPG
+        - IMG_2307.JPG
+        - IMG_2308.JPG
+        - IMG_2309.JPG
+        - IMG_2310.JPG
+        - IMG_2311.JPG
+        - IMG_2312.JPG
+        - IMG_2313.JPG
+        - IMG_2315.JPG
+        - IMG_2316.JPG
+        - IMG_2317.JPG
+        - IMG_2319.JPG
+        - IMG_2323.JPG
+        - IMG_2324.JPG
+        - IMG_2326.JPG
+        - IMG_2327.JPG
+        - IMG_2328.JPG
+        - IMG_2329.JPG
+        - IMG_2336.JPG
+        - IMG_2337.JPG
+        - IMG_2338.JPG
+        - IMG_2339.JPG
+        - IMG_2344.JPG
+        - IMG_2345.JPG
+        - IMG_2346.JPG
+        - IMG_2347.JPG
+        - IMG_2361.JPG
+        - IMG_2362.JPG
+        - IMG_2363.JPG
+        - IMG_2393.JPG
+        - IMG_2394.JPG
+        - IMG_2395.JPG
+        - IMG_2396.JPG
+        - IMG_2397.JPG
+        - IMG_2402.JPG
+        - IMG_2403.JPG
+        - IMG_2404.JPG
+        - IMG_2405.JPG
+        - IMG_2406.JPG
+        - IMG_2263.JPG
+        - IMG_2264.JPG
+        - IMG_2266.JPG
+        - IMG_2275.JPG
+        - IMG_2265.JPG
+        - IMG_2289.JPG
+        - IMG_2269.JPG
+        - IMG_2260.JPG
+        - IMG_2270.JPG
+        - IMG_2280.JPG
+        - IMG_2282.JPG
+        - IMG_2281.JPG
+        - IMG_2321.JPG
+        - IMG_2331.JPG
+        - IMG_2330.JPG
+        - IMG_2335.JPG
+        - IMG_2320.JPG
+        - IMG_2268.JPG
+        - IMG_2322.JPG
+        - IMG_2267.JPG
+        - IMG_2318.JPG
+        - IMG_2348.JPG
+        - IMG_2325.JPG
+        - IMG_2355.JPG
+        - IMG_2354.JPG
+        - IMG_2357.JPG
+        - IMG_2340.JPG
+        - IMG_2259.JPG
+        - IMG_2341.JPG
+        - IMG_2353.JPG
+        - IMG_2343.JPG
+        - IMG_2332.JPG
+        - IMG_2350.JPG
+        - IMG_2372.JPG
+        - IMG_2342.JPG
+        - IMG_2359.JPG
+        - IMG_2369.JPG
+        - IMG_2349.JPG
+        - IMG_2352.JPG
+        - IMG_2364.JPG
+        - IMG_2368.JPG
+        - IMG_2371.JPG
+        - IMG_2351.JPG
+        - IMG_2358.JPG
+        - IMG_2370.JPG
+        - IMG_2373.JPG
+        - IMG_2367.JPG
+        - IMG_2365.JPG
+        - IMG_2381.JPG
+        - IMG_2382.JPG
+        - IMG_2374.JPG
+        - IMG_2379.JPG
+        - IMG_2380.JPG
+        - IMG_2383.JPG
+        - IMG_2377.JPG
+        - IMG_2385.JPG
+        - IMG_2366.JPG
+        - IMG_2384.JPG
+        - IMG_2356.JPG
+        - IMG_2360.JPG
+        - IMG_2390.JPG
+        - IMG_2386.JPG
+        - IMG_2389.JPG
+        - IMG_2334.JPG
+        - IMG_2388.JPG
+        - IMG_2375.JPG
+        - IMG_2333.JPG
+        - IMG_2378.JPG
+        - IMG_2401.JPG
+        - IMG_2387.JPG
+        - IMG_2376.JPG
+        - IMG_2399.JPG
+        - IMG_2400.JPG
+      - **meet con el compañero kevin/**
+  - Formulario de Postulación a Comité IEEE (respuestas).gsheet
+  - Formulario de Postulación a Comité IEEE.gform
+  - **semillero INOME/**
+    - reparticion de roles IA.txt
+    - Capitulo1_Final.docx
+    - Capitulo2_Final.docx
+    - estructura del libro.html
+    - codigo estractor der articulos cientificos.py
+    - **Fase para descargar artículo/**
+      - fase1_scopus.py
+      - donde esta mi api.txt
+      - fase1_scopus - copia.py
+    - **investigacion/**
+      - scopus_search2.py
+      - scopus_open_access_results.csv
+      - **articulos/**
+        - Local heat transfer coefficients and friction factors in a U-type compound.pdf
+        - Zinc overload disrupts SoxR [2Fe–2S] clusters to drive redox-metallic.pdf
+        - Performance Simulation of an Unglazed Transpired Solar Collector Two-Dimensional and Three-Dimensional Analysis.pdf
+        - Sustainable Development through CFD Analysis of a Co-Axial Evacuated Tube Solar Air Heater.pdf
+        - Jordan-IQ-Online.pdf
+        - Enhanced cold storage performance through nano-powder integration in water A numerical simulation study.pdf
+        - Investigating the Impact of Surface Textured Solar Photovoltaic Dummies for Soiling Mitigation A Computational Fluid Dynamics Study.pdf
+        - Optimisation of heat transfer in the absorber tube of a cylindroparabolic trough solar collector.pdf
+        - Integration of the Manzanares Solar Chimney Power Plants in Towers Collector and Building Height Configuration.pdf
+      - buqueda principal 1.py
+      - **papers_colector_solar/**
+        - 4_Optimization and Simulation of a Solar Flat Plate .pdf
+        - 8_The Hybrid Energy Performance of a Water-Based PVT.pdf
+        - 13_Integration of the Manzanares Solar Chimney Power .pdf
+        - 28_Investigating the Feasibility of Integrating Veget.pdf
+        - 29_Investigations of Energy Conversion and Surface Ef.pdf
+        - 31_Numerical investigation of direct absorption evacu.pdf
+        - 32_Experimental and Numerical Analysis of the Solar C.pdf
+        - 39_Hydrothermal Conversion of Microalgae Slurry in a .pdf
+        - 43_CFD Analysis of Heat Transfer Enhancement in a Fla.pdf
+        - 45_Performance Comparison of Different Flat Plate Sol.pdf
+        - 46_Dynamic Simulations on Enhanced Heat Recovery Usin.pdf
+        - 47_Numerical Study of the Parabolic Dish Solar Collec.pdf
+        - 49_Investigation of a Compound Parabolic Collector wi.pdf
+        - 50_Computational Fluid Dynamics Analysis of a Parabol.pdf
+        - 51_Experimental and Computational Analysis of Aluminu.pdf
+        - 52_Integration of Solar Flat Plate Collector and Ther.pdf
+        - 55_Thermal Performance of Double Slope Collectors wit.pdf
+        - 56_Heat Transfer Enhancement in a Receiver Tube of So.pdf
+        - 57_Analysis and CFD Modeling of Thermal Collectors wi.pdf
+        - 60_ENHANCEMENT OF THERMAL EFFICIENCY OF NANOFLUID FLO.pdf
+        - 62_TEMPERATURE DISTRIBUTION WITHIN THE RISING PIPE IN.pdf
+        - 63_Three-dimensional numerical simulation of a flat p.pdf
+        - 64_A CFD-based parametric thermal performance analysi.pdf
+        - 65_Fem-cfd simulation and experimental study of compo.pdf
+        - 67_Thermal Analysis of Flat Plate Solar Collector Usi.pdf
+        - 70_Determination of heat losses from the pipeline in .pdf
+        - 73_Thermal behaviour of a solar dish collector with f.pdf
+        - 74_Analysing the material suitability and concentrati.pdf
+        - 76_Ventilation, Thermal Comfort, and Energy Strategie.pdf
+        - 78_Numerical Investigation of PV_T System by Using Gr.pdf
+        - 80_Modeling Finned Thermal Collector Construction Nan.pdf
+        - 83_Numerical analysis of the effect of the evaporator.pdf
+        - 84_Optimizing Photovoltaic Thermal Collector Temperat.pdf
+        - 85_Analysis and CFD Modeling of Thermal Collectors wi.pdf
+        - 86_Geometry Optimization of PV_T-TEG Collector under .pdf
+        - 87_Numerical Study of Photovoltaic Panel Thermal Effi.pdf
+        - 88_Improve the performance of solar thermal collector.pdf
+        - 89_Effect of thermal collector configuration on the p.pdf
+        - 90_Numerical and experimental study of an asymmetric .pdf
+        - 91_A study on the thermal performance of air-type BIP.pdf
+        - 92_Domestic hot water storage tank utilizing phase ch.pdf
+        - 96_Assessment of the use of venetian blinds as solar .pdf
+        - 108_Outlet Configuration of a Reversed Circular Flow J.pdf
+        - 109_Numerical Investigation of Nanofluid-based Flow Be.pdf
+        - 113_Investigations of Energy Conversion and Surface Ef.pdf
+        - 117_Hydrothermal Conversion of Microalgae Slurry in a .pdf
+        - 119_CFD Analysis of Heat Transfer Enhancement in a Fla.pdf
+      - buscar en linea mas potentente beta 001.py
+      - papers_colector_solar.rar
+      - **papers_hunter/**
+        - 1_Local heat transfer coefficients and friction factors in a U-type compound parab.pdf
+        - 4_Optimization and Simulation of a Solar Flat Plate Collector Using Response Surfa.pdf
+        - 2_A CFD-based spatiotemporal mapping of dust deposition on solar fields using unsu.pdf
+        - 3_Exploration of exergoeconomic evaluation through solar collector in magnetohydro.pdf
+        - 70_Determination of heat losses from the pipeline in sdhw system during the continu.pdf
+        - 73_Thermal behaviour of a solar dish collector with flat mirrors using CFD analysis.pdf
+        - 71_NUMERICAL THERMAL STUDY OF HEAT TRANSFER ENHANCEMENT IN LAMINAR-TURBULENT TRANSI.pdf
+        - 72_Aerodynamic Fields inside S-Shaped Baffled-Channel Air-Heat Exchangers.pdf
+        - 74_Analysing the material suitability and concentration ratio of a solar-powered pa.pdf
+      - papers.db
+    - **articulos de investigacion/**
+      - drive-download-20260529T034642Z-3-001.zip
+      - drive-download-20260529T034759Z-3-001.zip
+      - 56_Heat Transfer Enhancement in a Receiver Tube of So.pdf
+      - 64_A CFD-based parametric thermal performance analysi.pdf
+      - 32_Experimental and Numerical Analysis of the Solar C.pdf
+      - Revista_de_Energía_Química_y_Física_V4_N11_4.pdf
+      - 1815-5944-im-21-03-153.pdf
+      - 7.IJERA_Heater.pdf
+      - helguera,+1930-6404-1-CE.pdf
+      - 572262509012.pdf
+      - 41598_2025_Article_10212.pdf
+      - Documento_completo.pdf-PDFA.pdf
+    - **molde/**
+      - modelo-1.pdf
+  - fliyer a4.pdf
+  - fliyer a3.pdf
+  - prueba 1.pdf
+- **05_Juegos_y_Ocio/**
+  - army men rts BY william.rar
+- **06_Personal_y_Otros/**
+  - **Archivos/**
+    - **Zzz/**
+      - **K/**
+        - Posturas del Kamasutra.pdf
+        - Kamasutra_ilustrado.pdf
+        - el kamasutra de Grey.pdf
+        - Kamasutra - 365.pdf
+        - Kamasutra Una Guía 100 posiciones para Parejas.pdf
+        - Kamasutra_Guia_ilustrada_para_no_aburrirse_en_la_cama_2017.pdf
+        - KAMASUTRA PARA LA MUJER alicia Gallotti.pdf
+  - **Classroom/**
+    - **🇫🇷🥐FRANCÉS MATERIALES DE ESTUDIO/**
+    - **🇺🇲📘ENGLISH MATERIAL/**
+    - **AULA 05 Ella no te ama...    Suscríbete  bit.ly LoganMathsMDMEYP/**
+    - **ONDECI/**
+    - **Servicio de Traslado Turístico I Semestre/**
+    - **AULA 04 Deja ir para encontrar...    Suscríbete  bit.ly LoganMathsMDMEYP/**
+    - **Ecología y Desarrollo Sostenible Ingeniería Mecánica Eléctrica (Grupo A)/**
+    - **ING. MECANICA  ELÉCTRICA GRUPO A/**
+      - practica 01 prueba  de hipotesis por Renzo Gabriel Mamani Galindo .pdf
+      - actividad 01 y 02 de Renzo Gabriel Mamani Galindo .pdf
+    - **AutoCAD Profesional Orientado a la Electricidad/**
+    - **Fundamentos de Matlab Simulink/**
+    - **SISTEMAS FOTOVOLTAICOS/**
+    - **1 🇺🇲📘ENGLISH/**
+  - Cómo_ayudar_a_los_niños_a_superar_el_estrés_y_la_ansiedad_Narcea (1).pdf
+  - **material/**
+    - **juegos/**
+      - **army men rts BY william/**
+        - uharc.exe
+        - ReadMe.txt
+        - **Army Men RTS/**
+          - **support/**
+            - EXIT.WAV
+            - HIGHLITE.WAV
+            - HOTCLIK.WAV
+            - BUTTON.WAV
+            - 3DO.BMP
+            - NWC.BMP
+            - AUTORUN.WAV
+            - NWC.URL
+            - AUTORUN.bmp
+            - WWW3DO.BMP
+            - SCANDISK.BMP
+            - DEFRAG.BMP
+            - SYSINFO.BMP
+            - exit.bmp
+            - support.exe
+            - SysInfo.exe
+            - WWW3DO.URL
+            - 3DO.URL
+            - locale.INI
+            - AUTORUN.INI
+          - **Army Men RTS/**
+            - base.x-s
+            - binkw32.dll
+            - drvmgt.dll
+            - secdrv.sys
+            - mss32.dll
+            - settings.cfg
+            - AMRTS.EXE
+            - base.x
+            - AMRTS.log
+            - **client/**
+              - **p/**
+                - ingame.x
+                - shell.x
+                - **ingame/**
+                  - **mods/**
+                    - if_game_facility.cfg
+                    - if_game_construction.cfg
+                    - if_game_templates.cfg
+                    - if_game_prereqdisplay.cfg
+                    - if_game_squadcontrol.cfg
+                    - if_game_unitdisplay.cfg
+            - **library/**
+              - **dbg/**
+                - dbghelp.dll
+                - msdbi.dll
+              - **engine/**
+                - detail.cfg
+                - video.cfg
+                - startup.cfg
+              - **language/**
+                - language.cfg
+                - spanish.dat
+              - **mss/**
+                - mp3dec.asi
+            - **missions/**
+              - **bc_p/**
+                - group.cfg
+                - T01.x
+                - T02.x
+                - T01.x-s
+                - T02.x-s
+                - T03.x
+                - T03.x-s
+              - **gb/**
+                - group.cfg
+                - attic.x
+                - basement.x-s
+                - bathroom.x
+                - basement.x
+                - attic.x-s
+                - flooded.x
+                - bathroom.x-s
+                - flooded.x-s
+                - garden.x
+                - garden.x-s
+                - sandbox.x
+                - tricycle.x-s
+                - sandbox.x-s
+                - tricycle.x
+                - waterway.x
+                - waterway.x-s
+              - **mp/**
+                - StormeR's Doubles Rush.x
+                - SargeSargeFrenzy.x
+                - 2bench.x-s
+                - 2dumdums.x
+                - 2bench.x
+                - 2eight.x-s
+                - 4crazed.x
+                - 2dumdums.x-s
+                - 2eight.x
+                - 4hose.x-s
+                - 4hose.x
+                - 4crazed.x-s
+                - 4koth.x
+                - 4koth.x-s
+                - 4sandbox.x
+                - 4sandbox.x-s
+                - 6sixway.x
+                - 6sixway.x-s
+                - 8ally.x-s
+                - 8ally.x
+                - 8train.x
+                - 8train.x-s
+                - Sarge Doubles.x
+                - Super Grunts.x
+                - E]x[F Take the 8-Train Rush.x
+                - E]x[F A Hose Too Far.x
+                - E]x[F King of the Hill Power Rush.x
+                - E]x[F Doubles Speed Boost.x
+                - E]x[F-Chido69's Maximum Rush.x
+                - E]x[F 2vs2 That Sinkin Feeling.x
+                - E]x[F 2vs2 SBS.x
+                - E]x[F Sniper Wars.x
+                - E]x[F Grunt Wars.x
+                - E]x[F-SnipeR's Maximum Rush.x
+                - E]x[F Vikki's Twisted Doubles.x
+                - E]x[F READ ME.txt
+              - **shells/**
+                - group.cfg
+                - main.x
+                - credits.x
+                - briefing.x
+              - **story/**
+                - S04.x
+                - S04.x-s
+                - S05.x
+                - S06.x
+                - S05.x-s
+                - S06.x-s
+                - S07.x
+                - S07.x-s
+                - S08.x
+                - S08.x-s
+                - S09.x
+                - S09.x-s
+                - S10.x
+                - S10.x-s
+                - S11.x
+                - S11.x-s
+                - S13.x
+                - S14.x
+                - S13.x-s
+                - S14.x-s
+                - S15.x-s
+                - S15.x
+                - group.cfg
+                - S01.x-s
+                - S03.x-s
+                - S02.x-s
+                - S02.x
+                - S12.x-s
+                - S03.x
+                - S12.x
+                - S01.x
+            - **mods/**
+              - **persona/**
+                - gb.x
+                - default.x
+              - **ruleset/**
+                - koth.x
+                - sarge.x
+                - protect.x
+            - **screenshots/**
+              - Screenshot 0.tga
+              - Screenshot 1.tga
+              - Screenshot 2.tga
+            - **sides/**
+              - army.cfg
+              - insect.cfg
+            - **user/**
+              - data.cfg
+              - **saves/**
+                - **Slot0/**
+                  - game.cfg
+                  - savedata.blk
+                  - savedata.cfg
+                  - objects.cfg
+                  - terrain.blk
+                  - saveinfo.cfg
+                - **Slot1/**
+                  - saveinfo.cfg
+                  - terrain.blk
+                  - savedata.blk
+                  - savedata.cfg
+                  - game.cfg
+                  - objects.cfg
+                - **Slot6/**
+                  - terrain.blk
+                  - game.cfg
+                  - saveinfo.cfg
+                  - objects.cfg
+                  - savedata.blk
+                  - savedata.cfg
+            - **worlds/**
+              - attic.x
+              - basement.x
+              - bathroom.x
+              - bedroom.x
+              - kitchen.x
+              - livingrm.x
+              - sandbox.x-s
+              - shell.x
+              - sandbox.x
+              - yard.x
+            - **base/**
+              - **unlimit/**
+                - unitlimit.cfg
+      - **WarCraft III/**
+        - replays.ico
+        - msvcp80.dll
+        - Microsoft.VC80.CRT.manifest
+        - msvcr80.dll
+        - msvcm80.dll
+        - Storm.dll
+        - war3.exe
+        - game.dll
+        - worldedit.exe
+        - ijl15.dll
+        - blizzard.ax
+        - Mss32.dll
+        - BNUpdate.exe
+        - elamigos.jpg
+        - reign.ico
+        - frozen.ico
+        - unins000.exe
+        - unins000.dat
+        - Frozen Throne.exe
+        - CustomKeysSample.txt
+        - CustomKeyInfo.txt
+        - License.txt
+        - Patch.txt
+        - Warcraft III.exe
+        - World Editor.exe
+        - bncache.dat
+        - War3Patch.mpq
+        - War3xlocal.mpq
+        - **AI Scripts/**
+          - GruntMaster.wai
+          - WyrmMonger.wai
+          - CARMESI.wai
+          - Supremaci.wai
+        - **Campaigns/**
+          - DemoCampaign.w3n
+        - **DirectX/**
+          - dxwebsetup.exe
+        - **Errors/**
+          - 2021-10-15 11.51.16 Crash.txt
+          - 2021-10-15 11.51.16 Crash.dmp
+          - 2021-10-16 12.02.50 Crash.txt
+          - 2021-10-16 12.02.50 Crash.dmp
+          - 2021-10-16 12.37.01 Crash.txt
+          - 2021-10-16 12.37.01 Crash.dmp
+          - 2021-10-18 12.05.59 Crash.txt
+          - 2021-10-18 12.05.59 Crash.dmp
+          - 2021-10-20 16.52.06 Error.txt
+          - 2021-10-20 16.52.06 Error.dmp
+          - 2021-10-28 13.55.43 Crash.txt
+          - 2021-10-28 13.55.43 Crash.dmp
+          - 2023-01-27 12.47.50 Crash.dmp
+          - 2023-01-27 12.47.50 Crash.txt
+          - CrashSummaries.bin
+          - 2023-02-13 17.58.29 Crash.txt
+          - 2023-02-13 17.58.29 Crash.dmp
+        - **Logs/**
+          - DESKTOP-95SN0AB_101621_120426_replay.w3g
+          - DESKTOP-SK3NSGE_021323_173629_replay.w3g
+          - DESKTOP-95SN0AB_101621_103322_replay.w3g
+          - DESKTOP-95SN0AB_101521_111152_replay.w3g
+          - DESKTOP-95SN0AB_101821_120447_replay.w3g
+          - DESKTOP-SK3NSGE_012723_114718_replay.w3g
+          - DESKTOP-95SN0AB_102821_124656_replay.w3g
+        - **Maps/**
+          - (2)BootyBay.w3m
+          - (2)HillsOfGlory.w3m
+          - (2)OgreMound.w3m
+          - (2)PlunderIsle.w3m
+          - (2)Harrow.w3m
+          - (4)Borderlands.w3m
+          - (3)IsleOfDread.w3m
+          - (4)Adrenaline.w3m
+          - (3)Forestwalk.w3m
+          - (3)Nighthaven.w3m
+          - (4)HarvestMoon.w3m
+          - (4)HeartToHeart.w3m
+          - (4)Deadwaterdrop.w3m
+          - (4)DragonMountain.w3m
+          - (4)Duskwood.w3m
+          - (4)Frostsabre.w3m
+          - (4)TranquilPaths.w3m
+          - (4)MysticIsles.w3m
+          - (4)LostTemple.w3m
+          - (4)Legends.w3m
+          - (5)TheGlaive.w3m
+          - (6)DragonFire.w3m
+          - (6)DrywaterGulch.w3m
+          - (6)DarkForest.w3m
+          - (6)ScorchedBasin.w3m
+          - (6)GnollWood.w3m
+          - (6)Moonglade.w3m
+          - (6)SwampOfSorrows.w3m
+          - (6)Stromguarde.w3m
+          - (6)TimbermawHold.w3m
+          - (8)BloodvenomFalls.w3m
+          - (8)GolemsInTheMist.w3m
+          - (8)BlastedLands.w3m
+          - (8)GardenOfWar.w3m
+          - (8)Battleground.w3m
+          - (8)TheCrucible.w3m
+          - (8)PetrifiedForest.w3m
+          - (8)PlainsOfSnow.w3m
+          - (9)Riverrun.w3m
+          - (8)Plaguelands.w3m
+          - (10)DustwallowKeys.w3m
+          - (12)DivideAndConquer.w3m
+          - (12)IceCrown.w3m
+          - (10)EmeraldGardensV7.5.1.w3x
+          - (10)RagingStreamV7.5.1.w3x
+          - BleachVsOnepiece12.w3x
+          - Footman Frenzy v12.7 AI ENG.w3x
+          - DotA v6.77b AI 1.1.7 Fun 2.7c.w3x
+          - FOCS3 Another 9.7C02.w3x
+          - **ME/**
+          - **FrozenThrone/**
+            - (2)SecretValley.w3x
+            - (2)EchoIsles.w3x
+            - (2)TerenasStand.w3x
+            - (2)MeltingValley.w3x
+            - (2)RoadToStratholme.w3x
+            - (2)GlacialThaw.w3x
+            - (2)ShrineOfTheAncients.w3x
+            - (2)BanditRidge.w3x
+            - (2)Korea.w3x
+            - (2)Circumvention.w3x
+            - (2)TirisfalGlades.w3x
+            - (4)CentaurGrove.w3x
+            - (4)BridgeTooNear.w3x
+            - (4)Avalanche.w3x
+            - (2)TheTwoRivers.w3x
+            - (4)BrokenShard.w3x
+            - (4)Adrenaline.w3x
+            - (4)Deathrose.w3x
+            - (4)HailStone.w3x
+            - (4)DesertStrife.w3x
+            - (4)ExcavationSite.w3x
+            - (4)ColdHeart.w3x
+            - (4)FloodPlains1v1.w3x
+            - (4)Goldshire.w3x
+            - (4)DevilsCauldron.w3x
+            - (4)FloodPlains.w3x
+            - (4)HearthglenHills.w3x
+            - (4)FrozenClover.w3x
+            - (4)IceFlow.w3x
+            - (4)TwistedMeadows.w3x
+            - (4)StoneColdMountain.w3x
+            - (4)Ruins.w3x
+            - (4)Hellfire.w3x
+            - (4)Islands.w3x
+            - (4)TurtleRock.w3x
+            - (4)Tanaris.w3x
+            - (4)PhantomGrove.w3x
+            - (4)TidewaterGlades.w3x
+            - (4)IceForge.w3x
+            - (4)Predators.w3x
+            - (4)Roundabout.w3x
+            - (4)ParadiseIslands.w3x
+            - (4)LostTemple.w3x
+            - (6)Duststorm.w3x
+            - (4)Wetlands.w3x
+            - (6)Andorhal.w3x
+            - (6)CopperCanyon.w3x
+            - (4)Whirlwind.w3x
+            - (6)BloodstoneMesa.w3x
+            - (6)EmeraldShores.w3x
+            - (4)Venetia.w3x
+            - (6)Demon'sCrossing.w3x
+            - (6)DragonBlight.w3x
+            - (4)WindyWaste.w3x
+            - (6)EnakrosWay.w3x
+            - (6)SavageStorm.w3x
+            - (6)RollingHills.w3x
+            - (6)GnollWood.w3x
+            - (6)Moonglade.w3x
+            - (6)RiverOfSouls.w3x
+            - (6)Highperch.w3x
+            - (6)JungleFever.w3x
+            - (6)RuinsOfStratholme.w3x
+            - (6)Everfrost.w3x
+            - (6)RiceFields.w3x
+            - (6)Monsoon.w3x
+            - (6)Jack-o-Lantern.w3x
+            - (6)HinterlandRaid.w3x
+            - (6)HavenOfTheDamned.w3x
+            - (6)Typhoon.w3x
+            - (6)TimbermawHold.w3x
+            - (6)SunrockCove.w3x
+            - (6)ThunderLake.w3x
+            - (6)Wellspring.w3x
+            - (6)SilverpineForest.w3x
+            - (6)WheelofChaos.w3x
+            - (6)StranglethornVale.w3x
+            - (6)UpperKingdom.w3x
+            - (6)ScorchedBasin.w3x
+            - (8)Feralas.w3x
+            - (8)LastManStanding.w3x
+            - (8)HurricaneIsle.w3x
+            - (8)Cherryville.w3x
+            - (8)Deathknell.w3x
+            - (8)DragonFalls.w3x
+            - (8)Friends.w3x
+            - (8)Deadlands.w3x
+            - (8)FullScaleAssault.w3x
+            - (8)GoldRush.w3x
+            - (8)Battleground.w3x
+            - (8)Deadlock.w3x
+            - (8)GardenOfWar.w3x
+            - (8)Mur'gulOasis.w3x
+            - (8)TheCrossroads.w3x
+            - (8)Northshire.w3x
+            - (9)RoundVillage.w3x
+            - (8)RockQuarry.w3x
+            - (8)TwilightRuins.w3x
+            - (8)Slalom.w3x
+            - (8)ShamrockReef.w3x
+            - (8)Sanctuary.w3x
+            - (8)SpiderFalls.w3x
+            - (8)PlainsOfSnow.w3x
+            - (8)MarketSquare.w3x
+            - (10)RagingStream.w3x
+            - (12)EmeraldGardens.w3x
+            - (6)WizardsRetreat.w3x
+            - **Scenario/**
+              - (4)Monolith.w3x
+              - (6)BomberCommand.w3x
+              - (6)BlizzardTD.w3x
+              - (8)AzureTowerDefense.w3x
+              - (8)AzerothGrandPrix.w3x
+              - (8)FunnyBunnysEggHunt.w3x
+              - (10)Skibi'sCastleTD.w3x
+              - (12)WormWar.w3x
+              - (10)ExtremeCandyWar2004.w3x
+          - **minijuegos/**
+            - BleachVsOnepiece13.w3x
+            - DotA v6.77b AI 1.1.7 Fun 2.7c.w3x
+            - Battle_Ships_5.0_new.w3x
+            - Pudge Wars Advanced v2.01b.w3x
+            - Pudge Wars Advanced 2.01d.w3x
+            - Pudge Wars 1.25.w3x
+            - Footman Frenzy 6x6 1.21b fixed.w3x
+            - FFA_3_75_AR.w3x
+            - footy lvl 10.000 0.1_1.w3x
+            - Footmen R..w3x
+            - Footman Wars Elite Rev02.w3m
+            - Footmen Nivel 10000 AI v2.0.w3x
+            - Footmen Frenzy BETA v5.4!.w3x
+            - Footmen_Frenzy_20.6.w3x
+            - Footman Frenzy Chaos (protected).w3x
+            - Footmen_Frenzy_20.7.w3x
+            - FOOTMAN FRENZYY.w3x
+            - Footmen_Frenzy_21.4.w3x
+            - Footman Frenzy Limitless AI.w3x
+            - Footman Frenzy Limitless AI ver 2.w3x
+            - Footman Frenzy Limitless AI 3.w3x
+            - VN Footmen 2011 Team v1.4.w3x
+          - **Scenario/**
+            - (1)TheDeathSheep.w3m
+            - (4)WarChasers solo.w3m
+            - (4)WarChasers.w3m
+          - **Supremme/**
+            - (12)IceCrown.w3m
+            - (10)RagingStream 2.w3x
+            - 123.w3x
+            - (12)IceCrownS .w3x
+            - SU.w3x
+            - campaa f.w3x
+            - ME.w3x
+            - mama.w3x
+            - xd.w3x
+            - MODIFICADO SUPREME vesion 1.w3x
+            - MODELO 2.w3x
+            - imperius.w3x
+          - **Test/**
+            - 1.w3x
+            - WorldEditTestMap.w3m
+            - Tormenta.w3x
+            - ded.w3x
+            - WorldEditTestMap.w3x
+          - **HUMAN/**
+            - HUMAN SUPERVIVENCIA.w3m
+            - HUMAN SUPERVIVENCIA v3 .w3m
+        - **Movies/**
+          - UndeadEd.mpq
+          - HumanOp.mpq
+          - IntroX.mpq
+          - OrcEd.mpq
+          - TutorialIn.mpq
+          - TutorialOp.mpq
+          - OutroX.mpq
+          - HumanEd.mpq
+          - NightElfEd.mpq
+        - **redist/**
+          - **miles/**
+            - Mssdolby.m3d
+            - Msseax2.m3d
+            - Reverb3.flt
+            - Mssfast.m3d
+            - Mp3dec.asi
+        - **replay/**
+          - LastReplay.w3g
+        - **save/**
+          - PreExp.txt
+          - **Multiplayer/**
+            - felix.w3z
+          - **Profile1/**
+            - felix.w3z
+            - horda.w3z
+            - Campaigns.w3v
+            - Campaigns.w3p
+            - felix ELFO.w3z
+            - **Blizzard/**
+              - **felix/**
+                - OrcX01_02.w3z
+                - OrcX01_05.w3z
+                - OrcX01.w3z
+                - OrcX01_03.w3z
+                - OrcX02_03.w3z
+                - OrcX02_05.w3z
+                - OrcX02_09.w3z
+                - OrcX02_08.w3z
+                - OrcX02_04.w3z
+                - OrcX02_02.w3z
+                - OrcX02.w3z
+                - OrcX02_07.w3z
+              - **horda/**
+                - OrcX02_03.w3z
+                - OrcX02_05.w3z
+                - OrcX02_04.w3z
+                - OrcX02_02.w3z
+                - OrcX02_07.w3z
+                - OrcX02.w3z
+                - OrcX02_09.w3z
+                - OrcX02_08.w3z
+              - **Zones/**
+                - OrcX02_03.w3z
+                - OrcX02_05.w3z
+                - OrcX02_04.w3z
+                - OrcX02_08.w3z
+                - OrcX02_02.w3z
+                - OrcX02_07.w3z
+                - OrcX02.w3z
+                - OrcX02_10.w3z
+                - OrcX02_09.w3z
+          - **Profile2/**
+            - fdcr2.w3z
+            - 1234.w3z
+            - 12345.w3z
+            - 3.w3z
+            - 4.w3z
+            - 5.w3z
+            - 7.w3z
+            - b.w3z
+            - c.w3z
+            - a.w3z
+            - 1a.w3z
+            - x.w3z
+            - 123.w3z
+            - d1.w3z
+            - 2.w3z
+            - 1.w3z
+            - 6.w3z
+            - fdcr1.w3z
+            - fdcr.w3z
+            - david.w3z
+            - Campaigns.w3v
+            - Campaigns.w3p
+            - y.w3z
+            - z.w3z
+            - **Blizzard/**
+              - **fdcr2/**
+                - OrcX02_02.w3z
+                - OrcX02_03.w3z
+                - OrcX02_05.w3z
+                - OrcX02.w3z
+                - OrcX02_04.w3z
+              - **Zones/**
+                - OrcX02_02.w3z
+                - OrcX02_03.w3z
+                - OrcX02_05.w3z
+                - OrcX02_04.w3z
+                - OrcX02.w3z
+          - **Profile3/**
+            - Campaigns.w3v
+            - Campaigns.w3p
+            - DemoCampaign.w3p
+            - feli.w3z
+        - **support/**
+          - **BattleNet/**
+            - (PC)BNetTroubleshooting.html
+            - (Mac)BNetMenu.html
+            - (PC)BNetMenu.html
+            - ChatHelp.html
+            - ClanHelp.html
+            - (Mac)BNetTroubleshooting.html
+          - **Images/**
+            - h_right.jpg
+            - c_right.jpg
+            - m_bottom.jpg
+            - PlatformBarPC.jpg
+            - cb_center.jpg
+            - h_left_fixed.jpg
+            - PlatformBarMac.jpg
+            - h_left.jpg
+            - ct_left.jpg
+            - h_center.jpg
+            - cb_left.jpg
+            - ct_center.jpg
+            - m_ml.jpg
+            - h_right_fixed.jpg
+            - c_left.jpg
+            - ct_right.jpg
+            - m_mr.jpg
+            - m_top.jpg
+            - cb_right.jpg
+            - RRepeat.jpg
+            - TWidget.jpg
+            - BRepeat.jpg
+            - BSpacer.jpg
+            - LRepeat.jpg
+            - ItemMarker.jpg
+            - WinLogo.jpg
+            - BWidget.jpg
+            - TRepeat.jpg
+            - MacLogo.jpg
+            - Logo.jpg
+            - BLWidget.jpg
+            - BRWidget.jpg
+            - BNet.jpg
+            - splash.jpg
+            - CRepeat.jpg
+            - Blizz.jpg
+            - TRWidget.jpg
+            - TLWidget.jpg
+            - **ClanIcons/**
+              - Leader.jpg
+              - Member.jpg
+              - Officer.jpg
+              - Initiate.jpg
+            - **Nav/**
+              - Nav_12.jpg
+              - Nav_02.jpg
+              - Nav_00.jpg
+              - Nav_13.jpg
+              - Nav_11.jpg
+              - Nav_14.jpg
+              - Nav_01.jpg
+              - Nav_10.jpg
+              - Nav_03.jpg
+              - Nav_04.jpg
+              - Nav_05.jpg
+              - Nav_51.jpg
+              - Nav_25.jpg
+              - Nav_40.jpg
+              - Nav_20.jpg
+              - Nav_35.jpg
+              - Nav_50.jpg
+              - Nav_31.jpg
+              - Nav_44.jpg
+              - Nav_52.jpg
+              - Nav_42.jpg
+              - Nav_54.jpg
+              - Nav_55.jpg
+              - Nav_45.jpg
+              - Nav_23.jpg
+              - Nav_41.jpg
+              - Nav_22.jpg
+              - Nav_32.jpg
+              - Nav_53.jpg
+              - Nav_43.jpg
+              - Nav_34.jpg
+              - Nav_33.jpg
+              - Nav_21.jpg
+              - Nav_24.jpg
+              - Nav_15.jpg
+              - Nav_30.jpg
+          - **Layout/**
+            - m_top.html
+            - cb_left.html
+            - cb_center.html
+            - m_bottom.html
+            - cb_right.html
+            - header_l.html
+            - m_mc2.html
+            - Index2.html
+            - ct_center.html
+            - header_lf.html
+            - c_right.html
+            - c_center.html
+            - c_left.html
+            - m_mc.html
+            - m_ml.html
+            - header_rf.html
+            - ct_right.html
+            - IndexMac.html
+            - m_mr.html
+            - header_r.html
+            - Index.html
+            - header_c.html
+            - ct_left.html
+            - Styles.css
+            - Detector.js
+            - (PC)LBorder.html
+            - Splash.html
+            - (Mac)Nav.html
+            - CSpacer.html
+            - (WEH)Nav.html
+            - (Mac)TBorder.html
+            - (Mac)LBorder.html
+            - (PC)Nav.html
+            - (PC)BSpacer.html
+            - TheScript.js
+            - (PC)WEHTBorder.html
+            - (Mac)WEHIndex.html
+            - (Mac)RBorder.html
+            - (Mac)BSpacer.html
+            - (PC)WEHIndex.html
+            - (Mac)Index.html
+            - (PC)Index.html
+            - (PC)TBorder.html
+            - (Mac)WEHTBorder.html
+            - WorldEditLocationBar.html
+            - (PC)RBorder.html
+          - **Readme/**
+            - Addendum.html
+            - (Mac)Start.html
+            - (PC)UIMainMenus.html
+            - (PC)InGame.html
+            - (PC)Foreword.html
+            - (Mac)Foreword.html
+            - (Mac)ReadMeMenu.html
+            - Contact.html
+            - BNTOU.html
+            - EULA.html
+            - (Mac)InGame.html
+            - Games.html
+            - (PC)Addendum.html
+            - (Mac)PatchUninstall.html
+            - (PC)PatchUninstall.html
+            - (PC)ReadMeMenu.html
+            - (Mac)UIMainMenus.html
+            - (Mac)Addendum.html
+            - (PC)Start.html
+          - **Support/**
+            - (Mac)Patches.html
+            - (PC)InstallUninstall.html
+            - (PC)SupportMenu.html
+            - (PC)LAN.html
+            - (PC)Patches.html
+            - (Mac)InstallUninstall.html
+            - (Mac)LockCrashDrivers.html
+            - (Mac)SupportMenu.html
+            - (PC)LockCrashDrivers.html
+            - (Mac)LAN.html
+          - **WorldEdit/**
+            - UnitEdit.html
+            - Menus.html
+            - ImportManager.html
+            - ObjectEditor.html
+            - TerrainEdit.html
+            - (WEH)WorldEditMenu.html
+            - LocationBar.html
+            - (PC)WorldEditMenu.html
+            - WorldEditMenu.html
+            - CreationSet.html
+            - SoundEditor.html
+            - Intro.html
+            - TriggerEdit.html
+            - (Mac)WorldEditMenu.html
+            - ObjectManager.html
+            - CampaignEditor.html
+            - FeaturesNav.html
+            - AIEditor.html
+        - **TestGame/**
+          - WorldEditTestGame.ai
+          - WorldEditTestGame.wgc
+    - **#mi propia mejora/**
+      - la-magia-de-pensar-en-grande-david-js-chwartz.pdf
+      - make-time-como-enfocarte-en-lo-que-importa-cada-dia.pdf
+      - Como_TENER_el_FISICO_del_REY_BAROU_-_Rutina__Recetas.pdf
+      - dieta para la semanal y esta fitnets.pdf
+      - Reporte de Notas.pdf
+      - make-time-como-enfocarte-en-lo-que-importa-cada-dia.docx
+      - Autodesk_backup_code.txt
+      - Plan_dietético.pdf
+      - **notas/**
+        - 20 de enero 2024.pdf
+        - tan4.pdf
+        - 228447 - PAGOS.pdf
+      - **para prestamso/**
+        - para prestamos.tex
+        - para prestamos.log
+        - para prestamos.aux
+    - **#MIS DATOS/**
+      - Ficha Matricula.pdf
+      - MI DNI .pdf
+      - 1712161116864-b509ee07-132b-48a7-aa40-b9139e36c916.jpg
+      - Reporte de Notas 03 04 2024.pdf
+      - firma
+      - Reporte de Notas 20 05 2025.pdf
+      - **certificados y constancias/**
+        - Python_Essentials_1_Badge20240417-45-ee3cfm.pdf
+        - Python_Essentials_2_Badge20240507-8-yd6dve.pdf
+      - **PARA EL COMEDOR/**
+        - Ficha Matricula.pdf
+        - 7 compromiso.pdf
+        - 6 declaracion jurada.pdf
+        - 2 solicitud extrema pobreza.pdf
+      - **fichas/**
+        - Ficha Matricula 2025 1.pdf
+    - **✨CELEN/**
+      - control_enlaces.py
+      - WIN_20250128_15_34_31_Pro.mp4
+      - **tarea/**
+        - st1_gram_u01.pdf
+        - st1_gram_u02.pdf
+        - tarea celen grammar.pdf
+        - 115 mamani galindo renzo gabriel.jpg
+      - **celen/**
+      - **libros de ingles/**
+        - lesson 1 unti 9.pdf
+        - resumen-gramatica-ingles.pdf
+        - ingles_preguntas_respuestas.xlsx
+        - **star up 2/**
+          - libron2 de celen .pdf
+          - pdf-startup-2-student-book_compress.pdf
+          - 026150319.pdf
+          - apgar.py
+          - Nuevo Documento de texto.py
+        - **star up 1/**
+          - STARTUP 1 STUDENT BOOK.pdf
+          - LIBRO STARTUP 1.pdf
+        - **star up 3/**
+          - star up 3.pdf
+          - Startup-3-Student- Book.pdf
+          - Startup_3_Solucionario.pdf
+      - **basico 5/**
+        - Workbook unit 3-1.pdf
+        - Workbook unit 3 -2.pdf
+        - Workbook 2 unit 3 - 3.docx
+        - 115.docx
+        - Imagen de WhatsApp 2024-04-18 a las 07.20.32_2067c67c.jpg
+        - video de lo que uso.mp4
+        - IMG_20240415_213809.jpg
+        - 026150319.pdf
+        - Hola.docx
+        - unidad 4 para presentacion final.docx
+        - MARCO.png
+        - FERNANDO.png
+        - MARTÍN.png
+        - la imagenes .png
+        - a mano .jpg
+        - preguntas.csv
+        - mejora mucho.csv
+        - ahora esta si por final.csv
+        - extra mas.csv
+        - en ltyhvbibhuklljbh.xlsx
+        - en ltyhvbibhuklljbh.csv
+      - **para anki/**
+        - ingles_preguntas_respuestas.csv
+      - **basico 7/**
+        - Unit 4 lesson 01.pdf
+      - **basico 9/**
+        - Ingredients.pdf
+        - Ingredients.docx
+      - **basco 10/**
+        - Startup-3-129.pdf
+        - laplace.pdf
+        - ultimo.pdf
+    - **✨MATLAB/**
+      - crear_estructura.py
+      - **Mecanica_Electrica/**
+        - main.m
+        - **Cursos/**
+          - **metodos_numericos/**
+            - metodos_numericos_submenu.m
+          - **termodinamica_II/**
+            - termodinamica_II_submenu.m
+          - **ingenieria/**
+            - submenu.m
+          - **quimica/**
+            - submenu.m
+        - **FuncionesMetodosNumericos/**
+          - python crear_carpetas.py
+          - **newton_raphson/**
+            - Newton_Rhapson.m
+          - **interpolacion_lagrange/**
+            - interpolacion_lagrange.m
+          - **metodo_de_biseccion/**
+            - metodo_de_biseccion.m
+          - **Metodo_de_Diferencias_Finitas/**
+            - Metodo_de_Diferencias_Finitas.m
+          - **Metodo_de_Euler/**
+            - Metodo_de_Euler.m
+          - **metodo_de_falsa_posicion/**
+            - metodo_de_falsa_posicion.m
+          - **Metodo_de_Gauss_Seidel/**
+            - Metodo_de_Gauss_Seidel.m
+          - **Metodo_de_Jacobi/**
+            - Metodo_de_Jacobi.m
+          - **Metodo_de_Regula_Falsi_Modificado/**
+            - Metodo_de_Regula_Falsi.m
+          - **Metodo_de_Runge_Kutta_RK4/**
+            - Metodo_de_Runge_Kutta_RK4.m
+          - **Metodo_de_Simpson/**
+            - Metodo_de_simpson.m
+          - **Metodo_de_Splines/**
+            - Metodo_de_Splines.m
+          - **Metodo_del_Trapecio/**
+            - Metodo_del_Trapecio.m
+          - **metodo_secante/**
+            - metodo_secante.m
+          - **Metodos_de_Ajuste_No_Lineal/**
+            - Metodos_de_Ajuste_No_Lineal.m
+          - **minimos_cuadrados/**
+            - minimos_cuadrados.m
+          - **sistemas_lineales/**
+            - sistemas_lineales.m
+        - **Documentacion/**
+          - README.md
+        - **funcionestermodinamica/**
+          - **realizar_interpolacion/**
+            - realizar_interpolacion.m
+          - **buscar_resultados_guardados/**
+            - buscar_resultados_guardados.m
+          - **interpolacion_vapor_sobrecalentado_entropia/**
+            - interpolacion_vapor_sobrecalentado_entropia.m
+          - **calcular_entropia_funcion_calidad/**
+            - calcular_entropia_funcion_calidad.m
+          - **interpolacion_vapor_sobrecalentado_entalpia/**
+            - interpolacion_vapor_sobrecalentado_entalpia.m
+          - **sistema_refrigeracion/**
+            - sistema_refrigeracion.m
+          - **calcular_media_datos/**
+            - calcular_media_datos.m
+    - **anki/**
+      - flashcards_electricidad_electromagnetismo.csv
+      - esta si de electricidad.csv
+      - estudia-con-anki-fisica-nightmode.zip
+      - **estudia-con-anki-fisica-nightmode/**
+        - 2.0_Fisica Pack.apkg
+        - mazos.md
+        - 2.0_Matematicas Pack.apkg
+        - README.md
+        - Tags existentes.txt
+        - **automation/**
+          - tasks.md
+        - **web/**
+          - web_vs_code_workspace.code-workspace
+          - index.html
+          - **css/**
+            - style.css
+        - **decks/**
+          - Mecanica Cuantica.apkg
+          - Ondas.apkg
+          - Programacion.apkg
+          - WebDev.apkg
+          - Metodos Matematicos Libro Boas.apkg
+          - Mecanica Intermedia.apkg
+          - Metodos Matematicos 2.apkg
+          - Fisica de Gases.apkg
+          - Electrodinamica.apkg
+          - Calculo.apkg
+          - # Ecuaciones para Memorizar.apkg
+          - # Vectores.apkg
+          - Algebra Lineal.apkg
+          - Algebra.apkg
+          - Articulos y Escribirlos.apkg
+          - Astronomia.apkg
+          - Esencial para Física.apkg
+          - Estadistica.apkg
+          - Fisica Moderna.apkg
+    - **AutoCAD/**
+      - **Atajos/**
+        - COMANDOS-AUTOCAD-VERSION-INGLES.pdf
+    - **física/**
+      - CUSTODIO GARCIA - FÍSICA ELEMENTAL 5.pdf
+      - CUSTODIO GARCIA - FÍSICA ELEMENTAL 7.pdf
+      - CUSTODIO GARCIA - FÍSICA ELEMENTAL TOMO 2 (1).pdf
+      - CUSTODIO GARCIA - FÍSICA ELEMENTAL TOMO 2.pdf
+      - CUSTODIO GARCIA - FÍSICA ELEMENTAL TOMO 3.pdf
+      - CUSTODIO GARCIA - FÍSICA ELEMENTAL TOMO 11.pdf
+      - CUSTODIO GARCIA - FÍSICA ELEMENTAL TOMO 12 (1).pdf
+      - CUSTODIO GARCIA - FÍSICA ELEMENTAL 3.pdf
+      - CUSTODIO GARCIA - FÍSICA ELEMENTAL 4.pdf
+      - CUSTODIO GARCIA - FÍSICA ELEMENTAL 9.pdf
+      - DANIEL SILVA - 4. ESTATICA.pdf
+      - CUSTODIO GARCIA - FÍSICA ELEMENTAL 1.pdf
+      - CUSTODIO GARCIA - FÍSICA ELEMENTAL 11.pdf
+      - FÍSICA - FÍSICA TEORIA Y PROBLEMAS - REGULO A. SABRERA.pdf
+      - DANIEL SILVA - 8. MOVIMIENTO ARMONICO SIMPLE.pdf
+      - DANIEL SILVA - 5. DINAMICA.pdf
+      - DANIEL SILVA - 2. CINEMATICA I.pdf
+      - DANIEL SILVA - 6. ENERGIA.pdf
+      - DANIEL SILVA - 4.1 ESTATICA.pdf
+      - DANIEL SILVA - 12 ELECTROSTATICA.pdf
+      - MOVIMIENTO ÁRMONICO SIMPLE.pdf
+      - Libro Libre - Física - Teoría (Completa).pdf
+      - Libro Libre - Física - Teoría (completa) Ejercicios resueltos.pdf
+      - problemas-de-fisica-general-volkenshtein-1 (1).pdf
+      - trashed-1708128590-fisica universitaria.pdf
+      - Solucionario Fisica I y II - Leiva - FL.pdf
+      - Física I - 2200 Problemas - Regulo A. Sabrera Alvarado.pdf
+      - Física_IV_Curso_Completo_con_Problemas_Regulo_A_Sabrera_Alvarado.pdf
+      - Física_III_Curso_Completo_con_Problemas_Regulo_Sabrera_Alvarado.pdf
+      - Física_III_Curso_Completo_con_Problemas_Regulo_Sabrera_Alvarado (1).pdf
+      - Física_II_Vol_1_3078_Problemas_Regulo_A_Sabrera_Alvarado.pdf
+      - CUSTODIO GARCIA - FÍSICA ELEMENTAL 6.pdf
+      - CUSTODIO GARCIA - FÍSICA ELEMENTAL 12.pdf
+      - DANIEL SILVA - 1. ANALISIS DIMENSIONAL Y VECTORES.pdf
+      - CUSTODIO GARCIA - FÍSICA ELEMENTAL TOMO 12.pdf
+      - CUSTODIO GARCIA - FÍSICA ELEMENTAL 13.pdf
+      - CUSTODIO GARCIA - FÍSICA ELEMENTAL 8.pdf
+      - **Mecánica de fluidos/**
+        - 234 mecanica-de-fluidos-robert-mott-6ta-edicion.pdf
+        - Solucionario_Mecanica_de_Fluidos.rar
+        - Mecanica_de_los_Fluidos.rar
+        - Mecanica de los Fluidos.pdf
+        - Solucionario Mecanica de fluidos - MASSEY.pdf
+        - Solucionario Mecanica de los Fluidos - FOX .pdf
+        - Mecanica_de_Fluidos_Fundamentos_y_Aplica.pdf
+        - Copia de 10 Mecánica de fluidos.pdf
+        - Presion-ejercicios[1].pdf
+        - Solucionario Ingenieria de mecanica de fluidos -  CROWE.pdf
+        - **Mecanica_de_los_Fluidos/**
+          - Leeme.txt
+          - Mecanica de los Fluidos.pdf
+      - **Fisica/**
+      - **Física 2/**
+        - vdocuments.pub_hugo-medina-guzman-fisica-ii-solucionario.pdf
+      - **Física 3/**
+        - FÍSICA - FÍSICA III TEORIA Y PROBLEMAS - WALTER PEREZ TERREL.pdf
+        - fisica 03-hugo-medina.pdf
+      - **completos/**
+        - HUGO MEDINA GUZMAN FISICA 1_2_3_4.pdf
+        - Física Universitaria Vol 1 - Sears y Zemansky - Young • Freedman.pdf
+        - Física Universitaria Vol 2 - Sears y Zemansky - Young • Freedman.pdf
+    - **formularios generales/**
+      - Diccionario_Ilustrado_de_Conceptos_matematicos.pdf
+      - calculo formulario.pdf
+      - La Guía Científica.pdf
+      - FORMULARIO DE TRIGONOMETRIA-2023.pdf
+      - F-Formulario_de_EstadIstica_BACH.pdf
+      - formulario derivadas (1).pdf
+      - otro más de electricidad.png
+      - formula de electricidad y electromagnetismo.png
+      - 76bfc142a40f3218bd0d7a261829975a.png
+      - 448311930_3917099478512864_7375728386749339225_n.jpg
+      - **formularios/**
+        - FORMULARIO CALCULO VECTORIAL - SHARENDI YAZARET RODRIGUEZ BUST.pdf
+    - **infomes/**
+      - **documentos/**
+        - metales y aleaciones.docx
+        - **material para informe de fisica/**
+          - WhatsApp Image 2023-05-28 at 7.20.59 PM (1).jpeg
+          - WhatsApp Image 2023-05-28 at 7.21.00 PM (2).jpeg
+          - WhatsApp Image 2023-05-28 at 7.20.59 PM.jpeg
+          - WhatsApp Image 2023-05-28 at 7.21.00 PM.jpeg
+          - WhatsApp Image 2023-05-28 at 7.21.00 PM (1).jpeg
+        - **laboratorio/**
+          - guia de fisica laboratorio.pdf
+          - Estructura de presentación de informe de laboratorio y rúbrica.pdf
+          - Doc1.docx
+          - **informe 1/**
+            - informe de laboratorio  hecho.docx
+            - informe de laboratorio  otro.docx
+            - laboratorio final alfin.pdf
+            - laboratorio final alfin encabezado.pdf
+            - laboratorio final alfin.docx
+            - laboratorio final y se acabo.pdf
+            - esta si es la definitiva ga.pdf
+            - Documento A4 Portada Informe Mensual Empresa Corporativo Azul oscuro (3).pdf
+            - laboratorio 2 .xlsx
+          - **informe 3/**
+            - doc cumento 3.docx
+            - Unidad didáctica para enseñar Trabajo y energía a partir de la cinemática del MRUV.pdf
+            - EXPERIMENTO N 3.docx
+            - scribd.vdownloaders.com_informe-de-laboratorio-n-03-fisica-i.pdf
+            - caratula sin color .pdf
+            - INFORME 3 LAB.docx
+            - renzo gaaaaaaaaaaaaaaaaa.docx
+            - INFORME 3 LAB (1) edu.docx
+            - **fotos/**
+              - pascar rojo.jpeg
+              - pascar azul.jpeg
+              - soprte de pascar.jpeg
+              - abrazadera.jpeg
+              - pies.jpeg
+              - sensor de movimiento.jpeg
+              - 1.jpeg
+              - 2.jpeg
+              - 3.jpeg
+              - 4.jpeg
+              - 5.jpeg
+              - 10 cm.jpeg
+              - nivel.jpeg
+              - intefas.jpeg
+              - seneroewfroiegbmtribntopbktrnmb,trortm´po.jpeg
+              - colocar al sensor.jpeg
+          - **informe 2/**
+            - scribd.vdownloaders.com_laboratorio-de-fisica-1-equilibrio-de-fuerzas.pdf
+            - scribd.vdownloaders.com_laboratorio-de-fisica-1-equilibrio-de-fuerzas (1).pdf
+            - SEGUNDO INFORME FISICA eduardo.docx
+            - de eduardo.docx
+            - caratula sin color .pdf
+            - caratula.pdf
+            - laboratorio de fisica informe 2 final.docx
+            - Dialnet-ExplicacionConExperimentosSencillosYAlAlcanceDeTod-2734653.pdf
+            - laboratorio 2 .xlsx
+            - laboratorio de fisica informe 2.docx
+            - scribd.vdownloaders.com_fisica-informe-de-equilibrio-de-fuerzas-unap.docx
+            - laboratorio1_equilibrio_de_fuerzas_UNAP.docx
+            - scribd.vdownloaders.com_fisica-informe-de-equilibrio-de-fuerzas-unap.pdf
+            - scribd.vdownloaders.com_informe-1-laboratorio-fisica (1).pdf
+            - porsiacaso.docx
+            - scribd.vdownloaders.com_informe-1-laboratorio-fisica.pdf
+            - imagenes de laboraorio.docx
+            - **imagenes/**
+              - sensor de fuerza de la mesa circular.jpeg
+              - barra de torque.jpeg
+              - medicion del angulo de inclinacion.jpeg
+              - interfaz.jpeg
+              - interfaz google.jpg
+              - juego de pesas.jpeg
+              - regla de 1 m.jpeg
+              - soporte universal.jpg
+              - transportador.jpeg
+              - dnamometro.jpeg
+              - mesa de fuerza.jpeg
+              - datos.jpeg
+              - angulos.jpeg
+              - fuerzas.jpeg
+      - **Laboratorio/**
+        - **II semestre/**
+          - tabla.docx
+          - informe de laboratorio  falta poco.docx
+          - laboratorio de fisica informe 2.docx
+    - **PARA CHAT/**
+      - PARA HACER UNA INVESTIGACION.txt
+    - **progrmas/**
+      - **APK Y PROGRAMAS/**
+        - readera.apk
+        - wolfram.apk
+        - HPPRIME PRO.apk
+        - **HP PRIME/**
+          - **PARA PC/**
+            - HP-FORMULION-FIAC_CALCULADORA_HP_PRIME.rar
+            - **HP-FORMULION-FIAC_CALCULADORA_HP_PRIME/**
+              - GUIA HP_PRIME.pdf
+              - MANUAL HP_PRIME.pdf
+              - HP_Prime_Virtual_Calculator_2018_10_16.exe
+              - HP_Prime_Connectivity_Kit_20180706.exe
+          - **PARA CEL/**
+            - Hp Prime PRO.apk
+      - **hp prime/**
+        - HP_Prime_Connectivity_Kit_x64_20230413.exe
+        - HP_Prime_Virtual_Calculator_x64_2023_04_13.exe
+        - **programas para hp prime/**
+          - rlcseries.txt
+          - rlcparal.txt
+          - rlc.htm
+          - ec-de-estado.txt
+          - ec-de-estado.hpprgm
+          - armaduras2d.txt
+          - para el momento flector.txt
+          - armaduras2d.zip
+          - ec-de-estado.zip
+          - eecsolver.zip
+          - rlc.zip
+          - kinematics.zip
+          - inertia.zip
+          - **VigaPRO.hpappdir/**
+            - VigaPRO.hpapp
+            - icon.png
+            - VigaPRO.hpappprgm
+          - **paera termo/**
+            - TabVapAcqua.hpprgm
+            - watervaportables.txt
+            - VaporHP.hpprgm
+            - Instrucciones.txt
+            - VaporHPmod.hpprgm
+            - ec-de-estado.txt
+            - ec-de-estado.hpprgm
+            - prq205.txt
+            - prq205.hpprgm
+            - VAPOR.hpappdir.rar
+            - prq205 (1).zip
+            - ec-de-estado.zip
+            - watervaportables.zip
+            - TabVapAcqua en espanol.hpprgm
+            - vaporhp.zip
+            - vaporhpssv25.zip
+            - manual_VaporHP_spanish.pdf
+            - **VAPOR.hpappdir/**
+              - icon.png
+              - VAPOR.hpapp
+              - VAPOR.hpappnote
+              - VAPOR.hpappprgm
+            - **VaporHP.hpappdir/**
+              - icn_error.png
+              - icn_pregunta.png
+              - men_about.png
+              - men_salir.png
+              - VaporHP.hpapp
+              - men_vaporhp.png
+              - icn_reloj.png
+              - icon.png
+              - VaporHP.hpappprgm
+          - **resistencia/**
+            - manual en español H.pdf
+            - manual en Ingles.pdf
+            - VigaPRO.hpappdir.rar
+            - Armaduras V2.hpappdir.rar
+            - ANESH.rar
+            - C-Armaduras.rar
+            - armiso.zip
+            - **ARMADURAS ISOSTATICAS.hpappdir/**
+              - ARMADURAS ISOSTATICAS.hpapp
+              - icon.png
+              - ARMADURAS ISOSTATICAS.hpappnote
+              - ARMADURAS ISOSTATICAS.hpappprgm
+            - **Armaduras V2.hpappdir/**
+              - icon.png
+              - Armaduras V2.hpappprgm
+              - Armaduras V2.hpapp
+            - **ANESH/**
+              - Raices.hpprgm
+              - **ANESH v4.hpappdir/**
+                - ANESH v4.hpappnote
+                - ANESH v4.hpapp
+                - icon.png
+                - ANESH v4.hpappprgm
+          - **electricidad y electromagnetismo/**
+            - eqnlib.hpprgm
+            - Equation Library for the HP Prime.pdf
+            - rlcseries.txt
+            - rlcparal.txt
+            - rlc.htm
+            - EEC_Solver.pdf
+            - EE Analysis 6 Quick Guide.pdf
+            - rlc.zip
+            - eqnlib.zip
+            - eelibrary.zip
+            - eecsolver.zip
+            - **EEC_Solver.hpappdir/**
+              - EEC_Solver.hpappnote
+              - EEC_Solver.hpapp
+              - icon.png
+              - EEC_Solver.hpappprgm
+            - **source/**
+              - icon.png
+              - EEC_Solver.doc
+              - EEC_Solver.hptxt
+            - **EE Library 6.hpappdir/**
+              - rescode.png
+              - Offset.png
+              - EE Library 6.hpapp
+              - rlrc
+              - EE Library 6.hpappnote
+              - accir
+              - metbrg
+              - inverter.png
+              - RLCNAT~1.PNG
+              - class
+              - wheatstone.png
+              - inoffcurrent.png
+              - solid
+              - rlsr.png
+              - rcsr.png
+              - Ind
+              - noninverting.png
+              - awg.png
+              - Cap
+              - lcnr.png
+              - rlc
+              - rlcNres.png
+              - EE Library 6.hpappprgm
+              - res
+              - intsilbar.png
+              - transf
+              - poly
+              - tdev.png
+              - Resist
+              - rcnr.png
+              - elm
+              - mot
+              - rlnr.png
+              - opamp
+              - coulomb.png
+              - olp.png
+              - cap.png
+              - lcnrG.png
+              - OffsetVolt.png
+              - coef.png
+              - voltage.png
+              - CMRR.png
+              - EqVars
+              - opampbasics.png
+              - current.png
+              - summing.png
+              - icon.png
+              - linear
+              - Mesh2.png
+              - voltcur
+            - **EE Analysis 6.hpappdir/**
+              - icon.png
+              - EE Analysis 6.hpappprgm
+              - EE Analysis 6.hpappnote
+              - EE Analysis 6.hpapp
+        - **PROGRAMAS AUN NO VISTOS/**
+          - ARMADURAS ISOSTATICAS.hpappdir.rar
+          - 2_CLASIFICACION DE SUELOS.rar
+          - ANALISIS DE SECCION T.hpappdir.rar
+          - AASHTO93  SNR.hpappdir.rar
+          - Ansis v22.hpappdir.rar
+          - AreaVolumenInercia.hpprgm
+          - area-and-volumes.hpprgm
+          - AreaCgMoInercia.hpprgm
+          - ARMADURA-2.0-1-1..hpprgm
+          - GEODESIA-1.hpprgm
+          - armiso_pro.rar
+          - CAMINOS 1.hpprgm
+          - CAMINOS_v1.3-1.rar
+          - CALC. DE AZIMUT Y DISTANCIA.hpprgm
+          - CALCULO DE PROGRESIVAS PT.rar
+          - CAPACIDAD DE CARGA.rar
+          - CAPACIDAD_CARGA.RAR
+          - CONCRETO 1.rar
+          - Clasificación de Suelos.rar
+          - codeviewer.hpappdir.rar
+          - circulo de mohr 2D .hpappdir.rar
+          - COLEBROOK WHITE.hpappdir.rar
+          - CIMIENTO CORRIDO.rar
+          - concreto1.hpprgm
+          - ConductividadConversion.rar
+          - DISEÑO DE VIGAS.hpappdir.rar
+          - conicsections.zip
+          - Conversor.hpprgm
+          - Diagrama de interaccion acero.hpprgm
+          - Diagrama.zip
+          - DIAGRAMA DE MOODY.hpprgm
+          - Conversor de Temperatura.rar
+          - DISEÑO DE ZAPATAS - CONCRETO-II.hpprgm
+          - FORMULA CUADRATICA.hpprgm
+          - gallery.zip
+          - D_CONCRETO-I.hpprgm
+          - Elements.hpprgm
+          - Gallery V2.3.0.rar
+          - diseño.hpprgm
+          - ESTADISTICA.rar
+          - gaussjordan.hpprgm
+          - Foundation.rar
+          - DY SAB v2.rar
+          - G-Armor_V2.hpprgm
+          - GeoreferConverter.zip
+          - GRANULOMETRIA.hpprgm
+          - HGgranulomet.rar
+          - HARDY_CROSS 1.hpprgm
+          - HARDY_CROSS v1.rar
+          - HGranulometria.rar
+          - HCanales.hpappdir.rar
+          - H canales.hpappdir.zip
+          - HGWiever pro.rar
+          - HIDROLOGIA.hpappdir.rar
+          - itema.zip
+          - HP_CANALES.rar
+          - LOSA MACIZA.hpappdir.rar
+          - interpolacion.rar
+          - Imagen HWiever.hpappdir.rar
+          - Lineas de Influencia.hpappdir.rar
+          - LADRILLO.hpprgm
+          - Métodos Numéricos.hpappdir.rar
+          - POBLACION FUTURA.rar
+          - PerfilH.hpappdir.rar
+          - MATERIALES.rar
+          - POBLACION FUTURA.hpprgm
+          - poblacion (1).hpprgm
+          - PrimeRIGIDEZ (3).hpprgm
+          - REDES DE TUBERÍAS - HARDY CROSS.rar
+          - primerigidezzz.rar
+          - programa de Rigidez .hpprgm
+          - PrimeRIGIDEZ2018.hpprgm
+          - MÉTODOS 2ºP.hpappdir.rar
+          - MÉTODOS 1ºP.hpappdir.rar
+          - GEOMETRIC.hpappdir.rar
+          - AR_POL.hpappdir.rar
+          - INTERPOLATE.hpappdir.rar
+          - Armaduras V2.hpappdir.rar
+          - CALCULO DE LADRILLO.hpprgm
+          - CÁLCULO  DE LADRILLO.hpappdir.rar
+          - ANESH PRO.rar
+          - C-Armaduras.rar
+          - drive-download-20240619T020810Z-001.zip
+          - ZAPATAS.hpprgm
+          - TecladoPRIME.rar
+          - VIGAS DR 2CAPAS.hpappdir.rar
+          - VIGA_H_PRO_V5.rar
+          - Viga PRO V2 2019.rar
+          - VigaH version29.hpappdir.rar
+          - topomining2.rar
+          - VIGAS DR 1.hpappdir.rar
+          - TopoAC.hpappdir.rar
+          - VigaPRO.hpappdir.rar
+          - Teclas Dedicadas v2.01_ESP.rar
+          - Viga H.zip
+          - SCALE.rar
+          - VIGA H-FK.hpappdir.rar
+          - Viga A.hpappdir.rar
+          - Tabela Periodica.zip
+          - VIGA H V2.6.5.rar
+          - REGRESION.rar
+          - TOPOGRAFICA A UTMNuevo.hpprgm
+          - RG_Granulometria.hpprgm
+          - SUELOS1.hpprgm
+          - RG_METODOS2.hpprgm
+          - Rigidez Condensada.zip
+          - Taludes com.hpprgm
+          - Rigidez General.hpprgm
+          - Rigidez General.zip
+          - regresion_pol.rar
+          - polysolver.zip
+          - primefx.hpprgm
+        - **para interpolar/**
+          - slk41b.zip
+          - **slk41b/**
+            - **SLK 4_1b_Eng_Esp/**
+              - **Espanol/**
+                - SLK_41b_Manual_del_Usuario.pdf
+                - **SLK.hpappdir/**
+                  - Icon.png
+                  - SLK.hpapp
+                  - SLK.hpappprgm
+              - **English/**
+                - SLK_41b_User_Guide_Eng.pdf
+                - **SLK.hpappdir/**
+                  - SLK.hpappprgm
+                  - SLK.hpapp
+                  - Icon.png
+      - **matlab/**
+        - Mathworks+Matlab+R2023a+(9.14.0)+Windows.torrent
+      - **office/**
+        - contraseña.txt
+        - 0FF1C3 2022 - by Diekrolo.rar
+        - **0FF1C3 2021 - by Diekrolo/**
+          - **M1CR0S0F7 0FF1C3 2021 (LICENCIA PERPETUA) -S.M/**
+            - autorun.inf
+            - **files/**
+              - Uninstall.xml
+              - Configure.xml
+              - **x64/**
+                - msvcr100.dll
+                - cleanospp.exe
+              - **x86/**
+                - cleanospp.exe
+                - msvcr100.dll
+      - **JUEGOS/**
+        - Dragon.Ball.Sparking.ZERO.Ultimate.Edition.elamigos.torrent
+    - **rotulo a4 PARA PLANOS/**
+      - ROTULO OFICIAL PARA TODO.SLDDRW
+      - 132934v10379207_membretedearquitecturaparadiversosformatos.zip
+      - console.log
+      - pos.txt
+      - plantilla A4.dwt
+      - 120017v10379207_formatoa4normalizadoanormasiram.zip
+      - sym.tif
+      - FINAL HIDRAULICO A3.SLDDRW
+      - DISEÑO DE UNA PRENSA HIDRÁULICA SEMIAUTOMÁTICA TIPO.SLDDRW
+      - neumatico.SLDDRW
+      - esquema neumatico.SLDDRW
+      - plantilla A4.dwl2
+      - plantilla A4.dwl
+    - **trikas/**
+      - **inicios/**
+        - Sea A ∈M_3x3  (R.pptx
+        - Sea A ∈M_3x3  (R [Autoguardado].pptx
+    - **🎆plantilla para latex/**
+      - para un informe.rar
+      - **trabajo de investigacion/**
+        - FINAL.tex
+      - **pantilla de formulario/**
+        - plantilla.synctex.gz
+        - plantilla.tex
+        - plantilla.log
+        - plantilla.pdf
+        - plantilla.aux
+        - **formulario de edo/**
+          - edo.tex
+          - edo.pdf
+          - edo.log
+          - edo.aux
+          - edo.synctex.gz
+          - esto esta bien.tex
+          - de orden superior.tex
+          - de orden superior.log
+          - de orden superior.aux
+          - de orden superior.pdf
+          - de orden superior.synctex.gz
+      - **para la tesis/**
+        - Tesis UMSA.zip
+        - apalike.bst
+        - Thesis_Umsa.tex
+        - Tesis_umsa.cls
+        - logo.png
+        - biblioapa.bib
+        - Thesis_Umsa.log
+        - Thesis_Umsa.pdf
+        - Thesis_Umsa.lot
+        - Thesis_Umsa.lof
+        - Thesis_Umsa.aux
+        - Thesis_Umsa.toc
+        - Thesis_Umsa.synctex.gz
+        - Thesis_Umsa.out
+        - **Capitulos/**
+          - Dedicatoria.tex
+          - Agradecimientos.tex
+          - Anexo.tex
+          - Marco.Leg.tex
+          - Marco.Teo.tex
+          - Resumen.tex
+          - Marco.Pract.tex
+          - Conclusion.tex
+          - Marco.Ref.tex
+        - **Preambulo/**
+          - packages.tex
+        - **Imagenes/**
+          - correlacion1.pdf
+          - inversion1.pdf
+          - pib_real_tasa.pdf
+      - **para propuesta de proyecto/**
+        - main.aux
+        - template_config.tex
+        - principal.aux
+        - principal.toc
+        - examen.synctex.gz
+        - principal.tex
+        - main.log
+        - natnumurl.bst
+        - main.synctex.gz
+        - mec.png
+        - template.tex
+        - principal.log
+        - principal.synctex(busy)
+        - principal.pdf
+        - **img/**
+          - **departamentos/**
+            - Logometodos.pdf
+            - Logometodos.png
+          - **ejemplos/**
+        - **resolucion/**
+          - 1.tex
+          - 2.tex
+          - 3.tex
+          - 4.tex
+          - 5.tex
+          - 6.tex
+          - 7.tex
+          - 8.tex
+      - **presentacion/**
+        - presentaciones.snm
+        - presentaciones.nav
+        - presentaciones.toc
+        - presentaciones.synctex.gz
+        - presentaciones.synctex(busy)
+        - presentaciones.tex
+        - presentaciones.out
+        - presentaciones.pdf
+        - presentaciones.aux
+        - presentaciones.log
+        - **img/**
+          - pascal.png
+          - esquema.png
+          - plc.png
+      - **✨para resolucion de problemas/**
+        - plantilla.synctex.gz
+        - plantilla.tex
+        - plantilla.aux
+        - plantilla.log
+        - plantilla.pdf
+      - **✨presentaciones esteticas/**
+        - document.log
+        - document.aux
+        - document.pdf
+        - document.tex
+        - document.synctex.gz
+        - **fondo/**
+          - fondo.pdf
+      - **✨tipo articulo/**
+        - LaTeXTemplates_journal-article_v2.0.zip
+    - python crear_carpetas.py
+    - **enviar certificados/**
+      - **correos enviados/**
+        - correo.html
+        - Gmail - Invitación - Ponencia ASME UNAP.pdf
+        - Gmail - Invitación - Ponencia ASME UNAP 2.pdf
+        - **eviar invitacion/**
+          - Datos.xlsm
+          - PlantillaCertificado.pptx
+          - ~$Datos.xlsm
+      - files.zip
+  - **imagenes/**
+    - **Álbum de cámara/**
+      - IMG20230410141057.jpg
+      - IMG20230410141102.jpg
+      - IMG20230410151349.jpg
+      - IMG20230410151352.jpg
+      - IMG20230410151356.jpg
+      - IMG20230410192031.jpg
+      - IMG20230411130450.jpg
+      - IMG20230411130724.jpg
+      - IMG20230413163232.jpg
+      - IMG20230413163240.jpg
+      - IMG20230413163345.jpg
+      - IMG20230414122341.jpg
+      - IMG20230414142459.jpg
+      - IMG20230414142503.jpg
+      - IMG20230414142531.jpg
+      - IMG20230414142538.jpg
+      - IMG20230414144045.jpg
+      - IMG20230414145550.jpg
+      - IMG20230414145554.jpg
+      - IMG20230414151029.jpg
+      - IMG20230414151033.jpg
+      - IMG20230417131754.jpg
+      - IMG20230417134214.jpg
+      - IMG20230417134556.jpg
+      - IMG20230417135506.jpg
+      - IMG20230417135532.jpg
+      - IMG20230417155212.jpg
+      - IMG20230417171409.jpg
+      - IMG20230418142402.jpg
+      - IMG20230419150817.jpg
+      - IMG20230419150824.jpg
+      - IMG20230419150826.jpg
+      - IMG20230419150829.jpg
+      - IMG20230419150836.jpg
+      - IMG20230420110116.jpg
+      - IMG20230420165729.jpg
+      - IMG20230420165732.jpg
+      - IMG20230425125826.jpg
+      - IMG20230425125828.jpg
+      - IMG20230425125831.jpg
+      - IMG20230425125838.jpg
+      - IMG20230425145224.jpg
+      - IMG20230425150115.jpg
+      - IMG20230425150117.jpg
+      - IMG20230426152652.jpg
+      - IMG20230426152657.jpg
+      - IMG20230427120634.jpg
+      - IMG20230427120727.jpg
+      - IMG20230427134010.jpg
+      - IMG20230428103325.jpg
+      - IMG20230428103332.jpg
+      - IMG20230428124951.jpg
+      - IMG20230428124957.jpg
+      - IMG20230428125416.jpg
+      - IMG20230503155208.jpg
+      - IMG20230503204112.jpg
+      - IMG20230503204123.jpg
+      - IMG20230503204143.jpg
+      - IMG20230504164815.jpg
+      - IMG20230504164819.jpg
+      - IMG20230504164820.jpg
+      - IMG20230505151004.jpg
+      - IMG20230505151018.jpg
+      - IMG20230505180827.jpg
+      - IMG20230505181027.jpg
+      - IMG20230505181116_BURST001_COVER.jpg
+      - IMG20230505181119.jpg
+      - IMG20230505181156.jpg
+      - IMG20230505181201.jpg
+      - IMG20230505181206.jpg
+      - IMG20230505181215.jpg
+      - IMG20230505181216.jpg
+      - IMG20230505181300.jpg
+      - IMG20230505181446.jpg
+      - IMG20230505181959.jpg
+      - IMG20230505182121.jpg
+      - IMG20230505182123.jpg
+      - IMG20230508133805.jpg
+      - IMG20230509170822.jpg
+      - IMG20230510151123.jpg
+      - IMG20230510153929.jpg
+      - IMG20230510160043_BURST001_COVER.jpg
+      - IMG20230510160044.jpg
+      - IMG20230510161446.jpg
+      - IMG20230510163640.jpg
+      - IMG20230510164139.jpg
+      - IMG20230510165439.jpg
+      - IMG20230510165806.jpg
+      - IMG20230511132427.jpg
+      - IMG20230511132539.jpg
+      - IMG20230511133637.jpg
+      - IMG20230511145545.jpg
+      - IMG20230511145547.jpg
+      - IMG20230511145550.jpg
+      - IMG20230511162435.jpg
+      - IMG20230511162447.jpg
+      - IMG20230511162450_BURST001_COVER.jpg
+      - IMG20230511162459.jpg
+      - IMG20230511162505.jpg
+      - IMG20230511162548.jpg
+      - IMG20230512161212.jpg
+      - IMG20230512161535.jpg
+      - IMG20230512214012.jpg
+      - IMG20230512214222.jpg
+      - IMG20230512214258.jpg
+      - IMG20230514150926.jpg
+      - IMG20230516162732.jpg
+      - IMG20230517122537.jpg
+      - IMG20230517122540.jpg
+      - IMG20230517122545.jpg
+      - IMG20230517152458.jpg
+      - IMG20230517154827.jpg
+      - IMG20230517160023.jpg
+      - IMG20230517161419.jpg
+      - IMG20230517164506.jpg
+      - IMG20230517172703.jpg
+      - IMG20230519151815.jpg
+      - IMG20230519151820.jpg
+      - IMG20230519151825.jpg
+      - IMG20230519173152.jpg
+      - IMG20230519173204.jpg
+      - IMG20230519173207.jpg
+      - IMG20230519173210.jpg
+      - IMG20230519185341.jpg
+      - IMG20230519185356.jpg
+      - IMG20230522141546.jpg
+      - IMG20230522151544.jpg
+      - IMG20230525153112.jpg
+      - IMG20230526124232.jpg
+      - IMG20230526150149.jpg
+      - IMG20230526150157.jpg
+      - IMG20230526151601.jpg
+      - IMG20230605122538.jpg
+      - IMG20230605134145.jpg
+      - IMG20230605134949.jpg
+      - IMG20230605134951.jpg
+      - IMG20230605153401.jpg
+      - IMG20230606080025.jpg
+      - IMG20230606080028.jpg
+      - IMG20230606092238.jpg
+      - IMG20230606092248.jpg
+      - IMG20230606092259.jpg
+      - IMG20230606092310.jpg
+      - IMG20230606092312.jpg
+      - IMG20230606092339.jpg
+      - IMG20230606092342.jpg
+      - IMG20230606092346.jpg
+      - IMG20230606092404.jpg
+      - IMG20230606092730.jpg
+      - IMG20230606141757.jpg
+      - IMG20230606141838.jpg
+      - IMG20230606141857.jpg
+      - IMG20230608125708.jpg
+      - IMG20230608165044.jpg
+      - IMG20230608170021.jpg
+      - IMG20230608170030.jpg
+      - IMG20230608170033.jpg
+      - IMG20230608170038.jpg
+      - IMG20230608170042.jpg
+      - IMG20230608170046.jpg
+      - IMG20230608170050.jpg
+      - IMG20230608170059.jpg
+      - IMG20230613075056.jpg
+      - IMG20230613075059.jpg
+      - IMG20230613082233.jpg
+      - IMG20230613090934.jpg
+      - IMG20230613090936.jpg
+      - IMG20230613091221.jpg
+      - IMG20230613091223.jpg
+      - IMG20230613113012.jpg
+      - IMG20230614134705.jpg
+      - IMG20230614152156.jpg
+      - IMG20230614152724.jpg
+      - IMG20230614154305.jpg
+      - IMG20230619130258.jpg
+      - STK-20230404-WA0110.webp
+      - IMG_20230505_182719.jpg
+      - IMG_20230505_182902.jpg
+      - IMG_20230505_182904.jpg
+      - IMG_20230505_183513.jpg
+      - IMG_20230505_182859.jpg
+      - IMG-20230505-WA0051.jpg
+      - IMG-20230505-WA0062 1.jpg
+      - IMG-20230505-WA0064 1.jpg
+      - IMG_20230505_180057.jpg
+      - IMG_20230505_182733.jpg
+      - IMG_20230505_180059.jpg
+      - IMG-20230505-WA0063 1.jpg
+      - IMG-20230505-WA0057 1.jpg
+      - IMG-20230505-WA0061.jpg
+      - IMG-20230505-WA0058 1.jpg
+      - IMG-20230505-WA0055 1.jpg
+      - IMG-20230505-WA0060.jpg
+      - IMG-20230505-WA0056 1.jpg
+      - IMG-20230505-WA0050 1.jpg
+      - IMG20230704075145.jpg
+      - IMG20230704075148.jpg
+      - IMG20230704080427.jpg
+      - IMG20230704081707.jpg
+      - IMG20230704082037.jpg
+      - IMG20230704082401.jpg
+      - IMG20230704082448.jpg
+      - IMG20230704082545.jpg
+      - IMG20230704082556.jpg
+      - IMG20230704084212.jpg
+      - IMG20230704084215.jpg
+      - IMG20230704084545.jpg
+      - IMG20230704084604.jpg
+      - IMG20230704084919.jpg
+      - IMG20230704090113.jpg
+      - IMG20230704090234.jpg
+      - IMG20230704090318.jpg
+      - IMG20230704091012.jpg
+      - IMG20230704091029.jpg
+      - IMG20230704091109.jpg
+      - IMG20230704091113.jpg
+      - IMG20230704091520.jpg
+      - IMG20230704091616.jpg
+      - IMG20230704091930.jpg
+      - IMG20230704141418_BURST001_COVER.jpg
+      - IMG20230704141453.jpg
+      - IMG20230704141457.jpg
+      - IMG20230704141552.jpg
+      - IMG20230705141012.jpg
+      - IMG20230708154913.jpg
+      - IMG20230708155011.jpg
+      - IMG20230710144915.jpg
+      - IMG20230713211422.jpg
+      - IMG20230713211433.jpg
+      - IMG20230716232929.jpg
+      - IMG20230716232949.jpg
+      - IMG20230716232959.jpg
+      - IMG20230716233010.jpg
+      - IMG20230716233048.jpg
+      - IMG20230717133802.jpg
+      - IMG20230717134035.jpg
+      - IMG20230717134037.jpg
+      - IMG20230718171140.jpg
+      - IMG20230718171305.jpg
+      - IMG20230719144938.jpg
+      - IMG20230719145637.jpg
+      - IMG20230719145702.jpg
+      - IMG20230719154856.jpg
+      - IMG20230719160239.jpg
+      - IMG20230719162056.jpg
+      - IMG20230719162436.jpg
+      - IMG20230720150346.jpg
+      - IMG20230720150352.jpg
+      - IMG20230725162540.jpg
+      - IMG20230725162545.jpg
+      - IMG20230725181538_BURST001_COVER.jpg
+      - IMG20230725181538_BURST002.jpg
+      - IMG20230725181538_BURST003.jpg
+      - IMG20230725181540.jpg
+      - IMG20230725181542_BURST003.jpg
+      - IMG20230725181542_BURST001_COVER.jpg
+      - IMG20230725181542_BURST004.jpg
+      - IMG20230725181542_BURST002.jpg
+      - IMG20230727214350.jpg
+      - VID-20230512-WA0037.mp4
+      - 9839eba0567b1a1d89ceb5d692aa9276.png
+      - 9743976527bbd192882377f700ce3c64.png
+      - ae1619e359bf99482a1319391338b836.png
+      - 86115dff3d288b9db5f1abea11386087.png
+      - c187f65495cc88753a99cf90bb442b1d.png
+      - ad01518d1912794bc5e2bbf47a8ec9db.png
+      - e8b766670cb8f013c9058db65985cb76.png
+      - a6dc2043295727a4874e3a33fa760122.png
+      - 456e253a68390cac4d420ae96b5dc3b5.png
+      - db309186a3760f0d7b0a3ab9344ebd1c.png
+      - e31c65f652ab25d311608a40c3c924f2.png
+      - e36be70f995b8cf122546940b71dfa42.png
+      - c149b1430fc555bd3a0004c014eb696c.png
+      - 8382ea253ab5392007cc2b793bc01f31.png
+      - dce213d5cf594b8907f1c5cc92c580d7.png
+      - 55461052aa803feef82c345e2147b132.png
+      - fa8096b1d0e8a8c4b371dce9555f9e1a.png
+      - 381797dc9c1aa6d7d1f6a9de726b2fd1.png
+      - e35ffb1a69fb7c11c85f0c42c3b34fcf.png
+      - 495016656c938edbd1827430e62b0da9.png
+      - c0a356300b92aa5f4df7a588ced4e66a.png
+      - IMG-20230424-WA0017.jpg
+      - c42d8e776da987235961ff2955484e19.png
+      - e2a21bd522612efd5581178ae77f68cd.png
+      - ad57819a5c95f48e6e9b6d50fa59b384.png
+      - IMG-20230505-WA0052.jpg
+      - IMG-20230505-WA0053.jpg
+      - IMG-20230505-WA0049.jpg
+      - IMG-20230505-WA0050.jpg
+      - IMG-20230505-WA0055.jpg
+      - IMG-20230505-WA0054.jpg
+      - IMG-20230505-WA0059.jpg
+      - IMG-20230505-WA0062.jpg
+      - IMG-20230505-WA0057.jpg
+      - IMG-20230505-WA0063.jpg
+      - IMG-20230505-WA0056.jpg
+      - IMG-20230505-WA0043.jpg
+      - IMG-20230505-WA0064.jpg
+      - IMG-20230505-WA0058.jpg
+      - b11b6b3878027f1f4f7e88e3bd63fe2d.png
+      - b3cb5355c1bae5fe24dee024674b0d51.png
+      - 365e142c84317d3449497c7f4658708f.png
+      - fc4542be516a418bb17208e43fd93bc9.png
+      - e09c89eb34f1fe0132662bb5f179556f.png
+      - fe81dfc47263a31ac34a94d3c45e4c86.png
+      - bf97cf890a7885bf2de949119eff6338.png
+      - ae494070d6eb4353c4035de891c71df3.png
+      - fd93de31a11308d19ce4723e98af3740.png
+      - ac17dfbf53541a4f383a48e541a3d03c.png
+      - aab62ddad66416eb30fe05a936c0fc70.png
+      - 445ed0b5994c2b6d6099447be771450d.png
+      - a2b1f9b02cecc6448ad27be97cb5d7e3.png
+      - ad3f82a7e7748f4fe32a47ef4f6bc928.png
+      - ddb9c855d4c13ff65c420d1eb1d135ba.png
+      - a0948dfd5f731cdae13b52566f49df9a.png
+      - ac65e24660c2c4ce917a70ad69e4799f.png
+      - 4957149de7012b104b0ba399bbd6aa69.png
+      - a6e5bdedccea8fe0dd33ac120adfc2b2.png
+      - 925fd682d3636b24c2c2f826ba262588.png
+      - 496c8db3909be7546d5261af559ad85e.png
+      - e2913387ad5e68f9bb55c92312db5a83.png
+      - cc782484d17e78caa6570d823fe3d3ad.png
+      - 87886c23f7399284df10bac70a0a143b.png
+      - dac237b9841b8eee7d0e3cae80c65585.png
+      - b3baeb5252279363a0f29ca8e64da980.png
+      - dfd8b97740d6c0b72e5e688fe3842688.png
+      - cc89a78f8317b5ae28fd5e9e1f757712.png
+      - a778d0501a2362b0b82bfc93707fe565.png
+      - 39215d38ff3f0f4dbab37d7e568e1d22.png
+      - e9bdeffabe7612e43492c17978edd4a9.png
+      - cb5dcf7a3656b81cf6b5ef6c15df8693.png
+      - fefa1be7b04c0248e3ae6ccb9f12b9bd.png
+      - c02397bcd3c9bc40824014c465ad2151.png
+      - dbb819f1104478d5d4eaf65ad226399d.png
+      - 4673f5c6e11871fb449b0f144bcf4603.png
+      - d92f94c47df94d61d39a7f8e59ec8c98.png
+      - c1cccdae5229348ffa825f9147126220.png
+      - 378d53ceb5a06147f1a977aaad504b05.png
+      - 4218313d8ee11dc8ec95de0fd213c44b.png
+      - 9607ad2bc1ba767509e604f1c809ae82.png
+      - d98bcaefbb87813bc0935d121b35aca9.png
+      - 893f4e7c5b4b80d6dfbc714d7aefdafe.png
+      - 818b12692722c78b5b617caa0cd0a2f3.png
+      - e5c5b0baf3bee0f8c776f9cec787f6b6.png
+      - 442de17d24ba0ca294468ad2170d88a2.png
+      - 81a96de544845a3ef993d4d5280ed4aa.mp4
+      - afc88a3a7fc0f56f8bc9dd831261c4a7.png
+      - 46b6b10b30450588f36db4357b144df5.mp4
+      - aff790f75e9852ab15ff1b1a1314859f.mp4
+      - e4f52d974385f5d175278d6e8e34cf3e.mp4
+      - e24f6ba6c48ab0fc60689a800cd527a7.mp4
+      - e4ebbed0f4687e5ff212990b102389d3.mp4
+      - c91210d2ab5de87f4aeea61209e72983.mp4
+      - 462887aa488778eecb72ba7f4c5476a1.mp4
+      - e9f5e9c43dec2a45ba42692ffc828726.mp4
+      - e36ae0b88649274054205851aa787f30.mp4
+      - c6d8286c7a94b8c858aa1650be68a284.mp4
+      - e6d323a9f99cff80c2a65a0c348ce71d.mp4
+      - 3ee52939e4e3dcbb5cf6f6656a2c2b22.mp4
+      - e342e0960bd62ff3d05a9024e3530ac7.mp4
+      - 8e2b98f7895b9536267261871474bf5c.mp4
+      - 90114c8b57b3b72ee8914cae2f66e7fa.mp4
+      - Screenshot_2024-02-04-18-16-08-25_e307a3f9df9f380ebaf106e1dc980bb6.jpg
+      - Screenshot_2024-02-04-18-19-45-95_e307a3f9df9f380ebaf106e1dc980bb6.jpg
+      - Screenshot_2024-02-04-19-08-28-16_e307a3f9df9f380ebaf106e1dc980bb6.jpg
+      - Screenshot_2024-02-04-19-08-29-40_e307a3f9df9f380ebaf106e1dc980bb6.jpg
+      - Screenshot_2024-02-04-19-28-31-35_45415775811cea13943236d9369df411.jpg
+      - Screenshot_2024-02-04-20-00-25-53_a23b203fd3aafc6dcb84e438dda678b6.jpg
+      - 3d3c23cb7d37404a5add1edbe67c9d07.mp4
+      - Screenshot_2024-02-06-11-08-00-38_e4424258c8b8649f6e67d283a50a2cbc.jpg
+      - a190760a01a785c84fd8d832fa2d6228.mp4
+      - Screenshot_2024-02-06-19-56-51-05_50ef9f5a0f3fc24b6f0ffc8843167fe4.jpg
+      - Screenshot_2024-02-06-20-32-04-06_e307a3f9df9f380ebaf106e1dc980bb6.jpg
+      - Screenshot_2024-02-06-21-51-32-86_a23b203fd3aafc6dcb84e438dda678b6.jpg
+      - c77c33a83b148d54a812e8ad4b438239.mp4
+      - 99728777eaeb246f03aeafaae5beb522.mp4
+      - Screenshot_2024-02-07-11-03-44-28_e4424258c8b8649f6e67d283a50a2cbc.jpg
+      - Screenshot_2024-02-07-11-18-33-47_6012fa4d4ddec268fc5c7112cbb265e7.jpg
+      - Screenshot_2024-02-08-12-08-49-50_6012fa4d4ddec268fc5c7112cbb265e7.jpg
+      - Screenshot_2024-02-09-18-53-27-03_6012fa4d4ddec268fc5c7112cbb265e7.jpg
+      - Screenshot_2024-02-11-15-13-49-32_e4424258c8b8649f6e67d283a50a2cbc.jpg
+      - Screenshot_2024-02-11-16-44-07-72_50ef9f5a0f3fc24b6f0ffc8843167fe4.jpg
+      - a8ae73d365e086b028d522b2ce655496.mp4
+      - e16e021790ec0b4450eb23d686f6797b.mp4
+      - Screenshot_2024-02-12-20-24-40-02_92b64b2a7aa6eb3771ed6e18d0029815.jpg
+      - FB_IMG_1707954743247.jpg
+      - 436b7588856b6f15c7cbe3ea88b79219.mp4
+      - 1fe902d3f1eb0b712f01338cd8a16d8a.mp4
+      - 841ac86513f6e3946f1ca89ab8e2b6e5.png
+      - b008cdb33305415fe1769f3b5ca8f1db.png
+      - ca29a467a37893b603a9a98e52f8253c.png
+      - e2d825f73754b3473a3f14191134d80a.png
+      - 9dfcb7b1301e83788e7e9371e6f3a1ca.mp4
+      - b4363400c765d7b0b69eff8efa4b15ca.mp4
+      - a1b34f1886eb953e01d9e763563bd32a.png
+      - 36c95888e964ed5876a61d3cca2316b9.png
+      - Screenshot_2024-02-16-19-06-44-74_86f00591e9dadd2c5307db4b9e01e8a6.jpg
+      - Screenshot_2024-02-16-19-16-12-14_f7aa348215f5d566f9e4ca860f474209.jpg
+      - Screenshot_2024-02-20-17-08-59-91_6012fa4d4ddec268fc5c7112cbb265e7.jpg
+      - b0e56eb4d6ad0a6f23949cd259400615.mp4
+      - afc2a78f9489f48f1acb860fc8b0d5e7.mp4
+      - 92302ea32be8e00f15c3f6299aba3434.mp4
+      - 850ed81b567afc4ee23909a0daff5362.mp4
+      - Screenshot_2024-02-21-19-53-21-10_50ef9f5a0f3fc24b6f0ffc8843167fe4.jpg
+      - Screenshot_2024-02-21-20-00-31-63_50ef9f5a0f3fc24b6f0ffc8843167fe4.jpg
+      - Screenshot_2024-02-21-20-00-36-13_50ef9f5a0f3fc24b6f0ffc8843167fe4.jpg
+      - FB_IMG_1708624426871.jpg
+      - FB_IMG_1708648412870.jpg
+      - FB_IMG_1708649212714.jpg
+      - 3a7edb14c778e28490b79f4bc6b40061.png
+      - 1f408e5117df259a3aaefa0df7f024e0.png
+      - 4a74a617b8d03cb3648755ba1575e6a0.png
+      - 41f3d043260ecb10be789075de530090.png
+      - 1f695a3cb0df9b3c119deee41ca85b09.png
+      - 8f054ac9a756e3ce89f72b167d35d407.png
+      - 7caad6b089ab56ee93215421e93d8e56.png
+      - 8fe8b9aa137aea329e59e04fcee12122.png
+      - 9ffccdb40f1d1078c14974ad0a50cfa1.png
+      - 3a5364a21c04fc3ab822c62c835f0218.png
+      - 9f10c5ffd4c1c27aa71e1438ae162f90.png
+      - 9ee786f8eb1d4c880d4f3a45e37cb894.png
+      - 83ad9408e5df7e69bac1d54eb9e2c8c2.png
+      - 90ab6347114ddddb1788cfe2a91aaad3.png
+      - 1fcf13fbcf413a7ac762b921873e38a1.png
+      - 98ed33d2aacf6cc518b0fe2a9b4b4ed5.png
+      - 91e78d9e3e293f1fd86ccf414f47f762.png
+      - 3a21f8809639ce4fc08416f6112efd32.png
+      - 42f08dc46a9febdb9f289fa3fa530a65.png
+      - 80b1f539db3d2c1af8bfb03e08653c7d.png
+      - 8c5cff301bf02797c78e61e4abf1fcb0.png
+      - 45aacc13d81b51e5cdfac14e3f443ed7.png
+      - 35ee9788e394fb89166be74e1221822f.png
+      - 37cc8839134be8449e8c112199bd205a.png
+      - 36c83f1ffd7a7e9a53eb2186d8371b48.png
+      - 89af1c6bc422ac603e0ccdd783eb2e38.png
+      - 9b46b631aa56087c345b1f08cba6fdc0.png
+      - 39ac2c29c30467db5ca34e24298465d9.png
+      - 3af0208f0cba4fac9249e5a247ac6725.png
+      - 9a62dd39501017ee22909ead1ce0e8f8.png
+      - 8e28024c355a9b249fc4711d006d9ff5.png
+      - 8bda677ddc52595a517ee67453d75a29.png
+      - 4ccf1070cf7f6a7dfb9258e3fe53a324.png
+      - 4d6386881274cb4ba389ab792a3b3ec6.png
+      - 80ec8e1d4bc6d1a8269cc91378deeb39.png
+      - 9b514edf4602085fe150fa415e0813c2.png
+      - 9e9f2cd4fc2fc20bee499a1af6b29d6c.png
+      - 46bac57f948d429d358d65ae5dc700de.png
+      - 85e83937b61e914f359210be384357d6.png
+      - 72a3884c5c36393be5040f5497427620.png
+      - 3ce3080a39d9aeb055395fe35cd4a8cb.png
+      - 48ca642a06afe7554688ed01802a1864.png
+      - 7cf78f440ead8b08ba6bd7ea6278f2fc.png
+      - 8f35187b0a77996c870c9da099a74361.png
+      - 83d1ed34d2ddb7182a82b7868fe9dc91.png
+      - 8c8c78145710ead4e4b1d2b333644b75.png
+      - 092123187da57222da728cb98cbb57a7.png
+      - 006cfe1947f5964a261463b2d2b8bd21.png
+      - 009ce7f0a61e136d8f986ef5661c0eff.png
+      - 013b9f767756aead1122f7b8a3ce90f3.png
+      - 029b1a3fefbe762c82975aad16754dbb.png
+      - 047c31c2c6bfca21c8e6d0c603afe3f1.png
+      - 052d7a551c1049553d91487b82bea7b1.png
+      - 050f5f08ff596e7cd7f40a9e312016ce.png
+      - 05ffac814ea1a560cc248daf31507cbc.png
+      - 0631b1bf484c8387de4d842f60d2b8ed.png
+      - 064690040ecf6a9054a92596238a52d4.png
+      - 066d4cfb9a037697d634164c1940cf11.png
+      - 073608059590f477887e44be5e9d6c73.png
+      - 0cae84c17a4cb130cbae47709a4fe59a.png
+      - 0f4ca328f3a7f41bf62d7ee9ce9039ef.png
+      - 07c54dbd14592342e6a17c7db4bb60ce.png
+      - 0d011776e082482d146d2e4873a51a44.png
+      - 0cf03cc4e9c01fc5bf58c01f54e968c1.png
+      - 0f9f7fe456c705101c6f63eac4228856.png
+      - 085d48de9c8073b4a3b65528e12765f0.png
+      - 0f82e642af326722e28562df77173e5b.png
+      - 08fbf5bba743bbf3a4ee4a1ba66b1974.png
+      - 0a274e8021e7e5dc0560dea6984997dd.png
+      - 0e795ddbb498e399afc5e71e8aee6618.png
+      - 0f55e1ba4a58caec0985b6e7b40c11b9.png
+      - 129294bc095287b16ecd1bd8302fe343.png
+      - 0e3018b9834b1e0d0c0cc33af3be96a6.png
+      - 14e65b6a8c687a501c4391dc968204f4.png
+      - 1575ea056bfa061f2372c418075143f3.png
+      - 0ed5f18ed5c93d5f5b5fe2881e725416.png
+      - 20d9a4daacac726c43ecc1d9bf2cd953.png
+      - 21ba83579c3dd4917daeab7279e86946.png
+      - 22d2e8a97644e1cac2ce3d6aa3b5d9fa.png
+      - 21be120b6f7583ad4ba00bd7736994ff.mp4
+      - 237ab48d2a18cf461b8b243ace9e341c.png
+      - 25c294497aa339f0898d164aa6133590.png
+      - 243ac748551802c841e96d67cb82f741.png
+      - 25e2978e8238b90aef715721d23a01a0.png
+      - 25c5d03ec6a6294c48bf9927a5133cdf.png
+      - 260933578f67edb1aea2148c3a4d4a66.png
+      - 26ab172dc1da17dd93648bf76c938e0d.png
+      - 26e45eb7c74790e61746221f08f2d937.png
+      - 15d998ae0f2fcd57d7da908afde9b74f.png
+      - 16ca18dbc971abb2c4843b86c3390f47.png
+      - 19d8ca3367c9aceff70c5d9aa36115c4.png
+      - 1a2cbdaf9d51245101ae32b66d399d79.png
+      - 2686edfe23815537fb1a96dd784df5d4.mp4
+      - 175c46168e1ed93d16b64159d4884f83.mp4
+      - 32b65e0c7a00f04589d43bd6d6a33f7a.png
+      - 29108903b7dc3637b6052090c0ecfb7c.png
+      - 2977d83d9ae8925e7605194c9d9ca62c.png
+      - 33a60c79d2ce597cebb2cf7a8c53c6d2.png
+      - 3210b98c1f3274146953682d5b32038d.png
+      - 1be933dfdd94818cbc8716afaf0badf7.png
+      - 2af1e7312edac193e4738d50b892a467.png
+      - 25f65985c93d69c1e4f362d2490ef386.png
+      - 2d935f32004dc12ad8f77f822343072c.png
+      - 30c13a991ed2b4bd43a27efc281fe703.png
+      - 2dc42f97751c7ff9dbe3887295db6359.png
+      - 1aded580337117c1020d47fb93d76b9f.png
+      - 2fefcf7e8e8dd6ed889cba66a2fbafbe.mp4
+      - 33f86e7bac717efb3fcf19f87a2efda6.png
+      - 343c93186c85fa36a5287cd87726c83a.png
+      - 4e086d681f0385977673932d342ab8d3.png
+      - 1c2b010a582f48208854ad481dee0493.png
+      - 4f16f9d241fce30272d6213e2fdf8b44.png
+      - 5028f7a3f250f47b47a8fe51835d3f6b.png
+      - 509c5125e8e13bfd271a2060c5377cc1.png
+      - 50a5498b3c8bab875429f4e628546193.png
+      - 5152ba665c64ecb58ef6d0ff81bbf276.png
+      - 519d23872a13648f957739e8db6811e8.png
+      - 1e852a779d933719d7178f7e6e323fb9.mp4
+      - 5268c969a3ab24d81514b2f33786c07f.png
+      - 5412f02434e79f4c7a996bfc682cf1a1.png
+      - 54081f71a5c9a50ddc1ec94adce2af45.png
+      - 58b539cfa335f1e139356ebcb7ec0a16.png
+      - 532b21029431aaed7a766454a5156eb9.mp4
+      - 5a3d25071ca822902c84e572330fb184.png
+      - 5893beb8f68d025b25a9ead10f64a783.png
+      - 551301e0d6f1725ff669de81b41c9f25.png
+      - 54dd86b7cae6eece6688ee812a40cfeb.png
+      - 5302e30a1b647134532a2b414ee62dd3.png
+      - 5dc08ec9cb611fae138c24fb8c3b987d.png
+      - 5d7eb9a045cac2010340da1aa9b7ef63.mp4
+      - 5fd4072fb1a057b4b8b5be07bae541f8.png
+      - 5e29371cb0e5b25c40eb7872ca5caf54.mp4
+      - 59ca285dd784bb4a21ed38395e064e95.mp4
+      - 5fee8173ff1c8417204fcff4a5b44bff.png
+      - 5fda945960586d0ca694b99ef76437e1.png
+      - 5b279273e5eef4ce7703dd589de735d0.mp4
+      - 63242fa6372145b0b13fcf8718ca04e5.png
+      - 6eb252da595a579acffd4596a177f216.png
+      - 64730bde79f3f4c31db32008e6ba02a0.png
+      - 6fc30915ec06914514ccc400980d4b3f.png
+      - 6b8c546d93a9aad579572d10a352cc6d.png
+      - 6923a895aa517467112882416bad6352.png
+      - 66d4edf862c5a2173476a5b5780fa4fd.png
+      - 67602606ffd66bdc701ad5347f15c65f.png
+      - 7028931715a2cc368d92f3e368f857dc.png
+      - 6c12c8deee3db4d1d3bc47059dd7431f.png
+      - 61dae363b72aef82e50ee63e055e55ca.png
+      - 71e7b3c43f89e79d5bcb3242d4f78ea5.png
+      - 73bde96168ec29efa85a7241f3f2d11b.png
+      - 59a8c3e8f696d1e3d83adec529d1c6e2.mp4
+      - 75159f6b1906a85da07c9833b721c7dc.png
+      - 76bfc142a40f3218bd0d7a261829975a.png
+      - 760b500f09d5825a07602f722e84932d.png
+      - 76bc74df499df635d87938eca7c47329.mp4
+      - 776e34ed812a006f4866feb846ca3e05.png
+      - 7b4a57fb6f55c42a58f88799da644d81.png
+      - 7c3f94a8c7d4e31829c37fddf4ea1c8e.png
+      - 6148713b1ce67af9be9b2650ac287d51.png
+      - 7b5c5faf58b0b630f02a90c593ab7316.png
+      - 789e5263255fb852313123521643f81d.png
+      - 6c8c34745508f3b9264e648b18d31ae3.png
+      - 7836f4b43cc6361caaeaf0d955a77448.png
+      - 770320b6516faa2dd3dde337ed9f43a8.png
+      - 7717cf807828de34d92224a198828560.png
+      - 7c6fcc2d1d06d58905e3c683c7d1efec.png
+      - 7795307364a640936939c12b9ad5945b.mp4
+      - b4aced9036aaf6cf402d8ed2100432d9.png
+      - 604583b87e10db54dbf52f8b966a1df1.mp4
+      - b4f6934945207518b29b40acfe0c3633.png
+      - b530fdd34f493c1df2d4eff2eb3ac274.mp4
+      - b63c6ecef35558daa8b92e84157b0d63.png
+      - b80b81641852a8c16e4d94c383b05a11.png
+      - b7239c2fe0cefe0443120f88a9f45059.png
+      - b8afa9315e315fb8398e1ddbd7e19852.png
+      - ba8a8c08efa25694653fef83f7a45580.png
+      - bb015044c9864791ae8be41447ae2e06.png
+      - d00d782c7a0ede4e5091edcd77c0d838.png
+      - ba99fed620b8d90d52fc8983c87c5d84.png
+      - cfeea45bcecb9f206f0b38288038d433.png
+      - cd66a40dca1794267e66ef90d5e6f49b.png
+      - bb94f69ce25602cdd0ad7a4ac2a084e5.png
+      - bf5cbfab183d35a808a6aa248b154f9e.png
+      - bc78d7a516c195d0c0b136fd7a161a52.png
+      - bef4448c60ebdb8e44a6bc94cfd2fca6.png
+      - cedb36b036fadc7c013fbbba034c07ac.png
+      - d17c0a410d374af55a9cec7fdbd7c126.png
+      - cd455edd3f2254509ba339ffb58e81cf.png
+      - ceed54207e2fe74ed5c94b0c430573d8.png
+      - cfe85a079d16b46fa5ace358301db496.png
+      - d5448ffbbf1434525c4a4a29eb518305.png
+      - ce3c3c2349124a4dd0dd907698b03151.mp4
+      - d47b1f442cd1a94ef52dea7986fa716c.png
+      - d64296fb0e78c8ebc84f6721434cea51.png
+      - d443c1e8e0ea55b8ed08bf0c4d9ad042.png
+      - d69a665d249b5aee795f77c8fce02a76.png
+      - d739970b36bbe4cf87743f7230c23409.png
+      - d65f28e35d9fecc259ca0e64ca75ef5d.mp4
+      - ebc2acc7ed894ec93fe046b46924686c.png
+      - d42990f0e32eee0380f081d3a963a721.mp4
+      - d747210837b6becd33b31de890e77bb4.png
+      - ef2659f9e74e7599354031a8e1f63172.mp4
+      - d1c84a9a82d8ad57576f64f9ec92d63b.png
+      - ec2c447cc51ccf5dcb0eed9e7a145483.png
+      - eb40a9a4352b1b3284c86187c54eb1b4.png
+      - d7562225d908c66891543beb4055b4b0.png
+      - ed331d4efeb1627d696c45a68b507d16.png
+      - f6d1e1a7b1d4f318472bb64e0648eeb5.png
+      - ebe7006b83b016a294e42a45b44fda5f.png
+      - d7a44c36876b70cd96f038c3ed4839bd.png
+      - efaa59c2901d0b394e0fc4c09a3b0370.png
+      - f76e6c05fefe58bc0bab7ef25cfca85f.png
+      - f7dec0dbc381552e67e315048cd50713.png
+      - f80ff657966d45b255706f2c0f1c137a.png
+      - f132e73789b680fe57eafe3255545c6d.png
+      - f99eaa0c094707c309774cbddf7c8b1e.png
+      - f72c5d3256b874a15afadf8596722053.mp4
+      - IMG-20230512-WA0035.jpg
+      - IMG-20230525-WA0022.jpg
+      - IMG-20230618-WA0031.jpg
+      - IMG-20230512-WA0036.jpg
+      - IMG-20230618-WA0030.jpg
+      - IMG-20230512-WA0031.jpg
+      - IMG-20230525-WA0023.jpg
+      - IMG-20230621-WA0072.jpg
+      - IMG-20230512-WA0032.jpg
+      - IMG-20230621-WA0073.jpg
+      - IMG-20230512-WA0030.jpg
+      - IMG-20230525-WA0024.jpg
+      - IMG-20230512-WA0047.jpg
+      - IMG-20230621-WA0075.jpg
+      - IMG-20230621-WA0074.jpg
+      - IMG-20231201-WA0044.jpg
+      - IMG20220107161933.jpg
+      - IMG20220107152830.jpg
+      - IMG20220107152859.jpg
+      - IMG-20231203-WA0031.jpg
+      - IMG-20231117-WA0006.jpg
+      - IMG-20230621-WA0076.jpg
+      - IMG-20230921-WA0021.jpg
+      - IMG-20230512-WA0033.jpg
+      - IMG-20230512-WA0034.jpg
+      - IMG20220107162009.jpg
+      - IMG20220107161921.jpg
+      - IMG20220107163806.jpg
+      - IMG20220107163755.jpg
+      - IMG20220107180303.jpg
+      - IMG20211228164548.jpg
+      - IMG20220107145614.jpg
+      - IMG20220107184456.jpg
+      - IMG20211228164554.jpg
+      - IMG20220110230930.jpg
+      - IMG20220108090154.jpg
+      - IMG20220225150658.jpg
+      - IMG20220225150705.jpg
+      - IMG20220108091453.jpg
+      - IMG20220108090209.jpg
+      - IMG20220107163829.jpg
+      - IMG20220107163802.jpg
+      - IMG20220225150839.jpg
+      - IMG20220225151206.jpg
+      - FJIMG_20220108_080448.dng
+      - IMG20220605090019.jpg
+      - IMG20220509203944.jpg
+      - IMG20220509203937.jpg
+      - IMG20220108100235.jpg
+      - IMG20220511134429.jpg
+      - IMG20220605102117.jpg
+      - IMG20220819130512.jpg
+      - IMG20220108100227.jpg
+      - IMG20220509203915.jpg
+      - IMG20220225150647.jpg
+      - IMG20220901091206.jpg
+      - IMG20220901091613.jpg
+      - IMG20220901124334.jpg
+      - IMG20220831115111.jpg
+      - IMG20220901091210.jpg
+      - IMG20220902071629.jpg
+      - IMG20220108092838.jpg
+      - IMG20220902072218.jpg
+      - IMG20220901091159.jpg
+      - IMG20220824103959.jpg
+      - IMG20220907072421.jpg
+      - IMG20220903210615_BURST001_COVER.jpg
+      - IMG20220831110215.jpg
+      - IMG20220107152845.jpg
+      - IMG20220912075224.jpg
+      - IMG20220907072416.jpg
+      - IMG20220912130250.jpg
+      - IMG20220912075231.jpg
+      - IMG20220902075226.jpg
+      - IMG20220902084537.jpg
+      - IMG20220902074140.jpg
+      - IMG20220903210544.jpg
+      - IMG20220912090534.jpg
+      - IMG20221006222252.jpg
+      - IMG20221006222258.jpg
+      - IMG20221017073858.jpg
+      - IMG20220107171051.jpg
+      - IMG20221017080918.jpg
+      - IMG20220903210618.jpg
+      - IMG20220917115240.jpg
+      - IMG20220901091213.jpg
+      - IMG20220915145816.jpg
+      - IMG20220915020435.jpg
+      - IMG20220831110438.jpg
+      - IMG20221017073006.jpg
+      - IMG20221017112138.jpg
+      - IMG20220916070355.jpg
+      - IMG20220912130356.jpg
+      - IMG20221017175009.jpg
+      - IMG20221017175014.jpg
+      - IMG20221017175033.jpg
+      - IMG20220915145830.jpg
+      - IMG20221017113039.jpg
+      - IMG20221017082120.jpg
+      - IMG20221017175022.jpg
+      - IMG20221017175039.jpg
+      - IMG20221017175028.jpg
+      - IMG20221017114604.jpg
+      - IMG20221017175035.jpg
+      - IMG20221017175026.jpg
+      - IMG20221017175043.jpg
+      - IMG20221017175004.jpg
+      - IMG20221018165137.jpg
+      - IMG20221018172026.jpg
+      - IMG20221018134503.jpg
+      - IMG20221017071759.jpg
+      - IMG20221017084009.jpg
+      - IMG20221021071715.jpg
+      - IMG20221021073216.jpg
+      - IMG20221017114611.jpg
+      - IMG20221017175048.jpg
+      - IMG20221018180856.jpg
+      - IMG20221018172030.jpg
+      - IMG20221020184745.jpg
+      - IMG20221018170310.jpg
+      - IMG20221018180900.jpg
+      - IMG20221017175019.jpg
+      - IMG20221018165143.jpg
+      - IMG20221024112008.jpg
+      - IMG20221024112013.jpg
+      - IMG20221018134506.jpg
+      - IMG20221021074218.jpg
+      - IMG20221021201608.jpg
+      - IMG20221021074232.jpg
+      - IMG20221021073225.jpg
+      - IMG20221024114946.jpg
+      - IMG20221018170401.jpg
+      - IMG20221024122419.jpg
+      - IMG20221024115255.jpg
+      - IMG20221018165127.jpg
+      - IMG20221024114941.jpg
+      - IMG20221021074227.jpg
+      - IMG20221021073319.jpg
+      - IMG20221024115307.jpg
+      - IMG20221018165135.jpg
+      - IMG20221110175334.jpg
+      - IMG20221118114116.jpg
+      - IMG20221120195629.jpg
+      - IMG20221107122723.jpg
+      - IMG20221107123453.jpg
+      - IMG20221024114947.jpg
+      - IMG20221120195709.jpg
+      - IMG20221109154402.jpg
+      - IMG20221024122425.jpg
+      - IMG20221109150858.jpg
+      - IMG20221120200022.jpg
+      - IMG20221107124738.jpg
+      - IMG20221107125140.jpg
+      - IMG20221120195653.jpg
+      - IMG20221120200027.jpg
+      - IMG20221205090751.jpg
+      - IMG20221021074239.jpg
+      - IMG20221205090805.jpg
+      - IMG20221130132856.jpg
+      - IMG20230411134312.jpg
+      - IMG20221107123451.jpg
+      - IMG20230323155509.jpg
+      - IMG20230331072706.jpg
+      - IMG20230331080606.jpg
+      - IMG20221205090801.jpg
+      - IMG20230411134659.jpg
+      - IMG20230411134850_BURST001_COVER.jpg
+      - IMG20230411134449.jpg
+      - IMG20221130133500.jpg
+      - IMG20230411134912.jpg
+      - IMG20230411134905.jpg
+      - IMG20230323155503.jpg
+      - IMG20221205113833.jpg
+      - IMG20230411135017.jpg
+      - IMG20230411151249.jpg
+      - IMG20230411135004.jpg
+      - IMG20230412152620.jpg
+      - IMG20230330153124.jpg
+      - IMG20230412140755.jpg
+      - IMG20230412153638.jpg
+      - IMG20230412135831.jpg
+      - IMG20230330153128.jpg
+      - IMG20230411135006.jpg
+      - IMG20230412131843.jpg
+      - IMG20230411135010.jpg
+      - IMG20230411135013.jpg
+      - IMG20230412160317.jpg
+      - IMG20230412145459.jpg
+      - IMG20230412154926.jpg
+      - IMG20230412132909.jpg
+      - IMG20230421132443.jpg
+      - IMG20230424132230.jpg
+      - IMG20230323132002.jpg
+      - IMG20230412152920.jpg
+      - IMG20230424192411.jpg
+      - IMG20230424192414.jpg
+      - IMG20230427120702.jpg
+      - IMG20230412163833.jpg
+      - IMG20230412163206.jpg
+      - IMG20230413151758.jpg
+      - IMG20230412145454.jpg
+      - IMG20230413104303.jpg
+      - IMG20230413152607.jpg
+      - IMG20230427120704.jpg
+      - IMG20230502165706.jpg
+      - IMG20230413152609.jpg
+      - IMG20230503102112.jpg
+      - IMG20230508133816.jpg
+      - IMG20221120200035.jpg
+      - IMG20230502161630.jpg
+      - IMG20230424132233.jpg
+      - IMG20230428125427.jpg
+      - IMG20230502161707.jpg
+      - IMG20230508145141.jpg
+      - IMG20230508145123.jpg
+      - IMG20230427120706.jpg
+      - IMG20230508144750.jpg
+      - IMG20230508145507.jpg
+      - IMG20230421132003.jpg
+      - IMG20230421115732.jpg
+      - IMG20230413163215.jpg
+      - IMG20230502165111.jpg
+      - IMG20230508133820.jpg
+      - IMG20230522155138.jpg
+      - IMG20230523134449.jpg
+      - IMG20230523135911.jpg
+      - IMG20230523134459.jpg
+      - IMG20230427120724.jpg
+      - IMG20230524162302.jpg
+      - IMG20230524162305.jpg
+      - IMG20230524162354.jpg
+      - IMG20230526151603.jpg
+      - IMG20230523131008.jpg
+      - IMG20230522155123.jpg
+      - IMG20230522155130.jpg
+      - IMG20230509161458.jpg
+      - IMG20230525153109.jpg
+      - IMG20230522155136.jpg
+      - IMG20230524162309.jpg
+      - IMG20230522155203.jpg
+      - IMG20230524160254.jpg
+      - IMG20230522155126.jpg
+      - IMG20230527071409.jpg
+      - IMG20230428125432.jpg
+      - IMG20230530153711.jpg
+      - IMG20230522155102.jpg
+      - IMG20230530124810_BURST001_COVER.jpg
+      - IMG20230527071424.jpg
+      - IMG20230527071419.jpg
+      - IMG20230527071413.jpg
+      - IMG20230601133342.jpg
+      - IMG20230601133948.jpg
+      - IMG20230601134040.jpg
+      - IMG20230427120636.jpg
+      - IMG20230601140512.jpg
+      - IMG20230530155236.jpg
+      - IMG20230601140546.jpg
+      - IMG20230601133255.jpg
+      - IMG20230529134636.jpg
+      - IMG20230601133313.jpg
+      - IMG20230524162312.jpg
+      - IMG20230522154725.jpg
+      - IMG20230601140538.jpg
+      - IMG20230522155201.jpg
+      - IMG20230601140634.jpg
+      - IMG20230530152948.jpg
+      - IMG20230529135647.jpg
+      - IMG20230601171606.jpg
+      - IMG20230605135015.jpg
+      - IMG20230601171614.jpg
+      - IMG20230601140624.jpg
+      - IMG20230601171455.jpg
+      - IMG20230527071401.jpg
+      - IMG20230601140541.jpg
+      - IMG20230601140530_BURST001_COVER.jpg
+      - IMG20230605153103.jpg
+      - IMG20230605153223.jpg
+      - IMG20230605153226.jpg
+      - IMG20230605153258.jpg
+      - IMG20230619130305.jpg
+      - IMG20230626135842.jpg
+      - IMG20230601170626.jpg
+      - IMG20230601171509.jpg
+      - IMG20230601171626.jpg
+      - IMG20230703130430.jpg
+      - IMG20230601171612.jpg
+      - IMG20230626135832.jpg
+      - IMG20230602123347.jpg
+      - IMG20230703130433.jpg
+      - IMG20230626135238.jpg
+      - IMG20230619130301.jpg
+      - IMG20230703132407.jpg
+      - IMG20230703132404.jpg
+      - IMG20230605153306.jpg
+      - IMG20230703133015.jpg
+      - IMG20230703134314.jpg
+      - IMG20230626154550.jpg
+      - IMG20230601143404.jpg
+      - IMG20230703135323.jpg
+      - IMG20230703135311.jpg
+      - IMG20230704080628.jpg
+      - IMG20230704082859.jpg
+      - IMG20230704075151.jpg
+      - IMG20230704082809.jpg
+      - IMG20230704083142.jpg
+      - IMG20230704083038.jpg
+      - IMG20230704082601.jpg
+      - IMG20230704083326.jpg
+      - IMG20230704083202.jpg
+      - IMG20230704083722.jpg
+      - IMG20230704081235.jpg
+      - IMG20230704080649.jpg
+      - IMG20230704075138.jpg
+      - IMG20230704083902.jpg
+      - IMG20230704091210.jpg
+      - IMG20230704091623.jpg
+      - IMG20230704091220.jpg
+      - IMG20230704083717.jpg
+      - IMG20230704091711.jpg
+      - IMG20230705142425.jpg
+      - IMG20230704075142.jpg
+      - IMG20230704084742.jpg
+      - IMG20230704085131.jpg
+      - IMG20230705142207.jpg
+      - IMG20230705142421.jpg
+      - IMG20230704083858.jpg
+      - IMG20230704084427.jpg
+      - IMG20230705142159.jpg
+      - IMG20230705155923.jpg
+      - IMG20230703133529.jpg
+      - IMG20230706132946.jpg
+      - IMG20230706132956.jpg
+      - IMG20230704084901.jpg
+      - IMG20230704091754.jpg
+      - IMG20230706132952.jpg
+      - IMG20230711142440.jpg
+      - IMG20230704084724.jpg
+      - IMG20230704085243.jpg
+      - IMG20230707173832.jpg
+      - IMG20230704085325.jpg
+      - IMG20230713211409.jpg
+      - IMG20230711122713.jpg
+      - IMG20230706132940.jpg
+      - IMG20230819203444.jpg
+      - IMG20230711142538.jpg
+      - IMG20230824205237.jpg
+      - IMG20230824205312.jpg
+      - IMG20230824205256.jpg
+      - IMG20230716233043.jpg
+      - IMG20230706162204.jpg
+      - IMG20230711142442.jpg
+      - IMG_20210916_121003_481.jpg
+      - IMG_20221003_203735.jpg
+      - IMG20230716233031.jpg
+      - IMG20230713205120.jpg
+      - IMG20230716233025.jpg
+      - IMG_20221003_203655.jpg
+      - IMG20230716233022.jpg
+      - IMG_20230918_15471544.jpg
+      - IMG_20230918_15471730.jpg
+      - IMG_20230918_15471244.jpg
+      - IMG20240118125539.jpg
+      - Screenshot_2024-02-04-18-12-48-99_e307a3f9df9f380ebaf106e1dc980bb6.jpg
+      - Screenshot_2024-02-04-18-12-49-54_e307a3f9df9f380ebaf106e1dc980bb6.jpg
+      - Screenshot_2024-02-04-12-14-29-24_50ef9f5a0f3fc24b6f0ffc8843167fe4.jpg
+      - IMG20230727214413.jpg
+      - Screenshot_2023-04-27-12-08-01-35_99c04817c0de5652397fc8b56c3b3817.jpg
+      - IMG_20221003_213524.jpg
+      - IMG_20230505_211834_edit_1374044608573975.jpg
+      - IMG20230716233036.jpg
+      - IMG_20221003_213540.jpg
+      - IMG_20230529_215736.jpg
+      - IMG20230716233016.jpg
+      - IMG_20221003_213600.jpg
+      - IMG_20230512_115706.jpg
+      - IMG20211228164656.jpg
+      - IMG20211228164729.jpg
+      - IMG20211228164737.jpg
+      - IMG20211228164746.jpg
+      - IMG20220101164323.jpg
+      - IMG20220101164328.jpg
+      - IMG20220101164339.jpg
+      - IMG20220107120008.jpg
+      - IMG20220107120014.jpg
+      - IMG20220107132746.jpg
+      - IMG20220107135149.jpg
+      - IMG20220107135205.jpg
+      - IMG20220107144033.jpg
+      - FJIMG_20220108_080429.dng
+      - FJIMG_20220108_080433.dng
+      - FJIMG_20220108_080529.dng
+      - FJIMG_20220108_080600.dng
+      - FJIMG_20220108_081239.dng
+      - FJIMG_20220108_081246.dng
+      - FJIMG_20220108_081239.jpg
+      - FJIMG_20220108_081250.jpg
+      - FJIMG_20220108_080341.jpg
+      - FJIMG_20220108_080349.jpg
+      - FJIMG_20220108_080429.jpg
+      - FJIMG_20220108_080535.jpg
+      - FJIMG_20220108_080600.jpg
+      - IMG20220109115327.jpg
+      - IMG20220110230900.jpg
+      - IMG20220110230901.jpg
+      - IMG20220110230902.jpg
+      - IMG20220110230904.jpg
+      - IMG20220110230905.jpg
+      - IMG20220110230906.jpg
+      - IMG-20220316-WA0005.jpg
+      - IMG20220605102119.jpg
+      - IMG20220605102516.jpg
+      - IMG20220605102521.jpg
+      - IMG20220605102527.jpg
+      - IMG20220605105548.jpg
+      - IMG20220605122828.jpg
+      - IMG20220605122835.jpg
+      - IMG20220605130635.jpg
+      - IMG20220605130637.jpg
+      - IMG20220605130647.jpg
+      - IMG20220605135409_01.jpg
+      - IMG20220605135412_01.jpg
+      - IMG20220605135416.jpg
+      - IMG20220819130455.jpg
+      - IMG20220819130459.jpg
+      - IMG20220819130509.jpg
+      - IMG20220826072419.jpg
+      - IMG20220826072423.jpg
+      - IMG20220826072433.jpg
+      - IMG20220826072746.jpg
+      - IMG20220826072810.jpg
+      - IMG20220826072816.jpg
+      - IMG20220826072825.jpg
+      - IMG20220826074445.jpg
+      - IMG20220826074502.jpg
+      - IMG20220826075432.jpg
+      - IMG20220826113535.jpg
+      - IMG20220826114448.jpg
+      - IMG20220826114457.jpg
+      - IMG20220826115550.jpg
+      - IMG20220826121502.jpg
+      - IMG20220826122749.jpg
+      - IMG20220826122752.jpg
+      - IMG20220826123519.jpg
+      - IMG20220826125923.jpg
+      - IMG20220826125926.jpg
+      - IMG20220826151907.jpg
+      - IMG20220826153828.jpg
+      - IMG20220826154559.jpg
+      - IMG20220826154602.jpg
+      - IMG20220826154604.jpg
+      - IMG20220826154611.jpg
+      - IMG20220826154725.jpg
+      - IMG20220828120929.jpg
+      - IMG20220831103621.jpg
+      - IMG20220831103626.jpg
+      - IMG20220831104403.jpg
+      - IMG20220831104408.jpg
+      - IMG20220831105301.jpg
+      - IMG20220831110209.jpg
+      - IMG20220831110212.jpg
+      - IMG20220901091616.jpg
+      - IMG20220901121140.jpg
+      - IMG20220901124324.jpg
+      - IMG20220901124330.jpg
+      - IMG20220917115243.jpg
+      - IMG20220921114949.jpg
+      - VID20221001213542.mp4
+      - IMG20221003114009.jpg
+      - IMG20221003114309.jpg
+      - IMG20221003114312.jpg
+      - IMG20221003115415.jpg
+      - IMG20221003115436.jpg
+      - IMG20221003115446.jpg
+      - IMG20221003203618.jpg
+      - IMG20221003203724.jpg
+      - IMG20221003212424.jpg
+      - IMG20221006115321.jpg
+      - IMG20221006222202.jpg
+      - IMG20221006222208.jpg
+      - IMG20221006222211.jpg
+      - IMG20221006222214.jpg
+      - IMG20221006222234.jpg
+      - IMG20221006222239.jpg
+      - IMG20221006222300.jpg
+      - IMG20221010103915.jpg
+      - IMG20221010115255.jpg
+      - IMG20221010115258.jpg
+      - IMG20221010120651.jpg
+      - IMG20221010121458.jpg
+      - IMG20221010122514.jpg
+      - IMG20221010122912.jpg
+      - IMG20221010122915.jpg
+      - IMG20221010123445.jpg
+      - IMG20221010124439.jpg
+      - IMG20221010131145.jpg
+      - IMG20221010131200.jpg
+      - IMG20221010131401.jpg
+      - IMG20221011131718.jpg
+      - IMG20221014112938.jpg
+      - IMG20221014112943.jpg
+      - IMG20221014115900.jpg
+      - IMG20221014115903.jpg
+      - IMG20221014123230.jpg
+      - IMG20221014123240.jpg
+      - IMG20221014123956.jpg
+      - IMG20221014125359.jpg
+      - IMG20221015171130.jpg
+      - IMG20221015171135.jpg
+      - IMG20221015171138.jpg
+      - IMG20221024122927_BURST001_COVER.jpg
+      - IMG20221024133213.jpg
+      - IMG20221024133659.jpg
+      - IMG20221024215847.jpg
+      - IMG20221024215855.jpg
+      - IMG20221024215916.jpg
+      - IMG20221024221145.jpg
+      - IMG_20221024_221213.jpg
+      - IMG_20221024_215954.jpg
+      - IMG_20221006_115337.jpg
+      - IMG20221107121006.jpg
+      - IMG20221120195635.jpg
+      - IMG20221120195643.jpg
+      - IMG20221120200042.jpg
+      - IMG20221120200158.jpg
+      - IMG20221120200202.jpg
+      - IMG20221120200207.jpg
+      - IMG20221205115419.jpg
+      - IMG20221205121637.jpg
+      - IMG20221205125237.jpg
+      - IMG20221205125810.jpg
+      - IMG20221206113410.jpg
+      - IMG20221206113803.jpg
+      - IMG20221207101415.jpg
+      - IMG20221207101419.jpg
+      - IMG20221207104114.jpg
+      - IMG20221207105958.jpg
+      - IMG20221207122559.jpg
+      - IMG20221207122606.jpg
+      - IMG20221212072130.jpg
+      - IMG20221212072622.jpg
+      - IMG20221212084452.jpg
+      - IMG20221212120852.jpg
+      - IMG20221212124129.jpg
+      - IMG20221212124558.jpg
+      - IMG20221212125357.jpg
+      - IMG20221212130621.jpg
+      - IMG20221219071118.jpg
+      - IMG20221220142239.jpg
+      - IMG20230115120504.jpg
+      - IMG20230115120645.jpg
+      - IMG20230116190633.jpg
+      - IMG20230119192837.jpg
+      - IMG20230119192847.jpg
+      - IMG20230126112733.jpg
+      - IMG20230130103501.jpg
+      - IMG20230130201136.jpg
+      - IMG20230207194130.jpg
+      - IMG20230225160130.jpg
+      - IMG20230225160134.jpg
+      - IMG20230225160144.jpg
+      - IMG20230226175442.jpg
+      - IMG20230226175504.jpg
+      - IMG20230226175548.jpg
+      - IMG20230309140755.jpg
+      - IMG20230309140801.jpg
+      - IMG20230309140807.jpg
+      - IMG20230309140830.jpg
+      - IMG20230309171312.jpg
+      - IMG20230310053039_BURST007.jpg
+      - IMG20230310053039_BURST005.jpg
+      - IMG20230310053039_BURST004.jpg
+      - IMG20230310053039_BURST006.jpg
+      - IMG20230310053039_BURST001_COVER.jpg
+      - IMG20230310053039_BURST002.jpg
+      - IMG20230310053039_BURST003.jpg
+      - IMG20230310060058_BURST001_COVER.jpg
+      - IMG20230310060058_BURST002.jpg
+      - IMG20230310060058_BURST003.jpg
+      - IMG20230310060144_BURST009.jpg
+      - IMG20230310060144_BURST010.jpg
+      - IMG20230310060144_BURST002.jpg
+      - IMG20230310060144_BURST001_COVER.jpg
+      - IMG20230310060144_BURST006.jpg
+      - IMG20230310060144_BURST007.jpg
+      - IMG20230310060144_BURST005.jpg
+      - IMG20230310060144_BURST004.jpg
+      - IMG20230310060144_BURST003.jpg
+      - IMG20230310060144_BURST011.jpg
+      - IMG20230310060144_BURST008.jpg
+      - IMG20230310060151_BURST002.jpg
+      - IMG20230310060151_BURST001_COVER.jpg
+      - IMG20230310060151_BURST003.jpg
+      - IMG20230310060153_BURST001_COVER.jpg
+      - IMG20230310060257_BURST001_COVER.jpg
+      - IMG20230310060259_BURST001_COVER.jpg
+      - IMG20230310143646.jpg
+      - IMG20230310143655.jpg
+      - IMG20230310143700.jpg
+      - IMG20230310143838.jpg
+      - IMG20230310143841.jpg
+      - IMG20230310143847.jpg
+      - IMG20230310145055.jpg
+      - IMG20230310145100.jpg
+      - IMG20230311151621_BURST002.jpg
+      - IMG20230311151621_BURST004.jpg
+      - IMG20230311151621_BURST009.jpg
+      - IMG20230311151621_BURST008.jpg
+      - IMG20230311151621_BURST011.jpg
+      - IMG20230311151621_BURST006.jpg
+      - IMG20230311151621_BURST007.jpg
+      - IMG20230311151621_BURST001_COVER.jpg
+      - IMG20230311151621_BURST003.jpg
+      - IMG20230311151621_BURST010.jpg
+      - IMG20230311151621_BURST005.jpg
+      - IMG20230311151627_BURST003.jpg
+      - IMG20230311151627_BURST004.jpg
+      - IMG20230311151627_BURST002.jpg
+      - IMG20230311151627_BURST008.jpg
+      - IMG20230311151627_BURST011.jpg
+      - IMG20230311151627_BURST012.jpg
+      - IMG20230311151627_BURST013.jpg
+      - IMG20230311151627_BURST001_COVER.jpg
+      - IMG20230311151627_BURST009.jpg
+      - IMG20230311151627_BURST007.jpg
+      - IMG20230311151627_BURST005.jpg
+      - IMG20230311151627_BURST014.jpg
+      - IMG20230311151627_BURST006.jpg
+      - IMG20230311151627_BURST010.jpg
+      - IMG20230311151631.jpg
+      - IMG20230311152200.jpg
+      - IMG20230311152205_BURST010.jpg
+      - IMG20230311152205_BURST002.jpg
+      - IMG20230311152205_BURST006.jpg
+      - IMG20230311152205_BURST019.jpg
+      - IMG20230311152205_BURST005.jpg
+      - IMG20230311152205_BURST000.jpg
+      - IMG20230311152205_BURST017.jpg
+      - IMG20230311152205_BURST004.jpg
+      - IMG20230311152205_BURST009.jpg
+      - IMG20230311152205_BURST008.jpg
+      - IMG20230311152205_BURST016.jpg
+      - IMG20230311152205_BURST011.jpg
+      - IMG20230311152205_BURST018.jpg
+      - IMG20230311152205_BURST012.jpg
+      - IMG20230311152205_BURST013.jpg
+      - IMG20230311152205_BURST003.jpg
+      - IMG20230311152205_BURST001_COVER.jpg
+      - IMG20230311152205_BURST014.jpg
+      - IMG20230311152205_BURST015.jpg
+      - IMG20230311152205_BURST007.jpg
+      - IMG20230311152208_BURST015.jpg
+      - IMG20230311152208_BURST018.jpg
+      - IMG20230311152208_BURST004.jpg
+      - IMG20230311152208_BURST012.jpg
+      - IMG20230311152208_BURST005.jpg
+      - IMG20230311152208_BURST001_COVER.jpg
+      - IMG20230311152208_BURST017.jpg
+      - IMG20230311152208_BURST010.jpg
+      - IMG20230311152208_BURST007.jpg
+      - IMG20230311152208_BURST011.jpg
+      - IMG20230311152208_BURST000.jpg
+      - IMG20230311152208_BURST019.jpg
+      - IMG20230311152208_BURST014.jpg
+      - IMG20230311152208_BURST013.jpg
+      - IMG20230311152208_BURST009.jpg
+      - IMG20230311152208_BURST008.jpg
+      - IMG20230311152208_BURST002.jpg
+      - IMG20230311152208_BURST006.jpg
+      - IMG20230311152208_BURST003.jpg
+      - IMG20230311152208_BURST016.jpg
+      - IMG20230311163057.jpg
+      - IMG20230311163103_BURST015.jpg
+      - IMG20230311163103_BURST019.jpg
+      - IMG20230311163103_BURST016.jpg
+      - IMG20230311163103_BURST001_COVER.jpg
+      - IMG20230311163103_BURST012.jpg
+      - IMG20230311163103_BURST008.jpg
+      - IMG20230311163103_BURST011.jpg
+      - IMG20230311163103_BURST017.jpg
+      - IMG20230311163103_BURST006.jpg
+      - IMG20230311163103_BURST013.jpg
+      - IMG20230311163103_BURST002.jpg
+      - IMG20230311163103_BURST010.jpg
+      - IMG20230311163103_BURST007.jpg
+      - IMG20230311163103_BURST009.jpg
+      - IMG20230311163103_BURST014.jpg
+      - IMG20230311163103_BURST003.jpg
+      - IMG20230311163103_BURST005.jpg
+      - IMG20230311163103_BURST018.jpg
+      - IMG20230311163103_BURST004.jpg
+      - IMG20230311170107_BURST011.jpg
+      - IMG20230311170107_BURST005.jpg
+      - IMG20230311170107_BURST004.jpg
+      - IMG20230311170107_BURST014.jpg
+      - IMG20230311170107_BURST010.jpg
+      - IMG20230311170107_BURST013.jpg
+      - IMG20230311170107_BURST006.jpg
+      - IMG20230311170107_BURST007.jpg
+      - IMG20230311170107_BURST012.jpg
+      - IMG20230311170107_BURST001_COVER.jpg
+      - IMG20230311170107_BURST008.jpg
+      - IMG20230311170107_BURST015.jpg
+      - IMG20230311170107_BURST009.jpg
+      - IMG20230311170107_BURST003.jpg
+      - IMG20230311170107_BURST002.jpg
+      - VID20230312221415.mp4
+      - IMG20230313140121.jpg
+      - IMG20230313140148.jpg
+      - IMG20230317161042.jpg
+      - IMG20230323131954.jpg
+      - IMG20230330155118.jpg
+      - IMG20230330155156.jpg
+      - IMG20230330155203.jpg
+      - IMG20230330155230.jpg
+      - IMG20230330155231.jpg
+      - IMG20230331072634.jpg
+      - IMG20230331072644.jpg
+      - IMG20230402191700.jpg
+      - IMG20230403130823.jpg
+      - IMG20230403131302.jpg
+      - IMG20230403131809.jpg
+      - IMG20230403140054.jpg
+      - IMG20230403140902.jpg
+      - IMG20230403142341.jpg
+      - IMG20230403144357.jpg
+      - IMG20230405083647.jpg
+      - IMG20230405132954.jpg
+      - IMG20230405133245.jpg
+      - IMG20230405133320.jpg
+      - IMG20230405142822.jpg
+      - IMG20230405143124.jpg
+      - IMG20230405143516.jpg
+      - IMG20230405143518.jpg
+      - IMG20230405152747.jpg
+      - IMG20230405160322.jpg
+      - IMG20230405160324.jpg
+      - IMG20230405160326.jpg
+      - IMG20230408154815.jpg
+      - IMG20230410131620.jpg
+      - IMG20230410133501.jpg
+      - IMG20230410134022.jpg
+      - IMG20230410134509.jpg
+      - IMG20230410134850.jpg
+      - IMG20230410141043.jpg
+      - IMG20230410141048.jpg
+      - IMG20230410141055.jpg
+  - **IAs/**
+    - pront de pront.txt
+    - para transformar imagenes.txt
+    - para crer un flujo de procesos tipo dr stone.txt
+    - para anki.txt
+    - para hacer presentaciones.txt
+  - **is my life/**
+    - Plantilla para controlar gastos.xlsm
+    - ~$Plantilla para controlar gastos.xlsm
+  - 23 DE FEBRERO 2026.gsheet
+  - **activar win/**
+    - contrasena del archivo.txt
+    - win.rar
+  - hacer arbol de archivos .py
+- organizador.py
+- Foto de Renzo
+- **Colab Notebooks/**
+  - Untitled0.ipynb
+  - Untitled
+  - Untitled (1)
+  - Untitled (2)
+- **StarNote/**
+  - Quick Start Guide_2026-05-18_16_17_30.note
+  - TURBOMAQUINAS_2026-05-18_16_16_37.note
+  - maquinas térmicas 2_2026-05-19_18_35_49.note
+  - LABORATORIO DE CONTROL Y PROCESO_2026-05-19_17_40_33.note
+  - laboratorio de máquinas eléctricas_2026-05-19_17_34_57.note
+  - cornelll_2026-05-22_09_31_22.note
+  - 简墨记事_2026-05-22_09_26_51.note
+  - Código_Nacional_de_Electricidad__Utilización__2026-05-22_09_22_38.note
+  - electrónica de potencia_2026-05-22_09_22_24.note
+  - CURSO DE MAQUINAS TERMICAS II 2026_2026-05-22_09_19_13.note
+  - TURBOMAQUINAS_1_2026-05-20_13_55_18.note
+  - MAQUINAS ELECTRICO_2026-05-28_09_33_16.note
+  - apuntes_2026-05-28_09_34_08.note
+  - LABORATORIO DE INGENIERÍA MECÁNICA III_2026-07-12_23_06_54.note
+  - 06-Campus｜Twilight Line Notebook_HahaPlayground_2026-07-12_23_06_25.note
+  - ingles_2026-07-19_18_46_59.note
+  - Nota sin nombre_2026-07-17_14_50_07.note
+  - LABORATORIO DE MEDIDAS_2026-07-19_20_39_53.note
+  - chambien_2026-07-19_21_06_43.note
+  - libre en general_2026-07-19_21_29_25.note
+  - LABORATORIO DE MEDIDAS_2026-07-19_23_45_26.note
+  - chambien_2026-07-20_22_57_21.note
+  - LABORATORIO DE MEDIDAS_2026-07-20_22_56_31.note
+  - _ Instalacion_2026-07-22_17_20_48.note
+  - libre en general_2026-07-22_17_18_30.note
+  - IA Y MAS_2026-07-22_15_25_22.note
+- Noe (1).mp3
+- Noe.mp3
+- Resuelvelo.gsheet
+- Arquitectura Plataforma Ingeniería Eléctrica (2).gdoc
+- Arquitectura Plataforma Ingeniería Eléctrica (1).gdoc
+- Arquitectura Plataforma Ingeniería Eléctrica.gdoc
+- **super_organizador/**
+  - **core/**
+    - __init__.py
+    - normalizer.py
+    - validators.py
+    - scanner.py
+    - tree_generator.py
+    - inventory.py
+    - classifier.py
+    - ai_classifier.py
+    - problem_detector.py
+    - duplicate_detector.py
+    - planner.py
+    - executor.py
+    - rollback.py
+  - **reports/**
+  - **logs/**
+  - **tests/**
+    - __init__.py
+    - test_normalizer.py
+    - test_classifier.py
+    - test_planner.py
+    - test_executor.py
+    - test_rollback.py
+  - **data/**
+    - categories.yaml
+    - keywords.yaml
+    - ignored_patterns.yaml
+  - config.yaml
+  - requirements.txt
+  - main.py

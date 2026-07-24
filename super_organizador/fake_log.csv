@@ -1,0 +1,2 @@
+timestamp,origen,destino,tipo,resultado,error,hash_antes,hash_despues
+2026-07-23 21:52:46,\fake\src.txt,\fake\dst.txt,archivo,ERROR,Origen no existe,,
