@@ -2,9 +2,15 @@
 # Genera plantilla de informe
 # Uso: ucn-informe.sh "titulo del informe"
 
+# Detectar plataforma
+PLATFORM_SH="$(cd "$(dirname "$0")" && pwd)/ucn-platform.sh"
+if [ -f "$PLATFORM_SH" ]; then
+  source "$PLATFORM_SH"
+fi
+
 TITLE="${1:-informe}"
 DATE=$(date '+%Y-%m-%d')
-DIR="${UCN_INFORMES_DIR:-/storage/emulated/0/universida-datos/informes}/${TITLE// /-}"
+DIR="${UCN_INFORMES_DIR:-$HOME/universida-datos/informes}/${TITLE// /-}"
 mkdir -p "$DIR"
 
 FILE="$DIR/informe.md"

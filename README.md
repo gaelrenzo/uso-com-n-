@@ -1,9 +1,10 @@
 # uso-com-n- (UCN) — Mochila Digital
 
-Entorno portable de productividad academica y tecnica para Android (Termux), Linux y Windows, con sincronizacion de Skills para Agentes de IA.
+Entorno portable de productividad academica y tecnica para Android (Termux), Linux, Windows y macOS, con sincronizacion de Skills para Agentes de IA.
 
 ```
-Termux + Ubuntu + Debian/ XFCE + GitHub + Syncthing + Skills IA + Scripts
+Multi-plataforma: Termux + Linux + Windows + macOS
+GitHub + Syncthing + Skills IA + Scripts + CLI Go
 ```
 
 ---
@@ -12,9 +13,10 @@ Termux + Ubuntu + Debian/ XFCE + GitHub + Syncthing + Skills IA + Scripts
 
 **UCN** es una "mochila digital": todo lo que necesitas para estudiar, programar, hacer informes y trabajar desde cualquier dispositivo.
 
-- **Misma terminal** en Android, Linux y Windows (alias, funciones, MOTD)
+- **Misma terminal** en Android, Linux, Windows y macOS (alias, funciones, MOTD)
 - **42 skills de IA** sincronizadas entre agentes (OpenCode, Claude, Codex, Cursor, Gemini)
 - **CLI propio** (`ucn`) para sincronizar, subir cambios, diagnosticar y exponer tu entorno
+- **Multi-plataforma**: detecta automaticamente Termux, Linux, WSL, macOS, Windows
 - **Desacoplado**: secretos en `.env`, config en `config.yaml`, todo versionado
 
 ---
@@ -23,36 +25,39 @@ Termux + Ubuntu + Debian/ XFCE + GitHub + Syncthing + Skills IA + Scripts
 
 ```
 UCN/
-├── termux-bash/           # Dotfiles para Termux/Android
+├── termux-bash/           # Dotfiles para bash (multi-plataforma)
 │   ├── aliases.sh         # Alias generales y UCN
 │   ├── functions.sh       # Funciones personalizadas
 │   ├── ia-tools.sh        # Atajos para agentes IA
 │   ├── motd.sh            # Mensaje de bienvenida
 │   └── termux-bash.sh     # Entry point
 ├── laptop-powershell/     # Perfil PowerShell para Windows
+│   └── Microsoft.PowerShell_profile.ps1
 ├── ucn/                   # CLI en Go (sync, push, doctor, tunnel)
 │   ├── cmd/ucn/main.go    # Entrypoint
 │   └── internal/          # Logica interna
 ├── skills/
 │   ├── agent-skills/      # 42 skills para agentes IA
 │   ├── agents/            # Reglas por agente
-│   └── sync-agent-skills.sh
+│   ├── sync-agent-skills.sh   # Sync bash (Linux/macOS/Termux)
+│   └── sync-agent-skills.ps1  # Sync PowerShell (Windows)
 ├── super_organizador/      # Organizador inteligente de archivos con IA
-├── scripts/               # Scripts auxiliares
+├── scripts/
+│   ├── ucn-platform.sh    # Deteccion de plataforma (nuevo)
 │   ├── ucn-note.sh        # Nota rapida Markdown
 │   ├── ucn-clase.sh       # Abrir carpeta universidad
 │   ├── ucn-informe.sh     # Plantilla de informe
 │   ├── ucn-install-all.sh # Instalacion completa
 │   ├── install-debian-xfce.sh # Instalador Debian + XFCE
-│   └── install-arch-xfce.sh   # Instalador Arch Linux ARM + XFCE (CachyOS Style)
+│   └── install-arch-xfce.sh   # Instalador Arch Linux ARM + XFCE
 ├── config/
-│   ├── config.yaml.example
-│   └── .env.example
+│   ├── config.yaml.example  # Config con paths por plataforma
+│   └── .env.example         # Tokens (nunca subir el .env)
 ├── docs/
-│   ├── mochila-digital.md                  # Guia completa de instalacion
+│   ├── mochila-digital.md                  # Guia completa
 │   ├── flujo-productividad-academica-tecnica.md # Flujo diario
-│   ├── escritorio-debian-xfce.md          # Escritorio Debian + XFCE en Termux
-│   └── escritorio-arch-xfce.md            # Escritorio Arch Linux ARM (CachyOS Style) en Termux
+│   ├── escritorio-debian-xfce.md          # Escritorio Debian + XFCE
+│   └── escritorio-arch-xfce.md            # Escritorio Arch Linux ARM
 ├── css/ / js/ / index.html            # Interfaz web
 └── install.sh                          # Instalador principal
 ```
@@ -103,39 +108,62 @@ python main.py --path "./mi carpeta" --apply          # Ejecutar plan
 
 ---
 
-## Instalacion rapida
+## Instalacion rapida (multi-plataforma)
 
-### En Termux (Android)
-
-### 1. Prerrequisitos
-Debes tener instalado **Go (GoLang)**:
-*   **Windows (PowerShell):** `winget install GoLang.Go`
-*   **Ubuntu / Linux:** `sudo apt update && sudo apt install golang -y`
-*   **Android (Termux):** `pkg update && pkg install golang -y`
-
-### 2. Compilar el CLI
-Ingresa al directorio `ucn` y construye el binario ejecutable:
+### 1. Clonar el repo
 ```bash
+# Android (Termux)
+git clone https://github.com/gaelrenzo/uso-com-n-.git /storage/emulated/0/universida-datos/uso-com-n-
+
+# Linux / macOS
+git clone https://github.com/gaelrenzo/uso-com-n-.git ~/universida-datos/uso-com-n-
+
+# Windows (Git Bash o PowerShell)
+git clone https://github.com/gaelrenzo/uso-com-n-.git %USERPROFILE%\universida-datos\uso-com-n-
+```
+
+### 2. Ejecutar instalador
+```bash
+cd uso-com-n-
+bash install.sh
+source ~/.bashrc
+```
+
+El instalador **detecta automaticamente** tu plataforma (Termux, Linux, macOS, Windows Git Bash) y configura todo.
+
+### 3. (Opcional) Compilar el CLI en Go
+```bash
+# Instalar Go: 
+#   Termux:   pkg install golang
+#   Linux:    sudo apt install golang
+#   Windows:  winget install GoLang.Go
+#   macOS:    brew install go
+
 cd ucn
-# En Windows:
-go build -o ucn.exe cmd/ucn/main.go
-# En Linux/Termux:
+# Linux/Termux/macOS:
 go build -o ucn cmd/ucn/main.go
+# Windows:
+go build -o ucn.exe cmd/ucn/main.go
 ```
-*Tip: Te recomendamos añadir el binario compilado a tu variable de entorno PATH para poder llamarlo con `ucn` desde cualquier directorio.*
 
-### 3. Crear Configuraciones Locales
-Genera tus archivos de parámetros a partir de las plantillas provistas:
+### 4. Configurar
 ```bash
-cp config/config.yaml.example config/config.yaml
-cp config/.env.example config/.env
+# Editar config con tu nombre
+nano config/config.yaml
+
+# Editar tokens de API
+nano config/.env
 ```
+
 > [!IMPORTANT]
-> Edita `config/config.yaml` para añadir tu nombre de desarrollador, correo y activar/desactivar las carpetas de tus agentes locales. Agrega tus tokens de API en `config/.env`.
+> `config/config.yaml` tiene paths por plataforma. El instalador crea uno local desde la plantilla.
+> `config/.env` tiene tus tokens - NUNCA lo subas a GitHub.
 
-Si quieres sincronizar las skills del repo con los agentes locales sin compilar el CLI, ejecuta:
-```bash
-bash install-agent-skills.sh
+### Windows (PowerShell nativo)
+```powershell
+Set-ExecutionPolicy RemoteSigned -Scope CurrentUser
+Copy-Item -Path .\laptop-powershell\Microsoft.PowerShell_profile.ps1 -Destination $PROFILE -Force
+. $PROFILE
 ```
 
 ---

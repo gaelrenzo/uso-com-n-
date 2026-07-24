@@ -2,7 +2,13 @@
 # Abre la carpeta de universidad
 # Uso: ucn-clase.sh [materia]
 
-BASE="${UCN_CLASE_DIR:-/storage/emulated/0/universida-datos}"
+# Detectar plataforma
+PLATFORM_SH="$(cd "$(dirname "$0")" && pwd)/ucn-platform.sh"
+if [ -f "$PLATFORM_SH" ]; then
+  source "$PLATFORM_SH"
+fi
+
+BASE="${UCN_CLASE_DIR:-$HOME/universida-datos}"
 SUBJECT="$1"
 
 if [ -n "$SUBJECT" ]; then

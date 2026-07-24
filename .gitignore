@@ -1,4 +1,4 @@
-# Configuración local sensible e individual
+# Configuracion local sensible e individual
 config/config.yaml
 config/.env
 
@@ -22,3 +22,13 @@ Thumbs.db
 .idea/
 .vscode/
 *.log
+
+# Backup files
+*_backup/
+*_backup
+
+# OS-specific
+Desktop.ini
+*.swp
+*.swo
+*~
