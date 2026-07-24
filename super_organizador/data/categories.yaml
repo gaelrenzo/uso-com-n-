@@ -1,0 +1,96 @@
+# ============================================
+# ESTRUCTURA DE CARPETAS DESTINO
+# ============================================
+# Cada categoría tiene:
+#   path: ruta relativa dentro del directorio raíz
+#   keywords: palabras clave para clasificación
+#   patterns: patrones regex adicionales
+#   extensions: extensiones asociadas
+#   weight: peso base para puntuación
+
+categories:
+  - name: "00_INBOX"
+    path: "DRIVE_RENZO/00_INBOX"
+    subfolders:
+      - "Desde_Celular"
+      - "Desde_Tablet"
+      - "Desde_Laptop"
+      - "Por_Clasificar"
+    keywords: []
+    patterns: []
+    extensions: []
+    weight: 0
+
+  - name: "01_UNIVERSIDAD"
+    path: "DRIVE_RENZO/01_UNIVERSIDAD"
+    subfolders:
+      - "Documentos_UNA"
+      - "Silabos"
+      - "Tramites"
+    keywords:
+      - "universidad"
+      - "fime"
+      - "una"
+      - "university"
+      - "facultad"
+      - "ingenieria"
+      - "escuela"
+      - "academico"
+      - "académico"
+      - "semestre"
+      - "silabo"
+      - "sílabo"
+      - "tramite"
+      - "trámite"
+      - "matricula"
+      - "matrícula"
+    patterns: []
+    extensions: []
+    weight: 3
+
+  # Subcategorías de universidad por curso
+  # Se detectan dinámicamente por palabras clave de curso
+
+course_keywords:
+  - name: "Matematicas"
+    keywords: ["calculo", "cálculo", "matematica", "matemática", "algebra", "álgebra", "geometria", "geometría", "ecuaciones", "vectores", "trigonometria"]
+  - name: "Fisica"
+    keywords: ["fisica", "física", "mecanica", "mecánica", "fluidos", "termodinamica", "termodinámica", "dinamica", "dinámica", "estatica", "estática"]
+  - name: "Termodinamica"
+    keywords: ["termodinamica", "termodinámica", "termodinamico", "calor", "temperatura", "entropia", "entalpia"]
+  - name: "Transferencia_Calor"
+    keywords: ["transferencia", "calor", "conduccion", "conveccion", "radiacion", "intercambiador"]
+  - name: "Mecanica_Fluidos"
+    keywords: ["fluidos", "fluido", "hidraulica", "hidráulica", "neumatica", "neumática", "caudal", "presion"]
+  - name: "Termodinamica"
+    keywords: ["termodinamica", "termodinámica", "termodinamico", "ciclo rankine", "ciclo brayton", "entalpia", "entropia"]
+  - name: "Turbomaquinas"
+    keywords: ["turbomaquina", "turbomáquina", "turbina", "compresor", "bomba", "ventilador", "sirocco", "hidraulica", "hidráulica"]
+  - name: "Maquinas_Electricas"
+    keywords: ["maquina electrica", "máquina eléctrica", "motor electrico", "generador", "transformador", "alternador"]
+  - name: "Transformadores"
+    keywords: ["transformador", "transformer", "subestacion", "subestación"]
+  - name: "Instalaciones_Electricas"
+    keywords: ["instalacion electrica", "instalación eléctrica", "tablero electrico", "conductores", "cableado", "iluminacion", "alumbrado"]
+  - name: "Circuitos"
+    keywords: ["circuito", "circuitos", "electricidad", "corriente", "voltaje", "ley de ohm", "kirchhoff"]
+  - name: "Automatizacion"
+    keywords: ["automatizacion", "automatización", "control", "plc", "scada", "ladder", "pid", "instrumentacion"]
+  - name: "Electronica"
+    keywords: ["electronica", "electrónica", "componente", "arduino", "raspberry", "microcontrolador", "sensor", "actuador"]
+  - name: "Programacion"
+    keywords: ["programacion", "programación", "codigo", "código", "software", "algoritmo", "desarrollo"]
+  - name: "Diseno_Mecanico"
+    keywords: ["diseno", "diseño", "solidworks", "autocad", "cad", "mecanico", "mecánico", "pieza", "ensamble", "plano mecanico"]
+  - name: "Dinamica_Gases"
+    keywords: ["dinamica de gases", "dinámica de gases", "gas", "compresible", "tobera", "difusor"]
+  - name: "Transferencia_Calor"
+    keywords: ["transferencia de calor", "conduccion", "conveccion", "radiacion", "intercambiador"]
+  - name: "Instalaciones_Electricas"
+    keywords: ["instalacion electrica", "instalación eléctrica", "tablero", "cableado", "iluminacion", "alumbrado", "conductores", "corto circuito"]
+  - name: "Automatizacion"
+    keywords: ["automatizacion", "automatización", "control", "plc", "scada", "ladder", "pid", "instrumentacion", "instrumentación"]
+  - name: "Programacion"
+    keywords: ["programacion", "programación", "python", "codigo", "código", "script", "algoritmo", "desarrollo"]
+  - name: "Electronica"
+    keywords: ["electronica", "electrónica", "arduino", "raspberry", "microcontrolador", "sensor", "actuador"]

@@ -3,7 +3,7 @@
 # Sincronizado y adaptado de la Workstation
 # ==========================================
 
-$RepoDir = Join-Path $env:USERPROFILE "workspace\uso-com-n-"
+$RepoDir = "C:\Users\renzo\uso-com-n-"
 $HermesExe = Join-Path $env:LOCALAPPDATA "hermes\hermes-agent\venv\Scripts\hermes.exe"
 
 # --- ALIASES ---

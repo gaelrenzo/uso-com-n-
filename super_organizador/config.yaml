@@ -1,0 +1,37 @@
+# ============================================
+# SUPER ORGANIZADOR INTELIGENTE DE ARCHIVOS
+# Configuración principal
+# ============================================
+# USO: python main.py --path "X:\CualquierUnidad"
+# La ruta también puede venir de .env (ROOT_PATH) o de esta config
+
+# --- Ruta raíz a analizar (opcional, se prefiere --path CLI) ---
+root_path: ""
+
+# --- Modo simulación (SIEMPRE True al inicio) ---
+simulation_mode: true
+
+# --- Seguridad ---
+# Frase exacta que el usuario debe escribir para confirmar ejecución real
+confirmation_phrase: "CONFIRMO ORGANIZAR MIS ARCHIVOS"
+# Umbral de confianza para movimiento automático (0.0 - 1.0)
+confidence_threshold: 0.90
+# Máximo de movimientos por ejecución
+max_moves_per_run: 50
+
+# --- Escaneo ---
+max_depth: 10
+max_items: 50000
+include_hidden: false
+
+# --- Análisis de contenido ---
+allow_content_analysis: false
+
+# --- Estructura de destino ---
+# La estructura se define en data/categories.yaml
+# Si se usa el modo IA (opción 11), se generan categorías dinámicas
+
+# --- Proveedor IA ---
+ai_provider: "none"  # none, openai, gemini, ollama
+ai_model: ""
+ai_api_url: ""

@@ -1,0 +1,95 @@
+# ============================================
+# PATRONES DE ARCHIVOS/CARPETAS A IGNORAR
+# ============================================
+
+# Archivos del sistema que nunca deben moverse
+system_files:
+  - "desktop.ini"
+  - "Thumbs.db"
+  - ".DS_Store"
+  - "System Volume Information"
+  - "$RECYCLE.BIN"
+
+# Directorios de proyecto que no deben desarmarse
+project_directories:
+  - ".git"
+  - ".svn"
+  - ".hg"
+  - "__pycache__"
+  - ".venv"
+  - "venv"
+  - "node_modules"
+  - ".next"
+  - "dist"
+  - "build"
+  - ".tox"
+  - ".eggs"
+  - "egg-info"
+
+# Archivos de proyecto que indican un proyecto indivisible
+project_markers:
+  - ".git"
+  - "README.md"
+  - "requirements.txt"
+  - "pyproject.toml"
+  - "setup.py"
+  - "setup.cfg"
+  - "package.json"
+  - "main.py"
+  - "main.tex"
+  - "CMakeLists.txt"
+  - "Makefile"
+  - "Cargo.toml"
+  - "go.mod"
+  - "pom.xml"
+  - "build.gradle"
+  - "composer.json"
+  - "Gemfile"
+  - "Cakefile"
+  - "Dockerfile"
+  - "docker-compose.yml"
+
+# Patrones de nombres problemáticos
+problematic_patterns:
+  generic_names:
+    - "prueba"
+    - "test"
+    - "nuevo"
+    - "documento"
+    - "sin titulo"
+    - "sin título"
+    - "untitled"
+    - "new file"
+    - "nuevo documento"
+
+  draft_suffixes:
+    - "final final"
+    - "final final final"
+    - "definitivo definitivo"
+    - "corregido corregido"
+    - "ahora si"
+    - "ahora sí"
+    - "ultima version"
+    - "última versión"
+    - "version final"
+    - "versión final"
+
+  copy_suffixes:
+    - "copia"
+    - "copy"
+    - "copia de"
+    - "copy of"
+
+  temp_extensions:
+    - ".tmp"
+    - ".temp"
+    - ".bak"
+    - ".swp"
+    - ".~lock."
+    - ".part"
+    - ".crdownload"
+
+  # Extensiones de archivos temporales de Office
+  office_temp:
+    - ".~lock."
+    - "~$"
