@@ -1,20 +1,46 @@
-# Configuracion del Desarrollador (UCN)
+# ==============================================================================
+# CONFIGURACION UCN - Mochila Digital
+# ==============================================================================
+# Sistema multi-plataforma: Termux/Android, Linux, Windows, macOS
+# Los paths se resuelven segun la plataforma donde se ejecute.
+# ==============================================================================
+
 developer:
-  name: "Nombre del Desarrollador"
-  email: "desarrollador@email.com"
+  name: "Tu Nombre"
+  email: "tu@email.com"
 
-# Directorio base para el espacio de trabajo (se expande a home del usuario)
-workspace: "~/workspace"
+# --- Paths segun plataforma ---
+# Si no se especifica plataforma, se usan los defaults en paths.default
+platforms:
+  termux:
+    data_dir: "/storage/emulated/0/universida-datos"
+    workspace: "~/workspace"
+  linux:
+    data_dir: "~/universida-datos"
+    workspace: "~/workspace"
+  windows:
+    data_dir: "%USERPROFILE%/universida-datos"
+    workspace: "%USERPROFILE%/workspace"
+  macos:
+    data_dir: "~/universida-datos"
+    workspace: "~/workspace"
 
-# Rutas de la Mochila Digital
+# --- Paths por defecto (fallback si no hay plataforma especifica) ---
 paths:
-  clase: "/storage/emulated/0/universida-datos"
-  notas: "/storage/emulated/0/universida-datos/notas"
-  informes: "/storage/emulated/0/universida-datos/informes"
-  cursos: "/storage/emulated/0/universida-datos/cursos"
-  laboratorios: "/storage/emulated/0/universida-datos/laboratorios"
+  default:
+    data_dir: "~/universida-datos"
+    notas: "~/universida-datos/notas"
+    informes: "~/universida-datos/informes"
+    cursos: "~/universida-datos/cursos"
+    laboratorios: "~/universida-datos/laboratorios"
+  # Override manual opcional
+  termux:
+    data_dir: "/storage/emulated/0/universida-datos"
+  linux: {}
+  windows:
+    data_dir: "%USERPROFILE%/universida-datos"
 
-# Configuracion e instalacion de Habilidades (Skills) para Agentes de IA
+# --- Agentes IA instalados ---
 agents:
   claude:
     enabled: true
@@ -26,10 +52,16 @@ agents:
     enabled: true
     path: "~/.antigravity"
   opencode:
-    enabled: false
-    path: "~/opencode"
+    enabled: true
+    path: "~/.config/opencode"
+  cursor:
+    enabled: true
+    path: "~/.cursor"
+  gemini:
+    enabled: true
+    path: "~/.gemini"
 
-# Ajustes generales de automatizacion
+# --- Ajustes generales ---
 settings:
   auto_pull_on_sync: true
   safe_push_ignore_removal: true

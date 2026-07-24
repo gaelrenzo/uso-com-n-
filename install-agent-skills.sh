@@ -4,6 +4,7 @@ set -euo pipefail
 # ==============================================================================
 # Instalador de Skills para Agentes IA
 # Sincroniza las skills compartidas desde skills/agent-skills/ hacia los agentes.
+# Multi-plataforma: bash (Termux/Linux/macOS/Git Bash)
 # ==============================================================================
 
 SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"

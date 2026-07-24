@@ -2,10 +2,19 @@
 # FUNCIONES PERSONALIZADAS
 # ==========================================
 
-UCN_DIR="/mnt/sdcard/universida-datos/uso-com-n-"
+# UCN_REPO_DIR se resuelve desde ucn-platform.sh
+if [ -z "$UCN_REPO_DIR" ]; then
+  SCRIPT_DIR_AUX="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+  UCN_REPO_DIR="$(cd "$SCRIPT_DIR_AUX/.." && pwd)"
+fi
+
+# Directorio de datos del usuario
+if [ -z "$UCN_DATA_DIR" ]; then
+  UCN_DATA_DIR="$HOME/universida-datos"
+fi
 
 repo_root() {
-  git rev-parse --show-toplevel 2>/dev/null || printf '%s\n' "${UCN_REPO_DIR:-$UCN_DIR}"
+  git rev-parse --show-toplevel 2>/dev/null || printf '%s\n' "${UCN_REPO_DIR:-$HOME/universida-datos/uso-com-n-}"
 }
 
 html-serve() {
@@ -36,7 +45,7 @@ html-public() {
 }
 
 html-clone() {
-  local target="${UCN_REPO_DIR:-$UCN_DIR}"
+  local target="${UCN_REPO_DIR:-$HOME/universida-datos/uso-com-n-}"
   if [ -d "$target/.git" ]; then
     cd "$target" && git pull
   else
@@ -70,27 +79,28 @@ skills-push() {
   git commit -m "$msg"
   git push
 }
+
 # ==========================================
 # FUNCIONES UCN (Mochila Digital)
 # ==========================================
 
 ucn-note() {
-  bash $UCN_DIR/scripts/ucn-note.sh "$@"
+  bash "$UCN_REPO_DIR/scripts/ucn-note.sh" "$@"
 }
 
 ucn-clase() {
-  bash $UCN_DIR/scripts/ucn-clase.sh "$@"
+  bash "$UCN_REPO_DIR/scripts/ucn-clase.sh" "$@"
 }
 
 ucn-informe() {
-  bash $UCN_DIR/scripts/ucn-informe.sh "$@"
+  bash "$UCN_REPO_DIR/scripts/ucn-informe.sh" "$@"
 }
 
 ucn-update() {
-  cd $UCN_DIR && git pull && bash install.sh && source ~/.bashrc
+  cd "$UCN_REPO_DIR" && git pull && bash install.sh && source ~/.bashrc
   echo "UCN actualizado"
 }
 
 ucn-install-all() {
-  bash $UCN_DIR/scripts/ucn-install-all.sh
+  bash "$UCN_REPO_DIR/scripts/ucn-install-all.sh"
 }

@@ -53,37 +53,28 @@ func CheckHealth(cfg *config.Config, repoRoot string) {
 
 	// 3. Symlink / Junction health checks
 	home, err := os.UserHomeDir()
-	if err == nil {
-		standardTargets := []string{
-			filepath.Join(home, ".agents", "skills"),
-			filepath.Join(home, ".claude", "skills"),
-			filepath.Join(home, ".codex", "skills"),
-			filepath.Join(home, ".config", "opencode", "skills"),
-			filepath.Join(home, ".copilot", "skills"),
-			filepath.Join(home, ".cursor", "skills"),
-			filepath.Join(home, ".hermes", "skills"),
-			filepath.Join(home, ".antigravitycli", "skills"),
-			filepath.Join(home, ".gemini", "skills"),
-			filepath.Join(home, ".gemini", "antigravity-cli", "skills"),
-		}
+	if err != nil {
+		fmt.Printf("❌ No se pudo obtener directorio home: %v\n", err)
+		return
+	}
 
-		fmt.Println("\n🔍 Analizando enlaces de skills en agentes locales:")
-		for _, target := range standardTargets {
-			if stat, err := os.Stat(target); err == nil && stat.IsDir() {
-				fmt.Printf("  📁 Encontrado directorio de skills en: %s\n", target)
-				// Look for broken links
-				files, err := os.ReadDir(target)
-				if err == nil {
-					for _, f := range files {
-						filePath := filepath.Join(target, f.Name())
-						// Try to read target path of symlink
-						fi, err := os.Lstat(filePath)
-						if err == nil && (fi.Mode()&os.ModeSymlink != 0) {
-							// Try to resolve target to see if it's broken
-							_, statErr := os.Stat(filePath)
-							if statErr != nil {
-								fmt.Printf("    ⚠️ Enlace roto detectado: %s (Apunta a una ruta inexistente)\n", f.Name())
-							}
+	// Build target list from config + standard defaults
+	targets := buildAgentTargets(cfg, home)
+
+	fmt.Println("\n🔍 Analizando enlaces de skills en agentes locales:")
+	for _, target := range targets {
+		if stat, err := os.Stat(target); err == nil && stat.IsDir() {
+			fmt.Printf("  📁 Encontrado directorio de skills en: %s\n", target)
+			// Look for broken links
+			files, err := os.ReadDir(target)
+			if err == nil {
+				for _, f := range files {
+					filePath := filepath.Join(target, f.Name())
+					fi, err := os.Lstat(filePath)
+					if err == nil && (fi.Mode()&os.ModeSymlink != 0) {
+						_, statErr := os.Stat(filePath)
+						if statErr != nil {
+							fmt.Printf("    ⚠️ Enlace roto detectado: %s\n", f.Name())
 						}
 					}
 				}
@@ -93,4 +84,47 @@ func CheckHealth(cfg *config.Config, repoRoot string) {
 
 	fmt.Println("=================================================================")
 	fmt.Println("🎉 Diagnóstico finalizado.")
+}
+
+// buildAgentTargets builds the list of skill directories from config and defaults
+func buildAgentTargets(cfg *config.Config, home string) []string {
+	seen := make(map[string]bool)
+	var targets []string
+
+	// Standard targets
+	standardTargets := []string{
+		filepath.Join(home, ".agents", "skills"),
+		filepath.Join(home, ".claude", "skills"),
+		filepath.Join(home, ".codex", "skills"),
+		filepath.Join(home, ".config", "opencode", "skills"),
+		filepath.Join(home, ".copilot", "skills"),
+		filepath.Join(home, ".cursor", "skills"),
+		filepath.Join(home, ".hermes", "skills"),
+		filepath.Join(home, ".antigravitycli", "skills"),
+		filepath.Join(home, ".gemini", "skills"),
+		filepath.Join(home, ".gemini", "antigravity-cli", "skills"),
+	}
+
+	for _, t := range standardTargets {
+		if !seen[t] {
+			targets = append(targets, t)
+			seen[t] = true
+		}
+	}
+
+	// Add from config
+	if cfg != nil {
+		for _, agentOpt := range cfg.Agents {
+			if agentOpt.Enabled && agentOpt.Path != "" {
+				expandedPath := config.ExpandHome(agentOpt.Path)
+				targetDir := filepath.Join(expandedPath, "skills")
+				if !seen[targetDir] {
+					targets = append(targets, targetDir)
+					seen[targetDir] = true
+				}
+			}
+		}
+	}
+
+	return targets
 }
