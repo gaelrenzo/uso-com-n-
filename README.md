@@ -44,6 +44,7 @@ UCN/
 ├── super_organizador/      # Organizador inteligente de archivos con IA
 ├── scripts/
 │   ├── ucn-platform.sh    # Deteccion de plataforma (nuevo)
+│   ├── test-all.sh        # Suite de verificacion (build, bash, resolver, doctor)
 │   ├── ucn-note.sh        # Nota rapida Markdown
 │   ├── ucn-clase.sh       # Abrir carpeta universidad
 │   ├── ucn-informe.sh     # Plantilla de informe
@@ -51,8 +52,10 @@ UCN/
 │   ├── install-debian-xfce.sh # Instalador Debian + XFCE
 │   └── install-arch-xfce.sh   # Instalador Arch Linux ARM + XFCE
 ├── config/
+│   ├── agents.yaml          # Registro central de agentes IA
 │   ├── config.yaml.example  # Config con paths por plataforma
-│   └── .env.example         # Tokens (nunca subir el .env)
+│   └── .env.example         # Tokens y UCN_<AGENTE>_BIN (nunca subir el .env)
+├── .github/workflows/ci.yml # CI: gofmt, vet, build, tests, bash syntax
 ├── docs/
 │   ├── mochila-digital.md                  # Guia completa
 │   ├── flujo-productividad-academica-tecnica.md # Flujo diario
@@ -219,13 +222,24 @@ ucn push "agregada nueva skill de diseño"
 *Utiliza de forma interna `git add --ignore-removal` para registrar nuevos archivos u modificaciones, ignorando y protegiéndote contra eliminaciones accidentales de archivos locales en el repositorio remoto.*
 
 ### 3. Diagnóstico del Sistema (`ucn doctor`)
-Ejecuta un diagnóstico completo para validar la salud de tu entorno de desarrollo:
+Ejecuta un diagnóstico completo para validar la salud de tu entorno de desarrollo y de los agentes IA:
 ```bash
 ucn doctor
 ```
-*Verifica la instalación de `git`, `node`, `npm`, `live-server`, `cloudflared`, revisa el estado de tus ficheros `.yaml`/`.env` locales y detecta enlaces simbólicos rotos.*
+*Verifica la plataforma (Termux/Linux/Windows/macOS), las rutas de datos/notas, la instalación de `git`, `node`, `npm`, `live-server`, `cloudflared`, el registro de agentes del `config/agents.yaml`, los archivos `.yaml`/`.env` locales y detecta enlaces simbólicos rotos.*
 
-### 4. Túnel de Exposición Seguro (`ucn tunnel [nombre_tunel]`)
+Corrige automáticamente configuraciones seguras (crear config faltante desde `.example`, directorios de notas/informes/cursos):
+```bash
+ucn doctor --fix
+```
+
+### 4. Estado de Agentes IA (`ucn agents`)
+Muestra la tabla de agentes registrados en `config/agents.yaml` con su estado y ruta resuelta:
+```bash
+ucn agents
+```
+
+### 5. Túnel de Exposición Seguro (`ucn tunnel [nombre_tunel]`)
 Expone tu servidor local (`live-server` u otros) hacia la red pública mediante Cloudflare Tunnel utilizando el token configurado en tu `.env`:
 ```bash
 ucn tunnel
@@ -308,7 +322,9 @@ Copy-Item -Path .\laptop-powershell\Microsoft.PowerShell_profile.ps1 -Destinatio
 |---------|----------|
 | `ucn sync` | Sincroniza skills desde GitHub |
 | `ucn push "msg"` | Sube cambios seguros (sin borrar locales) |
-| `ucn doctor` | Diagnostica el entorno |
+| `ucn doctor` | Diagnostica plataforma, dependencias y agentes IA |
+| `ucn doctor --fix` | Corrige config y directorios automáticamente |
+| `ucn agents` | Muestra el estado de los agentes IA del registro |
 | `ucn tunnel` | Tunnel Cloudflare |
 | `ucn note "tema"` | Crea nota rapida en Markdown |
 | `ucn clase` | Abre carpeta de universidad |
@@ -317,6 +333,48 @@ Copy-Item -Path .\laptop-powershell\Microsoft.PowerShell_profile.ps1 -Destinatio
 | `ucn-install-all` | Instalacion completa del sistema |
 | `ucn-debian` | Arranca escritorio Debian + XFCE |
 | `ucn-install-debian` | Instala Debian + XFCE en Termux |
+
+---
+
+## 🔬 Verificacion y CI (Fase 1 - Robustez)
+
+El registro central de agentes es **`config/agents.yaml`**: Bash, PowerShell, CMD y el CLI Go resuelven los binarios con el MISMO criterio:
+
+1. Variable `UCN_<AGENTE>_BIN` (override en `config/.env`)
+2. Comando en el PATH del dispositivo
+3. Rutas conocidas por plataforma (del `agents.yaml`)
+
+### Suite de tests local
+
+```bash
+./scripts/test-all.sh        # todos los checks (build Go, bash -n, resolver, doctor, estructura)
+./scripts/test-all.sh quick  # solo checks rapidos sin compilar
+```
+
+Comprueba: build Go, `bash -n` de todos los scripts, resolución de agentes, variables de entorno, detección del repositorio/notas, estructura del repo y respuesta del CLI (`doctor`/`agents`).
+
+### CI en GitHub Actions
+
+Cada `push`/PR a `main` ejecuta (ver `.github/workflows/ci.yml`): `gofmt`, `go vet`, `go build`, tests de parseo de `agents.yaml`, `bash -n` de todos los scripts, `shellcheck` (si está disponible) y la suite `test-all.sh quick`.
+
+### Agregar un agente IA nuevo
+
+Para añadir un agente (ej. `composum`) se actualiza **solo el registro central**:
+
+```yaml
+  composum:
+    command: composum
+    env: UCN_COMPOSUM_BIN
+    wrapper: comp
+    full_args: --yolo
+    description: Nuevo agente
+    known_paths:
+      termux: ["/data/data/com.termux/files/usr/bin/composum"]
+      linux: ["/usr/bin/composum"]
+      windows: ["%USERPROFILE%\\.local\\bin\\composum.exe"]
+```
+
+Y el wrapper `comp() { ucn_run composum "$@"; }` en `termux-bash/ia-tools.sh`. La suite de tests y el doctor lo detectan automáticamente.
 
 ---
 

@@ -1,0 +1,65 @@
+name: UCN CI
+
+on:
+  push:
+    branches: [main, master]
+  pull_request:
+    branches: [main, master]
+
+jobs:
+  checks:
+    name: UCN checks (go build, bash, tests, docs)
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Go
+        uses: actions/setup-go@v5
+        with:
+          go-version: "1.21"
+
+      - name: Go fmt check
+        run: |
+          cd ucn
+          gofmt -l . | tee /tmp/gofmt.txt
+          if [ -s /tmp/gofmt.txt ]; then
+            echo "❌ Archivos Go sin formato:"
+            cat /tmp/gofmt.txt
+            exit 1
+          fi
+          echo "✓ gofmt limpio"
+
+      - name: Go vet
+        run: cd ucn && go vet ./...
+
+      - name: Go build
+        run: cd ucn && go build -o /tmp/ucn-bin ./cmd/ucn/ && /tmp/ucn-bin help | grep -q "agent" && echo "✓ binario responde"
+
+      - name: Go test (agents.yaml parser)
+        run: cd ucn && go test ./internal/config/ -v -run "TestLoadAgents|TestResolveBin"
+
+      - name: Bash syntax check
+        run: |
+          set -e
+          for f in $(find . -name "*.sh" -not -path "./.git/*"); do
+            bash -n "$f" && echo "✓ bash -n $f"
+          done
+
+      - name: ShellCheck (si disponible via apt)
+        run: |
+          if command -v shellcheck >/dev/null 2>&1; then
+            find . -name "*.sh" -not -path "./.git/*" -print0 | xargs -0 shellcheck -e SC1090,SC1091,SC2155
+          else
+            echo "shellcheck no instalado, se omite (sintaxis ya validada)"
+          fi
+
+      - name: Test suite
+        run: ./scripts/test-all.sh quick
+
+      - name: Documentation structure check
+        run: |
+          set -e
+          for f in config/agents.yaml config/config.yaml.example config/.env.example scripts/ucn-platform.sh scripts/test-all.sh termux-bash/termux-bash.sh README.md; do
+            test -e "$f" && echo "✓ $f"
+          done
