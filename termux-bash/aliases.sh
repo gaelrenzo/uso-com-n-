@@ -20,11 +20,11 @@ if [ -z "$UCN_REPO_DIR" ]; then
   UCN_REPO_DIR="$(cd "$SCRIPT_DIR_AUX/.." && pwd)"
 fi
 
-alias ucn-note="bash $UCN_REPO_DIR/scripts/ucn-note.sh"
-alias ucn-clase="bash $UCN_REPO_DIR/scripts/ucn-clase.sh"
-alias ucn-informe="bash $UCN_REPO_DIR/scripts/ucn-informe.sh"
-alias ucn-install-all="bash $UCN_REPO_DIR/scripts/ucn-install-all.sh"
-alias ucn-update="cd $UCN_REPO_DIR && git pull && bash install.sh && source ~/.bashrc"
+# Los comandos ucn-note, ucn-clase, ucn-informe, ucn-update, ucn-install-all,
+# skills-sync, skills-push y html-* estan definidos como FUNCIONES en
+# functions.sh (mismo comportamiento en todos los dispositivos).
+# Aqui solo se definen los aliases SIN equivalente en functions.sh.
+
 alias ucn-logs="tail -f $UCN_REPO_DIR/ucn/ucn.log 2>/dev/null || echo 'No logs'"
 alias ucn-debian="bash ~/.shortcuts/start-debian-xfce.sh"
 alias ucn-install-debian="bash $UCN_REPO_DIR/scripts/install-debian-xfce.sh"

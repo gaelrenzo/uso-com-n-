@@ -34,7 +34,64 @@ $NotesDir = Join-Path $DataDir "notas"
 $InformesDir = Join-Path $DataDir "informes"
 $CursosDir = Join-Path $DataDir "cursos"
 
-$HermesExe = Join-Path $env:LOCALAPPDATA "hermes\hermes-agent\venv\Scripts\hermes.exe"
+# --- Resolutor de binarios de agentes IA (multi-dispositivo) ---
+# Orden: 1) Variable de entorno UCN_<AGENTE>_BIN  2) Get-Command (PATH)  3) Rutas conocidas Windows
+function Get-UcnAgentBin {
+    param([string]$Tool)
+    $EnvVar = "UCN_" + $Tool.ToUpper() + "_BIN"
+    if ((Test-Path Env:$EnvVar) -and (Test-Path (Get-Item Env:$EnvVar).Value)) {
+        return (Get-Item Env:$EnvVar).Value
+    }
+    $InPath = Get-Command $Tool -ErrorAction SilentlyContinue
+    if ($InPath) { return $InPath.Source }
+    # Rutas conocidas de Windows
+    $Known = @{
+        codex   = @((Join-Path $env:USERPROFILE ".codex\bin\codex.exe"), (Join-Path $env:APPDATA "npm\codex.cmd"))
+        claude  = @((Join-Path $env:USERPROFILE ".claude\local\claude.exe"), (Join-Path $env:APPDATA "npm\claude.cmd"))
+        opencode= @((Join-Path $env:USERPROFILE ".opencode\bin\opencode.exe"), (Join-Path $env:APPDATA "npm\opencode.cmd"))
+        agy     = @((Join-Path $env:USERPROFILE ".local\bin\agy.exe"))
+        hermes  = @((Join-Path $env:LOCALAPPDATA "hermes\hermes-agent\venv\Scripts\hermes.exe"), (Join-Path $env:USERPROFILE "hermes-agent\.venv\Scripts\hermes.exe"))
+    }
+    foreach ($cand in $Known[$Tool]) {
+        if ($cand -and (Test-Path $cand)) { return $cand }
+    }
+    return $null
+}
+
+function Invoke-UcnAgent {
+    param([string]$Tool, [string]$ExtraArgs = "", [string[]]$UserArgs = @())
+    $Bin = Get-UcnAgentBin $Tool
+    if (-not $Bin) {
+        Write-Host "Agente '$Tool' no instalado en este dispositivo." -ForegroundColor Yellow
+        Write-Host "Instalalo o define UCN_$($Tool.ToUpper())_BIN en config\.env" -ForegroundColor Yellow
+        return
+    }
+    if ($ExtraArgs) {
+        & $Bin $ExtraArgs.Split(' ') $UserArgs
+    } else {
+        & $Bin $UserArgs
+    }
+}
+
+function codex       { Invoke-UcnAgent "codex"       "" $args }
+function codex-full  { Invoke-UcnAgent "codex"       "--dangerously-bypass-approvals-and-sandbox" $args }
+function anti        { Invoke-UcnAgent "agy"         "" $args }
+function anti-full   { Invoke-UcnAgent "agy"         "--dangerously-skip-permissions" $args }
+function cl          { Invoke-UcnAgent "claude"      "" $args }
+function cl-full     { Invoke-UcnAgent "claude"      "--yes" $args }
+function ocode       { Invoke-UcnAgent "opencode"    "" $args }
+function ocode-full  { Invoke-UcnAgent "opencode"    "--agent build" $args }
+function hermes      { Invoke-UcnAgent "hermes"      "" $args }
+function hermes-full { Invoke-UcnAgent "hermes"      "--yolo" $args }
+
+function ucn-agents {
+    Write-Host "=== Agentes IA detectados en Windows ===" -ForegroundColor Cyan
+    foreach ($t in @("codex","claude","opencode","hermes","agy")) {
+        $b = Get-UcnAgentBin $t
+        if ($b) { Write-Host ("  {0,-8} -> {1}" -f $t, $b) -ForegroundColor Green }
+        else    { Write-Host ("  {0,-8} -> (no instalado)" -f $t) -ForegroundColor DarkGray }
+    }
+}
 
 # --- ALIASES ---
 Set-Alias -Name ll -Value Get-ChildItem -Option ReadOnly
@@ -63,42 +120,6 @@ function Edit-Profile {
 function Update-System {
     Write-Host "[Update] Buscando actualizaciones de Winget..." -ForegroundColor Cyan
     winget upgrade --all
-}
-
-function anti {
-    agy $args
-}
-
-function anti-full {
-    agy --dangerously-skip-permissions $args
-}
-
-function cl {
-    claude $args
-}
-
-function cl-full {
-    claude --yes $args
-}
-
-function ocode {
-    opencode $args
-}
-
-function ocode-full {
-    opencode --agent build $args
-}
-
-function codex-full {
-    codex --dangerously-bypass-approvals-and-sandbox $args
-}
-
-function hermes {
-    & $HermesExe $args
-}
-
-function hermes-full {
-    & $HermesExe --yolo $args
 }
 
 # --- HTML FUNCTIONS ---
