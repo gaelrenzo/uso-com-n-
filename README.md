@@ -264,6 +264,21 @@ ucn update --check  # solo comprueba si hay actualizaciones
 *Hace `git fetch` + `git pull --rebase`, re-enlaza las skills de todos los agentes y reporta
 el estado de los agentes. Ideal para ponerse al día tras trabajar en otro dispositivo.*
 
+### 5c. Perfiles de especialidad (`ucn profile`)
+Ajusta el contexto que entregan los agentes IA según la tarea de cada momento:
+```bash
+ucn profile list        # ver perfiles disponibles
+ucn profile use ingenieria    # activa el perfil de ingenieria
+ucn profile current     # ver el perfil activo
+ucn profile show        # ver el prompt que se activara en los agentes
+```
+Perfiles incluidos (`profiles/<nombre>/profile.yaml`): `default`, `ingenieria` (MATLAB, Python,
+LaTeX, AutoCAD, SolidWorks, ETAP, APA 7), `programacion` (GitHub, Node, Docker, APIs, testing),
+`investigacion` (IEEE/APA, LaTeX/BibTeX) y `universidad` (tareas, examenes, exposiciones).
+
+El perfil activo queda guardado por dispositivo en `config/.current-profile` (no se sube al repo)
+y se exporta como `UCN_PROFILE` en `ucn-platform.sh`.
+
 ---
 
 ## 📱 Guía Rápida para Dispositivos Móviles (Termux / Ubuntu)
@@ -347,6 +362,9 @@ Copy-Item -Path .\laptop-powershell\Microsoft.PowerShell_profile.ps1 -Destinatio
 | `ucn bootstrap` | Prepara el dispositivo (config, dirs, hook, skills) |
 | `ucn update` | Actualiza repo, resync skills y verifica agentes |
 | `ucn update --check` | Solo comprueba si hay actualizaciones |
+| `ucn profile list` | Lista los perfiles de especialidad |
+| `ucn profile use X` | Activa el perfil X |
+| `ucn profile show` | Muestra el perfil activo y su prompt |
 | `ucn tunnel` | Tunnel Cloudflare |
 | `ucn note "tema"` | Crea nota rapida en Markdown |
 | `ucn clase` | Abre carpeta de universidad |

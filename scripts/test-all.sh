@@ -145,6 +145,11 @@ check_structure() {
     config/agents.yaml
     config/config.yaml.example
     config/.env.example
+    profiles/default/profile.yaml
+    profiles/ingenieria/profile.yaml
+    profiles/programacion/profile.yaml
+    profiles/investigacion/profile.yaml
+    profiles/universidad/profile.yaml
     scripts/ucn-platform.sh
     termux-bash/termux-bash.sh
     termux-bash/ia-tools.sh
@@ -163,7 +168,7 @@ check_structure() {
 # Check 6: ucn (CLI Go) - doctor y agents
 # ---------------------------------------------------------------------------
 check_go_cli() {
-  header "CLI Go (doctor / agents / bootstrap / update)"
+  header "CLI Go (doctor / agents / bootstrap / update / profile)"
   local bin="${GO_BIN:-}"
   if [ -z "$bin" ]; then
     bin="$(command -v ucn || true)"
@@ -193,6 +198,20 @@ check_go_cli() {
     ok "ucn update --check responde"
   else
     bad "ucn update --check no responde como se espera"
+  fi
+  # profile list: debe listar los perfiles
+  if ( cd "$REPO_ROOT" && "$bin" profile list 2>&1 | grep -q "ingenieria" ); then
+    ok "ucn profile list responde"
+  else
+    bad "ucn profile list no responde como se espera"
+  fi
+  # profile use/current (idempotente: restaura default al final)
+  if ( cd "$REPO_ROOT" && "$bin" profile use ingenieria >/dev/null 2>&1 \
+       && "$bin" profile current 2>&1 | grep -q "ingenieria" \
+       && "$bin" profile use default >/dev/null 2>&1 ); then
+    ok "ucn profile use/current responde"
+  else
+    bad "ucn profile use/current no responde como se espera"
   fi
 }
 

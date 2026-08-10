@@ -160,7 +160,13 @@ ucn agents          # tabla NAME | STATUS | BIN del registro central
 ucn bootstrap       # prepara el dispositivo de cero (config, dirs, hook, skills)
 ucn update          # ponerse al dia: pull + resync skills + verificar agentes
 ucn update --check  # solo comprobar si hay actualizaciones
+ucn profile use X   # activar perfil de especialidad (ingenieria, programacion, ...)
+ucn profile show    # ver prompt activo del perfil
 ```
+
+Los perfiles (`profiles/<nombre>/profile.yaml`) son identicos en todos los dispositivos y el
+perfil activo (`config/.current-profile`) se guarda por dispositivo. La variable `UCN_PROFILE`
+se exporta al cargar `scripts/ucn-platform.sh`.
 
 Y la suite de tests local para validar cambios antes de subirlos:
 
