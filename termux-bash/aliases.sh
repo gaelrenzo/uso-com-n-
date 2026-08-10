@@ -30,6 +30,8 @@ alias ucn-debian="bash ~/.shortcuts/start-debian-xfce.sh"
 alias ucn-install-debian="bash $UCN_REPO_DIR/scripts/install-debian-xfce.sh"
 alias ucn-arch="bash ~/.shortcuts/start-arch-xfce.sh"
 alias ucn-install-arch="bash $UCN_REPO_DIR/scripts/install-arch-xfce.sh"
+alias profile="ucn-profile"
+alias upi="ucn-profile use"
 
 # ==========================================
 # ALIASES DE PRODUCTIVIDAD

@@ -135,3 +135,15 @@ ucn-agents() {
     fi
   done
 }
+
+# --- Perfiles de especialidad (ucn profile) ---
+# Lista, activa o muestra el perfil de especialidad. El prompt del perfil
+# activo queda disponible para los agentes via $UCN_PROFILE y ucn profile show.
+ucn-profile() {
+  if command -v ucn >/dev/null 2>&1; then
+    ucn profile "$@"
+    return $?
+  fi
+  echo "⚠️  El CLI ucn no esta instalado. Instalalo para usar perfiles."
+  return 127
+}

@@ -9,6 +9,7 @@ import (
 	"ucn/internal/config"
 	"ucn/internal/doctor"
 	"ucn/internal/git"
+	"ucn/internal/profile"
 	"ucn/internal/sync"
 	"ucn/internal/tunnel"
 	"ucn/internal/update"
@@ -101,6 +102,9 @@ func main() {
 			os.Exit(1)
 		}
 
+	case "profile":
+		handleProfile(repoRoot, os.Args[2:])
+
 	case "tunnel":
 		name := ""
 		if len(os.Args) > 2 {
@@ -187,6 +191,98 @@ func listAgents(repoRoot string) {
 	}
 }
 
+func handleProfile(repoRoot string, args []string) {
+	if len(args) == 0 {
+		fmt.Println("Uso: ucn profile <list|use <nombre>|current|show>")
+		fmt.Println("\nPerfiles disponibles:")
+		profiles, err := profile.Discover(repoRoot)
+		if err != nil {
+			fmt.Printf("  ⚠ %v\n", err)
+		}
+		cur, _ := profile.Current(repoRoot)
+		for _, p := range profiles {
+			mark := " "
+			if p.Name == cur {
+				mark = "▶"
+			}
+			fmt.Printf("  %s %-14s %s\n", mark, p.Name, p.DisplayName)
+		}
+		return
+	}
+
+	sub := strings.ToLower(args[0])
+	switch sub {
+	case "list":
+		profiles, err := profile.Discover(repoRoot)
+		if err != nil {
+			fmt.Printf("❌ %v\n", err)
+			os.Exit(1)
+		}
+		cur, _ := profile.Current(repoRoot)
+		if len(profiles) == 0 {
+			fmt.Println("No hay perfiles en profiles/")
+			return
+		}
+		fmt.Println("PERFIL            DESCRIPCION")
+		fmt.Println("────────────────────────────────────────────")
+		for _, p := range profiles {
+			mark := " "
+			if p.Name == cur {
+				mark = "▶"
+			}
+			desc := p.Description
+			if len(desc) > 48 {
+				desc = desc[:48] + "..."
+			}
+			fmt.Printf("%s %-14s %s\n", mark, p.Name, desc)
+		}
+
+	case "use":
+		if len(args) < 2 {
+			fmt.Println("Uso: ucn profile use <nombre>")
+			os.Exit(1)
+		}
+		if err := profile.Use(repoRoot, args[1]); err != nil {
+			fmt.Printf("❌ %v\n", err)
+			os.Exit(1)
+		}
+		cur, _ := profile.Current(repoRoot)
+		fmt.Printf("✅ Perfil activo: %s\n", cur)
+
+	case "current":
+		cur, err := profile.Current(repoRoot)
+		if err != nil {
+			fmt.Printf("❌ %v\n", err)
+			os.Exit(1)
+		}
+		fmt.Println(cur)
+
+	case "show":
+		cur, err := profile.Current(repoRoot)
+		if err != nil {
+			fmt.Printf("❌ %v\n", err)
+			os.Exit(1)
+		}
+		p, err := profile.Get(repoRoot, cur)
+		if err != nil {
+			fmt.Printf("❌ %v\n", err)
+			os.Exit(1)
+		}
+		fmt.Printf("Perfil: %s (%-12s)\n", p.Name, p.DisplayName)
+		fmt.Printf("Herramientas: %s\n", strings.Join(p.Tools, ", "))
+		if p.Prompt != "" {
+			fmt.Println("\nPrompt activo:")
+			fmt.Println("───────")
+			fmt.Println(p.Prompt)
+		}
+
+	default:
+		fmt.Printf("❌ Subcomando desconocido: %s\n", sub)
+		fmt.Println("Uso: ucn profile <list|use <nombre>|current|show>")
+		os.Exit(1)
+	}
+}
+
 func printHelp() {
 	fmt.Println("🚀 UCN CLI - Entorno de Desarrollo y Skills de Agentes IA")
 	fmt.Println("Uso:")
@@ -200,6 +296,10 @@ func printHelp() {
 	fmt.Println("  bootstrap       Prepara este dispositivo: config, directorios, hook de shell y skills")
 	fmt.Println("  update          Actualiza el repo, sincroniza skills y verifica agentes")
 	fmt.Println("  update --check  Solo comprueba si hay actualizaciones disponibles")
+	fmt.Println("  profile list    Lista los perfiles de especialidad disponibles")
+	fmt.Println("  profile use X   Activa el perfil X (default|ingenieria|programacion|investigacion|universidad)")
+	fmt.Println("  profile current Muestra el perfil activo")
+	fmt.Println("  profile show    Muestra el detalle del perfil activo")
 	fmt.Println("  tunnel [nombre] Levanta un túnel de Cloudflare utilizando tokens locales o un túnel configurado")
 	fmt.Println("  help            Muestra este mensaje de ayuda")
 	fmt.Println("\nConfiguración:")

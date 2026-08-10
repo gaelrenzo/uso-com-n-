@@ -66,6 +66,13 @@ UCN_INFORMES_DIR="${UCN_INFORMES_DIR:-$UCN_DATA_DIR/informes}"
 UCN_CURSOS_DIR="${UCN_CURSOS_DIR:-$UCN_DATA_DIR/cursos}"
 UCN_LABS_DIR="${UCN_LABS_DIR:-$UCN_DATA_DIR/laboratorios}"
 
+# --- Perfil activo (informacion de especialidad) ---
+UCN_PROFILE="${UCN_PROFILE:-}"
+if [ -z "$UCN_PROFILE" ] && [ -f "$UCN_REPO_DIR/config/.current-profile" ]; then
+  UCN_PROFILE="$(tr -d '[:space:]' < "$UCN_REPO_DIR/config/.current-profile")"
+fi
+UCN_PROFILE="${UCN_PROFILE:-default}"
+
 # --- Exportar todo ---
 export UCN_PLATFORM
 export UCN_REPO_DIR
@@ -75,3 +82,4 @@ export UCN_CLASE_DIR
 export UCN_INFORMES_DIR
 export UCN_CURSOS_DIR
 export UCN_LABS_DIR
+export UCN_PROFILE

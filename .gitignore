@@ -1,6 +1,7 @@
 # Configuracion local sensible e individual
 config/config.yaml
 config/.env
+config/.current-profile
 
 # Secretos y credenciales - NUNCA subir
 .env

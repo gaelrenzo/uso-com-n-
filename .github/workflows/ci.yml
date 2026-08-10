@@ -60,7 +60,7 @@ jobs:
       - name: Documentation structure check
         run: |
           set -e
-          for f in config/agents.yaml config/config.yaml.example config/.env.example scripts/ucn-platform.sh scripts/test-all.sh termux-bash/termux-bash.sh ucn/internal/bootstrap/bootstrap.go ucn/cmd/ucn/main.go README.md; do
+          for f in config/agents.yaml config/config.yaml.example config/.env.example scripts/ucn-platform.sh scripts/test-all.sh termux-bash/termux-bash.sh ucn/internal/bootstrap/bootstrap.go ucn/internal/profile/profile.go ucn/cmd/ucn/main.go profiles/default/profile.yaml profiles/ingenieria/profile.yaml README.md; do
             test -e "$f" && echo "✓ $f"
           done
 
