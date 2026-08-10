@@ -11,6 +11,7 @@ import (
 	"ucn/internal/git"
 	"ucn/internal/sync"
 	"ucn/internal/tunnel"
+	"ucn/internal/update"
 )
 
 func main() {
@@ -85,6 +86,18 @@ func main() {
 	case "bootstrap":
 		if err := bootstrap.Run(cfg, repoRoot); err != nil {
 			fmt.Printf("❌ Error durante bootstrap: %v\n", err)
+			os.Exit(1)
+		}
+
+	case "update":
+		checkOnly := false
+		for _, a := range os.Args[2:] {
+			if a == "--check" || a == "-c" {
+				checkOnly = true
+			}
+		}
+		if err := update.Run(cfg, repoRoot, checkOnly); err != nil {
+			fmt.Printf("❌ Error en update: %v\n", err)
 			os.Exit(1)
 		}
 
@@ -185,6 +198,8 @@ func printHelp() {
 	fmt.Println("  doctor --fix    Corrige automáticamente configuraciones seguras (config/, .env, directorios)")
 	fmt.Println("  agents          Muestra el estado de los agentes IA registrados en config/agents.yaml")
 	fmt.Println("  bootstrap       Prepara este dispositivo: config, directorios, hook de shell y skills")
+	fmt.Println("  update          Actualiza el repo, sincroniza skills y verifica agentes")
+	fmt.Println("  update --check  Solo comprueba si hay actualizaciones disponibles")
 	fmt.Println("  tunnel [nombre] Levanta un túnel de Cloudflare utilizando tokens locales o un túnel configurado")
 	fmt.Println("  help            Muestra este mensaje de ayuda")
 	fmt.Println("\nConfiguración:")
