@@ -7,18 +7,20 @@
 # ==============================================================================
 
 # --- Detectar plataforma ---
-if [ -n "$TERMUX_VERSION" ]; then
+# Termux se detecta por TERMUX_VERSION o por la raiz de instalacion de Termux
+# (esto cubre tambien bash corriendo dentro de proot-distro Ubuntu/Debian).
+if [ -n "$TERMUX_VERSION" ] || [ -d "/data/data/com.termux/files/usr" ]; then
   UCN_PLATFORM="termux"
 elif [ -f "/proc/sys/fs/binfmt_misc/WSLInterop" ] 2>/dev/null || [ -n "$WSL_DISTRO_NAME" ]; then
   UCN_PLATFORM="wsl"
-elif [ "$(uname -s 2>/dev/null)" = "Linux" ]; then
-  UCN_PLATFORM="linux"
 elif [ "$(uname -s 2>/dev/null)" = "Darwin" ]; then
   UCN_PLATFORM="macos"
 elif [ -n "$MSYSTEM" ] || [ -n "$MINGW_PREFIX" ]; then
   UCN_PLATFORM="windows"
 elif [ "$(uname -o 2>/dev/null)" = "Msys" ]; then
   UCN_PLATFORM="windows"
+elif [ "$(uname -s 2>/dev/null)" = "Linux" ]; then
+  UCN_PLATFORM="linux"
 else
   UCN_PLATFORM="linux"
 fi
@@ -29,14 +31,19 @@ UCN_REPO_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 # --- Directorio base de datos del usuario ---
 case "$UCN_PLATFORM" in
   termux)
-    # En Termux: usar sdcard
-    if [ -d "/storage/emulated/0/universida-datos" ]; then
-      UCN_DATA_DIR="/storage/emulated/0/universida-datos"
-    elif [ -d "/mnt/sdcard/universida-datos" ]; then
-      UCN_DATA_DIR="/mnt/sdcard/universida-datos"
-    else
-      UCN_DATA_DIR="$HOME/universida-datos"
-    fi
+    # En Termux: usar sdcard. Probar varios puntos de montaje comunes.
+    for cand in \
+      "/storage/emulated/0/universida-datos" \
+      "/storage/0000-0000/universida-datos" \
+      "/mnt/sdcard/universida-datos" \
+      "/data/media/0/universida-datos" \
+      "$HOME/universida-datos"; do
+      if [ -d "$cand" ]; then
+        UCN_DATA_DIR="$cand"
+        break
+      fi
+    done
+    UCN_DATA_DIR="${UCN_DATA_DIR:-$HOME/universida-datos}"
     ;;
   windows)
     # En Windows: USERPROFILE/universida-datos

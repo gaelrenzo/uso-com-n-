@@ -320,6 +320,32 @@ Copy-Item -Path .\laptop-powershell\Microsoft.PowerShell_profile.ps1 -Destinatio
 
 ---
 
+## Personalizacion multi-dispositivo (igual en laptop, tablet y celular)
+
+Documentacion completa: [docs/personalizacion-multi-dispositivo.md](docs/personalizacion-multi-dispositivo.md)
+
+Los comandos de agentes IA son **identicos** en PowerShell (laptop), Bash/Termux
+(tablet y celular) y CMD (laptop). Se resuelven automaticamente en cada dispositivo.
+
+| Comando | Agente |
+|---------|--------|
+| `codex` / `codex-full` | Codex CLI |
+| `cl` / `cl-full` | Claude Code |
+| `ocode` / `ocode-full` | OpenCode |
+| `anti` / `anti-full` | Antigravity (`agy`) |
+| `hermes` / `hermes-full` | Hermes Agent |
+| `ucn-agents` | Diagnostico de agentes instalados |
+
+Verificacion en cada dispositivo:
+
+```bash
+source scripts/ucn-platform.sh   # o: source termux-bash/termux-bash.sh
+echo "Plataforma: $UCN_PLATFORM | Datos: $UCN_DATA_DIR"
+ucn-agents
+```
+
+---
+
 ## Apps recomendadas (F-Droid)
 
 | App | Para que |
@@ -434,6 +460,26 @@ Asegurate de estar dentro del directorio del proyecto o ejecutar desde la raiz:
 ```bash
 cd /mnt/sdcard/universida-datos/uso-com-n-
 ucn doctor
+```
+
+### Agentes IA (codex, claude, opencode, hermes) no funcionan
+
+Ver detalle completo: [docs/personalizacion-multi-dispositivo.md](docs/personalizacion-multi-dispositivo.md)
+
+```bash
+# Diagnostico rapido: muestra la ruta de cada agente detectado
+ucn-agents
+
+# Codex roto por dependencia ARM64 -> reinstalar
+npm install -g @openai/codex@latest
+
+# Hermes no encontrado -> localizar y fijar ruta en config/.env
+which hermes
+# UCN_HERMES_BIN=/ruta/al/hermes
+
+# La tablet y el celular se ven distintos -> verificar plataforma/rutas
+source scripts/ucn-platform.sh
+echo "Plataforma: $UCN_PLATFORM | Datos: $UCN_DATA_DIR"
 ```
 
 ### Skills no aparecen despues de sincronizar
