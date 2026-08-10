@@ -239,6 +239,16 @@ Muestra la tabla de agentes registrados en `config/agents.yaml` con su estado y 
 ucn agents
 ```
 
+### 4b. Bootstrap de dispositivo (`ucn bootstrap`)
+Prepara un dispositivo (nuevo o recien reinstalado) para que quede igual que los demas:
+```bash
+ucn bootstrap
+```
+*Detecta la plataforma, crea `config/config.yaml` y `config/.env` desde sus plantillas si faltan,
+asegura los directorios de datos (notas/informes/cursos/laboratorios), agrega el hook de `termux-bash.sh`
+al `~/.bashrc`, sincroniza las skills de todos los agentes y muestra el estado de los agentes. Es idempotente
+(se puede correr varias veces).*
+
 ### 5. Túnel de Exposición Seguro (`ucn tunnel [nombre_tunel]`)
 Expone tu servidor local (`live-server` u otros) hacia la red pública mediante Cloudflare Tunnel utilizando el token configurado en tu `.env`:
 ```bash
@@ -325,6 +335,7 @@ Copy-Item -Path .\laptop-powershell\Microsoft.PowerShell_profile.ps1 -Destinatio
 | `ucn doctor` | Diagnostica plataforma, dependencias y agentes IA |
 | `ucn doctor --fix` | Corrige config y directorios automáticamente |
 | `ucn agents` | Muestra el estado de los agentes IA del registro |
+| `ucn bootstrap` | Prepara el dispositivo (config, dirs, hook, skills) |
 | `ucn tunnel` | Tunnel Cloudflare |
 | `ucn note "tema"` | Crea nota rapida en Markdown |
 | `ucn clase` | Abre carpeta de universidad |

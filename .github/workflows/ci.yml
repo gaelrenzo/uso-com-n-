@@ -60,6 +60,13 @@ jobs:
       - name: Documentation structure check
         run: |
           set -e
-          for f in config/agents.yaml config/config.yaml.example config/.env.example scripts/ucn-platform.sh scripts/test-all.sh termux-bash/termux-bash.sh README.md; do
+          for f in config/agents.yaml config/config.yaml.example config/.env.example scripts/ucn-platform.sh scripts/test-all.sh termux-bash/termux-bash.sh ucn/internal/bootstrap/bootstrap.go ucn/cmd/ucn/main.go README.md; do
             test -e "$f" && echo "✓ $f"
           done
+
+      - name: ucn bootstrap --dry run output
+        run: |
+          set -e
+          cd ucn && go build -o /tmp/ucn-bin ./cmd/ucn/
+          cd "$GITHUB_WORKSPACE" && /tmp/ucn-bin bootstrap 2>&1 | grep -q "Dispositivo configurado"
+          echo "✓ ucn bootstrap responde"

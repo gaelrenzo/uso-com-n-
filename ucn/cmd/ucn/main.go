@@ -5,6 +5,7 @@ import (
 	"os"
 	"path/filepath"
 	"strings"
+	"ucn/internal/bootstrap"
 	"ucn/internal/config"
 	"ucn/internal/doctor"
 	"ucn/internal/git"
@@ -80,6 +81,12 @@ func main() {
 
 	case "agents":
 		listAgents(repoRoot)
+
+	case "bootstrap":
+		if err := bootstrap.Run(cfg, repoRoot); err != nil {
+			fmt.Printf("❌ Error durante bootstrap: %v\n", err)
+			os.Exit(1)
+		}
 
 	case "tunnel":
 		name := ""
@@ -177,6 +184,7 @@ func printHelp() {
 	fmt.Println("  doctor          Diagnostica plataforma, dependencias, agentes IA y configuración")
 	fmt.Println("  doctor --fix    Corrige automáticamente configuraciones seguras (config/, .env, directorios)")
 	fmt.Println("  agents          Muestra el estado de los agentes IA registrados en config/agents.yaml")
+	fmt.Println("  bootstrap       Prepara este dispositivo: config, directorios, hook de shell y skills")
 	fmt.Println("  tunnel [nombre] Levanta un túnel de Cloudflare utilizando tokens locales o un túnel configurado")
 	fmt.Println("  help            Muestra este mensaje de ayuda")
 	fmt.Println("\nConfiguración:")
