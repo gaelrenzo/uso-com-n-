@@ -157,6 +157,7 @@ El CLI Go (`ucn doctor`) ya tiene diagnostico estructurado y correccion automati
 ucn doctor          # plataforma, agentes (ruta/version), config, skills
 ucn doctor --fix    # crea config/.env, config.yaml y directorios que falten
 ucn agents          # tabla NAME | STATUS | BIN del registro central
+ucn bootstrap       # prepara el dispositivo de cero (config, dirs, hook, skills)
 ```
 
 Y la suite de tests local para validar cambios antes de subirlos:

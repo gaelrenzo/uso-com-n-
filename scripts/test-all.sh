@@ -163,7 +163,7 @@ check_structure() {
 # Check 6: ucn (CLI Go) - doctor y agents
 # ---------------------------------------------------------------------------
 check_go_cli() {
-  header "CLI Go (doctor / agents)"
+  header "CLI Go (doctor / agents / bootstrap)"
   local bin="${GO_BIN:-}"
   if [ -z "$bin" ]; then
     bin="$(command -v ucn || true)"
@@ -181,6 +181,12 @@ check_go_cli() {
     ok "ucn agents responde"
   else
     bad "ucn agents no responde como se espera"
+  fi
+  # bootstrap: respuesta basica (idempotente, no requiere cambios)
+  if ( cd "$REPO_ROOT" && "$bin" bootstrap 2>&1 | grep -q "Dispositivo configurado" ); then
+    ok "ucn bootstrap responde"
+  else
+    bad "ucn bootstrap no responde como se espera"
   fi
 }
 
