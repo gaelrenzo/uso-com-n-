@@ -70,3 +70,10 @@ jobs:
           cd ucn && go build -o /tmp/ucn-bin ./cmd/ucn/
           cd "$GITHUB_WORKSPACE" && /tmp/ucn-bin bootstrap 2>&1 | grep -q "Dispositivo configurado"
           echo "✓ ucn bootstrap responde"
+
+      - name: ucn update --check
+        run: |
+          set -e
+          cd ucn && go build -o /tmp/ucn-bin ./cmd/ucn/
+          cd "$GITHUB_WORKSPACE" && /tmp/ucn-bin update --check 2>&1 | grep -q "UCN UPDATE"
+          echo "✓ ucn update --check responde"

@@ -255,6 +255,15 @@ Expone tu servidor local (`live-server` u otros) hacia la red pública mediante 
 ucn tunnel
 ```
 
+### 5b. Actualización (`ucn update`)
+Sincroniza el dispositivo con el resto: pull del repo, resync de skills y verificación de agentes:
+```bash
+ucn update          # aplica cambios
+ucn update --check  # solo comprueba si hay actualizaciones
+```
+*Hace `git fetch` + `git pull --rebase`, re-enlaza las skills de todos los agentes y reporta
+el estado de los agentes. Ideal para ponerse al día tras trabajar en otro dispositivo.*
+
 ---
 
 ## 📱 Guía Rápida para Dispositivos Móviles (Termux / Ubuntu)
@@ -336,6 +345,8 @@ Copy-Item -Path .\laptop-powershell\Microsoft.PowerShell_profile.ps1 -Destinatio
 | `ucn doctor --fix` | Corrige config y directorios automáticamente |
 | `ucn agents` | Muestra el estado de los agentes IA del registro |
 | `ucn bootstrap` | Prepara el dispositivo (config, dirs, hook, skills) |
+| `ucn update` | Actualiza repo, resync skills y verifica agentes |
+| `ucn update --check` | Solo comprueba si hay actualizaciones |
 | `ucn tunnel` | Tunnel Cloudflare |
 | `ucn note "tema"` | Crea nota rapida en Markdown |
 | `ucn clase` | Abre carpeta de universidad |

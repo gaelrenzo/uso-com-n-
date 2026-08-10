@@ -158,6 +158,8 @@ ucn doctor          # plataforma, agentes (ruta/version), config, skills
 ucn doctor --fix    # crea config/.env, config.yaml y directorios que falten
 ucn agents          # tabla NAME | STATUS | BIN del registro central
 ucn bootstrap       # prepara el dispositivo de cero (config, dirs, hook, skills)
+ucn update          # ponerse al dia: pull + resync skills + verificar agentes
+ucn update --check  # solo comprobar si hay actualizaciones
 ```
 
 Y la suite de tests local para validar cambios antes de subirlos:

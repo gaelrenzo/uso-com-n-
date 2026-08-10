@@ -41,6 +41,7 @@ ucn/
 | **`ucn doctor --fix`** | Corrección automática segura. | Crea `config/config.yaml` y `config/.env` desde sus `.example` si faltan, y asegura los directorios de datos/notas/informes/cursos/laboratorios. |
 | **`ucn agents`** | Estado de agentes IA. | Muestra la tabla `NAME \| STATUS \| BIN` resolviendo cada agente del registro `config/agents.yaml`. |
 | **`ucn bootstrap`** | Preparacion de dispositivo. | Detecta plataforma, crea config desde plantillas, asegura directorios, instala el hook de shell, sincroniza skills y muestra agentes. Idempotente (reinstalable). |
+| **`ucn update`** | Actualizacion del entorno. | `git fetch` + `git pull --rebase`, re-sincroniza skills de todos los agentes y reporta el estado de agentes. Con `--check` solo comprueba si hay actualizaciones. |
 | **`ucn tunnel [nombre]`** | Levanta túnel Cloudflare. | Expone tu servidor local web mediante un túnel seguro de Cloudflare, utilizando el token definido en tu `.env` o la configuración del túnel especificado. |
 
 ---
