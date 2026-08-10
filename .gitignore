@@ -2,6 +2,19 @@
 config/config.yaml
 config/.env
 
+# Secretos y credenciales - NUNCA subir
+.env
+.env.*
+!.env.example
+*.key
+*.pem
+credentials.json
+tokens.json
+client_secret*.json
+*.p12
+*.jks
+netrc
+
 # Binarios y compilaciones de Go
 ucn/ucn
 ucn/ucn.exe
@@ -14,6 +27,7 @@ bin/
 *.test
 *.out
 __debug_bin
+*.test
 
 # Dependencias y temporales
 node_modules/
@@ -32,3 +46,5 @@ Desktop.ini
 *.swp
 *.swo
 *~
+.terraform/
+*.tmp

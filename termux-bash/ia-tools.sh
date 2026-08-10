@@ -119,7 +119,12 @@ hermes-full() {
 }
 
 # --- Diagnostico rapido de agentes instalados en el dispositivo ---
+# Usa el CLI Go (ucn agents -> config/agents.yaml) si esta compilado;
+# si no, usa el resolutor bash como fallback.
 ucn-agents() {
+  if command -v ucn >/dev/null 2>&1; then
+    ucn agents 2>/dev/null && return 0
+  fi
   echo "=== Agentes IA detectados en: ${UCN_PLATFORM:-desconocido} ==="
   local tool bin
   for tool in codex claude opencode hermes agy; do

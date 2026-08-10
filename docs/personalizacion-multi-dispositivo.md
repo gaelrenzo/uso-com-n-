@@ -125,23 +125,52 @@ El resolutor busca el ejecutable en este **orden** (igual en bash y PowerShell):
 
 ---
 
-## 5. Agregar un agente nuevo en el futuro
+## 5. Registro central de agentes (`config/agents.yaml`)
 
-Para instalar un agente futuro y que funcione igual en todos los dispositivos:
+Desde la Fase 1 de robustez, el registro **`config/agents.yaml`** es la fuente de verdad
+que consultan el CLI Go (`ucn doctor`, `ucn agents`) y los tests. Por cada agente define:
+
+- `command` — nombre del binario en el PATH
+- `env` — variable `UCN_<AGENTE>_BIN` que permite override en `config/.env`
+- `wrapper` — comando corto (ej. `cl`, `ocode`, `anti`)
+- `full_args` — argumentos del modo "completo" (sin confirmaciones)
+- `known_paths` — rutas conocidas por plataforma (termux / linux / windows)
+
+### Agregar un agente nuevo
 
 1. **Instalar** el binario en cada dispositivo (o al menos en el PATH).
-2. **Editar `termux-bash/ia-tools.sh`**: anadir su caso en `ucn_resolve`
-   (rutas conocidas) y su lanzador `nombre() { ucn_run <tool> "$@"; }`.
-3. **Editar `laptop-powershell/Microsoft.PowerShell_profile.ps1`**: anadir la ruta
-   al hash `$Known` de `Get-UcnAgentBin` y la funcion `nombre`.
-4. **Documentarlo** en este archivo (seccion 1 y 4).
-5. Hacer commit y push; los demas dispositivos lo reciben con `ucn-update` o `skills-sync`.
+2. **`config/agents.yaml`**: anadir la entrada con `command`, `env`, `wrapper`,
+   `full_args` y `known_paths`. El doctor y la suite de tests lo detectan solo.
+3. **`termux-bash/ia-tools.sh`**: anadir su caso en `ucn_resolve` (rutas conocidas)
+   y su lanzador `nombre() { ucn_run <tool> "$@"; }`.
+4. **`laptop-powershell/Microsoft.PowerShell_profile.ps1`**: anadir la ruta al hash
+   `$Known` de `Get-UcnAgentBin` y la funcion `nombre`.
+5. Documentarlo y hacer commit; los demas dispositivos lo reciben con `ucn-update`.
 
 ---
 
-## 6. Verificacion rapida (doctor manual)
+## 6. Diagnostico automatico (Fase 1)
 
-En cada dispositivo ejecuta:
+El CLI Go (`ucn doctor`) ya tiene diagnostico estructurado y correccion automatica:
+
+```shell
+ucn doctor          # plataforma, agentes (ruta/version), config, skills
+ucn doctor --fix    # crea config/.env, config.yaml y directorios que falten
+ucn agents          # tabla NAME | STATUS | BIN del registro central
+```
+
+Y la suite de tests local para validar cambios antes de subirlos:
+
+```shell
+./scripts/test-all.sh        # build Go, bash -n, resolver, doctor, estructura
+./scripts/test-all.sh quick  # solo checks rapidos
+```
+
+En GitHub hay CI (`.github/workflows/ci.yml`) que corre esos mismos checks en cada push.
+
+### Verificacion rapida manual
+
+En cada dispositivo ejecuta tambien:
 ```shell
 source scripts/ucn-platform.sh
 echo "Plataforma: $UCN_PLATFORM | Datos: $UCN_DATA_DIR | Repo: $UCN_REPO_DIR"

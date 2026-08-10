@@ -66,7 +66,20 @@ func main() {
 		}
 
 	case "doctor":
-		doctor.CheckHealth(cfg, repoRoot)
+		fixMode := false
+		for _, a := range os.Args[2:] {
+			if a == "--fix" || a == "-f" {
+				fixMode = true
+			}
+		}
+		if fixMode {
+			doctor.CheckHealthFix(cfg, repoRoot)
+		} else {
+			doctor.CheckHealth(cfg, repoRoot, false)
+		}
+
+	case "agents":
+		listAgents(repoRoot)
 
 	case "tunnel":
 		name := ""
@@ -127,6 +140,33 @@ func defaultConfig() *config.Config {
 	}
 }
 
+func listAgents(repoRoot string) {
+	agentsPath := filepath.Join(repoRoot, "config", "agents.yaml")
+	agents, err := config.LoadAgents(agentsPath)
+	if err != nil {
+		fmt.Printf("❌ Error al leer config/agents.yaml: %v\n", err)
+		os.Exit(1)
+	}
+	if len(agents) == 0 {
+		fmt.Println("⚠ No se encontró ninguna entrada en config/agents.yaml")
+		return
+	}
+
+	fmt.Println("NAME       STATUS   BIN / COMMAND")
+	fmt.Println("──────────────────────────────────────")
+	for _, a := range agents {
+		bin := a.ResolveBin()
+		status := "✓"
+		detail := a.Command
+		if bin == "" {
+			status = "✗"
+		} else if bin != a.Command {
+			detail = bin
+		}
+		fmt.Printf("%-10s %-8s %s\n", a.Name, status, detail)
+	}
+}
+
 func printHelp() {
 	fmt.Println("🚀 UCN CLI - Entorno de Desarrollo y Skills de Agentes IA")
 	fmt.Println("Uso:")
@@ -134,10 +174,13 @@ func printHelp() {
 	fmt.Println("\nComandos disponibles:")
 	fmt.Println("  sync            Actualiza el repositorio y sincroniza los enlaces simbólicos de las skills")
 	fmt.Println("  push \"[msj]\"    Agrega cambios de forma segura (sin borrar eliminaciones locales) y hace commit/push")
-	fmt.Println("  doctor          Diagnostica dependencias del sistema y estado de las skills locales")
+	fmt.Println("  doctor          Diagnostica plataforma, dependencias, agentes IA y configuración")
+	fmt.Println("  doctor --fix    Corrige automáticamente configuraciones seguras (config/, .env, directorios)")
+	fmt.Println("  agents          Muestra el estado de los agentes IA registrados en config/agents.yaml")
 	fmt.Println("  tunnel [nombre] Levanta un túnel de Cloudflare utilizando tokens locales o un túnel configurado")
 	fmt.Println("  help            Muestra este mensaje de ayuda")
 	fmt.Println("\nConfiguración:")
 	fmt.Println("  Edita 'config/config.yaml' para rutas y alias locales.")
-	fmt.Println("  Edita 'config/.env' para tokens y variables sensibles.")
+	fmt.Println("  Edita 'config/.env' para tokens y RUTAS de agentes (UCN_<AGENTE>_BIN).")
+	fmt.Println("  Edita 'config/agents.yaml' para el registro central de agentes IA.")
 }

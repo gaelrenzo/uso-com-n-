@@ -22,7 +22,7 @@ ucn/
 │   └── ucn/
 │       └── main.go      # Punto de entrada principal y enrutador de comandos
 └── internal/
-    ├── config/          # Scanner nativo para config.yaml y .env
+    ├── config/          # Scanner nativo para config.yaml, .env y agents.yaml
     ├── doctor/          # Diagnóstico del entorno local de desarrollo
     ├── git/             # Wrapper seguro de operaciones de Git (Safe GitOps)
     ├── sync/            # Enlazador dinámico (Symlinks en Unix / Junctions en Windows)
@@ -37,8 +37,20 @@ ucn/
 | :--- | :--- | :--- |
 | **`ucn sync`** | Sincroniza las Habilidades. | Ejecuta un `git pull --rebase` automático (si está habilitado en `config.yaml`) y recrea todos los enlaces simbólicos de las skills locales hacia las carpetas de los agentes instalados. |
 | **`ucn push "[mensaje]"`**| Safe GitOps Push. | Agrega cambios locales en modo seguro (usando `git add --ignore-removal` para proteger tu repositorio contra borrados accidentales locales), hace commit y sube a GitHub. |
-| **`ucn doctor`** | Diagnóstico del Sistema. | Verifica la existencia de dependencias críticas en tu PATH (`git`, `node`, `npm`, `live-server`, `cloudflared`), valida los archivos de configuración y detecta enlaces simbólicos rotos en tus agentes. |
+| **`ucn doctor`** | Diagnóstico del Sistema. | Verifica plataforma, rutas de datos/notas, dependencias en PATH (`git`, `node`, `npm`, `live-server`, `cloudflared`), agentes de `config/agents.yaml` (ruta + versión), archivos de configuración y enlaces simbólicos rotos. |
+| **`ucn doctor --fix`** | Corrección automática segura. | Crea `config/config.yaml` y `config/.env` desde sus `.example` si faltan, y asegura los directorios de datos/notas/informes/cursos/laboratorios. |
+| **`ucn agents`** | Estado de agentes IA. | Muestra la tabla `NAME \| STATUS \| BIN` resolviendo cada agente del registro `config/agents.yaml`. |
 | **`ucn tunnel [nombre]`** | Levanta túnel Cloudflare. | Expone tu servidor local web mediante un túnel seguro de Cloudflare, utilizando el token definido en tu `.env` o la configuración del túnel especificado. |
+
+---
+
+## 🧪 Tests
+
+```bash
+cd ucn && go test ./internal/config/ -v -run "TestLoadAgents|TestResolveBin"
+```
+
+Desde la raíz del repo, la suite completa se corre con `./scripts/test-all.sh`.
 
 ---
 

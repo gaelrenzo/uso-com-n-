@@ -1,0 +1,72 @@
+# ==============================================================================
+# REGISTRO CENTRAL DE AGENTES IA - UCN
+# ==============================================================================
+# Fuente unica de verdad para resolver binarios de agentes en TODAS las
+# plataformas (Termux, Linux, Windows/macOS). Bash, PowerShell y CMD
+# consumen exactamente la misma definicion.
+#
+# Ordinal de resolucion por plataforma:
+#   1) Variable de entorno UCN_<NOMBRE>_BIN  (config/.env sobreescribe)
+#   2) Comando en el PATH del dispositivo
+#   3) Rutas conocidas de la plataforma (known_paths)
+#
+# Para agregar un agente nuevo: anade su entrada aqui y en
+# scripts/ucn-platform.sh, termux-bash/ia-tools.sh,
+# laptop-powershell/Microsoft.PowerShell_profile.ps1 y laptop-cmd/ucn.cmd
+# ==============================================================================
+
+agents:
+  codex:
+    command: codex
+    env: UCN_CODEX_BIN
+    wrapper: codex
+    full_args: --dangerously-bypass-approvals-and-sandbox
+    description: OpenAI Codex - agente de codigo de OpenAI
+    known_paths:
+      termux: ["/data/data/com.termux/files/usr/bin/codex"]
+      linux: ["/usr/bin/codex", "/usr/local/bin/codex"]
+      windows: ["%USERPROFILE%\\.codex\\bin\\codex.exe", "%APPDATA%\\npm\\codex.cmd"]
+
+  claude:
+    command: claude
+    env: UCN_CLAUDE_BIN
+    wrapper: cl
+    full_args: --yes
+    description: Claude Code - agente de Anthropic
+    known_paths:
+      termux: ["/data/data/com.termux/files/usr/bin/claude"]
+      linux: ["/usr/bin/claude", "/usr/local/bin/claude"]
+      windows: ["%USERPROFILE%\\.claude\\local\\claude.exe", "%APPDATA%\\npm\\claude.cmd"]
+
+  opencode:
+    command: opencode
+    env: UCN_OPENCODE_BIN
+    wrapper: ocode
+    full_args: --agent build
+    description: OpenCode - agente de codigo open source
+    known_paths:
+      termux: ["/data/data/com.termux/files/usr/bin/opencode"]
+      linux: ["/usr/bin/opencode", "/usr/local/bin/opencode", "/root/.opencode/bin/opencode"]
+      windows: ["%USERPROFILE%\\.opencode\\bin\\opencode.exe", "%APPDATA%\\npm\\opencode.cmd"]
+
+  hermes:
+    command: hermes
+    env: UCN_HERMES_BIN
+    wrapper: hermes
+    full_args: --yolo
+    description: Hermes - agente local de la mochila digital
+    known_paths:
+      termux: ["/data/data/com.termux/files/usr/bin/hermes"]
+      linux: ["/usr/bin/hermes", "/usr/local/bin/hermes"]
+      windows: ["%LOCALAPPDATA%\\hermes\\hermes-agent\\venv\\Scripts\\hermes.exe", "%USERPROFILE%\\hermes-agent\\.venv\\Scripts\\hermes.exe"]
+
+  agy:
+    command: agy
+    env: UCN_AGY_BIN
+    wrapper: anti
+    full_args: --dangerously-skip-permissions
+    description: Antigravity CLI (agy) - agente de Google
+    known_paths:
+      termux: ["/data/data/com.termux/files/usr/bin/agy"]
+      linux: ["/usr/bin/agy", "/usr/local/bin/agy", "/root/.local/bin/agy"]
+      windows: ["%USERPROFILE%\\.local\\bin\\agy.exe"]
