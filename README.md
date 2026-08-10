@@ -108,6 +108,32 @@ python main.py --path "./mi carpeta" --apply          # Ejecutar plan
 
 ---
 
+## Repositorios de Ingenieria y Practicas PLC-Modbus
+
+Documentacion completa (repos verificados, fuentes, OpenPLC v4, búsquedas): [docs/repos-ingenieria-electromecanica.md](docs/repos-ingenieria-electromecanica.md)
+
+Practicas de automatizacion sin hardware (simulan un PLC por Modbus TCP):
+
+```
+practicas/plc-modbus/
+├── 1_servidor_plc.py        # PLC virtual: servidor Modbus TCP
+├── 2_cliente_panel.py       # Panel de operador (motores, velocidad, alarmas)
+└── 3_escaneo_rtu_futuro.py  # Polling tipo SCADA
+```
+
+```bash
+# Requiere (fuera de la SD, FUSE no permite venv con symlinks):
+python3 -m venv /tmp/opencode/venv
+/tmp/opencode/venv/bin/pip install pymodbus
+
+# Terminal 1: PLC | Terminal 2: panel | Terminal 3: SCADA
+/tmp/opencode/venv/bin/python 1_servidor_plc.py 5020
+/tmp/opencode/venv/bin/python 2_cliente_panel.py 127.0.0.1 5020
+/tmp/opencode/venv/bin/python 3_escaneo_rtu_futuro.py 127.0.0.1 5020
+```
+
+---
+
 ## Instalacion rapida (multi-plataforma)
 
 ### 1. Clonar el repo
