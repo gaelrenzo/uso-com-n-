@@ -150,6 +150,11 @@ check_structure() {
     profiles/programacion/profile.yaml
     profiles/investigacion/profile.yaml
     profiles/universidad/profile.yaml
+    config/profile-prompts/default.md
+    config/profile-prompts/ingenieria.md
+    config/profile-prompts/programacion.md
+    config/profile-prompts/investigacion.md
+    config/profile-prompts/universidad.md
     scripts/ucn-platform.sh
     termux-bash/termux-bash.sh
     termux-bash/ia-tools.sh
@@ -212,6 +217,12 @@ check_go_cli() {
     ok "ucn profile use/current responde"
   else
     bad "ucn profile use/current no responde como se espera"
+  fi
+  # profile export: genera el archivo de prompt para los wrappers
+  if ( cd "$REPO_ROOT" && "$bin" profile export ingenieria 2>&1 | grep -q "profile-prompts/ingenieria.md" ); then
+    ok "ucn profile export responde"
+  else
+    bad "ucn profile export no responde como se espera"
   fi
 }
 

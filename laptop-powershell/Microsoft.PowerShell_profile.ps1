@@ -58,6 +58,22 @@ function Get-UcnAgentBin {
     return $null
 }
 
+# --- Perfil de especialidad activo (equivalente Windows de UCN_PROFILE) ---
+$ProfileFile = Join-Path $RepoDir "config\.current-profile"
+if (Test-Path $ProfileFile) {
+    $env:UCN_PROFILE = (Get-Content $ProfileFile -Raw).Trim()
+}
+if (-not $env:UCN_PROFILE) { $env:UCN_PROFILE = "default" }
+
+# Ruta al prompt del perfil activo (generado con: ucn profile export)
+function Get-UcnProfilePromptFile {
+    $name = $env:UCN_PROFILE
+    if (-not $name) { $name = "default" }
+    $f = Join-Path $RepoDir "config\profile-prompts\$name.md"
+    if (Test-Path $f) { return $f }
+    return $null
+}
+
 function Invoke-UcnAgent {
     param([string]$Tool, [string]$ExtraArgs = "", [string[]]$UserArgs = @())
     $Bin = Get-UcnAgentBin $Tool
@@ -66,11 +82,17 @@ function Invoke-UcnAgent {
         Write-Host "Instalalo o define UCN_$($Tool.ToUpper())_BIN en config\.env" -ForegroundColor Yellow
         return
     }
-    if ($ExtraArgs) {
-        & $Bin $ExtraArgs.Split(' ') $UserArgs
-    } else {
-        & $Bin $UserArgs
+    $ArgsList = @()
+    # Inyeccion del prompt del perfil activo: claude usa --append-system-prompt-file
+    if ($Tool -eq "claude") {
+        $pp = Get-UcnProfilePromptFile
+        if ($pp) {
+            $ArgsList += "--append-system-prompt-file", $pp
+        }
     }
+    if ($ExtraArgs) { $ArgsList += $ExtraArgs.Split(' ') }
+    if ($UserArgs.Count -gt 0) { $ArgsList += $UserArgs }
+    & $Bin @ArgsList
 }
 
 function codex       { Invoke-UcnAgent "codex"       "" $args }
@@ -90,6 +112,15 @@ function ucn-agents {
         $b = Get-UcnAgentBin $t
         if ($b) { Write-Host ("  {0,-8} -> {1}" -f $t, $b) -ForegroundColor Green }
         else    { Write-Host ("  {0,-8} -> (no instalado)" -f $t) -ForegroundColor DarkGray }
+    }
+}
+
+function ucn-profile {
+    param([string[]]$ProfileArgs)
+    if (Get-Command ucn -ErrorAction SilentlyContinue) {
+        ucn profile @ProfileArgs
+    } else {
+        Write-Host "El CLI ucn no esta instalado. Instalalo para usar perfiles." -ForegroundColor Yellow
     }
 }
 
@@ -289,6 +320,7 @@ function Show-MOTD {
     Write-Host "  skills-sync = Sincronizar skills" -ForegroundColor Green
     Write-Host "  skills-push = Subir skills" -ForegroundColor Green
     Write-Host "  ucn-update  = Actualizar UCN" -ForegroundColor Green
+    Write-Host "  ucn-profile = Perfil de especialidad (list/use/show)" -ForegroundColor Green
     Write-Host ""
     
     Write-Host "  [HTML & WEB]" -ForegroundColor Yellow

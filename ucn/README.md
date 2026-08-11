@@ -42,7 +42,7 @@ ucn/
 | **`ucn agents`** | Estado de agentes IA. | Muestra la tabla `NAME \| STATUS \| BIN` resolviendo cada agente del registro `config/agents.yaml`. |
 | **`ucn bootstrap`** | Preparacion de dispositivo. | Detecta plataforma, crea config desde plantillas, asegura directorios, instala el hook de shell, sincroniza skills y muestra agentes. Idempotente (reinstalable). |
 | **`ucn update`** | Actualizacion del entorno. | `git fetch` + `git pull --rebase`, re-sincroniza skills de todos los agentes y reporta el estado de agentes. Con `--check` solo comprueba si hay actualizaciones. |
-| **`ucn profile`** | Perfiles de especialidad. | `list` muestra los perfiles de `profiles/`, `use <nombre>` activa uno (guarda `config/.current-profile`), `current` muestra el activo y `show` el detalle (herramientas + prompt). Exporta `UCN_PROFILE`. |
+| **`ucn profile`** | Perfiles de especialidad. | `list` muestra los perfiles de `profiles/`, `use <nombre>` activa uno (guarda `config/.current-profile`), `current` muestra el activo, `show` el detalle (herramientas + prompt) y `export [<perfil>]` genera `config/profile-prompts/<perfil>.md` para la inyección en los wrappers. Exporta `UCN_PROFILE`. |
 | **`ucn tunnel [nombre]`** | Levanta túnel Cloudflare. | Expone tu servidor local web mediante un túnel seguro de Cloudflare, utilizando el token definido en tu `.env` o la configuración del túnel especificado. |
 
 ---

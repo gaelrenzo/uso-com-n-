@@ -271,10 +271,17 @@ ucn profile list        # ver perfiles disponibles
 ucn profile use ingenieria    # activa el perfil de ingenieria
 ucn profile current     # ver el perfil activo
 ucn profile show        # ver el prompt que se activara en los agentes
+ucn profile export      # regenera config/profile-prompts/<perfil>.md
 ```
 Perfiles incluidos (`profiles/<nombre>/profile.yaml`): `default`, `ingenieria` (MATLAB, Python,
 LaTeX, AutoCAD, SolidWorks, ETAP, APA 7), `programacion` (GitHub, Node, Docker, APIs, testing),
 `investigacion` (IEEE/APA, LaTeX/BibTeX) y `universidad` (tareas, examenes, exposiciones).
+
+**Inyección en los agentes.** El prompt del perfil activo se exporta a `config/profile-prompts/<perfil>.md`
+(se regenera con `ucn profile export`). Los wrappers de agentes lo inyectan automáticamente:
+`cl`/`cl-full` (Claude) lanzan `claude --append-system-prompt-file <archivo>`, y los demás agentes
+reciben el perfil vía `UCN_PROFILE`. Los wrappers están en `termux-bash/ia-tools.sh` (Termux/Linux),
+`laptop-powershell/Microsoft.PowerShell_profile.ps1` (Windows) y `laptop-cmd/ucn.cmd` (CMD).
 
 El perfil activo queda guardado por dispositivo en `config/.current-profile` (no se sube al repo)
 y se exporta como `UCN_PROFILE` en `ucn-platform.sh`.

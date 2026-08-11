@@ -162,11 +162,18 @@ ucn update          # ponerse al dia: pull + resync skills + verificar agentes
 ucn update --check  # solo comprobar si hay actualizaciones
 ucn profile use X   # activar perfil de especialidad (ingenieria, programacion, ...)
 ucn profile show    # ver prompt activo del perfil
+ucn profile export  # regenerar config/profile-prompts/<perfil>.md
 ```
 
 Los perfiles (`profiles/<nombre>/profile.yaml`) son identicos en todos los dispositivos y el
 perfil activo (`config/.current-profile`) se guarda por dispositivo. La variable `UCN_PROFILE`
 se exporta al cargar `scripts/ucn-platform.sh`.
+
+**Inyección del prompt en los agentes.** Cada perfil tiene su prompt en
+`config/profile-prompts/<perfil>.md` (generado con `ucn profile export`). En todos los
+dispositivos el wrapper `cl`/`cl-full` (Claude) lanza `claude --append-system-prompt-file <archivo>`;
+los demás agentes reciben el perfil vía la variable `UCN_PROFILE`. Asi el contexto de especialidad
+viaja con el agente sin cambiar los comandos que se usan cada dia.
 
 Y la suite de tests local para validar cambios antes de subirlos:
 

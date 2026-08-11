@@ -193,7 +193,7 @@ func listAgents(repoRoot string) {
 
 func handleProfile(repoRoot string, args []string) {
 	if len(args) == 0 {
-		fmt.Println("Uso: ucn profile <list|use <nombre>|current|show>")
+		fmt.Println("Uso: ucn profile <list|use <nombre>|current|show|export>")
 		fmt.Println("\nPerfiles disponibles:")
 		profiles, err := profile.Discover(repoRoot)
 		if err != nil {
@@ -276,9 +276,21 @@ func handleProfile(repoRoot string, args []string) {
 			fmt.Println(p.Prompt)
 		}
 
+	case "export":
+		name := ""
+		if len(args) >= 2 {
+			name = args[1]
+		}
+		path, err := profile.ExportPrompt(repoRoot, name)
+		if err != nil {
+			fmt.Printf("❌ %v\n", err)
+			os.Exit(1)
+		}
+		fmt.Printf("✅ Prompt exportado a %s\n", path)
+
 	default:
 		fmt.Printf("❌ Subcomando desconocido: %s\n", sub)
-		fmt.Println("Uso: ucn profile <list|use <nombre>|current|show>")
+		fmt.Println("Uso: ucn profile <list|use <nombre>|current|show|export>")
 		os.Exit(1)
 	}
 }
@@ -300,6 +312,7 @@ func printHelp() {
 	fmt.Println("  profile use X   Activa el perfil X (default|ingenieria|programacion|investigacion|universidad)")
 	fmt.Println("  profile current Muestra el perfil activo")
 	fmt.Println("  profile show    Muestra el detalle del perfil activo")
+	fmt.Println("  profile export  Genera config/profile-prompts/<perfil>.md (lo usan los wrappers de agentes)")
 	fmt.Println("  tunnel [nombre] Levanta un túnel de Cloudflare utilizando tokens locales o un túnel configurado")
 	fmt.Println("  help            Muestra este mensaje de ayuda")
 	fmt.Println("\nConfiguración:")

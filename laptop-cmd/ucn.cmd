@@ -25,6 +25,7 @@ set "UCN_REPO_CMD=%UCN_CMD_DIR%\.."
 
 REM --- Diagnostico ---
 doskey ucn-agents=where codex claude opencode hermes agy
+doskey ucn-profile=ucn profile $*
 
 REM --- Comandos base (equivale a aliases.sh) ---
 doskey ll=dir /a
