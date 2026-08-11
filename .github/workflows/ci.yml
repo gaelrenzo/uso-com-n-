@@ -64,6 +64,48 @@ jobs:
             test -e "$f" && echo "✓ $f"
           done
 
+  windows-syntax:
+    name: Windows scripts syntax (pwsh + cmd lint)
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: PowerShell profile parse (pwsh)
+        shell: bash
+        run: |
+          set -e
+          pwsh -NoProfile -Command '
+            $tokens = $null
+            $errors = $null
+            [System.Management.Automation.Language.Parser]::ParseFile($env:PS_FILE, [ref]$tokens, [ref]$errors) | Out-Null
+            if ($errors.Count -gt 0) {
+              $errors | ForEach-Object { Write-Host ("linea {0}: {1}" -f $_.Extent.StartLineNumber, $_.Message) }
+              exit 1
+            }
+            Write-Host "✓ PowerShell profile parsea sin errores"
+          '
+        env:
+          PS_FILE: ${{ github.workspace }}/laptop-powershell/Microsoft.PowerShell_profile.ps1
+
+      - name: CMD doskey lint
+        run: |
+          set -e
+          bad=0
+          while IFS= read -r line; do
+            line=$(echo "$line" | sed 's/^[ \t]*//')
+            case "$line" in
+              doskey*)
+                if ! echo "$line" | grep -qE '^doskey [a-zA-Z0-9_${}.-]+='; then
+                  echo "❌ doskey mal formado: $line"
+                  bad=1
+                fi
+                ;;
+            esac
+          done < laptop-cmd/ucn.cmd
+          if [ "$bad" -ne 0 ]; then exit 1; fi
+          echo "✓ ucn.cmd: todas las lineas doskey con formato valido"
+
       - name: ucn bootstrap --dry run output
         run: |
           set -e
