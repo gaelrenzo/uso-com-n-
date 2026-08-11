@@ -104,6 +104,36 @@ func ActivePrompt(repoRoot string) (string, error) {
 	return p.Prompt, nil
 }
 
+// PromptDir is where per-profile prompt files are committed (consumed by
+// the agent wrappers, e.g. claude --append-system-prompt-file).
+const PromptDir = "config/profile-prompts"
+
+// PromptFilePath returns the prompt file path for a given profile.
+func PromptFilePath(repoRoot, name string) string {
+	return filepath.Join(repoRoot, PromptDir, name+".md")
+}
+
+// ExportPrompt writes a profile's prompt to config/profile-prompts/<name>.md
+// and returns the written path. An empty name uses the active profile.
+func ExportPrompt(repoRoot, name string) (string, error) {
+	if name == "" {
+		n, err := Current(repoRoot)
+		if err != nil {
+			return "", err
+		}
+		name = n
+	}
+	p, err := Get(repoRoot, name)
+	if err != nil {
+		return "", err
+	}
+	path := PromptFilePath(repoRoot, name)
+	if err := os.MkdirAll(filepath.Dir(path), 0755); err != nil {
+		return "", err
+	}
+	return path, os.WriteFile(path, []byte(strings.TrimSpace(p.Prompt)+"\n"), 0644)
+}
+
 // parseProfileYAML parses the small profile.yaml format used by UCN.
 func parseProfileYAML(path string, p *Profile) error {
 	f, err := os.Open(path)

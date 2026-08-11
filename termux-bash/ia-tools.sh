@@ -74,7 +74,30 @@ ucn_run() {
     echo "    UCN_${tool^^}_BIN con su ruta en config/.env" >&2
     return 127
   fi
+
+  # Inyeccion del prompt del perfil activo (UCN_PROFILE):
+  # claude soporta --append-system-prompt-file con un archivo de texto plano.
+  local pp
+  pp="$(ucn_profile_prompt_file)"
+  if [ "$tool" = "claude" ] && [ -n "$pp" ]; then
+    "$bin" --append-system-prompt-file "$pp" "$@"
+    return $?
+  fi
+
   "$bin" "$@"
+}
+
+# --- Prompt del perfil activo (config/profile-prompts/<UCN_PROFILE>.md) ---
+# Archivos generados con: ucn profile export [<perfil>]
+ucn_profile_prompt_file() {
+  local name="${UCN_PROFILE:-default}"
+  local f
+  if [ -n "$UCN_REPO_DIR" ]; then
+    f="$UCN_REPO_DIR/config/profile-prompts/$name.md"
+  else
+    f="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." 2>/dev/null && pwd)/config/profile-prompts/$name.md"
+  fi
+  [ -f "$f" ] && printf '%s\n' "$f"
 }
 
 # --- API de comando unificado (igual en todos los dispositivos) ---
