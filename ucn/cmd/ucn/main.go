@@ -125,28 +125,53 @@ func main() {
 	}
 }
 
+func isRepoRoot(dir string) bool {
+	gitDir := filepath.Join(dir, ".git")
+	cfgEx := filepath.Join(dir, "config", "config.yaml.example")
+	if stat, err := os.Stat(gitDir); err == nil && stat.IsDir() {
+		return true
+	}
+	if _, err := os.Stat(cfgEx); err == nil {
+		return true
+	}
+	return false
+}
+
 func findRepoRoot() (string, error) {
-	dir, err := os.Getwd()
-	if err != nil {
-		return "", err
+	// 1. Check UCN_REPO_DIR environment variable
+	if envDir := os.Getenv("UCN_REPO_DIR"); envDir != "" && isRepoRoot(envDir) {
+		return envDir, nil
 	}
 
-	for {
-		gitDir := filepath.Join(dir, ".git")
-		cfgEx := filepath.Join(dir, "config", "config.yaml.example")
+	// 2. Check current directory and ancestors
+	if dir, err := os.Getwd(); err == nil {
+		for {
+			if isRepoRoot(dir) {
+				return dir, nil
+			}
+			parent := filepath.Dir(dir)
+			if parent == dir {
+				break
+			}
+			dir = parent
+		}
+	}
 
-		if stat, err := os.Stat(gitDir); err == nil && stat.IsDir() {
-			return dir, nil
+	// 3. Fallback candidates for multi-device environments
+	candidates := []string{
+		"/data/data/com.termux/files/home/workspace/uso-com-n-",
+		"/storage/emulated/0/universida-datos/uso-com-n-",
+	}
+	if home := os.Getenv("HOME"); home != "" {
+		candidates = append(candidates,
+			filepath.Join(home, "workspace", "uso-com-n-"),
+			filepath.Join(home, "universida-datos", "uso-com-n-"),
+		)
+	}
+	for _, cand := range candidates {
+		if isRepoRoot(cand) {
+			return cand, nil
 		}
-		if _, err := os.Stat(cfgEx); err == nil {
-			return dir, nil
-		}
-
-		parent := filepath.Dir(dir)
-		if parent == dir {
-			break
-		}
-		dir = parent
 	}
 
 	return "", fmt.Errorf("no se encontró .git ni config/config.yaml.example en las rutas superiores")

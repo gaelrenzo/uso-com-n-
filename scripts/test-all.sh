@@ -123,7 +123,8 @@ check_agent_resolver() {
 check_env_and_paths() {
   header "Variables de entorno / deteccion de rutas"
   if [ "${UCN_PLATFORM:-}" = "" ]; then
-    bash -c 'source "$0/scripts/ucn-platform.sh"' "$REPO_ROOT" >/dev/null 2>&1
+    # shellcheck source=/dev/null
+    source "$REPO_ROOT/scripts/ucn-platform.sh"
   fi
   [ "${UCN_PLATFORM:-}" != "" ] && ok "UCN_PLATFORM=${UCN_PLATFORM}" || bad "UCN_PLATFORM sin definir"
   [ "${UCN_REPO_DIR:-}" != "" ] && ok "UCN_REPO_DIR=${UCN_REPO_DIR}" || bad "UCN_REPO_DIR sin definir"

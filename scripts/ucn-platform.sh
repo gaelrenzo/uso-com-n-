@@ -9,13 +9,13 @@
 # --- Detectar plataforma ---
 # Termux se detecta por TERMUX_VERSION o por la raiz de instalacion de Termux
 # (esto cubre tambien bash corriendo dentro de proot-distro Ubuntu/Debian).
-if [ -n "$TERMUX_VERSION" ] || [ -d "/data/data/com.termux/files/usr" ]; then
+if [ -n "${TERMUX_VERSION:-}" ] || [ -d "/data/data/com.termux/files/usr" ]; then
   UCN_PLATFORM="termux"
-elif [ -f "/proc/sys/fs/binfmt_misc/WSLInterop" ] 2>/dev/null || [ -n "$WSL_DISTRO_NAME" ]; then
+elif [ -f "/proc/sys/fs/binfmt_misc/WSLInterop" ] 2>/dev/null || [ -n "${WSL_DISTRO_NAME:-}" ]; then
   UCN_PLATFORM="wsl"
 elif [ "$(uname -s 2>/dev/null)" = "Darwin" ]; then
   UCN_PLATFORM="macos"
-elif [ -n "$MSYSTEM" ] || [ -n "$MINGW_PREFIX" ]; then
+elif [ -n "${MSYSTEM:-}" ] || [ -n "${MINGW_PREFIX:-}" ]; then
   UCN_PLATFORM="windows"
 elif [ "$(uname -o 2>/dev/null)" = "Msys" ]; then
   UCN_PLATFORM="windows"
