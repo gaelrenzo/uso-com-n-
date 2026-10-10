@@ -5,6 +5,7 @@ import (
 	"os"
 	"os/exec"
 	"strings"
+	ucnbuild "ucn/internal/build"
 	"ucn/internal/config"
 	"ucn/internal/git"
 	"ucn/internal/sync"
@@ -12,7 +13,8 @@ import (
 
 // Run performs the update flow: fetch, detect changes, pull, sync skills,
 // fix config and run quick doctor. With checkOnly it only reports availability.
-func Run(cfg *config.Config, repoRoot string, checkOnly bool) error {
+// With build it also recompiles the ucn CLI after the update.
+func Run(cfg *config.Config, repoRoot string, checkOnly bool, build bool) error {
 	fmt.Println("🔄 UCN UPDATE")
 	fmt.Println("──────────────────────────────")
 
@@ -83,6 +85,16 @@ func Run(cfg *config.Config, repoRoot string, checkOnly bool) error {
 			}
 		}
 		fmt.Printf("Agents...... %d/%d disponibles\n", ok, len(agents))
+	}
+
+	// 8. (Opcional) Recompilar el CLI ucn
+	if build {
+		fmt.Println("\n🔨 Reconstruyendo el CLI ucn...")
+		if err := ucnbuild.Build(repoRoot); err != nil {
+			fmt.Printf("  ⚠ %v\n", err)
+		} else {
+			fmt.Printf("  ✅ Binario actualizado: %s\n", ucnbuild.BinaryPath(repoRoot))
+		}
 	}
 
 	fmt.Println("──────────────────────────────")
