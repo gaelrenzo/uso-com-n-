@@ -5,11 +5,13 @@ import (
 	"os"
 	"path/filepath"
 	"strings"
+	ucnbuild "ucn/internal/build"
 	"ucn/internal/bootstrap"
 	"ucn/internal/config"
 	"ucn/internal/doctor"
 	"ucn/internal/git"
 	"ucn/internal/profile"
+	"ucn/internal/skills"
 	"ucn/internal/sync"
 	"ucn/internal/tunnel"
 	"ucn/internal/update"
@@ -92,15 +94,30 @@ func main() {
 
 	case "update":
 		checkOnly := false
+		build := false
 		for _, a := range os.Args[2:] {
-			if a == "--check" || a == "-c" {
+			switch a {
+			case "--check", "-c":
 				checkOnly = true
+			case "--build", "-b":
+				build = true
 			}
 		}
-		if err := update.Run(cfg, repoRoot, checkOnly); err != nil {
+		if err := update.Run(cfg, repoRoot, checkOnly, build); err != nil {
 			fmt.Printf("❌ Error en update: %v\n", err)
 			os.Exit(1)
 		}
+
+	case "build":
+		fmt.Println("🔨 Compilando el CLI ucn...")
+		if err := ucnbuild.Build(repoRoot); err != nil {
+			fmt.Printf("❌ %v\n", err)
+			os.Exit(1)
+		}
+		fmt.Printf("✅ Binario listo: %s\n", ucnbuild.BinaryPath(repoRoot))
+
+	case "skills":
+		handleSkills(cfg, repoRoot, os.Args[2:])
 
 	case "profile":
 		handleProfile(repoRoot, os.Args[2:])
@@ -188,6 +205,121 @@ func listAgents(repoRoot string) {
 			detail = bin
 		}
 		fmt.Printf("%-10s %-8s %s\n", a.Name, status, detail)
+	}
+}
+
+func handleSkills(cfg *config.Config, repoRoot string, args []string) {
+	targets, err := sync.ActiveTargetDirs(cfg)
+	if err != nil {
+		fmt.Printf("❌ %v\n", err)
+		os.Exit(1)
+	}
+	skillsDir := skills.SourceDir(repoRoot)
+
+	if len(args) == 0 {
+		fmt.Println("Uso: ucn skills <list|status [nombre]|clean [--apply]>")
+		fmt.Println("\nSubcomandos:")
+		fmt.Println("  list              Lista las skills del repo y su estado por agente")
+		fmt.Println("  status [nombre]   Detalle de enlaces de una skill (o todas)")
+		fmt.Println("  clean [--apply]   Muestra enlaces rotos y respaldos huérfanos (--apply los elimina)")
+		return
+	}
+
+	switch strings.ToLower(args[0]) {
+	case "list":
+		rows, err := skills.List(skillsDir, targets)
+		if err != nil {
+			fmt.Printf("❌ %v\n", err)
+			os.Exit(1)
+		}
+		if len(rows) == 0 {
+			fmt.Println("No hay skills en skills/agent-skills/")
+			return
+		}
+		fmt.Println("SKILL                          ESTADO            ENLACES")
+		fmt.Println("──────────────────────────────────────────────────────────")
+		for _, s := range rows {
+			fmt.Printf("%-30s %-17s %d/%d\n", s.Name, s.State(), s.Linked, len(s.Detail))
+		}
+		fmt.Println("\nUsa 'ucn skills status <nombre>' para ver el detalle por agente.")
+
+	case "status":
+		name := ""
+		if len(args) >= 2 {
+			name = args[1]
+		}
+		var rows []skills.Skill
+		if name != "" {
+			one, err := skills.Find(skillsDir, targets, name)
+			if err != nil {
+				fmt.Printf("❌ %v\n", err)
+				os.Exit(1)
+			}
+			rows = []skills.Skill{*one}
+		} else {
+			var err error
+			rows, err = skills.List(skillsDir, targets)
+			if err != nil {
+				fmt.Printf("❌ %v\n", err)
+				os.Exit(1)
+			}
+		}
+		for _, s := range rows {
+			fmt.Printf("\n%s  [%s]\n", s.Name, s.State())
+			for _, d := range s.Detail {
+				mark := map[string]string{
+					"linked":  "✓",
+					"broken":  "✗",
+					"missing": "…",
+					"dir":     "≡",
+					"file":    "?",
+					"error":   "!",
+				}[d.State]
+				note := d.Note
+				if note != "" {
+					note = "  " + note
+				}
+				fmt.Printf("  %s %s%s\n", mark, d.Target, note)
+			}
+		}
+
+	case "clean":
+		apply := false
+		for _, a := range args[1:] {
+			if a == "--apply" || a == "-a" {
+				apply = true
+			}
+		}
+		issues := skills.FindIssues(targets)
+		if len(issues) == 0 {
+			fmt.Println("✓ No hay enlaces rotos ni respaldos huérfanos.")
+			return
+		}
+		fmt.Println("Problemas encontrados:")
+		removed := 0
+		for _, is := range issues {
+			extra := ""
+			if is.Kind == "enlace-roto" && apply {
+				if err := skills.Remove(is.Path); err != nil {
+					extra = "  ❌ " + err.Error()
+				} else {
+					extra = "  ✅ eliminado"
+					removed++
+				}
+			}
+			fmt.Printf("  • [%s] %s%s\n", is.Kind, is.Path, extra)
+		}
+		if !apply {
+			fmt.Println("\nUsa 'ucn skills clean --apply' para eliminar los enlaces rotos.")
+			fmt.Println("Los respaldos (*_backup) se reportan pero no se eliminan automáticamente: revísalos a mano.")
+		} else {
+			fmt.Printf("\n%d enlaces rotos eliminados.\n", removed)
+		}
+
+	default:
+		fmt.Printf("❌ Subcomando desconocido: %s\n", args[0])
+		fmt.Println("Uso: ucn skills <list|status [nombre]|clean [--apply]>")
+		os.Exit(1)
 	}
 }
 
@@ -306,8 +438,13 @@ func printHelp() {
 	fmt.Println("  doctor --fix    Corrige automáticamente configuraciones seguras (config/, .env, directorios)")
 	fmt.Println("  agents          Muestra el estado de los agentes IA registrados en config/agents.yaml")
 	fmt.Println("  bootstrap       Prepara este dispositivo: config, directorios, hook de shell y skills")
+	fmt.Println("  build           Recompila el CLI ucn (ucn/ucn o ucn/ucn.exe)")
 	fmt.Println("  update          Actualiza el repo, sincroniza skills y verifica agentes")
 	fmt.Println("  update --check  Solo comprueba si hay actualizaciones disponibles")
+	fmt.Println("  update --build  Además, recompila el CLI ucn tras actualizar")
+	fmt.Println("  skills list     Lista las skills del repo con su estado por agente")
+	fmt.Println("  skills status X Muestra el detalle de enlaces de una skill")
+	fmt.Println("  skills clean    Detecta enlaces rotos y respaldos huérfanos (--apply elimina)")
 	fmt.Println("  profile list    Lista los perfiles de especialidad disponibles")
 	fmt.Println("  profile use X   Activa el perfil X (default|ingenieria|programacion|investigacion|universidad)")
 	fmt.Println("  profile current Muestra el perfil activo")
