@@ -75,6 +75,14 @@ ucn_run() {
     return 127
   fi
 
+  # Limpieza preventiva para codex en caso de socket huérfano en Termux/Linux
+  if [ "$tool" = "codex" ] && [ -d "$HOME/.codex/app-server-control" ]; then
+    local sock="$HOME/.codex/app-server-control/app-server-control.sock"
+    if [ -L "$sock" ] && [ ! -e "$sock" ]; then
+      rm -f "$sock" "$HOME/.codex/app-server-control/app-server-startup.lock" 2>/dev/null || true
+    fi
+  fi
+
   # Inyeccion del prompt del perfil activo (UCN_PROFILE):
   # claude soporta --append-system-prompt-file con un archivo de texto plano.
   local pp
@@ -102,11 +110,19 @@ ucn_profile_prompt_file() {
 
 # --- API de comando unificado (igual en todos los dispositivos) ---
 codex() {
-  ucn_run codex "$@"
+  if [ "${1:-}" = "app-server" ] || [[ " $* " == *" --no-daemon "* ]]; then
+    ucn_run codex "$@"
+  else
+    ucn_run codex --no-daemon "$@"
+  fi
 }
 
 codex-full() {
-  ucn_run codex --dangerously-bypass-approvals-and-sandbox "$@"
+  if [[ " $* " == *" --no-daemon "* ]]; then
+    ucn_run codex --dangerously-bypass-approvals-and-sandbox "$@"
+  else
+    ucn_run codex --no-daemon --dangerously-bypass-approvals-and-sandbox "$@"
+  fi
 }
 
 cl() {

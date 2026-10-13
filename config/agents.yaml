@@ -20,7 +20,7 @@ agents:
     command: codex
     env: UCN_CODEX_BIN
     wrapper: codex
-    full_args: --dangerously-bypass-approvals-and-sandbox
+    full_args: --no-daemon --dangerously-bypass-approvals-and-sandbox
     description: OpenAI Codex - agente de codigo de OpenAI
     known_paths:
       termux: ["/data/data/com.termux/files/usr/bin/codex"]
