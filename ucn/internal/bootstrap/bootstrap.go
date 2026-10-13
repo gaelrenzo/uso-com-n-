@@ -3,10 +3,10 @@ package bootstrap
 import (
 	"fmt"
 	"os"
-	"os/exec"
 	"path/filepath"
 	"runtime"
 	"strings"
+	ucnbuild "ucn/internal/build"
 	"ucn/internal/config"
 	"ucn/internal/sync"
 )
@@ -179,9 +179,6 @@ func BuildAndInstall(repoRoot string) (string, error) {
 	if runtime.GOOS == "windows" {
 		return "", fmt.Errorf("en Windows usa: go build -o ucn.exe cmd/ucn/main.go")
 	}
-	if _, err := exec.LookPath("go"); err != nil {
-		return "", fmt.Errorf("go no esta instalado (pkg install golang)")
-	}
 	home, err := os.UserHomeDir()
 	if err != nil {
 		return "", err
@@ -191,10 +188,8 @@ func BuildAndInstall(repoRoot string) (string, error) {
 		return "", err
 	}
 	out := filepath.Join(binDir, "ucn")
-	cmd := exec.Command("go", "build", "-o", out, "./cmd/ucn/")
-	cmd.Dir = filepath.Join(repoRoot, "ucn")
-	if output, err := cmd.CombinedOutput(); err != nil {
-		return "", fmt.Errorf("%v: %s", err, string(output))
+	if err := ucnbuild.BuildTo(repoRoot, out); err != nil {
+		return "", err
 	}
 	return out, nil
 }

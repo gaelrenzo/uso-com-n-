@@ -174,7 +174,7 @@ check_structure() {
 # Check 6: ucn (CLI Go) - doctor y agents
 # ---------------------------------------------------------------------------
 check_go_cli() {
-  header "CLI Go (doctor / agents / bootstrap / update / profile)"
+  header "CLI Go (doctor / agents / bootstrap / update / skills / build / profile)"
   local bin="${GO_BIN:-}"
   if [ -z "$bin" ]; then
     bin="$(command -v ucn || true)"
@@ -204,6 +204,28 @@ check_go_cli() {
     ok "ucn update --check responde"
   else
     bad "ucn update --check no responde como se espera"
+  fi
+  # skills list: lista las skills del repo
+  if ( cd "$REPO_ROOT" && "$bin" skills list 2>&1 | grep -q "SKILL" ); then
+    ok "ucn skills list responde"
+  else
+    bad "ucn skills list no responde como se espera"
+  fi
+  # skills clean: detecta enlaces rotos / respaldos huerfanos (no destructivo por defecto)
+  if ( cd "$REPO_ROOT" && "$bin" skills clean 2>&1 | grep -q "Problemas encontrados\|No hay enlaces rotos" ); then
+    ok "ucn skills clean responde"
+  else
+    bad "ucn skills clean no responde como se espera"
+  fi
+  # build: recompila el CLI solo si Go esta disponible
+  if command -v go >/dev/null 2>&1; then
+    if ( cd "$REPO_ROOT" && "$bin" build 2>&1 | grep -q "Binario listo" ); then
+      ok "ucn build responde"
+    else
+      bad "ucn build no responde como se espera"
+    fi
+  else
+    skip "ucn build (go no instalado)"
   fi
   # profile list: debe listar los perfiles
   if ( cd "$REPO_ROOT" && "$bin" profile list 2>&1 | grep -q "ingenieria" ); then

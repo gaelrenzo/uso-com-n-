@@ -21,54 +21,12 @@ func SyncSkills(cfg *config.Config, repoRoot string) error {
 	}
 
 	// 1. Gather default and configured target directories
-	home, err := os.UserHomeDir()
+	targets, err := ActiveTargetDirs(cfg)
 	if err != nil {
-		return fmt.Errorf("error al obtener directorio home: %w", err)
+		return err
 	}
 
-	// Define standard targets
-	standardTargets := []string{
-		filepath.Join(home, ".agents", "skills"),
-		filepath.Join(home, ".claude", "skills"),
-		filepath.Join(home, ".codex", "skills"),
-		filepath.Join(home, ".config", "opencode", "skills"),
-		filepath.Join(home, ".copilot", "skills"),
-		filepath.Join(home, ".cursor", "skills"),
-		filepath.Join(home, ".hermes", "skills"),
-		filepath.Join(home, ".antigravitycli", "skills"),
-		filepath.Join(home, ".gemini", "skills"),
-		filepath.Join(home, ".gemini", "antigravity-cli", "skills"),
-	}
-
-	// Active targets set to avoid duplicates
-	activeTargets := make(map[string]bool)
-
-	for _, target := range standardTargets {
-		agentBase := filepath.Dir(target)
-		// Special case for opencode custom path check
-		if strings.HasSuffix(filepath.ToSlash(target), "/opencode/skills") {
-			agentBase = filepath.Join(home, ".config", "opencode")
-		}
-
-		if stat, err := os.Stat(agentBase); err == nil && stat.IsDir() {
-			activeTargets[target] = true
-		}
-	}
-
-	// Add user-defined targets from config if enabled
-	for agentName, agentOpt := range cfg.Agents {
-		if agentOpt.Enabled && agentOpt.Path != "" {
-			expandedPath := config.ExpandHome(agentOpt.Path)
-			if stat, err := os.Stat(expandedPath); err == nil && stat.IsDir() {
-				// We sync inside /skills directory for that agent
-				targetDir := filepath.Join(expandedPath, "skills")
-				activeTargets[targetDir] = true
-				fmt.Printf("💡 Agente configurado encontrado: %s -> %s\n", agentName, targetDir)
-			}
-		}
-	}
-
-	if len(activeTargets) == 0 {
+	if len(targets) == 0 {
 		fmt.Println("⚠️ No se encontraron agentes de IA instalados en las rutas habituales. Instala Claude, Codex, etc., o configúralos en config.yaml.")
 		return nil
 	}
@@ -87,7 +45,7 @@ func SyncSkills(cfg *config.Config, repoRoot string) error {
 		skillPath := filepath.Join(skillsDir, skillName)
 		fmt.Printf("📦 Procesando skill: %s\n", skillName)
 
-		for targetDir := range activeTargets {
+		for _, targetDir := range targets {
 			// Ensure target skills directory exists
 			if err := os.MkdirAll(targetDir, 0755); err != nil {
 				fmt.Printf("  ❌ Error al crear carpeta destino %s: %v\n", targetDir, err)
@@ -170,4 +128,67 @@ func createOSLink(target, link string) error {
 
 	// Linux / macOS / Termux
 	return os.Symlink(target, link)
+}
+
+// ActiveTargetDirs returns the ordered list of agent skill directories that
+// are active on this device: standard agents whose base directory exists plus
+// agents configured in config.yaml. The list has no duplicates.
+func ActiveTargetDirs(cfg *config.Config) ([]string, error) {
+	home, err := os.UserHomeDir()
+	if err != nil {
+		return nil, fmt.Errorf("error al obtener directorio home: %w", err)
+	}
+
+	// Define standard targets
+	standardTargets := []string{
+		filepath.Join(home, ".agents", "skills"),
+		filepath.Join(home, ".claude", "skills"),
+		filepath.Join(home, ".codex", "skills"),
+		filepath.Join(home, ".config", "opencode", "skills"),
+		filepath.Join(home, ".copilot", "skills"),
+		filepath.Join(home, ".cursor", "skills"),
+		filepath.Join(home, ".hermes", "skills"),
+		filepath.Join(home, ".antigravitycli", "skills"),
+		filepath.Join(home, ".gemini", "skills"),
+		filepath.Join(home, ".gemini", "antigravity-cli", "skills"),
+	}
+
+	var targets []string
+	seen := make(map[string]bool)
+	addTarget := func(target string) {
+		if seen[target] {
+			return
+		}
+		seen[target] = true
+		targets = append(targets, target)
+	}
+
+	for _, target := range standardTargets {
+		agentBase := filepath.Dir(target)
+		// Special case for opencode custom path check
+		if strings.HasSuffix(filepath.ToSlash(target), "/opencode/skills") {
+			agentBase = filepath.Join(home, ".config", "opencode")
+		}
+
+		if stat, err := os.Stat(agentBase); err == nil && stat.IsDir() {
+			addTarget(target)
+		}
+	}
+
+	// Add user-defined targets from config if enabled
+	for agentName, agentOpt := range cfg.Agents {
+		if agentOpt.Enabled && agentOpt.Path != "" {
+			expandedPath := config.ExpandHome(agentOpt.Path)
+			if stat, err := os.Stat(expandedPath); err == nil && stat.IsDir() {
+				// We sync inside /skills directory for that agent
+				targetDir := filepath.Join(expandedPath, "skills")
+				if !seen[targetDir] {
+					fmt.Printf("💡 Agente configurado encontrado: %s -> %s\n", agentName, targetDir)
+				}
+				addTarget(targetDir)
+			}
+		}
+	}
+
+	return targets, nil
 }
