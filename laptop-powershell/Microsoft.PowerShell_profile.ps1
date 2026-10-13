@@ -95,8 +95,8 @@ function Invoke-UcnAgent {
     & $Bin @ArgsList
 }
 
-function codex       { Invoke-UcnAgent "codex"       "" $args }
-function codex-full  { Invoke-UcnAgent "codex"       "--dangerously-bypass-approvals-and-sandbox" $args }
+function codex       { Invoke-UcnAgent "codex"       "--no-daemon" $args }
+function codex-full  { Invoke-UcnAgent "codex"       "--no-daemon --dangerously-bypass-approvals-and-sandbox" $args }
 function anti        { Invoke-UcnAgent "agy"         "" $args }
 function anti-full   { Invoke-UcnAgent "agy"         "--dangerously-skip-permissions" $args }
 function cl          { Invoke-UcnAgent "claude"      "" $args }
