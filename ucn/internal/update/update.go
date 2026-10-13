@@ -5,6 +5,7 @@ import (
 	"os"
 	"os/exec"
 	"strings"
+	ucnbuild "ucn/internal/build"
 	"ucn/internal/config"
 	"ucn/internal/git"
 	"ucn/internal/sync"
@@ -12,7 +13,8 @@ import (
 
 // Run performs the update flow: fetch, detect changes, pull, sync skills,
 // fix config and run quick doctor. With checkOnly it only reports availability.
-func Run(cfg *config.Config, repoRoot string, checkOnly bool) error {
+// With build it also recompiles the ucn CLI after the update.
+func Run(cfg *config.Config, repoRoot string, checkOnly bool, build bool) error {
 	fmt.Println("🔄 UCN UPDATE")
 	fmt.Println("──────────────────────────────")
 
@@ -33,17 +35,27 @@ func Run(cfg *config.Config, repoRoot string, checkOnly bool) error {
 	if d, _ := remoteDivergence(repoRoot, branch); d >= 0 {
 		behind = d
 	}
-	if behind == 0 {
+	ahead := 0
+	if a, _ := remoteAhead(repoRoot, branch); a >= 0 {
+		ahead = a
+	}
+	if behind == 0 && ahead == 0 {
 		fmt.Println("Changes..... ✓ al dia")
-	} else if behind > 0 {
+	} else if behind == 0 && ahead > 0 {
+		fmt.Printf("Changes..... ✓ al dia con remoto (%d commits locales pendientes de push)\n", ahead)
+	} else if behind > 0 && ahead == 0 {
 		fmt.Printf("Changes..... %d nuevos commits disponibles\n", behind)
+	} else if behind > 0 && ahead > 0 {
+		fmt.Printf("Changes..... %d nuevos commits disponibles (%d locales pendientes de push)\n", behind, ahead)
 	} else {
-		fmt.Println("Changes..... ⚠ la rama difiere del remoto (¿commits locales no subidos?)")
+		fmt.Println("Changes..... ⚠ la rama difiere del remoto")
 	}
 
 	if checkOnly {
 		if behind > 0 {
 			fmt.Println("→ Ejecuta 'ucn update' para aplicarlos.")
+		} else if ahead > 0 {
+			fmt.Println("→ Ejecuta 'ucn push' para subir tus commits locales a GitHub.")
 		} else {
 			fmt.Println("✓ UCN esta al dia.")
 		}
@@ -85,6 +97,16 @@ func Run(cfg *config.Config, repoRoot string, checkOnly bool) error {
 		fmt.Printf("Agents...... %d/%d disponibles\n", ok, len(agents))
 	}
 
+	// 8. (Opcional) Recompilar el CLI ucn
+	if build {
+		fmt.Println("\n🔨 Reconstruyendo el CLI ucn...")
+		if err := ucnbuild.Build(repoRoot); err != nil {
+			fmt.Printf("  ⚠ %v\n", err)
+		} else {
+			fmt.Printf("  ✅ Binario actualizado: %s\n", ucnbuild.BinaryPath(repoRoot))
+		}
+	}
+
 	fmt.Println("──────────────────────────────")
 	fmt.Println("✓ UCN actualizado. Verifica con: ucn doctor")
 	return nil
@@ -103,6 +125,17 @@ func currentBranch(repoRoot string) string {
 // its upstream. A negative value means it cannot be determined.
 func remoteDivergence(repoRoot, branch string) (int, error) {
 	out, err := exec.Command("git", "-C", repoRoot, "rev-list", "--count", "HEAD..origin/"+branch).Output()
+	if err != nil {
+		return -1, err
+	}
+	n := 0
+	_, _ = fmt.Sscan(strings.TrimSpace(string(out)), &n)
+	return n, nil
+}
+
+// remoteAhead returns how many commits the local branch is ahead of its upstream.
+func remoteAhead(repoRoot, branch string) (int, error) {
+	out, err := exec.Command("git", "-C", repoRoot, "rev-list", "--count", "origin/"+branch+"..HEAD").Output()
 	if err != nil {
 		return -1, err
 	}

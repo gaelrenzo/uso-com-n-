@@ -260,6 +260,7 @@ Sincroniza el dispositivo con el resto: pull del repo, resync de skills y verifi
 ```bash
 ucn update          # aplica cambios
 ucn update --check  # solo comprueba si hay actualizaciones
+ucn update --build  # además, recompila el CLI ucn tras actualizar
 ```
 *Hace `git fetch` + `git pull --rebase`, re-enlaza las skills de todos los agentes y reporta
 el estado de los agentes. Ideal para ponerse al día tras trabajar en otro dispositivo.*
@@ -285,6 +286,29 @@ reciben el perfil vía `UCN_PROFILE`. Los wrappers están en `termux-bash/ia-too
 
 El perfil activo queda guardado por dispositivo en `config/.current-profile` (no se sube al repo)
 y se exporta como `UCN_PROFILE` en `ucn-platform.sh`.
+
+### 5d. Gestión de skills (`ucn skills`)
+Lista, inspecciona y limpia los enlaces de skills de todos los agentes instalados:
+```bash
+ucn skills list              # tabla: estado de cada skill y enlaces por agente
+ucn skills status spice      # detalle de los enlaces de una skill
+ucn skills status            # detalle de todas
+ucn skills clean             # solo reporta problemas (no destructivo)
+ucn skills clean --apply     # elimina los enlaces rotos detectados
+```
+Estados: `✓ ok` (enlazada en todos los agentes), `⚠ parcial` (faltan agentes), `⚠ dir local`
+(existe un directorio real en lugar del enlace UCN), `✗ roto` (el destino no existe) y
+`✗ no enlazada`. `clean` además detecta los respaldos `*_backup` que `ucn sync` deja al
+reemplazar directorios reales; se reportan pero **no se eliminan automáticamente** (revísalos
+a mano antes de borrarlos).
+
+### 5e. Recompilar el CLI (`ucn build`)
+```bash
+ucn build            # compila ucn/cmd/ucn -> ucn/ucn (o ucn/ucn.exe en Windows)
+ucn update --build   # actualiza el repo y recompila en un solo paso
+```
+Requiere Go instalado. El binario queda en el repo y está en `.gitignore`, así que no
+se sube a GitHub. En Termux/Linux/macOS el build produce `ucn/ucn` y en Windows `ucn/ucn.exe`.
 
 ---
 
@@ -369,6 +393,11 @@ Copy-Item -Path .\laptop-powershell\Microsoft.PowerShell_profile.ps1 -Destinatio
 | `ucn bootstrap` | Prepara el dispositivo (config, dirs, hook, skills) |
 | `ucn update` | Actualiza repo, resync skills y verifica agentes |
 | `ucn update --check` | Solo comprueba si hay actualizaciones |
+| `ucn update --build` | Actualiza y además recompila el CLI |
+| `ucn build` | Recompila el CLI ucn (ucn/ucn o ucn/ucn.exe) |
+| `ucn skills list` | Estado de las skills del repo por agente |
+| `ucn skills status X` | Detalle de enlaces de una skill |
+| `ucn skills clean` | Detecta enlaces rotos y respaldos huérfanos (--apply elimina) |
 | `ucn profile list` | Lista los perfiles de especialidad |
 | `ucn profile use X` | Activa el perfil X |
 | `ucn profile show` | Muestra el perfil activo y su prompt |
