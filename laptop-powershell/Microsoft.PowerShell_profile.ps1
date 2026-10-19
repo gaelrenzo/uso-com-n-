@@ -220,14 +220,43 @@ function Show-MOTD {
     Write-Host "  editui      = Editar perfil PowerShell" -ForegroundColor Green
     Write-Host ""
     
-    Write-Host "  [HERRAMIENTAS IA]  (<cmd>-full = modo sin confirmaciones)" -ForegroundColor Yellow
-    Write-Host "  cl      Claude Code     codex   Codex          gem     Gemini CLI" -ForegroundColor Green
-    Write-Host "  ocode   OpenCode        anti    Antigravity    hermes  Hermes Agent" -ForegroundColor Green
-    Write-Host "  qwen    Qwen Code       crush   Crush          copilot GitHub Copilot" -ForegroundColor Green
-    Write-Host "  amp     Amp             iflow   iFlow          aider   Aider" -ForegroundColor Green
-    Write-Host "  kimi    Kimi CLI        cursor  Cursor Agent   kilo    Kilo Code (sin -full)" -ForegroundColor Green
-    Write-Host "  auggie  Augment (sin -full)" -ForegroundColor Green
-    Write-Host "  ucn-agents = Ver instaladas   ucn-install-ia = Instalar las que falten" -ForegroundColor Green
+    # Tabla de IAs: nombre | comando | version -full (sin confirmaciones)
+    $line = "-" * 40
+    Write-Host "  +-----------" -ForegroundColor Magenta -NoNewline; Write-Host " HERRAMIENTAS IA " -ForegroundColor Yellow -NoNewline; Write-Host "------------+" -ForegroundColor Magenta
+    Write-Host "  |" -ForegroundColor Magenta -NoNewline; Write-Host (" {0,-15} {1,-8} {2,-13} " -f "Agente","Normal","Full (yolo)") -ForegroundColor Cyan -NoNewline; Write-Host "|" -ForegroundColor Magenta
+    Write-Host "  |$line|" -ForegroundColor Magenta
+    foreach ($r in @(
+        @("Claude Code","cl","cl-full"),
+        @("Codex","codex","codex-full"),
+        @("Gemini CLI","gem","gem-full"),
+        @("OpenCode","ocode","ocode-full"),
+        @("Antigravity","anti","anti-full"),
+        @("Hermes Agent","hermes","hermes-full"),
+        @("Qwen Code","qwen","qwen-full"),
+        @("Crush","crush","crush-full"),
+        @("GitHub Copilot","copilot","copilot-full"),
+        @("Amp","amp","amp-full"),
+        @("iFlow","iflow","iflow-full"),
+        @("Aider","aider","aider-full"),
+        @("Kimi CLI","kimi","kimi-full"),
+        @("Cursor Agent","cursor","cursor-full"),
+        @("Kilo Code","kilo","-"),
+        @("Augment","auggie","-")
+    )) {
+        Write-Host "  |" -ForegroundColor Magenta -NoNewline
+        Write-Host (" {0,-15} " -f $r[0]) -NoNewline
+        Write-Host ("{0,-8} " -f $r[1]) -ForegroundColor Green -NoNewline
+        Write-Host ("{0,-13} " -f $r[2]) -ForegroundColor Yellow -NoNewline
+        Write-Host "|" -ForegroundColor Magenta
+    }
+    Write-Host "  |$line|" -ForegroundColor Magenta
+    foreach ($r in @(@("ucn-agents","ver instaladas"), @("ucn-install-ia","instalar las que falten"))) {
+        Write-Host "  |" -ForegroundColor Magenta -NoNewline
+        Write-Host (" {0,-14} " -f $r[0]) -ForegroundColor Cyan -NoNewline
+        Write-Host ("{0,-23} " -f $r[1]) -NoNewline
+        Write-Host "|" -ForegroundColor Magenta
+    }
+    Write-Host "  +$line+" -ForegroundColor Magenta
     Write-Host ""
     
     Write-Host "=====================================================" -ForegroundColor Magenta
