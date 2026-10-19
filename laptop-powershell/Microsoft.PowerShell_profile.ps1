@@ -28,21 +28,17 @@ if (-not $RepoDir) {
     $RepoDir = Join-Path $env:USERPROFILE "workspace\uso-com-n-"
 }
 
-# Directorio de datos del usuario
-$DataDir = Join-Path $env:USERPROFILE "universida-datos"
-$NotesDir = Join-Path $DataDir "notas"
-$InformesDir = Join-Path $DataDir "informes"
-$CursosDir = Join-Path $DataDir "cursos"
 
 # --- Resolutor de binarios de agentes IA (multi-dispositivo) ---
 # Orden: 1) Variable de entorno UCN_<AGENTE>_BIN  2) Get-Command (PATH)  3) Rutas conocidas Windows
 function Get-UcnAgentBin {
     param([string]$Tool)
-    $EnvVar = "UCN_" + $Tool.ToUpper() + "_BIN"
+    $EnvVar = "UCN_" + $Tool.ToUpper().Replace("-", "_") + "_BIN"
     if ((Test-Path Env:$EnvVar) -and (Test-Path (Get-Item Env:$EnvVar).Value)) {
         return (Get-Item Env:$EnvVar).Value
     }
-    $InPath = Get-Command $Tool -ErrorAction SilentlyContinue
+    # -CommandType Application: ignora las funciones wrapper de este perfil (cl, codex, qwen...)
+    $InPath = Get-Command $Tool -CommandType Application -ErrorAction SilentlyContinue | Select-Object -First 1
     if ($InPath) { return $InPath.Source }
     # Rutas conocidas de Windows
     $Known = @{
@@ -100,27 +96,64 @@ function codex-full  { Invoke-UcnAgent "codex"       "--no-daemon --dangerously-
 function anti        { Invoke-UcnAgent "agy"         "" $args }
 function anti-full   { Invoke-UcnAgent "agy"         "--dangerously-skip-permissions" $args }
 function cl          { Invoke-UcnAgent "claude"      "" $args }
-function cl-full     { Invoke-UcnAgent "claude"      "--yes" $args }
+function cl-full     { Invoke-UcnAgent "claude"      "--dangerously-skip-permissions" $args }
 function ocode       { Invoke-UcnAgent "opencode"    "" $args }
 function ocode-full  { Invoke-UcnAgent "opencode"    "--agent build" $args }
 function hermes      { Invoke-UcnAgent "hermes"      "" $args }
 function hermes-full { Invoke-UcnAgent "hermes"      "--yolo" $args }
 
-function ucn-agents {
-    Write-Host "=== Agentes IA detectados en Windows ===" -ForegroundColor Cyan
-    foreach ($t in @("codex","claude","opencode","hermes","agy")) {
-        $b = Get-UcnAgentBin $t
-        if ($b) { Write-Host ("  {0,-8} -> {1}" -f $t, $b) -ForegroundColor Green }
-        else    { Write-Host ("  {0,-8} -> (no instalado)" -f $t) -ForegroundColor DarkGray }
+# --- Otras IAs del mercado (funcionan si estan instaladas: ucn-install-ia) ---
+function gem          { Invoke-UcnAgent "gemini"       "" $args }
+function gem-full     { Invoke-UcnAgent "gemini"       "--yolo" $args }
+function qwen         { Invoke-UcnAgent "qwen"         "" $args }
+function qwen-full    { Invoke-UcnAgent "qwen"         "--yolo" $args }
+function crush        { Invoke-UcnAgent "crush"        "" $args }
+function crush-full   { Invoke-UcnAgent "crush"        "--yolo" $args }
+function copilot      { Invoke-UcnAgent "copilot"      "" $args }
+function copilot-full { Invoke-UcnAgent "copilot"      "--allow-all-tools" $args }
+function amp          { Invoke-UcnAgent "amp"          "" $args }
+function amp-full     { Invoke-UcnAgent "amp"          "--dangerously-allow-all" $args }
+function iflow        { Invoke-UcnAgent "iflow"        "" $args }
+function iflow-full   { Invoke-UcnAgent "iflow"        "--yolo" $args }
+function aider        { Invoke-UcnAgent "aider"        "" $args }
+function aider-full   { Invoke-UcnAgent "aider"        "--yes-always" $args }
+function kimi         { Invoke-UcnAgent "kimi"         "" $args }
+function kimi-full    { Invoke-UcnAgent "kimi"         "--yolo" $args }
+function cursor       { Invoke-UcnAgent "cursor-agent" "" $args }
+function cursor-full  { Invoke-UcnAgent "cursor-agent" "--force" $args }
+function kilo         { Invoke-UcnAgent "kilocode"     "" $args }
+function auggie       { Invoke-UcnAgent "auggie"       "" $args }
+
+$UcnIaTools = @("codex","claude","opencode","hermes","agy","gemini","qwen","crush","copilot","amp","iflow","aider","kimi","cursor-agent","kilocode","auggie")
+
+# Instala las IAs que falten (npm + uv). Una por una: si falla una, sigue.
+function ucn-install-ia {
+    $npm = [ordered]@{
+        codex="@openai/codex"; claude="@anthropic-ai/claude-code"; opencode="opencode-ai"
+        gemini="@google/gemini-cli"; qwen="@qwen-code/qwen-code"; crush="@charmland/crush"
+        copilot="@github/copilot"; amp="@sourcegraph/amp"; iflow="@iflow-ai/iflow-cli"
+        kilocode="@kilocode/cli"; auggie="@augmentcode/auggie"
     }
+    foreach ($bin in $npm.Keys) {
+        if (Get-UcnAgentBin $bin) { Write-Host "OK $bin" -ForegroundColor Green; continue }
+        Write-Host "-> npm i -g $($npm[$bin])" -ForegroundColor Cyan
+        npm install -g $npm[$bin]
+    }
+    foreach ($p in @(@("aider","aider-chat"), @("kimi","kimi-cli"))) {
+        if (-not (Get-UcnAgentBin $p[0])) { uv tool install $p[1] }
+    }
+    if (-not (Get-UcnAgentBin "cursor-agent")) {
+        Write-Host "cursor-agent: instalar manual desde https://cursor.com/cli" -ForegroundColor Yellow
+    }
+    ucn-agents
 }
 
-function ucn-profile {
-    param([string[]]$ProfileArgs)
-    if (Get-Command ucn -ErrorAction SilentlyContinue) {
-        ucn profile @ProfileArgs
-    } else {
-        Write-Host "El CLI ucn no esta instalado. Instalalo para usar perfiles." -ForegroundColor Yellow
+function ucn-agents {
+    Write-Host "=== Agentes IA detectados en Windows ===" -ForegroundColor Cyan
+    foreach ($t in $UcnIaTools) {
+        $b = Get-UcnAgentBin $t
+        if ($b) { Write-Host ("  {0,-13} -> {1}" -f $t, $b) -ForegroundColor Green }
+        else    { Write-Host ("  {0,-13} -> (no instalado)" -f $t) -ForegroundColor DarkGray }
     }
 }
 
@@ -151,124 +184,6 @@ function Edit-Profile {
 function Update-System {
     Write-Host "[Update] Buscando actualizaciones de Winget..." -ForegroundColor Cyan
     winget upgrade --all
-}
-
-# --- HTML FUNCTIONS ---
-function html-serve {
-    param($Port = 8080)
-    Set-Location $RepoDir
-    live-server --host=127.0.0.1 --port=$Port
-}
-
-function html-push {
-    param($Msg = "avance")
-    Set-Location $RepoDir
-    git pull --rebase
-    git add .
-    git commit -m $Msg
-    git push
-}
-
-function html-status {
-    Set-Location $RepoDir
-    Write-Host "=== RAMA ===" -ForegroundColor Cyan
-    git branch
-    Write-Host "=== ESTADO ===" -ForegroundColor Cyan
-    git status
-    Write-Host "=== REMOTO ===" -ForegroundColor Cyan
-    git remote -v
-    Write-Host "=== ULTIMOS COMMITS ===" -ForegroundColor Cyan
-    git log --oneline --decorate -n 5
-}
-
-# --- SKILLS SYNC & PUSH ---
-function skills-sync {
-    Write-Host "[Sync] Actualizando repositorio y sincronizando skills..." -ForegroundColor Cyan
-    Set-Location $RepoDir
-    git pull --rebase
-    $syncScript = Join-Path $RepoDir "skills\sync-agent-skills.ps1"
-    if (Test-Path $syncScript) {
-        powershell -ExecutionPolicy Bypass -File $syncScript
-    } else {
-        Write-Host "  ⚠️  Script de sincronizacion no encontrado: $syncScript" -ForegroundColor Yellow
-    }
-    Write-Host "[Sync] Sincronizacion completada!" -ForegroundColor Green
-}
-
-function skills-push {
-    param($Msg = "update skills")
-    Write-Host "[Sync] Subiendo skills a GitHub (Modo Seguro)..." -ForegroundColor Cyan
-    Set-Location $RepoDir
-    git add --ignore-removal skills/agent-skills/
-    git commit -m $Msg
-    git push
-    Write-Host "[Sync] Skills subidas!" -ForegroundColor Green
-}
-
-# --- UCN FUNCTIONS ---
-function ucn-note {
-    param([string]$Title = "nota-$(Get-Date -Format 'yyyyMMdd-HHmm')")
-    if (-not (Test-Path $NotesDir)) { New-Item -ItemType Directory -Path $NotesDir -Force | Out-Null }
-    $File = Join-Path $NotesDir "$(Get-Date -Format 'yyyyMMdd')-$($Title -replace ' ','-').md"
-    @"
-# $Title
-
-**Fecha:** $(Get-Date -Format 'yyyy-MM-dd HH:mm')
-
----
-
-## Notas
-
-"@ | Out-File -FilePath $File -Encoding UTF8
-    Write-Host "Nota creada: $File" -ForegroundColor Green
-}
-
-function ucn-clase {
-    param([string]$Subject = "")
-    if ($Subject) {
-        $Target = Join-Path $CursosDir $Subject
-        if (-not (Test-Path $Target)) { New-Item -ItemType Directory -Path $Target -Force | Out-Null }
-        Set-Location $Target
-    } else {
-        Set-Location $DataDir
-    }
-    Get-ChildItem
-}
-
-function ucn-informe {
-    param([string]$Title = "informe")
-    $Dir = Join-Path $InformesDir ($Title -replace ' ','-')
-    if (-not (Test-Path $Dir)) { New-Item -ItemType Directory -Path $Dir -Force | Out-Null }
-    $File = Join-Path $Dir "informe.md"
-    @"
-# $Title
-
-**Fecha:** $(Get-Date -Format 'yyyy-MM-dd')
-
----
-
-## 1. Objetivo
-
-## 2. Marco teorico
-
-## 3. Materiales y metodos
-
-## 4. Resultados
-
-## 5. Discusion
-
-## 6. Conclusiones
-
-## 7. Referencias
-
-"@ | Out-File -FilePath $File -Encoding UTF8
-    Write-Host "Plantilla creada: $File" -ForegroundColor Green
-}
-
-function ucn-update {
-    Set-Location $RepoDir
-    git pull
-    Write-Host "UCN actualizado!" -ForegroundColor Green
 }
 
 # --- MOTD ---
@@ -305,28 +220,14 @@ function Show-MOTD {
     Write-Host "  editui      = Editar perfil PowerShell" -ForegroundColor Green
     Write-Host ""
     
-    Write-Host "  [HERRAMIENTAS IA]" -ForegroundColor Yellow
-    Write-Host "  codex / codex-full       = Codex CLI" -ForegroundColor Green
-    Write-Host "  anti  / anti-full        = Antigravity (agy)" -ForegroundColor Green
-    Write-Host "  cl    / cl-full          = Claude Code" -ForegroundColor Green
-    Write-Host "  ocode / ocode-full       = OpenCode" -ForegroundColor Green
-    Write-Host "  hermes / hermes-full     = Hermes Agent" -ForegroundColor Green
-    Write-Host ""
-    
-    Write-Host "  [UCN - Mochila Digital]" -ForegroundColor Yellow
-    Write-Host "  ucn-note    = Nota rapida Markdown" -ForegroundColor Green
-    Write-Host "  ucn-clase   = Abrir carpeta universidad" -ForegroundColor Green
-    Write-Host "  ucn-informe = Plantilla de informe" -ForegroundColor Green
-    Write-Host "  skills-sync = Sincronizar skills" -ForegroundColor Green
-    Write-Host "  skills-push = Subir skills" -ForegroundColor Green
-    Write-Host "  ucn-update  = Actualizar UCN" -ForegroundColor Green
-    Write-Host "  ucn-profile = Perfil de especialidad (list/use/show)" -ForegroundColor Green
-    Write-Host ""
-    
-    Write-Host "  [HTML & WEB]" -ForegroundColor Yellow
-    Write-Host "  html-serve  = Servir pagina local" -ForegroundColor Green
-    Write-Host "  html-push   = Git add + commit + push" -ForegroundColor Green
-    Write-Host "  html-status = Estado del repo" -ForegroundColor Green
+    Write-Host "  [HERRAMIENTAS IA]  (<cmd>-full = modo sin confirmaciones)" -ForegroundColor Yellow
+    Write-Host "  cl      Claude Code     codex   Codex          gem     Gemini CLI" -ForegroundColor Green
+    Write-Host "  ocode   OpenCode        anti    Antigravity    hermes  Hermes Agent" -ForegroundColor Green
+    Write-Host "  qwen    Qwen Code       crush   Crush          copilot GitHub Copilot" -ForegroundColor Green
+    Write-Host "  amp     Amp             iflow   iFlow          aider   Aider" -ForegroundColor Green
+    Write-Host "  kimi    Kimi CLI        cursor  Cursor Agent   kilo    Kilo Code (sin -full)" -ForegroundColor Green
+    Write-Host "  auggie  Augment (sin -full)" -ForegroundColor Green
+    Write-Host "  ucn-agents = Ver instaladas   ucn-install-ia = Instalar las que falten" -ForegroundColor Green
     Write-Host ""
     
     Write-Host "=====================================================" -ForegroundColor Magenta

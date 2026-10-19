@@ -11,21 +11,33 @@ REM --- Comandos IA (equivale a ia-tools.sh) ---
 doskey codex=codex --no-daemon $*
 doskey codex-full=codex --no-daemon --dangerously-bypass-approvals-and-sandbox $*
 doskey cl=claude $*
-doskey cl-full=claude --yes $*
+doskey cl-full=claude --dangerously-skip-permissions $*
 doskey ocode=opencode $*
 doskey ocode-full=opencode --agent build $*
 doskey anti=agy $*
 doskey anti-full=agy --dangerously-skip-permissions $*
 doskey hermes=hermes $*
 doskey hermes-full=hermes --yolo $*
+doskey gem=gemini $*
+doskey gem-full=gemini --yolo $*
+doskey qwen-full=qwen --yolo $*
+doskey crush-full=crush --yolo $*
+doskey copilot-full=copilot --allow-all-tools $*
+doskey amp-full=amp --dangerously-allow-all $*
+doskey iflow-full=iflow --yolo $*
+doskey aider-full=aider --yes-always $*
+doskey kimi-full=kimi --yolo $*
+doskey cursor=cursor-agent $*
+doskey cursor-full=cursor-agent --force $*
+doskey kilo=kilocode $*
 
 REM --- Resolver raiz del repo desde la ubicacion de este archivo ---
 set "UCN_CMD_DIR=%~dp0"
 set "UCN_REPO_CMD=%UCN_CMD_DIR%\.."
 
 REM --- Diagnostico ---
-doskey ucn-agents=where codex claude opencode hermes agy
-doskey ucn-profile=ucn profile $*
+doskey ucn-agents=where codex claude opencode hermes agy gemini qwen crush copilot amp iflow aider kimi cursor-agent kilocode auggie
+doskey ucn-install-ia=powershell -NoProfile -ExecutionPolicy Bypass -Command ". '%UCN_REPO_CMD%\laptop-powershell\Microsoft.PowerShell_profile.ps1' | Out-Null; ucn-install-ia"
 
 REM --- Comandos base (equivale a aliases.sh) ---
 doskey ll=dir /a
@@ -41,11 +53,9 @@ doskey informes=cd /d %USERPROFILE%\universida-datos\informes
 doskey cursos=cd /d %USERPROFILE%\universida-datos\cursos
 doskey workspace=cd /d %UCN_REPO_CMD%
 
-REM --- UCN ---
-doskey ucn-update=cd /d "%UCN_REPO_CMD%" ^&^& git pull ^&^& git push
-doskey ucn-note=powershell -ExecutionPolicy Bypass -NoExit -File "%UCN_REPO_CMD%\laptop-powershell\Microsoft.PowerShell_profile.ps1"
-doskey cls=cls
-
+REM --- Menu solo en sesiones interactivas (AutoRun tambien corre en "cmd /c") ---
+echo %CMDCMDLINE% | find /i "/c" >nul && goto :eof
 ECHO.
-ECHO   [UCN] Alias de CMD cargados (lee laptop-cmd/ucn.cmd)
-ECHO   [UCN] Preferido: PowerShell con laptop-powershell\Microsoft.PowerShell_profile.ps1
+ECHO   [UCN] IA:  cl codex gem ocode anti hermes qwen crush copilot
+ECHO              amp iflow aider kimi cursor kilo auggie   (^<cmd^>-full = sin confirmaciones)
+ECHO   [UCN] ucn-agents = ver instaladas   ucn-install-ia = instalar las que falten
