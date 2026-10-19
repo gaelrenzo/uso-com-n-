@@ -42,5 +42,5 @@ alias informes="cd ${UCN_INFORMES_DIR:-$_DATA/informes} 2>/dev/null || mkdir -p 
 alias cursos="cd ${UCN_CURSOS_DIR:-$_DATA/cursos} 2>/dev/null || mkdir -p ${UCN_CURSOS_DIR:-$_DATA/cursos} && cd ${UCN_CURSOS_DIR:-$_DATA/cursos} && ls -la"
 alias labs="cd ${UCN_LABS_DIR:-$_DATA/laboratorios} 2>/dev/null || mkdir -p ${UCN_LABS_DIR:-$_DATA/laboratorios} && cd ${UCN_LABS_DIR:-$_DATA/laboratorios} && ls -la"
 alias uni="cd $_DATA"
-alias workspace="cd $HOME/workspace 2>/dev/null || mkdir -p $HOME/workspace && cd $HOME/workspace"
+alias workspace="cd \"$UCN_REPO_DIR\""
 alias repos="cd $HOME/workspace 2>/dev/null && ls -d */"
