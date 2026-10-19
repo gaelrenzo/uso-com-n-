@@ -31,7 +31,7 @@ agents:
     command: claude
     env: UCN_CLAUDE_BIN
     wrapper: cl
-    full_args: --yes
+    full_args: --dangerously-skip-permissions
     description: Claude Code - agente de Anthropic
     known_paths:
       termux: ["/data/data/com.termux/files/usr/bin/claude"]

@@ -17,7 +17,7 @@ ucn_resolve() {
   local tool="$1"
 
   # 1) Override explicito via .env / variables de entorno
-  local env_var="UCN_${tool^^}_BIN"
+  local env_var="UCN_${tool^^}_BIN"; env_var="${env_var//-/_}"
   if [ -n "${!env_var:-}" ] && [ -x "${!env_var}" ]; then
     printf '%s\n' "${!env_var}"
     return 0
@@ -56,6 +56,13 @@ ucn_resolve() {
     agy)
       for c in "$HOME/.local/bin/agy" /usr/local/bin/agy /usr/bin/agy /data/data/com.termux/files/usr/bin/agy; do
         [ -x "$c" ] && { printf '%s\n' "$c"; return 0; }
+      done
+      ;;
+    *)
+      # npm global / uv tool / pipx dejan el binario en ~/.local/bin o ~/.npm-global/bin
+      for c in "$HOME/.local/bin/$tool" "$HOME/.npm-global/bin/$tool" "/usr/local/bin/$tool"; do
+        [ -x "$c" ] && { printf '%s
+' "$c"; return 0; }
       done
       ;;
   esac
@@ -130,7 +137,7 @@ cl() {
 }
 
 cl-full() {
-  ucn_run claude --yes "$@"
+  ucn_run claude --dangerously-skip-permissions "$@"
 }
 
 ocode() {
@@ -157,32 +164,54 @@ hermes-full() {
   ucn_run hermes --yolo "$@"
 }
 
-# --- Diagnostico rapido de agentes instalados en el dispositivo ---
-# Usa el CLI Go (ucn agents -> config/agents.yaml) si esta compilado;
-# si no, usa el resolutor bash como fallback.
-ucn-agents() {
-  if command -v ucn >/dev/null 2>&1; then
-    ucn agents 2>/dev/null && return 0
-  fi
-  echo "=== Agentes IA detectados en: ${UCN_PLATFORM:-desconocido} ==="
-  local tool bin
-  for tool in codex claude opencode hermes agy; do
-    if bin="$(ucn_resolve "$tool")"; then
-      printf '  %-8s -> %s\n' "$tool" "$bin"
-    else
-      printf '  %-8s -> (no instalado)\n' "$tool"
-    fi
+# --- Otras IAs del mercado (funcionan si estan instaladas: ucn-install-ia) ---
+gem()          { ucn_run gemini "$@"; }
+gem-full()     { ucn_run gemini --yolo "$@"; }
+qwen()         { ucn_run qwen "$@"; }
+qwen-full()    { ucn_run qwen --yolo "$@"; }
+crush()        { ucn_run crush "$@"; }
+crush-full()   { ucn_run crush --yolo "$@"; }
+copilot()      { ucn_run copilot "$@"; }
+copilot-full() { ucn_run copilot --allow-all-tools "$@"; }
+amp()          { ucn_run amp "$@"; }
+amp-full()     { ucn_run amp --dangerously-allow-all "$@"; }
+iflow()        { ucn_run iflow "$@"; }
+iflow-full()   { ucn_run iflow --yolo "$@"; }
+aider()        { ucn_run aider "$@"; }
+aider-full()   { ucn_run aider --yes-always "$@"; }
+kimi()         { ucn_run kimi "$@"; }
+kimi-full()    { ucn_run kimi --yolo "$@"; }
+cursor()       { ucn_run cursor-agent "$@"; }
+cursor-full()  { ucn_run cursor-agent --force "$@"; }
+kilo()         { ucn_run kilocode "$@"; }
+auggie()       { ucn_run auggie "$@"; }
+
+UCN_IA_TOOLS="codex claude opencode hermes agy gemini qwen crush copilot amp iflow aider kimi cursor-agent kilocode auggie"
+
+# --- Instala todas las IAs que falten (npm + uv). Uno por uno: si falla uno, sigue ---
+ucn-install-ia() {
+  local spec bin pkg
+  for spec in codex:@openai/codex claude:@anthropic-ai/claude-code opencode:opencode-ai               gemini:@google/gemini-cli qwen:@qwen-code/qwen-code crush:@charmland/crush               copilot:@github/copilot amp:@sourcegraph/amp iflow:@iflow-ai/iflow-cli               kilocode:@kilocode/cli auggie:@augmentcode/auggie; do
+    bin="${spec%%:*}"; pkg="${spec#*:}"
+    ucn_resolve "$bin" >/dev/null && { echo "✓ $bin"; continue; }
+    echo "→ npm i -g $pkg"; npm install -g "$pkg" || echo "✗ fallo $pkg"
   done
+  command -v uv >/dev/null || curl -LsSf https://astral.sh/uv/install.sh | sh
+  ucn_resolve aider >/dev/null || uv tool install aider-chat || echo "✗ fallo aider"
+  ucn_resolve kimi  >/dev/null || uv tool install kimi-cli   || echo "✗ fallo kimi"
+  ucn_resolve cursor-agent >/dev/null || curl -fsS https://cursor.com/install | bash || echo "✗ fallo cursor"
+  ucn-agents
 }
 
-# --- Perfiles de especialidad (ucn profile) ---
-# Lista, activa o muestra el perfil de especialidad. El prompt del perfil
-# activo queda disponible para los agentes via $UCN_PROFILE y ucn profile show.
-ucn-profile() {
-  if command -v ucn >/dev/null 2>&1; then
-    ucn profile "$@"
-    return $?
-  fi
-  echo "⚠️  El CLI ucn no esta instalado. Instalalo para usar perfiles."
-  return 127
+# --- Diagnostico rapido de agentes instalados en el dispositivo ---
+ucn-agents() {
+  echo "=== Agentes IA detectados en: ${UCN_PLATFORM:-desconocido} ==="
+  local tool bin
+  for tool in $UCN_IA_TOOLS; do
+    if bin="$(ucn_resolve "$tool")"; then
+      printf '  %-13s -> %s\n' "$tool" "$bin"
+    else
+      printf '  %-13s -> (no instalado)\n' "$tool"
+    fi
+  done
 }

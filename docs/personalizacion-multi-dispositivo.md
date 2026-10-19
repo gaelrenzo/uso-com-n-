@@ -17,7 +17,7 @@ Los comandos de agentes IA son **identicos** en:
 | `codex` | Codex CLI | `codex` |
 | `codex-full` | Codex sin confirmaciones | `codex --dangerously-bypass-approvals-and-sandbox` |
 | `cl` | Claude Code | `claude` |
-| `cl-full` | Claude Code modo yes | `claude --yes` |
+| `cl-full` | Claude Code sin permisos | `claude --dangerously-skip-permissions` |
 | `ocode` | OpenCode | `opencode` |
 | `ocode-full` | OpenCode agente build | `opencode --agent build` |
 | `anti` | Antigravity | `agy` |
