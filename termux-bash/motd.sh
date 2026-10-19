@@ -24,15 +24,39 @@ echo -e "  \e[32mweather\e[0m  = Clima en Puno"
 echo -e "  \e[32msysinfo\e[0m  = Info del sistema"
 echo -e "  \e[32meditui\e[0m   = Editar configuracion\n"
 
-echo -e "\e[33mIA y Codigo:\e[0m  (\e[32m<cmd>-full\e[0m = modo sin confirmaciones)"
-echo -e "  \e[32mcl\e[0m      Claude Code     \e[32mcodex\e[0m   Codex          \e[32mgem\e[0m     Gemini CLI"
-echo -e "  \e[32mocode\e[0m   OpenCode        \e[32manti\e[0m    Antigravity    \e[32mhermes\e[0m  Hermes Agent"
-echo -e "  \e[32mqwen\e[0m    Qwen Code       \e[32mcrush\e[0m   Crush          \e[32mcopilot\e[0m GitHub Copilot"
-echo -e "  \e[32mamp\e[0m     Amp             \e[32miflow\e[0m   iFlow          \e[32maider\e[0m   Aider"
-echo -e "  \e[32mkimi\e[0m    Kimi CLI        \e[32mcursor\e[0m  Cursor Agent   \e[32mkilo\e[0m    Kilo Code (sin -full)"
-echo -e "  \e[32mauggie\e[0m  Augment (sin -full)"
-echo -e "  \e[32mucn-agents\e[0m = Ver instaladas   \e[32mucn-install-ia\e[0m = Instalar las que falten
-"
+# --- Tabla de IAs: nombre | comando | version -full (sin confirmaciones) ---
+_ia()  { printf "  \e[35m│\e[0m %-15s \e[1;32m%-8s\e[0m \e[33m%-13s\e[0m \e[35m│\e[0m
+" "$1" "$2" "$3"; }
+_iax() { printf "  \e[35m│\e[0m \e[36m%-14s\e[0m %-23s \e[35m│\e[0m
+" "$1" "$2"; }
+_iah() { printf "  \e[35m%s%s%s\e[0m
+" "$1" "────────────────────────────────────────" "$2"; }
+echo -e "  \e[35m╭───────────\e[1;33m HERRAMIENTAS IA \e[0;35m────────────╮\e[0m"
+printf "  \e[35m│\e[0m \e[1;36m%-15s %-8s %-13s\e[0m \e[35m│\e[0m
+" "Agente" "Normal" "Full (yolo)"
+_iah "├" "┤"
+_ia "Claude Code" "cl" "cl-full"
+_ia "Codex" "codex" "codex-full"
+_ia "Gemini CLI" "gem" "gem-full"
+_ia "OpenCode" "ocode" "ocode-full"
+_ia "Antigravity" "anti" "anti-full"
+_ia "Hermes Agent" "hermes" "hermes-full"
+_ia "Qwen Code" "qwen" "qwen-full"
+_ia "Crush" "crush" "crush-full"
+_ia "GitHub Copilot" "copilot" "copilot-full"
+_ia "Amp" "amp" "amp-full"
+_ia "iFlow" "iflow" "iflow-full"
+_ia "Aider" "aider" "aider-full"
+_ia "Kimi CLI" "kimi" "kimi-full"
+_ia "Cursor Agent" "cursor" "cursor-full"
+_ia "Kilo Code" "kilo" "-"
+_ia "Augment" "auggie" "-"
+_iah "├" "┤"
+_iax "ucn-agents" "ver instaladas"
+_iax "ucn-install-ia" "instalar las que falten"
+_iah "╰" "╯"
+unset -f _ia _iax _iah
+echo
 
 echo -e "\e[33mProductividad:\e[0m"
 echo -e "  \e[32mnotas\e[0m    = Ir a notas"
