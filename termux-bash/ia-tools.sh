@@ -12,6 +12,12 @@
 # la laptop (Windows/PowerShell, Git Bash), la tablet y el celular (Termux).
 # ==============================================================================
 
+# Evita que aliases antiguos oculten los wrappers UCN.
+for _ucn_a in codex codex-full cl cl-full ocode ocode-full anti anti-full hermes hermes-full gem gem-full qwen qwen-full crush crush-full copilot copilot-full amp amp-full iflow iflow-full aider aider-full kimi kimi-full cursor cursor-full kilo auggie; do
+  unalias "$_ucn_a" 2>/dev/null || true
+done
+unset _ucn_a
+
 # --- Resolutor generico: devuelve la ruta del binario o vacio si no existe ---
 ucn_resolve() {
   local tool="$1"
@@ -115,21 +121,40 @@ ucn_profile_prompt_file() {
   [ -f "$f" ] && printf '%s\n' "$f"
 }
 
+# --- Flag --no-daemon segun la version instalada de Codex ---
+ucn_codex_no_daemon_flag() {
+  if [ -z "${_UCN_CODEX_NODAEMON:-}" ]; then
+    local bin
+    if bin="$(ucn_resolve codex)" && "$bin" --help 2>&1 | grep -q -- '--no-daemon'; then
+      _UCN_CODEX_NODAEMON="--no-daemon"
+    else
+      _UCN_CODEX_NODAEMON="none"
+    fi
+  fi
+  [ "$_UCN_CODEX_NODAEMON" = "none" ] || printf '%s\n' "$_UCN_CODEX_NODAEMON"
+}
+
 # --- API de comando unificado (igual en todos los dispositivos) ---
 codex() {
   if [ "${1:-}" = "app-server" ] || [[ " $* " == *" --no-daemon "* ]]; then
     ucn_run codex "$@"
-  else
-    ucn_run codex --no-daemon "$@"
+    return
   fi
+  local nd
+  nd="$(ucn_codex_no_daemon_flag)"
+  # shellcheck disable=SC2086
+  ucn_run codex $nd "$@"
 }
 
 codex-full() {
   if [[ " $* " == *" --no-daemon "* ]]; then
     ucn_run codex --dangerously-bypass-approvals-and-sandbox "$@"
-  else
-    ucn_run codex --no-daemon --dangerously-bypass-approvals-and-sandbox "$@"
+    return
   fi
+  local nd
+  nd="$(ucn_codex_no_daemon_flag)"
+  # shellcheck disable=SC2086
+  ucn_run codex $nd --dangerously-bypass-approvals-and-sandbox "$@"
 }
 
 cl() {
@@ -197,8 +222,8 @@ ucn-install-ia() {
     echo "→ npm i -g $pkg"; npm install -g "$pkg" || echo "✗ fallo $pkg"
   done
   command -v uv >/dev/null || curl -LsSf https://astral.sh/uv/install.sh | sh
-  ucn_resolve aider >/dev/null || uv tool install aider-chat || echo "✗ fallo aider"
-  ucn_resolve kimi  >/dev/null || uv tool install kimi-cli   || echo "✗ fallo kimi"
+  ucn_resolve aider >/dev/null || uv tool install --python 3.12 aider-chat || echo "✗ fallo aider"
+  ucn_resolve kimi  >/dev/null || UV_LINK_MODE=copy uv tool install kimi-cli || echo "✗ fallo kimi"
   ucn_resolve cursor-agent >/dev/null || curl -fsS https://cursor.com/install | bash || echo "✗ fallo cursor"
   ucn-agents
 }
