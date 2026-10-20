@@ -163,6 +163,10 @@ cl() {
 }
 
 cl-full() {
+  # Claude Code bloquea --dangerously-skip-permissions bajo root (EUID 0)
+  # salvo que IS_SANDBOX=1 este definido (escape hatch oficial del CLI).
+  # Comun en Termux con tsu/su: sin esto sale "cannot be used with root/sudo".
+  [ "$(id -u)" -eq 0 ] && export IS_SANDBOX=1
   ucn_run claude --dangerously-skip-permissions "$@"
 }
 
