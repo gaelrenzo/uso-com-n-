@@ -1,0 +1,113 @@
+﻿\documentclass[11pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[spanish]{babel}
+\usepackage{geometry}
+\geometry{margin=2cm}
+\usepackage{booktabs}
+\usepackage{longtable}
+\usepackage{hyperref}
+\hypersetup{colorlinks=true,linkcolor=blue,urlcolor=blue}
+\usepackage{titlesec}
+\title{\textbf{Reporte de Skills Instaladas}\\UCN - Uso con N-}
+\author{Renzo}
+\date{\today}
+
+\begin{document}
+\maketitle
+\tableofcontents
+\newpage
+
+\section{Resumen General}
+
+Este documento cataloga las 29 skills instaladas en el repositorio UCN, indicando su repositorio de origen, dominio y uso principal.
+
+\section{Electrónica y Hardware (12 skills)}
+
+Todas provenientes de \url{https://github.com/aklofas/kicad-happy} (589 stars).
+
+\begin{longtable}{llp{6cm}}
+\toprule
+\textbf{Skill} & \textbf{Categoría} & \textbf{Descripción} \\
+\midrule
+\endhead
+kicad & Análisis & Analiza proyectos KiCad: schematics, PCB, Gerbers, netlists \\
+kidoc & Documentación & Genera HDD, CE Technical Files, ICD, Design Reviews \\
+emc & EMC & Análisis pre-compliance EMC: 44 reglas, FCC/CISPR/CISPR25 \\
+spice & Simulación & Genera y ejecuta testbenches SPICE automáticos \\
+bom & BOM & Orquesta BOM entre DigiKey, Mouser, LCSC, JLCPCB \\
+datasheets & Datasheets & Extrae specs estructuradas de datasheets PDF \\
+digikey & Distribuidor & Búsqueda de componentes en DigiKey \\
+mouser & Distribuidor & Búsqueda de componentes en Mouser \\
+lcsc & Distribuidor & Búsqueda de componentes en LCSC (JLCPCB) \\
+element14 & Distribuidor & Búsqueda en Newark/Farnell/element14 \\
+jlcpcb & Fabricación & BOM/CPL, reglas de diseño, flujo de pedido JLCPCB \\
+pcbway & Fabricación & Alternativa a JLCPCB para ensamblaje turnkey \\
+\bottomrule
+\end{longtable}
+
+\section{Ponytail Suite - Anti-Overengineering (6 skills)}
+
+Todas provenientes de \url{https://github.com/DietrichGebert/ponytail} (52.8K stars).
+
+\begin{longtable}{llp{6cm}}
+\toprule
+\textbf{Skill} & \textbf{Categoría} & \textbf{Descripción} \\
+\midrule
+\endhead
+ponytail & Modo lazy & Solución más simple que funciona (YAGNI) \\
+ponytail-audit & Auditoría & Escanea todo el repo por sobre-ingeniería \\
+ponytail-debt & Deuda & Rastrea atajos y deuda técnica pendiente \\
+ponytail-gain & Métricas & Muestra impacto medido de ponytail \\
+ponytail-help & Ayuda & Referencia rápida de comandos ponytail \\
+ponytail-review & Code Review & Review enfocado en eliminar complejidad \\
+\bottomrule
+\end{longtable}
+
+\section{Otros Skills}
+
+\begin{longtable}{p{3.5cm}p{3cm}p{7cm}}
+\toprule
+\textbf{Skill} & \textbf{Source} & \textbf{Descripción} \\
+\midrule
+\endhead
+systematic-debugging & obra/superpowers & Debugging sistemático: causa raíz antes de fix \\
+changelog-automation & wshobson/agents & Genera changelogs de commits y PRs \\
+postgresql-table-design & wshobson/agents & Schema PostgreSQL: tipos, índices, performance \\
+notebooklm & teng-lin/notebooklm-py & API completa Google NotebookLM \\
+find-skills & vercel-labs/skills & Buscador del ecosistema de skills \\
+agent-reach & Panniantong/Agent-Reach & Búsqueda en 13 plataformas web/redes \\
+api-design-principles & secondsky/claude-skills & Diseño REST y GraphQL APIs \\
+floor-plan-generator & eachlabs/skills & Generación de planos de piso por IA \\
+visual-design-foundations & ibossyNr1/AaaS-Vault & Tipografía, color, spacing, iconografía \\
+professor-synapse & ProfSynapse/Professor-Synapse & Protocolo de agente experto virtual \\
+ingenieria-electromecanica & unknown & CAD, circuitos, simulación electromecánica \\
+\bottomrule
+\end{longtable}
+
+\section{Instalación y Actualización}
+
+\begin{verbatim}
+# Clonar el repositorio
+git clone https://github.com/gaelrenzo/uso-com-n-.git
+cd uso-com-n-
+
+# Actualizar skills desde el repositorio remoto
+cd skills
+./sync-agent-skills.sh
+
+# Para Windows (PowerShell)
+.\sync-agent-skills.ps1
+\end{verbatim}
+
+\section{Estructura de Archivos}
+
+\begin{verbatim}
+uso-com-n-/skills/
+  agent-skills/          # 29 skills con source: en frontmatter
+  agents/                # Configs para opencode, claude, codex, agy
+  sync-agent-skills.sh   # Sync para Linux/Android
+  sync-agent-skills.ps1  # Sync para Windows
+\end{verbatim}
+
+\end{document}

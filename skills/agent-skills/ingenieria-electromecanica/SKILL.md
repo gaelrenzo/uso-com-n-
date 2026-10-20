@@ -1,4 +1,5 @@
 ---
+source: unknown
 name: ingenieria-electromecanica
 description: Asistente especializado en ingeniería mecánica-eléctrica, CAD, circuitos y simulación
 when_to_use: Cuando el usuario pregunta sobre diseño electromecánico, circuitos, CAD, turbomaquinaria o power electronics

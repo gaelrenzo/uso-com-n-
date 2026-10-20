@@ -1,4 +1,5 @@
 ---
+source: https://github.com/Panniantong/Agent-Reach
 name: agent-reach
 description: >
   MUST USE when user wants to 调研/research/搜索/search/查/找/look up anything

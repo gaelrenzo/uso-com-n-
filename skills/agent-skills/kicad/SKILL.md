@@ -1,4 +1,5 @@
 ---
+source: https://github.com/aklofas/kicad-happy
 name: kicad
 description: >-
   Analyze KiCad projects and PDF schematics: schematics, PCB layouts, Gerbers,

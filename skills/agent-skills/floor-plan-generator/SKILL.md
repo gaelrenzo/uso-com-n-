@@ -1,4 +1,5 @@
 ---
+source: https://github.com/eachlabs/skills
 name: floor-plan-generator
 description: Use when the user wants to generate, design, or layout a floor plan using AI constraint-satisfaction solver and room dimensions.
 version: 1.0.0

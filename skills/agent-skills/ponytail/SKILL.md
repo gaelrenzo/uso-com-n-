@@ -1,4 +1,5 @@
 ---
+source: https://github.com/DietrichGebert/ponytail
 name: ponytail
 description: >
   Forces the laziest solution that actually works, simplest, shortest, most

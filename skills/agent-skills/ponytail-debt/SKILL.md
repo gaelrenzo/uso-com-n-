@@ -1,4 +1,5 @@
 ---
+source: https://github.com/DietrichGebert/ponytail
 name: ponytail-debt
 description: >
   Harvest every `ponytail:` comment in the codebase into a debt ledger, so the

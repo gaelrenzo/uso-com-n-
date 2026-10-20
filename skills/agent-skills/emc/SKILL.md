@@ -1,4 +1,5 @@
 ---
+source: https://github.com/aklofas/kicad-happy
 name: emc
 description: >-
   EMC pre-compliance risk analysis for KiCad PCB designs — 18 check categories,
