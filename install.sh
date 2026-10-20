@@ -35,14 +35,18 @@ if [ -f ~/.bashrc ]; then
   if grep -q "termux-bash/termux-bash.sh" ~/.bashrc 2>/dev/null; then
     echo "⚠️  Configuracion ya instalada en ~/.bashrc"
   else
-    echo "" >> ~/.bashrc
-    echo "# Configuracion UCN sincronizada via GitHub" >> ~/.bashrc
-    echo "source \"$BASH_DIR/termux-bash.sh\"" >> ~/.bashrc
+    {
+      echo ""
+      echo "# Configuracion UCN sincronizada via GitHub"
+      echo "source \"$BASH_DIR/termux-bash.sh\""
+    } >> ~/.bashrc
     echo "✅ Configuracion anadida a ~/.bashrc"
   fi
 else
-  echo "# Configuracion UCN sincronizada via GitHub" >> ~/.bashrc
-  echo "source \"$BASH_DIR/termux-bash.sh\"" >> ~/.bashrc
+  {
+    echo "# Configuracion UCN sincronizada via GitHub"
+    echo "source \"$BASH_DIR/termux-bash.sh\""
+  } >> ~/.bashrc
   echo "✅ Archivo .bashrc creado con configuracion UCN"
 fi
 

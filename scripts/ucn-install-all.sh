@@ -67,7 +67,7 @@ fi
 
 # 5. Instalar UCN
 echo "[5/5] Instalando UCN..."
-cd "$SCRIPT_DIR"
+cd "$SCRIPT_DIR" || exit 1
 if [ -d ".git" ]; then
   git pull
 fi

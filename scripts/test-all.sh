@@ -120,14 +120,15 @@ check_agent_resolver() {
 # ---------------------------------------------------------------------------
 # Check 4: Variables de entorno y deteccion de rutas
 # ---------------------------------------------------------------------------
+# shellcheck disable=SC2031  # falso positivo: el subshell de otra funcion no toca estas vars
 check_env_and_paths() {
   header "Variables de entorno / deteccion de rutas"
   if [ "${UCN_PLATFORM:-}" = "" ]; then
     # shellcheck source=/dev/null
     source "$REPO_ROOT/scripts/ucn-platform.sh"
   fi
-  [ "${UCN_PLATFORM:-}" != "" ] && ok "UCN_PLATFORM=${UCN_PLATFORM}" || bad "UCN_PLATFORM sin definir"
-  [ "${UCN_REPO_DIR:-}" != "" ] && ok "UCN_REPO_DIR=${UCN_REPO_DIR}" || bad "UCN_REPO_DIR sin definir"
+  if [ -n "${UCN_PLATFORM:-}" ]; then ok "UCN_PLATFORM=${UCN_PLATFORM}"; else bad "UCN_PLATFORM sin definir"; fi
+  if [ -n "${UCN_REPO_DIR:-}" ]; then ok "UCN_REPO_DIR=${UCN_REPO_DIR}"; else bad "UCN_REPO_DIR sin definir"; fi
 
   # Verificar que el repo fue detectado
   if [ -d "${UCN_REPO_DIR:-/nonexistent}" ]; then
@@ -166,7 +167,7 @@ check_structure() {
   )
   local f
   for f in "${required[@]}"; do
-    [ -e "$REPO_ROOT/$f" ] && ok "$f" || bad "falta $f"
+    if [ -e "$REPO_ROOT/$f" ]; then ok "$f"; else bad "falta $f"; fi
   done
 }
 
