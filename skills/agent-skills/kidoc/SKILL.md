@@ -1,4 +1,5 @@
 ---
+source: https://github.com/aklofas/kicad-happy
 name: kidoc
 description: >-
   Generate professional engineering documentation from KiCad projects — Hardware

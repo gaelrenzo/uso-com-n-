@@ -1,4 +1,5 @@
 ---
+source: https://github.com/aklofas/kicad-happy
 name: spice
 description: >-
   Run automatic SPICE simulations on subcircuits detected from KiCad schematic

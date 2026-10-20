@@ -1,4 +1,5 @@
 ---
+source: https://github.com/DietrichGebert/ponytail
 name: ponytail-help
 description: >
   Quick-reference card for all ponytail modes, skills, and commands.

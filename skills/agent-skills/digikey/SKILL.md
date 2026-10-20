@@ -1,4 +1,5 @@
 ---
+source: https://github.com/aklofas/kicad-happy
 name: digikey
 description: >-
   Search DigiKey for electronic components and download datasheets — primary
