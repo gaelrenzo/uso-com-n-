@@ -1,0 +1,2 @@
+# Scripts siempre en LF (evita romper Termux/Linux desde copias Windows)
+*.sh text eol=lf

@@ -1,3 +1,4 @@
+# shellcheck shell=bash
 # ==========================================
 # TERMUX BASH - PUNTO DE ENTRADA PRINCIPAL
 # Sincronizado via GitHub entre dispositivos
