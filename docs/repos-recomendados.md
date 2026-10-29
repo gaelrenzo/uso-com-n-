@@ -10,8 +10,7 @@ actividad en GitHub antes de adoptar algo: las cifras cambian.
 | [twpayne/chezmoi](https://github.com/twpayne/chezmoi) | Gestor de dotfiles con plantillas por SO; soporta Termux, Linux, macOS y Windows. Podria reemplazar los `install*.sh` + copias manuales de `termux-bash/` y `laptop-powershell/`. Secretos con `age`/`gpg`. |
 | [rios0rios0/dotfiles](https://github.com/rios0rios0/dotfiles) | Ejemplo real con chezmoi para WSL + Windows 11 + Termux: el mismo trio que UCN. Buena referencia de estructura. |
 
-Ruta sugerida: migrar primero solo `termux-bash/` a chezmoi (`chezmoi init --apply gaelrenzo/uso-com-n-`)
-y mantener el CLI `ucn` para sync/doctor/skills.
+Implementado: ver la seccion "Instalacion con chezmoi" del README (`home/` es la raiz de chezmoi).
 
 ## Skills y agentes IA
 

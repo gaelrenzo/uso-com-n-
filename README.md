@@ -67,6 +67,31 @@ UCN/
 
 ---
 
+## Instalacion con chezmoi (opcional)
+
+Alternativa a `install.sh` que funciona igual en Termux, Linux, macOS y Windows.
+La raiz de chezmoi es `home/` (ver `.chezmoiroot`); el resto del repo no se toca.
+
+```bash
+# Termux / Linux / macOS (instalar chezmoi: pkg install chezmoi | apt install chezmoi)
+chezmoi init --apply gaelrenzo/uso-com-n-
+# Usar un clon existente en vez de clonar otro:
+chezmoi init --apply --source ~/workspace/uso-com-n-
+```
+
+```powershell
+# Windows
+winget install twpayne.chezmoi
+chezmoi init --apply gaelrenzo/uso-com-n-
+```
+
+- **bash**: agrega `source .../termux-bash/termux-bash.sh` a `~/.bashrc` solo si falta (no pisa tu contenido).
+- **PowerShell 5 y 7**: el perfil carga `laptop-powershell/Microsoft.PowerShell_profile.ps1` del repo.
+  Si tus Documentos estan en OneDrive, chezmoi usa `~/Documents`; ajusta con `chezmoi cd` si hace falta.
+- Actualizar en cualquier dispositivo: `chezmoi update`.
+
+---
+
 ## Super Organizador Inteligente
 
 Organizador automatico de archivos con inteligencia artificial. Escanea cualquier directorio o unidad, genera arboles de directorios, inventarios de archivos, detecta duplicados y problemas, y usa IA (OpenAI, Gemini, Ollama) para sugerir una estructura de categorias personalizada y ejecutar el plan de organizacion.
