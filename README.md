@@ -113,6 +113,8 @@ python main.py --path "./mi carpeta" --apply          # Ejecutar plan
 
 ## Repositorios de Ingenieria y Practicas PLC-Modbus
 
+Repos para mejorar dotfiles, skills IA y Termux: [docs/repos-recomendados.md](docs/repos-recomendados.md)
+
 Documentacion completa (repos verificados, fuentes, OpenPLC v4, búsquedas): [docs/repos-ingenieria-electromecanica.md](docs/repos-ingenieria-electromecanica.md)
 
 Practicas de automatizacion sin hardware (simulan un PLC por Modbus TCP):
