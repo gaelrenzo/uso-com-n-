@@ -19,7 +19,7 @@ def normalize_filename(name: str) -> str:
     stem = Path(name).stem
     ext = Path(name).suffix
     normalized_stem = normalize_text(stem)
-    return f"{normalized_stem}{ext}"
+    return f"{normalized_stem}{ext.lower()}"
 
 
 def safe_filename(name: str, max_length: int = 200) -> str:

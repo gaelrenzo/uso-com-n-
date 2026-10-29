@@ -17,7 +17,7 @@ jobs:
       - name: Setup Go
         uses: actions/setup-go@v5
         with:
-          go-version: "1.21"
+          go-version-file: ucn/go.mod
 
       - name: Go fmt check
         run: |
@@ -63,6 +63,26 @@ jobs:
           for f in config/agents.yaml config/config.yaml.example config/.env.example scripts/ucn-platform.sh scripts/test-all.sh termux-bash/termux-bash.sh ucn/internal/bootstrap/bootstrap.go ucn/internal/profile/profile.go ucn/cmd/ucn/main.go profiles/default/profile.yaml profiles/ingenieria/profile.yaml README.md; do
             test -e "$f" && echo "✓ $f"
           done
+
+  python:
+    name: Super Organizador (pytest)
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: pip
+          cache-dependency-path: super_organizador/requirements.txt
+
+      - name: Instalar dependencias
+        run: pip install -r super_organizador/requirements.txt pytest
+
+      - name: pytest
+        run: cd super_organizador && python -m pytest -q
 
   windows-syntax:
     name: Windows scripts syntax (pwsh + cmd lint)

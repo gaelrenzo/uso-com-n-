@@ -54,3 +54,14 @@ Desktop.ini
 *.log
 *.out
 *.toc
+
+# Python
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.venv/
+
+# Super Organizador: reportes y logs generados (contienen rutas personales)
+super_organizador/reports/
+super_organizador/fake_log.csv
+super_organizador/logs/

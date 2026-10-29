@@ -1,0 +1,9 @@
+#!/bin/sh
+# chezmoi modify_: recibe el ~/.bashrc actual por stdin y lo devuelve
+# con la linea de UCN agregada (solo si falta). No pisa tu contenido.
+cur=$(cat)
+printf '%s\n' "$cur"
+case "$cur" in
+  *termux-bash/termux-bash.sh*) ;;
+  *) printf '\n# UCN Mochila Digital (chezmoi)\nsource "%s"\n' '{{ .chezmoi.workingTree }}/termux-bash/termux-bash.sh' ;;
+esac
