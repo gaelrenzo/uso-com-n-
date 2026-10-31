@@ -1,110 +1,58 @@
 package config
 
 import (
-	"bufio"
+	"fmt"
 	"os"
 	"path/filepath"
 	"runtime"
 	"strings"
+
+	"gopkg.in/yaml.v3"
 )
 
 // AgentDescriptor describe un agente IA en el registro central (config/agents.yaml)
 type AgentDescriptor struct {
-	Name        string
-	Command     string
-	Env         string
-	Wrapper     string
-	FullArgs    string
-	Description string
+	Name        string `yaml:"-"`
+	Command     string `yaml:"command"`
+	Env         string `yaml:"env"`
+	Wrapper     string `yaml:"wrapper"`
+	FullArgs    string `yaml:"full_args"`
+	Description string `yaml:"description"`
 	// KnownPaths es un mapa plataforma -> lista de rutas candidatas
-	KnownPaths map[string][]string
+	KnownPaths map[string][]string `yaml:"known_paths"`
 }
 
-// LoadAgents reads config/agents.yaml and returns the registry of AI agents.
-// A missing file is not an error: it returns an empty registry.
+// LoadAgents reads config/agents.yaml and returns the registry of AI agents
+// in file order. A missing file is not an error: it returns an empty registry.
 func LoadAgents(agentsPath string) ([]AgentDescriptor, error) {
-	file, err := os.Open(agentsPath)
+	data, err := os.ReadFile(agentsPath)
 	if err != nil {
 		if os.IsNotExist(err) {
 			return nil, nil
 		}
 		return nil, err
 	}
-	defer file.Close()
+
+	var doc struct {
+		Agents yaml.Node `yaml:"agents"`
+	}
+	if err := yaml.Unmarshal(data, &doc); err != nil {
+		return nil, fmt.Errorf("%s: %w", agentsPath, err)
+	}
 
 	var agents []AgentDescriptor
-	var current *AgentDescriptor
-	inKnownPaths := false
-	var knownPlatform string
-
-	scanner := bufio.NewScanner(file)
-	for scanner.Scan() {
-		line := scanner.Text()
-		trimmed := strings.TrimSpace(line)
-		if trimmed == "" || strings.HasPrefix(trimmed, "#") {
-			continue
+	content := doc.Agents.Content
+	for i := 0; i+1 < len(content); i += 2 {
+		agent := AgentDescriptor{Name: content[i].Value}
+		if err := content[i+1].Decode(&agent); err != nil {
+			return nil, fmt.Errorf("%s: agente %s: %w", agentsPath, agent.Name, err)
 		}
-
-		indent := len(line) - len(strings.TrimLeft(line, " "))
-
-		if indent == 6 && inKnownPaths && current != nil {
-			// Plataforma: ["/path1", "/path2"]
-			if strings.Contains(trimmed, ":") {
-				parts := strings.SplitN(trimmed, ":", 2)
-				knownPlatform = strings.TrimSpace(parts[0])
-				paths := parseInlineList(parts[1])
-				if current.KnownPaths == nil {
-					current.KnownPaths = make(map[string][]string)
-				}
-				current.KnownPaths[knownPlatform] = paths
-				continue
-			}
+		agent.Name = content[i].Value
+		if agent.KnownPaths == nil {
+			agent.KnownPaths = make(map[string][]string)
 		}
-
-		if indent >= 4 && current != nil && !inKnownPaths {
-			if strings.HasSuffix(trimmed, ":") {
-				key := strings.TrimSuffix(trimmed, ":")
-				if key == "known_paths" {
-					inKnownPaths = true
-					continue
-				}
-			}
-			parts := strings.SplitN(trimmed, ":", 2)
-			if len(parts) != 2 {
-				if inKnownPaths && indent >= 6 {
-					continue
-				}
-				continue
-			}
-			key := strings.TrimSpace(parts[0])
-			val := strings.TrimSpace(parts[1])
-			val = strings.Trim(val, `"'`)
-			switch key {
-			case "command", "env", "wrapper", "full_args", "description":
-				assignAgentField(current, key, val)
-			}
-			continue
-		}
-
-		if indent < 4 {
-			inKnownPaths = false
-			knownPlatform = ""
-		}
-
-		if indent == 2 {
-			if strings.HasSuffix(trimmed, ":") {
-				name := strings.TrimSuffix(trimmed, ":")
-				agents = append(agents, AgentDescriptor{Name: name, KnownPaths: make(map[string][]string)})
-				current = &agents[len(agents)-1]
-				continue
-			}
-		}
+		agents = append(agents, agent)
 	}
-
-	if err := scanner.Err(); err != nil {
-		return nil, err
-	}
-
 	return agents, nil
 }
 
@@ -131,40 +79,6 @@ func platformKey() string {
 			return "termux"
 		}
 		return "linux"
-	}
-}
-
-func parseInlineList(raw string) []string {
-	// Handle YAML inline lists:  ["a", "b"]  or  [a, b]
-	raw = strings.TrimSpace(raw)
-	raw = strings.TrimPrefix(raw, "[")
-	raw = strings.TrimSuffix(raw, "]")
-	if strings.TrimSpace(raw) == "" {
-		return nil
-	}
-	var out []string
-	for _, part := range strings.Split(raw, ",") {
-		part = strings.TrimSpace(part)
-		part = strings.Trim(part, `"'`)
-		if part != "" {
-			out = append(out, part)
-		}
-	}
-	return out
-}
-
-func assignAgentField(a *AgentDescriptor, key, val string) {
-	switch key {
-	case "command":
-		a.Command = val
-	case "env":
-		a.Env = val
-	case "wrapper":
-		a.Wrapper = val
-	case "full_args":
-		a.FullArgs = val
-	case "description":
-		a.Description = val
 	}
 }
 

@@ -4,12 +4,15 @@ import (
 	"fmt"
 	"os"
 	"path/filepath"
+	"regexp"
 	"runtime"
 	"strings"
 	ucnbuild "ucn/internal/build"
 	"ucn/internal/config"
 	"ucn/internal/sync"
 )
+
+var hookPattern = regexp.MustCompile(`(?:source|\.)\s+"?([^"\s]*termux-bash\.sh)`)
 
 // Run prepares a device so it matches the rest of the fleet:
 // config files, data dirs, shell hook, skills sync and agent check.
@@ -146,13 +149,34 @@ func installShellHook(repoRoot string) error {
 	defer fh.Close()
 
 	existing, err := os.ReadFile(bashrc)
-	if err == nil && strings.Contains(string(existing), "termux-bash.sh") {
+	if err == nil && hookIsCurrent(string(existing), filepath.Join(repoRoot, "termux-bash", "termux-bash.sh")) {
 		return nil // already installed
 	}
 	if _, err := fmt.Fprintf(fh, "\n# UCN - configuracion sincronizada via GitHub\n%s\n", hook); err != nil {
 		return err
 	}
 	return nil
+}
+
+// hookIsCurrent reports whether .bashrc already loads an existing UCN script.
+// A hook whose path is gone (the repo moved) does not count, and it is left in
+// place: it may live inside a user's if/elif block.
+func hookIsCurrent(content, script string) bool {
+	matches := hookPattern.FindAllStringSubmatch(content, -1)
+	if len(matches) == 0 {
+		return strings.Contains(content, "termux-bash.sh")
+	}
+	for _, m := range matches {
+		path := os.ExpandEnv(m[1])
+		if path == script {
+			return true
+		}
+		if _, err := os.Stat(path); err == nil {
+			return true
+		}
+	}
+	fmt.Println("  ⚠ El hook de ~/.bashrc apunta a una ruta que ya no existe; se agrega uno nuevo")
+	return false
 }
 
 // migrateLegacyHook rewrites the old skills/skills.sh hook in place.

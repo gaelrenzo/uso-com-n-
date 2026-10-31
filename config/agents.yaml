@@ -76,7 +76,7 @@ agents:
     env: UCN_GEMINI_BIN
     wrapper: gem
     full_args: --yolo
-    description: Gemini CLI - agente de Google (npm: gem / gem-full)
+    description: "Gemini CLI - agente de Google (npm: gem / gem-full)"
     known_paths:
       termux: ["/data/data/com.termux/files/usr/bin/gemini", "~/.local/bin/gemini"]
       linux: ["/usr/bin/gemini", "/usr/local/bin/gemini", "~/.local/bin/gemini"]
@@ -142,7 +142,7 @@ agents:
     env: UCN_AIDER_BIN
     wrapper: aider
     full_args: --yes-always
-    description: Aider - par de programacion con el LLM (uv tool: aider-chat)
+    description: "Aider - par de programacion con el LLM (uv tool: aider-chat)"
     known_paths:
       termux: ["/data/data/com.termux/files/usr/bin/aider", "~/.local/bin/aider"]
       linux: ["/usr/bin/aider", "/usr/local/bin/aider", "~/.local/bin/aider"]
@@ -153,7 +153,7 @@ agents:
     env: UCN_KIMI_BIN
     wrapper: kimi
     full_args: --yolo
-    description: Kimi CLI - agente de Moonshot AI (uv tool: kimi-cli)
+    description: "Kimi CLI - agente de Moonshot AI (uv tool: kimi-cli)"
     known_paths:
       termux: ["/data/data/com.termux/files/usr/bin/kimi", "~/.local/bin/kimi"]
       linux: ["/usr/bin/kimi", "/usr/local/bin/kimi", "~/.local/bin/kimi"]

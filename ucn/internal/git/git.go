@@ -4,6 +4,8 @@ import (
 	"errors"
 	"fmt"
 	"os/exec"
+	"strings"
+	"ucn/internal/secrets"
 )
 
 // Pull runs "git pull --rebase" in the repo directory
@@ -32,6 +34,40 @@ func hasStagedChanges(repoRoot string) (bool, error) {
 		return true, nil
 	}
 	return false, err
+}
+
+// checkStaged blocks private paths and credentials before they are committed.
+func checkStaged(repoRoot string) error {
+	names := exec.Command("git", "diff", "--cached", "--name-only", "--diff-filter=ACMR", "-z")
+	names.Dir = repoRoot
+	out, err := names.Output()
+	if err != nil {
+		return fmt.Errorf("error al listar cambios: %v", err)
+	}
+
+	var problems []string
+	for _, name := range strings.Split(string(out), "\x00") {
+		if name == "" {
+			continue
+		}
+		if secrets.BlockedPath(name) {
+			problems = append(problems, name+": archivo privado")
+			continue
+		}
+		show := exec.Command("git", "show", ":"+name)
+		show.Dir = repoRoot
+		content, err := show.Output()
+		if err != nil {
+			return fmt.Errorf("error al leer %s: %v", name, err)
+		}
+		for _, finding := range secrets.Scan(name, content) {
+			problems = append(problems, finding.String())
+		}
+	}
+	if len(problems) > 0 {
+		return fmt.Errorf("push bloqueado, no se subio nada:\n  %s", strings.Join(problems, "\n  "))
+	}
+	return nil
 }
 
 // SafePush runs "git add --ignore-removal", commits with a message, and pushes
@@ -65,6 +101,13 @@ func SafePush(repoRoot string, message string, ignoreRemoval bool) error {
 	if !staged {
 		fmt.Println("✅ No hay cambios nuevos para subir.")
 		return nil
+	}
+
+	if err := checkStaged(repoRoot); err != nil {
+		unstage := exec.Command("git", "reset", "-q")
+		unstage.Dir = repoRoot
+		_ = unstage.Run()
+		return err
 	}
 
 	fmt.Printf("💾 Creando commit: \"%s\"...\n", message)

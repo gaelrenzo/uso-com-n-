@@ -2,37 +2,39 @@ package config
 
 import (
 	"bufio"
+	"fmt"
 	"os"
 	"path/filepath"
-	"strconv"
 	"strings"
+
+	"gopkg.in/yaml.v3"
 )
 
 // Developer holds name and email config
 type Developer struct {
-	Name  string
-	Email string
+	Name  string `yaml:"name"`
+	Email string `yaml:"email"`
 }
 
 // Agent represents individual IA agent rules path and toggle
 type Agent struct {
-	Enabled bool
-	Path    string
+	Enabled bool   `yaml:"enabled"`
+	Path    string `yaml:"path"`
 }
 
 // Settings represents general CLI options
 type Settings struct {
-	AutoPullOnSync        bool
-	SafePushIgnoreRemoval bool
-	WeatherCity           string
+	AutoPullOnSync        bool   `yaml:"auto_pull_on_sync"`
+	SafePushIgnoreRemoval bool   `yaml:"safe_push_ignore_removal"`
+	WeatherCity           string `yaml:"weather_city"`
 }
 
 // Config maps the overall yaml configuration structure
 type Config struct {
-	Developer Developer
-	Workspace string
-	Agents    map[string]Agent
-	Settings  Settings
+	Developer Developer        `yaml:"developer"`
+	Workspace string           `yaml:"workspace"`
+	Agents    map[string]Agent `yaml:"agents"`
+	Settings  Settings         `yaml:"settings"`
 }
 
 // LoadConfig reads config.yaml and returns a parsed Config struct
@@ -46,94 +48,16 @@ func LoadConfig(configPath string) (*Config, error) {
 		},
 	}
 
-	file, err := os.Open(configPath)
+	data, err := os.ReadFile(configPath)
 	if err != nil {
 		return nil, err
 	}
-	defer file.Close()
-
-	scanner := bufio.NewScanner(file)
-	var currentSection string
-	var currentSubAgent string
-
-	for scanner.Scan() {
-		line := scanner.Text()
-		trimmed := strings.TrimSpace(line)
-
-		// Omit empty lines and comments
-		if trimmed == "" || strings.HasPrefix(trimmed, "#") {
-			continue
-		}
-
-		// Determine current indentation
-		indent := len(line) - len(strings.TrimLeft(line, " "))
-
-		if indent == 0 {
-			if strings.HasSuffix(trimmed, ":") {
-				currentSection = strings.TrimSuffix(trimmed, ":")
-				currentSubAgent = ""
-			} else if strings.Contains(trimmed, ":") {
-				parts := strings.SplitN(trimmed, ":", 2)
-				key := strings.TrimSpace(parts[0])
-				val := cleanValue(parts[1])
-				if key == "workspace" {
-					cfg.Workspace = val
-				}
-			}
-			continue
-		}
-
-		if indent == 2 {
-			if strings.HasSuffix(trimmed, ":") {
-				if currentSection == "agents" {
-					currentSubAgent = strings.TrimSuffix(trimmed, ":")
-				}
-			} else if strings.Contains(trimmed, ":") {
-				parts := strings.SplitN(trimmed, ":", 2)
-				key := strings.TrimSpace(parts[0])
-				val := cleanValue(parts[1])
-
-				switch currentSection {
-				case "developer":
-					if key == "name" {
-						cfg.Developer.Name = val
-					} else if key == "email" {
-						cfg.Developer.Email = val
-					}
-				case "settings":
-					if key == "auto_pull_on_sync" {
-						cfg.Settings.AutoPullOnSync = parseBool(val)
-					} else if key == "safe_push_ignore_removal" {
-						cfg.Settings.SafePushIgnoreRemoval = parseBool(val)
-					} else if key == "weather_city" {
-						cfg.Settings.WeatherCity = val
-					}
-				}
-			}
-			continue
-		}
-
-		if indent == 4 && currentSection == "agents" && currentSubAgent != "" {
-			if strings.Contains(trimmed, ":") {
-				parts := strings.SplitN(trimmed, ":", 2)
-				key := strings.TrimSpace(parts[0])
-				val := cleanValue(parts[1])
-
-				agent := cfg.Agents[currentSubAgent]
-				if key == "enabled" {
-					agent.Enabled = parseBool(val)
-				} else if key == "path" {
-					agent.Path = val
-				}
-				cfg.Agents[currentSubAgent] = agent
-			}
-		}
+	if err := yaml.Unmarshal(data, cfg); err != nil {
+		return nil, fmt.Errorf("%s: %w", configPath, err)
 	}
-
-	if err := scanner.Err(); err != nil {
-		return nil, err
+	if cfg.Agents == nil {
+		cfg.Agents = make(map[string]Agent)
 	}
-
 	return cfg, nil
 }
 
@@ -164,17 +88,6 @@ func LoadEnv(envPath string) error {
 		}
 	}
 	return scanner.Err()
-}
-
-func cleanValue(val string) string {
-	val = strings.TrimSpace(val)
-	val = strings.Trim(val, `"'`)
-	return val
-}
-
-func parseBool(val string) bool {
-	b, _ := strconv.ParseBool(val)
-	return b
 }
 
 // ExpandHome resolves "~" to the user's home directory path

@@ -66,3 +66,34 @@ func TestSafePushCommitsAndPushes(t *testing.T) {
 		t.Fatalf("push no llego al remoto: %s != %s", local, remote)
 	}
 }
+
+func TestSafePushBlocksSecretsAndPrivateFiles(t *testing.T) {
+	cases := map[string]string{
+		"nota.txt":                            "ghp_" + strings.Repeat("a", 36),
+		"super_organizador/reports/arbol.txt": "contenido-del-reporte",
+	}
+	for name, content := range cases {
+		repo := newRepo(t)
+		path := filepath.Join(repo, filepath.FromSlash(name))
+		if err := os.MkdirAll(filepath.Dir(path), 0755); err != nil {
+			t.Fatal(err)
+		}
+		if err := os.WriteFile(path, []byte(content), 0644); err != nil {
+			t.Fatal(err)
+		}
+		before := run(t, repo, "rev-parse", "HEAD")
+		err := SafePush(repo, "m", true)
+		if err == nil || !strings.Contains(err.Error(), "push bloqueado") {
+			t.Fatalf("%s: se esperaba bloqueo, got %v", name, err)
+		}
+		if strings.Contains(err.Error(), content) {
+			t.Fatal("el error no debe mostrar el contenido")
+		}
+		if after := run(t, repo, "rev-parse", "HEAD"); after != before {
+			t.Fatal("no debia crear commit")
+		}
+		if staged := run(t, repo, "diff", "--cached", "--name-only"); staged != "" {
+			t.Fatalf("debe quedar sin preparar: %s", staged)
+		}
+	}
+}

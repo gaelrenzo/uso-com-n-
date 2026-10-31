@@ -1,12 +1,13 @@
 package profile
 
 import (
-	"bufio"
 	"fmt"
 	"os"
 	"path/filepath"
 	"sort"
 	"strings"
+
+	"gopkg.in/yaml.v3"
 )
 
 // Profile describes one available profile from profiles/<name>/profile.yaml.
@@ -134,116 +135,32 @@ func ExportPrompt(repoRoot, name string) (string, error) {
 	return path, os.WriteFile(path, []byte(strings.TrimSpace(p.Prompt)+"\n"), 0644)
 }
 
-// parseProfileYAML parses the small profile.yaml format used by UCN.
+// parseProfileYAML reads a profile.yaml. Scalars are collapsed to one line
+// because the prompt is passed to the agents as plain text.
 func parseProfileYAML(path string, p *Profile) error {
-	f, err := os.Open(path)
+	data, err := os.ReadFile(path)
 	if err != nil {
 		return err
 	}
-	defer f.Close()
-
+	var raw struct {
+		Name        string   `yaml:"name"`
+		Description string   `yaml:"description"`
+		Tools       []string `yaml:"tools"`
+		Prompt      string   `yaml:"prompt"`
+	}
+	if err := yaml.Unmarshal(data, &raw); err != nil {
+		return fmt.Errorf("%s: %w", path, err)
+	}
 	p.DisplayName = p.Name
-	var promptLines []string
-	promptBlock := false
-	descBlock := false
-	var descLines []string
-	toolsBlock := false
-
-	scanner := bufio.NewScanner(f)
-	for scanner.Scan() {
-		line := scanner.Text()
-		trimmed := strings.TrimSpace(line)
-		if trimmed == "" || strings.HasPrefix(trimmed, "#") {
-			continue
-		}
-
-		indent := len(line) - len(strings.TrimLeft(line, " "))
-
-		// Continuation of a scalar block (description / prompt)
-		if promptBlock || descBlock {
-			if indent >= 2 {
-				if promptBlock {
-					promptLines = append(promptLines, trimmed)
-				} else {
-					descLines = append(descLines, trimmed)
-				}
-				continue
-			}
-			promptBlock = false
-			descBlock = false
-		}
-
-		// Block list items under tools:
-		if toolsBlock {
-			if indent >= 2 && strings.HasPrefix(trimmed, "-") {
-				item := strings.TrimSpace(strings.TrimPrefix(trimmed, "-"))
-				if item != "" {
-					p.Tools = append(p.Tools, strings.Trim(item, `"'`))
-				}
-				continue
-			}
-			toolsBlock = false
-		}
-
-		parts := strings.SplitN(trimmed, ":", 2)
-		if len(parts) != 2 {
-			continue
-		}
-		key := strings.TrimSpace(parts[0])
-		val := strings.TrimSpace(parts[1])
-
-		switch key {
-		case "name":
-			p.DisplayName = strings.Trim(val, `"`)
-		case "description":
-			switch val {
-			case ">", "|":
-				descBlock = true
-				descLines = nil
-				continue
-			default:
-				p.Description = val
-			}
-		case "tools":
-			if val == "" {
-				toolsBlock = true
-				p.Tools = nil
-			} else {
-				p.Tools = parseList(val)
-			}
-		case "prompt":
-			if val == "|" || val == ">" {
-				promptBlock = true
-				promptLines = nil
-			} else {
-				p.Prompt = strings.Trim(val, `"`)
-			}
-		}
+	if raw.Name != "" {
+		p.DisplayName = raw.Name
 	}
-	if err := scanner.Err(); err != nil {
-		return err
-	}
-	if len(promptLines) > 0 {
-		p.Prompt = strings.Join(promptLines, " ")
-	}
-	if len(descLines) > 0 {
-		p.Description = strings.Join(descLines, " ")
-	}
+	p.Description = oneLine(raw.Description)
+	p.Tools = raw.Tools
+	p.Prompt = oneLine(raw.Prompt)
 	return nil
 }
 
-func parseList(raw string) []string {
-	raw = strings.TrimSpace(raw)
-	if raw == "" {
-		return nil
-	}
-	var out []string
-	for _, part := range strings.Split(raw, ",") {
-		part = strings.TrimSpace(part)
-		part = strings.Trim(part, `"'`)
-		if part != "" {
-			out = append(out, part)
-		}
-	}
-	return out
+func oneLine(text string) string {
+	return strings.Join(strings.Fields(text), " ")
 }

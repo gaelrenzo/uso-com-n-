@@ -11,6 +11,7 @@ import (
 	"ucn/internal/doctor"
 	"ucn/internal/git"
 	"ucn/internal/profile"
+	"ucn/internal/secrets"
 	"ucn/internal/skills"
 	"ucn/internal/sync"
 	"ucn/internal/tunnel"
@@ -132,6 +133,9 @@ func main() {
 			os.Exit(1)
 		}
 
+	case "secrets":
+		handleSecrets(repoRoot)
+
 	case "help", "-h", "--help":
 		printHelp()
 
@@ -231,6 +235,23 @@ func listAgents(repoRoot string) {
 		}
 		fmt.Printf("%-10s %-8s %s\n", a.Name, status, detail)
 	}
+}
+
+// handleSecrets scans the tracked files; CI uses its exit code.
+func handleSecrets(repoRoot string) {
+	problems, err := secrets.ScanRepo(repoRoot)
+	if err != nil {
+		fmt.Printf("❌ %v\n", err)
+		os.Exit(1)
+	}
+	if len(problems) == 0 {
+		fmt.Println("✓ Sin secretos ni archivos privados en los archivos versionados")
+		return
+	}
+	for _, problem := range problems {
+		fmt.Printf("❌ %s\n", problem)
+	}
+	os.Exit(1)
 }
 
 func handleSkills(cfg *config.Config, repoRoot string, args []string) {
