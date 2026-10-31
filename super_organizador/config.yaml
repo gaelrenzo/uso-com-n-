@@ -35,3 +35,5 @@ allow_content_analysis: false
 ai_provider: "none"  # none, openai, gemini, ollama
 ai_model: ""
 ai_api_url: ""
+# Maximo de archivos enviados a la IA por ejecucion (nombres y rutas salen del equipo)
+max_ai_items: 200

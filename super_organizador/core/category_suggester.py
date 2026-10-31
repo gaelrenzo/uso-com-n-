@@ -114,7 +114,7 @@ RESUMEN DEL DIRECTORIO:
         if not api_key:
             return ""
         resp = requests.post(
-            "https://api.openai.com/v1/chat/completions",
+            self.api_url or "https://api.openai.com/v1/chat/completions",
             headers={"Authorization": f"Bearer {api_key}", "Content-Type": "application/json"},
             json={
                 "model": self.model or "gpt-4o-mini",
@@ -132,7 +132,8 @@ RESUMEN DEL DIRECTORIO:
         if not api_key:
             return ""
         resp = requests.post(
-            f"https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key={api_key}",
+            f"https://generativelanguage.googleapis.com/v1beta/models/{self.model or 'gemini-2.0-flash'}:generateContent",
+            headers={"x-goog-api-key": api_key},
             json={"contents": [{"parts": [{"text": prompt}]}]},
             timeout=60,
         )
@@ -141,7 +142,7 @@ RESUMEN DEL DIRECTORIO:
 
     def _query_ollama(self, prompt: str) -> str:
         import requests
-        url = os.getenv("OLLAMA_URL", "http://localhost:11434")
+        url = self.api_url or os.getenv("OLLAMA_URL", "http://localhost:11434")
         resp = requests.post(
             f"{url}/api/generate",
             json={"model": self.model or "llama3", "prompt": prompt, "stream": False},

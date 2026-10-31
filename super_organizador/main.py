@@ -45,6 +45,12 @@ def get_root_path(cfg):
     return Path(cfg.get("root_path", "."))
 
 
+def get_ai_settings(cfg):
+    provider = os.getenv("AI_PROVIDER") or cfg.get("ai_provider", "none")
+    model = os.getenv("AI_MODEL") or cfg.get("ai_model", "")
+    return provider, model, cfg.get("ai_api_url", "")
+
+
 def parse_args():
     parser = argparse.ArgumentParser(description="Super Organizador Inteligente - analiza y organiza cualquier unidad/directorio")
     parser.add_argument("--path", "-p", type=str, help="Ruta a analizar (sobreescribe config.yaml y .env)")
@@ -67,7 +73,7 @@ def menu():
     scanned = []
     inventory = []
     dynamic_categories = []
-    provider = cfg.get("ai_provider", "none")
+    provider, ai_model, ai_api_url = get_ai_settings(cfg)
 
     while True:
         print()
@@ -99,7 +105,7 @@ def menu():
             max_items = cfg.get("max_items", 50000)
             include_hidden = cfg.get("include_hidden", False)
             print(f"\nEscaneando {root}...")
-            s = Scanner(root, max_depth, max_items, include_hidden)
+            s = Scanner(root, max_depth, max_items, include_hidden, exclude=[root / target_name])
             scanned = s.scan()
             inventory = generate_inventory(scanned, root)
             print(f"Encontrados: {len(scanned)} elementos")
@@ -152,22 +158,27 @@ def menu():
                     w.writeheader(); w.writerows(possible)
 
         elif op == "5":
-            provider = cfg.get("ai_provider", "none")
             if provider == "none":
                 print("IA no configurada. Edite config.yaml o .env")
                 continue
-            ai = AIClassifier(provider=provider)
+            ai = AIClassifier(provider=provider, model=ai_model, api_url=ai_api_url)
             if not inventory:
                 print("Primero ejecute opcion 1")
                 continue
+            clf = Classifier(DATA_DIR / "keywords.yaml", DATA_DIR / "categories.yaml")
+            categories = sorted({c["name"] for c in clf.categories})
+            pending = [e for e in inventory if e["tipo"] == "archivo" and e.get("confianza", 0) < 0.75]
+            max_ai_items = cfg.get("max_ai_items", 200)
+            if len(pending) > max_ai_items:
+                print(f"Se envian solo {max_ai_items} de {len(pending)} (max_ai_items)")
             count = 0
-            for entry in inventory:
-                if entry.get("confianza", 0) < 0.75:
-                    r = ai.classify(entry["nombre"], entry["ruta_relativa"], entry["extension"])
-                    if r.get("categoria"):
-                        entry["categoria_sugerida"] = r["categoria"]
-                        entry["confianza"] = r["confianza"]
-                        count += 1
+            for entry in pending[:max_ai_items]:
+                r = ai.classify(entry["nombre"], entry["ruta_relativa"], entry["extension"], categories=categories)
+                if r.get("categoria"):
+                    entry["categoria_sugerida"] = r["categoria"]
+                    entry["confianza"] = r["confianza"]
+                    entry["motivos"] = r["motivos"]
+                    count += 1
             print(f"IA clasifico {count} elementos")
 
         elif op == "6":
@@ -215,7 +226,8 @@ def menu():
                     print("Cancelado")
                     continue
             ts = datetime.now().strftime("%Y%m%d_%H%M%S")
-            log_path = LOGS_DIR / f"movimientos_{ts}.csv"
+            log_prefix = "simulacion" if sim else "movimientos"
+            log_path = LOGS_DIR / f"{log_prefix}_{ts}.csv"
             ex = Executor(simulation_mode=sim, max_moves=cfg.get("max_moves_per_run", 50))
             results = ex.execute_plan(plan, log_path)
             ok = sum(1 for r in results if r["resultado"] == "OK")
@@ -224,14 +236,14 @@ def menu():
             print(f"OK={ok} Sim={sim_c} Err={err}")
 
         elif op == "9":
-            logs = sorted(LOGS_DIR.glob("movimientos_*.csv"))
+            logs = Rollback.list_logs(LOGS_DIR)
             if not logs:
                 print("No hay logs")
                 continue
             print("Logs:")
             for i, l in enumerate(logs, 1):
                 print(f"  [{i}] {l.name}")
-            sel = input("Numero (default=1): ").strip()
+            sel = input("Numero (default=1, el mas reciente): ").strip()
             idx = int(sel) - 1 if sel.isdigit() else 0
             idx = max(0, min(idx, len(logs) - 1))
             rb = Rollback(simulation_mode=sim)
@@ -269,7 +281,7 @@ def menu():
                 print("IA no configurada. Configure ai_provider en config.yaml y .env")
                 continue
             print("\nAnalizando estructura con IA para sugerir organizacion...")
-            suggester = CategorySuggester(provider=provider)
+            suggester = CategorySuggester(provider=provider, model=ai_model, api_url=ai_api_url)
             dynamic_categories = suggester.suggest_categories(scanned, root, inventory)
             if not dynamic_categories:
                 print("No se pudieron generar categorias. Usando defaults.")

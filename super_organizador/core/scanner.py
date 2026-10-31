@@ -41,11 +41,13 @@ class ScannedItem:
 
 class Scanner:
     def __init__(self, root_path: Path, max_depth: int = 10,
-                 max_items: int = 50000, include_hidden: bool = False):
+                 max_items: int = 50000, include_hidden: bool = False,
+                 exclude: list[Path] = None):
         self.root_path = root_path.resolve()
         self.max_depth = max_depth
         self.max_items = max_items
         self.include_hidden = include_hidden
+        self.exclude = {p.resolve() for p in exclude or []}
         self._cancelled = False
 
     def cancel(self):
@@ -76,6 +78,9 @@ class Scanner:
                 if not self.include_hidden and entry.name.startswith("."):
                     continue
                 if entry.name in IGNORED_FILES:
+                    continue
+                # Un symlink puede apuntar fuera de la raiz: nunca se sigue
+                if entry.is_symlink() or entry in self.exclude:
                     continue
                 if entry.is_dir() and entry.name in IGNORED_DIRS:
                     continue

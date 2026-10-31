@@ -20,13 +20,30 @@ class AIClassifier:
         if self.provider == "none":
             return {"categoria": "", "confianza": 0.0, "motivos": ["IA no configurada"]}
         if self.provider == "openai":
-            return self._classify_openai(name, rel_path, extension, size, nearby_files, categories)
+            result = self._classify_openai(name, rel_path, extension, size, nearby_files, categories)
         elif self.provider == "gemini":
-            return self._classify_gemini(name, rel_path, extension, size, nearby_files, categories)
+            result = self._classify_gemini(name, rel_path, extension, size, nearby_files, categories)
         elif self.provider == "ollama":
-            return self._classify_ollama(name, rel_path, extension, size, nearby_files, categories)
+            result = self._classify_ollama(name, rel_path, extension, size, nearby_files, categories)
         else:
             return {"categoria": "", "confianza": 0.0, "motivos": ["Proveedor no soportado"]}
+        return self._validate(result, categories)
+
+    def _validate(self, result: dict, categories: list[str] = None) -> dict:
+        """La respuesta de la IA no es confiable: solo se aceptan categorias conocidas."""
+        categoria = result.get("categoria", "")
+        motivos = result.get("motivos", [])
+        try:
+            confianza = max(0.0, min(float(result.get("confianza", 0.0)), 1.0))
+        except (TypeError, ValueError):
+            confianza = 0.0
+        if not isinstance(categoria, str) or (categories and categoria not in categories):
+            return {"categoria": "", "confianza": 0.0, "motivos": ["Categoria IA no valida"]}
+        return {
+            "categoria": categoria,
+            "confianza": confianza,
+            "motivos": motivos if isinstance(motivos, list) else [str(motivos)],
+        }
 
     def _classify_openai(self, name, rel_path, extension, size, nearby_files, categories):
         import os
@@ -37,7 +54,7 @@ class AIClassifier:
         prompt = self._build_prompt(name, rel_path, extension, size, nearby_files, categories)
         try:
             resp = requests.post(
-                "https://api.openai.com/v1/chat/completions",
+                self.api_url or "https://api.openai.com/v1/chat/completions",
                 headers={"Authorization": f"Bearer {api_key}", "Content-Type": "application/json"},
                 json={
                     "model": self.model or "gpt-4o-mini",
@@ -63,7 +80,8 @@ class AIClassifier:
         prompt = self._build_prompt(name, rel_path, extension, size, nearby_files, categories)
         try:
             resp = requests.post(
-                f"https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key={api_key}",
+                f"https://generativelanguage.googleapis.com/v1beta/models/{self.model or 'gemini-2.0-flash'}:generateContent",
+                headers={"x-goog-api-key": api_key},
                 json={"contents": [{"parts": [{"text": prompt}]}]},
                 timeout=30,
             )
@@ -78,7 +96,7 @@ class AIClassifier:
     def _classify_ollama(self, name, rel_path, extension, size, nearby_files, categories):
         import requests
         import os
-        url = os.getenv("OLLAMA_URL", "http://localhost:11434")
+        url = self.api_url or os.getenv("OLLAMA_URL", "http://localhost:11434")
         prompt = self._build_prompt(name, rel_path, extension, size, nearby_files, categories)
         try:
             resp = requests.post(
