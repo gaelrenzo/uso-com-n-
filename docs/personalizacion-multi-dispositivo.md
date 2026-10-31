@@ -14,8 +14,8 @@ Los comandos de agentes IA son **identicos** en:
 
 | Comando | Agente | Equivalente completo |
 |---|---|---|
-| `codex` | Codex CLI | `codex` |
-| `codex-full` | Codex sin confirmaciones | `codex --dangerously-bypass-approvals-and-sandbox` |
+| `codex` | Codex CLI | `codex --no-daemon` |
+| `codex-full` | Codex sin confirmaciones | `codex --no-daemon --dangerously-bypass-approvals-and-sandbox` |
 | `cl` | Claude Code | `claude` |
 | `cl-full` | Claude Code sin permisos | `claude --dangerously-skip-permissions` |
 | `ocode` | OpenCode | `opencode` |
@@ -24,7 +24,34 @@ Los comandos de agentes IA son **identicos** en:
 | `anti-full` | Antigravity sin confirmaciones | `agy --dangerously-skip-permissions` |
 | `hermes` | Hermes Agent | `hermes` |
 | `hermes-full` | Hermes modo yolo | `hermes --yolo` |
+| `gem` / `gem-full` | Gemini CLI | `gemini [--yolo]` |
+| `qwen` / `qwen-full` | Qwen Code | `qwen [--yolo]` |
+| `crush` / `crush-full` | Crush | `crush [--yolo]` |
+| `copilot` / `copilot-full` | GitHub Copilot CLI | `copilot [--allow-all-tools]` |
+| `amp` / `amp-full` | Amp (Sourcegraph) | `amp [--dangerously-allow-all]` |
+| `iflow` / `iflow-full` | iFlow | `iflow [--yolo]` |
+| `aider` / `aider-full` | Aider | `aider [--yes-always]` |
+| `kimi` / `kimi-full` | Kimi CLI | `kimi [--yolo]` |
+| `cursor` / `cursor-full` | Cursor CLI | `cursor-agent [--force]` |
+| `kilo` | Kilo Code | `kilocode` (sin modo full) |
+| `auggie` | Augment | `auggie` (sin modo full) |
 | `ucn-agents` | Diagnostico | Muestra ruta de cada agente detectado |
+| `ucn-install-ia` | Instalador | Instala las IAs que falten (npm + uv) |
+
+### 1.1 Comandos basicos y de navegacion (iguales en los 3 shells)
+
+| Comando | Bash / Termux (`aliases.sh`) | PowerShell | CMD (`ucn.cmd`) |
+|---|---|---|---|
+| `ll` | `ls -la` | `Get-ChildItem` | `dir /a` |
+| `update` | `apt update && apt upgrade -y` | `winget upgrade --all` | `winget upgrade --all` |
+| `weather` | `curl wttr.in/Puno` | `curl.exe -s wttr.in/Puno` | `curl.exe -s wttr.in/Puno` |
+| `sysinfo` | `fastfetch` | `fastfetch` / `systeminfo` | `systeminfo` |
+| `editui` | `nano ~/.bashrc` | `notepad $PROFILE` | `notepad ucn.cmd` |
+| `cls` | limpia y recarga el MOTD | limpia y recarga el MOTD | limpiar pantalla (nativo) |
+| `uni` | `$UCN_DATA_DIR` | `$env:UCN_DATA_DIR` | `%USERPROFILE%\universida-datos` |
+| `notas` / `informes` / `cursos` / `labs` | carpetas de datos (crea si faltan) | mismas carpetas (crea si faltan) | mismas carpetas |
+| `workspace` | `~/workspace` | `%USERPROFILE%\workspace` | `%USERPROFILE%\workspace` |
+| `repos` | lista los repos de `~/workspace` | lista los repos de `~/workspace` | lista los repos de `~/workspace` |
 
 ---
 

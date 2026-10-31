@@ -40,13 +40,24 @@ function Get-UcnAgentBin {
     # -CommandType Application: ignora las funciones wrapper de este perfil (cl, codex, qwen...)
     $InPath = Get-Command $Tool -CommandType Application -ErrorAction SilentlyContinue | Select-Object -First 1
     if ($InPath) { return $InPath.Source }
-    # Rutas conocidas de Windows
+    # Rutas conocidas de Windows (espejo de config/agents.yaml: known_paths.windows)
     $Known = @{
         codex   = @((Join-Path $env:USERPROFILE ".codex\bin\codex.exe"), (Join-Path $env:APPDATA "npm\codex.cmd"))
         claude  = @((Join-Path $env:USERPROFILE ".claude\local\claude.exe"), (Join-Path $env:APPDATA "npm\claude.cmd"))
         opencode= @((Join-Path $env:USERPROFILE ".opencode\bin\opencode.exe"), (Join-Path $env:APPDATA "npm\opencode.cmd"))
         agy     = @((Join-Path $env:USERPROFILE ".local\bin\agy.exe"))
         hermes  = @((Join-Path $env:LOCALAPPDATA "hermes\hermes-agent\venv\Scripts\hermes.exe"), (Join-Path $env:USERPROFILE "hermes-agent\.venv\Scripts\hermes.exe"))
+        gemini  = @((Join-Path $env:APPDATA "npm\gemini.cmd"), (Join-Path $env:USERPROFILE ".local\bin\gemini.exe"))
+        qwen    = @((Join-Path $env:APPDATA "npm\qwen.cmd"), (Join-Path $env:USERPROFILE ".local\bin\qwen.exe"))
+        crush   = @((Join-Path $env:APPDATA "npm\crush.cmd"), (Join-Path $env:USERPROFILE ".local\bin\crush.exe"))
+        copilot = @((Join-Path $env:APPDATA "npm\copilot.cmd"), (Join-Path $env:USERPROFILE ".local\bin\copilot.exe"))
+        amp     = @((Join-Path $env:APPDATA "npm\amp.cmd"), (Join-Path $env:USERPROFILE ".local\bin\amp.exe"))
+        iflow   = @((Join-Path $env:APPDATA "npm\iflow.cmd"), (Join-Path $env:USERPROFILE ".local\bin\iflow.exe"))
+        aider   = @((Join-Path $env:USERPROFILE ".local\bin\aider.exe"), (Join-Path $env:APPDATA "npm\aider.cmd"))
+        kimi    = @((Join-Path $env:USERPROFILE ".local\bin\kimi.exe"), (Join-Path $env:APPDATA "npm\kimi.cmd"))
+        "cursor-agent" = @((Join-Path $env:USERPROFILE ".local\bin\cursor-agent.exe"), (Join-Path $env:APPDATA "npm\cursor-agent.cmd"))
+        kilocode = @((Join-Path $env:APPDATA "npm\kilocode.cmd"), (Join-Path $env:USERPROFILE ".local\bin\kilocode.exe"))
+        auggie  = @((Join-Path $env:APPDATA "npm\auggie.cmd"), (Join-Path $env:USERPROFILE ".local\bin\auggie.exe"))
     }
     foreach ($cand in $Known[$Tool]) {
         if ($cand -and (Test-Path $cand)) { return $cand }
@@ -91,8 +102,23 @@ function Invoke-UcnAgent {
     & $Bin @ArgsList
 }
 
-function codex       { Invoke-UcnAgent "codex"       "--no-daemon" $args }
-function codex-full  { Invoke-UcnAgent "codex"       "--no-daemon --dangerously-bypass-approvals-and-sandbox" $args }
+# Flags base de codex (mismo criterio que termux-bash/ia-tools.sh):
+# no duplicar --no-daemon si el usuario ya lo paso o si es un subcomando app-server.
+function Get-UcnCodexBaseArgs {
+    param([string[]]$UserArgs)
+    if ($UserArgs -and $UserArgs.Count -gt 0 -and $UserArgs[0] -eq "app-server") { return "" }
+    if ($UserArgs -contains "--no-daemon") { return "" }
+    return "--no-daemon"
+}
+
+function Get-UcnCodexFullArgs {
+    param([string[]]$UserArgs)
+    if ($UserArgs -contains "--no-daemon") { return "--dangerously-bypass-approvals-and-sandbox" }
+    return "--no-daemon --dangerously-bypass-approvals-and-sandbox"
+}
+
+function codex       { Invoke-UcnAgent "codex"       (Get-UcnCodexBaseArgs $args) $args }
+function codex-full  { Invoke-UcnAgent "codex"       (Get-UcnCodexFullArgs $args) $args }
 function anti        { Invoke-UcnAgent "agy"         "" $args }
 function anti-full   { Invoke-UcnAgent "agy"         "--dangerously-skip-permissions" $args }
 function cl          { Invoke-UcnAgent "claude"      "" $args }
@@ -186,6 +212,43 @@ function Update-System {
     winget upgrade --all
 }
 
+# --- NAVEGACION (equivale a aliases.sh de Bash/Termux) ---
+function Get-UcnDataDir {
+    if ($env:UCN_DATA_DIR) { return $env:UCN_DATA_DIR }
+    return Join-Path $env:USERPROFILE "universida-datos"
+}
+
+# SubDir vacio = ir a la raiz de datos; EnvVar permite override (UCN_*_DIR)
+function Set-UcnDataLocation {
+    param([string]$SubDir = "", [string]$EnvVar = "")
+    $path = $null
+    if ($EnvVar) {
+        $val = [Environment]::GetEnvironmentVariable($EnvVar)
+        if ($val) { $path = $val }
+    }
+    if (-not $path) {
+        if ($SubDir) { $path = Join-Path (Get-UcnDataDir) $SubDir }
+        else         { $path = Get-UcnDataDir }
+    }
+    if (-not (Test-Path $path)) { New-Item -ItemType Directory -Force -Path $path | Out-Null }
+    Set-Location $path
+}
+
+function uni      { Set-UcnDataLocation }
+function notas    { Set-UcnDataLocation "notas"         "UCN_NOTES_DIR" }
+function informes { Set-UcnDataLocation "informes"      "UCN_INFORMES_DIR" }
+function cursos   { Set-UcnDataLocation "cursos"        "UCN_CURSOS_DIR" }
+function labs     { Set-UcnDataLocation "laboratorios"  "UCN_LABS_DIR" }
+function workspace {
+    $w = Join-Path $env:USERPROFILE "workspace"
+    if (-not (Test-Path $w)) { New-Item -ItemType Directory -Force -Path $w | Out-Null }
+    Set-Location $w
+}
+function repos {
+    $w = Join-Path $env:USERPROFILE "workspace"
+    Get-ChildItem -Path $w -Directory -ErrorAction SilentlyContinue | ForEach-Object { $_.Name }
+}
+
 # --- MOTD ---
 function Show-MOTD {
     Clear-Host
@@ -215,6 +278,7 @@ function Show-MOTD {
     Write-Host "  update      = Actualiza paquetes (winget)" -ForegroundColor Green
     Write-Host "  cls         = Limpia pantalla y recarga MOTD" -ForegroundColor Green
     Write-Host "  ll          = Listar archivos" -ForegroundColor Green
+    Write-Host "  uni         = Ir a universida-datos" -ForegroundColor Green
     Write-Host "  weather     = Clima en Puno" -ForegroundColor Green
     Write-Host "  sysinfo     = Info del sistema" -ForegroundColor Green
     Write-Host "  editui      = Editar perfil PowerShell" -ForegroundColor Green
@@ -258,7 +322,16 @@ function Show-MOTD {
     }
     Write-Host "  +$line+" -ForegroundColor Magenta
     Write-Host ""
-    
+
+    Write-Host "  [PRODUCTIVIDAD]" -ForegroundColor Yellow
+    Write-Host "  notas       = Ir a notas" -ForegroundColor Green
+    Write-Host "  informes    = Ir a informes" -ForegroundColor Green
+    Write-Host "  cursos      = Ir a cursos" -ForegroundColor Green
+    Write-Host "  labs        = Ir a laboratorios" -ForegroundColor Green
+    Write-Host "  workspace   = Ir a workspace" -ForegroundColor Green
+    Write-Host "  repos       = Listar repositorios" -ForegroundColor Green
+    Write-Host ""
+
     Write-Host "=====================================================" -ForegroundColor Magenta
 }
 

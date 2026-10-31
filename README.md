@@ -495,7 +495,22 @@ Los comandos de agentes IA son **identicos** en PowerShell (laptop), Bash/Termux
 | `ocode` / `ocode-full` | OpenCode |
 | `anti` / `anti-full` | Antigravity (`agy`) |
 | `hermes` / `hermes-full` | Hermes Agent |
+| `gem` / `gem-full` | Gemini CLI |
+| `qwen` / `qwen-full` | Qwen Code |
+| `crush` / `crush-full` | Crush |
+| `copilot` / `copilot-full` | GitHub Copilot CLI |
+| `amp` / `amp-full` | Amp |
+| `iflow` / `iflow-full` | iFlow |
+| `aider` / `aider-full` | Aider |
+| `kimi` / `kimi-full` | Kimi CLI |
+| `cursor` / `cursor-full` | Cursor CLI |
+| `kilo` / `auggie` | Kilo Code / Augment (sin modo full) |
 | `ucn-agents` | Diagnostico de agentes instalados |
+| `ucn-install-ia` | Instala las IAs que falten |
+
+Comandos basicos y de navegacion (`ll`, `update`, `weather`, `sysinfo`, `editui`,
+`uni`, `notas`, `informes`, `cursos`, `labs`, `workspace`, `repos`) tambien son
+identicos en Bash/Termux, PowerShell y CMD.
 
 Verificacion en cada dispositivo:
 
