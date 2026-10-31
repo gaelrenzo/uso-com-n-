@@ -2,7 +2,7 @@ name: UCN CI
 
 on:
   push:
-    branches: [main, master, "mejoras-*"]
+    branches: [main, master]
   pull_request:
     branches: [main, master]
 
