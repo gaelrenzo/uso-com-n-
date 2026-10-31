@@ -339,4 +339,7 @@ function cls {
     Show-MOTD
 }
 
-Show-MOTD
+# Sin consola real (CI, scripts) Clear-Host falla
+if (-not [Console]::IsOutputRedirected) {
+    Show-MOTD
+}

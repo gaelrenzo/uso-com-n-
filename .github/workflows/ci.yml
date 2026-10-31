@@ -180,7 +180,7 @@ jobs:
             Write-Host "::error::Perfil: $($_.Exception.Message) en $($_.InvocationInfo.PositionMessage)"
             exit 1
           }
-          foreach ($cmd in "Invoke-UcnAgent", "Show-MOTD", "ucn") {
+          foreach ($cmd in "Invoke-UcnAgent", "Show-MOTD", "ucn-agents") {
             if (-not (Get-Command $cmd -ErrorAction SilentlyContinue)) {
               Write-Host "::error::Perfil: falta el comando $cmd"
               exit 1
