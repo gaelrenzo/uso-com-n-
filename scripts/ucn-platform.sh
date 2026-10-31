@@ -74,6 +74,16 @@ if [ -z "$UCN_PROFILE" ] && [ -f "$UCN_REPO_DIR/config/.current-profile" ]; then
 fi
 UCN_PROFILE="${UCN_PROFILE:-default}"
 
+# --- Preferencias compartidas: no pisan lo ya definido en este equipo ---
+if [ -f "$UCN_REPO_DIR/config/compartido.env" ]; then
+  while IFS='=' read -r _ucn_key _ucn_value; do
+    case "$_ucn_key" in
+      UCN_*) [ -n "${!_ucn_key:-}" ] || export "$_ucn_key=$_ucn_value" ;;
+    esac
+  done < <(tr -d '\r' < "$UCN_REPO_DIR/config/compartido.env")
+  unset _ucn_key _ucn_value
+fi
+
 # --- Exportar todo ---
 export UCN_PLATFORM
 export UCN_REPO_DIR

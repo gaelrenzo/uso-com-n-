@@ -9,6 +9,7 @@ import (
 	"strings"
 	ucnbuild "ucn/internal/build"
 	"ucn/internal/config"
+	"ucn/internal/personal"
 	"ucn/internal/sync"
 )
 
@@ -60,6 +61,10 @@ func Run(cfg *config.Config, repoRoot string) error {
 	fmt.Println("\nSincronizando skills de agentes...")
 	if err := sync.SyncSkills(cfg, repoRoot); err != nil {
 		fmt.Printf("  ⚠ Sync de skills incompleto: %v\n", err)
+	}
+
+	if err := personal.Apply(repoRoot); err != nil {
+		fmt.Printf("  ⚠ Personalizaciones: %v\n", err)
 	}
 
 	// 5. Agent check

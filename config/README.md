@@ -55,3 +55,25 @@ Lista de agentes de IA instalados en el sistema. Puedes habilitar/deshabilitar l
 *   **`GITHUB_TOKEN`**: Token de Acceso Personal (PAT) de GitHub para autenticar push/pull si no utilizas claves SSH.
 *   **`OPENAI_API_KEY` / `ANTHROPIC_API_KEY` / `GEMINI_API_KEY`**: Credenciales de API utilizadas por tus respectivos agentes locales para el procesamiento de lenguaje natural.
 *   **`CLOUDFLARE_TUNNEL_TOKEN`**: Token generado por la consola de Cloudflare Zero Trust para iniciar de forma segura el túnel local con `ucn tunnel`.
+
+## Personalizaciones entre dispositivos
+
+| Archivo | Contenido | Se sube a GitHub |
+| --- | --- | --- |
+| `compartido.env` | Preferencias sin secretos, como `UCN_ALLOW_ROOT_AGENTS` | Si |
+| `personal/claude-rules/` | Reglas de Claude Code de `~/.claude/rules` | Si |
+| `personal/claude-settings.json` | Ajustes compartidos de Claude Code | Si |
+| `.env` | Tokens y rutas de cada equipo | No |
+
+`ucn update` y `ucn bootstrap` aplican estas personalizaciones en cada dispositivo.
+Si una regla local es distinta, se conserva como `.bak`. En los ajustes siempre
+gana el valor local, y `config/.env` tiene prioridad sobre `compartido.env`.
+
+Para compartir una regla que cambiaste en este equipo:
+
+```bash
+ucn personal save
+ucn push "actualiza personalizaciones"
+```
+
+El repositorio es publico: `compartido.env` y las reglas nunca deben incluir secretos.

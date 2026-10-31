@@ -41,6 +41,7 @@ ucn/
 | **`ucn doctor --fix`** | Corrección automática segura. | Crea `config/config.yaml` y `config/.env` desde sus `.example` si faltan, y asegura los directorios de datos/notas/informes/cursos/laboratorios. |
 | **`ucn agents`** | Estado de agentes IA. | Muestra la tabla `NAME \| STATUS \| BIN` resolviendo cada agente del registro `config/agents.yaml`. |
 | **`ucn skills sync`** | Enlaza las Habilidades sin `git pull`. | Lo usan `skills/sync-agent-skills.sh` y `.ps1` cuando `ucn` esta instalado. |
+| **`ucn personal`** | Personalizaciones entre dispositivos. | `apply` instala reglas y ajustes del repo; `save` guarda las reglas de este equipo en el repo. |
 | **`ucn secrets`** | Revision previa a publicar. | Busca credenciales y archivos privados en lo versionado. `ucn push` hace lo mismo con los cambios preparados y bloquea el commit. |
 | **`ucn bootstrap`** | Preparacion de dispositivo. | Detecta plataforma, crea config desde plantillas, asegura directorios, instala el hook de shell, sincroniza skills y muestra agentes. Idempotente (reinstalable). |
 | **`ucn update`** | Actualizacion del entorno. | `git fetch` + `git pull --rebase`, re-sincroniza skills de todos los agentes y reporta el estado de agentes. Con `--check` solo comprueba si hay actualizaciones. |

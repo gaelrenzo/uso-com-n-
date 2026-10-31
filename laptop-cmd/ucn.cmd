@@ -8,6 +8,10 @@ REM  laptop-powershell/Microsoft.PowerShell_profile.ps1)
 REM ============================================================
 
 REM --- Comandos IA (equivale a ia-tools.sh) ---
+doskey l=dir $*
+doskey la=dir /a $*
+doskey ports=netstat -ano $*
+doskey ipinfo=curl -s ipinfo.io
 doskey codex=codex --no-daemon $*
 doskey codex-full=codex --no-daemon --dangerously-bypass-approvals-and-sandbox $*
 doskey cl=claude $*

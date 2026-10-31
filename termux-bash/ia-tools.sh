@@ -76,10 +76,14 @@ ucn_resolve() {
   return 1
 }
 
-# --- Modos full como root: variable de entorno o config/.env (bash no carga ese archivo) ---
+# --- Modos full como root: config/.env del equipo manda sobre config/compartido.env ---
 ucn_root_allowed() {
-  [ "${UCN_ALLOW_ROOT_AGENTS:-0}" = "1" ] && return 0
-  command grep -qs '^UCN_ALLOW_ROOT_AGENTS=1' "${UCN_REPO_DIR:-}/config/.env"
+  local env_file="${UCN_REPO_DIR:-}/config/.env"
+  if command grep -qs '^UCN_ALLOW_ROOT_AGENTS=' "$env_file"; then
+    command grep -qs '^UCN_ALLOW_ROOT_AGENTS=1' "$env_file"
+    return
+  fi
+  [ "${UCN_ALLOW_ROOT_AGENTS:-0}" = "1" ]
 }
 
 # --- Lanzador: ejecuta el agente o explica como instalarlo ---

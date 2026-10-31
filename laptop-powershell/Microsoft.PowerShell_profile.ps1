@@ -65,6 +65,16 @@ function Get-UcnAgentBin {
     return $null
 }
 
+# --- Preferencias compartidas: no pisan lo ya definido en este equipo ---
+$SharedEnv = Join-Path $RepoDir "config\compartido.env"
+if (Test-Path $SharedEnv) {
+    foreach ($Line in Get-Content $SharedEnv) {
+        if ($Line -match '^(UCN_[A-Z_]+)=(.*)$' -and -not [Environment]::GetEnvironmentVariable($Matches[1])) {
+            [Environment]::SetEnvironmentVariable($Matches[1], $Matches[2], "Process")
+        }
+    }
+}
+
 # --- Perfil de especialidad activo (equivalente Windows de UCN_PROFILE) ---
 $ProfileFile = Join-Path $RepoDir "config\.current-profile"
 if (Test-Path $ProfileFile) {
@@ -185,6 +195,10 @@ function ucn-agents {
 
 # --- ALIASES ---
 Set-Alias -Name ll -Value Get-ChildItem -Option ReadOnly
+function l { Get-ChildItem @args }
+function la { Get-ChildItem -Force @args }
+function ports { Get-NetTCPConnection -State Listen }
+function ipinfo { (Invoke-WebRequest -UseBasicParsing "https://ipinfo.io").Content }
 Set-Alias -Name weather -Value Get-Weather -Option ReadOnly
 Set-Alias -Name sysinfo -Value Get-SysInfo -Option ReadOnly
 Set-Alias -Name editui -Value Edit-Profile -Option ReadOnly

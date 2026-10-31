@@ -10,6 +10,7 @@ import (
 	"ucn/internal/config"
 	"ucn/internal/doctor"
 	"ucn/internal/git"
+	"ucn/internal/personal"
 	"ucn/internal/profile"
 	"ucn/internal/secrets"
 	"ucn/internal/skills"
@@ -33,7 +34,8 @@ func main() {
 	configPath := filepath.Join(repoRoot, "config", "config.yaml")
 	envPath := filepath.Join(repoRoot, "config", ".env")
 
-	// Try loading .env file to inject environment variables
+	// Shared preferences first: the device's .env overrides them
+	_ = config.LoadEnv(filepath.Join(repoRoot, "config", "compartido.env"))
 	_ = config.LoadEnv(envPath)
 
 	// Try loading config.yaml file
@@ -136,6 +138,9 @@ func main() {
 	case "secrets":
 		handleSecrets(repoRoot)
 
+	case "personal":
+		handlePersonal(repoRoot, os.Args[2:])
+
 	case "help", "-h", "--help":
 		printHelp()
 
@@ -234,6 +239,27 @@ func listAgents(repoRoot string) {
 			detail = bin
 		}
 		fmt.Printf("%-10s %-8s %s\n", a.Name, status, detail)
+	}
+}
+
+func handlePersonal(repoRoot string, args []string) {
+	action := "apply"
+	if len(args) > 0 {
+		action = args[0]
+	}
+	var err error
+	switch action {
+	case "apply":
+		err = personal.Apply(repoRoot)
+	case "save":
+		err = personal.Save(repoRoot)
+	default:
+		fmt.Println("Uso: ucn personal <apply|save>")
+		os.Exit(1)
+	}
+	if err != nil {
+		fmt.Printf("❌ %v\n", err)
+		os.Exit(1)
 	}
 }
 
@@ -505,6 +531,7 @@ func printHelp() {
 	fmt.Println("  push \"[msj]\"    Agrega cambios de forma segura (sin borrar eliminaciones locales) y hace commit/push")
 	fmt.Println("  doctor          Diagnostica plataforma, dependencias, agentes IA y configuración")
 	fmt.Println("  doctor --fix    Corrige automáticamente configuraciones seguras (config/, .env, directorios)")
+	fmt.Println("  personal        Aplica tus personalizaciones (save: las guarda en el repo)")
 	fmt.Println("  secrets         Busca secretos y archivos privados en lo versionado")
 	fmt.Println("  agents          Muestra el estado de los agentes IA registrados en config/agents.yaml")
 	fmt.Println("  bootstrap       Prepara este dispositivo: config, directorios, hook de shell y skills")

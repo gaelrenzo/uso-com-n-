@@ -8,6 +8,7 @@ import (
 	ucnbuild "ucn/internal/build"
 	"ucn/internal/config"
 	"ucn/internal/git"
+	"ucn/internal/personal"
 	"ucn/internal/sync"
 )
 
@@ -82,6 +83,10 @@ func Run(cfg *config.Config, repoRoot string, checkOnly bool, build bool) error 
 	fmt.Println("\nSincronizando skills...")
 	if err := sync.SyncSkills(cfg, repoRoot); err != nil {
 		fmt.Printf("  ⚠ Sync de skills: %v\n", err)
+	}
+
+	if err := personal.Apply(repoRoot); err != nil {
+		fmt.Printf("  ⚠ Personalizaciones: %v\n", err)
 	}
 
 	// 7. Estado de agentes
