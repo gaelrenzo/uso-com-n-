@@ -28,7 +28,6 @@ bin/
 *.test
 *.out
 __debug_bin
-*.test
 
 # Dependencias y temporales
 node_modules/
@@ -51,8 +50,6 @@ Desktop.ini
 *.tmp
 # Auxiliares de LaTeX
 *.aux
-*.log
-*.out
 *.toc
 
 # Python

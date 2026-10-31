@@ -21,6 +21,7 @@ from core.planner import Planner
 from core.category_suggester import CategorySuggester
 from core.executor import Executor
 from core.rollback import Rollback
+from core.storage import archive_reports, storage_dir as core_storage_dir
 
 load_dotenv()
 logging.basicConfig(level=logging.INFO, format="%(levelname)s: %(message)s")
@@ -28,8 +29,10 @@ logger = logging.getLogger(__name__)
 
 BASE_DIR = Path(__file__).parent
 CFG_PATH = BASE_DIR / "config.yaml"
-REPORTS_DIR = BASE_DIR / "reports"
-LOGS_DIR = BASE_DIR / "logs"
+STORAGE_DIR = core_storage_dir(BASE_DIR)
+REPORTS_DIR = STORAGE_DIR / "reports"
+LOGS_DIR = STORAGE_DIR / "logs"
+HISTORY_DIR = REPORTS_DIR / "historial"
 DATA_DIR = BASE_DIR / "data"
 
 
@@ -118,7 +121,8 @@ def menu():
             save_tree_txt(tree, REPORTS_DIR / "arbol.txt")
             save_tree_markdown(tree, REPORTS_DIR / "arbol.md")
             save_tree_json(tree, REPORTS_DIR / "arbol.json")
-            print("Arbol generado en reports/")
+            archive_reports([REPORTS_DIR / n for n in ("arbol.txt", "arbol.md", "arbol.json")], HISTORY_DIR)
+            print(f"Arbol generado en {REPORTS_DIR}")
 
         elif op == "3":
             if not inventory:
@@ -126,6 +130,7 @@ def menu():
                 continue
             save_inventory_csv(inventory, REPORTS_DIR / "inventario_archivos.csv")
             save_inventory_json(inventory, REPORTS_DIR / "inventario_archivos.json")
+            archive_reports([REPORTS_DIR / n for n in ("inventario_archivos.csv", "inventario_archivos.json")], HISTORY_DIR)
             print(f"Inventario: {len(inventory)} elementos")
 
         elif op == "4":
@@ -194,8 +199,9 @@ def menu():
             planner.save_plan_md(entries, REPORTS_DIR / "PLAN_ORGANIZACION.md")
             auto = sum(1 for e in entries if e["accion"] == "mover")
             rev = sum(1 for e in entries if e["accion"] == "revisar")
+            archive_reports([REPORTS_DIR / n for n in ("plan_movimientos.csv", "PLAN_ORGANIZACION.md")], HISTORY_DIR)
             print(f"Plan: {auto} movimientos, {rev} revision manual")
-            print("Edite reports/plan_movimientos.csv columna 'aprobado' a SI")
+            print(f"Edite {REPORTS_DIR / 'plan_movimientos.csv'} columna 'aprobado' a SI")
 
         elif op == "7":
             plan_path = REPORTS_DIR / "plan_movimientos.csv"
@@ -218,8 +224,11 @@ def menu():
             if not approved:
                 print("No hay movimientos aprobados")
                 continue
+            max_moves = cfg.get("max_moves_per_run", 50)
+            if len(approved) > max_moves:
+                print(f"\nLimite max_moves_per_run: se ejecutan {max_moves} de {len(approved)} aprobados")
             if not sim:
-                print(f"\nADVERTENCIA: {len(approved)} movimientos REALES")
+                print(f"\nADVERTENCIA: {min(len(approved), max_moves)} movimientos REALES")
                 confirm = input("Frase de seguridad: ").strip()
                 expected = cfg.get("confirmation_phrase", "CONFIRMO ORGANIZAR MIS ARCHIVOS")
                 if confirm != expected:
@@ -228,7 +237,7 @@ def menu():
             ts = datetime.now().strftime("%Y%m%d_%H%M%S")
             log_prefix = "simulacion" if sim else "movimientos"
             log_path = LOGS_DIR / f"{log_prefix}_{ts}.csv"
-            ex = Executor(simulation_mode=sim, max_moves=cfg.get("max_moves_per_run", 50))
+            ex = Executor(simulation_mode=sim, max_moves=max_moves)
             results = ex.execute_plan(plan, log_path)
             ok = sum(1 for r in results if r["resultado"] == "OK")
             sim_c = sum(1 for r in results if r["resultado"] == "SIMULACION")

@@ -77,10 +77,12 @@ class AIClassifier:
         api_key = os.getenv("GEMINI_API_KEY", "")
         if not api_key:
             return {"categoria": "", "confianza": 0.0, "motivos": ["GEMINI_API_KEY no configurada"]}
+        if not self.model:
+            return {"categoria": "", "confianza": 0.0, "motivos": ["Configure ai_model o AI_MODEL para Gemini"]}
         prompt = self._build_prompt(name, rel_path, extension, size, nearby_files, categories)
         try:
             resp = requests.post(
-                f"https://generativelanguage.googleapis.com/v1beta/models/{self.model or 'gemini-2.0-flash'}:generateContent",
+                f"https://generativelanguage.googleapis.com/v1beta/models/{self.model}:generateContent",
                 headers={"x-goog-api-key": api_key},
                 json={"contents": [{"parts": [{"text": prompt}]}]},
                 timeout=30,

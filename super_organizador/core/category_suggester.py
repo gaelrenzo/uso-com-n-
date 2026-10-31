@@ -129,10 +129,11 @@ RESUMEN DEL DIRECTORIO:
     def _query_gemini(self, prompt: str) -> str:
         import requests
         api_key = os.getenv("GEMINI_API_KEY", "")
-        if not api_key:
+        if not api_key or not self.model:
+            logger.warning("Gemini requiere GEMINI_API_KEY y ai_model o AI_MODEL")
             return ""
         resp = requests.post(
-            f"https://generativelanguage.googleapis.com/v1beta/models/{self.model or 'gemini-2.0-flash'}:generateContent",
+            f"https://generativelanguage.googleapis.com/v1beta/models/{self.model}:generateContent",
             headers={"x-goog-api-key": api_key},
             json={"contents": [{"parts": [{"text": prompt}]}]},
             timeout=60,

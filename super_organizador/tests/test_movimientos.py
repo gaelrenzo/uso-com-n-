@@ -11,6 +11,7 @@ from core.inventory import generate_inventory
 from core.planner import Planner
 from core.rollback import Rollback
 from core.scanner import Scanner
+from core.storage import archive_reports, storage_dir
 
 DATA = pathlib.Path(__file__).parent.parent / "data"
 
@@ -189,7 +190,7 @@ def captura_post(monkeypatch):
 def test_gemini_no_pone_clave_en_url(monkeypatch):
     llamadas = captura_post(monkeypatch)
     AIClassifier(provider="gemini", model="m").classify("a.txt")
-    CategorySuggester(provider="gemini")._query_gemini("p")
+    CategorySuggester(provider="gemini", model="m")._query_gemini("p")
     for url, kwargs in llamadas:
         assert "CLAVE" not in url
         assert kwargs["headers"]["x-goog-api-key"] == "CLAVE"
@@ -198,7 +199,7 @@ def test_gemini_no_pone_clave_en_url(monkeypatch):
 
 def test_ia_valida_respuesta(monkeypatch):
     captura_post(monkeypatch)
-    ia = AIClassifier(provider="gemini")
+    ia = AIClassifier(provider="gemini", model="m")
     r = ia.classify("a.txt", categories=["A"])
     assert r == {"categoria": "A", "confianza": 1.0, "motivos": ["m"]}
     assert ia.classify("a.txt", categories=["B"])["categoria"] == ""
@@ -211,3 +212,28 @@ def test_ajustes_ia_desde_entorno_y_config(monkeypatch):
     assert main.get_ai_settings(cfg) == ("ollama", "m", "http://x")
     monkeypatch.setenv("AI_PROVIDER", "gemini")
     assert main.get_ai_settings(cfg)[0] == "gemini"
+
+
+def test_reportes_fuera_del_repo(tmp_path, monkeypatch):
+    monkeypatch.delenv("ORGANIZADOR_DIR", raising=False)
+    monkeypatch.delenv("UCN_DATA_DIR", raising=False)
+    assert storage_dir(tmp_path) == tmp_path
+    monkeypatch.setenv("UCN_DATA_DIR", "/datos")
+    assert storage_dir(tmp_path) == pathlib.Path("/datos/organizador")
+    monkeypatch.setenv("ORGANIZADOR_DIR", "/privado")
+    assert storage_dir(tmp_path) == pathlib.Path("/privado")
+
+
+def test_historial_conserva_reportes(tmp_path):
+    reporte = tmp_path / "plan.csv"
+    reporte.write_text("v1")
+    destino = archive_reports([reporte, tmp_path / "no_existe.csv"], tmp_path / "historial")
+    reporte.write_text("v2")
+    assert (destino / "plan.csv").read_text() == "v1"
+    assert not (destino / "no_existe.csv").exists()
+
+
+def test_gemini_sin_modelo_no_llama(monkeypatch):
+    llamadas = captura_post(monkeypatch)
+    assert AIClassifier(provider="gemini").classify("a.txt")["categoria"] == ""
+    assert llamadas == []
