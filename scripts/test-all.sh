@@ -24,6 +24,19 @@ bad()   { say "  [✗] $*"; FAIL=$((FAIL+1)); FAILED_NAMES+=("$*"); }
 skip()  { say "  [-] $*"; SKIP=$((SKIP+1)); }
 header(){ say ""; say "─── $* ───"; }
 
+# La suite ejecuta 'ucn build' y 'ucn bootstrap', que escriben en $HOME: se usa
+# uno temporal para no tocar el binario ni la configuracion reales.
+isolate_home() {
+  if command -v go >/dev/null 2>&1; then
+    GOCACHE="$(go env GOCACHE)"
+    GOPATH="$(go env GOPATH)"
+    export GOCACHE GOPATH
+  fi
+  TEST_HOME="$(mktemp -d)"
+  trap 'rm -rf "$TEST_HOME"' EXIT
+  export HOME="$TEST_HOME"
+}
+
 # ---------------------------------------------------------------------------
 # Check 1: Sintaxis bash de todos los scripts
 # ---------------------------------------------------------------------------
@@ -68,6 +81,11 @@ check_go_build() {
   else
     bad "go build: $(head -5 "$GO_TMP/err.log")"
   fi
+  if ( cd "$GO_TMP/ucn" && go test ./... ) >"$GO_TMP/test.log" 2>&1; then
+    ok "go test ./..."
+  else
+    bad "go test: $(tail -5 "$GO_TMP/test.log")"
+  fi
 }
 
 # ---------------------------------------------------------------------------
@@ -94,7 +112,8 @@ check_agent_resolver() {
     source "$REPO_ROOT/scripts/ucn-platform.sh" >/dev/null 2>&1
     source "$REPO_ROOT/termux-bash/ia-tools.sh" >/dev/null 2>&1
     for tool in $UCN_IA_TOOLS_EXPECTED; do
-      if command -v "$tool" >/dev/null 2>&1; then
+      # type -P ignora las funciones homonimas que define ia-tools.sh
+      if type -P "$tool" >/dev/null 2>&1; then
         resolved="$(ucn_resolve "$tool" 2>/dev/null)"
         if [ -n "$resolved" ]; then
           printf 'OK ucn_resolve %s -> %s\n' "$tool" "$resolved"
@@ -292,6 +311,7 @@ check_wrapper_parity() {
 # Runner
 # ---------------------------------------------------------------------------
 run_all() {
+  isolate_home
   say ""
   say "🧪 UCN TEST-ALL  ($REPO_ROOT)"
   check_bash_syntax
@@ -323,6 +343,7 @@ run_all() {
 }
 
 run_quick() {
+  isolate_home
   say ""
   say "🧪 UCN TEST-ALL (quick - sin compilar)"
   check_bash_syntax
