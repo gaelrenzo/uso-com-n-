@@ -12,10 +12,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
 
       - name: Setup Go
-        uses: actions/setup-go@v5
+        uses: actions/setup-go@b7ad1dad31e06c5925ef5d2fc7ad053ef454303e # v7.0.0
         with:
           go-version-file: ucn/go.mod
           cache: false
@@ -39,6 +39,9 @@ jobs:
 
       - name: Go test
         run: cd ucn && go test ./...
+
+      - name: Secretos y archivos privados
+        run: /tmp/ucn-bin secrets
 
       - name: Bash syntax check
         run: |
@@ -76,10 +79,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
 
       - name: Setup Python
-        uses: actions/setup-python@v5
+        uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0 # v7.1.0
         with:
           python-version: "3.11"
           cache: pip
@@ -96,7 +99,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
 
       - name: PowerShell scripts parse (pwsh)
         shell: bash
@@ -151,15 +154,45 @@ jobs:
           cd "$GITHUB_WORKSPACE" && /tmp/ucn-bin update --check 2>&1 | grep -q "UCN UPDATE"
           echo "✓ ucn update --check responde"
 
+  chezmoi:
+    name: Instalacion con chezmoi
+    runs-on: ubuntu-latest
+    env:
+      CHEZMOI_VERSION: 2.73.3
+    steps:
+      - name: Checkout
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+
+      - name: Instalar chezmoi
+        run: |
+          base="https://github.com/twpayne/chezmoi/releases/download/v${CHEZMOI_VERSION}"
+          file="chezmoi_${CHEZMOI_VERSION}_linux_amd64.tar.gz"
+          cd "$RUNNER_TEMP"
+          curl -fsSLO "$base/$file"
+          curl -fsSLO "$base/chezmoi_${CHEZMOI_VERSION}_checksums.txt"
+          grep " $file\$" "chezmoi_${CHEZMOI_VERSION}_checksums.txt" | sha256sum -c -
+          tar -xzf "$file" chezmoi
+
+      - name: Aplicar dos veces sin pisar .bashrc
+        run: |
+          home_dir="$(mktemp -d)"
+          echo 'alias propio=1' > "$home_dir/.bashrc"
+          for run in 1 2; do
+            HOME="$home_dir" "$RUNNER_TEMP/chezmoi" --source "$GITHUB_WORKSPACE" --destination "$home_dir" --no-tty apply
+          done
+          grep -q 'alias propio=1' "$home_dir/.bashrc"
+          test "$(grep -c 'termux-bash/termux-bash.sh' "$home_dir/.bashrc")" -eq 1
+          echo "✓ chezmoi conserva .bashrc y agrega un solo hook"
+
   windows:
     name: Windows real (go test + perfil PowerShell)
     runs-on: windows-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
 
       - name: Setup Go
-        uses: actions/setup-go@v5
+        uses: actions/setup-go@b7ad1dad31e06c5925ef5d2fc7ad053ef454303e # v7.0.0
         with:
           go-version-file: ucn/go.mod
           cache: false

@@ -505,6 +505,7 @@ func printHelp() {
 	fmt.Println("  push \"[msj]\"    Agrega cambios de forma segura (sin borrar eliminaciones locales) y hace commit/push")
 	fmt.Println("  doctor          Diagnostica plataforma, dependencias, agentes IA y configuración")
 	fmt.Println("  doctor --fix    Corrige automáticamente configuraciones seguras (config/, .env, directorios)")
+	fmt.Println("  secrets         Busca secretos y archivos privados en lo versionado")
 	fmt.Println("  agents          Muestra el estado de los agentes IA registrados en config/agents.yaml")
 	fmt.Println("  bootstrap       Prepara este dispositivo: config, directorios, hook de shell y skills")
 	fmt.Println("  build           Recompila el CLI ucn (ucn/ucn o ucn/ucn.exe)")

@@ -92,50 +92,6 @@ chezmoi init --apply gaelrenzo/uso-com-n-
 
 ---
 
-## Super Organizador Inteligente
-
-Organizador automatico de archivos con inteligencia artificial. Escanea cualquier directorio o unidad, genera arboles de directorios, inventarios de archivos, detecta duplicados y problemas, y usa IA (OpenAI, Gemini, Ollama) para sugerir una estructura de categorias personalizada y ejecutar el plan de organizacion.
-
-```
-super_organizador/
-├── main.py                 # Entrypoint
-├── config.yaml             # Configuracion general
-├── core/                   # Logica principal
-│   ├── scanner.py          # Escaneo recursivo de directorios
-│   ├── tree_generator.py   # Generacion de arbol
-│   ├── inventory.py        # Inventario de archivos CSV/JSON
-│   ├── problem_detector.py # Deteccion de duplicados y problemas
-│   ├── duplicate_detector.py # Deteccion de archivos duplicados
-│   ├── ai_classifier.py    # Clasificador por IA
-│   ├── category_suggester.py # Sugerencia de categorias con IA
-│   ├── classifier.py       # Clasificador por reglas
-│   ├── planner.py          # Plan de organizacion
-│   ├── executor.py         # Ejecucion de movimientos
-│   ├── rollback.py         # Reversion de cambios
-│   ├── normalizer.py       # Normalizacion de nombres
-│   └── validators.py       # Validadores de ruta y config
-├── data/                   # Datos de referencia
-│   ├── categories.yaml     # Categorias predefinidas
-│   ├── keywords.yaml       # Palabras clave por categoria
-│   └── ignored_patterns.yaml # Patrones a ignorar
-├── tests/                  # Tests unitarios
-├── reports/                # Reportes generados
-├── .opencode/agents/       # Agente para OpenCode
-└── requirements.txt        # Dependencias
-```
-
-**Uso basico:**
-```bash
-python main.py --path "C:\Users\..."        # Escanear y analizar
-python main.py --path "./mi carpeta" --analyze-only  # Solo analisis
-python main.py --path "./mi carpeta" --plan           # Generar plan sin ejecutar
-python main.py --path "./mi carpeta" --apply          # Ejecutar plan
-```
-
-**Configuracion:** editar `config.yaml` para seleccionar proveedor IA (openai/gemini/ollama), definir categorias personalizadas y ajustar comportamiento.
-
----
-
 ## Repositorios de Ingenieria y Practicas PLC-Modbus
 
 Repos para mejorar dotfiles, skills IA y Termux: [docs/repos-recomendados.md](docs/repos-recomendados.md)
@@ -163,6 +119,24 @@ python3 -m venv /tmp/opencode/venv
 ```
 
 ---
+
+## Documentacion
+
+- [Super Organizador](docs/super-organizador.md)
+- [CLI `ucn`](docs/cli-ucn.md)
+- [Guia para moviles](docs/guia-movil.md)
+- [Verificacion y CI](docs/verificacion-ci.md)
+- [Apps recomendadas](docs/apps-recomendadas.md)
+- [Solucion de problemas](docs/troubleshooting.md)
+- [Mochila digital](docs/mochila-digital.md)
+- [Personalizacion multi-dispositivo](docs/personalizacion-multi-dispositivo.md)
+- [Flujo de productividad academica](docs/flujo-productividad-academica-tecnica.md)
+
+## Seguridad
+
+- `ucn push` bloquea credenciales y archivos privados antes del commit; `ucn secrets` revisa lo ya versionado.
+- Los modos `*-full` no piden confirmacion. Como root estan bloqueados salvo `UCN_ALLOW_ROOT_AGENTS=1` en `config/.env`.
+- Licencias de terceros: [NOTICE.md](NOTICE.md).
 
 ## Instalacion rapida (multi-plataforma)
 
@@ -224,190 +198,6 @@ Copy-Item -Path .\laptop-powershell\Microsoft.PowerShell_profile.ps1 -Destinatio
 
 ---
 
-## 🕹️ Comandos del CLI `ucn`
-
-El binario compilado te da acceso a las siguientes automatizaciones:
-
-### 1. Sincronizar Skills (`ucn sync`)
-Actualiza el repositorio remoto (`git pull --rebase` automático si está activo en tu YAML) y reconstruye todos los enlaces simbólicos de tus agentes instalados:
-```bash
-ucn sync
-```
-*En Linux/Android crea **Symlinks** y en Windows crea **Junctions** (uniones de directorios) de forma segura y sin requerir permisos de administrador.*
-
-También puedes usar los sincronizadores directos:
-```bash
-bash skills/sync-agent-skills.sh
-powershell -File skills/sync-agent-skills.ps1
-```
-
-### 2. Safe GitOps Push (`ucn push "[mensaje]"`)
-Agrega y sube los cambios que realices a tus configuraciones o skills locales a GitHub.
-```bash
-ucn push "agregada nueva skill de diseño"
-```
-*Utiliza de forma interna `git add --ignore-removal` para registrar nuevos archivos u modificaciones, ignorando y protegiéndote contra eliminaciones accidentales de archivos locales en el repositorio remoto.*
-
-### 3. Diagnóstico del Sistema (`ucn doctor`)
-Ejecuta un diagnóstico completo para validar la salud de tu entorno de desarrollo y de los agentes IA:
-```bash
-ucn doctor
-```
-*Verifica la plataforma (Termux/Linux/Windows/macOS), las rutas de datos/notas, la instalación de `git`, `node`, `npm`, `live-server`, `cloudflared`, el registro de agentes del `config/agents.yaml`, los archivos `.yaml`/`.env` locales y detecta enlaces simbólicos rotos.*
-
-Corrige automáticamente configuraciones seguras (crear config faltante desde `.example`, directorios de notas/informes/cursos):
-```bash
-ucn doctor --fix
-```
-
-### 4. Estado de Agentes IA (`ucn agents`)
-Muestra la tabla de agentes registrados en `config/agents.yaml` con su estado y ruta resuelta:
-```bash
-ucn agents
-```
-
-### 4b. Bootstrap de dispositivo (`ucn bootstrap`)
-Prepara un dispositivo (nuevo o recien reinstalado) para que quede igual que los demas:
-```bash
-ucn bootstrap
-```
-*Detecta la plataforma, crea `config/config.yaml` y `config/.env` desde sus plantillas si faltan,
-asegura los directorios de datos (notas/informes/cursos/laboratorios), agrega el hook de `termux-bash.sh`
-al `~/.bashrc`, sincroniza las skills de todos los agentes y muestra el estado de los agentes. Es idempotente
-(se puede correr varias veces).*
-
-### 5. Túnel de Exposición Seguro (`ucn tunnel [nombre_tunel]`)
-Expone tu servidor local (`live-server` u otros) hacia la red pública mediante Cloudflare Tunnel utilizando el token configurado en tu `.env`:
-```bash
-ucn tunnel
-```
-
-### 5b. Actualización (`ucn update`)
-Sincroniza el dispositivo con el resto: pull del repo, resync de skills y verificación de agentes:
-```bash
-ucn update          # aplica cambios
-ucn update --check  # solo comprueba si hay actualizaciones
-ucn update --build  # además, recompila el CLI ucn tras actualizar
-```
-*Hace `git fetch` + `git pull --rebase`, re-enlaza las skills de todos los agentes y reporta
-el estado de los agentes. Ideal para ponerse al día tras trabajar en otro dispositivo.*
-
-### 5c. Perfiles de especialidad (`ucn profile`)
-Ajusta el contexto que entregan los agentes IA según la tarea de cada momento:
-```bash
-ucn profile list        # ver perfiles disponibles
-ucn profile use ingenieria    # activa el perfil de ingenieria
-ucn profile current     # ver el perfil activo
-ucn profile show        # ver el prompt que se activara en los agentes
-ucn profile export      # regenera config/profile-prompts/<perfil>.md
-```
-Perfiles incluidos (`profiles/<nombre>/profile.yaml`): `default`, `ingenieria` (MATLAB, Python,
-LaTeX, AutoCAD, SolidWorks, ETAP, APA 7), `programacion` (GitHub, Node, Docker, APIs, testing),
-`investigacion` (IEEE/APA, LaTeX/BibTeX) y `universidad` (tareas, examenes, exposiciones).
-
-**Inyección en los agentes.** El prompt del perfil activo se exporta a `config/profile-prompts/<perfil>.md`
-(se regenera con `ucn profile export`). Los wrappers de agentes lo inyectan automáticamente:
-`cl`/`cl-full` (Claude) lanzan `claude --append-system-prompt-file <archivo>`, y los demás agentes
-reciben el perfil vía `UCN_PROFILE`. Los wrappers están en `termux-bash/ia-tools.sh` (Termux/Linux),
-`laptop-powershell/Microsoft.PowerShell_profile.ps1` (Windows) y `laptop-cmd/ucn.cmd` (CMD).
-
-El perfil activo queda guardado por dispositivo en `config/.current-profile` (no se sube al repo)
-y se exporta como `UCN_PROFILE` en `ucn-platform.sh`.
-
-### 5d. Gestión de skills (`ucn skills`)
-Lista, inspecciona y limpia los enlaces de skills de todos los agentes instalados:
-```bash
-ucn skills list              # tabla: estado de cada skill y enlaces por agente
-ucn skills status spice      # detalle de los enlaces de una skill
-ucn skills status            # detalle de todas
-ucn skills clean             # solo reporta problemas (no destructivo)
-ucn skills clean --apply     # elimina los enlaces rotos detectados
-```
-Estados: `✓ ok` (enlazada en todos los agentes), `⚠ parcial` (faltan agentes), `⚠ dir local`
-(existe un directorio real en lugar del enlace UCN), `✗ roto` (el destino no existe) y
-`✗ no enlazada`. `clean` además detecta los respaldos `*_backup` que `ucn sync` deja al
-reemplazar directorios reales; se reportan pero **no se eliminan automáticamente** (revísalos
-a mano antes de borrarlos).
-
-### 5e. Recompilar el CLI (`ucn build`)
-```bash
-ucn build            # compila ucn/cmd/ucn -> ucn/ucn (o ucn/ucn.exe en Windows)
-ucn update --build   # actualiza el repo y recompila en un solo paso
-```
-Requiere Go instalado. El binario queda en el repo y está en `.gitignore`, así que no
-se sube a GitHub. En Termux/Linux/macOS el build produce `ucn/ucn` y en Windows `ucn/ucn.exe`.
-
----
-
-## 📱 Guía Rápida para Dispositivos Móviles (Termux / Ubuntu)
-
-### 1. Configurar Terminal Termux
-Ejecuta la actualización inicial e instala los paquetes base en Termux:
-```bash
-pkg update && pkg upgrade -y
-pkg install git -y
-git clone https://github.com/gaelrenzo/uso-com-n-.git /storage/emulated/0/universida-datos/uso-com-n-
-cd /storage/emulated/0/universida-datos/uso-com-n-
-bash install.sh
-source ~/.bashrc
-```
-
-### Escritorio Debian + XFCE (Termux:X11)
-
-Ejecuta un escritorio Linux completo en Android, sin root, con la app Termux:X11.
-
-**Instalacion:**
-```bash
-ucn-install-debian
-# o directamente
-bash /mnt/sdcard/universida-datos/uso-com-n-/scripts/install-debian-xfce.sh
-```
-
-**Arranque:**
-```bash
-ucn-debian
-# o directamente
-bash ~/.shortcuts/start-debian-xfce.sh
-```
-
-> Requiere la app **Termux:X11** descargada desde GitHub (buscar nightly release).
-> Guia completa y solucion de problemas: `docs/escritorio-debian-xfce.md`
-
-### Instalacion completa (todo incluido)
-
-```bash
-bash /storage/emulated/0/universida-datos/uso-com-n-/scripts/ucn-install-all.sh
-```
-
-Esto instala: paquetes base, Ubuntu proot, Python cientifico, agentes IA, librerias de ingenieria y UCN.
-
-### Instalar Cloudflared (opcional)
-
-Cloudflared permite exponer servicios locales a internet mediante tuneles seguros:
-
-```bash
-pkg install cloudflared
-```
-
-Para configurar el tunel, edita `config/.env` y agrega tu token:
-```
-CLOUDFLARE_TUNNEL_TOKEN=tu_token_aqui
-```
-
-Luego ejecuta:
-```bash
-ucn tunnel
-```
-
-### En Windows
-
-```powershell
-Set-ExecutionPolicy RemoteSigned -Scope CurrentUser
-Copy-Item -Path .\laptop-powershell\Microsoft.PowerShell_profile.ps1 -Destination $PROFILE -Force
-```
-
----
-
 ## Comandos UCN
 
 | Comando | Que hace |
@@ -436,48 +226,6 @@ Copy-Item -Path .\laptop-powershell\Microsoft.PowerShell_profile.ps1 -Destinatio
 | `ucn-install-all` | Instalacion completa del sistema |
 | `ucn-debian` | Arranca escritorio Debian + XFCE |
 | `ucn-install-debian` | Instala Debian + XFCE en Termux |
-
----
-
-## 🔬 Verificacion y CI (Fase 1 - Robustez)
-
-El registro central de agentes es **`config/agents.yaml`**: Bash, PowerShell, CMD y el CLI Go resuelven los binarios con el MISMO criterio:
-
-1. Variable `UCN_<AGENTE>_BIN` (override en `config/.env`)
-2. Comando en el PATH del dispositivo
-3. Rutas conocidas por plataforma (del `agents.yaml`)
-
-### Suite de tests local
-
-```bash
-./scripts/test-all.sh        # todos los checks (build Go, bash -n, resolver, doctor, estructura)
-./scripts/test-all.sh quick  # solo checks rapidos sin compilar
-```
-
-Comprueba: build Go, `bash -n` de todos los scripts, resolución de agentes, variables de entorno, detección del repositorio/notas, estructura del repo y respuesta del CLI (`doctor`/`agents`).
-
-### CI en GitHub Actions
-
-Cada `push`/PR a `main` ejecuta (ver `.github/workflows/ci.yml`): `gofmt`, `go vet`, `go build`, tests de parseo de `agents.yaml`, `bash -n` de todos los scripts, `shellcheck` (si está disponible) y la suite `test-all.sh quick`.
-
-### Agregar un agente IA nuevo
-
-Para añadir un agente (ej. `composum`) se actualiza **solo el registro central**:
-
-```yaml
-  composum:
-    command: composum
-    env: UCN_COMPOSUM_BIN
-    wrapper: comp
-    full_args: --yolo
-    description: Nuevo agente
-    known_paths:
-      termux: ["/data/data/com.termux/files/usr/bin/composum"]
-      linux: ["/usr/bin/composum"]
-      windows: ["%USERPROFILE%\\.local\\bin\\composum.exe"]
-```
-
-Y el wrapper `comp() { ucn_run composum "$@"; }` en `termux-bash/ia-tools.sh`. La suite de tests y el doctor lo detectan automáticamente.
 
 ---
 
@@ -522,24 +270,6 @@ ucn-agents
 
 ---
 
-## Apps recomendadas (F-Droid)
-
-| App | Para que |
-|-----|----------|
-| Termux | Terminal principal |
-| Termux:API | Sensores, bateria, clipboard |
-| Termux:Widget | Botones rapidos |
-| Material Files | Explorador de archivos |
-| Aegis | 2FA (GitHub, Google) |
-| K-9 Mail | Correo |
-| Syncthing-Fork | Sync Android-Laptop |
-| Markor | Notas Markdown |
-| AntennaPod | Podcasts |
-| Fennec | Navegador Firefox |
-| NewPipe | Videos sin anuncios |
-
----
-
 ## Skills instaladas (42)
 
 ### Internet
@@ -581,101 +311,3 @@ Guia de instalacion completa: `docs/mochila-digital.md`
 
 ---
 
-## Troubleshooting
-
-### Permisos de scripts en FAT32 (sdcard)
-
-Los scripts en `/storage/emulated/0/` o `/mnt/sdcard/` no conservan permisos `+x` porque la sdcard usa FAT32. Solucion:
-
-```bash
-# Ejecutar con bash directamente
-bash scripts/ucn-note.sh "tema"
-
-# O usar el alias (ya configurado)
-ucn-note "tema"
-```
-
-### Debian + XFCE no inicia
-
-**Error: "Cannot open display"**
-```bash
-# Verificar que termux-x11 este corriendo
-ps aux | grep termux-x11
-
-# Reiniciar si es necesario
-termux-x11 :0 -ac &
-sleep 3
-```
-
-**Error: "Bus address not found"**
-```bash
-# Dentro de Debian, reiniciar dbus
-service dbus restart
-```
-
-**Error: "PulseAudio no conecta"**
-```bash
-# Verificar PulseAudio
-pulseaudio --kill
-pulseaudio --start --exit-idle-time=-1
-pacmd load-module module-native-protocol-tcp auth-ip-acl=127.0.0.1 auth-anonymous=1
-```
-
-**Pantalla negra en Termux:X11**
-```bash
-# Verificar que XFCE este instalado
-proot-distro login debian -- apt list --installed | grep xfce4
-
-# Si no esta, reinstalar
-proot-distro login debian -- apt install -y xfce4
-```
-
-### UCN CLI no encuentra el repositorio
-
-Asegurate de estar dentro del directorio del proyecto o ejecutar desde la raiz:
-```bash
-cd /mnt/sdcard/universida-datos/uso-com-n-
-ucn doctor
-```
-
-### Agentes IA (codex, claude, opencode, hermes) no funcionan
-
-Ver detalle completo: [docs/personalizacion-multi-dispositivo.md](docs/personalizacion-multi-dispositivo.md)
-
-```bash
-# Diagnostico rapido: muestra la ruta de cada agente detectado
-ucn-agents
-
-# Codex roto por dependencia ARM64 -> reinstalar
-npm install -g @openai/codex@latest
-
-# Hermes no encontrado -> localizar y fijar ruta en config/.env
-which hermes
-# UCN_HERMES_BIN=/ruta/al/hermes
-
-# La tablet y el celular se ven distintos -> verificar plataforma/rutas
-source scripts/ucn-platform.sh
-echo "Plataforma: $UCN_PLATFORM | Datos: $UCN_DATA_DIR"
-```
-
-### Skills no aparecen despues de sincronizar
-
-```bash
-# Forzar resincronizacion
-ucn sync
-
-# Verificar enlaces
-ls -la ~/.claude/skills/
-ls -la ~/.config/opencode/skills/
-```
-
-### Git pull falla en Termux
-
-```bash
-# Configurar git si no esta configurado
-git config --global user.name "Tu Nombre"
-git config --global user.email "tu@email.com"
-
-# Verificar conexion
-git remote -v
-```
