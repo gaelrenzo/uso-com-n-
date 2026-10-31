@@ -18,6 +18,7 @@ jobs:
         uses: actions/setup-go@v5
         with:
           go-version-file: ucn/go.mod
+          cache: false
 
       - name: Go fmt check
         run: |
@@ -161,6 +162,7 @@ jobs:
         uses: actions/setup-go@v5
         with:
           go-version-file: ucn/go.mod
+          cache: false
 
       - name: Go test
         run: cd ucn; go test ./...
@@ -170,4 +172,19 @@ jobs:
 
       - name: Cargar perfil PowerShell
         shell: pwsh
-        run: . ./laptop-powershell/Microsoft.PowerShell_profile.ps1
+        run: |
+          $ErrorActionPreference = "Continue"
+          try {
+            . ./laptop-powershell/Microsoft.PowerShell_profile.ps1
+          } catch {
+            Write-Host "::error::Perfil: $($_.Exception.Message) en $($_.InvocationInfo.PositionMessage)"
+            exit 1
+          }
+          foreach ($cmd in "Invoke-UcnAgent", "Show-MOTD", "ucn") {
+            if (-not (Get-Command $cmd -ErrorAction SilentlyContinue)) {
+              Write-Host "::error::Perfil: falta el comando $cmd"
+              exit 1
+            }
+          }
+          Write-Host "✓ Perfil cargado"
+          exit 0
