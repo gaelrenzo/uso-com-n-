@@ -1,4 +1,8 @@
+import csv
+import errno
+import hashlib
 import logging
+import os
 import shutil
 from pathlib import Path
 from datetime import datetime
@@ -7,6 +11,19 @@ from typing import Optional
 from .validators import path_exists, is_file_locked
 
 logger = logging.getLogger(__name__)
+
+LOG_FIELDS = [
+    "timestamp", "origen", "destino", "tipo",
+    "resultado", "error", "hash_antes", "hash_despues",
+]
+
+
+def sha256_file(path: Path) -> str:
+    digest = hashlib.sha256()
+    with open(path, "rb") as f:
+        for chunk in iter(lambda: f.read(1024 * 1024), b""):
+            digest.update(chunk)
+    return digest.hexdigest()
 
 
 class Executor:
@@ -23,31 +40,35 @@ class Executor:
             return []
 
         results = []
-        for entry in approved:
-            result = self._execute_single(entry, log_path)
-            results.append(result)
-        self._save_log(results, log_path)
+        log_path.parent.mkdir(parents=True, exist_ok=True)
+        # El log se escribe fila a fila: si se interrumpe, lo ya movido se puede deshacer
+        with open(log_path, "w", newline="", encoding="utf-8") as f:
+            writer = csv.DictWriter(f, fieldnames=LOG_FIELDS)
+            writer.writeheader()
+            f.flush()
+            for entry in approved:
+                result = self._execute_single(entry)
+                results.append(result)
+                writer.writerow(result)
+                f.flush()
+                os.fsync(f.fileno())
         return results
 
-    def _execute_single(self, entry: dict, log_path: Path) -> dict:
+    def _execute_single(self, entry: dict) -> dict:
         origen = Path(entry["origen"])
         destino = Path(entry["destino"])
-        timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+        result = {
+            "timestamp": datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
+            "origen": str(origen), "destino": str(destino), "tipo": entry["tipo"],
+            "resultado": "OK", "error": "", "hash_antes": "", "hash_despues": "",
+        }
         if not path_exists(origen):
-            return {
-                "timestamp": timestamp, "origen": str(origen),
-                "destino": str(destino), "tipo": entry["tipo"],
-                "resultado": "ERROR", "error": "Origen no existe",
-                "hash_antes": "", "hash_despues": "",
-            }
+            return {**result, "resultado": "ERROR", "error": "Origen no existe"}
+        if origen.resolve() == destino.resolve():
+            return {**result, "resultado": "OMITIDO", "error": "Origen y destino coinciden"}
         if self.simulation_mode:
             logger.info(f"[SIMULACION] Movería: {origen} -> {destino}")
-            return {
-                "timestamp": timestamp, "origen": str(origen),
-                "destino": str(destino), "tipo": entry["tipo"],
-                "resultado": "SIMULACION", "error": "",
-                "hash_antes": "", "hash_despues": "",
-            }
+            return {**result, "resultado": "SIMULACION"}
         try:
             destino.parent.mkdir(parents=True, exist_ok=True)
             if destino.exists():
@@ -57,30 +78,31 @@ class Executor:
                 while destino.exists():
                     destino = destino.parent / f"{stem}_{counter:03d}{suffix}"
                     counter += 1
-            shutil.move(str(origen), str(destino))
+            result["destino"] = str(destino)
+            hash_antes, hash_despues = self._move_verified(origen, destino)
             logger.info(f"Movido: {origen} -> {destino}")
-            return {
-                "timestamp": timestamp, "origen": str(origen),
-                "destino": str(destino), "tipo": entry["tipo"],
-                "resultado": "OK", "error": "",
-                "hash_antes": "", "hash_despues": "",
-            }
+            return {**result, "hash_antes": hash_antes, "hash_despues": hash_despues}
         except Exception as e:
             logger.error(f"Error moviendo {origen}: {e}")
-            return {
-                "timestamp": timestamp, "origen": str(origen),
-                "destino": str(destino), "tipo": entry["tipo"],
-                "resultado": "ERROR", "error": str(e),
-                "hash_antes": "", "hash_despues": "",
-            }
+            return {**result, "resultado": "ERROR", "error": str(e)}
 
-    def _save_log(self, results: list[dict], log_path: Path):
-        import csv
-        log_path.parent.mkdir(parents=True, exist_ok=True)
-        with open(log_path, "w", newline="", encoding="utf-8") as f:
-            writer = csv.DictWriter(f, fieldnames=[
-                "timestamp", "origen", "destino", "tipo",
-                "resultado", "error", "hash_antes", "hash_despues",
-            ])
-            writer.writeheader()
-            writer.writerows(results)
+    def _move_verified(self, origen: Path, destino: Path) -> tuple:
+        if origen.is_dir():
+            shutil.move(str(origen), str(destino))
+            return "", ""
+        hash_antes = sha256_file(origen)
+        try:
+            os.rename(origen, destino)
+        except OSError as e:
+            if e.errno != errno.EXDEV:
+                raise
+            # Entre discos: el origen solo se borra si la copia es identica
+            try:
+                shutil.copy2(origen, destino)
+                if sha256_file(destino) != hash_antes:
+                    raise OSError("La copia no coincide con el original")
+            except BaseException:
+                destino.unlink(missing_ok=True)
+                raise
+            origen.unlink()
+        return hash_antes, sha256_file(destino)

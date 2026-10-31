@@ -66,8 +66,8 @@ func Run(cfg *config.Config, repoRoot string, checkOnly bool, build bool) error 
 	// 4. Aplicar pull --rebase (salvo que no haya nada que traer)
 	if behind > 0 {
 		if err := git.Pull(repoRoot); err != nil {
-			fmt.Printf("  ⚠ Pull con conflictos: %v\n", err)
 			fmt.Println("  Resuelve los conflictos y vuelve a ejecutar ucn update.")
+			return fmt.Errorf("actualizacion incompleta: %w", err)
 		}
 	} else {
 		fmt.Println("Pull........ ✓ nothing to pull")

@@ -94,11 +94,7 @@ func cleanExistingDest(destLink string, name string) error {
 
 	if fi.IsDir() {
 		// It's a real directory. Backup it.
-		backupPath := destLink + "_backup"
-		// If backup already exists, remove it first
-		if _, err := os.Stat(backupPath); err == nil {
-			_ = os.RemoveAll(backupPath)
-		}
+		backupPath := nextBackupPath(destLink)
 		err := os.Rename(destLink, backupPath)
 		if err != nil {
 			return fmt.Errorf("no se pudo respaldar directorio existente: %w", err)
@@ -109,6 +105,18 @@ func cleanExistingDest(destLink string, name string) error {
 
 	// Otherwise it's a file, remove it
 	return os.Remove(destLink)
+}
+
+// nextBackupPath returns a free "*_backup" path so an older backup is never
+// overwritten. The suffix is kept because "ucn skills clean" looks for it.
+func nextBackupPath(destLink string) string {
+	backupPath := destLink + "_backup"
+	for n := 2; ; n++ {
+		if _, err := os.Lstat(backupPath); os.IsNotExist(err) {
+			return backupPath
+		}
+		backupPath = fmt.Sprintf("%s_%d_backup", destLink, n)
+	}
 }
 
 func createOSLink(target, link string) error {

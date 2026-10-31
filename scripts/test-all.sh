@@ -24,6 +24,19 @@ bad()   { say "  [✗] $*"; FAIL=$((FAIL+1)); FAILED_NAMES+=("$*"); }
 skip()  { say "  [-] $*"; SKIP=$((SKIP+1)); }
 header(){ say ""; say "─── $* ───"; }
 
+# La suite ejecuta 'ucn build' y 'ucn bootstrap', que escriben en $HOME: se usa
+# uno temporal para no tocar el binario ni la configuracion reales.
+isolate_home() {
+  if command -v go >/dev/null 2>&1; then
+    GOCACHE="$(go env GOCACHE)"
+    GOPATH="$(go env GOPATH)"
+    export GOCACHE GOPATH
+  fi
+  TEST_HOME="$(mktemp -d)"
+  trap 'rm -rf "$TEST_HOME"' EXIT
+  export HOME="$TEST_HOME"
+}
+
 # ---------------------------------------------------------------------------
 # Check 1: Sintaxis bash de todos los scripts
 # ---------------------------------------------------------------------------
@@ -68,6 +81,11 @@ check_go_build() {
   else
     bad "go build: $(head -5 "$GO_TMP/err.log")"
   fi
+  if ( cd "$GO_TMP/ucn" && go test ./... ) >"$GO_TMP/test.log" 2>&1; then
+    ok "go test ./..."
+  else
+    bad "go test: $(tail -5 "$GO_TMP/test.log")"
+  fi
 }
 
 # ---------------------------------------------------------------------------
@@ -93,8 +111,9 @@ check_agent_resolver() {
     set +u
     source "$REPO_ROOT/scripts/ucn-platform.sh" >/dev/null 2>&1
     source "$REPO_ROOT/termux-bash/ia-tools.sh" >/dev/null 2>&1
-    for tool in codex claude opencode hermes agy; do
-      if command -v "$tool" >/dev/null 2>&1; then
+    for tool in $UCN_IA_TOOLS_EXPECTED; do
+      # type -P ignora las funciones homonimas que define ia-tools.sh
+      if type -P "$tool" >/dev/null 2>&1; then
         resolved="$(ucn_resolve "$tool" 2>/dev/null)"
         if [ -n "$resolved" ]; then
           printf 'OK ucn_resolve %s -> %s\n' "$tool" "$resolved"
@@ -251,15 +270,55 @@ check_go_cli() {
 }
 
 # ---------------------------------------------------------------------------
+# Check 5b: Paridad de wrappers IA entre bash, PowerShell, CMD y agents.yaml
+# ---------------------------------------------------------------------------
+# Los agentes y sus wrappers deben existir en TODOS los dispositivos.
+UCN_IA_TOOLS_EXPECTED="codex claude opencode hermes agy gemini qwen crush copilot amp iflow aider kimi cursor-agent kilocode auggie"
+UCN_IA_WRAPPERS="codex cl ocode anti hermes gem qwen crush copilot amp iflow aider kimi cursor kilo auggie"
+UCN_IA_FULLS="codex-full cl-full ocode-full anti-full hermes-full gem-full qwen-full crush-full copilot-full amp-full iflow-full aider-full kimi-full cursor-full"
+
+check_wrapper_parity() {
+  header "Paridad de wrappers (bash / PowerShell / CMD / agents.yaml)"
+  local bashf="$REPO_ROOT/termux-bash/ia-tools.sh"
+  local psf="$REPO_ROOT/laptop-powershell/Microsoft.PowerShell_profile.ps1"
+  local cmdf="$REPO_ROOT/laptop-cmd/ucn.cmd"
+  local ymlf="$REPO_ROOT/config/agents.yaml"
+  local w missing=()
+
+  for w in $UCN_IA_WRAPPERS $UCN_IA_FULLS; do
+    grep -qE "^${w}\(\)[[:space:]]*\{" "$bashf" || missing+=("bash:$w")
+    grep -qE "^function ${w}[[:space:]]"     "$psf"  || missing+=("powershell:$w")
+    grep -qE "^doskey ${w}="                 "$cmdf" || missing+=("cmd:$w")
+  done
+  if [ ${#missing[@]} -eq 0 ]; then
+    ok "wrappers presentes en los 3 shells ($(echo "$UCN_IA_WRAPPERS $UCN_IA_FULLS" | wc -w) comandos)"
+  else
+    bad "wrappers faltantes: ${missing[*]}"
+  fi
+
+  local tool reg=()
+  for tool in $UCN_IA_TOOLS_EXPECTED; do
+    grep -qE "^    command: ${tool}[[:space:]]*$" "$ymlf" || reg+=("$tool")
+  done
+  if [ ${#reg[@]} -eq 0 ]; then
+    ok "config/agents.yaml registra los $(echo "$UCN_IA_TOOLS_EXPECTED" | wc -w) agentes"
+  else
+    bad "agentes sin registrar en agents.yaml: ${reg[*]}"
+  fi
+}
+
+# ---------------------------------------------------------------------------
 # Runner
 # ---------------------------------------------------------------------------
 run_all() {
+  isolate_home
   say ""
   say "🧪 UCN TEST-ALL  ($REPO_ROOT)"
   check_bash_syntax
   check_go_build
   check_env_and_paths
   check_structure
+  check_wrapper_parity
   check_agent_resolver
   check_go_cli
 
@@ -284,11 +343,13 @@ run_all() {
 }
 
 run_quick() {
+  isolate_home
   say ""
   say "🧪 UCN TEST-ALL (quick - sin compilar)"
   check_bash_syntax
   check_env_and_paths
   check_structure
+  check_wrapper_parity
   check_go_cli
   if [ -n "${GO_TMP:-}" ]; then
     rm -rf "$GO_TMP"

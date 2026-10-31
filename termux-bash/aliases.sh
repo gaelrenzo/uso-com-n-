@@ -16,7 +16,7 @@ alias editui="nano ~/.bashrc"
 
 # UCN_DIR se resuelve dinamicamente desde ucn-platform.sh
 # Si no existe, usar fallback
-if [ -z "$UCN_REPO_DIR" ]; then
+if [ -z "${UCN_REPO_DIR:-}" ]; then
   SCRIPT_DIR_AUX="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
   UCN_REPO_DIR="$(cd "$SCRIPT_DIR_AUX/.." && pwd)"
 fi

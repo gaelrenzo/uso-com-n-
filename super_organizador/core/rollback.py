@@ -12,6 +12,11 @@ class Rollback:
     def __init__(self, simulation_mode: bool = True):
         self.simulation_mode = simulation_mode
 
+    @staticmethod
+    def list_logs(logs_dir: Path) -> list[Path]:
+        """Logs de movimientos reales, del mas reciente al mas antiguo."""
+        return sorted(logs_dir.glob("movimientos_*.csv"), reverse=True)
+
     def rollback(self, log_path: Path) -> list[dict]:
         if not path_exists(log_path):
             logger.error(f"Log no encontrado: {log_path}")
@@ -20,7 +25,7 @@ class Rollback:
         reversed_entries = list(reversed(entries))
         results = []
         for entry in reversed_entries:
-            if entry["resultado"] == "ERROR":
+            if entry["resultado"] != "OK":
                 continue
             origen = Path(entry["destino"])
             destino = Path(entry["origen"])

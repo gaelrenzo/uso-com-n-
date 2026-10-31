@@ -2,7 +2,7 @@ name: UCN CI
 
 on:
   push:
-    branches: [main, master]
+    branches: [main, master, "mejoras-*"]
   pull_request:
     branches: [main, master]
 
@@ -18,6 +18,7 @@ jobs:
         uses: actions/setup-go@v5
         with:
           go-version-file: ucn/go.mod
+          cache: false
 
       - name: Go fmt check
         run: |
@@ -36,8 +37,8 @@ jobs:
       - name: Go build
         run: cd ucn && go build -o /tmp/ucn-bin ./cmd/ucn/ && /tmp/ucn-bin help | grep -q "agent" && echo "✓ binario responde"
 
-      - name: Go test (agents.yaml parser)
-        run: cd ucn && go test ./internal/config/ -v -run "TestLoadAgents|TestResolveBin"
+      - name: Go test
+        run: cd ucn && go test ./...
 
       - name: Bash syntax check
         run: |
@@ -54,15 +55,21 @@ jobs:
             echo "shellcheck no instalado, se omite (sintaxis ya validada)"
           fi
 
-      - name: Test suite
-        run: ./scripts/test-all.sh quick
+      - name: Test suite (usa un HOME temporal)
+        run: ./scripts/test-all.sh all
 
       - name: Documentation structure check
         run: |
-          set -e
+          missing=0
           for f in config/agents.yaml config/config.yaml.example config/.env.example scripts/ucn-platform.sh scripts/test-all.sh termux-bash/termux-bash.sh ucn/internal/bootstrap/bootstrap.go ucn/internal/profile/profile.go ucn/cmd/ucn/main.go profiles/default/profile.yaml profiles/ingenieria/profile.yaml README.md; do
-            test -e "$f" && echo "✓ $f"
+            if [ -e "$f" ]; then
+              echo "✓ $f"
+            else
+              echo "❌ falta $f"
+              missing=1
+            fi
           done
+          exit "$missing"
 
   python:
     name: Super Organizador (pytest)
@@ -91,22 +98,26 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: PowerShell profile parse (pwsh)
+      - name: PowerShell scripts parse (pwsh)
         shell: bash
         run: |
           set -e
           pwsh -NoProfile -Command '
-            $tokens = $null
-            $errors = $null
-            [System.Management.Automation.Language.Parser]::ParseFile($env:PS_FILE, [ref]$tokens, [ref]$errors) | Out-Null
-            if ($errors.Count -gt 0) {
-              $errors | ForEach-Object { Write-Host ("linea {0}: {1}" -f $_.Extent.StartLineNumber, $_.Message) }
-              exit 1
+            $failed = $false
+            $files = Get-ChildItem -Recurse -Filter *.ps1 | Where-Object { $_.FullName -notmatch "agent-skills" }
+            foreach ($file in $files) {
+              $tokens = $null
+              $errors = $null
+              [System.Management.Automation.Language.Parser]::ParseFile($file.FullName, [ref]$tokens, [ref]$errors) | Out-Null
+              if ($errors.Count -gt 0) {
+                $failed = $true
+                $errors | ForEach-Object { Write-Host ("{0} linea {1}: {2}" -f $file.Name, $_.Extent.StartLineNumber, $_.Message) }
+              } else {
+                Write-Host ("✓ {0}" -f $file.Name)
+              }
             }
-            Write-Host "✓ PowerShell profile parsea sin errores"
+            if ($failed) { exit 1 }
           '
-        env:
-          PS_FILE: ${{ github.workspace }}/laptop-powershell/Microsoft.PowerShell_profile.ps1
 
       - name: CMD doskey lint
         run: |
@@ -139,3 +150,41 @@ jobs:
           cd ucn && go build -o /tmp/ucn-bin ./cmd/ucn/
           cd "$GITHUB_WORKSPACE" && /tmp/ucn-bin update --check 2>&1 | grep -q "UCN UPDATE"
           echo "✓ ucn update --check responde"
+
+  windows:
+    name: Windows real (go test + perfil PowerShell)
+    runs-on: windows-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Go
+        uses: actions/setup-go@v5
+        with:
+          go-version-file: ucn/go.mod
+          cache: false
+
+      - name: Go test
+        run: cd ucn; go test ./...
+
+      - name: Go build y ayuda
+        run: cd ucn; go build -o ucn.exe ./cmd/ucn/; ./ucn.exe help
+
+      - name: Cargar perfil PowerShell
+        shell: pwsh
+        run: |
+          $ErrorActionPreference = "Continue"
+          try {
+            . ./laptop-powershell/Microsoft.PowerShell_profile.ps1
+          } catch {
+            Write-Host "::error::Perfil: $($_.Exception.Message) en $($_.InvocationInfo.PositionMessage)"
+            exit 1
+          }
+          foreach ($cmd in "Invoke-UcnAgent", "Show-MOTD", "ucn-agents") {
+            if (-not (Get-Command $cmd -ErrorAction SilentlyContinue)) {
+              Write-Host "::error::Perfil: falta el comando $cmd"
+              exit 1
+            }
+          }
+          Write-Host "✓ Perfil cargado"
+          exit 0

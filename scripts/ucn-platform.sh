@@ -48,7 +48,7 @@ case "$UCN_PLATFORM" in
     ;;
   windows)
     # En Windows: USERPROFILE/universida-datos
-    if [ -n "$USERPROFILE" ]; then
+    if [ -n "${USERPROFILE:-}" ]; then
       UCN_DATA_DIR="$USERPROFILE/universida-datos"
     else
       UCN_DATA_DIR="$HOME/universida-datos"

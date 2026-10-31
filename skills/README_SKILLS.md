@@ -88,3 +88,8 @@ cd skills && ./sync-agent-skills.sh
 - No editar las copias, editar siempre en agent-skills/
 - El PDF skills_report.tex documenta todo
 - Si se descubre el repo de ingenieria-electromecanica, actualizar
+
+## Licencias y trazabilidad
+
+Al importar o actualizar una skill, registra en `skills/skills-lock.yaml` el repo y la
+revision exacta usada, y guarda su licencia en `skills/third-party-licenses/`.

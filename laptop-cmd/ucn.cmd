@@ -20,16 +20,24 @@ doskey hermes=hermes $*
 doskey hermes-full=hermes --yolo $*
 doskey gem=gemini $*
 doskey gem-full=gemini --yolo $*
+doskey qwen=qwen $*
 doskey qwen-full=qwen --yolo $*
+doskey crush=crush $*
 doskey crush-full=crush --yolo $*
+doskey copilot=copilot $*
 doskey copilot-full=copilot --allow-all-tools $*
+doskey amp=amp $*
 doskey amp-full=amp --dangerously-allow-all $*
+doskey iflow=iflow $*
 doskey iflow-full=iflow --yolo $*
+doskey aider=aider $*
 doskey aider-full=aider --yes-always $*
+doskey kimi=kimi $*
 doskey kimi-full=kimi --yolo $*
 doskey cursor=cursor-agent $*
 doskey cursor-full=cursor-agent --force $*
 doskey kilo=kilocode $*
+doskey auggie=auggie $*
 
 REM --- Resolver raiz del repo desde la ubicacion de este archivo ---
 set "UCN_CMD_DIR=%~dp0"
@@ -46,12 +54,14 @@ doskey weather=curl.exe -s wttr.in/Puno
 doskey sysinfo=systeminfo
 doskey editui=notepad "%UCN_CMD_DIR%ucn.cmd"
 
-REM --- Navegacion ---
+REM --- Navegacion (equivale a aliases.sh) ---
 doskey uni=cd /d %USERPROFILE%\universida-datos
 doskey notas=cd /d %USERPROFILE%\universida-datos\notas
 doskey informes=cd /d %USERPROFILE%\universida-datos\informes
 doskey cursos=cd /d %USERPROFILE%\universida-datos\cursos
-doskey workspace=cd /d %UCN_REPO_CMD%
+doskey labs=cd /d %USERPROFILE%\universida-datos\laboratorios
+doskey workspace=cd /d %USERPROFILE%\workspace
+doskey repos=dir /b /ad %USERPROFILE%\workspace
 
 REM --- Menu solo en sesiones interactivas (AutoRun tambien corre en "cmd /c") ---
 echo %CMDCMDLINE% | find /i "/c" >nul && goto :eof

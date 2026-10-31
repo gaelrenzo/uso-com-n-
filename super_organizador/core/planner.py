@@ -41,6 +41,9 @@ class Planner:
     def generate_plan(self, items: list, inventory: list[dict]) -> list[dict]:
         plan = []
         for idx, entry in enumerate(inventory, 1):
+            # Solo se planifican archivos: mover una carpeta deja huerfanos a sus hijos
+            if entry["tipo"] == "directorio":
+                continue
             nombre = entry["nombre"]
             ruta = entry["ruta_relativa"]
             extension = entry["extension"]
@@ -68,6 +71,13 @@ class Planner:
                 cat = result["categoria"]
                 conf = result["confianza"]
                 reasons = result["motivos"]
+
+            ai_cat = entry.get("categoria_sugerida", "")
+            ai_conf = entry.get("confianza", 0.0)
+            if ai_cat and ai_conf > conf:
+                cat = ai_cat
+                conf = ai_conf
+                reasons = entry.get("motivos") or ["Clasificado con IA"]
 
             requires_review = conf < self.confidence_threshold
             if cat == "00_REVISAR_MANUALMENTE" or requires_review:

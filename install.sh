@@ -29,7 +29,11 @@ echo "   Plataforma detectada: $PLATFORM"
 if [ -f ~/.bashrc ]; then
   if grep -q "skills/skills.sh" ~/.bashrc 2>/dev/null; then
     echo "🔄 Actualizando ruta antigua en ~/.bashrc..."
-    sed -i 's|skills/skills.sh|termux-bash/termux-bash.sh|g' ~/.bashrc 2>/dev/null
+    # sed -i no es portable (BSD/macOS exige otra sintaxis)
+    bashrc_tmp="$(mktemp)"
+    sed 's|skills/skills.sh|termux-bash/termux-bash.sh|g' ~/.bashrc > "$bashrc_tmp"
+    cat "$bashrc_tmp" > ~/.bashrc
+    rm -f "$bashrc_tmp"
   fi
 
   if grep -q "termux-bash/termux-bash.sh" ~/.bashrc 2>/dev/null; then

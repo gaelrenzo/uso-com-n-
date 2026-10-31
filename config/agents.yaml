@@ -11,8 +11,8 @@
 #   3) Rutas conocidas de la plataforma (known_paths)
 #
 # Para agregar un agente nuevo: anade su entrada aqui y en
-# scripts/ucn-platform.sh, termux-bash/ia-tools.sh,
-# laptop-powershell/Microsoft.PowerShell_profile.ps1 y laptop-cmd/ucn.cmd
+# termux-bash/ia-tools.sh, laptop-powershell/Microsoft.PowerShell_profile.ps1
+# y laptop-cmd/ucn.cmd (wrappers + tabla del MOTD)
 # ==============================================================================
 
 agents:
@@ -70,3 +70,124 @@ agents:
       termux: ["/data/data/com.termux/files/usr/bin/agy"]
       linux: ["/usr/bin/agy", "/usr/local/bin/agy", "/root/.local/bin/agy"]
       windows: ["%USERPROFILE%\\.local\\bin\\agy.exe"]
+
+  gemini:
+    command: gemini
+    env: UCN_GEMINI_BIN
+    wrapper: gem
+    full_args: --yolo
+    description: Gemini CLI - agente de Google (npm: gem / gem-full)
+    known_paths:
+      termux: ["/data/data/com.termux/files/usr/bin/gemini", "~/.local/bin/gemini"]
+      linux: ["/usr/bin/gemini", "/usr/local/bin/gemini", "~/.local/bin/gemini"]
+      windows: ["%APPDATA%\\npm\\gemini.cmd", "%USERPROFILE%\\.local\\bin\\gemini.exe"]
+
+  qwen:
+    command: qwen
+    env: UCN_QWEN_BIN
+    wrapper: qwen
+    full_args: --yolo
+    description: Qwen Code - agente de codigo de Alibaba
+    known_paths:
+      termux: ["/data/data/com.termux/files/usr/bin/qwen", "~/.local/bin/qwen"]
+      linux: ["/usr/bin/qwen", "/usr/local/bin/qwen", "~/.local/bin/qwen"]
+      windows: ["%APPDATA%\\npm\\qwen.cmd", "%USERPROFILE%\\.local\\bin\\qwen.exe"]
+
+  crush:
+    command: crush
+    env: UCN_CRUSH_BIN
+    wrapper: crush
+    full_args: --yolo
+    description: Crush - agente de Charmland
+    known_paths:
+      termux: ["/data/data/com.termux/files/usr/bin/crush", "~/.local/bin/crush"]
+      linux: ["/usr/bin/crush", "/usr/local/bin/crush", "~/.local/bin/crush"]
+      windows: ["%APPDATA%\\npm\\crush.cmd", "%USERPROFILE%\\.local\\bin\\crush.exe"]
+
+  copilot:
+    command: copilot
+    env: UCN_COPILOT_BIN
+    wrapper: copilot
+    full_args: --allow-all-tools
+    description: GitHub Copilot CLI - agente de GitHub
+    known_paths:
+      termux: ["/data/data/com.termux/files/usr/bin/copilot", "~/.local/bin/copilot"]
+      linux: ["/usr/bin/copilot", "/usr/local/bin/copilot", "~/.local/bin/copilot"]
+      windows: ["%APPDATA%\\npm\\copilot.cmd", "%USERPROFILE%\\.local\\bin\\copilot.exe"]
+
+  amp:
+    command: amp
+    env: UCN_AMP_BIN
+    wrapper: amp
+    full_args: --dangerously-allow-all
+    description: Amp - agente de Sourcegraph
+    known_paths:
+      termux: ["/data/data/com.termux/files/usr/bin/amp", "~/.local/bin/amp"]
+      linux: ["/usr/bin/amp", "/usr/local/bin/amp", "~/.local/bin/amp"]
+      windows: ["%APPDATA%\\npm\\amp.cmd", "%USERPROFILE%\\.local\\bin\\amp.exe"]
+
+  iflow:
+    command: iflow
+    env: UCN_IFLOW_BIN
+    wrapper: iflow
+    full_args: --yolo
+    description: iFlow - agente de iflow-ai
+    known_paths:
+      termux: ["/data/data/com.termux/files/usr/bin/iflow", "~/.local/bin/iflow"]
+      linux: ["/usr/bin/iflow", "/usr/local/bin/iflow", "~/.local/bin/iflow"]
+      windows: ["%APPDATA%\\npm\\iflow.cmd", "%USERPROFILE%\\.local\\bin\\iflow.exe"]
+
+  aider:
+    command: aider
+    env: UCN_AIDER_BIN
+    wrapper: aider
+    full_args: --yes-always
+    description: Aider - par de programacion con el LLM (uv tool: aider-chat)
+    known_paths:
+      termux: ["/data/data/com.termux/files/usr/bin/aider", "~/.local/bin/aider"]
+      linux: ["/usr/bin/aider", "/usr/local/bin/aider", "~/.local/bin/aider"]
+      windows: ["%USERPROFILE%\\.local\\bin\\aider.exe", "%APPDATA%\\npm\\aider.cmd"]
+
+  kimi:
+    command: kimi
+    env: UCN_KIMI_BIN
+    wrapper: kimi
+    full_args: --yolo
+    description: Kimi CLI - agente de Moonshot AI (uv tool: kimi-cli)
+    known_paths:
+      termux: ["/data/data/com.termux/files/usr/bin/kimi", "~/.local/bin/kimi"]
+      linux: ["/usr/bin/kimi", "/usr/local/bin/kimi", "~/.local/bin/kimi"]
+      windows: ["%USERPROFILE%\\.local\\bin\\kimi.exe", "%APPDATA%\\npm\\kimi.cmd"]
+
+  cursor-agent:
+    command: cursor-agent
+    env: UCN_CURSOR_AGENT_BIN
+    wrapper: cursor
+    full_args: --force
+    description: Cursor CLI - agente de Cursor
+    known_paths:
+      termux: ["/data/data/com.termux/files/usr/bin/cursor-agent", "~/.local/bin/cursor-agent"]
+      linux: ["/usr/local/bin/cursor-agent", "~/.local/bin/cursor-agent"]
+      windows: ["%USERPROFILE%\\.local\\bin\\cursor-agent.exe", "%APPDATA%\\npm\\cursor-agent.cmd"]
+
+  kilocode:
+    command: kilocode
+    env: UCN_KILOCODE_BIN
+    wrapper: kilo
+    full_args: ""
+    description: Kilo Code - agente de codigo (sin modo full)
+    known_paths:
+      termux: ["/data/data/com.termux/files/usr/bin/kilocode", "~/.local/bin/kilocode"]
+      linux: ["/usr/bin/kilocode", "/usr/local/bin/kilocode", "~/.local/bin/kilocode"]
+      windows: ["%APPDATA%\\npm\\kilocode.cmd", "%USERPROFILE%\\.local\\bin\\kilocode.exe"]
+
+  auggie:
+    command: auggie
+    env: UCN_AUGGIE_BIN
+    wrapper: auggie
+    full_args: ""
+    description: Augment - agente de Augment Code (sin modo full)
+    known_paths:
+      termux: ["/data/data/com.termux/files/usr/bin/auggie", "~/.local/bin/auggie"]
+      linux: ["/usr/bin/auggie", "/usr/local/bin/auggie", "~/.local/bin/auggie"]
+      windows: ["%APPDATA%\\npm\\auggie.cmd", "%USERPROFILE%\\.local\\bin\\auggie.exe"]

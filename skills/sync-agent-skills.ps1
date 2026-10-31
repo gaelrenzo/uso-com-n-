@@ -52,9 +52,15 @@ Get-ChildItem -Path $RepoSkillsDir -Directory | ForEach-Object {
                     [System.IO.Directory]::Delete($DestLink)
                 } else {
                     # Carpeta real, la respaldamos
+                    # Nunca pisar un respaldo anterior; "ucn skills clean" busca el sufijo _backup
                     $BackupPath = $DestLink + "_backup"
+                    $N = 2
+                    while (Test-Path -LiteralPath $BackupPath) {
+                        $BackupPath = "{0}_{1}_backup" -f $DestLink, $N
+                        $N++
+                    }
                     Write-Host "  Saving backup of existing directory at: $BackupPath" -ForegroundColor DarkYellow
-                    Rename-Item -Path $DestLink -NewName ($SkillDir.Name + "_backup") -Force
+                    Rename-Item -Path $DestLink -NewName (Split-Path -Leaf $BackupPath) -Force
                 }
             }
             

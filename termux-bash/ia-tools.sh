@@ -89,6 +89,17 @@ ucn_run() {
     return 127
   fi
 
+  # Modos sin confirmacion: como root el agente podria tocar todo el sistema
+  case " $* " in
+    *" --yolo "*|*" --dangerously-"*|*" --yes-always "*|*" --allow-all-tools "*)
+      if [ "$(id -u)" -eq 0 ] && [ "${UCN_ALLOW_ROOT_AGENTS:-0}" != "1" ]; then
+        echo "⛔ Modo full bloqueado como root: usa un usuario normal." >&2
+        echo "    Para aceptar el riesgo: UCN_ALLOW_ROOT_AGENTS=1 en config/.env" >&2
+        return 126
+      fi
+      ;;
+  esac
+
   # Limpieza preventiva para codex en caso de socket huérfano en Termux/Linux
   if [ "$tool" = "codex" ] && [ -d "$HOME/.codex/app-server-control" ]; then
     local sock="$HOME/.codex/app-server-control/app-server-control.sock"
@@ -166,7 +177,10 @@ cl-full() {
   # Claude Code bloquea --dangerously-skip-permissions bajo root (EUID 0)
   # salvo que IS_SANDBOX=1 este definido (escape hatch oficial del CLI).
   # Comun en Termux con tsu/su: sin esto sale "cannot be used with root/sudo".
-  [ "$(id -u)" -eq 0 ] && export IS_SANDBOX=1
+  # Solo se activa si se acepto el riesgo con UCN_ALLOW_ROOT_AGENTS=1.
+  if [ "$(id -u)" -eq 0 ] && [ "${UCN_ALLOW_ROOT_AGENTS:-0}" = "1" ]; then
+    export IS_SANDBOX=1
+  fi
   ucn_run claude --dangerously-skip-permissions "$@"
 }
 
