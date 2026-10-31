@@ -231,6 +231,12 @@ check_go_cli() {
   else
     bad "ucn skills list no responde como se espera"
   fi
+  # skills sync: enlaza las skills sin hacer git pull
+  if ( cd "$REPO_ROOT" && "$bin" skills sync 2>&1 | grep -q "Sincroniz" ); then
+    ok "ucn skills sync responde"
+  else
+    bad "ucn skills sync no responde como se espera"
+  fi
   # skills clean: detecta enlaces rotos / respaldos huerfanos (no destructivo por defecto)
   if ( cd "$REPO_ROOT" && "$bin" skills clean 2>&1 | grep -q "Problemas encontrados\|No hay enlaces rotos" ); then
     ok "ucn skills clean responde"

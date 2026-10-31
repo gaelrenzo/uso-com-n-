@@ -135,6 +135,10 @@ func installShellHook(repoRoot string) error {
 	bashrc := filepath.Join(home, ".bashrc")
 	hook := fmt.Sprintf("source %q", filepath.Join(repoRoot, "termux-bash", "termux-bash.sh"))
 
+	if err := migrateLegacyHook(bashrc); err != nil {
+		return err
+	}
+
 	fh, err := os.OpenFile(bashrc, os.O_APPEND|os.O_CREATE|os.O_RDWR, 0644)
 	if err != nil {
 		return err
@@ -149,6 +153,23 @@ func installShellHook(repoRoot string) error {
 		return err
 	}
 	return nil
+}
+
+// migrateLegacyHook rewrites the old skills/skills.sh hook in place.
+func migrateLegacyHook(bashrc string) error {
+	data, err := os.ReadFile(bashrc)
+	if os.IsNotExist(err) {
+		return nil
+	}
+	if err != nil {
+		return err
+	}
+	content := string(data)
+	if !strings.Contains(content, "skills/skills.sh") {
+		return nil
+	}
+	content = strings.ReplaceAll(content, "skills/skills.sh", "termux-bash/termux-bash.sh")
+	return os.WriteFile(bashrc, []byte(content), 0644)
 }
 
 // resolveDataDir mirrors scripts/ucn-platform.sh candidates.

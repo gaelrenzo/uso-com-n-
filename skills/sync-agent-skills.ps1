@@ -6,6 +6,14 @@
 $ScriptDir = Split-Path -Parent $MyInvocation.MyCommand.Path
 $RepoSkillsDir = Join-Path $ScriptDir "agent-skills"
 
+# ucn es la implementacion principal; este script cubre el arranque sin Go
+if (Get-Command ucn -ErrorAction SilentlyContinue) {
+    $env:UCN_REPO_DIR = Split-Path -Parent $ScriptDir
+    ucn skills sync
+    if ($LASTEXITCODE -eq 0) { exit 0 }
+    Write-Host "ucn could not sync; using the PowerShell fallback" -ForegroundColor Yellow
+}
+
 Write-Host "Syncing agent skills from: $RepoSkillsDir" -ForegroundColor Cyan
 
 $HomeDir = [System.Environment]::GetFolderPath("UserProfile")

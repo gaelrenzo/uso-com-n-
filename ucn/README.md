@@ -40,6 +40,7 @@ ucn/
 | **`ucn doctor`** | Diagnóstico del Sistema. | Verifica plataforma, rutas de datos/notas, dependencias en PATH (`git`, `node`, `npm`, `live-server`, `cloudflared`), agentes de `config/agents.yaml` (ruta + versión), archivos de configuración y enlaces simbólicos rotos. |
 | **`ucn doctor --fix`** | Corrección automática segura. | Crea `config/config.yaml` y `config/.env` desde sus `.example` si faltan, y asegura los directorios de datos/notas/informes/cursos/laboratorios. |
 | **`ucn agents`** | Estado de agentes IA. | Muestra la tabla `NAME \| STATUS \| BIN` resolviendo cada agente del registro `config/agents.yaml`. |
+| **`ucn skills sync`** | Enlaza las Habilidades sin `git pull`. | Lo usan `skills/sync-agent-skills.sh` y `.ps1` cuando `ucn` esta instalado. |
 | **`ucn bootstrap`** | Preparacion de dispositivo. | Detecta plataforma, crea config desde plantillas, asegura directorios, instala el hook de shell, sincroniza skills y muestra agentes. Idempotente (reinstalable). |
 | **`ucn update`** | Actualizacion del entorno. | `git fetch` + `git pull --rebase`, re-sincroniza skills de todos los agentes y reporta el estado de agentes. Con `--check` solo comprueba si hay actualizaciones. |
 | **`ucn profile`** | Perfiles de especialidad. | `list` muestra los perfiles de `profiles/`, `use <nombre>` activa uno (guarda `config/.current-profile`), `current` muestra el activo, `show` el detalle (herramientas + prompt) y `export [<perfil>]` genera `config/profile-prompts/<perfil>.md` para la inyección en los wrappers. Exporta `UCN_PROFILE`. |

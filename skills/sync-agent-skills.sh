@@ -7,6 +7,14 @@
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 REPO_SKILLS_DIR="$SCRIPT_DIR/agent-skills"
 
+# ucn es la implementacion principal; este script cubre el arranque sin Go
+if command -v ucn >/dev/null 2>&1; then
+  if UCN_REPO_DIR="$(dirname "$SCRIPT_DIR")" ucn skills sync; then
+    exit 0
+  fi
+  echo "⚠️  ucn no pudo sincronizar; se usa el sincronizador bash"
+fi
+
 echo "🔄 Sincronizando skills de agentes desde: $REPO_SKILLS_DIR"
 
 # Lista de directorios destino para cada agente

@@ -242,8 +242,9 @@ func handleSkills(cfg *config.Config, repoRoot string, args []string) {
 	skillsDir := skills.SourceDir(repoRoot)
 
 	if len(args) == 0 {
-		fmt.Println("Uso: ucn skills <list|status [nombre]|clean [--apply]>")
+		fmt.Println("Uso: ucn skills <list|sync|status [nombre]|clean [--apply]>")
 		fmt.Println("\nSubcomandos:")
+		fmt.Println("  sync              Enlaza las skills en cada agente (sin git pull)")
 		fmt.Println("  list              Lista las skills del repo y su estado por agente")
 		fmt.Println("  status [nombre]   Detalle de enlaces de una skill (o todas)")
 		fmt.Println("  clean [--apply] [--backups]   Muestra enlaces rotos y respaldos huérfanos (--apply los elimina)")
@@ -357,9 +358,15 @@ func handleSkills(cfg *config.Config, repoRoot string, args []string) {
 			}
 		}
 
+	case "sync":
+		if err := sync.SyncSkills(cfg, repoRoot); err != nil {
+			fmt.Printf("❌ Error al sincronizar skills: %v\n", err)
+			os.Exit(1)
+		}
+
 	default:
 		fmt.Printf("❌ Subcomando desconocido: %s\n", args[0])
-		fmt.Println("Uso: ucn skills <list|status [nombre]|clean [--apply] [--backups]>")
+		fmt.Println("Uso: ucn skills <list|sync|status [nombre]|clean [--apply] [--backups]>")
 		os.Exit(1)
 	}
 }

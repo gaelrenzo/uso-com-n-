@@ -25,6 +25,25 @@ else
 fi
 echo "   Plataforma detectada: $PLATFORM"
 
+# --- Con Go, ucn bootstrap hace la instalacion; lo demas cubre el arranque sin Go ---
+if command -v go >/dev/null 2>&1; then
+  UCN_BIN="$HOME/.local/bin/ucn"
+  if [ "$PLATFORM" = "windows" ]; then
+    UCN_BIN="$UCN_BIN.exe"
+  fi
+  # Se compila fuera del repo: la memoria compartida de Android no admite locks
+  BUILD_DIR="$(mktemp -d)"
+  trap 'rm -rf "$BUILD_DIR"' EXIT
+  cp -r "$SCRIPT_DIR/ucn" "$BUILD_DIR/ucn"
+  mkdir -p "$(dirname "$UCN_BIN")"
+  if (cd "$BUILD_DIR/ucn" && go build -o "$UCN_BIN" ./cmd/ucn/); then
+    chmod +x "$SCRIPT_DIR/scripts/"*.sh 2>/dev/null || true
+    UCN_REPO_DIR="$SCRIPT_DIR" "$UCN_BIN" bootstrap
+    exit 0
+  fi
+  echo "⚠️  No se pudo compilar ucn; se continua con el instalador bash"
+fi
+
 # --- Configurar .bashrc ---
 if [ -f ~/.bashrc ]; then
   if grep -q "skills/skills.sh" ~/.bashrc 2>/dev/null; then
@@ -82,9 +101,9 @@ if [ ! -f "$SCRIPT_DIR/config/.env" ] && [ -f "$SCRIPT_DIR/config/.env.example" 
 fi
 
 # --- Instalar skills para agentes IA ---
-if [ -f "$SCRIPT_DIR/install-agent-skills.sh" ]; then
+if [ -f "$SCRIPT_DIR/skills/sync-agent-skills.sh" ]; then
   echo ""
-  bash "$SCRIPT_DIR/install-agent-skills.sh"
+  bash "$SCRIPT_DIR/skills/sync-agent-skills.sh"
 fi
 
 echo ""
