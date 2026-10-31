@@ -1,0 +1,215 @@
+# Trazabilidad de skills de terceros. Generado el 2026-10-30.
+# revision_upstream es el HEAD del repo en esa fecha, NO la revision exacta de la que
+# se copio cada skill (no quedo registrada al importarlas). Sirve de referencia para
+# comparar; al reimportar una skill registra aqui la revision realmente usada.
+verificado: "2026-10-30"
+skills:
+  agent-reach:
+    repo: https://github.com/Panniantong/Agent-Reach
+    licencia_declarada: MIT
+    revision_upstream: "14c213405669414492bda0f8d52cc6531d062c45"
+    licencia_archivo: "third-party-licenses/Panniantong__Agent-Reach.txt"
+  api-design-principles:
+    repo: https://github.com/secondsky/claude-skills
+    licencia_declarada: sin declarar
+    revision_upstream: "88378361314f558fb719aec0af9fd898ab36f0b2"
+    licencia_archivo: "third-party-licenses/secondsky__claude-skills.txt"
+  bom:
+    repo: https://github.com/aklofas/kicad-happy
+    licencia_declarada: sin declarar
+    revision_upstream: "2fd9aa0fe2d620f36627d9221e8b1393987ae38e"
+    licencia_archivo: "third-party-licenses/aklofas__kicad-happy.txt"
+  changelog-automation:
+    repo: https://github.com/wshobson/agents
+    licencia_declarada: sin declarar
+    revision_upstream: "7e2fb559cf4b824b27f1fec49fe88f7511066d26"
+    licencia_archivo: "third-party-licenses/wshobson__agents.txt"
+  claude-mem:
+    repo: https://github.com/thedotmack/claude-mem
+    licencia_declarada: Apache-2.0
+    revision_upstream: "70aa40042cfb8157a0d84954b9c0d2b30b50af80"
+    licencia_archivo: "third-party-licenses/thedotmack__claude-mem.txt"
+  claude-plugins:
+    repo: https://github.com/anthropics/claude-plugins-official
+    licencia_declarada: Apache-2.0
+    revision_upstream: "a7ba5b93db0c7c8d17f3f1d25853adca79598a1a"
+    licencia_archivo: "third-party-licenses/anthropics__claude-plugins-official.txt"
+  codegraph:
+    repo: https://github.com/colbymchenry/codegraph
+    licencia_declarada: MIT
+    revision_upstream: "2008e2f33fba48c07d3f08baad519015ba80bce1"
+    licencia_archivo: "third-party-licenses/colbymchenry__codegraph.txt"
+  datasheets:
+    repo: https://github.com/aklofas/kicad-happy
+    licencia_declarada: sin declarar
+    revision_upstream: "2fd9aa0fe2d620f36627d9221e8b1393987ae38e"
+    licencia_archivo: "third-party-licenses/aklofas__kicad-happy.txt"
+  digikey:
+    repo: https://github.com/aklofas/kicad-happy
+    licencia_declarada: sin declarar
+    revision_upstream: "2fd9aa0fe2d620f36627d9221e8b1393987ae38e"
+    licencia_archivo: "third-party-licenses/aklofas__kicad-happy.txt"
+  element14:
+    repo: https://github.com/aklofas/kicad-happy
+    licencia_declarada: sin declarar
+    revision_upstream: "2fd9aa0fe2d620f36627d9221e8b1393987ae38e"
+    licencia_archivo: "third-party-licenses/aklofas__kicad-happy.txt"
+  emc:
+    repo: https://github.com/aklofas/kicad-happy
+    licencia_declarada: sin declarar
+    revision_upstream: "2fd9aa0fe2d620f36627d9221e8b1393987ae38e"
+    licencia_archivo: "third-party-licenses/aklofas__kicad-happy.txt"
+  find-skills:
+    repo: https://github.com/vercel-labs/skills
+    licencia_declarada: sin declarar
+    revision_upstream: "92a9a34ac3bf88e695e468b90c7bf32f163d32c8"
+    licencia_archivo: "third-party-licenses/vercel-labs__skills.txt"
+  floor-plan-generator:
+    repo: https://github.com/z-aqib/Floor-Plan-Generator-Using-AI
+    licencia_declarada: MIT
+    revision_upstream: "e91f6f90b8c7957e60d0d846ae1c9964f820e76b"
+    licencia_archivo: ""
+  freedomain:
+    repo: https://github.com/DigitalPlatDev/FreeDomain
+    licencia_declarada: AGPL-3.0
+    revision_upstream: "9c7c54110705760267b07b6e6a6d406d1172a1bf"
+    licencia_archivo: "third-party-licenses/DigitalPlatDev__FreeDomain.txt"
+  frontend-design:
+    repo: https://github.com/anthropics/skills
+    licencia_declarada: Apache-2.0
+    revision_upstream: "ca45fc496a3436251f191354091d557da31c15b5"
+    licencia_archivo: ""
+  ingenieria-electromecanica:
+    repo: desconocido
+    revision_upstream: ""
+    licencia_archivo: ""
+  jlcpcb:
+    repo: https://github.com/aklofas/kicad-happy
+    licencia_declarada: sin declarar
+    revision_upstream: "2fd9aa0fe2d620f36627d9221e8b1393987ae38e"
+    licencia_archivo: "third-party-licenses/aklofas__kicad-happy.txt"
+  karpathy-guidelines:
+    repo: https://github.com/multica-ai/andrej-karpathy-skills
+    licencia_declarada: MIT
+    revision_upstream: "2c606141936f1eeef17fa3043a72095b4765b9c2"
+    licencia_archivo: ""
+  kicad:
+    repo: https://github.com/aklofas/kicad-happy
+    licencia_declarada: sin declarar
+    revision_upstream: "2fd9aa0fe2d620f36627d9221e8b1393987ae38e"
+    licencia_archivo: "third-party-licenses/aklofas__kicad-happy.txt"
+  kidoc:
+    repo: https://github.com/aklofas/kicad-happy
+    licencia_declarada: sin declarar
+    revision_upstream: "2fd9aa0fe2d620f36627d9221e8b1393987ae38e"
+    licencia_archivo: "third-party-licenses/aklofas__kicad-happy.txt"
+  last30days:
+    repo: https://github.com/mvanhorn/last30days-skill
+    licencia_declarada: MIT
+    revision_upstream: "7efc0ef764765ed9ceff5ce1204462b35b89d680"
+    licencia_archivo: "third-party-licenses/mvanhorn__last30days-skill.txt"
+  lcsc:
+    repo: https://github.com/aklofas/kicad-happy
+    licencia_declarada: sin declarar
+    revision_upstream: "2fd9aa0fe2d620f36627d9221e8b1393987ae38e"
+    licencia_archivo: "third-party-licenses/aklofas__kicad-happy.txt"
+  mouser:
+    repo: https://github.com/aklofas/kicad-happy
+    licencia_declarada: sin declarar
+    revision_upstream: "2fd9aa0fe2d620f36627d9221e8b1393987ae38e"
+    licencia_archivo: "third-party-licenses/aklofas__kicad-happy.txt"
+  notebooklm:
+    repo: https://github.com/teng-lin/notebooklm-py
+    licencia_declarada: MIT
+    revision_upstream: "7db1000b516c3f3a7d3afe7c4c572924ee7a5264"
+    licencia_archivo: "third-party-licenses/teng-lin__notebooklm-py.txt"
+  obsidian-skills:
+    repo: https://github.com/kepano/obsidian-skills
+    licencia_declarada: MIT
+    revision_upstream: "3ccff5338ea700537839b21900aa5358a0402c98"
+    licencia_archivo: "third-party-licenses/kepano__obsidian-skills.txt"
+  pcbway:
+    repo: https://github.com/aklofas/kicad-happy
+    licencia_declarada: sin declarar
+    revision_upstream: "2fd9aa0fe2d620f36627d9221e8b1393987ae38e"
+    licencia_archivo: "third-party-licenses/aklofas__kicad-happy.txt"
+  ponytail:
+    repo: https://github.com/DietrichGebert/ponytail
+    licencia_declarada: MIT
+    revision_upstream: "96608e078b2d5ea607c5c3b8b5a54d1c1fba6846"
+    licencia_archivo: "third-party-licenses/DietrichGebert__ponytail.txt"
+  ponytail-audit:
+    repo: https://github.com/DietrichGebert/ponytail
+    licencia_declarada: MIT
+    revision_upstream: "96608e078b2d5ea607c5c3b8b5a54d1c1fba6846"
+    licencia_archivo: "third-party-licenses/DietrichGebert__ponytail.txt"
+  ponytail-debt:
+    repo: https://github.com/DietrichGebert/ponytail
+    licencia_declarada: MIT
+    revision_upstream: "96608e078b2d5ea607c5c3b8b5a54d1c1fba6846"
+    licencia_archivo: "third-party-licenses/DietrichGebert__ponytail.txt"
+  ponytail-gain:
+    repo: https://github.com/DietrichGebert/ponytail
+    licencia_declarada: MIT
+    revision_upstream: "96608e078b2d5ea607c5c3b8b5a54d1c1fba6846"
+    licencia_archivo: "third-party-licenses/DietrichGebert__ponytail.txt"
+  ponytail-help:
+    repo: https://github.com/DietrichGebert/ponytail
+    licencia_declarada: MIT
+    revision_upstream: "96608e078b2d5ea607c5c3b8b5a54d1c1fba6846"
+    licencia_archivo: "third-party-licenses/DietrichGebert__ponytail.txt"
+  ponytail-review:
+    repo: https://github.com/DietrichGebert/ponytail
+    licencia_declarada: MIT
+    revision_upstream: "96608e078b2d5ea607c5c3b8b5a54d1c1fba6846"
+    licencia_archivo: "third-party-licenses/DietrichGebert__ponytail.txt"
+  postgresql:
+    repo: https://github.com/wshobson/agents
+    licencia_declarada: sin declarar
+    revision_upstream: "7e2fb559cf4b824b27f1fec49fe88f7511066d26"
+    licencia_archivo: "third-party-licenses/wshobson__agents.txt"
+  professor-synapse:
+    repo: https://github.com/ProfSynapse/Professor-Synapse
+    licencia_declarada: sin declarar
+    revision_upstream: "3401e1acf6d6fb03cffed143e5bc9c7f5d67b8cb"
+    licencia_archivo: ""
+  rtk:
+    repo: https://github.com/rtk-ai/rtk
+    licencia_declarada: Apache-2.0
+    revision_upstream: "6c2313a6616b81408d776b39921a934e39f841ae"
+    licencia_archivo: "third-party-licenses/rtk-ai__rtk.txt"
+  skillspector:
+    repo: https://github.com/NVIDIA/SkillSpector
+    licencia_declarada: Apache-2.0
+    revision_upstream: "9adb1a607ab0749e4377e0aba1c834b72f948107"
+    licencia_archivo: "third-party-licenses/NVIDIA__SkillSpector.txt"
+  spec-kit:
+    repo: https://github.com/github/spec-kit
+    licencia_declarada: MIT
+    revision_upstream: "7370e592f3cd9c06e5b698983957e227c75b30e2"
+    licencia_archivo: "third-party-licenses/github__spec-kit.txt"
+  spice:
+    repo: https://github.com/aklofas/kicad-happy
+    licencia_declarada: sin declarar
+    revision_upstream: "2fd9aa0fe2d620f36627d9221e8b1393987ae38e"
+    licencia_archivo: "third-party-licenses/aklofas__kicad-happy.txt"
+  superpowers:
+    repo: https://github.com/obra/superpowers
+    licencia_declarada: MIT
+    revision_upstream: "2ce8aa15d05bd57213e6f746f953aafb7ded7a8b"
+    licencia_archivo: "third-party-licenses/obra__superpowers.txt"
+  systematic-debugging:
+    repo: https://github.com/obra/superpowers
+    licencia_declarada: MIT
+    revision_upstream: "2ce8aa15d05bd57213e6f746f953aafb7ded7a8b"
+    licencia_archivo: "third-party-licenses/obra__superpowers.txt"
+  thesis-writing:
+    repo: https://github.com/santifs/thesis-writing-skill
+    licencia_declarada: MIT
+    revision_upstream: "d2484deeff288da550222afc74fc939648d9288d"
+    licencia_archivo: "third-party-licenses/santifs__thesis-writing-skill.txt"
+  visual-design-foundations:
+    repo: https://github.com/ibossyNr1/AaaS-Vault
+    licencia_declarada: sin declarar
+    revision_upstream: ""
+    licencia_archivo: ""
