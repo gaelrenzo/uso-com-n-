@@ -48,8 +48,15 @@ for skill_path in "$REPO_SKILLS_DIR"/*; do
       # Si ya existe algo en el destino
       if [ -e "$dest_link" ] || [ -L "$dest_link" ]; then
         if [ -d "$dest_link" ] && [ ! -L "$dest_link" ]; then
-          echo "  ⚠️ Guardando copia de seguridad de carpeta existente en: ${dest_link}_backup"
-          mv "$dest_link" "${dest_link}_backup"
+          # Nunca pisar un respaldo anterior; "ucn skills clean" busca el sufijo _backup
+          backup_path="${dest_link}_backup"
+          n=2
+          while [ -e "$backup_path" ] || [ -L "$backup_path" ]; do
+            backup_path="${dest_link}_${n}_backup"
+            n=$((n + 1))
+          done
+          echo "  ⚠️ Guardando copia de seguridad de carpeta existente en: $backup_path"
+          mv "$dest_link" "$backup_path"
         else
           rm -rf "$dest_link"
         fi
