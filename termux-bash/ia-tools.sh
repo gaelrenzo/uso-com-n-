@@ -76,6 +76,12 @@ ucn_resolve() {
   return 1
 }
 
+# --- Modos full como root: variable de entorno o config/.env (bash no carga ese archivo) ---
+ucn_root_allowed() {
+  [ "${UCN_ALLOW_ROOT_AGENTS:-0}" = "1" ] && return 0
+  command grep -qs '^UCN_ALLOW_ROOT_AGENTS=1' "${UCN_REPO_DIR:-}/config/.env"
+}
+
 # --- Lanzador: ejecuta el agente o explica como instalarlo ---
 ucn_run() {
   local tool="$1"
@@ -92,7 +98,7 @@ ucn_run() {
   # Modos sin confirmacion: como root el agente podria tocar todo el sistema
   case " $* " in
     *" --yolo "*|*" --dangerously-"*|*" --yes-always "*|*" --allow-all-tools "*)
-      if [ "$(id -u)" -eq 0 ] && [ "${UCN_ALLOW_ROOT_AGENTS:-0}" != "1" ]; then
+      if [ "$(id -u)" -eq 0 ] && ! ucn_root_allowed; then
         echo "⛔ Modo full bloqueado como root: usa un usuario normal." >&2
         echo "    Para aceptar el riesgo: UCN_ALLOW_ROOT_AGENTS=1 en config/.env" >&2
         return 126
@@ -178,7 +184,7 @@ cl-full() {
   # salvo que IS_SANDBOX=1 este definido (escape hatch oficial del CLI).
   # Comun en Termux con tsu/su: sin esto sale "cannot be used with root/sudo".
   # Solo se activa si se acepto el riesgo con UCN_ALLOW_ROOT_AGENTS=1.
-  if [ "$(id -u)" -eq 0 ] && [ "${UCN_ALLOW_ROOT_AGENTS:-0}" = "1" ]; then
+  if [ "$(id -u)" -eq 0 ] && ucn_root_allowed; then
     export IS_SANDBOX=1
   fi
   ucn_run claude --dangerously-skip-permissions "$@"
