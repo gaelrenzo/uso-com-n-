@@ -28,6 +28,12 @@ description: Asistente de apuestas deportivas para betano.pe en modo asistido. C
 | `bookmarklet` | Imprime el `javascript:...` para guardarlo como marcador (celular y PC) |
 | `importar [--archivo f\|-] [--comparar soccer_epl]` | Analiza en bloque el último `betano-*.json` de Descargas; con `--comparar` cruza con el consenso sin margen de otras casas (The Odds API) y marca value + stake |
 
+### Mini app (recomendado)
+`app/index.html` (un solo archivo, sin dependencias). URL: https://gaelrenzo.github.io/uso-com-n-/skills/agent-skills/betano-asistido/app/
+(o `live-server` en :8080). Pestañas: Importar (bookmarklet que abre la app con las cuotas en el hash, archivo o pegado),
+Partidos (margen, cuota justa, comparar con The Odds API, value), Registro (pendiente/ganada/perdida, ROI, export JSON), Ajustes (límites, API key).
+Datos en localStorage de cada navegador; la API key nunca se sube al repo. El bookmarklet de la app se genera con la URL desde donde se abrió.
+
 ### Importación masiva (lo permitido: un toque del usuario, sin peticiones automáticas)
 1. Instalar una vez: `betano.py bookmarklet` → copiar la salida → crear marcador "Cuotas" con esa URL.
    En Chrome Android: escribir "Cuotas" en la barra de direcciones y tocar el marcador.

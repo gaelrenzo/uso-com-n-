@@ -1,0 +1,236 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Betano Asistido</title>
+<style>
+:root{--bg:#f6f7f9;--card:#fff;--tx:#14171c;--mut:#5d6673;--bd:#dde1e7;--ac:#e8501c;--ok:#1a8a4a;--bad:#c62828;--warn:#b26b00;--chip:#eef1f4}
+@media (prefers-color-scheme:dark){:root{--bg:#0f1216;--card:#181c22;--tx:#e8ebef;--mut:#99a3b0;--bd:#2a3039;--ac:#ff6a33;--ok:#3ccf7d;--bad:#ff6b6b;--warn:#ffb547;--chip:#222831}}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--tx);font:15px/1.45 system-ui,-apple-system,Segoe UI,Roboto,sans-serif}
+header{position:sticky;top:0;z-index:5;background:var(--card);border-bottom:1px solid var(--bd);padding:10px 16px;display:flex;gap:12px;align-items:center;flex-wrap:wrap}
+header h1{font-size:17px;margin:0;margin-right:auto}header h1 b{color:var(--ac)}
+.kpi{font-size:13px;color:var(--mut)}.kpi b{color:var(--tx);font-variant-numeric:tabular-nums}
+nav{display:flex;gap:4px;padding:8px 16px;overflow-x:auto;background:var(--card);border-bottom:1px solid var(--bd)}
+nav button{border:0;background:none;color:var(--mut);padding:8px 12px;border-radius:8px;font:inherit;cursor:pointer;white-space:nowrap}
+nav button.on{background:var(--chip);color:var(--tx);font-weight:600}
+main{max-width:980px;margin:0 auto;padding:16px}section{display:none}section.on{display:block}
+.card{background:var(--card);border:1px solid var(--bd);border-radius:12px;padding:14px;margin-bottom:12px}
+h2{font-size:15px;margin:0 0 10px}p.mut,.mut{color:var(--mut);font-size:13px}
+textarea,input,select{width:100%;font:inherit;color:var(--tx);background:var(--bg);border:1px solid var(--bd);border-radius:8px;padding:8px}
+textarea{min-height:120px;font-family:ui-monospace,monospace;font-size:12px}
+.row{display:flex;gap:8px;flex-wrap:wrap;align-items:center}.row>*{flex:1 1 140px}
+label{font-size:12px;color:var(--mut);display:block}label input{margin-top:3px}
+.btn{flex:0 0 auto;border:1px solid var(--bd);background:var(--card);color:var(--tx);border-radius:8px;padding:8px 12px;font:inherit;cursor:pointer}
+.btn.pri{background:var(--ac);border-color:var(--ac);color:#fff}.btn.sm{padding:4px 8px;font-size:13px}
+.ev{border-top:1px solid var(--bd);padding:10px 0}.ev:first-child{border-top:0}
+.ev .t{font-weight:600}.odds{display:flex;gap:6px;margin-top:6px;flex-wrap:wrap}
+.o{background:var(--chip);border-radius:8px;padding:5px 8px;font-variant-numeric:tabular-nums;font-size:13px;min-width:74px}
+.o small{display:block;color:var(--mut);font-size:11px}.o.val{outline:2px solid var(--ok)}
+.tag{display:inline-block;font-size:11px;padding:1px 6px;border-radius:99px;background:var(--chip);color:var(--mut)}
+.tag.ok{color:var(--ok)}.tag.bad{color:var(--bad)}.tag.warn{color:var(--warn)}
+table{width:100%;border-collapse:collapse;font-size:13px}th,td{text-align:left;padding:6px 4px;border-bottom:1px solid var(--bd)}
+td.n{font-variant-numeric:tabular-nums}.scroll{overflow-x:auto}
+code.bm{display:block;word-break:break-all;font-size:11px;max-height:90px;overflow:auto;background:var(--bg);padding:8px;border-radius:8px}
+dialog{border:1px solid var(--bd);border-radius:12px;background:var(--card);color:var(--tx);max-width:420px;width:calc(100% - 32px)}
+dialog::backdrop{background:#0008}.warns{color:var(--warn);font-size:13px}
+</style>
+</head>
+<body>
+<header>
+  <h1><b>Betano</b> asistido</h1>
+  <span class="kpi">Bankroll <b id="kBank">-</b></span>
+  <span class="kpi">Hoy <b id="kHoy">-</b> / <b id="kLim">-</b></span>
+  <span class="kpi">ROI <b id="kRoi">-</b></span>
+</header>
+<nav>
+  <button data-t="imp" class="on">Importar</button><button data-t="par">Partidos</button>
+  <button data-t="reg">Registro</button><button data-t="cfg">Ajustes</button>
+</nav>
+<main>
+<section id="imp" class="on">
+  <div class="card">
+    <h2>1 · Bookmarklet (instalar una vez)</h2>
+    <p class="mut">Crea un marcador llamado <b>Cuotas</b> con esta URL. En betano.pe abre una liga y tócalo (en Chrome Android: escribe "Cuotas" en la barra). Abre esta app con las cuotas visibles ya cargadas. Solo lee tu pantalla, no hace peticiones a Betano.</p>
+    <code class="bm" id="bm"></code>
+    <div class="row" style="margin-top:8px"><button class="btn" id="bmCopy">Copiar bookmarklet</button></div>
+  </div>
+  <div class="card">
+    <h2>2 · O carga a mano</h2>
+    <div class="row"><input type="file" id="file" accept=".json,.txt"></div>
+    <textarea id="paste" placeholder="…o pega aquí el texto de la liga (Seleccionar todo → Copiar)" style="margin-top:8px"></textarea>
+    <div class="row" style="margin-top:8px"><button class="btn pri" id="parse">Analizar</button><span class="mut" id="impMsg"></span></div>
+  </div>
+</section>
+
+<section id="par">
+  <div class="card">
+    <div class="row">
+      <label>Deporte (The Odds API)<input id="sport" placeholder="soccer_epl"></label>
+      <button class="btn" id="cmp">Comparar con mercado</button>
+      <label style="flex:0 0 auto"><input type="checkbox" id="onlyVal" style="width:auto"> solo value</label>
+    </div>
+    <p class="mut" id="parMsg"></p>
+    <div id="evs"></div>
+  </div>
+</section>
+
+<section id="reg">
+  <div class="card">
+    <h2>Apuestas</h2>
+    <div class="scroll"><table><thead><tr><th>Fecha</th><th>Evento</th><th>Sel.</th><th>Cuota</th><th>Stake</th><th>Estado</th><th></th></tr></thead><tbody id="regTb"></tbody></table></div>
+    <div class="row" style="margin-top:10px"><button class="btn" id="exp">Exportar JSON</button><label class="btn" style="flex:0 0 auto">Importar JSON<input type="file" id="impReg" accept=".json" hidden></label></div>
+  </div>
+</section>
+
+<section id="cfg">
+  <div class="card">
+    <h2>Límites</h2>
+    <div class="row">
+      <label>Bankroll (PEN)<input type="number" step="0.01" id="c_bankroll"></label>
+      <label>Fracción Kelly<input type="number" step="0.05" id="c_kelly_frac"></label>
+      <label>Stake máx % bankroll<input type="number" step="0.5" id="c_stake_max_pct"></label>
+      <label>Pérdida máx por día<input type="number" step="1" id="c_perdida_dia_max"></label>
+      <label>Edge mínimo %<input type="number" step="0.5" id="c_edge_min_pct"></label>
+    </div>
+    <h2 style="margin-top:14px">The Odds API</h2>
+    <label>API key (se guarda solo en este navegador)<input id="c_api_key" type="password" autocomplete="off"></label>
+    <div class="row" style="margin-top:10px"><button class="btn pri" id="save">Guardar</button><span class="mut" id="cfgMsg"></span></div>
+  </div>
+  <p class="mut">Solo +18. Si apuestas para recuperar pérdidas, para. Ayuda en Perú: línea 113, opción 5.</p>
+</section>
+</main>
+
+<dialog id="dlg">
+  <h2 id="dT"></h2>
+  <p class="mut" id="dInfo"></p>
+  <label>Stake<input type="number" step="0.01" id="dStake"></label>
+  <label style="margin-top:8px">Cuota real en Betano<input type="number" step="0.01" id="dCuota"></label>
+  <p class="warns" id="dWarn"></p>
+  <div class="row"><button class="btn" id="dOpen">Abrir Betano</button><button class="btn pri" id="dOk">Ya aposté: registrar</button><button class="btn" id="dNo">Cancelar</button></div>
+</dialog>
+
+<script>
+const $=s=>document.querySelector(s), $$=s=>[...document.querySelectorAll(s)];
+const DEF={bankroll:100,kelly_frac:.25,stake_max_pct:2,perdida_dia_max:10,edge_min_pct:2,api_key:""};
+const ls={get(k,d){try{return JSON.parse(localStorage.getItem("bta_"+k))??d}catch{return d}},set(k,v){try{localStorage.setItem("bta_"+k,JSON.stringify(v))}catch{}}};
+let C={...DEF,...ls.get("cfg",{})}, R=ls.get("reg",[]), S=ls.get("ses",{url:null,evs:[]});
+const f2=x=>(+x).toFixed(2), hoy=()=>new Date().toISOString().slice(0,10);
+
+// ---- parser (mismo que betano.py) ----
+const RE_C=/^\d{1,3}[.,]\d{1,2}$/;
+const RE_R=/^(1|X|2|1X|12|X2|\+\d+|EN VIVO|LIVE|Hoy|Mañana|Más|Menos|Sí|No|\d{1,2}:\d{2}|\d{1,2}[/.]\d{1,2}([/.]\d{2,4})?|.*\d{1,2}:\d{2}.*|\d+'?)$/i;
+const esC=s=>{if(!RE_C.test(s))return false;const v=+s.replace(",",".");return v>=1.01&&v<=1000};
+function parsear(t){
+  const L=t.split(/\n/).map(s=>s.trim()).filter(Boolean),E=[];let N=[],i=0;
+  while(i<L.length){const l=L[i];
+    if(esC(l)){const run=[];while(i<L.length&&(esC(L[i])||/^(1|X|2)$/i.test(L[i]))){if(esC(L[i]))run.push(+L[i].replace(",","."));i++}
+      if(run.length>=2&&N.length>=2)E.push({local:N.at(-2),visita:N.at(-1),cuotas:run.length>=3?run.slice(0,3):run.slice(0,2),extra:run.slice(3)});
+      N=[];continue}
+    if(!RE_R.test(l)&&/[A-Za-zÁÉÍÓÚÑáéíóúñ]{2}/.test(l)&&l.length<=40)N.push(l);i++}
+  return E}
+
+// ---- matemática ----
+function analiza(e){const inv=e.cuotas.map(c=>1/c),s=inv.reduce((a,b)=>a+b);e.margen=(s-1)*100;e.pj=inv.map(x=>x/s);return e}
+function perdidaHoy(){let p=0;for(const r of R){if(r.fecha.slice(0,10)!==hoy())continue;
+  if(r.estado==="pendiente"||r.estado==="perdida")p+=r.stake;if(r.estado==="ganada")p-=r.stake*(r.cuota-1)}return Math.max(p,0)}
+function kelly(p,c){const b=c-1,k=b>0?Math.max((b*p-(1-p))/b,0):0;let st=C.bankroll*k*C.kelly_frac;
+  st=Math.min(st,C.bankroll*C.stake_max_pct/100,C.perdida_dia_max-perdidaHoy());return Math.max(Math.round(st*100)/100,0)}
+const SEL=n=>n===3?["1 Local","X Empate","2 Visita"]:["Local","Visita"];
+
+// ---- comparación con mercado ----
+const norm=s=>s.normalize("NFKD").replace(/[̀-ͯ]/g,"").toLowerCase().replace(/\b(fc|cf|cd|club|sc|ac|de|the|united|utd|deportivo|atletico)\b/g," ").replace(/[^a-z0-9]+/g," ").trim();
+function sim(a,b){a=norm(a);b=norm(b);if(a===b)return 1;const bg=s=>{const m=new Map();for(let i=0;i<s.length-1;i++){const g=s.slice(i,i+2);m.set(g,(m.get(g)||0)+1)}return m};
+  const A=bg(a),B=bg(b);let x=0;for(const[g,n]of A)x+=Math.min(n,B.get(g)||0);return 2*x/Math.max(a.length+b.length-2,1)}
+function consenso(ev){let acc=[0,0,0],n=0;for(const bk of ev.bookmakers||[]){if(bk.key.includes("betano"))continue;
+  for(const m of bk.markets){const pr=Object.fromEntries(m.outcomes.map(o=>[o.name,o.price]));const o=[pr[ev.home_team],pr.Draw,pr[ev.away_team]];
+    if(o.some(x=>!x))continue;const inv=o.map(x=>1/x),s=inv.reduce((a,b)=>a+b);acc=acc.map((a,i)=>a+inv[i]/s);n++}}
+  return n?{p:acc.map(a=>a/n),n}:null}
+async function comparar(){
+  if(!C.api_key){$("#parMsg").textContent="Falta la API key en Ajustes.";return}
+  const sp=$("#sport").value.trim()||"soccer_epl";ls.set("sport",sp);$("#parMsg").textContent="Consultando mercado…";
+  try{const r=await fetch(`https://api.the-odds-api.com/v4/sports/${encodeURIComponent(sp)}/odds?apiKey=${encodeURIComponent(C.api_key)}&regions=eu&markets=h2h&oddsFormat=decimal`);
+    if(!r.ok)throw new Error(r.status+" "+(await r.text()).slice(0,120));
+    const M=await r.json();let hits=0;
+    for(const e of S.evs){e.mkt=null;if(e.cuotas.length!==3||!M.length)continue;
+      const best=M.reduce((b,m)=>{const s=sim(e.local,m.home_team)+sim(e.visita,m.away_team);return s>b.s?{s,m}:b},{s:0}).m;
+      if(sim(e.local,best.home_team)<.55||sim(e.visita,best.away_team)<.55)continue;
+      const c=consenso(best);if(c){e.mkt={...c,name:`${best.home_team} vs ${best.away_team}`};hits++}}
+    ls.set("ses",S);$("#parMsg").textContent=`${hits}/${S.evs.length} partidos emparejados con el mercado (${r.headers.get("x-requests-remaining")??"?"} consultas restantes).`;render()}
+  catch(err){$("#parMsg").textContent="Error: "+err.message}}
+
+// ---- render ----
+function render(){
+  $("#kBank").textContent=f2(C.bankroll);$("#kHoy").textContent=f2(perdidaHoy());$("#kLim").textContent=f2(C.perdida_dia_max);
+  const cer=R.filter(r=>["ganada","perdida","nula"].includes(r.estado)),ap=cer.reduce((a,r)=>a+r.stake,0),
+    pl=cer.reduce((a,r)=>a+(r.estado==="ganada"?r.stake*(r.cuota-1):r.estado==="perdida"?-r.stake:0),0);
+  $("#kRoi").textContent=ap?(pl/ap*100).toFixed(1)+"%":"-";
+  const only=$("#onlyVal").checked;
+  const evs=S.evs.map((e,i)=>({e,i,val:e.mkt?e.cuotas.map((c,j)=>(e.mkt.p[j]*c-1)*100):null}))
+    .filter(x=>!only||(x.val&&x.val.some(v=>v>=C.edge_min_pct)))
+    .sort((a,b)=>Math.max(...(b.val||[-99]))-Math.max(...(a.val||[-99]))||a.e.margen-b.e.margen);
+  $("#evs").innerHTML=evs.length?evs.map(({e,i,val})=>`<div class="ev"><div class="t">${esc(e.local)} vs ${esc(e.visita)}</div>
+    <span class="tag ${e.margen<5?"ok":e.margen>8?"bad":""}">margen ${e.margen.toFixed(1)}%</span>
+    ${e.mkt?`<span class="tag">mercado: ${e.mkt.n} casas</span>`:""}
+    <div class="odds">${e.cuotas.map((c,j)=>{const v=val&&val[j],isV=v!=null&&v>=C.edge_min_pct;
+      return `<div class="o ${isV?"val":""}"><small>${SEL(e.cuotas.length)[j]}</small><b>${f2(c)}</b>
+      <small>justa ${f2(1/e.pj[j])}${v!=null?` · edge <span class="${v>=0?"tag ok":"tag bad"}">${v.toFixed(1)}%</span>`:""}</small>
+      <button class="btn sm" data-b="${i},${j}" style="margin-top:4px">Boleto</button></div>`}).join("")}</div></div>`).join("")
+    :`<p class="mut">${S.evs.length?"Ningún partido con value.":"Importa cuotas primero."}</p>`;
+  $("#regTb").innerHTML=[...R].reverse().map(r=>`<tr><td>${r.fecha.slice(5,16).replace("T"," ")}</td><td>${esc(r.evento)}</td><td>${esc(r.seleccion)}</td>
+    <td class="n">${f2(r.cuota)}</td><td class="n">${f2(r.stake)}</td><td><span class="tag ${r.estado==="ganada"?"ok":r.estado==="perdida"?"bad":"warn"}">${r.estado}</span></td>
+    <td>${r.estado==="pendiente"?`<button class="btn sm" data-r="${r.id},ganada">✓</button> <button class="btn sm" data-r="${r.id},perdida">✗</button> <button class="btn sm" data-r="${r.id},nula">nula</button>`:""}</td></tr>`).join("")
+    ||`<tr><td colspan="7" class="mut">Sin apuestas.</td></tr>`}
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+
+// ---- boleto ----
+let B=null;
+function boleto(i,j){const e=S.evs[i],sel=SEL(e.cuotas.length)[j],c=e.cuotas[j];
+  const p=e.mkt?e.mkt.p[j]:null;
+  if(p==null){const pi=prompt(`Sin dato de mercado. Tu probabilidad para "${sel}" (%):`);if(!pi)return;B={p:+pi/100}}else B={p};
+  Object.assign(B,{e,sel,c});const st=kelly(B.p,c),edge=(B.p*c-1)*100;
+  $("#dT").textContent=`${e.local} vs ${e.visita}`;
+  $("#dInfo").textContent=`${sel} @ ${f2(c)} · p=${(B.p*100).toFixed(1)}% (${e.mkt?"mercado":"tuya"}) · edge ${edge.toFixed(1)}% · Kelly ${C.kelly_frac}`;
+  $("#dStake").value=f2(st);$("#dCuota").value=f2(c);
+  const w=[];if(edge<C.edge_min_pct)w.push(`Edge menor al mínimo (${C.edge_min_pct}%): no hay value.`);
+  if(st<=0)w.push("Stake 0: límite diario alcanzado o sin value.");$("#dWarn").textContent=w.join(" ");$("#dlg").showModal()}
+$("#dOpen").onclick=()=>window.open(S.url&&/betano\./.test(S.url)?S.url:"https://www.betano.pe/","_blank","noopener");
+$("#dNo").onclick=()=>$("#dlg").close();
+$("#dOk").onclick=()=>{const stake=+$("#dStake").value,cuota=+$("#dCuota").value;
+  if(stake>C.bankroll*C.stake_max_pct/100||stake>C.perdida_dia_max-perdidaHoy())
+    if(!confirm("Este stake supera tus límites. ¿Registrar igual?"))return;
+  R.push({id:Date.now().toString(36),fecha:new Date().toISOString(),evento:`${B.e.local} vs ${B.e.visita}`,seleccion:B.sel,cuota,stake,p:B.p,estado:"pendiente"});
+  ls.set("reg",R);$("#dlg").close();render()};
+
+// ---- eventos ----
+function cargar(texto,url){const evs=parsear(texto).map(analiza);S={url:url||null,evs};ls.set("ses",S);
+  $("#impMsg").textContent=evs.length?`${evs.length} partidos reconocidos.`:"No reconocí partidos: pásale el texto al asistente para calibrar.";
+  if(evs.length)tab("par");render()}
+function leerRaw(raw){try{const j=JSON.parse(raw);cargar(j.texto||"",j.url)}catch{cargar(raw,null)}}
+$("#parse").onclick=()=>leerRaw($("#paste").value);
+$("#file").onchange=async e=>{const f=e.target.files[0];if(f)leerRaw(await f.text())};
+$("#cmp").onclick=comparar;$("#onlyVal").onchange=render;
+document.addEventListener("click",e=>{const b=e.target.closest("[data-b]");if(b){const[i,j]=b.dataset.b.split(",").map(Number);boleto(i,j)}
+  const r=e.target.closest("[data-r]");if(r){const[id,est]=r.dataset.r.split(","),x=R.find(q=>q.id===id);
+    x.estado=est;C.bankroll+=est==="ganada"?x.stake*(x.cuota-1):est==="perdida"?-x.stake:0;C.bankroll=Math.round(C.bankroll*100)/100;
+    ls.set("reg",R);ls.set("cfg",C);render()}});
+function tab(t){$$("nav button").forEach(b=>b.classList.toggle("on",b.dataset.t===t));$$("section").forEach(s=>s.classList.toggle("on",s.id===t))}
+$$("nav button").forEach(b=>b.onclick=()=>tab(b.dataset.t));
+for(const k in DEF)$("#c_"+k).value=C[k];
+$("#save").onclick=()=>{for(const k in DEF)C[k]=k==="api_key"?$("#c_"+k).value.trim():+$("#c_"+k).value;ls.set("cfg",C);$("#cfgMsg").textContent="Guardado.";render()};
+$("#exp").onclick=()=>{const a=document.createElement("a");a.href=URL.createObjectURL(new Blob([JSON.stringify({cfg:{...C,api_key:""},reg:R},null,2)],{type:"application/json"}));
+  a.download=`betano-registro-${hoy()}.json`;a.click()};
+$("#impReg").onchange=async e=>{const f=e.target.files[0];if(!f)return;const j=JSON.parse(await f.text());
+  if(confirm(`Reemplazar registro actual (${R.length}) por el importado (${(j.reg||[]).length})?`)){R=j.reg||[];if(j.cfg)C={...C,...j.cfg,api_key:C.api_key};ls.set("reg",R);ls.set("cfg",C);render()}};
+$("#sport").value=ls.get("sport","soccer_epl");
+
+// bookmarklet que abre esta app con el texto en el hash (no toca servidores de Betano)
+const APP=location.origin+location.pathname;
+const BM=`javascript:(function(){var m=document.querySelector('main')||document.body;var d=JSON.stringify({url:location.href,texto:m.innerText});window.open('${APP}#d='+encodeURIComponent(d),'_blank')})()`;
+$("#bm").textContent=BM;
+$("#bmCopy").onclick=async()=>{try{await navigator.clipboard.writeText(BM);$("#bmCopy").textContent="Copiado ✓"}catch{prompt("Copia esto:",BM)}};
+if(location.hash.startsWith("#d=")){try{leerRaw(decodeURIComponent(location.hash.slice(3)))}catch(e){$("#impMsg").textContent="Hash inválido"}history.replaceState(null,"",location.pathname)}
+render();
+</script>
+</body>
+</html>
