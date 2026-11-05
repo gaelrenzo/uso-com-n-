@@ -72,7 +72,7 @@ repositories:
   - name: gaelrenzo/uso-com-n- (propia)
     url: https://github.com/gaelrenzo/uso-com-n-
     license: MIT
-    skills: [drive-cursos]
+    skills: [drive-cursos, betano-asistido]
   - name: teng-lin/notebooklm-py
     url: https://github.com/teng-lin/notebooklm-py
     license: MIT

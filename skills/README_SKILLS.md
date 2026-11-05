@@ -60,6 +60,7 @@ agregar en ~/.config/opencode/AGENTS.md
 | Experto IA | ProfSynapse/Professor-Synapse | - | professor-synapse |
 | Unknown | - | - | ingenieria-electromecanica |
 | Drive/Universidad | propia | - | drive-cursos (sube el celular a Drive por semestre y curso) |
+| Apuestas | propia | - | betano-asistido (cuotas, value, stake Kelly y boleto para betano.pe; clic final manual) |
 
 ## Comandos útiles
 
