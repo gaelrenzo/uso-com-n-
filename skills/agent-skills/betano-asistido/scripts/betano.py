@@ -209,6 +209,149 @@ def c_odds_api(a):
             print(f"  margen mejor-cuota: {r['margen_pct']}%  (negativo = posible surebet)")
 
 
+# ---------------- importación masiva ----------------
+import re, difflib, unicodedata
+
+RE_CUOTA = re.compile(r"^\d{1,3}[.,]\d{1,2}$")
+RE_RUIDO = re.compile(r"^(1|X|2|1X|12|X2|\+\d+|EN VIVO|LIVE|Hoy|Mañana|Más|Menos|Sí|No|"
+                      r"\d{1,2}:\d{2}|\d{1,2}[/.]\d{1,2}([/.]\d{2,4})?|.*\d{1,2}:\d{2}.*|\d+'?)$", re.I)
+
+
+def es_cuota(s):
+    if not RE_CUOTA.match(s):
+        return False
+    v = float(s.replace(",", "."))
+    return 1.01 <= v <= 1000
+
+
+def parsear_texto(texto):
+    """Heurística sobre el innerText de una lista de partidos: [nombre, nombre, (etiquetas), cuotas...]."""
+    lineas = [l.strip() for l in texto.splitlines() if l.strip()]
+    eventos, nombres, i = [], [], 0
+    while i < len(lineas):
+        l = lineas[i]
+        if es_cuota(l):
+            run = []
+            while i < len(lineas) and (es_cuota(lineas[i]) or re.match(r"^(1|X|2)$", lineas[i], re.I)):
+                if es_cuota(lineas[i]):
+                    run.append(float(lineas[i].replace(",", ".")))
+                i += 1
+            if len(run) >= 2 and len(nombres) >= 2:
+                eventos.append({"local": nombres[-2], "visita": nombres[-1],
+                                "mercado": "1X2" if len(run) >= 3 else "2-vias",
+                                "cuotas": run[:3] if len(run) >= 3 else run[:2], "extra": run[3:]})
+            nombres = []
+            continue
+        if not RE_RUIDO.match(l) and re.search(r"[A-Za-zÁÉÍÓÚÑáéíóúñ]{2}", l) and len(l) <= 40:
+            nombres.append(l)
+        i += 1
+    return eventos
+
+
+def norm(s):
+    s = unicodedata.normalize("NFKD", s).encode("ascii", "ignore").decode().lower()
+    s = re.sub(r"\b(fc|cf|cd|club|sc|ac|de|the|united|utd|deportivo|atletico)\b", " ", s)
+    return re.sub(r"[^a-z0-9]+", " ", s).strip()
+
+
+def sim(a, b):
+    return difflib.SequenceMatcher(None, norm(a), norm(b)).ratio()
+
+
+def mercado_api(deporte, region="eu"):
+    key = os.environ.get("ODDS_API_KEY")
+    if not key:
+        sys.exit("Falta ODDS_API_KEY para --comparar (gratis en https://the-odds-api.com).")
+    q = urllib.parse.urlencode({"apiKey": key, "regions": region, "markets": "h2h", "oddsFormat": "decimal"})
+    req = urllib.request.Request(f"https://api.the-odds-api.com/v4/sports/{deporte}/odds?{q}",
+                                 headers={"User-Agent": "betano-asistido/1.0"})
+    with urllib.request.urlopen(req, timeout=20) as r:
+        return json.load(r)
+
+
+def prob_mercado(ev):
+    """Probabilidad de consenso sin margen (promedio de casas, excluye Betano) en orden local, empate, visita."""
+    acc, n = [0.0, 0.0, 0.0], 0
+    for bk in ev.get("bookmakers", []):
+        if "betano" in bk["key"]:
+            continue
+        for m in bk["markets"]:
+            pr = {o["name"]: o["price"] for o in m["outcomes"]}
+            orden = [pr.get(ev["home_team"]), pr.get("Draw"), pr.get(ev["away_team"])]
+            if None in orden:
+                continue
+            inv = [1 / x for x in orden]
+            s = sum(inv)
+            acc = [a + x / s for a, x in zip(acc, inv)]
+            n += 1
+    return ([a / n for a in acc], n) if n else (None, 0)
+
+
+def ultimo_export():
+    dirs = [Path("/storage/emulated/0/Download"), Path.home() / "Downloads", Path.home() / "Descargas",
+            Path(os.environ.get("USERPROFILE", "~")).expanduser() / "Downloads"]
+    fs = [f for d in dirs if d.is_dir() for f in d.glob("betano-*.json")]
+    return max(fs, key=lambda f: f.stat().st_mtime) if fs else None
+
+
+def c_bookmarklet(a):
+    js = (Path(__file__).with_name("bookmarklet.js")).read_text()
+    js = "\n".join(l for l in js.splitlines() if not l.strip().startswith("//"))
+    js = re.sub(r"\s*\n\s*", " ", js).strip()
+    print("javascript:" + urllib.parse.quote(js, safe="(){}[];:,.=+!'\"/*?&|<>-_ "))
+
+
+def c_importar(a):
+    if a.archivo == "-":
+        texto, meta = sys.stdin.read(), {}
+    else:
+        f = Path(a.archivo) if a.archivo else ultimo_export()
+        if not f or not f.exists():
+            sys.exit("No hay betano-*.json en Descargas. Usa el bookmarklet o --archivo.")
+        raw = f.read_text(encoding="utf-8")
+        try:
+            meta = json.loads(raw)
+            texto = meta.get("texto", "")
+        except json.JSONDecodeError:
+            texto, meta = raw, {}
+        print(f"Archivo: {f}")
+    evs = parsear_texto(texto)
+    if not evs:
+        sys.exit("No reconocí partidos. Pásale el archivo al asistente para calibrar el parser.")
+    c, rows = cfg(), registro()
+    mercado = mercado_api(a.comparar) if a.comparar else []
+    for e in evs:
+        r = analisis(e["cuotas"])
+        e["margen_pct"] = r["margen_pct"]
+        e["cuota_justa"] = [l["cuota_justa"] for l in r["lineas"]]
+        e["value"] = []
+        if mercado and e["mercado"] == "1X2":
+            best = max(mercado, key=lambda m: sim(e["local"], m["home_team"]) + sim(e["visita"], m["away_team"]))
+            if sim(e["local"], best["home_team"]) >= 0.6 and sim(e["visita"], best["away_team"]) >= 0.6:
+                p, n = prob_mercado(best)
+                e["match_api"] = f"{best['home_team']} vs {best['away_team']} ({n} casas)"
+                if p:
+                    for sel, pi, ci in zip(("Local", "Empate", "Visita"), p, e["cuotas"]):
+                        edge = (pi * ci - 1) * 100
+                        if edge >= c["edge_min_pct"]:
+                            st, k, _ = stake_kelly(pi, ci, c, rows)
+                            e["value"].append({"seleccion": sel, "cuota": ci, "p_mercado": round(pi, 4),
+                                               "edge_pct": round(edge, 2), "stake": st})
+    BASE.mkdir(parents=True, exist_ok=True)
+    out = BASE / "importes" / f"{datetime.now():%Y%m%d-%H%M%S}.json"
+    out.parent.mkdir(exist_ok=True)
+    out.write_text(json.dumps({"url": meta.get("url"), "eventos": evs}, indent=2, ensure_ascii=False))
+    print(f"{len(evs)} partidos  (guardado {out})\n")
+    for e in sorted(evs, key=lambda e: (-len(e["value"]), e["margen_pct"])):
+        cu = " ".join(f"{x:5.2f}" for x in e["cuotas"])
+        print(f"{e['local'][:22]:22s} vs {e['visita'][:22]:22s} {cu}  margen {e['margen_pct']:4.1f}%")
+        for v in e["value"]:
+            print(f"   VALUE {v['seleccion']} @ {v['cuota']}  p_mercado={v['p_mercado']}  "
+                  f"edge={v['edge_pct']}%  stake={v['stake']}")
+    if a.comparar and not any(e["value"] for e in evs):
+        print("\nNingún partido con value contra el consenso del mercado.")
+
+
 def main():
     ap = argparse.ArgumentParser(description="Asistente betano.pe (sin login, clic final manual)")
     sp = ap.add_subparsers(dest="cmd", required=True)
@@ -230,6 +373,11 @@ def main():
     s = sp.add_parser("odds"); s.add_argument("--deporte", default="soccer_conmebol_copa_libertadores")
     s.add_argument("--region", default="eu"); s.add_argument("--mercado", default="h2h"); s.add_argument("--max", type=int, default=10)
     s.set_defaults(f=c_odds_api)
+    s = sp.add_parser("bookmarklet", help="imprime el javascript: para guardar como marcador"); s.set_defaults(f=c_bookmarklet)
+    s = sp.add_parser("importar", help="analiza el export del bookmarklet (último en Descargas) o texto pegado")
+    s.add_argument("--archivo", help="ruta .json/.txt, o - para stdin")
+    s.add_argument("--comparar", metavar="DEPORTE", help="clave de The Odds API, p.ej. soccer_epl")
+    s.set_defaults(f=c_importar)
     a = ap.parse_args()
     a.f(a)
 

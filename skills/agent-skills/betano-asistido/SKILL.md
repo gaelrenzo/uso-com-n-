@@ -26,6 +26,17 @@ description: Asistente de apuestas deportivas para betano.pe en modo asistido. C
 | `resumen` | Bankroll, ROI, pendientes, pérdida de hoy |
 | `odds --deporte soccer_epl` | Cuotas de mercado con `ODDS_API_KEY` (the-odds-api.com; Betano puede no estar en la lista, sirve como referencia) |
 
+| `bookmarklet` | Imprime el `javascript:...` para guardarlo como marcador (celular y PC) |
+| `importar [--archivo f\|-] [--comparar soccer_epl]` | Analiza en bloque el último `betano-*.json` de Descargas; con `--comparar` cruza con el consenso sin margen de otras casas (The Odds API) y marca value + stake |
+
+### Importación masiva (lo permitido: un toque del usuario, sin peticiones automáticas)
+1. Instalar una vez: `betano.py bookmarklet` → copiar la salida → crear marcador "Cuotas" con esa URL.
+   En Chrome Android: escribir "Cuotas" en la barra de direcciones y tocar el marcador.
+2. En betano.pe abrir la liga y tocar el marcador → descarga `betano-AAAAMMDD-HHMMSS.json`.
+3. `betano.py importar --comparar <deporte>` → ranking de partidos; los de value pasan a `boleto`.
+El parser es heurístico (nombres + cuotas del innerText). Si reconoce 0 o pocos partidos, pedir el `.json` y ajustar `parsear_texto`.
+No crear scrapers headless, rotación de proxies ni evasión de antibots: es lo que lleva a cerrar la cuenta.
+
 Apertura del navegador: `termux-open-url` (Android) → `xdg-open` (Linux) → `os.startfile` (Windows).
 
 ## Flujo
