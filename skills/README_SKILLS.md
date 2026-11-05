@@ -59,6 +59,7 @@ agregar en ~/.config/opencode/AGENTS.md
 | UI | ibossyNr1/AaaS-Vault | - | visual-design-foundations |
 | Experto IA | ProfSynapse/Professor-Synapse | - | professor-synapse |
 | Unknown | - | - | ingenieria-electromecanica |
+| Drive/Universidad | propia | - | drive-cursos (sube el celular a Drive por semestre y curso) |
 
 ## Comandos útiles
 

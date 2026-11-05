@@ -69,6 +69,10 @@ repositories:
     url: https://github.com/Panniantong/Agent-Reach
     license: MIT
     skills: [agent-reach]
+  - name: gaelrenzo/uso-com-n- (propia)
+    url: https://github.com/gaelrenzo/uso-com-n-
+    license: MIT
+    skills: [drive-cursos]
   - name: teng-lin/notebooklm-py
     url: https://github.com/teng-lin/notebooklm-py
     license: MIT
