@@ -241,6 +241,12 @@ def main():
     sub = [r for r in filas if r[2] == "SUBIR"]
     log = os.path.join(WORK, "subida.log")
     for i, (rel, dest, _, _) in enumerate(sub, 1):
+        # Si ya hay otro archivo con ese nombre (contenido distinto: el MD5 no coincidió), renombrar con sufijo
+        base, ext = os.path.splitext(dest)
+        n = 1
+        while subprocess.run(["rclone", "lsf", REMOTE + "/" + dest], capture_output=True, text=True).stdout.strip():
+            n += 1
+            dest = f"{base}_celular{'' if n == 2 else n - 1}{ext}"
         print(f"[{i}/{len(sub)}] {rel} -> {dest}", flush=True)
         subprocess.run(["rclone", "copyto", "--ignore-existing", "--tpslimit", "8", "--retries", "3",
                         "--log-file", log, "-v", os.path.join(LOCAL, *rel.split("/")), REMOTE + "/" + dest])

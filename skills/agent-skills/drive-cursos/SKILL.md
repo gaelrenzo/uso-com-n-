@@ -35,6 +35,7 @@ Primero siempre: `python3 <skill>/scripts/clasificar_subir.py --diagnostico`.
 - Solo copiar: `rclone copy/copyto --ignore-existing`. Nunca `sync`, nunca `delete`, nunca sobrescribir.
 - No borrar ni mover nada local sin confirmación (excepto ordenar un trabajo recién creado en su carpeta de curso).
 - No usar `rclone link` (deja el archivo público). Para dar un enlace, usar el conector de Google Drive (`search_files` → `viewUrl`).
+- Si en Drive ya hay otro archivo con el mismo nombre (contenido distinto), el script sube con sufijo `_celular`; nunca sobrescribe.
 - Saltar temporales LaTeX (`.aux .log .out .toc .synctex.gz …`).
 - Lo que no tenga curso claro va a `98_Por_Clasificar/Desde_celular_AAAA-MM/`, nunca a un curso adivinado.
 - Subidas grandes (>100 MB) en segundo plano y verificar al final con `rclone lsf`.
