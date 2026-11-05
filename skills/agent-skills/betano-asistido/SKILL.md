@@ -25,7 +25,6 @@ description: Asistente de apuestas deportivas para betano.pe en modo asistido. C
 | `resultado <id> ganada\|perdida\|nula` | Cerrar la apuesta y actualizar el bankroll |
 | `resumen` | Bankroll, ROI, pendientes, pérdida de hoy |
 | `odds --deporte soccer_epl` | Cuotas de mercado con `ODDS_API_KEY` (the-odds-api.com; Betano puede no estar en la lista, sirve como referencia) |
-
 | `bookmarklet` | Imprime el `javascript:...` para guardarlo como marcador (celular y PC) |
 | `importar [--archivo f\|-] [--comparar soccer_epl]` | Analiza en bloque el último `betano-*.json` de Descargas; con `--comparar` cruza con el consenso sin margen de otras casas (The Odds API) y marca value + stake |
 
