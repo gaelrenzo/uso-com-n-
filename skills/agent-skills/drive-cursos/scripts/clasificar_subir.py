@@ -1,18 +1,47 @@
 #!/usr/bin/env python3
-"""Clasifica archivos del celular por curso (Sxx/Curso) y los sube a Google Drive con rclone.
+"""Clasifica archivos universitarios por curso (Sxx/Curso) y los sube a Google Drive con rclone.
+Funciona en Android (Termux/proot), Linux y Windows: detecta rutas solo.
 
 Por defecto es prueba en seco: genera plan.tsv y plan.md, no sube nada.
-  --subir         ejecuta la subida (rclone copyto --ignore-existing: nunca sobrescribe ni borra)
-  --refrescar     vuelve a listar Drive (carpetas y MD5) aunque haya cache
-  --solo RUTA     clasifica solo esa carpeta/archivo local (p.ej. un trabajo nuevo)
-Nunca borra ni mueve nada en el celular.
+  --subir          ejecuta la subida (rclone copyto --ignore-existing: nunca sobrescribe ni borra)
+  --refrescar      vuelve a listar Drive (carpetas y MD5) aunque haya cache
+  --solo RUTA      clasifica solo esa carpeta/archivo local (p.ej. un trabajo nuevo)
+  --local RUTA     carpeta local raíz (con Sxx_Semestre/, 98_Por_Clasificar/…)  [env DRIVE_CURSOS_LOCAL]
+  --remoto R:RUTA  carpeta de Drive en rclone                                  [env DRIVE_CURSOS_REMOTO]
+  --trabajo RUTA   dónde guardar cache, plan y log                              [env DRIVE_CURSOS_TRABAJO]
+  --diagnostico    muestra rutas detectadas y herramientas disponibles, y sale
+Nunca borra ni mueve nada en local.
 """
-import argparse, datetime as dt, hashlib, os, re, subprocess, sys, unicodedata, zipfile
+import argparse, datetime as dt, hashlib, os, platform, re, shutil, subprocess, sys, unicodedata, zipfile
 from collections import defaultdict
 
-LOCAL = "/storage/emulated/0/Documents/Universidad_FIME"
-REMOTE = "gdrive:01_Universidad_FIME"
-WORK = os.path.expanduser("~/reorg_cel/drive_cursos")
+CARPETA = "Universidad_FIME"
+HOME = os.path.expanduser("~")
+
+def detectar_local():
+    cands = ["/storage/emulated/0/Documents", "/sdcard/Documents"]               # Android
+    cands += [os.path.join(HOME, d) for d in ("Documents", "Documentos", "OneDrive/Documents",
+                                              "OneDrive/Documentos", "storage/shared/Documents")]
+    if os.environ.get("USERPROFILE"):                                            # Windows
+        cands += [os.path.join(os.environ["USERPROFILE"], d) for d in ("Documents", "Documentos", "OneDrive\\Documents")]
+    for c in cands:
+        if os.path.isdir(os.path.join(c, CARPETA)):
+            return os.path.join(c, CARPETA)
+    return None
+
+def detectar_remoto():
+    if not shutil.which("rclone"):
+        return None
+    remotos = subprocess.run(["rclone", "listremotes"], capture_output=True, text=True).stdout.split()
+    r = "gdrive:" if "gdrive:" in remotos else next((x for x in remotos if "drive" in x.lower()), None)
+    return r and r + "01_Universidad_FIME"
+
+def detectar_trabajo():
+    viejo = os.path.join(HOME, "reorg_cel", "drive_cursos")                      # compatibilidad celular
+    return viejo if os.path.isdir(viejo) else os.path.join(HOME, ".drive-cursos")
+
+LOCAL = REMOTE = WORK = None
+HAY_PDFTOTEXT = bool(shutil.which("pdftotext"))
 SIN = "98_Por_Clasificar/Desde_celular_" + dt.date.today().strftime("%Y-%m")
 BASURA = re.compile(r"\.(aux|log|out|toc|fls|fdb_latexmk|synctex\.gz|bbl|bcf|blg|run\.xml|nav|snm)$|^~\$|^\.", re.I)
 
@@ -68,6 +97,8 @@ def texto(p):
     ext = p.lower().rsplit(".", 1)[-1]
     try:
         if ext == "pdf":
+            if not HAY_PDFTOTEXT:
+                return ""
             return subprocess.run(["pdftotext", "-l", "3", p, "-"], capture_output=True, text=True, timeout=60).stdout
         if ext in ("docx", "pptx", "xlsx"):
             with zipfile.ZipFile(p) as z:
@@ -143,7 +174,7 @@ def plan(raiz, cursos, subdirs, hashes):
         dns[:] = [d for d in dns if not d.startswith(".")]
         for f in sorted(fns):
             p = os.path.join(dp, f)
-            rel = os.path.relpath(p, LOCAL)
+            rel = os.path.relpath(p, LOCAL).replace(os.sep, "/")
             parts = rel.split("/")
             if BASURA.search(f):
                 filas.append((rel, "", "OMITIR_TEMPORAL", "")); continue
@@ -176,7 +207,24 @@ def main():
     ap.add_argument("--subir", action="store_true")
     ap.add_argument("--refrescar", action="store_true")
     ap.add_argument("--solo")
+    ap.add_argument("--local")
+    ap.add_argument("--remoto")
+    ap.add_argument("--trabajo")
+    ap.add_argument("--diagnostico", action="store_true")
     a = ap.parse_args()
+    global LOCAL, REMOTE, WORK
+    LOCAL = a.local or os.environ.get("DRIVE_CURSOS_LOCAL") or detectar_local()
+    REMOTE = a.remoto or os.environ.get("DRIVE_CURSOS_REMOTO") or detectar_remoto()
+    WORK = a.trabajo or os.environ.get("DRIVE_CURSOS_TRABAJO") or detectar_trabajo()
+    if a.diagnostico or not LOCAL or not REMOTE:
+        print(f"Sistema:    {platform.system()} {platform.machine()}")
+        print(f"Local:      {LOCAL or 'NO ENCONTRADO -> usa --local RUTA (carpeta que contiene Sxx_Semestre/)'}")
+        print(f"Remoto:     {REMOTE or 'NO ENCONTRADO -> instala/configura rclone (rclone config) o usa --remoto'}")
+        print(f"Trabajo:    {WORK}")
+        print(f"pdftotext:  {'sí' if HAY_PDFTOTEXT else 'no (los PDF se clasifican solo por nombre; instala poppler-utils)'}")
+        sys.exit(0 if (LOCAL and REMOTE) else 1)
+    if not HAY_PDFTOTEXT:
+        print("Aviso: sin pdftotext, los PDF se clasifican solo por nombre.", file=sys.stderr)
     cursos, subdirs, hashes = cargar_drive(a.refrescar)
     filas = plan(os.path.abspath(a.solo) if a.solo else LOCAL, cursos, subdirs, hashes)
     with open(os.path.join(WORK, "plan.tsv"), "w") as f:
@@ -195,7 +243,7 @@ def main():
     for i, (rel, dest, _, _) in enumerate(sub, 1):
         print(f"[{i}/{len(sub)}] {rel} -> {dest}", flush=True)
         subprocess.run(["rclone", "copyto", "--ignore-existing", "--tpslimit", "8", "--retries", "3",
-                        "--log-file", log, "-v", os.path.join(LOCAL, rel), REMOTE + "/" + dest])
+                        "--log-file", log, "-v", os.path.join(LOCAL, *rel.split("/")), REMOTE + "/" + dest])
     print("FIN SUBIDA")
 
 if __name__ == "__main__":
