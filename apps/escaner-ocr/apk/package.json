@@ -1,0 +1,15 @@
+{
+  "name": "escaner-ocr-apk",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Envoltorio Capacitor del Escáner OCR (lo compila GitHub Actions)",
+  "dependencies": {
+    "@capacitor/android": "8.5.3",
+    "@capacitor/core": "8.5.3",
+    "@capacitor/filesystem": "8.1.5",
+    "@capacitor/share": "8.0.3"
+  },
+  "devDependencies": {
+    "@capacitor/cli": "8.5.3"
+  }
+}

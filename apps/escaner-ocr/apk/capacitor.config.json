@@ -1,0 +1,8 @@
+{
+  "appId": "cl.ucn.escaner",
+  "appName": "Escáner OCR",
+  "webDir": "../public",
+  "server": { "androidScheme": "https", "cleartext": true },
+  "android": { "allowMixedContent": true },
+  "plugins": { "CapacitorHttp": { "enabled": true } }
+}

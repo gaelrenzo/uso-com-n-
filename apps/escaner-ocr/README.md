@@ -14,6 +14,18 @@ Sin servidor, las librerías vienen del CDN (la primera vez con internet; luego 
 se llama directo desde el navegador a `localhost`. Para eso la IA debe permitir CORS:
 `OLLAMA_ORIGINS="*" ollama serve` (Ollama) o "Enable CORS" (LM Studio). URL y modelo en **Ajustes de IA**.
 
+Con la app instalada, en la Galería: **Compartir → Escáner** manda las fotos directo como páginas.
+
+## APK Android (sin Chrome)
+GitHub Actions (`.github/workflows/escaner-apk.yml`) lo compila con Capacitor en cada push a `apps/escaner-ocr/`
+y lo publica en la release **escaner-apk**:
+https://github.com/gaelrenzo/uso-com-n-/releases/tag/escaner-apk → descargar `escaner-ocr.apk` en el celular → instalar.
+- Trae las librerías y modelos OCR dentro: funciona sin internet desde el primer uso.
+- La IA local se llama por HTTP nativo: **no necesita CORS** (Ollama en Termux sirve tal cual).
+- "Compartir" usa el menú nativo; "Descargar PDF" guarda en `Documentos/Escaneos`.
+- Firma debug: si una actualización no instala ("conflicto de paquete"), desinstalar la anterior (la clave
+  se guarda en caché de Actions y se pierde si no hay builds en 7 días).
+
 ## Uso con servidor (Termux: IA + subida automática con rclone)
 ```bash
 node server.js            # http://localhost:8090  (sin dependencias npm)
@@ -59,4 +71,4 @@ Con "Revisar esquinas" activo, cada captura abre un editor con las 4 esquinas de
 Tocar una miniatura vuelve a abrirlo.
 
 ## Pendiente
-- Fork Android nativo (MakeACopy, Apache-2.0) compilado con GitHub Actions.
+- Recibir fotos compartidas también en el APK (intent filter).

@@ -1,5 +1,6 @@
 // Escáner OCR: cámara → jscanify (bordes + perspectiva, esquinas ajustables) → filtro OpenCV → Tesseract (en segundo plano) → PDF buscable → IA local → Drive
-// Dos modos: con server.js (IA y rclone desde Termux) o solo navegador/PWA instalada (IA directa por CORS, compartir a Drive)
+// Modos: con server.js (IA y rclone desde Termux), PWA/navegador (IA directa por CORS, compartir a Drive)
+// o APK Capacitor (librerías incluidas; IA por HTTP nativo sin CORS; plugins Filesystem y Share)
 const $ = (id) => document.getElementById(id);
 const A4 = { w: 1240, h: 1754 }; // 150 dpi
 const MAX_LADO = 2000; // reduce fotos grandes de galería para no agotar la RAM
@@ -24,6 +25,24 @@ let escaner, worker, modoWorker, flujo, pdfActual, conVendor, conServidor, iaNav
 const paginas = []; // { original, esquinas, filtro, canvas, mini, ocr (promesa) }
 
 const estado = (t) => ($('estado').textContent = t);
+const nativo = () => !!window.Capacitor?.isNativePlatform?.();
+const plugin = (n) => window.Capacitor.Plugins?.[n] ?? window.Capacitor.registerPlugin(n);
+
+const blobABase64 = (blob) => new Promise((ok, mal) => {
+  const r = new FileReader();
+  r.onload = () => ok(String(r.result).split(',')[1]);
+  r.onerror = mal;
+  r.readAsDataURL(blob);
+});
+
+// APK: escribe el PDF con el plugin Filesystem y devuelve su uri
+async function escribirNativo(nombre, directorio) {
+  const { uri } = await plugin('Filesystem').writeFile({
+    path: directorio === 'DOCUMENTS' ? `Escaneos/${nombre}` : nombre,
+    data: await blobABase64(pdfActual), directory: directorio, recursive: true,
+  });
+  return uri;
+}
 
 const cargarScript = (src) => new Promise((ok, mal) => {
   const s = document.createElement('script');
@@ -350,6 +369,15 @@ function rutaSugerida(f) {
 // Sin servidor: menú "Compartir" de Android (Drive, WhatsApp, Gmail…); si no se puede, descarga
 async function compartir(f) {
   const archivo = new File([pdfActual], `${f.get('nombre') || 'escaneo'}.pdf`, { type: 'application/pdf' });
+  if (nativo()) {
+    try {
+      await plugin('Share').share({ title: archivo.name, text: `Guardar en: ${rutaSugerida(f)}`, files: [await escribirNativo(archivo.name, 'CACHE')] });
+      estado(`Compartido. Carpeta sugerida: ${rutaSugerida(f)}`);
+    } catch (e) {
+      if (!/cancel/i.test(e.message)) estado(`No se pudo compartir (${e.message})`);
+    }
+    return;
+  }
   if (!navigator.canShare?.({ files: [archivo] })) return descargar();
   try {
     await navigator.share({ files: [archivo], title: archivo.name, text: `Guardar en: ${rutaSugerida(f)}` });
@@ -378,12 +406,36 @@ async function guardar(ev) {
   }
 }
 
-function descargar() {
+async function descargar() {
+  if (nativo()) { // el WebView no descarga blobs: se guarda en Documentos/Escaneos
+    try {
+      await escribirNativo(`${$('formDestino').elements.nombre.value || 'escaneo'}.pdf`, 'DOCUMENTS');
+      estado('Guardado en Documentos/Escaneos');
+    } catch (e) {
+      estado(`No se pudo guardar (${e.message})`);
+    }
+    return;
+  }
   const a = document.createElement('a');
   a.href = URL.createObjectURL(pdfActual);
   a.download = `${$('formDestino').elements.nombre.value || 'escaneo'}.pdf`;
   a.click();
   URL.revokeObjectURL(a.href);
+}
+
+// ---------- Fotos compartidas a la app (Galería → Compartir → Escáner) ----------
+// El service worker guarda las imágenes del share_target en la caché "compartidos" y redirige a ?compartido=N
+async function recibirCompartidas() {
+  const params = new URLSearchParams(location.search);
+  if (!params.has('compartido') || !('caches' in window)) return;
+  history.replaceState(null, '', location.pathname);
+  const cache = await caches.open('compartidos');
+  for (const req of await cache.keys()) {
+    const blob = await (await cache.match(req)).blob();
+    await cache.delete(req);
+    await agregarPagina(await imagenACanvas(blob));
+  }
+  estado(`${paginas.length} imagen(es) recibida(s)`);
 }
 
 // ---------- Arranque ----------
@@ -457,7 +509,8 @@ async function main() {
   escaner = new jscanify();
   obtenerWorker(); // precalienta Tesseract (carga del idioma) mientras se usa la cámara
   estado('Listo');
-  if ('serviceWorker' in navigator) navigator.serviceWorker.register('sw.js').catch(() => {});
+  if (!nativo() && 'serviceWorker' in navigator) navigator.serviceWorker.register('sw.js').catch(() => {});
+  await recibirCompartidas();
 }
 
 main();
