@@ -1,6 +1,7 @@
 // Agente de playit.gg: túnel gratis para que amigos entren sin abrir puertos (sirve con CGNAT / datos móviles)
 const fs = require('node:fs');
 const path = require('node:path');
+const os = require('node:os');
 const readline = require('node:readline');
 const { spawn, execFile } = require('node:child_process');
 const des = require('./descargas');
@@ -82,6 +83,46 @@ function detener() {
   proc?.kill();
 }
 
+// ---------- API de playit (con la clave del agente vinculado) ----------
+const API = 'https://api.playit.gg';
+
+function clave() {
+  try {
+    const toml = fs.readFileSync(path.join(os.homedir(), '.config', 'playit_gg', 'playit.toml'), 'utf8');
+    return toml.match(/secret_key\s*=\s*"([^"]+)"/)?.[1] || null;
+  } catch {
+    return null;
+  }
+}
+
+async function apiPlayit(ruta, cuerpo = {}) {
+  const k = clave();
+  if (!k) throw new Error('el agente todavía no está vinculado con tu cuenta');
+  const r = await fetch(`${API}/${ruta}`, {
+    method: 'POST', headers: { authorization: `Agent-Key ${k}`, 'content-type': 'application/json' },
+    body: JSON.stringify(cuerpo), signal: AbortSignal.timeout(15_000),
+  });
+  const d = await r.json().catch(() => ({}));
+  if (d.status !== 'success') throw new Error(`playit: ${d.data?.message || d.data?.type || r.status}`);
+  return d.data;
+}
+
+// Túneles de la cuenta con la dirección lista para compartir. Java en joinmc.link no necesita puerto (usa SRV)
+async function tuneles() {
+  const { tunnels } = await apiPlayit('tunnels/list', { tunnel_id: null, agent_id: null });
+  return tunnels.map((t) => {
+    const a = t.alloc?.data || {};
+    const dominio = a.assigned_domain || a.ip_hostname;
+    const soloDominio = t.tunnel_type === 'minecraft-java' && /joinmc\.link$/.test(dominio || '');
+    return {
+      id: t.id, nombre: t.name, tipo: t.tunnel_type, protocolo: t.port_type, activo: t.active,
+      publica: dominio ? (soloDominio ? dominio : `${dominio}:${a.port_start}`) : null,
+      ip: a.static_ip4 ? `${a.static_ip4}:${a.port_start}` : null,
+      localPuerto: t.origin?.data?.local_port ?? null,
+    };
+  });
+}
+
 function suscribir(res) {
   for (const l of log) res.write(`event: linea\ndata: ${JSON.stringify(l)}\n\n`);
   res.write(`event: estado\ndata: ${JSON.stringify(estado())}\n\n`);
@@ -89,4 +130,4 @@ function suscribir(res) {
   res.on('close', () => oyentes.delete(res));
 }
 
-module.exports = { configurar, estado, instalar, iniciar, detener, suscribir };
+module.exports = { configurar, estado, instalar, iniciar, detener, suscribir, tuneles };

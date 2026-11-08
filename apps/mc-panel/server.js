@@ -108,6 +108,7 @@ async function api(req, res, url) {
     if (metodo === 'POST' && id === 'instalar') { await playit.instalar(); return responder(res, 200, playit.estado()); }
     if (metodo === 'POST' && id === 'iniciar') return responder(res, 200, playit.iniciar());
     if (metodo === 'POST' && id === 'detener') { playit.detener(); return responder(res, 200, playit.estado()); }
+    if (id === 'tuneles') return responder(res, 200, await playit.tuneles());
     return responder(res, 200, playit.estado());
   }
 

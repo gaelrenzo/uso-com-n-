@@ -13,6 +13,7 @@ const OPCIONES = {
 const ESTADOS = { apagado: 'Apagado', iniciando: 'Iniciando…', encendido: 'Encendido', deteniendo: 'Deteniendo…', instalando: 'Instalando…', error: 'Error' };
 
 let actual = null, fuente = null, info = {}, servidor = null, playitEstado = { instalado: false, encendido: false, direcciones: [] };
+let tunelesCuenta = null; // túneles leídos de la API de playit (null = aún no se pudo leer)
 
 // Token: llega una vez en la URL (?token=) cuando se abre desde otro equipo y queda guardado
 const TOKEN = (() => {
@@ -80,6 +81,7 @@ async function abrir(id) {
   fuente.addEventListener('estado', (e) => pintarEstado(JSON.parse(e.data)));
   await refrescar();
   cargarLista();
+  cargarTuneles();
 }
 
 function agregarLinea(l) {
@@ -206,8 +208,10 @@ function conectarPlayit() {
   });
   f.addEventListener('estado', (e) => {
     const s = JSON.parse(e.data);
+    const recienEncendido = s.encendido && !playitEstado.encendido;
     playitEstado = s;
     pintarAmigos();
+    if (recienEncendido) setTimeout(cargarTuneles, 4000);
     $('btnPlayitInstalar').hidden = s.instalado;
     $('btnPlayit').hidden = !s.instalado;
     $('btnPlayit').textContent = s.encendido ? 'Detener túnel' : 'Iniciar túnel';
@@ -253,6 +257,7 @@ function pintarAmigos() {
   if (!servidor) return;
   const s = servidor, p = playitEstado;
   const tieneDireccion = !!(s.direccionJava || s.direccionBedrock);
+  const delServidor = (tunelesCuenta || []).filter((t) => [s.puerto, s.puertoBedrock].includes(t.localPuerto));
   const encendido = s.estado === 'encendido';
   const tuneles = [`Minecraft Java → local 127.0.0.1:${s.puerto}`, s.bedrock && `Minecraft Bedrock (UDP) → local 127.0.0.1:${s.puertoBedrock}`].filter(Boolean);
   $('pasos').replaceChildren(
@@ -263,20 +268,33 @@ function pintarAmigos() {
     paso(!p.enlace || tieneDireccion, 'Vincular con tu cuenta de playit (solo la primera vez)',
       p.enlace ? 'Abre el enlace, entra o crea tu cuenta gratis y confirma el agente.' : 'Aparece un enlace aquí cuando el agente lo pida.',
       ...(p.enlace ? [enlace(p.enlace, 'Vincular ↗')] : [])),
-    paso(tieneDireccion, 'Crear los túneles en playit.gg (solo la primera vez)',
-      [`Agrega: ${tuneles.join(' · ')}. Luego copia aquí abajo la dirección que te da cada uno.`],
-      enlace(PLAYIT_TUNELES, 'Abrir túneles ↗')),
+    paso(delServidor.length > 0 || tieneDireccion, 'Crear los túneles en playit.gg (solo la primera vez)',
+      [`Agrega: ${tuneles.join(' · ')}. La dirección se detecta sola al volver aquí.`],
+      enlace(PLAYIT_TUNELES, 'Abrir túneles ↗'), boton('Ya los creé', (b) => ocupado(b, cargarTuneles))),
     paso(encendido, 'Encender el servidor', '',
       boton('Iniciar servidor', (b) => ocupado(b, () => api(`servidores/${actual}/iniciar`, {})), 'primario')),
     paso(tieneDireccion && encendido && p.encendido, '¡Listo! Comparte la invitación', 'Tus amigos solo necesitan Minecraft.'),
   );
-  // Autocompletar con lo que detectó el agente (joinmc.link es el túnel Java)
+  // Autocompletar: primero los túneles de la cuenta que apuntan a los puertos de este servidor; si no, la salida del agente
   const d = $('formDirecciones').elements;
-  const java = p.direcciones.find((x) => /joinmc\.link/.test(x.publica));
-  const bedrock = p.direcciones.find((x) => /ply\.gg:\d+/.test(x.publica) && x !== java);
-  if (java && !d.direccionJava.value) d.direccionJava.value = java.publica;
-  if (s.bedrock && bedrock && !d.direccionBedrock.value) d.direccionBedrock.value = bedrock.publica;
+  const java = delServidor.find((t) => t.tipo === 'minecraft-java' && t.localPuerto === s.puerto)
+    || p.direcciones.find((x) => /joinmc\.link/.test(x.publica));
+  const bedrock = delServidor.find((t) => t.protocolo === 'udp' && t.localPuerto === s.puertoBedrock)
+    || p.direcciones.find((x) => /ply\.gg:\d+/.test(x.publica) && x !== java);
+  if (java?.publica && !d.direccionJava.value) d.direccionJava.value = java.publica;
+  if (s.bedrock && bedrock?.publica && !d.direccionBedrock.value) d.direccionBedrock.value = bedrock.publica;
   $('invitacion').textContent = invitacion();
+  const cambio = (d.direccionJava.value || '') !== (s.direccionJava || '') || (d.direccionBedrock.value || '') !== (s.direccionBedrock || '');
+  if (cambio && (java || bedrock)) guardarDirecciones().catch(() => {}); // queda guardado sin tocar "Guardar"
+}
+
+async function cargarTuneles() {
+  try {
+    tunelesCuenta = await api('playit/tuneles');
+  } catch {
+    tunelesCuenta = null; // agente sin vincular o sin internet: queda el modo manual
+  }
+  pintarAmigos();
 }
 
 function invitacion() {
