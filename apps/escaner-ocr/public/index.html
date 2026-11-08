@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#1f6feb">
+  <title>Escáner OCR</title>
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="icon" href="icono.svg">
+  <link rel="stylesheet" href="estilos.css">
+</head>
+<body>
+  <header>
+    <h1>Escáner OCR</h1>
+    <div class="estado"><span id="estado">Cargando OpenCV…</span><small id="ia">IA: …</small></div>
+  </header>
+
+  <main>
+    <section id="camara">
+      <video id="video" playsinline muted></video>
+      <canvas id="overlay"></canvas>
+      <div class="controles">
+        <button id="btnCamara">Iniciar cámara</button>
+        <button id="btnCapturar" disabled>Capturar</button>
+        <label class="boton">Desde galería<input id="archivo" type="file" accept="image/*" multiple hidden></label>
+        <label class="check"><input id="revisar" type="checkbox" checked> Revisar esquinas</label>
+        <select id="filtro" title="Filtro">
+          <option value="bn">Blanco y negro</option>
+          <option value="gris">Grises</option>
+          <option value="color">Color</option>
+        </select>
+      </div>
+    </section>
+
+    <section>
+      <h2>Páginas <small id="nPaginas">(0)</small></h2>
+      <div id="paginas"></div>
+      <button id="btnProcesar" disabled>OCR + clasificar con IA</button>
+      <progress id="progreso" max="1" value="0" hidden></progress>
+    </section>
+
+    <section id="resultado" hidden>
+      <h2>Destino</h2>
+      <form id="formDestino">
+        <label>Nombre <input name="nombre" required></label>
+        <label>Semestre <select name="semestre"></select></label>
+        <label>Curso <input name="curso" placeholder="vacío = 98_Por_Clasificar"></label>
+        <label>Carpeta <select name="carpeta"></select></label>
+        <label class="check"><input type="checkbox" name="drive" checked> Subir a Drive (ENZO1)</label>
+        <div class="controles">
+          <button type="submit">Guardar</button>
+          <button type="button" id="btnDescargar">Descargar PDF</button>
+        </div>
+      </form>
+      <p id="resumen"></p>
+      <small id="iaUsada"></small>
+      <details><summary>Texto OCR</summary><pre id="texto"></pre></details>
+    </section>
+  </main>
+
+  <dialog id="editor">
+    <p>Arrastra las esquinas azules hasta los bordes de la hoja.</p>
+    <canvas id="lienzo"></canvas>
+    <div class="controles">
+      <button id="btnAceptar">Aceptar</button>
+      <button id="btnTodo">Usar foto completa</button>
+      <button id="btnCancelar">Cancelar</button>
+    </div>
+  </dialog>
+
+  <!-- Librerías locales: las descarga descargar-libs.js (o server.js al arrancar) -->
+  <script src="vendor/opencv.js"></script>
+  <script src="vendor/jscanify.js"></script>
+  <script src="vendor/tesseract/tesseract.min.js"></script>
+  <script src="vendor/jspdf.umd.min.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

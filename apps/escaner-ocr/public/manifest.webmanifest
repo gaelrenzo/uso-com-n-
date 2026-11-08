@@ -1,0 +1,9 @@
+{
+  "name": "Escáner OCR UCN",
+  "short_name": "Escáner",
+  "start_url": "./",
+  "display": "standalone",
+  "background_color": "#0d1117",
+  "theme_color": "#1f6feb",
+  "icons": [{ "src": "icono.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any maskable" }]
+}
