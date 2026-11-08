@@ -47,6 +47,13 @@ modelos de 1–4B van bien). `llama-server` de llama.cpp: usar `--port 8081` (80
 - Sube con `rclone copyto --ignore-existing`: nunca sobrescribe ni borra.
 - Sin curso claro → `98_Por_Clasificar/Desde_escaner_AAAA-MM/`.
 
+## Rendimiento
+- Vista previa: el video se ve en vivo; la hoja se detecta sobre un cuadro de 360 px (~4 fps) y solo se dibuja el contorno.
+- Capturar reutiliza las esquinas ya detectadas (instantáneo); el OCR de cada página arranca en segundo plano
+  apenas se captura, así "OCR + clasificar" casi siempre solo espera a la IA.
+- Tesseract se precalienta al abrir la app. **OCR rápido** (por defecto): `tessdata_fast` solo español.
+  **OCR preciso**: `best_int` español+inglés, más lento.
+
 ## Esquinas
 Con "Revisar esquinas" activo, cada captura abre un editor con las 4 esquinas detectadas para arrastrarlas.
 Tocar una miniatura vuelve a abrirlo.

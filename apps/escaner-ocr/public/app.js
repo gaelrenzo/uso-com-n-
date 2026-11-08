@@ -1,4 +1,4 @@
-// Escáner OCR: cámara → jscanify (bordes + perspectiva, esquinas ajustables) → filtro OpenCV → Tesseract (spa+eng) → PDF buscable → IA local → Drive
+// Escáner OCR: cámara → jscanify (bordes + perspectiva, esquinas ajustables) → filtro OpenCV → Tesseract (en segundo plano) → PDF buscable → IA local → Drive
 // Dos modos: con server.js (IA y rclone desde Termux) o solo navegador/PWA instalada (IA directa por CORS, compartir a Drive)
 const $ = (id) => document.getElementById(id);
 const A4 = { w: 1240, h: 1754 }; // 150 dpi
@@ -13,9 +13,15 @@ const LIBS = [
   ['vendor/jspdf.umd.min.js', 'https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js'],
 ];
 const CLAVE_AJUSTES = 'escaner-ia';
+const DETECCION = 360; // ancho de trabajo para detectar la hoja: rápido y suficiente para ubicar esquinas
+// OCR: "rapido" = tessdata_fast solo español (~3x más rápido); "preciso" = best_int español+inglés
+const OCR_MODOS = {
+  rapido: { idiomas: 'spa', vendor: 'vendor/tessdata_fast', cdn: 'https://raw.githubusercontent.com/tesseract-ocr/tessdata_fast/main', gzipCdn: false },
+  preciso: { idiomas: 'spa+eng', vendor: 'vendor/tessdata', cdn: null, gzipCdn: true },
+};
 
-let escaner, worker, flujo, pdfActual, conVendor, conServidor, iaNavegador;
-const paginas = []; // { original, esquinas, filtro, canvas, ocr }
+let escaner, worker, modoWorker, flujo, pdfActual, conVendor, conServidor, iaNavegador, ultimasEsquinas;
+const paginas = []; // { original, esquinas, filtro, canvas, mini, ocr (promesa) }
 
 const estado = (t) => ($('estado').textContent = t);
 
@@ -56,24 +62,35 @@ function detenerCamara() {
   $('btnCamara').textContent = 'Iniciar cámara';
 }
 
-function cuadro(ancho) {
+function cuadro(ancho, c = document.createElement('canvas')) {
   const v = $('video');
-  const c = document.createElement('canvas');
   c.width = ancho; c.height = Math.round((v.videoHeight / v.videoWidth) * ancho);
   c.getContext('2d').drawImage(v, 0, 0, c.width, c.height);
   return c;
 }
 
-// Resalta la hoja a baja resolución (~5 fps) para no ahogar la tablet
+// El video se ve en vivo; encima solo se dibuja el contorno detectado en un cuadro chico (~4 fps)
+const lienzoDeteccion = document.createElement('canvas');
 function vistaPrevia() {
   if (!flujo) return;
-  try {
-    const resaltado = escaner.highlightPaper(cuadro(640), { color: '#1f6feb', thickness: 6 });
-    const o = $('overlay');
-    o.width = resaltado.width; o.height = resaltado.height;
-    o.getContext('2d').drawImage(resaltado, 0, 0);
-  } catch { /* cuadro sin hoja detectable */ }
-  setTimeout(vistaPrevia, 200);
+  if (!document.hidden) {
+    const chico = cuadro(DETECCION, lienzoDeteccion);
+    const e = esquinasEn(chico);
+    const o = $('overlay'), v = $('video');
+    o.width = v.clientWidth; o.height = v.clientHeight;
+    const ctx = o.getContext('2d');
+    ctx.clearRect(0, 0, o.width, o.height);
+    ultimasEsquinas = e && { esquinas: e, escala: v.videoWidth / chico.width };
+    if (e) {
+      const k = o.width / chico.width;
+      ctx.beginPath();
+      ORDEN.forEach((n, i) => ctx[i ? 'lineTo' : 'moveTo'](e[n].x * k, e[n].y * k));
+      ctx.closePath();
+      ctx.lineWidth = 4; ctx.strokeStyle = '#1f6feb'; ctx.fillStyle = 'rgba(31,111,235,.15)';
+      ctx.fill(); ctx.stroke();
+    }
+  }
+  setTimeout(vistaPrevia, 250);
 }
 
 // ---------- Esquinas ----------
@@ -82,16 +99,30 @@ const esquinasCompletas = (c) => ({
   bottomRightCorner: { x: c.width, y: c.height }, bottomLeftCorner: { x: 0, y: c.height },
 });
 
-function detectarEsquinas(c) {
+// Esquinas de la hoja en el canvas dado, o null
+function esquinasEn(c) {
   const m = cv.imread(c);
   try {
     const contorno = escaner.findPaperContour(m);
     const e = contorno && escaner.getCornerPoints(contorno);
+    contorno?.delete();
     if (e && ORDEN.every((k) => e[k])) return e;
   } catch { /* sin contorno */ } finally {
     m.delete();
   }
-  return esquinasCompletas(c);
+  return null;
+}
+
+const escalar = (e, k) => Object.fromEntries(ORDEN.map((n) => [n, { x: e[n].x * k, y: e[n].y * k }]));
+
+// Detecta sobre una copia reducida y escala las esquinas al tamaño original
+function detectarEsquinas(c) {
+  const k = Math.min(1, DETECCION / c.width);
+  const chico = document.createElement('canvas');
+  chico.width = Math.round(c.width * k); chico.height = Math.round(c.height * k);
+  chico.getContext('2d').drawImage(c, 0, 0, chico.width, chico.height);
+  const e = esquinasEn(chico);
+  return e ? escalar(e, 1 / k) : esquinasCompletas(c);
 }
 
 // Diálogo con las 4 esquinas arrastrables; resuelve con las esquinas o null si se cancela
@@ -124,7 +155,12 @@ function editarEsquinas(original, esquinas) {
       lz.setPointerCapture(ev.pointerId);
       e[arrastrando] = p; pintar();
     };
-    lz.onpointermove = (ev) => { if (arrastrando) { e[arrastrando] = punto(ev); pintar(); } };
+    let pendiente = false; // redibuja como máximo una vez por cuadro de pantalla
+    lz.onpointermove = (ev) => {
+      if (!arrastrando) return;
+      e[arrastrando] = punto(ev);
+      if (!pendiente) { pendiente = true; requestAnimationFrame(() => { pendiente = false; pintar(); }); }
+    };
     lz.onpointerup = () => (arrastrando = null);
 
     const cerrar = (v) => { dlg.close(); resolver(v); };
@@ -156,11 +192,12 @@ function filtrar(origen, filtro) {
 
 function renderizar(p) {
   p.canvas = filtrar(escaner.extractPaper(p.original, A4.w, A4.h, p.esquinas), p.filtro);
-  p.ocr = null;
+  p.mini = p.canvas.toDataURL('image/jpeg', 0.4);
+  p.ocr = reconocer(p.canvas); // el OCR corre mientras se capturan las siguientes páginas
+  p.ocr.catch(() => {}); // el error se informa al procesar
 }
 
-async function agregarPagina(original) {
-  let esquinas = detectarEsquinas(original);
+async function agregarPagina(original, esquinas = detectarEsquinas(original)) {
   if ($('revisar').checked && !(esquinas = await editarEsquinas(original, esquinas))) return;
   const p = { original, esquinas, filtro: $('filtro').value };
   renderizar(p);
@@ -183,7 +220,7 @@ function pintarPaginas() {
     fig.title = 'Tocar para ajustar esquinas';
     fig.onclick = () => reeditar(p);
     const img = new Image();
-    img.src = p.canvas.toDataURL('image/jpeg', 0.5);
+    img.src = p.mini;
     const quitar = document.createElement('button');
     quitar.textContent = '✕';
     quitar.title = 'Quitar página';
@@ -212,30 +249,47 @@ function imagenACanvas(archivo) {
 }
 
 // ---------- OCR + PDF ----------
-async function ocr() {
+// Un solo worker, creado al arrancar (precalentado); Tesseract encola los trabajos en orden
+function obtenerWorker() {
+  const modo = $('modoOCR').value;
+  if (worker && modoWorker === modo) return worker;
+  worker?.then((w) => w.terminate()).catch(() => {});
+  const m = OCR_MODOS[modo];
   const rutas = conVendor
-    ? { workerPath: 'vendor/tesseract/worker.min.js', corePath: 'vendor/tesseract/core', langPath: 'vendor/tessdata' }
-    : {}; // por defecto Tesseract usa su CDN y guarda el idioma en IndexedDB
-  worker ??= await Tesseract.createWorker('spa+eng', 1, {
+    ? { workerPath: 'vendor/tesseract/worker.min.js', corePath: 'vendor/tesseract/core', langPath: m.vendor }
+    : { ...(m.cdn && { langPath: m.cdn }), gzip: m.gzipCdn }; // sin vendor: CDN; el idioma queda en IndexedDB
+  modoWorker = modo;
+  worker = Tesseract.createWorker(m.idiomas, 1, {
     ...rutas,
-    logger: (m) => m.status === 'recognizing text' && ($('progreso').value = m.progress),
+    logger: (x) => x.status === 'recognizing text' && ($('progreso').value = x.progress),
   });
+  worker.catch(() => { worker = null; });
+  return worker;
+}
+
+async function reconocer(canvas) {
+  return (await (await obtenerWorker()).recognize(canvas)).data;
+}
+
+// Espera el OCR de cada página (casi siempre ya terminó en segundo plano); reintenta las que fallaron
+async function ocr() {
+  const datos = [];
   for (const [i, p] of paginas.entries()) {
-    if (p.ocr) continue;
     estado(`OCR página ${i + 1}/${paginas.length}…`);
-    p.ocr = (await worker.recognize(p.canvas)).data;
+    datos.push(await p.ocr.catch(() => (p.ocr = reconocer(p.canvas))));
   }
+  return datos;
 }
 
 // PDF A4 con la imagen y el texto OCR invisible encima (buscable/copiable)
-function armarPDF() {
+function armarPDF(datos) {
   const { jsPDF } = window.jspdf;
   const doc = new jsPDF({ unit: 'mm', format: 'a4' });
   paginas.forEach((p, i) => {
     if (i) doc.addPage();
     doc.addImage(p.canvas.toDataURL('image/jpeg', 0.8), 'JPEG', 0, 0, 210, 297);
     const k = 210 / p.canvas.width;
-    for (const linea of p.ocr?.lines || []) {
+    for (const linea of datos[i]?.lines || []) {
       const { x0, y0, y1 } = linea.bbox;
       doc.setFontSize(Math.max(4, (y1 - y0) * k * 2.83));
       doc.text(linea.text.trim(), x0 * k, y1 * k, { renderingMode: 'invisible', baseline: 'bottom' });
@@ -264,8 +318,8 @@ async function procesar() {
   $('btnProcesar').disabled = true;
   $('progreso').hidden = false;
   try {
-    await ocr();
-    const texto = paginas.map((p) => p.ocr.text).join('\n\n---\n\n');
+    const datos = await ocr();
+    const texto = datos.map((d) => d.text).join('\n\n---\n\n');
     $('texto').textContent = texto;
     estado('Clasificando con IA… (un modelo local puede tardar)');
     const ia = await clasificarConIA(texto);
@@ -276,7 +330,7 @@ async function procesar() {
     f.carpeta.value = CARPETAS.includes(ia.carpeta) ? ia.carpeta : '02_Teoria_y_Diapositivas';
     $('resumen').textContent = [ia.resumen, ...(ia.formulas || [])].filter(Boolean).join(' · ');
     $('iaUsada').textContent = ia.ia ? `Clasificado por ${ia.ia}` : '';
-    pdfActual = armarPDF();
+    pdfActual = armarPDF(datos);
     $('resultado').hidden = false;
     if (ia.nombre) estado('Listo: revisa el destino y guarda');
   } catch (e) {
@@ -383,7 +437,12 @@ function prepararAjustes() {
 async function main() {
   llenarSelects();
   $('btnCamara').onclick = () => (flujo ? detenerCamara() : iniciarCamara().catch((e) => estado(`Cámara: ${e.message}`)));
-  $('btnCapturar').onclick = () => agregarPagina(cuadro($('video').videoWidth));
+  // Reutiliza las esquinas que la vista previa ya encontró: capturar es instantáneo
+  $('btnCapturar').onclick = () => {
+    const d = ultimasEsquinas;
+    agregarPagina(cuadro($('video').videoWidth), d ? escalar(d.esquinas, d.escala) : undefined);
+  };
+  $('modoOCR').onchange = () => paginas.forEach((p) => { p.ocr = reconocer(p.canvas); p.ocr.catch(() => {}); });
   $('archivo').onchange = async (e) => { for (const a of e.target.files) await agregarPagina(await imagenACanvas(a)); e.target.value = ''; };
   $('btnProcesar').onclick = procesar;
   $('formDestino').onsubmit = guardar;
@@ -396,6 +455,7 @@ async function main() {
   await cargarLibs();
   await esperarOpenCV();
   escaner = new jscanify();
+  obtenerWorker(); // precalienta Tesseract (carga del idioma) mientras se usa la cámara
   estado('Listo');
   if ('serviceWorker' in navigator) navigator.serviceWorker.register('sw.js').catch(() => {});
 }
