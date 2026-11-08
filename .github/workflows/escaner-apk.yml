@@ -64,7 +64,8 @@ jobs:
           GH_TOKEN: ${{ github.token }}
         run: |
           cp android/app/build/outputs/apk/debug/app-debug.apk escaner-ocr.apk
-          gh release delete escaner-apk --yes --cleanup-tag || true
-          gh release create escaner-apk escaner-ocr.apk --target "$GITHUB_SHA" --prerelease \
-            --title "Escáner OCR APK (build ${{ github.run_number }})" \
-            --notes "APK de prueba (firma debug) compilado desde ${GITHUB_SHA::7}. Descargar en el celular e instalar (permitir orígenes desconocidos)."
+          # Se reemplaza el APK dentro de la misma release: el enlace de descarga nunca da 404
+          notas="APK de prueba (firma debug) compilado desde ${GITHUB_SHA::7}. Descargar en el celular e instalar (permitir orígenes desconocidos)."
+          gh release view escaner-apk >/dev/null 2>&1 || gh release create escaner-apk --prerelease --title "Escáner OCR APK" --notes "$notas"
+          gh release upload escaner-apk escaner-ocr.apk --clobber
+          gh release edit escaner-apk --title "Escáner OCR APK (build ${{ github.run_number }})" --notes "$notas"
