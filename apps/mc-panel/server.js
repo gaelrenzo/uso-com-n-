@@ -22,6 +22,17 @@ resp.configurar(DATOS);
 playit.configurar(DATOS);
 resp.programar();
 
+// Al aprobar el agente en playit: crear los túneles de cada servidor y guardar sus direcciones, sin más pasos
+playit.cuandoSeVincule(async () => {
+  for (const s of srv.listar()) {
+    const tuneles = (await playit.crearTuneles(s)).filter((t) => t.propio);
+    const java = tuneles.find((t) => t.tipo === 'minecraft-java' && t.localPuerto === s.puerto);
+    const bedrock = tuneles.find((t) => t.protocolo === 'udp' && t.localPuerto === s.puertoBedrock);
+    srv.actualizarCfg(s.id, { direccionJava: java?.publica || s.direccionJava, direccionBedrock: bedrock?.publica || s.direccionBedrock });
+    srv.panel(s.id, `Túneles listos: ${[java?.publica, bedrock?.publica].filter(Boolean).join(' · ') || 'asignando dirección…'}`);
+  }
+});
+
 // Token: el panel ejecuta comandos, así que fuera de este equipo se exige el token guardado en DATOS/token
 const rutaToken = path.join(DATOS, 'token');
 if (!fs.existsSync(rutaToken)) fs.writeFileSync(rutaToken, crypto.randomBytes(16).toString('hex'), { mode: 0o600 });
@@ -108,7 +119,7 @@ async function api(req, res, url) {
     if (metodo === 'POST' && id === 'instalar') { await playit.instalar(); return responder(res, 200, playit.estado()); }
     if (metodo === 'POST' && id === 'iniciar') return responder(res, 200, playit.iniciar());
     if (metodo === 'POST' && id === 'detener') { playit.detener(); return responder(res, 200, playit.estado()); }
-    if (id === 'tuneles') return responder(res, 200, await playit.tuneles());
+    if (id === 'tuneles') return responder(res, 200, { tuneles: await playit.tuneles(), puedeCrear: await playit.puedeCrear() });
     if (metodo === 'POST' && id === 'vincular') return responder(res, 200, playit.vincular());
     return responder(res, 200, playit.estado());
   }

@@ -11,6 +11,7 @@ let proc = null, vinculando = null;
 const log = [];
 const oyentes = new Set();
 let enlace = null; // URL para vincular el agente con la cuenta de playit (solo la primera vez)
+let alVincular = null; // lo define server.js: crear los túneles en cuanto se aprueba el agente
 let direcciones = []; // direcciones públicas de los túneles que muestra el agente
 
 function configurar(dirDatos) {
@@ -66,6 +67,7 @@ function vincular() {
       guardarSecreto(secreto);
       emitir('[panel] Agente vinculado: ya puede crear túneles. Reiniciando el agente…');
       reiniciar();
+      setTimeout(() => alVincular?.().catch((e) => emitir(`[panel] No se pudieron crear los túneles: ${e.message}`)), 5000);
     } else {
       emitir('[panel] La vinculación no se completó (¿se venció la hora de espera?)');
     }
@@ -134,13 +136,19 @@ function clave() {
   }
 }
 
-async function apiPlayit(ruta, cuerpo = {}) {
+async function apiPlayit(ruta, cuerpo = {}, intento = 1) {
   const k = clave();
   if (!k) throw new Error('el agente todavía no está vinculado con tu cuenta');
-  const r = await fetch(`${API}/${ruta}`, {
-    method: 'POST', headers: { authorization: `Agent-Key ${k}`, 'content-type': 'application/json' },
-    body: JSON.stringify(cuerpo), signal: AbortSignal.timeout(15_000),
-  });
+  let r;
+  try {
+    r = await fetch(`${API}/${ruta}`, {
+      method: 'POST', headers: { authorization: `Agent-Key ${k}`, 'content-type': 'application/json' },
+      body: JSON.stringify(cuerpo), signal: AbortSignal.timeout(15_000),
+    });
+  } catch (e) {
+    if (intento < 3) { await new Promise((ok) => setTimeout(ok, 1500 * intento)); return apiPlayit(ruta, cuerpo, intento + 1); }
+    throw new Error(`sin conexión con playit (${e.cause?.code || e.message})`);
+  }
   const d = await r.json().catch(() => ({}));
   if (d.status !== 'success') throw new Error(`playit: ${d.data?.message || d.data?.type || r.status}`);
   return d.data;
@@ -194,4 +202,15 @@ function suscribir(res) {
   res.on('close', () => oyentes.delete(res));
 }
 
-module.exports = { configurar, estado, instalar, iniciar, detener, suscribir, tuneles, crearTuneles, vincular };
+// ¿La clave actual puede crear túneles? Las de "playit-cli setup" (agente "assignable") son de solo lectura
+async function puedeCrear() {
+  try {
+    return (await apiPlayit('agents/rundata')).agent_type === 'self-managed';
+  } catch {
+    return false;
+  }
+}
+
+const cuandoSeVincule = (fn) => { alVincular = fn; };
+
+module.exports = { configurar, estado, instalar, iniciar, detener, suscribir, tuneles, crearTuneles, vincular, puedeCrear, cuandoSeVincule };

@@ -14,6 +14,7 @@ const ESTADOS = { apagado: 'Apagado', iniciando: 'Iniciando…', encendido: 'Enc
 
 let actual = null, fuente = null, info = {}, servidor = null, playitEstado = { instalado: false, encendido: false, direcciones: [] };
 let tunelesCuenta = null; // túneles leídos de la API de playit (null = aún no se pudo leer)
+let puedeCrear = false; // la clave del agente permite crear túneles (agente "self-managed")
 
 // Token: llega una vez en la URL (?token=) cuando se abre desde otro equipo y queda guardado
 const TOKEN = (() => {
@@ -209,9 +210,11 @@ function conectarPlayit() {
   f.addEventListener('estado', (e) => {
     const s = JSON.parse(e.data);
     const recienEncendido = s.encendido && !playitEstado.encendido;
+    const recienAprobado = playitEstado.enlace && !s.enlace; // volvió de aprobar: el panel crea los túneles solo
     playitEstado = s;
     pintarAmigos();
     if (recienEncendido) setTimeout(cargarTuneles, 4000);
+    if (recienAprobado) [8000, 15000, 30000].forEach((ms) => setTimeout(() => cargarTuneles().then(refrescar), ms));
     $('btnPlayitInstalar').hidden = s.instalado;
     $('btnPlayit').hidden = !s.instalado;
     $('btnPlayit').textContent = s.encendido ? 'Detener túnel' : 'Iniciar túnel';
@@ -235,7 +238,6 @@ function conectarPlayit() {
 }
 
 // ---------- Amigos (playit.gg) ----------
-const PLAYIT_TUNELES = 'https://playit.gg/account/tunnels';
 
 function paso(hecho, texto, detalle, ...acciones) {
   const l = li();
@@ -267,14 +269,14 @@ function pintarAmigos() {
       boton('Instalar', (b) => ocupado(b, () => api('playit/instalar', {})), 'primario')),
     paso(p.encendido, 'Iniciar el túnel', s.playitAuto !== false ? 'Después arranca solo con el servidor.' : '',
       boton('Iniciar túnel', (b) => ocupado(b, () => api('playit/iniciar', {})), 'primario')),
-    paso(!p.enlace || tieneDireccion, 'Vincular con tu cuenta de playit (solo la primera vez)',
-      p.enlace ? 'Abre el enlace, entra o crea tu cuenta gratis y confirma el agente.' : 'Aparece un enlace aquí cuando el agente lo pida.',
-      ...(p.enlace ? [enlace(p.enlace, 'Vincular ↗')] : [])),
+    paso(!p.enlace && (puedeCrear || tieneDireccion), 'Aprobar el agente en tu cuenta de playit (un toque, una sola vez)',
+      p.enlace ? 'Toca Aprobar, luego "Approve" en playit y vuelve: lo demás se hace solo.'
+        : 'Permite que esta app cree los túneles por ti.',
+      ...(p.enlace ? [enlace(p.enlace, 'Aprobar ↗')]
+        : [boton('Vincular', (b) => ocupado(b, () => api('playit/vincular', {})), 'primario')])),
     paso(delServidor.some((t) => t.propio) && (!s.bedrock || delServidor.some((t) => t.protocolo === 'udp')),
       'Crear los túneles (solo la primera vez)', `Se crean en tu cuenta de playit: ${tuneles.join(' · ')}.`,
-      boton('Crear túneles automáticamente', (b) => ocupado(b, crearTuneles), 'primario'),
-      boton('Revincular', (b) => ocupado(b, () => api('playit/vincular', {}))),
-      enlace(PLAYIT_TUNELES, 'Hacerlo en la web ↗')),
+      ...(puedeCrear ? [boton('Crear túneles', (b) => ocupado(b, crearTuneles), 'primario')] : [])),
     paso(encendido, 'Encender el servidor', '',
       boton('Iniciar servidor', (b) => ocupado(b, () => api(`servidores/${actual}/iniciar`, {})), 'primario')),
     paso(tieneDireccion && encendido && p.encendido, '¡Listo! Comparte la invitación', 'Tus amigos solo necesitan Minecraft.'),
@@ -295,6 +297,7 @@ function pintarAmigos() {
 
 async function crearTuneles() {
   tunelesCuenta = await api(`servidores/${actual}/tuneles`, {});
+  puedeCrear = true;
   pintarAmigos();
   // playit tarda unos segundos en asignar la dirección a un túnel nuevo
   if (tunelesCuenta.some((t) => t.propio && !t.publica)) setTimeout(cargarTuneles, 5000);
@@ -302,7 +305,7 @@ async function crearTuneles() {
 
 async function cargarTuneles() {
   try {
-    tunelesCuenta = await api('playit/tuneles');
+    ({ tuneles: tunelesCuenta, puedeCrear } = await api('playit/tuneles'));
   } catch {
     tunelesCuenta = null; // agente sin vincular o sin internet: queda el modo manual
   }
