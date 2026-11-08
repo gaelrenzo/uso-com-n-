@@ -1,0 +1,156 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#2da44e">
+  <title>Panel Minecraft</title>
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="icon" href="icono.svg">
+  <link rel="stylesheet" href="estilos.css">
+</head>
+<body>
+  <header>
+    <h1>Panel Minecraft</h1>
+    <div class="estado"><span id="ram">RAM: …</span><small id="ia" title="Tocar para volver a buscar">IA: …</small></div>
+  </header>
+
+  <main>
+    <aside>
+      <section>
+        <h2>Servidores</h2>
+        <ul id="lista"></ul>
+        <button id="btnNuevo" class="primario">+ Nuevo servidor</button>
+      </section>
+      <section id="conexion">
+        <h2>Conexión para amigos</h2>
+        <p class="ayuda">Túnel gratis de <a href="https://playit.gg" target="_blank" rel="noopener">playit.gg</a>: sin abrir puertos, sirve con datos móviles.</p>
+        <div id="playitEstado" class="ayuda">…</div>
+        <div class="controles">
+          <button id="btnPlayitInstalar">Instalar agente</button>
+          <button id="btnPlayit">Iniciar túnel</button>
+        </div>
+        <details><summary>Registro del agente</summary><pre id="playitLog" class="consola mini"></pre></details>
+      </section>
+    </aside>
+
+    <section id="detalle" hidden>
+      <div class="titulo">
+        <div>
+          <h2 id="dNombre"></h2>
+          <small id="dInfo" class="ayuda"></small>
+        </div>
+        <div class="controles">
+          <span id="dEstado" class="chip"></span>
+          <button id="btnEncender" class="primario">Iniciar</button>
+        </div>
+      </div>
+
+      <nav id="pestanas">
+        <button data-p="consola" class="activa">Consola</button>
+        <button data-p="jugadores">Jugadores</button>
+        <button data-p="ajustes">Ajustes</button>
+        <button data-p="extras">Plugins</button>
+        <button data-p="respaldos">Respaldos</button>
+        <button data-p="asistente">IA</button>
+      </nav>
+
+      <div data-panel="consola">
+        <pre id="consola" class="consola"></pre>
+        <form id="formComando" class="fila">
+          <input name="comando" placeholder="Comando (ej: say hola, time set day, op TuNombre)" autocomplete="off">
+          <button>Enviar</button>
+        </form>
+      </div>
+
+      <div data-panel="jugadores" hidden>
+        <ul id="jugadores" class="tarjetas"></ul>
+        <p class="ayuda">Los jugadores de Bedrock (celular/consola) aparecen con un punto delante, ej. <code>.Steve</code>.</p>
+        <form id="formJugador" class="fila">
+          <input name="jugador" placeholder="Nombre de jugador" autocomplete="off">
+          <button data-cmd="op">Dar OP</button>
+          <button data-cmd="deop">Quitar OP</button>
+          <button data-cmd="whitelist add">A whitelist</button>
+          <button data-cmd="kick">Expulsar</button>
+        </form>
+      </div>
+
+      <div data-panel="ajustes" hidden>
+        <form id="formPropiedades" class="rejilla"></form>
+        <h3>Servidor</h3>
+        <form id="formCfg" class="rejilla">
+          <label>RAM (MB) <input name="ramMB" type="number" min="512" step="256"></label>
+        </form>
+        <div class="controles"><button id="btnGuardarAjustes" class="primario">Guardar ajustes</button></div>
+        <p class="ayuda">Los cambios se aplican al reiniciar el servidor.</p>
+      </div>
+
+      <div data-panel="extras" hidden>
+        <form id="formBuscar" class="fila">
+          <input name="q" placeholder="Buscar en Modrinth (ej: essentials, worldedit, luckperms)" autocomplete="off">
+          <button>Buscar</button>
+        </form>
+        <ul id="resultados" class="tarjetas"></ul>
+        <h3>Instalados</h3>
+        <ul id="instalados" class="tarjetas"></ul>
+      </div>
+
+      <div data-panel="respaldos" hidden>
+        <form id="formRespaldo" class="rejilla">
+          <label>Respaldo automático cada (horas, 0 = no) <input name="respaldoHoras" type="number" min="0" max="168"></label>
+          <label>Guardar los últimos (0 = todos) <input name="respaldosGuardar" type="number" min="0" max="100"></label>
+          <label class="check"><input name="respaldoDrive" type="checkbox"> Copiar también a Drive <small id="driveRuta"></small></label>
+        </form>
+        <div class="controles">
+          <button id="btnGuardarRespaldo">Guardar</button>
+          <button id="btnRespaldar" class="primario">Respaldar ahora</button>
+        </div>
+        <ul id="respaldos" class="tarjetas"></ul>
+      </div>
+
+      <div data-panel="asistente" hidden>
+        <p class="ayuda">La IA local ve la consola reciente, la RAM, los plugins y <code>server.properties</code> de este servidor.</p>
+        <div class="controles" id="sugerencias">
+          <button>¿Por qué no arranca?</button>
+          <button>¿Cómo reduzco el lag?</button>
+          <button>¿Cómo entran mis amigos de Bedrock?</button>
+          <button>Explica los últimos errores</button>
+        </div>
+        <form id="formIA" class="fila">
+          <input name="pregunta" placeholder="Pregunta sobre este servidor" autocomplete="off">
+          <button>Preguntar</button>
+        </form>
+        <div id="respuestas"></div>
+      </div>
+    </section>
+
+    <section id="vacio">
+      <h2>Sin servidor seleccionado</h2>
+      <p class="ayuda">Crea uno con "+ Nuevo servidor". Con Bedrock activado, entran jugadores de PC (Java) y de celular/consola (Bedrock) al mismo mundo.</p>
+    </section>
+  </main>
+
+  <dialog id="dlgNuevo">
+    <form id="formNuevo" class="rejilla" method="dialog">
+      <h2>Nuevo servidor</h2>
+      <label>Nombre <input name="nombre" required maxlength="40" placeholder="Mundo con amigos"></label>
+      <label>Tipo
+        <select name="plataforma">
+          <option value="paper">Paper (plugins, recomendado)</option>
+          <option value="fabric">Fabric (mods)</option>
+        </select>
+      </label>
+      <label>Versión <select name="version" required></select></label>
+      <label>RAM (MB) <input name="ramMB" type="number" min="512" step="256"> <small id="ramAyuda" class="ayuda"></small></label>
+      <label class="check"><input name="bedrock" type="checkbox" checked> Permitir jugadores Bedrock (celular/consola) con Geyser</label>
+      <label class="check"><input name="eula" type="checkbox" required> Acepto el <a href="https://aka.ms/MinecraftEULA" target="_blank" rel="noopener">EULA de Minecraft</a></label>
+      <div class="controles">
+        <button value="crear" class="primario">Crear</button>
+        <button value="cancelar" formnovalidate>Cancelar</button>
+      </div>
+    </form>
+  </dialog>
+
+  <script src="app.js"></script>
+</body>
+</html>

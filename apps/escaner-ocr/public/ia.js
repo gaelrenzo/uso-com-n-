@@ -1,4 +1,4 @@
-// Clasificación con IA local, compartida por server.js (Node) y la app (navegador sin servidor).
+// IA local compartida: la usan el escáner (server.js y navegador) y apps/mc-panel (asistente).
 // formato "anthropic" = /v1/messages (fcc-server); "openai" = /v1/chat/completions (Ollama, LM Studio, llama.cpp, vLLM, Jan…)
 (function (raiz) {
   const CARPETAS = [
@@ -74,7 +74,7 @@ ${texto.slice(0, maxChars)}`;
     return { ...JSON.parse(json[0]), ia: `${p.nombre} · ${p.modelo}` };
   }
 
-  const IA = { CARPETAS, CANDIDATOS, sondear, detectar, clasificar };
+  const IA = { CARPETAS, CANDIDATOS, sondear, detectar, preguntar, clasificar };
   if (typeof module !== 'undefined') module.exports = IA;
   else raiz.IA = IA;
 })(this);
