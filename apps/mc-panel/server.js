@@ -92,6 +92,10 @@ async function api(req, res, url) {
       drive: resp.REMOTO, ips: Object.values(os.networkInterfaces()).flat().filter((i) => i.family === 'IPv4' && !i.internal).map((i) => i.address),
     });
   }
+  if (recurso === 'apagar' && metodo === 'POST') {
+    responder(res, 200, { ok: true });
+    return setImmediate(apagar);
+  }
   if (recurso === 'versiones') {
     const plataforma = url.searchParams.get('plataforma') === 'fabric' ? 'fabric' : 'paper';
     return responder(res, 200, plataforma === 'fabric' ? await des.versionesFabric() : await des.versionesPaper());
@@ -172,12 +176,11 @@ http.createServer(async (req, res) => {
   }
 });
 
-// Ctrl+C / cierre de Termux: detener los servidores con "stop" para no corromper mundos
-for (const senal of ['SIGINT', 'SIGTERM']) {
-  process.on(senal, async () => {
-    console.log('Deteniendo servidores…');
-    playit.detener();
-    await Promise.race([srv.detenerTodos(), new Promise((ok) => setTimeout(ok, 70_000))]);
-    process.exit(0);
-  });
+// Ctrl+C, cierre de Termux o botón "Apagar" de la app: detener los servidores con "stop" para no corromper mundos
+async function apagar() {
+  console.log('Deteniendo servidores…');
+  playit.detener();
+  await Promise.race([srv.detenerTodos(), new Promise((ok) => setTimeout(ok, 70_000))]);
+  process.exit(0);
 }
+for (const senal of ['SIGINT', 'SIGTERM']) process.on(senal, apagar);

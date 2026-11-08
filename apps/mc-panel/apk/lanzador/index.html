@@ -1,0 +1,142 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Panel Minecraft</title>
+  <style>
+    :root { --fondo: #0d1117; --panel: #161b22; --texto: #e6edf3; --suave: #8d96a0; --acento: #2da44e; --borde: #30363d; --error: #ff7b72; }
+    @media (prefers-color-scheme: light) { :root { --fondo: #f6f8fa; --panel: #fff; --texto: #1f2328; --suave: #656d76; --borde: #d0d7de; --error: #cf222e; } }
+    * { box-sizing: border-box; }
+    body { margin: 0; font: 16px/1.45 system-ui, sans-serif; background: var(--fondo); color: var(--texto); min-height: 100vh; display: grid; place-items: center; padding: 16px; }
+    main { width: min(100%, 480px); display: grid; gap: 1rem; }
+    header { display: flex; gap: .75rem; align-items: center; } header img { width: 56px; height: 56px; }
+    h1 { font-size: 1.3rem; margin: 0; } h2 { font-size: 1rem; margin: 0 0 .5rem; }
+    section { background: var(--panel); border: 1px solid var(--borde); border-radius: 12px; padding: 1rem; }
+    button { font: inherit; width: 100%; padding: .8rem; border-radius: 10px; border: 1px solid var(--borde); background: var(--panel); color: var(--texto); cursor: pointer; }
+    button.primario { background: var(--acento); border-color: var(--acento); color: #fff; font-weight: 600; font-size: 1.05rem; }
+    button:disabled { opacity: .6; }
+    .ayuda { color: var(--suave); font-size: .9rem; } .error { color: var(--error); }
+    ol { padding-left: 1.2rem; margin: .5rem 0; } li { margin: .4rem 0; }
+    code, pre { font: .85rem ui-monospace, monospace; } pre { white-space: pre-wrap; word-break: break-all; background: var(--fondo); padding: .6rem; border-radius: 8px; margin: .4rem 0; }
+    label { display: grid; gap: .2rem; color: var(--suave); font-size: .9rem; margin-top: .5rem; }
+    input { font: inherit; padding: .5rem; border-radius: 8px; border: 1px solid var(--borde); background: var(--fondo); color: var(--texto); }
+    .fila { display: grid; gap: .5rem; grid-template-columns: 1fr 1fr; margin-top: .5rem; }
+    progress { width: 100%; }
+  </style>
+</head>
+<body>
+  <main>
+    <header>
+      <img src="icono.png" alt="">
+      <div><h1>Panel Minecraft</h1><span class="ayuda" id="estado">Buscando el panel…</span></div>
+    </header>
+
+    <section>
+      <button id="btnIniciar" class="primario">▶ Iniciar panel</button>
+      <progress id="progreso" max="60" value="0" hidden></progress>
+      <p class="ayuda" id="detalle">El panel corre en Termux (con Java y Node). Esta app lo arranca en segundo plano y lo abre.</p>
+    </section>
+
+    <section id="config">
+      <h2>Configuración (solo la primera vez)</h2>
+      <ol>
+        <li id="pasoTermux">Tener <strong>Termux</strong> instalado (de F-Droid o GitHub) con Ubuntu en proot.</li>
+        <li>En Termux, permitir que esta app le mande órdenes. Copia y pega en Termux:
+          <pre id="cmdPropiedades">mkdir -p ~/.termux && grep -q '^allow-external-apps' ~/.termux/termux.properties 2>/dev/null || echo 'allow-external-apps = true' >> ~/.termux/termux.properties; termux-reload-settings</pre>
+          <div class="fila"><button id="btnCopiar">Copiar comando</button><button id="btnTermux">Abrir Termux</button></div>
+        </li>
+        <li id="pasoPermiso">Dar a esta app el permiso "Ejecutar comandos en Termux":
+          <button id="btnPermiso">Dar permiso</button></li>
+        <li>Recomendado: en Ajustes de Android → Apps → Termux → Batería → <strong>Sin restricciones</strong>, para que no se cierre mientras juegan.</li>
+      </ol>
+      <details>
+        <summary class="ayuda">Avanzado</summary>
+        <label>Carpeta del repo <input id="repo"></label>
+        <label>Distro de proot <input id="distro"></label>
+        <label>Puerto del panel <input id="puerto" type="number"></label>
+        <p class="ayuda">Registro del arranque en Termux: <code>~/mc-panel.log</code></p>
+      </details>
+    </section>
+  </main>
+
+  <script>
+    // Lanzador: si el panel responde lo abre; si no, pide a Termux (intent RUN_COMMAND) que lo arranque dentro de proot
+    const $ = (id) => document.getElementById(id);
+    const DEFECTO = { repo: '/storage/emulated/0/universida-datos/uso-com-n-', distro: 'ubuntu', puerto: 8095 };
+    const leer = () => { try { return { ...DEFECTO, ...JSON.parse(localStorage.getItem('lanzador') || '{}') }; } catch { return DEFECTO; } };
+    const guardar = () => { try { localStorage.setItem('lanzador', JSON.stringify({ repo: $('repo').value.trim(), distro: $('distro').value.trim(), puerto: Number($('puerto').value) })); } catch { /* sin almacenamiento */ } };
+    const termux = () => window.Capacitor?.Plugins?.Termux ?? window.Capacitor?.registerPlugin?.('Termux');
+    const url = () => `http://127.0.0.1:${leer().puerto}/`;
+    const estado = (t, error) => { $('estado').textContent = t; $('estado').className = error ? 'error' : 'ayuda'; };
+    const comillas = (s) => `'${String(s).replace(/'/g, `'\\''`)}'`;
+
+    // CapacitorHttp hace la petición desde Android: sin CORS ni bloqueo de contenido mixto
+    async function panelVivo() {
+      try {
+        const r = await Promise.race([fetch(`${url()}api/info`), new Promise((_, mal) => setTimeout(() => mal(new Error('tiempo')), 2500))]);
+        return r.ok;
+      } catch { return false; }
+    }
+
+    const abrirPanel = () => { location.href = url(); };
+
+    async function revisarTermux() {
+      const t = termux();
+      if (!t) { $('pasoTermux').classList.add('error'); return null; }
+      const s = await t.estado();
+      $('pasoTermux').classList.toggle('error', !s.instalado);
+      $('btnPermiso').textContent = s.permiso ? '✓ Permiso concedido' : 'Dar permiso';
+      $('btnPermiso').disabled = s.permiso;
+      return s;
+    }
+
+    async function iniciar() {
+      guardar();
+      const c = leer(), t = termux();
+      if (!t) return estado('Abre esta pantalla desde la app instalada (APK)', true);
+      let s = await revisarTermux();
+      if (!s.instalado) return estado('Termux no está instalado', true);
+      if (!s.permiso) s = await t.pedirPermiso();
+      if (!s.permiso) return estado('Falta el permiso "Ejecutar comandos en Termux"', true);
+
+      // wake-lock evita que Android duerma Termux; el panel corre dentro de Ubuntu (Java + Node)
+      const dentro = `cd ${comillas(`${c.repo}/apps/mc-panel`)} && PORT=${c.puerto} exec node server.js`;
+      const script = `termux-wake-lock 2>/dev/null; exec proot-distro login ${comillas(c.distro)} --shared-tmp -- bash -lc ${comillas(dentro)} > ~/mc-panel.log 2>&1`;
+      $('btnIniciar').disabled = true;
+      $('progreso').hidden = false;
+      try {
+        await t.ejecutar({ script });
+      } catch (e) {
+        $('btnIniciar').disabled = false; $('progreso').hidden = true;
+        return estado(`Termux rechazó la orden: ${e.message}. Revisa el paso 2.`, true);
+      }
+      for (let i = 1; i <= 60; i++) {
+        estado(`Arrancando… (${i} s)`);
+        $('progreso').value = i;
+        if (await panelVivo()) return abrirPanel();
+        await new Promise((ok) => setTimeout(ok, 1000));
+      }
+      $('btnIniciar').disabled = false; $('progreso').hidden = true;
+      estado('El panel no respondió en 60 s. Revisa el paso 2 y ~/mc-panel.log en Termux.', true);
+    }
+
+    async function main() {
+      const c = leer();
+      $('repo').value = c.repo; $('distro').value = c.distro; $('puerto').value = c.puerto;
+      $('btnIniciar').onclick = iniciar;
+      $('btnPermiso').onclick = async () => { await termux()?.pedirPermiso(); revisarTermux(); };
+      $('btnTermux').onclick = () => termux()?.abrirTermux().catch((e) => estado(e.message, true));
+      $('btnCopiar').onclick = async () => {
+        try { await navigator.clipboard.writeText($('cmdPropiedades').textContent); $('btnCopiar').textContent = '✓ Copiado'; }
+        catch { getSelection().selectAllChildren($('cmdPropiedades')); }
+      };
+      revisarTermux().catch(() => {});
+      if (await panelVivo()) { estado('Panel encontrado, abriendo…'); return abrirPanel(); }
+      estado('El panel está apagado');
+    }
+
+    main();
+  </script>
+</body>
+</html>

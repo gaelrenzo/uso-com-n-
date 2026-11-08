@@ -14,7 +14,20 @@ Sin dependencias npm: solo Node 22+ y Java.
 - **Asistente IA local** (Ollama, LM Studio, llama.cpp, fcc-server… misma detección que el escáner, `apps/escaner-ocr/public/ia.js`):
   ve la consola reciente, RAM, plugins y propiedades del servidor.
 
-## Uso
+## App Android (sin escribir comandos)
+Descargar en la tablet: https://github.com/gaelrenzo/uso-com-n-/releases/download/mc-panel-apk/panel-minecraft.apk
+(la compila `.github/workflows/mc-panel-apk.yml` en cada cambio de `apps/mc-panel/apk/`).
+
+La app no trae Java adentro: le pide a **Termux** (intent `RUN_COMMAND`) que arranque el panel en Ubuntu/proot
+y lo abre cuando responde. Configuración de una vez (la app la muestra con botones):
+1. En Termux: `echo 'allow-external-apps = true' >> ~/.termux/termux.properties; termux-reload-settings`
+2. Dar a la app el permiso "Ejecutar comandos en Termux".
+3. Recomendado: batería de Termux "Sin restricciones".
+
+Después: tocar **▶ Iniciar panel**. El botón ⏻ del panel detiene los servidores guardando los mundos.
+Registro del arranque: `~/mc-panel.log` en Termux.
+
+## Uso desde terminal
 ```bash
 cd $UCN_REPO_DIR/apps/mc-panel
 tmux new -s mc 'node server.js'      # http://localhost:8095 ; Ctrl+B D para dejarlo corriendo

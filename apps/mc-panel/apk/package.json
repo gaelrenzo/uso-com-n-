@@ -1,0 +1,13 @@
+{
+  "name": "mc-panel-apk",
+  "private": true,
+  "version": "1.0.0",
+  "description": "App Android del Panel Minecraft: arranca el panel en Termux y lo abre (la compila GitHub Actions)",
+  "dependencies": {
+    "@capacitor/android": "8.5.3",
+    "@capacitor/core": "8.5.3"
+  },
+  "devDependencies": {
+    "@capacitor/cli": "8.5.3"
+  }
+}

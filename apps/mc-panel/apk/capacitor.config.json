@@ -1,0 +1,8 @@
+{
+  "appId": "cl.ucn.mcpanel",
+  "appName": "Panel Minecraft",
+  "webDir": "lanzador",
+  "server": { "androidScheme": "https", "cleartext": true, "allowNavigation": ["127.0.0.1", "localhost"] },
+  "android": { "allowMixedContent": true },
+  "plugins": { "CapacitorHttp": { "enabled": true } }
+}

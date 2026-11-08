@@ -362,6 +362,11 @@ function main() {
     document.querySelectorAll('[data-panel]').forEach((p) => (p.hidden = p.dataset.panel !== b.dataset.p));
   }));
   $('ia').onclick = () => cargarInfo(true).catch(avisar);
+  $('btnApagar').onclick = async () => {
+    if (!confirm('¿Apagar el panel? Se detienen los servidores guardando los mundos y el túnel.')) return;
+    await api('apagar', {}).catch(() => {});
+    document.body.innerHTML = '<main><section><h2>Panel apagado</h2><p class="ayuda">Los mundos se guardaron. Puedes cerrar esta ventana.</p></section></main>';
+  };
   $('btnNuevo').onclick = nuevo;
   $('formNuevo').onsubmit = crear;
   $('formNuevo').elements.plataforma.onchange = cargarVersiones;

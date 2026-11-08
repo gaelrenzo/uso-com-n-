@@ -1,0 +1,73 @@
+name: Panel Minecraft APK
+
+# App Android del panel: lanzador (Capacitor) que arranca el panel en Termux vía RUN_COMMAND y lo abre
+on:
+  push:
+    branches: [main]
+    paths: ["apps/mc-panel/apk/**", ".github/workflows/mc-panel-apk.yml"]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: mc-panel-apk
+  cancel-in-progress: true
+
+jobs:
+  apk:
+    name: Compilar APK
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: apps/mc-panel/apk
+    steps:
+      - name: Checkout
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Setup Java
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: 21
+
+      # Misma clave de firma entre compilaciones: el APK nuevo se instala encima del anterior
+      - name: Clave de firma debug persistente
+        uses: actions/cache@v4
+        with:
+          path: ~/.android/debug.keystore
+          key: mc-panel-debug-keystore
+
+      - name: Capacitor + plugin Termux
+        run: |
+          npm install --no-audit --no-fund
+          npx cap add android
+          src=android/app/src/main
+          pkg=$src/java/cl/ucn/mcpanel
+          cp native/MainActivity.java native/TermuxPlugin.java "$pkg/"
+          # Permiso de Termux y visibilidad del paquete (Android 11+)
+          sed -i 's|<uses-permission android:name="android.permission.INTERNET" />|&\n    <uses-permission android:name="com.termux.permission.RUN_COMMAND" />\n    <queries><package android:name="com.termux" /></queries>|' $src/AndroidManifest.xml
+          grep -q RUN_COMMAND $src/AndroidManifest.xml
+          # Ícono propio (sin el adaptativo por defecto de Capacitor)
+          rm -rf $src/res/mipmap-anydpi-v26
+          cp -r iconos/* $src/res/
+          sed -i "s/versionCode 1$/versionCode ${{ github.run_number }}/; s/versionName \"1.0\"/versionName \"1.${{ github.run_number }}\"/" android/app/build.gradle
+          npx cap sync android
+
+      - name: Gradle assembleDebug
+        run: cd android && ./gradlew assembleDebug --no-daemon -q
+
+      - name: Publicar release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          cp android/app/build/outputs/apk/debug/app-debug.apk panel-minecraft.apk
+          notas="APK de prueba (firma debug) compilado desde ${GITHUB_SHA::7}. Requiere Termux con Ubuntu (proot) y el repo uso-com-n-."
+          gh release view mc-panel-apk >/dev/null 2>&1 || gh release create mc-panel-apk --prerelease --title "Panel Minecraft APK" --notes "$notas"
+          gh release upload mc-panel-apk panel-minecraft.apk --clobber
+          gh release edit mc-panel-apk --title "Panel Minecraft APK (build ${{ github.run_number }})" --notes "$notas"
