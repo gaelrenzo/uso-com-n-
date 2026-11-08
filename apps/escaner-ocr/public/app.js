@@ -275,7 +275,8 @@ function obtenerWorker() {
   worker?.then((w) => w.terminate()).catch(() => {});
   const m = OCR_MODOS[modo];
   const rutas = conVendor
-    ? { workerPath: 'vendor/tesseract/worker.min.js', corePath: 'vendor/tesseract/core', langPath: m.vendor }
+    // En el APK, el empaquetado de Android descomprime los .gz de assets y les quita la extensión
+    ? { workerPath: 'vendor/tesseract/worker.min.js', corePath: 'vendor/tesseract/core', langPath: m.vendor, gzip: !nativo() }
     : { ...(m.cdn && { langPath: m.cdn }), gzip: m.gzipCdn }; // sin vendor: CDN; el idioma queda en IndexedDB
   modoWorker = modo;
   worker = Tesseract.createWorker(m.idiomas, 1, {
