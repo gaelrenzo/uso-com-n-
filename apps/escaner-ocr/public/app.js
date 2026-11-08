@@ -21,8 +21,14 @@ const OCR_MODOS = {
   preciso: { idiomas: 'spa+eng', vendor: 'vendor/tessdata', cdn: null, gzipCdn: true },
 };
 
-let escaner, worker, modoWorker, flujo, pdfActual, conVendor, conServidor, iaNavegador, ultimasEsquinas;
-const paginas = []; // { original, esquinas, filtro, canvas, mini, ocr (promesa) }
+// Captura automática: hoja quieta ~1 s (4 cuadros), mueve <2 % del ancho y ocupa >20 % del cuadro
+const AUTO = { cuadros: 4, mov: 0.02, area: 0.2 };
+// Calidad del PDF: escala de la imagen y calidad JPEG
+const CALIDADES = { alta: { escala: 1, q: 0.85 }, normal: { escala: 1, q: 0.7 }, liviana: { escala: 0.6, q: 0.5 } };
+
+let escaner, worker, modoWorker, flujo, pdfActual, ultimosDatos, conVendor, conServidor, iaNavegador, ultimasEsquinas;
+let estable = 0, previas = null, esperarCambio = false;
+const paginas = []; // { original, esquinas, filtro, giro, canvas, mini, ocr (promesa) }
 
 const estado = (t) => ($('estado').textContent = t);
 const nativo = () => !!window.Capacitor?.isNativePlatform?.();
@@ -100,16 +106,51 @@ function vistaPrevia() {
     const ctx = o.getContext('2d');
     ctx.clearRect(0, 0, o.width, o.height);
     ultimasEsquinas = e && { esquinas: e, escala: v.videoWidth / chico.width };
+    const avance = autoCaptura(e, chico);
     if (e) {
       const k = o.width / chico.width;
       ctx.beginPath();
       ORDEN.forEach((n, i) => ctx[i ? 'lineTo' : 'moveTo'](e[n].x * k, e[n].y * k));
       ctx.closePath();
-      ctx.lineWidth = 4; ctx.strokeStyle = '#1f6feb'; ctx.fillStyle = 'rgba(31,111,235,.15)';
+      // Azul = detectada; verde cada vez más intenso = quieta, a punto de capturarse sola
+      ctx.lineWidth = 4;
+      ctx.strokeStyle = avance ? '#2da44e' : '#1f6feb';
+      ctx.fillStyle = avance ? `rgba(45,164,78,${0.15 + 0.35 * avance})` : 'rgba(31,111,235,.15)';
       ctx.fill(); ctx.stroke();
     }
   }
   setTimeout(vistaPrevia, 250);
+}
+
+const area = (e) => Math.abs(ORDEN.reduce((a, n, i) => {
+  const q = e[ORDEN[(i + 1) % 4]];
+  return a + e[n].x * q.y - q.x * e[n].y;
+}, 0)) / 2;
+
+// Devuelve el avance (0–1) hacia la captura automática; tras capturar espera a que cambie la hoja
+function autoCaptura(e, chico) {
+  const anterior = previas;
+  previas = e;
+  if (!e) { estable = 0; esperarCambio = false; return 0; }
+  if (!$('auto').checked || $('editor').open || area(e) < AUTO.area * chico.width * chico.height) { estable = 0; return 0; }
+  const mov = anterior ? Math.max(...ORDEN.map((n) => Math.hypot(e[n].x - anterior[n].x, e[n].y - anterior[n].y))) / chico.width : 1;
+  if (esperarCambio) {
+    if (mov > AUTO.mov * 3) esperarCambio = false;
+    return 0;
+  }
+  estable = mov < AUTO.mov ? estable + 1 : 0;
+  if (estable < AUTO.cuadros) return estable / AUTO.cuadros;
+  estable = 0; esperarCambio = true;
+  capturar();
+  return 1;
+}
+
+// Reutiliza las esquinas que la vista previa ya encontró: capturar es instantáneo
+function capturar() {
+  const d = ultimasEsquinas;
+  navigator.vibrate?.(40);
+  $('overlay').classList.remove('flash'); void $('overlay').offsetWidth; $('overlay').classList.add('flash');
+  agregarPagina(cuadro($('video').videoWidth), d ? escalar(d.esquinas, d.escala) : undefined);
 }
 
 // ---------- Esquinas ----------
@@ -193,24 +234,67 @@ function editarEsquinas(original, esquinas) {
 }
 
 // ---------- Procesado de imagen ----------
-function filtrar(origen, filtro) {
-  if (filtro === 'color') return origen;
-  const m = cv.imread(origen);
-  let g = new cv.Mat();
-  cv.cvtColor(m, g, cv.COLOR_RGBA2GRAY);
-  if (filtro === 'bn') {
-    const b = new cv.Mat();
-    cv.adaptiveThreshold(g, b, 255, cv.ADAPTIVE_THRESH_GAUSSIAN_C, cv.THRESH_BINARY, 31, 15);
-    g.delete(); g = b;
-  }
-  const out = document.createElement('canvas');
-  cv.imshow(out, g);
-  m.delete(); g.delete();
+// Quita sombras de un canal: estima el fondo (papel) borrando el texto con dilatación, lo suaviza
+// y divide la imagen por él. Probado: papel con sombra 228→112 queda en 254→246, el texto sigue oscuro
+function sinSombras(canal) {
+  const k = cv.getStructuringElement(cv.MORPH_RECT, new cv.Size(15, 15));
+  const dilatado = new cv.Mat(), fondo = new cv.Mat(), out = new cv.Mat();
+  cv.dilate(canal, dilatado, k);
+  cv.blur(dilatado, fondo, new cv.Size(31, 31));
+  cv.divide(canal, fondo, out, 255);
+  k.delete(); dilatado.delete(); fondo.delete();
   return out;
 }
 
+// Filtros: original | color (sin sombras) | mejorado (grises sin sombras) | bn (sin sombras + umbral) | gris
+function filtrar(origen, filtro) {
+  if (filtro === 'original') return origen;
+  const m = cv.imread(origen);
+  let r;
+  if (filtro === 'color') {
+    const rgb = new cv.Mat(), canales = new cv.MatVector(), limpios = new cv.MatVector();
+    cv.cvtColor(m, rgb, cv.COLOR_RGBA2RGB);
+    cv.split(rgb, canales);
+    for (let i = 0; i < 3; i++) { const c = canales.get(i), l = sinSombras(c); limpios.push_back(l); c.delete(); l.delete(); }
+    r = new cv.Mat();
+    cv.merge(limpios, r);
+    rgb.delete(); canales.delete(); limpios.delete();
+  } else {
+    const g = new cv.Mat();
+    cv.cvtColor(m, g, cv.COLOR_RGBA2GRAY);
+    if (filtro === 'gris') {
+      r = g;
+    } else {
+      r = sinSombras(g);
+      g.delete();
+      if (filtro === 'bn') {
+        const b = new cv.Mat();
+        cv.adaptiveThreshold(r, b, 255, cv.ADAPTIVE_THRESH_GAUSSIAN_C, cv.THRESH_BINARY, 25, 10);
+        r.delete(); r = b;
+      }
+    }
+  }
+  const out = document.createElement('canvas');
+  cv.imshow(out, r);
+  m.delete(); r.delete();
+  return out;
+}
+
+// Gira el canvas en pasos de 90° horarios
+function rotar(c, giros) {
+  const n = ((giros % 4) + 4) % 4;
+  if (!n) return c;
+  const o = document.createElement('canvas');
+  o.width = n % 2 ? c.height : c.width; o.height = n % 2 ? c.width : c.height;
+  const ctx = o.getContext('2d');
+  ctx.translate(o.width / 2, o.height / 2);
+  ctx.rotate((n * Math.PI) / 2);
+  ctx.drawImage(c, -c.width / 2, -c.height / 2);
+  return o;
+}
+
 function renderizar(p) {
-  p.canvas = filtrar(escaner.extractPaper(p.original, A4.w, A4.h, p.esquinas), p.filtro);
+  p.canvas = rotar(filtrar(escaner.extractPaper(p.original, A4.w, A4.h, p.esquinas), p.filtro), p.giro || 0);
   p.mini = p.canvas.toDataURL('image/jpeg', 0.4);
   p.ocr = reconocer(p.canvas); // el OCR corre mientras se capturan las siguientes páginas
   p.ocr.catch(() => {}); // el error se informa al procesar
@@ -233,6 +317,20 @@ async function reeditar(p) {
   pintarPaginas();
 }
 
+function mover(i, d) {
+  const j = i + d;
+  if (j < 0 || j >= paginas.length) return;
+  [paginas[i], paginas[j]] = [paginas[j], paginas[i]];
+  pintarPaginas();
+}
+
+function boton(texto, titulo, accion) {
+  const b = document.createElement('button');
+  b.type = 'button'; b.textContent = texto; b.title = titulo;
+  b.onclick = (ev) => { ev.stopPropagation(); accion(); };
+  return b;
+}
+
 function pintarPaginas() {
   $('paginas').replaceChildren(...paginas.map((p, i) => {
     const fig = document.createElement('figure');
@@ -240,11 +338,17 @@ function pintarPaginas() {
     fig.onclick = () => reeditar(p);
     const img = new Image();
     img.src = p.mini;
-    const quitar = document.createElement('button');
-    quitar.textContent = '✕';
-    quitar.title = 'Quitar página';
-    quitar.onclick = (ev) => { ev.stopPropagation(); paginas.splice(i, 1); pintarPaginas(); };
-    fig.append(img, quitar);
+    const num = document.createElement('figcaption');
+    num.textContent = i + 1;
+    const barra = document.createElement('div');
+    barra.className = 'barra';
+    barra.append(
+      boton('◀', 'Mover antes', () => mover(i, -1)),
+      boton('⟳', 'Girar 90°', () => { p.giro = (p.giro || 0) + 1; renderizar(p); pintarPaginas(); }),
+      boton('▶', 'Mover después', () => mover(i, 1)),
+      boton('✕', 'Quitar página', () => { paginas.splice(i, 1); pintarPaginas(); }),
+    );
+    fig.append(img, num, barra);
     return fig;
   }));
   $('nPaginas').textContent = `(${paginas.length})`;
@@ -302,20 +406,34 @@ async function ocr() {
 }
 
 // PDF A4 con la imagen y el texto OCR invisible encima (buscable/copiable)
+function jpeg(c, { escala, q }) {
+  if (escala === 1) return c.toDataURL('image/jpeg', q);
+  const o = document.createElement('canvas');
+  o.width = Math.round(c.width * escala); o.height = Math.round(c.height * escala);
+  o.getContext('2d').drawImage(c, 0, 0, o.width, o.height);
+  return o.toDataURL('image/jpeg', q);
+}
+
+const horizontal = (p) => p.canvas.width > p.canvas.height;
+
 function armarPDF(datos) {
   const { jsPDF } = window.jspdf;
-  const doc = new jsPDF({ unit: 'mm', format: 'a4' });
+  const calidad = CALIDADES[$('calidad').value];
+  const doc = new jsPDF({ unit: 'mm', format: 'a4', orientation: horizontal(paginas[0]) ? 'l' : 'p' });
   paginas.forEach((p, i) => {
-    if (i) doc.addPage();
-    doc.addImage(p.canvas.toDataURL('image/jpeg', 0.8), 'JPEG', 0, 0, 210, 297);
-    const k = 210 / p.canvas.width;
+    const [W, H] = horizontal(p) ? [297, 210] : [210, 297];
+    if (i) doc.addPage('a4', horizontal(p) ? 'l' : 'p');
+    doc.addImage(jpeg(p.canvas, calidad), 'JPEG', 0, 0, W, H);
+    const k = W / p.canvas.width;
     for (const linea of datos[i]?.lines || []) {
       const { x0, y0, y1 } = linea.bbox;
       doc.setFontSize(Math.max(4, (y1 - y0) * k * 2.83));
       doc.text(linea.text.trim(), x0 * k, y1 * k, { renderingMode: 'invisible', baseline: 'bottom' });
     }
   });
-  return doc.output('blob');
+  const blob = doc.output('blob');
+  $('btnDescargar').textContent = `Descargar PDF (${(blob.size / 1e6).toFixed(1)} MB)`;
+  return blob;
 }
 
 async function clasificarConIA(texto) {
@@ -350,6 +468,7 @@ async function procesar() {
     f.carpeta.value = CARPETAS.includes(ia.carpeta) ? ia.carpeta : '02_Teoria_y_Diapositivas';
     $('resumen').textContent = [ia.resumen, ...(ia.formulas || [])].filter(Boolean).join(' · ');
     $('iaUsada').textContent = ia.ia ? `Clasificado por ${ia.ia}` : '';
+    ultimosDatos = datos;
     pdfActual = armarPDF(datos);
     $('resultado').hidden = false;
     if (ia.nombre) estado('Listo: revisa el destino y guarda');
@@ -490,10 +609,11 @@ function prepararAjustes() {
 async function main() {
   llenarSelects();
   $('btnCamara').onclick = () => (flujo ? detenerCamara() : iniciarCamara().catch((e) => estado(`Cámara: ${e.message}`)));
-  // Reutiliza las esquinas que la vista previa ya encontró: capturar es instantáneo
-  $('btnCapturar').onclick = () => {
-    const d = ultimasEsquinas;
-    agregarPagina(cuadro($('video').videoWidth), d ? escalar(d.esquinas, d.escala) : undefined);
+  $('btnCapturar').onclick = capturar;
+  // Cambiar la calidad rehace el PDF sin repetir OCR ni IA (si las páginas no cambiaron)
+  $('calidad').onchange = () => { if (ultimosDatos?.length === paginas.length) pdfActual = armarPDF(ultimosDatos); };
+  $('btnCopiar').onclick = async () => {
+    try { await navigator.clipboard.writeText($('texto').textContent); estado('Texto copiado'); } catch { estado('No se pudo copiar'); }
   };
   $('modoOCR').onchange = () => paginas.forEach((p) => { p.ocr = reconocer(p.canvas); p.ocr.catch(() => {}); });
   $('archivo').onchange = async (e) => { for (const a of e.target.files) await agregarPagina(await imagenACanvas(a)); e.target.value = ''; };

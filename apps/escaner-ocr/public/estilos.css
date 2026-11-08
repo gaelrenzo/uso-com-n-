@@ -18,7 +18,12 @@ button, .boton { cursor: pointer; } button:disabled { opacity: .5; }
 #btnCapturar, #btnProcesar, form button[type=submit] { background: var(--acento); color: #fff; border-color: var(--acento); }
 #paginas { display: grid; grid-template-columns: repeat(auto-fill, minmax(90px, 1fr)); gap: .5rem; margin-bottom: .75rem; }
 figure { position: relative; margin: 0; } figure img { width: 100%; border: 1px solid var(--borde); border-radius: 4px; }
-figure button { position: absolute; top: 2px; right: 2px; padding: 0 .4rem; }
+figcaption { position: absolute; top: 2px; left: 4px; font-size: .75rem; background: var(--panel); border-radius: 4px; padding: 0 .3rem; }
+.barra { display: flex; justify-content: space-between; gap: 2px; margin-top: 2px; }
+.barra button { flex: 1; padding: .2rem 0; font-size: .85rem; }
+#overlay.flash { animation: flash .35s ease-out; }
+@keyframes flash { from { background: rgba(255, 255, 255, .8); } to { background: transparent; } }
+#btnCopiar { margin: .5rem 0; }
 progress { width: 100%; margin-top: .5rem; }
 form { display: grid; gap: .6rem; } form label { display: grid; gap: .2rem; color: var(--suave); font-size: .9rem; }
 form .check { display: flex; align-items: center; gap: .5rem; }

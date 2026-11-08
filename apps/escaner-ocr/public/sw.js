@@ -1,5 +1,5 @@
 // Cache-first para la app, librerías CDN y datos de idioma de Tesseract (funciona sin internet tras el primer uso)
-const CACHE = 'escaner-v5';
+const CACHE = 'escaner-v6';
 const COMPARTIDOS = 'compartidos'; // imágenes recibidas por share_target (las lee app.js)
 self.addEventListener('install', (e) => self.skipWaiting());
 self.addEventListener('activate', (e) => e.waitUntil(

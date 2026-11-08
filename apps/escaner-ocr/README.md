@@ -59,6 +59,14 @@ modelos de 1–4B van bien). `llama-server` de llama.cpp: usar `--port 8081` (80
 - Sube con `rclone copyto --ignore-existing`: nunca sobrescribe ni borra.
 - Sin curso claro → `98_Por_Clasificar/Desde_escaner_AAAA-MM/`.
 
+## Funciones (según quejas comunes de CamScanner, Adobe Scan, Microsoft Lens)
+- Sin marca de agua, sin suscripción, OCR gratis, sin permisos extra: solo cámara; OCR e IA locales.
+- **Captura automática**: el contorno pasa de azul a verde cuando la hoja está quieta y dispara solo (~1 s).
+  Tras capturar espera a que cambies de hoja.
+- **Quitar sombras**: filtros Mejorado (por defecto), Blanco y negro y Color sin sombras.
+- **Revisar el lote**: reordenar (◀ ▶), girar 90° (⟳), quitar (✕) y tocar para ajustar esquinas.
+- **Calidad del PDF**: normal, alta o liviana (para WhatsApp/correo); muestra el tamaño. Copiar texto OCR.
+
 ## Rendimiento
 - Vista previa: el video se ve en vivo; la hoja se detecta sobre un cuadro de 360 px (~4 fps) y solo se dibuja el contorno.
 - Capturar reutiliza las esquinas ya detectadas (instantáneo); el OCR de cada página arranca en segundo plano
@@ -71,4 +79,5 @@ Con "Revisar esquinas" activo, cada captura abre un editor con las 4 esquinas de
 Tocar una miniatura vuelve a abrirlo.
 
 ## Pendiente
+- OCR de letra manuscrita con un modelo de visión local (Tesseract la lee mal).
 - Recibir fotos compartidas también en el APK (intent filter).

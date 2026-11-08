@@ -31,10 +31,13 @@
           <option value="preciso">OCR preciso (+inglés)</option>
         </select>
         <select id="filtro" title="Filtro">
+          <option value="mejorado">Mejorado (sin sombras)</option>
           <option value="bn">Blanco y negro</option>
+          <option value="color">Color sin sombras</option>
           <option value="gris">Grises</option>
-          <option value="color">Color</option>
+          <option value="original">Original</option>
         </select>
+        <label class="check"><input id="auto" type="checkbox" checked> Captura automática</label>
       </div>
     </section>
 
@@ -52,6 +55,13 @@
         <label>Semestre <select name="semestre"></select></label>
         <label>Curso <input name="curso" placeholder="vacío = 98_Por_Clasificar"></label>
         <label>Carpeta <select name="carpeta"></select></label>
+        <label>Calidad del PDF
+          <select name="calidad" id="calidad">
+            <option value="normal">Normal</option>
+            <option value="alta">Alta</option>
+            <option value="liviana">Liviana (para enviar)</option>
+          </select>
+        </label>
         <label class="check solo-servidor"><input type="checkbox" name="drive" checked> Subir a Drive (ENZO1)</label>
         <p class="sin-servidor ayuda">Sin servidor: "Compartir" abre el menú de Android; elige Drive y la carpeta de arriba.</p>
         <div class="controles">
@@ -61,7 +71,7 @@
       </form>
       <p id="resumen"></p>
       <small id="iaUsada"></small>
-      <details><summary>Texto OCR</summary><pre id="texto"></pre></details>
+      <details><summary>Texto OCR</summary><button type="button" id="btnCopiar">Copiar texto</button><pre id="texto"></pre></details>
     </section>
     <details id="ajustes">
       <summary>Ajustes de IA</summary>
