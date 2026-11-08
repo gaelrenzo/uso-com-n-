@@ -127,9 +127,14 @@ function nombrePlayit() {
   throw new Error(`playit no publica binario para ${process.platform}/${process.arch}`);
 }
 
-async function bajarPlayit(destino) {
-  await bajar(`https://github.com/playit-cloud/playit-agent/releases/latest/download/${nombrePlayit()}`, destino);
-  if (process.platform !== 'win32') fs.chmodSync(destino, 0o755);
+// Desde playit 1.2 en Linux hay dos binarios: el servicio (playit) y playit-cli, que vincula la cuenta
+async function bajarPlayit(destino, destinoCli) {
+  const base = 'https://github.com/playit-cloud/playit-agent/releases/latest/download';
+  await bajar(`${base}/${nombrePlayit()}`, destino);
+  if (process.platform === 'win32') return;
+  fs.chmodSync(destino, 0o755);
+  await bajar(`${base}/${nombrePlayit().replace('playit-', 'playit-cli-')}`, destinoCli);
+  fs.chmodSync(destinoCli, 0o755);
 }
 
 module.exports = {

@@ -155,7 +155,9 @@ async function instalar(id) {
   cambiarEstado(id, 'apagado');
 }
 
-// Geyser genera su config al primer arranque: se ajusta el puerto Bedrock y la autenticación por Floodgate
+// Geyser genera su config al primer arranque: se ajusta el puerto Bedrock y la autenticación por Floodgate.
+// Transporte "both": RakNet en el puerto Bedrock (el túnel gratis de playit solo soporta RakNet) y
+// NetherNet (método nuevo de Bedrock) en puerto Bedrock + 1000 para quienes entren por la red local
 function ajustarGeyser(id, cfg) {
   const base = path.join(carpeta(id), cfg.plataforma === 'fabric' ? 'config/Geyser-Fabric' : 'plugins/Geyser-Spigot');
   const f = path.join(base, 'config.yml');
@@ -163,7 +165,9 @@ function ajustarGeyser(id, cfg) {
   const antes = fs.readFileSync(f, 'utf8');
   const despues = antes
     .replace(/(bedrock:[\s\S]*?\n\s+port:\s*)\d+/, `$1${cfg.puertoBedrock}`)
-    .replace(/auth-type:\s*online/, 'auth-type: floodgate');
+    .replace(/auth-type:\s*online/, 'auth-type: floodgate')
+    .replace(/(\n\s+)transport:\s*nethernet/, '$1transport: both')
+    .replace(/(\n\s+)webrtc-port:\s*0\b/, `$1webrtc-port: ${cfg.puertoBedrock + 1000}`);
   if (despues !== antes) fs.writeFileSync(f, despues);
 }
 

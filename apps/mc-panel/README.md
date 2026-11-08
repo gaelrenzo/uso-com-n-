@@ -44,6 +44,12 @@ con datos móviles y sin IP pública. La pestaña guía paso a paso (solo la pri
 3. Las direcciones se detectan solas de la salida del agente (o se pegan a mano) y quedan guardadas.
 4. **Compartir invitación**: mensaje listo para WhatsApp con instrucciones para PC (Java) y celular/Windows (Bedrock).
 
+Notas probadas (playit 1.2.0, Geyser 2.12, Bedrock 26.x):
+- playit 1.2 separa el servicio (`playit`) de `playit-cli`; el panel ejecuta `playit-cli setup` si falta vincular.
+- El túnel Bedrock gratis de playit solo soporta **RakNet**; Geyser 2.12 usa NetherNet por defecto, así que el panel
+  pone `transport: both` (RakNet en el puerto Bedrock para el túnel, NetherNet en puerto+1000 para la red local).
+- `playit-cli` no lista túneles: la dirección se pega una vez en la pestaña Amigos.
+
 Después, cada vez: **Iniciar servidor** y el túnel arranca solo (opción "Iniciar el túnel junto con el servidor").
 Consolas (Switch/PS/Xbox) no permiten agregar servidores: necesitan [BedrockConnect](https://github.com/Pugmatt/BedrockConnect).
 
