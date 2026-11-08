@@ -63,7 +63,8 @@ public class TermuxPlugin extends Plugin {
         i.putExtra("com.termux.RUN_COMMAND_PATH", "/data/data/com.termux/files/usr/bin/bash");
         i.putExtra("com.termux.RUN_COMMAND_ARGUMENTS", new String[] { "-c", script });
         i.putExtra("com.termux.RUN_COMMAND_WORKDIR", "/data/data/com.termux/files/home");
-        i.putExtra("com.termux.RUN_COMMAND_BACKGROUND", true);
+        // En primer plano Termux abre una sesión visible (para ver el progreso de la instalación)
+        i.putExtra("com.termux.RUN_COMMAND_BACKGROUND", call.getBoolean("segundoPlano", true));
         try {
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
                 getContext().startForegroundService(i);

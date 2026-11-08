@@ -3,7 +3,7 @@ const fs = require('node:fs');
 const path = require('node:path');
 const os = require('node:os');
 const readline = require('node:readline');
-const { spawn, execFile } = require('node:child_process');
+const { spawn, execFile, execFileSync } = require('node:child_process');
 const des = require('./descargas');
 
 let BIN = null, CLI = null;
@@ -36,16 +36,55 @@ async function instalar() {
   emitir(null);
 }
 
-// playit 1.2: el servicio espera la clave; "playit-cli setup" imprime el enlace de vinculación y se la entrega
+const RUTA_SECRETO = path.join(os.homedir(), '.config', 'playit_gg', 'playit.toml');
+
+// playit 1.2: si el servicio no tiene clave, se vincula. Se usa el tipo "self-managed" (no "playit-cli setup"),
+// porque solo ese tipo de agente puede crear sus propios túneles; la clave de "setup" es de solo lectura
 function vincularSiFalta() {
   if (!fs.existsSync(CLI) || vinculando) return;
   execFile(CLI, ['status'], { timeout: 15_000 }, (e, salida = '') => {
-    if (!/Secret configured: false/.test(salida) || vinculando) return;
-    emitir('[panel] El agente necesita vincularse con tu cuenta de playit…');
-    vinculando = spawn(CLI, ['setup'], { stdio: ['ignore', 'pipe', 'pipe'], env: { ...process.env, NO_COLOR: '1' } });
-    for (const flujo of [vinculando.stdout, vinculando.stderr]) leerLineas(flujo);
-    vinculando.on('exit', () => { vinculando = null; enlace = null; emitir(null); });
+    if (/Secret configured: false/.test(salida)) vincular();
   });
+}
+
+function vincular() {
+  if (!fs.existsSync(CLI)) throw new Error('primero instala el agente');
+  if (vinculando) return estado();
+  const codigo = execFileSync(CLI, ['claim', 'generate'], { encoding: 'utf8' }).trim();
+  const url = execFileSync(CLI, ['claim', 'url', codigo, '--name', `Panel Minecraft (${os.hostname()})`, '--type', 'self-managed'], { encoding: 'utf8' });
+  enlace = url.match(/https:\/\/\S+/)?.[0] || null;
+  emitir('[panel] Abre el enlace "Vincular" para aprobar el agente en tu cuenta de playit');
+  emitir(null);
+  let salida = '';
+  vinculando = spawn(CLI, ['claim', 'exchange', codigo, '--wait', '3600'], { stdio: ['ignore', 'pipe', 'pipe'] });
+  vinculando.stdout.on('data', (c) => { salida += c; });
+  vinculando.on('exit', (c) => {
+    vinculando = null;
+    enlace = null;
+    const secreto = salida.match(/\b[0-9a-f]{64}\b/)?.[0];
+    if (c === 0 && secreto) {
+      guardarSecreto(secreto);
+      emitir('[panel] Agente vinculado: ya puede crear túneles. Reiniciando el agente…');
+      reiniciar();
+    } else {
+      emitir('[panel] La vinculación no se completó (¿se venció la hora de espera?)');
+    }
+    emitir(null);
+  });
+  return estado();
+}
+
+// La clave anterior se conserva como playit.toml.antes-<fecha>
+function guardarSecreto(secreto) {
+  fs.mkdirSync(path.dirname(RUTA_SECRETO), { recursive: true });
+  if (fs.existsSync(RUTA_SECRETO)) fs.copyFileSync(RUTA_SECRETO, `${RUTA_SECRETO}.antes-${Date.now()}`);
+  fs.writeFileSync(RUTA_SECRETO, `secret_key = "${secreto}"\n`, { mode: 0o600 });
+}
+
+function reiniciar() {
+  if (!proc) return iniciar();
+  proc.once('exit', () => iniciar());
+  proc.kill();
 }
 
 function leerLineas(flujo) {
@@ -88,7 +127,7 @@ const API = 'https://api.playit.gg';
 
 function clave() {
   try {
-    const toml = fs.readFileSync(path.join(os.homedir(), '.config', 'playit_gg', 'playit.toml'), 'utf8');
+    const toml = fs.readFileSync(RUTA_SECRETO, 'utf8');
     return toml.match(/secret_key\s*=\s*"([^"]+)"/)?.[1] || null;
   } catch {
     return null;
@@ -109,7 +148,9 @@ async function apiPlayit(ruta, cuerpo = {}) {
 
 // Túneles de la cuenta con la dirección lista para compartir. Java en joinmc.link no necesita puerto (usa SRV)
 async function tuneles() {
-  const { tunnels } = await apiPlayit('tunnels/list', { tunnel_id: null, agent_id: null });
+  const [{ tunnels }, { agent_id: propio }] = await Promise.all([
+    apiPlayit('tunnels/list', { tunnel_id: null, agent_id: null }), apiPlayit('agents/rundata'),
+  ]);
   return tunnels.map((t) => {
     const a = t.alloc?.data || {};
     const dominio = a.assigned_domain || a.ip_hostname;
@@ -119,8 +160,31 @@ async function tuneles() {
       publica: dominio ? (soloDominio ? dominio : `${dominio}:${a.port_start}`) : null,
       ip: a.static_ip4 ? `${a.static_ip4}:${a.port_start}` : null,
       localPuerto: t.origin?.data?.local_port ?? null,
+      propio: t.origin?.data?.agent_id === propio, // del agente de este equipo (los de otros agentes pueden estar apagados)
     };
   });
+}
+
+// Crea los túneles que falten para el servidor (Java TCP y, si tiene Geyser, Bedrock UDP) en el agente de este equipo
+async function crearTuneles(s) {
+  const { agent_id } = await apiPlayit('agents/rundata');
+  const existentes = await tuneles();
+  const deseados = [{ tipo: 'minecraft-java', protocolo: 'tcp', puerto: s.puerto, nombre: `${s.nombre} Java` }];
+  if (s.bedrock) deseados.push({ tipo: 'minecraft-bedrock', protocolo: 'udp', puerto: s.puertoBedrock, nombre: `${s.nombre} Bedrock` });
+  for (const d of deseados) {
+    if (existentes.some((t) => t.propio && t.tipo === d.tipo && t.localPuerto === d.puerto)) continue;
+    try {
+      await apiPlayit('tunnels/create', {
+        name: d.nombre.slice(0, 40), tunnel_type: d.tipo, port_type: d.protocolo, port_count: 1,
+        origin: { type: 'agent', data: { agent_id, local_ip: '127.0.0.1', local_port: d.puerto } },
+        enabled: true, alloc: null, firewall_id: null, proxy_protocol: null,
+      });
+    } catch (e) {
+      if (/ReadOnly/i.test(e.message)) throw new Error('la clave del agente es de solo lectura: toca "Revincular" para que pueda crear túneles');
+      throw e;
+    }
+  }
+  return tuneles();
 }
 
 function suscribir(res) {
@@ -130,4 +194,4 @@ function suscribir(res) {
   res.on('close', () => oyentes.delete(res));
 }
 
-module.exports = { configurar, estado, instalar, iniciar, detener, suscribir, tuneles };
+module.exports = { configurar, estado, instalar, iniciar, detener, suscribir, tuneles, crearTuneles, vincular };

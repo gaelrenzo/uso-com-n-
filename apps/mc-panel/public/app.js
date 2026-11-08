@@ -257,7 +257,9 @@ function pintarAmigos() {
   if (!servidor) return;
   const s = servidor, p = playitEstado;
   const tieneDireccion = !!(s.direccionJava || s.direccionBedrock);
-  const delServidor = (tunelesCuenta || []).filter((t) => [s.puerto, s.puertoBedrock].includes(t.localPuerto));
+  // Primero los túneles del agente de este equipo; los de agentes viejos solo si no hay otros
+  const todos = (tunelesCuenta || []).filter((t) => [s.puerto, s.puertoBedrock].includes(t.localPuerto));
+  const delServidor = todos.some((t) => t.propio) ? todos.filter((t) => t.propio) : todos;
   const encendido = s.estado === 'encendido';
   const tuneles = [`Minecraft Java → local 127.0.0.1:${s.puerto}`, s.bedrock && `Minecraft Bedrock (UDP) → local 127.0.0.1:${s.puertoBedrock}`].filter(Boolean);
   $('pasos').replaceChildren(
@@ -268,9 +270,11 @@ function pintarAmigos() {
     paso(!p.enlace || tieneDireccion, 'Vincular con tu cuenta de playit (solo la primera vez)',
       p.enlace ? 'Abre el enlace, entra o crea tu cuenta gratis y confirma el agente.' : 'Aparece un enlace aquí cuando el agente lo pida.',
       ...(p.enlace ? [enlace(p.enlace, 'Vincular ↗')] : [])),
-    paso(delServidor.length > 0 || tieneDireccion, 'Crear los túneles en playit.gg (solo la primera vez)',
-      [`Agrega: ${tuneles.join(' · ')}. La dirección se detecta sola al volver aquí.`],
-      enlace(PLAYIT_TUNELES, 'Abrir túneles ↗'), boton('Ya los creé', (b) => ocupado(b, cargarTuneles))),
+    paso(delServidor.some((t) => t.propio) && (!s.bedrock || delServidor.some((t) => t.protocolo === 'udp')),
+      'Crear los túneles (solo la primera vez)', `Se crean en tu cuenta de playit: ${tuneles.join(' · ')}.`,
+      boton('Crear túneles automáticamente', (b) => ocupado(b, crearTuneles), 'primario'),
+      boton('Revincular', (b) => ocupado(b, () => api('playit/vincular', {}))),
+      enlace(PLAYIT_TUNELES, 'Hacerlo en la web ↗')),
     paso(encendido, 'Encender el servidor', '',
       boton('Iniciar servidor', (b) => ocupado(b, () => api(`servidores/${actual}/iniciar`, {})), 'primario')),
     paso(tieneDireccion && encendido && p.encendido, '¡Listo! Comparte la invitación', 'Tus amigos solo necesitan Minecraft.'),
@@ -281,11 +285,19 @@ function pintarAmigos() {
     || p.direcciones.find((x) => /joinmc\.link/.test(x.publica));
   const bedrock = delServidor.find((t) => t.protocolo === 'udp' && t.localPuerto === s.puertoBedrock)
     || p.direcciones.find((x) => /ply\.gg:\d+/.test(x.publica) && x !== java);
-  if (java?.publica && !d.direccionJava.value) d.direccionJava.value = java.publica;
-  if (s.bedrock && bedrock?.publica && !d.direccionBedrock.value) d.direccionBedrock.value = bedrock.publica;
+  // Un túnel propio manda sobre lo guardado (al revincular cambia la dirección); los demás solo rellenan si está vacío
+  if (java?.publica && (java.propio || !d.direccionJava.value)) d.direccionJava.value = java.publica;
+  if (s.bedrock && bedrock?.publica && (bedrock.propio || !d.direccionBedrock.value)) d.direccionBedrock.value = bedrock.publica;
   $('invitacion').textContent = invitacion();
   const cambio = (d.direccionJava.value || '') !== (s.direccionJava || '') || (d.direccionBedrock.value || '') !== (s.direccionBedrock || '');
   if (cambio && (java || bedrock)) guardarDirecciones().catch(() => {}); // queda guardado sin tocar "Guardar"
+}
+
+async function crearTuneles() {
+  tunelesCuenta = await api(`servidores/${actual}/tuneles`, {});
+  pintarAmigos();
+  // playit tarda unos segundos en asignar la dirección a un túnel nuevo
+  if (tunelesCuenta.some((t) => t.propio && !t.publica)) setTimeout(cargarTuneles, 5000);
 }
 
 async function cargarTuneles() {

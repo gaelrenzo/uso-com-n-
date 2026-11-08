@@ -20,9 +20,10 @@ Descargar en la tablet: https://github.com/gaelrenzo/uso-com-n-/releases/downloa
 
 La app no trae Java adentro: le pide a **Termux** (intent `RUN_COMMAND`) que arranque el panel en Ubuntu/proot
 y lo abre cuando responde. Configuración de una vez (la app la muestra con botones):
-1. En Termux: `echo 'allow-external-apps = true' >> ~/.termux/termux.properties; termux-reload-settings`
+1. Instalar Termux (F-Droid/GitHub) y en Termux: `echo 'allow-external-apps = true' >> ~/.termux/termux.properties; termux-reload-settings`
 2. Dar a la app el permiso "Ejecutar comandos en Termux".
-3. Recomendado: batería de Termux "Sin restricciones".
+3. Equipo nuevo: **⬇ Instalar todo** (proot-distro + Ubuntu + Java 25/21 + Node + clona el repo en `/root/uso-com-n-`; se ve en Termux).
+4. Recomendado: batería de Termux "Sin restricciones".
 
 Después: tocar **▶ Iniciar panel**. El botón ⏻ del panel detiene los servidores guardando los mundos.
 Registro del arranque: `~/mc-panel.log` en Termux.
@@ -48,7 +49,10 @@ Notas probadas (playit 1.2.0, Geyser 2.12, Bedrock 26.x):
 - playit 1.2 separa el servicio (`playit`) de `playit-cli`; el panel ejecuta `playit-cli setup` si falta vincular.
 - El túnel Bedrock gratis de playit solo soporta **RakNet**; Geyser 2.12 usa NetherNet por defecto, así que el panel
   pone `transport: both` (RakNet en el puerto Bedrock para el túnel, NetherNet en puerto+1000 para la red local).
-- `playit-cli` no lista túneles: la dirección se pega una vez en la pestaña Amigos.
+- El panel vincula el agente como **self-managed** (`playit-cli claim … --type self-managed`): la clave de
+  `playit-cli setup` es de solo lectura (`NotAllowedWithReadOnly` al crear túneles). Con self-managed, el botón
+  **Crear túneles automáticamente** crea Java (TCP) y Bedrock (UDP) por la API y la dirección se detecta sola.
+  La clave anterior queda como `~/.config/playit_gg/playit.toml.antes-<fecha>`.
 
 Después, cada vez: **Iniciar servidor** y el túnel arranca solo (opción "Iniciar el túnel junto con el servidor").
 Consolas (Switch/PS/Xbox) no permiten agregar servidores: necesitan [BedrockConnect](https://github.com/Pugmatt/BedrockConnect).

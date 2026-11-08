@@ -41,13 +41,15 @@
     <section id="config">
       <h2>Configuración (solo la primera vez)</h2>
       <ol>
-        <li id="pasoTermux">Tener <strong>Termux</strong> instalado (de F-Droid o GitHub) con Ubuntu en proot.</li>
+        <li id="pasoTermux">Tener <strong>Termux</strong> instalado (de F-Droid o GitHub).</li>
         <li>En Termux, permitir que esta app le mande órdenes. Copia y pega en Termux:
           <pre id="cmdPropiedades">mkdir -p ~/.termux && grep -q '^allow-external-apps' ~/.termux/termux.properties 2>/dev/null || echo 'allow-external-apps = true' >> ~/.termux/termux.properties; termux-reload-settings</pre>
           <div class="fila"><button id="btnCopiar">Copiar comando</button><button id="btnTermux">Abrir Termux</button></div>
         </li>
         <li id="pasoPermiso">Dar a esta app el permiso "Ejecutar comandos en Termux":
           <button id="btnPermiso">Dar permiso</button></li>
+        <li>Solo en un equipo nuevo: instalar Ubuntu, Java, Node y el panel (unos 15 min, se ve el avance en Termux):
+          <button id="btnInstalar">⬇ Instalar todo</button></li>
         <li>Recomendado: en Ajustes de Android → Apps → Termux → Batería → <strong>Sin restricciones</strong>, para que no se cierre mientras juegan.</li>
       </ol>
       <details>
@@ -100,8 +102,9 @@
       if (!s.permiso) s = await t.pedirPermiso();
       if (!s.permiso) return estado('Falta el permiso "Ejecutar comandos en Termux"', true);
 
-      // wake-lock evita que Android duerma Termux; el panel corre dentro de Ubuntu (Java + Node)
-      const dentro = `cd ${comillas(`${c.repo}/apps/mc-panel`)} && PORT=${c.puerto} exec node server.js`;
+      // wake-lock evita que Android duerma Termux; el panel corre dentro de Ubuntu (Java + Node).
+      // Si la carpeta configurada no existe, se usa la que crea "Instalar todo" (~/uso-com-n- dentro de Ubuntu)
+      const dentro = `{ cd ${comillas(`${c.repo}/apps/mc-panel`)} 2>/dev/null || cd /root/uso-com-n-/apps/mc-panel; } && PORT=${c.puerto} exec node server.js`;
       const script = `termux-wake-lock 2>/dev/null; exec proot-distro login ${comillas(c.distro)} --shared-tmp -- bash -lc ${comillas(dentro)} > ~/mc-panel.log 2>&1`;
       $('btnIniciar').disabled = true;
       $('progreso').hidden = false;
@@ -121,10 +124,46 @@
       estado('El panel no respondió en 60 s. Revisa el paso 2 y ~/mc-panel.log en Termux.', true);
     }
 
+    // Instalación completa vía Termux: proot-distro + Ubuntu + Java + Node + git, y clona/actualiza el repo
+    async function instalarTodo() {
+      guardar();
+      const c = leer(), t = termux();
+      if (!t) return estado('Abre esta pantalla desde la app instalada (APK)', true);
+      let s = await revisarTermux();
+      if (!s.instalado) return estado('Termux no está instalado', true);
+      if (!s.permiso) s = await t.pedirPermiso();
+      if (!s.permiso) return estado('Falta el permiso "Ejecutar comandos en Termux"', true);
+      const R = c.repo;
+      const ubuntu = [
+        'export DEBIAN_FRONTEND=noninteractive',
+        'apt-get update',
+        'apt-get install -y ca-certificates git tar nodejs',
+        '(apt-get install -y openjdk-25-jre-headless || apt-get install -y openjdk-21-jre-headless)',
+        `if [ -d ${comillas(`${R}/.git`)} ]; then git -C ${comillas(R)} pull --ff-only; ` +
+          'elif [ -d /root/uso-com-n-/.git ]; then git -C /root/uso-com-n- pull --ff-only; ' +
+          'else git clone https://github.com/gaelrenzo/uso-com-n-.git /root/uso-com-n-; fi',
+        'java -version && node --version',
+      ].join(' && ');
+      const script = [
+        'echo "== Panel Minecraft: instalación (no cierres Termux) =="',
+        'pkg install -y proot-distro',
+        `{ [ -d "$PREFIX/var/lib/proot-distro/installed-rootfs/${c.distro}" ] || proot-distro install ${comillas(c.distro)}; }`,
+        `proot-distro login ${comillas(c.distro)} -- bash -c ${comillas(ubuntu)}`,
+        'echo; echo "== Listo. Vuelve a la app Panel Minecraft y toca Iniciar panel =="',
+      ].join(' && ') + ' || echo "== La instalación falló: revisa los mensajes de arriba =="';
+      try {
+        await t.ejecutar({ script, segundoPlano: false });
+        estado('Instalando en Termux… cuando diga "Listo", vuelve y toca Iniciar panel');
+      } catch (e) {
+        estado(`Termux rechazó la orden: ${e.message}. Revisa el paso 2.`, true);
+      }
+    }
+
     async function main() {
       const c = leer();
       $('repo').value = c.repo; $('distro').value = c.distro; $('puerto').value = c.puerto;
       $('btnIniciar').onclick = iniciar;
+      $('btnInstalar').onclick = instalarTodo;
       $('btnPermiso').onclick = async () => { await termux()?.pedirPermiso(); revisarTermux(); };
       $('btnTermux').onclick = () => termux()?.abrirTermux().catch((e) => estado(e.message, true));
       $('btnCopiar').onclick = async () => {

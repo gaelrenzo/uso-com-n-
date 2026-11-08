@@ -109,6 +109,7 @@ async function api(req, res, url) {
     if (metodo === 'POST' && id === 'iniciar') return responder(res, 200, playit.iniciar());
     if (metodo === 'POST' && id === 'detener') { playit.detener(); return responder(res, 200, playit.estado()); }
     if (id === 'tuneles') return responder(res, 200, await playit.tuneles());
+    if (metodo === 'POST' && id === 'vincular') return responder(res, 200, playit.vincular());
     return responder(res, 200, playit.estado());
   }
 
@@ -145,6 +146,7 @@ async function api(req, res, url) {
     case 'mover-extra': return responder(res, 200, srv.moverExtra(id, cuerpo.archivo, !!cuerpo.activar));
     case 'respaldar': return responder(res, 200, { archivo: await resp.respaldar(id), respaldos: resp.listar(id) });
     case 'restaurar': await resp.restaurar(id, cuerpo.archivo); return responder(res, 200, { ok: true });
+    case 'tuneles': return responder(res, 200, await playit.crearTuneles(srv.resumen(id)));
     case 'ia': return responder(res, 200, await asistente(id, String(cuerpo.pregunta || '').slice(0, 1000)));
     default: return responder(res, 404, { error: 'acción desconocida' });
   }
