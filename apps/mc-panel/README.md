@@ -22,10 +22,17 @@ tmux new -s mc 'node server.js'      # http://localhost:8095 ; Ctrl+B D para dej
 Para manejarlo desde el celular en la misma WiFi: `MC_HOST=0.0.0.0 node server.js` y abrir la URL con `?token=` que imprime.
 Ctrl+C detiene los servidores con `stop` (guarda los mundos) antes de salir.
 
-## Amigos por internet (playit.gg)
-1. Panel → **Instalar agente** → **Iniciar túnel** → abrir el enlace "Vincular" (crea/usa tu cuenta gratis de playit).
-2. En playit.gg crear túneles: **Minecraft Java** → `127.0.0.1:25565` y, si usas Bedrock, **Minecraft Bedrock** → `127.0.0.1:19132` (UDP).
-3. La dirección pública aparece en el panel; Java entra con `xxx.joinmc.link`, Bedrock con la IP:puerto del túnel UDP.
+## Amigos por internet (pestaña 🌍 Amigos)
+Tus amigos **no instalan nada**: abren Minecraft y escriben una dirección. El túnel gratis de playit.gg funciona
+con datos móviles y sin IP pública. La pestaña guía paso a paso (solo la primera vez):
+1. **Instalar agente** → **Iniciar túnel** → **Vincular** (enlace a tu cuenta gratis de playit).
+2. En playit.gg → Tunnels: **Minecraft Java** → `127.0.0.1:<puerto>` y, con Bedrock, **Minecraft Bedrock** (UDP) → `127.0.0.1:<puertoBedrock>`
+   (el panel muestra los puertos exactos de cada servidor).
+3. Las direcciones se detectan solas de la salida del agente (o se pegan a mano) y quedan guardadas.
+4. **Compartir invitación**: mensaje listo para WhatsApp con instrucciones para PC (Java) y celular/Windows (Bedrock).
+
+Después, cada vez: **Iniciar servidor** y el túnel arranca solo (opción "Iniciar el túnel junto con el servidor").
+Consolas (Switch/PS/Xbox) no permiten agregar servidores: necesitan [BedrockConnect](https://github.com/Pugmatt/BedrockConnect).
 
 ## Variables
 | Variable | Por defecto |

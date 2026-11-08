@@ -45,8 +45,14 @@ function iniciar() {
       emitir(l);
       const claim = l.match(/https:\/\/playit\.gg\/claim\/\S+/);
       if (claim) { enlace = claim[0]; emitir(null); }
-      const dir = l.match(/([\w-]+(?:\.[\w-]+)*\.(?:joinmc\.link|ply\.gg|playit\.gg)(?::\d+)?)\s*=>\s*(\S+)/);
-      if (dir && !direcciones.some((d) => d.publica === dir[1])) { direcciones.push({ publica: dir[1], local: dir[2] }); emitir(null); }
+      // Direcciones públicas de túneles (joinmc.link = Java; ply.gg:puerto suele ser Bedrock/UDP). El formato
+      // de salida del agente cambia entre versiones, así que se toma cualquier dominio de playit, con o sin "=> local"
+      for (const m of l.matchAll(/\b((?:[a-z0-9-]+\.)+(?:joinmc\.link|ply\.gg))(:\d{2,5})?(?:\s*=>\s*(\S+))?/gi)) {
+        const publica = `${m[1]}${m[2] || ''}`;
+        if (/^(api|www)\./.test(publica) || direcciones.some((d) => d.publica === publica)) continue;
+        direcciones.push({ publica, local: m[3] || '' });
+        emitir(null);
+      }
     });
   }
   proc.on('exit', (c) => { proc = null; emitir(`[panel] Agente detenido (código ${c})`); emitir(null); });

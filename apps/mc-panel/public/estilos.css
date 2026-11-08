@@ -39,3 +39,10 @@ button { cursor: pointer; } button:disabled { opacity: .5; cursor: progress; }
 dialog { width: min(96vw, 560px); border: 1px solid var(--borde); border-radius: 12px; background: var(--panel); color: var(--texto); }
 dialog::backdrop { background: rgba(0, 0, 0, .6); } dialog .rejilla { grid-template-columns: 1fr; }
 code { font-size: .85em; }
+.pasos { padding-left: 0; list-style: none; display: grid; gap: .5rem; counter-reset: paso; }
+.pasos li { display: flex; gap: .75rem; align-items: center; flex-wrap: wrap; padding: .6rem .75rem; border: 1px solid var(--borde); border-radius: 8px; }
+.pasos li::before { counter-increment: paso; content: counter(paso); display: grid; place-items: center; width: 1.6rem; height: 1.6rem; border-radius: 50%; background: var(--borde); font-weight: 600; flex-shrink: 0; }
+.pasos li.hecho::before { content: '✓'; background: var(--acento); color: #fff; }
+.pasos li span { flex: 1; min-width: 12rem; } .pasos li small { display: block; color: var(--suave); }
+.invitacion { white-space: pre-wrap; background: var(--fondo); border: 1px dashed var(--borde); border-radius: 8px; padding: .75rem; font: inherit; }
+.invitacion:empty { display: none; }

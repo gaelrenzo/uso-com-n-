@@ -12,7 +12,7 @@ const OPCIONES = {
 };
 const ESTADOS = { apagado: 'Apagado', iniciando: 'Iniciando…', encendido: 'Encendido', deteniendo: 'Deteniendo…', instalando: 'Instalando…', error: 'Error' };
 
-let actual = null, fuente = null, info = {};
+let actual = null, fuente = null, info = {}, servidor = null, playitEstado = { instalado: false, encendido: false, direcciones: [] };
 
 // Token: llega una vez en la URL (?token=) cuando se abre desde otro equipo y queda guardado
 const TOKEN = (() => {
@@ -96,6 +96,8 @@ function agregarLinea(l) {
 }
 
 function pintarEstado(s) {
+  servidor = s;
+  pintarAmigos();
   $('dNombre').textContent = s.nombre;
   const dirs = [`Java: puerto ${s.puerto}`, s.bedrock && `Bedrock: puerto ${s.puertoBedrock} (UDP)`].filter(Boolean).join(' · ');
   $('dInfo').textContent = `${s.plataforma} ${s.version} · ${s.ramMB} MB · ${dirs}${info.ips?.length ? ` · LAN ${info.ips[0]}` : ''}`;
@@ -117,6 +119,9 @@ async function refrescar() {
   r.respaldoHoras.value = s.respaldoHoras; r.respaldosGuardar.value = s.respaldosGuardar; r.respaldoDrive.checked = s.respaldoDrive;
   pintarExtras(s.extras);
   pintarRespaldos(s.respaldos);
+  const d = $('formDirecciones').elements;
+  d.direccionJava.value = s.direccionJava || ''; d.direccionBedrock.value = s.direccionBedrock || ''; d.playitAuto.checked = s.playitAuto !== false;
+  pintarAmigos();
   document.querySelector('[data-p="extras"]').textContent = s.plataforma === 'fabric' ? 'Mods' : 'Plugins';
 }
 
@@ -201,6 +206,8 @@ function conectarPlayit() {
   });
   f.addEventListener('estado', (e) => {
     const s = JSON.parse(e.data);
+    playitEstado = s;
+    pintarAmigos();
     $('btnPlayitInstalar').hidden = s.instalado;
     $('btnPlayit').hidden = !s.instalado;
     $('btnPlayit').textContent = s.encendido ? 'Detener túnel' : 'Iniciar túnel';
@@ -221,6 +228,96 @@ function conectarPlayit() {
     }
     if (s.encendido && !s.direcciones.length) est.append(document.createElement('br'), 'Crea los túneles en playit.gg: "Minecraft Java" (TCP 25565) y "Minecraft Bedrock" (UDP 19132).');
   });
+}
+
+// ---------- Amigos (playit.gg) ----------
+const PLAYIT_TUNELES = 'https://playit.gg/account/tunnels';
+
+function paso(hecho, texto, detalle, ...acciones) {
+  const l = li();
+  l.className = hecho ? 'hecho' : '';
+  const t = document.createElement('span');
+  t.textContent = texto;
+  if (detalle) { const s = document.createElement('small'); s.append(...[detalle].flat()); t.append(s); }
+  l.append(t, ...(hecho ? [] : acciones));
+  return l;
+}
+
+const enlace = (href, texto) => {
+  const a = document.createElement('a');
+  a.href = href; a.target = '_blank'; a.rel = 'noopener'; a.textContent = texto;
+  return a;
+};
+
+function pintarAmigos() {
+  if (!servidor) return;
+  const s = servidor, p = playitEstado;
+  const tieneDireccion = !!(s.direccionJava || s.direccionBedrock);
+  const encendido = s.estado === 'encendido';
+  const tuneles = [`Minecraft Java → local 127.0.0.1:${s.puerto}`, s.bedrock && `Minecraft Bedrock (UDP) → local 127.0.0.1:${s.puertoBedrock}`].filter(Boolean);
+  $('pasos').replaceChildren(
+    paso(p.instalado, 'Instalar el agente de playit.gg', 'Programa gratis que crea el túnel (unos 10 MB).',
+      boton('Instalar', (b) => ocupado(b, () => api('playit/instalar', {})), 'primario')),
+    paso(p.encendido, 'Iniciar el túnel', s.playitAuto !== false ? 'Después arranca solo con el servidor.' : '',
+      boton('Iniciar túnel', (b) => ocupado(b, () => api('playit/iniciar', {})), 'primario')),
+    paso(!p.enlace || tieneDireccion, 'Vincular con tu cuenta de playit (solo la primera vez)',
+      p.enlace ? 'Abre el enlace, entra o crea tu cuenta gratis y confirma el agente.' : 'Aparece un enlace aquí cuando el agente lo pida.',
+      ...(p.enlace ? [enlace(p.enlace, 'Vincular ↗')] : [])),
+    paso(tieneDireccion, 'Crear los túneles en playit.gg (solo la primera vez)',
+      [`Agrega: ${tuneles.join(' · ')}. Luego copia aquí abajo la dirección que te da cada uno.`],
+      enlace(PLAYIT_TUNELES, 'Abrir túneles ↗')),
+    paso(encendido, 'Encender el servidor', '',
+      boton('Iniciar servidor', (b) => ocupado(b, () => api(`servidores/${actual}/iniciar`, {})), 'primario')),
+    paso(tieneDireccion && encendido && p.encendido, '¡Listo! Comparte la invitación', 'Tus amigos solo necesitan Minecraft.'),
+  );
+  // Autocompletar con lo que detectó el agente (joinmc.link es el túnel Java)
+  const d = $('formDirecciones').elements;
+  const java = p.direcciones.find((x) => /joinmc\.link/.test(x.publica));
+  const bedrock = p.direcciones.find((x) => /ply\.gg:\d+/.test(x.publica) && x !== java);
+  if (java && !d.direccionJava.value) d.direccionJava.value = java.publica;
+  if (s.bedrock && bedrock && !d.direccionBedrock.value) d.direccionBedrock.value = bedrock.publica;
+  $('invitacion').textContent = invitacion();
+}
+
+function invitacion() {
+  const s = servidor, d = $('formDirecciones').elements;
+  const java = d.direccionJava.value.trim(), bedrock = d.direccionBedrock.value.trim();
+  if (!java && !bedrock) return '';
+  const lineas = [`¡Únete a mi servidor de Minecraft "${s.nombre}"! 🎮`];
+  if (java) lineas.push(`💻 PC (Java ${s.version}): Multijugador → Agregar servidor → ${java}`);
+  if (bedrock) {
+    const [host, puerto = '19132'] = bedrock.split(':');
+    lineas.push(`📱 Celular/Windows (Bedrock): Servidores → Agregar servidor → Dirección: ${host} · Puerto: ${puerto}`);
+  }
+  return lineas.join('\n');
+}
+
+async function guardarDirecciones() {
+  const d = $('formDirecciones').elements;
+  pintarEstado(await api(`servidores/${actual}/config`, {
+    direccionJava: d.direccionJava.value, direccionBedrock: d.direccionBedrock.value, playitAuto: d.playitAuto.checked,
+  }));
+}
+
+async function compartirInvitacion() {
+  await guardarDirecciones();
+  const texto = invitacion();
+  if (!texto) throw new Error('Primero escribe la dirección Java o Bedrock');
+  if (navigator.share) {
+    try { await navigator.share({ text: texto }); return; } catch (e) { if (e.name === 'AbortError') return; }
+  }
+  window.open(`https://wa.me/?text=${encodeURIComponent(texto)}`, '_blank', 'noopener');
+}
+
+// El portapapeles exige HTTPS/localhost: desde la red local (http) se selecciona el texto para copiarlo a mano
+async function copiarInvitacion() {
+  try {
+    await navigator.clipboard.writeText(invitacion());
+    alert('Invitación copiada');
+  } catch {
+    getSelection().selectAllChildren($('invitacion'));
+    alert('Texto seleccionado: mantén presionado para copiarlo');
+  }
 }
 
 // ---------- Nuevo servidor ----------
@@ -301,6 +398,10 @@ function main() {
     p.value = '';
   };
   document.querySelectorAll('#sugerencias button').forEach((b) => (b.onclick = () => preguntar(b.textContent, b)));
+  $('btnGuardarDirecciones').onclick = (ev) => ocupado(ev.target, guardarDirecciones);
+  $('btnCompartir').onclick = (ev) => ocupado(ev.target, compartirInvitacion);
+  $('btnCopiarInv').onclick = copiarInvitacion;
+  $('formDirecciones').oninput = () => ($('invitacion').textContent = invitacion());
   $('btnPlayitInstalar').onclick = (ev) => ocupado(ev.target, () => api('playit/instalar', {}));
   $('btnPlayit').onclick = (ev) => ocupado(ev.target, () => api(`playit/${$('btnPlayit').textContent.startsWith('Detener') ? 'detener' : 'iniciar'}`, {}));
 

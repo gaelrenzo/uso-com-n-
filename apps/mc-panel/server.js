@@ -126,7 +126,12 @@ async function api(req, res, url) {
   if (metodo !== 'POST') return responder(res, 405, { error: 'usar POST' });
   const cuerpo = await leerJSON(req);
   switch (accion) {
-    case 'iniciar': return responder(res, 200, srv.iniciar(id));
+    case 'iniciar': {
+      const s = srv.iniciar(id);
+      // Túnel automático: si el agente ya está instalado, arranca junto con el servidor
+      if (s.playitAuto !== false && playit.estado().instalado) { try { playit.iniciar(); } catch (e) { srv.panel(id, `playit: ${e.message}`); } }
+      return responder(res, 200, s);
+    }
     case 'detener': srv.detener(id); return responder(res, 200, srv.resumen(id));
     case 'comando': srv.comando(id, cuerpo.comando); return responder(res, 200, { ok: true });
     case 'propiedades': return responder(res, 200, srv.actualizarPropiedades(id, cuerpo));

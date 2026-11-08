@@ -123,6 +123,7 @@ function crear({ nombre, plataforma = 'paper', version, ramMB, bedrock, eula }) 
     bedrock: !!bedrock, puerto: puertoLibre('puerto', 25565), puertoBedrock: bedrock ? puertoLibre('puertoBedrock', 19132) : null,
     eulaAceptado: new Date().toISOString(), javaMin: 21, flags: [], instalado: false,
     respaldoHoras: 0, respaldosGuardar: 7, respaldoDrive: false, creado: new Date().toISOString(),
+    playitAuto: true, direccionJava: '', direccionBedrock: '',
   };
   guardarCfg(id, cfg);
   fs.writeFileSync(path.join(carpeta(id), 'eula.txt'), `# Aceptado por el usuario en el panel: ${cfg.eulaAceptado}\neula=true\n`);
@@ -245,6 +246,14 @@ function actualizarCfg(id, cambios) {
   if ('respaldoHoras' in cambios) cfg.respaldoHoras = Math.max(0, Math.min(168, Number(cambios.respaldoHoras) || 0));
   if ('respaldosGuardar' in cambios) cfg.respaldosGuardar = Math.max(0, Math.min(100, Number(cambios.respaldosGuardar) || 0));
   if ('respaldoDrive' in cambios) cfg.respaldoDrive = !!cambios.respaldoDrive;
+  if ('playitAuto' in cambios) cfg.playitAuto = !!cambios.playitAuto;
+  // Direcciones públicas para invitar amigos: host o host:puerto (vacío = borrar)
+  for (const k of ['direccionJava', 'direccionBedrock']) {
+    if (!(k in cambios)) continue;
+    const v = String(cambios[k] || '').trim();
+    if (v && !/^[\w.-]{1,120}(:\d{1,5})?$/.test(v)) throw new Error(`dirección inválida: ${v}`);
+    cfg[k] = v;
+  }
   guardarCfg(id, cfg);
   return resumen(id);
 }

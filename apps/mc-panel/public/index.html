@@ -48,6 +48,7 @@
 
       <nav id="pestanas">
         <button data-p="consola" class="activa">Consola</button>
+        <button data-p="amigos">🌍 Amigos</button>
         <button data-p="jugadores">Jugadores</button>
         <button data-p="ajustes">Ajustes</button>
         <button data-p="extras">Plugins</button>
@@ -61,6 +62,34 @@
           <input name="comando" placeholder="Comando (ej: say hola, time set day, op TuNombre)" autocomplete="off">
           <button>Enviar</button>
         </form>
+      </div>
+
+      <div data-panel="amigos" hidden>
+        <p class="ayuda">Tus amigos no instalan nada: abren Minecraft y escriben la dirección. El túnel gratis de playit.gg
+          funciona aunque estés con datos móviles o sin IP pública. Se configura una vez; después solo inicias el servidor.</p>
+        <ol id="pasos" class="pasos"></ol>
+        <h3>Dirección para tus amigos</h3>
+        <form id="formDirecciones" class="rejilla">
+          <label>Java (PC) <input name="direccionJava" placeholder="algo.joinmc.link" autocomplete="off"></label>
+          <label>Bedrock (celular, Windows) <input name="direccionBedrock" placeholder="algo.ply.gg:12345" autocomplete="off"></label>
+          <label class="check"><input name="playitAuto" type="checkbox"> Iniciar el túnel junto con el servidor</label>
+        </form>
+        <div class="controles">
+          <button id="btnGuardarDirecciones">Guardar</button>
+          <button id="btnCompartir" class="primario">Compartir invitación</button>
+          <button id="btnCopiarInv">Copiar</button>
+        </div>
+        <pre id="invitacion" class="invitacion"></pre>
+        <details>
+          <summary>Cómo entran tus amigos</summary>
+          <ul class="ayuda">
+            <li><strong>PC (Java):</strong> misma versión que el servidor → Multijugador → Agregar servidor → pegar la dirección Java.</li>
+            <li><strong>Celular / Windows (Bedrock):</strong> Jugar → Servidores → Agregar servidor → Dirección y Puerto por separado (los de la dirección Bedrock).</li>
+            <li><strong>Consolas (Switch, PlayStation, Xbox):</strong> no permiten agregar servidores; necesitan el truco de DNS de
+              <a href="https://github.com/Pugmatt/BedrockConnect" target="_blank" rel="noopener">BedrockConnect</a>.</li>
+            <li>Los de PC deben usar la misma versión del servidor; Bedrock entra con su versión actual gracias a Geyser.</li>
+          </ul>
+        </details>
       </div>
 
       <div data-panel="jugadores" hidden>
