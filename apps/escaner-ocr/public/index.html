@@ -46,9 +46,10 @@
         <label>Semestre <select name="semestre"></select></label>
         <label>Curso <input name="curso" placeholder="vacío = 98_Por_Clasificar"></label>
         <label>Carpeta <select name="carpeta"></select></label>
-        <label class="check"><input type="checkbox" name="drive" checked> Subir a Drive (ENZO1)</label>
+        <label class="check solo-servidor"><input type="checkbox" name="drive" checked> Subir a Drive (ENZO1)</label>
+        <p class="sin-servidor ayuda">Sin servidor: "Compartir" abre el menú de Android; elige Drive y la carpeta de arriba.</p>
         <div class="controles">
-          <button type="submit">Guardar</button>
+          <button type="submit" id="btnGuardar">Guardar</button>
           <button type="button" id="btnDescargar">Descargar PDF</button>
         </div>
       </form>
@@ -56,6 +57,16 @@
       <small id="iaUsada"></small>
       <details><summary>Texto OCR</summary><pre id="texto"></pre></details>
     </section>
+    <details id="ajustes">
+      <summary>Ajustes de IA</summary>
+      <form id="formIA">
+        <label>URL del servidor IA <input name="url" placeholder="vacío = autodetectar (Ollama :11434, LM Studio :1234…)" inputmode="url"></label>
+        <label>Modelo <input name="modelo" placeholder="vacío = el primero disponible"></label>
+        <div class="controles"><button type="submit">Guardar y probar</button></div>
+        <p class="ayuda">Desde el navegador, el servidor IA debe permitir CORS. Ollama:
+          <code>OLLAMA_ORIGINS="*" ollama serve</code> · LM Studio: activar "Enable CORS".</p>
+      </form>
+    </details>
   </main>
 
   <dialog id="editor">
@@ -68,11 +79,7 @@
     </div>
   </dialog>
 
-  <!-- Librerías locales: las descarga descargar-libs.js (o server.js al arrancar) -->
-  <script src="vendor/opencv.js"></script>
-  <script src="vendor/jscanify.js"></script>
-  <script src="vendor/tesseract/tesseract.min.js"></script>
-  <script src="vendor/jspdf.umd.min.js"></script>
+  <script src="ia.js"></script>
   <script src="app.js"></script>
 </body>
 </html>

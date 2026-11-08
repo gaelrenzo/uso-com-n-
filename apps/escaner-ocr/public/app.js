@@ -1,18 +1,36 @@
 // Escáner OCR: cámara → jscanify (bordes + perspectiva, esquinas ajustables) → filtro OpenCV → Tesseract (spa+eng) → PDF buscable → IA local → Drive
+// Dos modos: con server.js (IA y rclone desde Termux) o solo navegador/PWA instalada (IA directa por CORS, compartir a Drive)
 const $ = (id) => document.getElementById(id);
 const A4 = { w: 1240, h: 1754 }; // 150 dpi
 const MAX_LADO = 2000; // reduce fotos grandes de galería para no agotar la RAM
 const ORDEN = ['topLeftCorner', 'topRightCorner', 'bottomRightCorner', 'bottomLeftCorner'];
-const CARPETAS = [
-  '01_Silabo_y_Planificacion', '02_Teoria_y_Diapositivas', '03_Bibliografia_y_Textos',
-  '04_Practicas_y_Laboratorios', '05_Tareas_y_Proyectos', '06_Examenes_y_Evaluaciones',
-  '07_Software_y_Scripts', '08_Recursos_y_Repositorios',
+const { CARPETAS } = IA;
+// Primero vendor/ (descargado por descargar-libs.js, sin internet); si no existe (GitHub Pages), el CDN
+const LIBS = [
+  ['vendor/opencv.js', 'https://docs.opencv.org/4.7.0/opencv.js'],
+  ['vendor/jscanify.js', 'https://cdn.jsdelivr.net/npm/jscanify@1.4.2/src/jscanify.js'],
+  ['vendor/tesseract/tesseract.min.js', 'https://cdn.jsdelivr.net/npm/tesseract.js@5.1.1/dist/tesseract.min.js'],
+  ['vendor/jspdf.umd.min.js', 'https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js'],
 ];
+const CLAVE_AJUSTES = 'escaner-ia';
 
-let escaner, worker, flujo, pdfActual;
+let escaner, worker, flujo, pdfActual, conVendor, conServidor, iaNavegador;
 const paginas = []; // { original, esquinas, filtro, canvas, ocr }
 
 const estado = (t) => ($('estado').textContent = t);
+
+const cargarScript = (src) => new Promise((ok, mal) => {
+  const s = document.createElement('script');
+  s.src = src; s.onload = ok; s.onerror = () => { s.remove(); mal(new Error(src)); };
+  document.head.append(s);
+});
+
+async function cargarLibs() {
+  conVendor = true;
+  for (const [local, cdn] of LIBS) {
+    await cargarScript(local).catch(() => { conVendor = false; return cargarScript(cdn); });
+  }
+}
 
 async function esperarOpenCV() {
   if (cv instanceof Promise) cv = await cv; // builds nuevos de opencv.js
@@ -195,10 +213,11 @@ function imagenACanvas(archivo) {
 
 // ---------- OCR + PDF ----------
 async function ocr() {
+  const rutas = conVendor
+    ? { workerPath: 'vendor/tesseract/worker.min.js', corePath: 'vendor/tesseract/core', langPath: 'vendor/tessdata' }
+    : {}; // por defecto Tesseract usa su CDN y guarda el idioma en IndexedDB
   worker ??= await Tesseract.createWorker('spa+eng', 1, {
-    workerPath: 'vendor/tesseract/worker.min.js',
-    corePath: 'vendor/tesseract/core',
-    langPath: 'vendor/tessdata',
+    ...rutas,
     logger: (m) => m.status === 'recognizing text' && ($('progreso').value = m.progress),
   });
   for (const [i, p] of paginas.entries()) {
@@ -227,6 +246,11 @@ function armarPDF() {
 
 async function clasificarConIA(texto) {
   try {
+    if (!conServidor) {
+      iaNavegador ??= await detectarIANavegador();
+      if (!iaNavegador) throw new Error('no se encontró IA local; revisa "Ajustes de IA"');
+      return await IA.clasificar(iaNavegador, texto).catch((e) => { iaNavegador = null; throw e; });
+    }
     const r = await fetch('api/ia', { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify({ texto }) });
     if (!r.ok) throw new Error((await r.json().catch(() => ({}))).error || r.status);
     return await r.json();
@@ -263,9 +287,28 @@ async function procesar() {
   }
 }
 
+function rutaSugerida(f) {
+  return f.get('curso')
+    ? `01_Universidad_FIME/${f.get('semestre')}/${f.get('curso')}/${f.get('carpeta')}`
+    : `01_Universidad_FIME/98_Por_Clasificar/Desde_escaner_${new Date().toISOString().slice(0, 7)}`;
+}
+
+// Sin servidor: menú "Compartir" de Android (Drive, WhatsApp, Gmail…); si no se puede, descarga
+async function compartir(f) {
+  const archivo = new File([pdfActual], `${f.get('nombre') || 'escaneo'}.pdf`, { type: 'application/pdf' });
+  if (!navigator.canShare?.({ files: [archivo] })) return descargar();
+  try {
+    await navigator.share({ files: [archivo], title: archivo.name, text: `Guardar en: ${rutaSugerida(f)}` });
+    estado(`Compartido. Carpeta sugerida: ${rutaSugerida(f)}`);
+  } catch (e) {
+    if (e.name !== 'AbortError') estado(`No se pudo compartir (${e.message})`);
+  }
+}
+
 async function guardar(ev) {
   ev.preventDefault();
   const f = new FormData(ev.target);
+  if (!conServidor) return compartir(f);
   const q = new URLSearchParams({
     nombre: f.get('nombre'), semestre: f.get('semestre'), curso: f.get('curso'),
     carpeta: f.get('carpeta'), drive: f.get('drive') ? '1' : '0',
@@ -296,13 +339,45 @@ function llenarSelects() {
   CARPETAS.forEach((c) => f.carpeta.add(new Option(c.replace(/_/g, ' '), c)));
 }
 
+function leerAjustes() {
+  try { return JSON.parse(localStorage.getItem(CLAVE_AJUSTES)) || {}; } catch { return {}; }
+}
+
+function detectarIANavegador() {
+  const { url, modelo } = leerAjustes();
+  const candidatos = url ? [{ nombre: 'Personalizada', url: url.replace(/\/$/, ''), formato: 'auto' }] : IA.CANDIDATOS;
+  return IA.detectar(candidatos, { modelo: modelo || undefined });
+}
+
 async function mostrarIA(redetectar = false) {
+  $('ia').textContent = 'IA: buscando…';
+  let ia = null;
   try {
-    const { ia } = await (await fetch(`api/estado${redetectar ? '?redetectar' : ''}`)).json();
-    $('ia').textContent = ia ? `IA: ${ia.nombre} · ${ia.modelo}` : 'IA: ninguna local (tocar para buscar)';
+    if (conServidor) ia = (await (await fetch(`api/estado${redetectar ? '?redetectar' : ''}`)).json()).ia;
+    else ia = iaNavegador = await detectarIANavegador();
+  } catch { /* servidor caído: se informa como "ninguna" */ }
+  $('ia').textContent = ia ? `IA: ${ia.nombre} · ${ia.modelo}` : 'IA: ninguna local (tocar para buscar)';
+}
+
+async function detectarServidor() {
+  try {
+    conServidor = (await fetch('api/estado', { signal: AbortSignal.timeout(3000) })).ok;
   } catch {
-    $('ia').textContent = 'IA: sin servidor (usa node server.js)';
+    conServidor = false;
   }
+  document.body.classList.toggle('con-servidor', conServidor);
+  $('btnGuardar').textContent = conServidor ? 'Guardar' : 'Compartir (Drive…)';
+  $('ajustes').hidden = conServidor; // con servidor la IA se configura con variables de entorno
+}
+
+function prepararAjustes() {
+  const f = $('formIA').elements, a = leerAjustes();
+  f.url.value = a.url || ''; f.modelo.value = a.modelo || '';
+  $('formIA').onsubmit = (ev) => {
+    ev.preventDefault();
+    try { localStorage.setItem(CLAVE_AJUSTES, JSON.stringify({ url: f.url.value.trim(), modelo: f.modelo.value.trim() })); } catch { /* modo privado */ }
+    mostrarIA(true);
+  };
 }
 
 async function main() {
@@ -314,8 +389,11 @@ async function main() {
   $('formDestino').onsubmit = guardar;
   $('btnDescargar').onclick = descargar;
   $('ia').onclick = () => mostrarIA(true);
+  prepararAjustes();
+  await detectarServidor();
   mostrarIA();
 
+  await cargarLibs();
   await esperarOpenCV();
   escaner = new jscanify();
   estado('Listo');

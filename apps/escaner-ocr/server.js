@@ -12,30 +12,24 @@ const SALIDA = process.env.ESCANER_SALIDA || path.join(DATOS, 'escaneos');
 const REMOTO = process.env.DRIVE_CURSOS_REMOTO || 'ENZO1:01_Universidad_FIME';
 const MAX_BYTES = 60 * 1024 * 1024;
 
-// IA local: IA_URL fija un servidor; si no, se prueban los habituales en orden.
-// formato "anthropic" = /v1/messages (fcc-server); "openai" = /v1/chat/completions (Ollama, LM Studio, llama.cpp, vLLM, Jan…)
+// IA local (lógica compartida con la app en public/ia.js): IA_URL fija un servidor; si no, se prueban los habituales
+const IA = require('./public/ia.js');
 const IA_CANDIDATOS = process.env.IA_URL
   ? [{ nombre: 'IA_URL', url: process.env.IA_URL.replace(/\/$/, ''), formato: process.env.IA_FORMATO || 'auto' }]
-  : [
-    { nombre: 'fcc-server', url: 'http://127.0.0.1:8082', formato: 'anthropic' },
-    { nombre: 'Ollama', url: 'http://127.0.0.1:11434', formato: 'openai' },
-    { nombre: 'LM Studio', url: 'http://127.0.0.1:1234', formato: 'openai' },
-    { nombre: 'llama.cpp', url: 'http://127.0.0.1:8081', formato: 'openai' },
-    { nombre: 'Jan', url: 'http://127.0.0.1:1337', formato: 'openai' },
-    { nombre: 'vLLM', url: 'http://127.0.0.1:8000', formato: 'openai' },
-  ];
-const IA_CLAVE = process.env.IA_API_KEY || 'local';
+  : IA.CANDIDATOS;
+const IA_OPCIONES = {
+  clave: process.env.IA_API_KEY || 'local',
+  modelo: process.env.IA_MODELO,
+  timeoutMs: Number(process.env.IA_TIMEOUT_MS) || 180_000,
+  maxChars: Number(process.env.IA_MAX_CHARS) || 6000,
+};
+const { CARPETAS } = IA;
 
 const TIPOS = {
   '.html': 'text/html; charset=utf-8', '.js': 'text/javascript', '.css': 'text/css',
   '.json': 'application/json', '.webmanifest': 'application/manifest+json', '.svg': 'image/svg+xml',
   '.wasm': 'application/wasm', '.gz': 'application/octet-stream',
 };
-const CARPETAS = [
-  '01_Silabo_y_Planificacion', '02_Teoria_y_Diapositivas', '03_Bibliografia_y_Textos',
-  '04_Practicas_y_Laboratorios', '05_Tareas_y_Proyectos', '06_Examenes_y_Evaluaciones',
-  '07_Software_y_Scripts', '08_Recursos_y_Repositorios',
-];
 
 // Un segmento de ruta seguro: sin barras, sin "..", sin caracteres de control
 const segmento = (s) => String(s || '').replace(/[\/\\\x00-\x1f]/g, '').replace(/\.\.+/g, '.').replace(/^\.+/, '').trim().slice(0, 120);
@@ -57,70 +51,22 @@ function responder(res, codigo, obj) {
 // ---------- IA ----------
 let iaCache = null; // { proveedor, hasta }
 
-// Un candidato sirve si responde /v1/models; para "openai" además debe tener algún modelo de chat cargado
-async function sondear(c) {
-  try {
-    const r = await fetch(`${c.url}/v1/models`, { headers: { authorization: `Bearer ${IA_CLAVE}`, 'x-api-key': IA_CLAVE }, signal: AbortSignal.timeout(1500) });
-    const modelos = r.ok ? ((await r.json()).data || []).map((m) => m.id).filter((id) => !/embed|rerank|whisper/i.test(id)) : [];
-    const formato = c.formato === 'auto' ? (modelos.some((m) => /^claude/.test(m)) ? 'anthropic' : 'openai') : c.formato;
-    const modelo = process.env.IA_MODELO || (formato === 'anthropic' ? 'claude-sonnet-5-5' : modelos[0]);
-    if (!modelo || (formato === 'openai' && !r.ok)) return null;
-    return { nombre: c.nombre, url: c.url, formato, modelo };
-  } catch {
-    return null; // no hay servidor en ese puerto
-  }
-}
-
 async function proveedorIA(forzar = false) {
   if (!forzar && iaCache && iaCache.hasta > Date.now()) return iaCache.proveedor;
-  let proveedor = null;
-  for (const c of IA_CANDIDATOS) if ((proveedor = await sondear(c))) break;
+  const proveedor = await IA.detectar(IA_CANDIDATOS, IA_OPCIONES);
   iaCache = { proveedor, hasta: Date.now() + 60_000 };
   return proveedor;
-}
-
-async function preguntarIA(p, prompt) {
-  const comun = { method: 'POST', signal: AbortSignal.timeout(Number(process.env.IA_TIMEOUT_MS) || 180_000) };
-  let r, texto;
-  if (p.formato === 'anthropic') {
-    r = await fetch(`${p.url}/v1/messages`, {
-      ...comun,
-      headers: { 'content-type': 'application/json', 'x-api-key': IA_CLAVE, 'anthropic-version': '2023-06-01' },
-      body: JSON.stringify({ model: p.modelo, max_tokens: 800, messages: [{ role: 'user', content: prompt }] }),
-    });
-    if (r.ok) texto = ((await r.json()).content || []).map((b) => b.text || '').join('');
-  } else {
-    r = await fetch(`${p.url}/v1/chat/completions`, {
-      ...comun,
-      headers: { 'content-type': 'application/json', authorization: `Bearer ${IA_CLAVE}` },
-      body: JSON.stringify({ model: p.modelo, temperature: 0.2, max_tokens: 800, messages: [{ role: 'user', content: prompt }] }),
-    });
-    if (r.ok) texto = (await r.json()).choices?.[0]?.message?.content || '';
-  }
-  if (!r.ok) throw new Error(`${p.nombre} respondió ${r.status}`);
-  return texto.replace(/<think>[\s\S]*?<\/think>/g, ''); // modelos con razonamiento (qwen3, deepseek-r1)
 }
 
 async function clasificar(texto) {
   const p = await proveedorIA();
   if (!p) throw new Error('no hay IA local corriendo (fcc-server, Ollama, LM Studio, llama.cpp…)');
-  const prompt = `Eres el clasificador de documentos de un estudiante de ingeniería (FIME, semestres S01–S10, actual S09).
-Del texto OCR de un documento escaneado, responde SOLO un JSON, sin texto extra:
-{"semestre":"S09_Semestre" o null,"curso":"Nombre del curso con tildes" o null,"carpeta":uno de ${JSON.stringify(CARPETAS)},"nombre":"Nombre_corto_sin_espacios","resumen":"2-3 frases","formulas":["..."]}
-Si no estás seguro del curso, usa null (no adivines).
-
-TEXTO:
-${texto.slice(0, Number(process.env.IA_MAX_CHARS) || 6000)}`;
-  let salida;
   try {
-    salida = await preguntarIA(p, prompt);
+    return await IA.clasificar(p, texto, IA_OPCIONES);
   } catch (e) {
     iaCache = null; // el servidor pudo caerse: volver a detectar la próxima vez
     throw e;
   }
-  const json = salida.match(/\{[\s\S]*\}/);
-  if (!json) throw new Error(`${p.nombre} no devolvió JSON`);
-  return { ...JSON.parse(json[0]), ia: `${p.nombre} · ${p.modelo}` };
 }
 
 function rutaDestino(q) {

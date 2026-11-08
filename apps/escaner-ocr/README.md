@@ -5,7 +5,16 @@ clasificarlo con **cualquier IA local** (fcc-server, Ollama, LM Studio, llama.cp
 
 Base open source: [jscanify](https://github.com/ColonelParrot/jscanify) (MIT) · [Tesseract.js](https://github.com/naptha/tesseract.js) (Apache-2.0) · [jsPDF](https://github.com/parallax/jsPDF) (MIT) · OpenCV.js (Apache-2.0).
 
-## Uso
+## Como app en el celular (sin Termux)
+1. En Chrome abrir **https://gaelrenzo.github.io/uso-com-n-/escaner/**
+2. Menú ⋮ → **Instalar app** (queda con ícono propio, pantalla completa).
+3. Escanear → OCR → **Compartir (Drive…)** → elegir Drive y la carpeta sugerida.
+
+Sin servidor, las librerías vienen del CDN (la primera vez con internet; luego quedan en caché) y la IA
+se llama directo desde el navegador a `localhost`. Para eso la IA debe permitir CORS:
+`OLLAMA_ORIGINS="*" ollama serve` (Ollama) o "Enable CORS" (LM Studio). URL y modelo en **Ajustes de IA**.
+
+## Uso con servidor (Termux: IA + subida automática con rclone)
 ```bash
 node server.js            # http://localhost:8090  (sin dependencias npm)
 ```

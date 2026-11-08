@@ -1,5 +1,5 @@
 // Cache-first para la app, librerías CDN y datos de idioma de Tesseract (funciona sin internet tras el primer uso)
-const CACHE = 'escaner-v2';
+const CACHE = 'escaner-v3';
 self.addEventListener('install', (e) => self.skipWaiting());
 self.addEventListener('activate', (e) => e.waitUntil(
   caches.keys().then((ks) => Promise.all(ks.filter((k) => k !== CACHE).map((k) => caches.delete(k)))).then(() => self.clients.claim())));
