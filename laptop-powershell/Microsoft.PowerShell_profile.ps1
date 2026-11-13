@@ -265,6 +265,10 @@ function repos {
 
 # --- MOTD ---
 function Show-MOTD {
+    if ($env:UCN_MOTD_COMPACT -eq "1") {
+        Write-Host ("UCN | Windows | {0}" -f (Get-Location)) -ForegroundColor Cyan
+        return
+    }
     Clear-Host
     Write-Host "=====================================================" -ForegroundColor Magenta
     Write-Host "        Bienvenido de vuelta (Windows)" -ForegroundColor Green
@@ -298,33 +302,35 @@ function Show-MOTD {
     Write-Host "  editui      = Editar perfil PowerShell" -ForegroundColor Green
     Write-Host ""
     
-    # Tabla de IAs: nombre | comando | version -full (sin confirmaciones)
+    # Mostrar solo agentes cuyo ejecutable existe en este equipo.
     $line = "-" * 40
-    Write-Host "  +-----------" -ForegroundColor Magenta -NoNewline; Write-Host " HERRAMIENTAS IA " -ForegroundColor Yellow -NoNewline; Write-Host "------------+" -ForegroundColor Magenta
-    Write-Host "  |" -ForegroundColor Magenta -NoNewline; Write-Host (" {0,-15} {1,-8} {2,-13} " -f "Agente","Normal","Full (yolo)") -ForegroundColor Cyan -NoNewline; Write-Host "|" -ForegroundColor Magenta
-    Write-Host "  |$line|" -ForegroundColor Magenta
-    foreach ($r in @(
-        @("Claude Code","cl","cl-full"),
-        @("Codex","codex","codex-full"),
-        @("Gemini CLI","gem","gem-full"),
-        @("OpenCode","ocode","ocode-full"),
-        @("Antigravity","anti","anti-full"),
-        @("Hermes Agent","hermes","hermes-full"),
-        @("Qwen Code","qwen","qwen-full"),
-        @("Crush","crush","crush-full"),
-        @("GitHub Copilot","copilot","copilot-full"),
-        @("Amp","amp","amp-full"),
-        @("iFlow","iflow","iflow-full"),
-        @("Aider","aider","aider-full"),
-        @("Kimi CLI","kimi","kimi-full"),
-        @("Cursor Agent","cursor","cursor-full"),
-        @("Kilo Code","kilo","-"),
-        @("Augment","auggie","-")
-    )) {
+    $agents = @(
+        @("Claude Code","claude","cl","cl-full"),
+        @("Codex","codex","codex","codex-full"),
+        @("Gemini CLI","gemini","gem","gem-full"),
+        @("OpenCode","opencode","ocode","ocode-full"),
+        @("Antigravity","agy","anti","anti-full"),
+        @("Hermes Agent","hermes","hermes","hermes-full"),
+        @("Qwen Code","qwen","qwen","qwen-full"),
+        @("Crush","crush","crush","crush-full"),
+        @("GitHub Copilot","copilot","copilot","copilot-full"),
+        @("Amp","amp","amp","amp-full"),
+        @("iFlow","iflow","iflow","iflow-full"),
+        @("Aider","aider","aider","aider-full"),
+        @("Kimi CLI","kimi","kimi","kimi-full"),
+        @("Cursor Agent","cursor-agent","cursor","cursor-full"),
+        @("Kilo Code","kilocode","kilo","-"),
+        @("Augment","auggie","auggie","-")
+    ) | Where-Object { Get-UcnAgentBin $_[1] }
+    Write-Host "  [AGENTES INSTALADOS]" -ForegroundColor Yellow
+    if (-not $agents) {
+        Write-Host "  No se detectaron agentes instalados." -ForegroundColor DarkGray
+    }
+    foreach ($r in $agents) {
         Write-Host "  |" -ForegroundColor Magenta -NoNewline
         Write-Host (" {0,-15} " -f $r[0]) -NoNewline
-        Write-Host ("{0,-8} " -f $r[1]) -ForegroundColor Green -NoNewline
-        Write-Host ("{0,-13} " -f $r[2]) -ForegroundColor Yellow -NoNewline
+        Write-Host ("{0,-8} " -f $r[2]) -ForegroundColor Green -NoNewline
+        Write-Host ("{0,-13} " -f $r[3]) -ForegroundColor Yellow -NoNewline
         Write-Host "|" -ForegroundColor Magenta
     }
     Write-Host "  |$line|" -ForegroundColor Magenta
