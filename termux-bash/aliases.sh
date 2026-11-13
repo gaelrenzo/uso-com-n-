@@ -52,3 +52,24 @@ alias la="ls -A"
 alias ports="ss -tulanp"
 alias ipinfo="curl -s ipinfo.io"
 alias repos='cd "$HOME/workspace" 2>/dev/null && ls -d */'
+# ==========================================
+# TERMINAL MODERNA (solo si estan instaladas)
+# Termux: pkg install starship eza bat zoxide fzf
+# ==========================================
+
+if command -v eza >/dev/null 2>&1; then
+  alias ll="eza -l --icons --git --group-directories-first"
+  alias l="eza --icons --group-directories-first"
+  alias la="eza -la --icons --git --group-directories-first"
+  alias lt="eza --tree --level=2 --icons"
+fi
+# Debian/Ubuntu instala bat como batcat
+command -v batcat >/dev/null 2>&1 && ! command -v bat >/dev/null 2>&1 && alias bat="batcat"
+export BAT_THEME="ansi"
+[ -f "$UCN_REPO_DIR/config/starship.toml" ] && export STARSHIP_CONFIG="$UCN_REPO_DIR/config/starship.toml"
+if [[ $- == *i* ]]; then
+  command -v starship >/dev/null 2>&1 && eval "$(starship init bash)"
+  command -v zoxide >/dev/null 2>&1 && eval "$(zoxide init bash)"
+  command -v fzf >/dev/null 2>&1 && eval "$(fzf --bash 2>/dev/null)"
+fi
+alias ucn-install-terminal="pkg install -y starship eza bat zoxide fzf"
