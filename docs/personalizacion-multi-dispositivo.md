@@ -9,7 +9,7 @@
 
 El MOTD muestra la plataforma, la ruta actual y solo los agentes cuyo ejecutable se detecta en el equipo. Bash lo limita a sesiones interactivas; PowerShell lo omite cuando la salida está redirigida.
 
-Para una bienvenida compacta, define `UCN_MOTD_COMPACT=1` antes de iniciar la consola. En Bash, por ejemplo: `export UCN_MOTD_COMPACT=1`; en PowerShell: `$env:UCN_MOTD_COMPACT = "1"`. El valor `0` o vacío conserva el panel completo.
+Para una bienvenida compacta, define `UCN_MOTD_COMPACT=1` antes de iniciar la consola. En Bash, por ejemplo: `export UCN_MOTD_COMPACT=1`; en PowerShell: `$env:UCN_MOTD_COMPACT = "1"`. En Termux el modo compacto viene activado por defecto; define `UCN_MOTD_COMPACT=0` para ver el panel completo. En las demás plataformas el valor `0` o vacío conserva el panel completo, y en Bash también se usa el compacto si la terminal tiene menos de 70 columnas.
 
 ---
 

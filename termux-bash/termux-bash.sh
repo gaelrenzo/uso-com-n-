@@ -17,4 +17,6 @@ fi
 source "$SCRIPT_DIR/aliases.sh"
 source "$SCRIPT_DIR/ia-tools.sh"
 source "$SCRIPT_DIR/functions.sh"
+# En el celular el panel completo no cabe: compacto por defecto (UCN_MOTD_COMPACT=0 lo desactiva)
+[ "$UCN_PLATFORM" = termux ] && : "${UCN_MOTD_COMPACT:=1}"
 source "$SCRIPT_DIR/motd.sh"
