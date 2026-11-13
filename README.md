@@ -14,7 +14,7 @@ GitHub + Syncthing + Skills IA + Scripts + CLI Go
 **UCN** es una "mochila digital": todo lo que necesitas para estudiar, programar, hacer informes y trabajar desde cualquier dispositivo.
 
 - **Misma terminal** en Android, Linux, Windows y macOS (alias, funciones, MOTD)
-- **43 skills de IA** sincronizadas entre agentes (OpenCode, Claude, Codex, Cursor, Gemini)
+- **46 skills de IA** compartidas entre agentes compatibles
 - **CLI propio** (`ucn`) para sincronizar, subir cambios, diagnosticar y exponer tu entorno
 - **Multi-plataforma**: detecta automaticamente Termux, Linux, WSL, macOS, Windows
 - **Desacoplado**: secretos en `.env`, config en `config.yaml`, todo versionado
@@ -37,7 +37,7 @@ UCN/
 │   ├── cmd/ucn/main.go    # Entrypoint
 │   └── internal/          # Logica interna
 ├── skills/
-│   ├── agent-skills/      # 43 skills para agentes IA
+│   ├── agent-skills/      # Skills para agentes IA
 │   ├── agents/            # Reglas por agente
 │   ├── sync-agent-skills.sh   # Sync bash (Linux/macOS/Termux)
 │   └── sync-agent-skills.ps1  # Sync PowerShell (Windows)

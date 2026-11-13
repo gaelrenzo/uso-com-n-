@@ -77,16 +77,18 @@ Select-String -Pattern "^source:" skills\agent-skills\*\SKILL.md
     }
 }) | Format-Table -AutoSize
 
-# Sync de skills (Linux/Mac)
-cd skills && ./sync-agent-skills.sh
+# Sync de skills (Linux, macOS, Termux/Ubuntu), desde la raíz del repo
+bash skills/sync-agent-skills.sh
 
 # Sync de skills (Windows)
 .\sync-agent-skills.ps1
 `
 
 ## Notas importantes
-- El directorio agent-skills/ es la FUENTE de verdad
-- Las copias en .agents/ y .claude/ son instaladas por npx skills add
+- El directorio agent-skills/ es la fuente de verdad.
+- Ejecuta `bash skills/sync-agent-skills.sh` en Linux, macOS, Ubuntu o Termux.
+- Ejecuta `powershell -ExecutionPolicy Bypass -File .\skills\sync-agent-skills.ps1` en Windows.
+- El sincronizador enlaza las skills fuente con carpetas de agentes que ya existen.
 - No editar las copias, editar siempre en agent-skills/
 - El PDF skills_report.tex documenta todo
 - Si se descubre el repo de ingenieria-electromecanica, actualizar

@@ -119,7 +119,7 @@ UCN/
 ├── laptop-powershell/   # Perfil PowerShell para Windows
 ├── ucn/                 # CLI en Go (sync, push, doctor, tunnel)
 ├── skills/
-│   └── agent-skills/    # 42 skills para agentes IA
+│   └── agent-skills/    # Skills compartidas para agentes IA
 ├── scripts/             # Scripts auxiliares (nota, clase, informe)
 ├── config/              # Configuracion local (.env, config.yaml)
 ├── docs/                # Guias y documentacion

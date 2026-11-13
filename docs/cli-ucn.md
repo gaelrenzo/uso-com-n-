@@ -9,9 +9,11 @@ ucn sync
 ```
 *En Linux/Android crea **Symlinks** y en Windows crea **Junctions** (uniones de directorios) de forma segura y sin requerir permisos de administrador.*
 
-También puedes usar los sincronizadores directos:
+También puedes sincronizar directamente desde la raíz del repositorio, sin depender de la versión instalada de `ucn`:
 ```bash
 bash skills/sync-agent-skills.sh
+```
+```powershell
 powershell -File skills/sync-agent-skills.ps1
 ```
 

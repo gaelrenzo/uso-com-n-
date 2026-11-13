@@ -6,14 +6,6 @@
 $ScriptDir = Split-Path -Parent $MyInvocation.MyCommand.Path
 $RepoSkillsDir = Join-Path $ScriptDir "agent-skills"
 
-# ucn es la implementacion principal; este script cubre el arranque sin Go
-if (Get-Command ucn -ErrorAction SilentlyContinue) {
-    $env:UCN_REPO_DIR = Split-Path -Parent $ScriptDir
-    ucn skills sync
-    if ($LASTEXITCODE -eq 0) { exit 0 }
-    Write-Host "ucn could not sync; using the PowerShell fallback" -ForegroundColor Yellow
-}
-
 Write-Host "Syncing agent skills from: $RepoSkillsDir" -ForegroundColor Cyan
 
 $HomeDir = [System.Environment]::GetFolderPath("UserProfile")
@@ -31,9 +23,9 @@ $TargetDirs = @(
     (Join-Path $HomeDir ".gemini\antigravity-cli\skills")
 )
 
-# Asegurar que el origen exista
 if (!(Test-Path $RepoSkillsDir)) {
-    New-Item -ItemType Directory -Path $RepoSkillsDir -Force | Out-Null
+    Write-Error "No existe la carpeta fuente de skills: $RepoSkillsDir"
+    exit 1
 }
 
 # Obtener cada skill del repositorio
