@@ -14,11 +14,9 @@ min_time = 2000
 
 [os]
 disabled = false
+format = "[$name]($style) "
+style = "dimmed white"
 
 # proot (Termux) se detecta como contenedor "Docker": ocultarlo
 [container]
 disabled = true
-
-[os]
-format = "[$name]($style) "
-style = "dimmed white"
