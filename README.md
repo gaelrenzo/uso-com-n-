@@ -14,7 +14,7 @@ GitHub + Syncthing + Skills IA + Scripts + CLI Go
 **UCN** es una "mochila digital": todo lo que necesitas para estudiar, programar, hacer informes y trabajar desde cualquier dispositivo.
 
 - **Misma terminal** en Android, Linux, Windows y macOS (alias, funciones, MOTD)
-- **42 skills de IA** sincronizadas entre agentes (OpenCode, Claude, Codex, Cursor, Gemini)
+- **43 skills de IA** sincronizadas entre agentes (OpenCode, Claude, Codex, Cursor, Gemini)
 - **CLI propio** (`ucn`) para sincronizar, subir cambios, diagnosticar y exponer tu entorno
 - **Multi-plataforma**: detecta automaticamente Termux, Linux, WSL, macOS, Windows
 - **Desacoplado**: secretos en `.env`, config en `config.yaml`, todo versionado
@@ -37,7 +37,7 @@ UCN/
 │   ├── cmd/ucn/main.go    # Entrypoint
 │   └── internal/          # Logica interna
 ├── skills/
-│   ├── agent-skills/      # 42 skills para agentes IA
+│   ├── agent-skills/      # 43 skills para agentes IA
 │   ├── agents/            # Reglas por agente
 │   ├── sync-agent-skills.sh   # Sync bash (Linux/macOS/Termux)
 │   └── sync-agent-skills.ps1  # Sync PowerShell (Windows)
@@ -270,7 +270,7 @@ ucn-agents
 
 ---
 
-## Skills instaladas (42)
+## Skills instaladas (43)
 
 ### Internet
 agent-reach, freedomain, last30days, notebooklm
@@ -285,7 +285,7 @@ api-design-principles, changelog-automation, codegraph, find-skills, karpathy-gu
 floor-plan-generator, frontend-design, visual-design-foundations
 
 ### Agentes & Productividad
-claude-mem, claude-plugins, obsidian-skills, professor-synapse, ponytail (y variantes), rtk, skillspector
+awesome-prompts, claude-mem, claude-plugins, obsidian-skills, professor-synapse, ponytail (y variantes), rtk, skillspector
 
 ### Escritura
 thesis-writing
