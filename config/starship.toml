@@ -1,0 +1,16 @@
+# Prompt compartido Windows / Termux / Linux (STARSHIP_CONFIG apunta aqui)
+add_newline = true
+command_timeout = 800
+
+[directory]
+truncation_length = 3
+truncate_to_repo = true
+
+[git_status]
+disabled = false
+
+[cmd_duration]
+min_time = 2000
+
+[os]
+disabled = false

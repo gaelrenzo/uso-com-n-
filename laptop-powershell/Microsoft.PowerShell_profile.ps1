@@ -206,9 +206,16 @@ function Set-UcnAlias {
     Set-Alias -Name $Name -Value $Target -Option ReadOnly
 }
 
-Set-UcnAlias -Name ll -Target Get-ChildItem
-function l { Get-ChildItem @args }
-function la { Get-ChildItem -Force @args }
+if (Get-Command eza -CommandType Application -ErrorAction SilentlyContinue) {
+    function ll { eza -l --icons --git --group-directories-first @args }
+    function l  { eza --icons --group-directories-first @args }
+    function la { eza -la --icons --git --group-directories-first @args }
+    function lt { eza --tree --level=2 --icons @args }
+} else {
+    Set-UcnAlias -Name ll -Target Get-ChildItem
+    function l { Get-ChildItem @args }
+    function la { Get-ChildItem -Force @args }
+}
 function ports { Get-NetTCPConnection -State Listen }
 function ipinfo { (Invoke-WebRequest -UseBasicParsing "https://ipinfo.io").Content }
 Set-UcnAlias -Name weather -Target Get-Weather
@@ -274,6 +281,20 @@ function repos {
     $w = Join-Path $env:USERPROFILE "workspace"
     Get-ChildItem -Path $w -Directory -ErrorAction SilentlyContinue | ForEach-Object { $_.Name }
 }
+
+# --- TERMINAL MODERNA (solo si las herramientas estan instaladas) ---
+# Instalar: winget install Starship.Starship eza-community.eza sharkdp.bat ajeetdsouza.zoxide junegunn.fzf DEVCOM.JetBrainsMonoNerdFont
+$StarshipToml = Join-Path $RepoDir "config\starship.toml"
+if (Test-Path $StarshipToml) { $env:STARSHIP_CONFIG = $StarshipToml }
+if (Get-Command starship -ErrorAction SilentlyContinue) { Invoke-Expression (& starship init powershell) }
+if (Get-Command zoxide -ErrorAction SilentlyContinue) { Invoke-Expression (& { (zoxide init powershell | Out-String) }) }
+if (Get-Module -ListAvailable Terminal-Icons) { Import-Module Terminal-Icons }
+if ((Get-Module PSReadLine).Version -ge [version]"2.1" -and -not [Console]::IsOutputRedirected) {
+    Set-PSReadLineOption -PredictionSource History -PredictionViewStyle ListView
+    Set-PSReadLineKeyHandler -Key UpArrow -Function HistorySearchBackward
+    Set-PSReadLineKeyHandler -Key DownArrow -Function HistorySearchForward
+}
+$env:BAT_THEME = "ansi"
 
 # --- MOTD ---
 function Show-MOTD {
