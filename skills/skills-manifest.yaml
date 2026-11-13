@@ -1,7 +1,6 @@
 # UCN Skills Manager
 version: "1.0.0"
 last_updated: "2026-06-30"
-total_skills: 42
 
 # Sources
 repositories:
@@ -72,7 +71,13 @@ repositories:
   - name: gaelrenzo/uso-com-n- (propia)
     url: https://github.com/gaelrenzo/uso-com-n-
     license: MIT
-    skills: [drive-cursos, betano-asistido]
+    skills: [drive-cursos, betano-asistido, opensource-alternatives]
+  - name: ai-boost/awesome-prompts
+    url: https://github.com/ai-boost/awesome-prompts
+    skills: [awesome-prompts]
+  - name: f/prompts.chat
+    url: https://github.com/f/prompts.chat
+    skills: [awesome-prompts]
   - name: teng-lin/notebooklm-py
     url: https://github.com/teng-lin/notebooklm-py
     license: MIT

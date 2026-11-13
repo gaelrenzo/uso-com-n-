@@ -1,7 +1,5 @@
 # Reglas
 
-- No borrar archivos sin confirmar
-- Usar git pull antes de editar
-- Hacer commits con mensajes cortos en espanol
+- Sigue las directivas universales de [`AGENTS.md`](../../../AGENTS.md).
 - Preferir comandos de una linea
 - No instalar paquetes sin preguntar
