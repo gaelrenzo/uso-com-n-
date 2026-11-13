@@ -75,9 +75,11 @@ fi
 # Instala herramientas + tema Catppuccin + Nerd Font (Termux nativo o proot Ubuntu)
 ucn-install-terminal() {
   if command -v pkg >/dev/null 2>&1; then
-    pkg install -y starship eza bat zoxide fzf unzip
+    pkg install -y starship eza bat zoxide fzf unzip fastfetch btop lazygit
   else
     apt update && apt install -y eza bat zoxide fzf unzip curl
+    # ponytail: uno por uno porque en Ubuntu viejos alguno no esta en apt
+    for p in fastfetch btop lazygit; do apt install -y "$p" || echo "omitido: $p"; done
     command -v starship >/dev/null 2>&1 || curl -sS https://starship.rs/install.sh | sh -s -- -y
   fi
   local tdir="${TERMUX_HOME:-/data/data/com.termux/files/home}/.termux"

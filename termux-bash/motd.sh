@@ -42,8 +42,10 @@ _ucn_motd_agent() {
   return 1
 }
 
-if [ "${UCN_MOTD_COMPACT:-0}" = 1 ]; then
-  printf '%sUCN%s | %s | %s\n' "$(_ucn_motd_color 35)" "$(_ucn_motd_reset)" "${UCN_PLATFORM:-bash}" "$(pwd)"
+# Compacto si se pide o si la pantalla es angosta (celular en vertical)
+if [ "${UCN_MOTD_COMPACT:-0}" = 1 ] || [ "${COLUMNS:-$(tput cols 2>/dev/null || echo 80)}" -lt 70 ]; then
+  printf '%s UCN %s %s  %s  %s\n' "$(_ucn_motd_color '30;45')" "$(_ucn_motd_reset)" "$(date '+%a %d %b %H:%M')" "$(_ucn_motd_memory 2>/dev/null)" "${UCN_PLATFORM:-bash}"
+  printf '%sucn-agents · sysinfo · btop · lazygit · z <dir>%s\n' "$(_ucn_motd_color 90)" "$(_ucn_motd_reset)"
   unset -f _ucn_motd_color _ucn_motd_reset _ucn_motd_memory _ucn_motd_agent
   return 0
 fi
