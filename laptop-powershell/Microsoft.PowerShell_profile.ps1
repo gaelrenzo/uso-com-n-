@@ -194,15 +194,27 @@ function ucn-agents {
 }
 
 # --- ALIASES ---
-Set-Alias -Name ll -Value Get-ChildItem -Option ReadOnly
+function Set-UcnAlias {
+    param([string]$Name, [string]$Target)
+    $Existing = Get-Alias -Name $Name -ErrorAction SilentlyContinue
+    if ($Existing) {
+        if ($Existing.Definition -ne $Target) {
+            Write-Warning "Se conserva el alias existente '$Name' ($($Existing.Definition))."
+        }
+        return
+    }
+    Set-Alias -Name $Name -Value $Target -Option ReadOnly
+}
+
+Set-UcnAlias -Name ll -Target Get-ChildItem
 function l { Get-ChildItem @args }
 function la { Get-ChildItem -Force @args }
 function ports { Get-NetTCPConnection -State Listen }
 function ipinfo { (Invoke-WebRequest -UseBasicParsing "https://ipinfo.io").Content }
-Set-Alias -Name weather -Value Get-Weather -Option ReadOnly
-Set-Alias -Name sysinfo -Value Get-SysInfo -Option ReadOnly
-Set-Alias -Name editui -Value Edit-Profile -Option ReadOnly
-Set-Alias -Name update -Value Update-System -Option ReadOnly
+Set-UcnAlias -Name weather -Target Get-Weather
+Set-UcnAlias -Name sysinfo -Target Get-SysInfo
+Set-UcnAlias -Name editui -Target Edit-Profile
+Set-UcnAlias -Name update -Target Update-System
 
 # --- FUNCTIONS ---
 function Get-Weather {
