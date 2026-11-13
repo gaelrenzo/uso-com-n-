@@ -72,4 +72,23 @@ if [[ $- == *i* ]]; then
   command -v zoxide >/dev/null 2>&1 && eval "$(zoxide init bash)"
   command -v fzf >/dev/null 2>&1 && eval "$(fzf --bash 2>/dev/null)"
 fi
-alias ucn-install-terminal="pkg install -y starship eza bat zoxide fzf"
+# Instala herramientas + tema Catppuccin + Nerd Font (Termux nativo o proot Ubuntu)
+ucn-install-terminal() {
+  if command -v pkg >/dev/null 2>&1; then
+    pkg install -y starship eza bat zoxide fzf unzip
+  else
+    apt update && apt install -y eza bat zoxide fzf unzip curl
+    command -v starship >/dev/null 2>&1 || curl -sS https://starship.rs/install.sh | sh -s -- -y
+  fi
+  local tdir="${TERMUX_HOME:-/data/data/com.termux/files/home}/.termux"
+  [ -d "$(dirname "$tdir")" ] || { echo "Sin acceso a ~/.termux: colores/fuente omitidos"; return 0; }
+  mkdir -p "$tdir"
+  cp "$UCN_REPO_DIR/config/termux/colors.properties" "$tdir/colors.properties"
+  if [ ! -f "$tdir/font.ttf" ]; then
+    local tmp; tmp="$(mktemp -d)"
+    curl -fsSL -o "$tmp/f.zip" https://github.com/ryanoasis/nerd-fonts/releases/latest/download/JetBrainsMono.zip       && unzip -oj "$tmp/f.zip" JetBrainsMonoNerdFontMono-Regular.ttf -d "$tmp"       && mv "$tmp/JetBrainsMonoNerdFontMono-Regular.ttf" "$tdir/font.ttf"
+    rm -rf "$tmp"
+  fi
+  command -v termux-reload-settings >/dev/null 2>&1 && termux-reload-settings
+  echo "Listo. Si no ves cambios, cierra y abre Termux."
+}
