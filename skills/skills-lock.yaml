@@ -44,12 +44,6 @@ skills:
     licencia_declarada: sin declarar
     revision_upstream: "2fd9aa0fe2d620f36627d9221e8b1393987ae38e"
     licencia_archivo: "third-party-licenses/aklofas__kicad-happy.txt"
-  destockd-archive-video-assets:
-    repo: https://github.com/redactedCHAD/destockd-footage-skill
-    licencia_declarada: sin declarar
-    revision_upstream: "efe3a57b083e15f057692341431bb5b666eb3c08"
-    licencia_archivo: ""
-    nota: "No se copia al repo; se clona desde external-skills.txt al sincronizar"
   digikey:
     repo: https://github.com/aklofas/kicad-happy
     licencia_declarada: sin declarar

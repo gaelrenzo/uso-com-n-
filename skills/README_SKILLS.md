@@ -60,7 +60,6 @@ agregar en ~/.config/opencode/AGENTS.md
 | Experto IA | ProfSynapse/Professor-Synapse | - | professor-synapse |
 | Unknown | - | - | ingenieria-electromecanica |
 | Drive/Universidad | propia | - | drive-cursos (sube el celular a Drive por semestre y curso) |
-| Video/Archivo | redactedCHAD/destockd-footage-skill | 2 | destockd-archive-video-assets (externa sin licencia: se clona desde `external-skills.txt`, no se copia) |
 | Apuestas | propia | - | betano-asistido (cuotas, value, stake Kelly y boleto para betano.pe; clic final manual) |
 
 ## Comandos útiles
@@ -87,7 +86,6 @@ bash skills/sync-agent-skills.sh
 
 ## Notas importantes
 - El directorio agent-skills/ es la fuente de verdad.
-- Skills sin licencia van en `external-skills.txt` (nombre url commit): el sincronizador las clona en `$UCN_DATA_DIR/ia/skills-externas/` y las enlaza; nunca se copian al repo.
 - Ejecuta `bash skills/sync-agent-skills.sh` en Linux, macOS, Ubuntu o Termux.
 - Ejecuta `powershell -ExecutionPolicy Bypass -File .\skills\sync-agent-skills.ps1` en Windows.
 - El sincronizador enlaza las skills fuente con carpetas de agentes que ya existen.

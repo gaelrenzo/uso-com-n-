@@ -1,4 +1,0 @@
-# Skills externas SIN licencia: no se copian al repo (no redistribuir).
-# Los sincronizadores las clonan en $UCN_DATA_DIR/ia/skills-externas/<nombre> y las enlazan a cada IA.
-# Formato: nombre url commit
-destockd-archive-video-assets https://github.com/redactedCHAD/destockd-footage-skill efe3a57b083e15f057692341431bb5b666eb3c08
