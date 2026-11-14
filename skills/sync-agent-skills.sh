@@ -33,8 +33,18 @@ if [ ! -d "$REPO_SKILLS_DIR" ]; then
   exit 1
 fi
 
-# Recorrer cada skill en el repositorio
-for skill_path in "$REPO_SKILLS_DIR"/*; do
+# Skills externas sin licencia: clonar fuera del repo, fijadas al commit de external-skills.txt
+EXT_SKILLS_DIR="$UCN_DATA_DIR/ia/skills-externas"
+mkdir -p "$EXT_SKILLS_DIR"
+while read -r ext_name ext_url ext_rev; do
+  case "$ext_name" in ''|\#*) continue ;; esac
+  ext_dir="$EXT_SKILLS_DIR/$ext_name"
+  [ -d "$ext_dir/.git" ] || git clone -q "$ext_url" "$ext_dir" || { echo "  ⚠️ No se pudo clonar $ext_url" >&2; continue; }
+  git -C "$ext_dir" fetch -q origin && git -C "$ext_dir" checkout -q "$ext_rev" || echo "  ⚠️ No se pudo fijar $ext_name en $ext_rev" >&2
+done < "$SCRIPT_DIR/external-skills.txt"
+
+# Recorrer cada skill del repositorio y las externas
+for skill_path in "$REPO_SKILLS_DIR"/* "$EXT_SKILLS_DIR"/*; do
   [ -d "$skill_path" ] || continue
   skill_name=$(basename "$skill_path")
   

@@ -1,4 +1,4 @@
-# ==============================================================================
+﻿# ==============================================================================
 # Sincronizador de Skills para Agentes IA (Windows)
 # Crea uniones de directorios (Junctions) desde el repositorio a cada agente
 # ==============================================================================
@@ -35,8 +35,19 @@ if (!(Test-Path $RepoSkillsDir)) {
     exit 1
 }
 
-# Obtener cada skill del repositorio
-Get-ChildItem -Path $RepoSkillsDir -Directory | ForEach-Object {
+# Skills externas sin licencia: clonar fuera del repo, fijadas al commit de external-skills.txt
+$ExtSkillsDir = Join-Path (Split-Path -Parent $SharedMemoryDir) "skills-externas"
+New-Item -ItemType Directory -Path $ExtSkillsDir -Force | Out-Null
+Get-Content (Join-Path $ScriptDir "external-skills.txt") | Where-Object { $_ -and $_ -notmatch '^\s*#' } | ForEach-Object {
+    $Name, $Url, $Rev = -split $_
+    $Dir = Join-Path $ExtSkillsDir $Name
+    if (!(Test-Path (Join-Path $Dir ".git"))) { git clone -q $Url $Dir }
+    git -C $Dir fetch -q origin; git -C $Dir checkout -q $Rev
+    if ($LASTEXITCODE -ne 0) { Write-Warning "No se pudo fijar $Name en $Rev" }
+}
+
+# Obtener cada skill del repositorio y las externas
+Get-ChildItem -Path $RepoSkillsDir, $ExtSkillsDir -Directory | ForEach-Object {
     $SkillDir = $_
     Write-Host "Processing skill: $($SkillDir.Name)" -ForegroundColor Yellow
     

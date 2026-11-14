@@ -78,6 +78,9 @@ repositories:
   - name: f/prompts.chat
     url: https://github.com/f/prompts.chat
     skills: [awesome-prompts]
+  - name: redactedCHAD/destockd-footage-skill
+    url: https://github.com/redactedCHAD/destockd-footage-skill
+    skills: [destockd-archive-video-assets]  # externa, ver external-skills.txt
   - name: teng-lin/notebooklm-py
     url: https://github.com/teng-lin/notebooklm-py
     license: MIT
