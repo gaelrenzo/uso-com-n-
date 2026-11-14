@@ -14,6 +14,12 @@ skills:
     licencia_declarada: sin declarar
     revision_upstream: "88378361314f558fb719aec0af9fd898ab36f0b2"
     licencia_archivo: "third-party-licenses/secondsky__claude-skills.txt"
+  bgdesk:
+    repo: https://github.com/enwong93-sketch/background-computer-use
+    licencia_declarada: MIT
+    revision_upstream: "c25e1bcb0e2b54a0dbe5d881528a50017daaa65f"
+    licencia_archivo: "third-party-licenses/enwong93-sketch__background-computer-use.txt"
+    nota: "Requiere bgdesk.exe v2.0.0 (solo Windows); ver README_SKILLS.md"
   bom:
     repo: https://github.com/aklofas/kicad-happy
     licencia_declarada: sin declarar

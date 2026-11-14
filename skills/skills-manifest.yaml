@@ -78,6 +78,10 @@ repositories:
   - name: f/prompts.chat
     url: https://github.com/f/prompts.chat
     skills: [awesome-prompts]
+  - name: enwong93-sketch/background-computer-use
+    url: https://github.com/enwong93-sketch/background-computer-use
+    license: MIT
+    skills: [bgdesk]
   - name: teng-lin/notebooklm-py
     url: https://github.com/teng-lin/notebooklm-py
     license: MIT

@@ -60,6 +60,7 @@ agregar en ~/.config/opencode/AGENTS.md
 | Experto IA | ProfSynapse/Professor-Synapse | - | professor-synapse |
 | Unknown | - | - | ingenieria-electromecanica |
 | Drive/Universidad | propia | - | drive-cursos (sube el celular a Drive por semestre y curso) |
+| Control PC | enwong93-sketch/background-computer-use | 12 | bgdesk (la IA usa la laptop en un escritorio oculto con mouse y teclado propios; solo Windows) |
 | Apuestas | propia | - | betano-asistido (cuotas, value, stake Kelly y boleto para betano.pe; clic final manual) |
 
 ## Comandos útiles
@@ -92,6 +93,18 @@ bash skills/sync-agent-skills.sh
 - No editar las copias, editar siempre en agent-skills/
 - El PDF skills_report.tex documenta todo
 - Si se descubre el repo de ingenieria-electromecanica, actualizar
+
+## bgdesk: instalar el binario (solo Windows)
+
+La skill necesita el servidor MCP `bgdesk.exe` en cada laptop con Windows:
+
+```powershell
+$env:BGDESK_AGENT='all'; irm https://raw.githubusercontent.com/enwong93-sketch/background-computer-use/main/install.ps1 | iex
+bgdesk enable   # una sola vez, en una terminal de administrador
+```
+
+Los agentes que no detecta se agregan con `bgdesk install gemini|opencode|claude-desktop|vscode`.
+En Termux/Linux la skill queda enlazada pero no funciona (no hay bgdesk).
 
 ## Licencias y trazabilidad
 
