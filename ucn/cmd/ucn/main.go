@@ -10,6 +10,7 @@ import (
 	"ucn/internal/config"
 	"ucn/internal/doctor"
 	"ucn/internal/git"
+	"ucn/internal/memory"
 	"ucn/internal/personal"
 	"ucn/internal/profile"
 	"ucn/internal/secrets"
@@ -94,6 +95,12 @@ func main() {
 			fmt.Printf("❌ Error durante bootstrap: %v\n", err)
 			os.Exit(1)
 		}
+		sharedDir, err := memory.SharedDir()
+		if err != nil {
+			fmt.Printf("No se pudo resolver la memoria compartida: %v\n", err)
+			os.Exit(1)
+		}
+		configureSharedOpenClaw(sharedDir)
 
 	case "update":
 		checkOnly := false
@@ -138,6 +145,9 @@ func main() {
 	case "secrets":
 		handleSecrets(repoRoot)
 
+	case "memory":
+		handleMemory(os.Args[2:])
+
 	case "personal":
 		handlePersonal(repoRoot, os.Args[2:])
 
@@ -149,6 +159,90 @@ func main() {
 		printHelp()
 		os.Exit(1)
 	}
+}
+
+func handleMemory(args []string) {
+	if len(args) == 0 {
+		fmt.Println("Uso: ucn memory <init|path|show|add <texto>|status|openclaw>")
+		return
+	}
+	dir, err := memory.SharedDir()
+	if err != nil {
+		fmt.Printf("No se pudo resolver la carpeta compartida: %v\n", err)
+		os.Exit(1)
+	}
+	switch strings.ToLower(args[0]) {
+	case "path":
+		fmt.Println(dir)
+	case "init":
+		if err := memory.InitAt(dir); err != nil {
+			fmt.Printf("No se pudo inicializar la memoria compartida: %v\n", err)
+			os.Exit(1)
+		}
+		fmt.Printf("Memoria compartida lista en: %s\n", dir)
+		configureSharedOpenClaw(dir)
+	case "openclaw":
+		configureSharedOpenClaw(dir)
+	case "show":
+		text, err := memory.ContextAt(dir)
+		if err != nil {
+			fmt.Printf("No se pudo leer la memoria: %v\n", err)
+			os.Exit(1)
+		}
+		if strings.TrimSpace(text) == "" {
+			fmt.Printf("Memoria vacía. Añade una nota con: ucn memory add \"texto\"\nRuta: %s\n", dir)
+			return
+		}
+		fmt.Println(text)
+	case "add":
+		if len(args) < 2 {
+			fmt.Println("Uso: ucn memory add <nota breve>")
+			os.Exit(2)
+		}
+		source := os.Getenv("UCN_AGENT_NAME")
+		path, err := memory.AddAt(dir, strings.Join(args[1:], " "), source)
+		if err != nil {
+			fmt.Printf("No se pudo guardar la nota: %v\n", err)
+			os.Exit(1)
+		}
+		fmt.Printf("Nota guardada: %s\n", path)
+	case "status":
+		fmt.Printf("Memoria compartida: %s\n", dir)
+		if memory.SyncMarker(dir) {
+			fmt.Printf("Sincronización: se detecta el marcador Syncthing en %s\n", dir)
+		} else {
+			fmt.Printf("Sincronización: no se detecta .stfolder en %s; la carpeta podría no estar sincronizada\n", dir)
+		}
+	case "help", "-h", "--help":
+		printMemoryHelp()
+	default:
+		fmt.Printf("Subcomando de memoria desconocido: %s\n", args[0])
+		printMemoryHelp()
+		os.Exit(2)
+	}
+}
+
+func configureSharedOpenClaw(dir string) {
+	configured, err := memory.ConfigureOpenClaw(dir)
+	if err != nil {
+		fmt.Printf("OpenClaw: %v\n", err)
+		os.Exit(1)
+	}
+	if configured {
+		fmt.Printf("OpenClaw usa ahora este workspace compartido: %s\n", dir)
+	} else {
+		fmt.Println("OpenClaw no está instalado en este dispositivo; ejecuta 'ucn memory openclaw' después de instalarlo.")
+	}
+}
+
+func printMemoryHelp() {
+	fmt.Println("Uso: ucn memory <init|path|show|add <texto>|status|openclaw>")
+	fmt.Println("  init      Crea los archivos base y configura OpenClaw si está instalado")
+	fmt.Println("  path      Imprime la ruta compartida para usarla desde scripts")
+	fmt.Println("  show      Muestra MEMORY.md y las 12 notas recientes")
+	fmt.Println("  add       Crea una nota independiente para evitar conflictos entre dispositivos")
+	fmt.Println("  status    Muestra si encuentra el marcador Syncthing en el directorio de datos")
+	fmt.Println("  openclaw  Apunta el workspace de OpenClaw a esta memoria, sin onboarding ni credenciales")
 }
 
 func isRepoRoot(dir string) bool {
@@ -533,6 +627,10 @@ func printHelp() {
 	fmt.Println("  doctor --fix    Corrige automáticamente configuraciones seguras (config/, .env, directorios)")
 	fmt.Println("  personal        Aplica tus personalizaciones (save: las guarda en el repo)")
 	fmt.Println("  secrets         Busca secretos y archivos privados en lo versionado")
+	fmt.Println("  memory init     Inicializa la memoria privada compartida entre agentes")
+	fmt.Println("  memory show     Muestra memoria estable y notas recientes")
+	fmt.Println("  memory add      Guarda una nota independiente en la memoria compartida")
+	fmt.Println("  memory status   Muestra la ruta y el estado de sincronización detectable")
 	fmt.Println("  agents          Muestra el estado de los agentes IA registrados en config/agents.yaml")
 	fmt.Println("  bootstrap       Prepara este dispositivo: config, directorios, hook de shell y skills")
 	fmt.Println("  build           Recompila el CLI ucn (ucn/ucn o ucn/ucn.exe)")

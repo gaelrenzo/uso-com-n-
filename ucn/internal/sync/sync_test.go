@@ -27,3 +27,28 @@ func TestCleanExistingDestKeepsOlderBackups(t *testing.T) {
 		}
 	}
 }
+
+func TestSyncSharedMemorySkillCopiesARegularFile(t *testing.T) {
+	source := filepath.Join(t.TempDir(), "skills")
+	skillDir := filepath.Join(source, "ucn-shared-memory")
+	if err := os.MkdirAll(skillDir, 0755); err != nil {
+		t.Fatal(err)
+	}
+	want := []byte("shared instruction")
+	if err := os.WriteFile(filepath.Join(skillDir, "SKILL.md"), want, 0644); err != nil {
+		t.Fatal(err)
+	}
+	shared := t.TempDir()
+	if err := syncSharedMemorySkill(source, shared); err != nil {
+		t.Fatal(err)
+	}
+	dest := filepath.Join(shared, "skills", "ucn-shared-memory", "SKILL.md")
+	got, err := os.ReadFile(dest)
+	if err != nil || string(got) != string(want) {
+		t.Fatalf("copied skill = %q, %v; want %q", got, err, want)
+	}
+	info, err := os.Lstat(dest)
+	if err != nil || info.Mode()&os.ModeSymlink != 0 {
+		t.Fatalf("shared skill must be a regular file, got %v, %v", info, err)
+	}
+}

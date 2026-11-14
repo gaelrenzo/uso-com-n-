@@ -32,6 +32,7 @@ Los comandos de agentes IA son **identicos** en:
 | `anti-full` | Antigravity sin confirmaciones | `agy --dangerously-skip-permissions` |
 | `hermes` | Hermes Agent | `hermes` |
 | `hermes-full` | Hermes modo yolo | `hermes --yolo` |
+| `claw` | OpenClaw CLI (`gateway`, `doctor`, `onboard`) | `openclaw` |
 | `gem` / `gem-full` | Gemini CLI | `gemini [--yolo]` |
 | `qwen` / `qwen-full` | Qwen Code | `qwen [--yolo]` |
 | `crush` / `crush-full` | Crush | `crush [--yolo]` |
@@ -45,6 +46,39 @@ Los comandos de agentes IA son **identicos** en:
 | `auggie` | Augment | `auggie` (sin modo full) |
 | `ucn-agents` | Diagnostico | Muestra ruta de cada agente detectado |
 | `ucn-install-ia` | Instalador | Instala las IAs que falten (npm + uv) |
+
+OpenClaw se instala mediante su instalador oficial de plataforma, que prepara el
+runtime compatible y omite el onboarding interactivo. Ejecuta luego `claw onboard`
+para elegir el proveedor del modelo y configurar el Gateway; los canales de chat
+se vinculan por separado y requieren autorización del usuario.
+
+### Memoria compartida, dispositivos y WhatsApp
+
+`ucn bootstrap` crea o conserva sin sobrescribir `MEMORY.md`, `AGENTS.md` y las
+notas bajo `UCN_DATA_DIR/ia/memoria-compartida`; también apunta el workspace
+local de OpenClaw allí mediante `setup --baseline`. Usa `ucn memory show`,
+`ucn memory add "nota"` y `ucn memory status`. La skill `ucn-shared-memory`
+se enlaza a los directorios de skills de los agentes compatibles encontrados.
+
+La carpeta es privada y está fuera del checkout público. Para tener los mismos
+datos en PC, tablet y celular, instala/configura Syncthing u otro sincronizador
+privado en cada dispositivo y comparte `ia/memoria-compartida`; si el directorio
+base difiere, define `UCN_SHARED_MEMORY_DIR`. `.stfolder` permite detectar una
+carpeta Syncthing, pero no verifica que el otro dispositivo esté conectado ni
+que haya terminado la sincronización.
+
+OpenClaw funciona como Gateway en el equipo anfitrión. La app oficial de
+[Android](https://docs.openclaw.ai/platforms/android) es un nodo acompañante y
+necesita un Gateway activo; la app iOS/iPadOS requiere iOS/iPadOS 26.2 o posterior.
+Conecta el cliente por QR en LAN/VPN privada. En Android, OpenClaw no aloja el
+Gateway. Para WhatsApp, elige primero proveedor/modelo con `claw onboard`, inicia
+el Gateway y usa `claw channels login --channel whatsapp` para generar el QR;
+escanéalo desde WhatsApp en el teléfono dueño. Los mensajes directos usan pairing
+por defecto; mantén pairing o allowlist y aprueba remitentes con
+`claw pairing approve --channel whatsapp <código>`. La cuenta vinculada, proveedor,
+permisos de herramientas y VPN son configuraciones locales y nunca se publican.
+Consulta la [guía oficial de WhatsApp](https://docs.openclaw.ai/whatsapp) y
+[plataformas](https://docs.openclaw.ai/platforms) para los pasos del Gateway.
 
 ### 1.1 Comandos basicos y de navegacion (iguales en los 3 shells)
 

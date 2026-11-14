@@ -9,6 +9,13 @@ $RepoSkillsDir = Join-Path $ScriptDir "agent-skills"
 Write-Host "Syncing agent skills from: $RepoSkillsDir" -ForegroundColor Cyan
 
 $HomeDir = [System.Environment]::GetFolderPath("UserProfile")
+$SharedMemoryDir = $env:UCN_SHARED_MEMORY_DIR
+if (-not $SharedMemoryDir) {
+    $DataDir = $env:UCN_DATA_DIR
+    if (-not $DataDir) { $DataDir = Join-Path $HomeDir "universida-datos" }
+    $SharedMemoryDir = Join-Path $DataDir "ia\memoria-compartida"
+}
+New-Item -ItemType Directory -Path (Join-Path $SharedMemoryDir "skills") -Force | Out-Null
 
 $TargetDirs = @(
     (Join-Path $HomeDir ".agents\skills"),
@@ -70,5 +77,9 @@ Get-ChildItem -Path $RepoSkillsDir -Directory | ForEach-Object {
         }
     }
 }
+
+$SharedSkillDir = Join-Path $SharedMemoryDir "skills\ucn-shared-memory"
+New-Item -ItemType Directory -Path $SharedSkillDir -Force | Out-Null
+Copy-Item -LiteralPath (Join-Path $RepoSkillsDir "ucn-shared-memory\SKILL.md") -Destination (Join-Path $SharedSkillDir "SKILL.md") -Force
 
 Write-Host "Sync completed successfully!" -ForegroundColor Green

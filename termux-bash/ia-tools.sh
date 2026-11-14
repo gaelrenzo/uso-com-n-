@@ -14,7 +14,7 @@
 # ==============================================================================
 
 # Evita que aliases antiguos oculten los wrappers UCN.
-for _ucn_a in codex codex-full cl cl-full ocode ocode-full anti anti-full hermes hermes-full gem gem-full qwen qwen-full crush crush-full copilot copilot-full amp amp-full iflow iflow-full aider aider-full kimi kimi-full cursor cursor-full kilo auggie; do
+for _ucn_a in codex codex-full cl cl-full ocode ocode-full anti anti-full hermes hermes-full claw gem gem-full qwen qwen-full crush crush-full copilot copilot-full amp amp-full iflow iflow-full aider aider-full kimi kimi-full cursor cursor-full kilo auggie; do
   unalias "$_ucn_a" 2>/dev/null || true
 done
 unset _ucn_a
@@ -57,6 +57,11 @@ ucn_resolve() {
       ;;
     hermes)
       for c in "$HOME/.local/bin/hermes" "$HOME/hermes-agent/.venv/bin/hermes" /usr/local/bin/hermes /usr/bin/hermes /data/data/com.termux/files/usr/bin/hermes /tmp/hermes-agent/.venv/bin/hermes; do
+        [ -x "$c" ] && { printf '%s\n' "$c"; return 0; }
+      done
+      ;;
+    openclaw)
+      for c in "$HOME/.local/bin/openclaw" "$HOME/.npm-global/bin/openclaw" /usr/local/bin/openclaw /usr/bin/openclaw /data/data/com.termux/files/usr/bin/openclaw; do
         [ -x "$c" ] && { printf '%s\n' "$c"; return 0; }
       done
       ;;
@@ -123,11 +128,11 @@ ucn_run() {
   local pp
   pp="$(ucn_profile_prompt_file)"
   if [ "$tool" = "claude" ] && [ -n "$pp" ]; then
-    "$bin" --append-system-prompt-file "$pp" "$@"
+    UCN_AGENT_NAME="$tool" "$bin" --append-system-prompt-file "$pp" "$@"
     return $?
   fi
 
-  "$bin" "$@"
+  UCN_AGENT_NAME="$tool" "$bin" "$@"
 }
 
 # --- Prompt del perfil activo (config/profile-prompts/<UCN_PROFILE>.md) ---
@@ -218,6 +223,10 @@ hermes-full() {
   ucn_run hermes --yolo "$@"
 }
 
+claw() {
+  ucn_run openclaw "$@"
+}
+
 # --- Otras IAs del mercado (funcionan si estan instaladas: ucn-install-ia) ---
 gem()          { ucn_run gemini "$@"; }
 gem-full()     { ucn_run gemini --yolo "$@"; }
@@ -240,7 +249,7 @@ cursor-full()  { ucn_run cursor-agent --force "$@"; }
 kilo()         { ucn_run kilocode "$@"; }
 auggie()       { ucn_run auggie "$@"; }
 
-UCN_IA_TOOLS="codex claude opencode hermes agy gemini qwen crush copilot amp iflow aider kimi cursor-agent kilocode auggie"
+UCN_IA_TOOLS="codex claude opencode hermes openclaw agy gemini qwen crush copilot amp iflow aider kimi cursor-agent kilocode auggie"
 
 # --- Instala todas las IAs que falten (npm + uv). Uno por uno: si falla uno, sigue ---
 ucn-install-ia() {
@@ -250,6 +259,10 @@ ucn-install-ia() {
     ucn_resolve "$bin" >/dev/null && { echo "✓ $bin"; continue; }
     echo "→ npm i -g $pkg"; npm install -g "$pkg" || echo "✗ fallo $pkg"
   done
+  if ! ucn_resolve openclaw >/dev/null; then
+    echo "Instalando OpenClaw con el instalador oficial (sin onboarding)"
+    curl -fsSL https://openclaw.ai/install.sh | bash -s -- --no-onboard || echo "fallo OpenClaw"
+  fi
   command -v uv >/dev/null || curl -LsSf https://astral.sh/uv/install.sh | sh
   ucn_resolve aider >/dev/null || uv tool install --python 3.12 aider-chat || echo "✗ fallo aider"
   ucn_resolve kimi  >/dev/null || UV_LINK_MODE=copy uv tool install kimi-cli || echo "✗ fallo kimi"

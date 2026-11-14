@@ -279,8 +279,8 @@ check_go_cli() {
 # Check 5b: Paridad de wrappers IA entre bash, PowerShell, CMD y agents.yaml
 # ---------------------------------------------------------------------------
 # Los agentes y sus wrappers deben existir en TODOS los dispositivos.
-UCN_IA_TOOLS_EXPECTED="codex claude opencode hermes agy gemini qwen crush copilot amp iflow aider kimi cursor-agent kilocode auggie"
-UCN_IA_WRAPPERS="codex cl ocode anti hermes gem qwen crush copilot amp iflow aider kimi cursor kilo auggie"
+UCN_IA_TOOLS_EXPECTED="codex claude opencode hermes openclaw agy gemini qwen crush copilot amp iflow aider kimi cursor-agent kilocode auggie"
+UCN_IA_WRAPPERS="codex cl ocode anti hermes claw gem qwen crush copilot amp iflow aider kimi cursor kilo auggie"
 UCN_IA_FULLS="codex-full cl-full ocode-full anti-full hermes-full gem-full qwen-full crush-full copilot-full amp-full iflow-full aider-full kimi-full cursor-full"
 
 check_wrapper_parity() {

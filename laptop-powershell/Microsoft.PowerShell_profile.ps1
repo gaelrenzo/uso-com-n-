@@ -47,6 +47,7 @@ function Get-UcnAgentBin {
         opencode= @((Join-Path $env:USERPROFILE ".opencode\bin\opencode.exe"), (Join-Path $env:APPDATA "npm\opencode.cmd"))
         agy     = @((Join-Path $env:USERPROFILE ".local\bin\agy.exe"))
         hermes  = @((Join-Path $env:LOCALAPPDATA "hermes\hermes-agent\venv\Scripts\hermes.exe"), (Join-Path $env:USERPROFILE "hermes-agent\.venv\Scripts\hermes.exe"))
+        openclaw = @((Join-Path $env:APPDATA "npm\openclaw.cmd"), (Join-Path $env:USERPROFILE ".local\bin\openclaw.cmd"))
         gemini  = @((Join-Path $env:APPDATA "npm\gemini.cmd"), (Join-Path $env:USERPROFILE ".local\bin\gemini.exe"))
         qwen    = @((Join-Path $env:APPDATA "npm\qwen.cmd"), (Join-Path $env:USERPROFILE ".local\bin\qwen.exe"))
         crush   = @((Join-Path $env:APPDATA "npm\crush.cmd"), (Join-Path $env:USERPROFILE ".local\bin\crush.exe"))
@@ -74,6 +75,10 @@ if (Test-Path $SharedEnv) {
         }
     }
 }
+
+# Shared private memory location (kept under user data, outside the public repo).
+if (-not $env:UCN_DATA_DIR) { $env:UCN_DATA_DIR = Join-Path $env:USERPROFILE "universida-datos" }
+if (-not $env:UCN_SHARED_MEMORY_DIR) { $env:UCN_SHARED_MEMORY_DIR = Join-Path $env:UCN_DATA_DIR "ia\memoria-compartida" }
 
 # --- Perfil de especialidad activo (equivalente Windows de UCN_PROFILE) ---
 $ProfileFile = Join-Path $RepoDir "config\.current-profile"
@@ -109,7 +114,10 @@ function Invoke-UcnAgent {
     }
     if ($ExtraArgs) { $ArgsList += $ExtraArgs.Split(' ') }
     if ($UserArgs.Count -gt 0) { $ArgsList += $UserArgs }
-    & $Bin @ArgsList
+    $PreviousAgentName = $env:UCN_AGENT_NAME
+    $env:UCN_AGENT_NAME = $Tool
+    try { & $Bin @ArgsList }
+    finally { $env:UCN_AGENT_NAME = $PreviousAgentName }
 }
 
 # Flags base de codex (mismo criterio que termux-bash/ia-tools.sh):
@@ -137,6 +145,7 @@ function ocode       { Invoke-UcnAgent "opencode"    "" $args }
 function ocode-full  { Invoke-UcnAgent "opencode"    "--agent build" $args }
 function hermes      { Invoke-UcnAgent "hermes"      "" $args }
 function hermes-full { Invoke-UcnAgent "hermes"      "--yolo" $args }
+function claw        { Invoke-UcnAgent "openclaw"     "" $args }
 
 # --- Otras IAs del mercado (funcionan si estan instaladas: ucn-install-ia) ---
 function gem          { Invoke-UcnAgent "gemini"       "" $args }
@@ -160,7 +169,7 @@ function cursor-full  { Invoke-UcnAgent "cursor-agent" "--force" $args }
 function kilo         { Invoke-UcnAgent "kilocode"     "" $args }
 function auggie       { Invoke-UcnAgent "auggie"       "" $args }
 
-$UcnIaTools = @("codex","claude","opencode","hermes","agy","gemini","qwen","crush","copilot","amp","iflow","aider","kimi","cursor-agent","kilocode","auggie")
+$UcnIaTools = @("codex","claude","opencode","hermes","openclaw","agy","gemini","qwen","crush","copilot","amp","iflow","aider","kimi","cursor-agent","kilocode","auggie")
 
 # Instala las IAs que falten (npm + uv). Una por una: si falla una, sigue.
 function ucn-install-ia {
@@ -174,6 +183,13 @@ function ucn-install-ia {
         if (Get-UcnAgentBin $bin) { Write-Host "OK $bin" -ForegroundColor Green; continue }
         Write-Host "-> npm i -g $($npm[$bin])" -ForegroundColor Cyan
         npm install -g $npm[$bin]
+    }
+    if (-not (Get-UcnAgentBin "openclaw")) {
+        Write-Host "-> Instalando OpenClaw con el instalador oficial (sin onboarding)" -ForegroundColor Cyan
+        try {
+            $installer = (Invoke-WebRequest -UseBasicParsing 'https://openclaw.ai/install.ps1').Content
+            & ([scriptblock]::Create($installer)) -NoOnboard
+        } catch { Write-Host "OpenClaw: fallo la instalacion: $_" -ForegroundColor Red }
     }
     foreach ($p in @(@("aider","aider-chat"), @("kimi","kimi-cli"))) {
         if (-not (Get-UcnAgentBin $p[0])) { uv tool install $p[1] }
@@ -192,6 +208,8 @@ function ucn-agents {
         else    { Write-Host ("  {0,-13} -> (no instalado)" -f $t) -ForegroundColor DarkGray }
     }
 }
+
+function ucn-memory { if (Get-Command ucn -ErrorAction SilentlyContinue) { ucn memory @args } else { Write-Host "No se encontro el CLI ucn en PATH." -ForegroundColor Yellow } }
 
 # --- ALIASES ---
 function Set-UcnAlias {
@@ -344,6 +362,7 @@ function Show-MOTD {
         @("OpenCode","opencode","ocode","ocode-full"),
         @("Antigravity","agy","anti","anti-full"),
         @("Hermes Agent","hermes","hermes","hermes-full"),
+        @("OpenClaw","openclaw","claw","-"),
         @("Qwen Code","qwen","qwen","qwen-full"),
         @("Crush","crush","crush","crush-full"),
         @("GitHub Copilot","copilot","copilot","copilot-full"),

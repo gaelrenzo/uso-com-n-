@@ -243,6 +243,7 @@ Los comandos de agentes IA son **identicos** en PowerShell (laptop), Bash/Termux
 | `ocode` / `ocode-full` | OpenCode |
 | `anti` / `anti-full` | Antigravity (`agy`) |
 | `hermes` / `hermes-full` | Hermes Agent |
+| `claw` | OpenClaw CLI y operaciones del Gateway |
 | `gem` / `gem-full` | Gemini CLI |
 | `qwen` / `qwen-full` | Qwen Code |
 | `crush` / `crush-full` | Crush |
@@ -255,6 +256,31 @@ Los comandos de agentes IA son **identicos** en PowerShell (laptop), Bash/Termux
 | `kilo` / `auggie` | Kilo Code / Augment (sin modo full) |
 | `ucn-agents` | Diagnostico de agentes instalados |
 | `ucn-install-ia` | Instala las IAs que falten |
+
+### OpenClaw como asistente común
+
+`ucn bootstrap` prepara el workspace privado de OpenClaw y comparte una skill
+de memoria con los agentes locales compatibles. La memoria queda fuera de este
+repositorio, en `UCN_DATA_DIR/ia/memoria-compartida`:
+
+```powershell
+ucn memory init
+ucn memory status
+ucn memory show
+ucn memory add "Preferencia o decisión estable que los agentes deban recordar"
+```
+
+Para compartirla entre PC, tablet y celular, sincroniza esa carpeta con
+Syncthing u otra carpeta privada; configura `UCN_SHARED_MEMORY_DIR` en cada
+dispositivo si las rutas difieren. OpenClaw usa el Gateway de la PC como centro:
+Android/iPad son clientes móviles, no sustituyen al Gateway. Tras elegir un
+proveedor de IA con `claw onboard`, inicia el Gateway y vincula WhatsApp con
+`claw channels login --channel whatsapp`; el QR debe escanearse desde el teléfono
+dueño. Mantén el acceso DM en pairing/allowlist y aprueba remitentes explícitamente.
+El QR de WhatsApp y las claves no se guardan en GitHub.
+
+Para conectar la app móvil oficial al Gateway remoto, empareja el cliente con
+`claw qr` desde una red privada o VPN; no expongas el puerto del Gateway a Internet.
 
 Comandos basicos y de navegacion (`ll`, `update`, `weather`, `sysinfo`, `editui`,
 `uni`, `notas`, `informes`, `cursos`, `labs`, `workspace`, `repos`) tambien son

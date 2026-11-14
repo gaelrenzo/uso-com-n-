@@ -22,6 +22,7 @@ doskey anti=agy $*
 doskey anti-full=agy --dangerously-skip-permissions $*
 doskey hermes=hermes $*
 doskey hermes-full=hermes --yolo $*
+doskey claw=openclaw $*
 doskey gem=gemini $*
 doskey gem-full=gemini --yolo $*
 doskey qwen=qwen $*
@@ -46,9 +47,11 @@ doskey auggie=auggie $*
 REM --- Resolver raiz del repo desde la ubicacion de este archivo ---
 set "UCN_CMD_DIR=%~dp0"
 set "UCN_REPO_CMD=%UCN_CMD_DIR%\.."
+if not defined UCN_DATA_DIR set "UCN_DATA_DIR=%USERPROFILE%\universida-datos"
+if not defined UCN_SHARED_MEMORY_DIR set "UCN_SHARED_MEMORY_DIR=%UCN_DATA_DIR%\ia\memoria-compartida"
 
 REM --- Diagnostico ---
-doskey ucn-agents=where codex claude opencode hermes agy gemini qwen crush copilot amp iflow aider kimi cursor-agent kilocode auggie
+doskey ucn-agents=where codex claude opencode hermes openclaw agy gemini qwen crush copilot amp iflow aider kimi cursor-agent kilocode auggie
 doskey ucn-install-ia=powershell -NoProfile -ExecutionPolicy Bypass -Command ". '%UCN_REPO_CMD%\laptop-powershell\Microsoft.PowerShell_profile.ps1' | Out-Null; ucn-install-ia"
 
 REM --- Comandos base (equivale a aliases.sh) ---
@@ -81,6 +84,7 @@ ECHO   %E%[35m^|%E%[0m Gemini CLI      %E%[1;32mgem     %E%[0m %E%[33mgem-full  
 ECHO   %E%[35m^|%E%[0m OpenCode        %E%[1;32mocode   %E%[0m %E%[33mocode-full   %E%[0m %E%[35m^|%E%[0m
 ECHO   %E%[35m^|%E%[0m Antigravity     %E%[1;32manti    %E%[0m %E%[33manti-full    %E%[0m %E%[35m^|%E%[0m
 ECHO   %E%[35m^|%E%[0m Hermes Agent    %E%[1;32mhermes  %E%[0m %E%[33mhermes-full  %E%[0m %E%[35m^|%E%[0m
+ECHO   %E%[35m^|%E%[0m OpenClaw        %E%[1;32mclaw    %E%[0m %E%[33m-            %E%[0m %E%[35m^|%E%[0m
 ECHO   %E%[35m^|%E%[0m Qwen Code       %E%[1;32mqwen    %E%[0m %E%[33mqwen-full    %E%[0m %E%[35m^|%E%[0m
 ECHO   %E%[35m^|%E%[0m Crush           %E%[1;32mcrush   %E%[0m %E%[33mcrush-full   %E%[0m %E%[35m^|%E%[0m
 ECHO   %E%[35m^|%E%[0m GitHub Copilot  %E%[1;32mcopilot %E%[0m %E%[33mcopilot-full %E%[0m %E%[35m^|%E%[0m

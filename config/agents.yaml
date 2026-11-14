@@ -60,6 +60,18 @@ agents:
       linux: ["/usr/bin/hermes", "/usr/local/bin/hermes"]
       windows: ["%LOCALAPPDATA%\\hermes\\hermes-agent\\venv\\Scripts\\hermes.exe", "%USERPROFILE%\\hermes-agent\\.venv\\Scripts\\hermes.exe"]
 
+  openclaw:
+    command: openclaw
+    env: UCN_OPENCLAW_BIN
+    wrapper: claw
+    full_args: ""
+    description: OpenClaw - asistente personal y Gateway autoalojado
+    known_paths:
+      termux: ["/data/data/com.termux/files/usr/bin/openclaw", "$HOME/.local/bin/openclaw"]
+      linux: ["/usr/local/bin/openclaw", "/usr/bin/openclaw", "$HOME/.local/bin/openclaw"]
+      macos: ["/usr/local/bin/openclaw", "/opt/homebrew/bin/openclaw", "$HOME/.local/bin/openclaw"]
+      windows: ["%APPDATA%\\npm\\openclaw.cmd", "%USERPROFILE%\\.local\\bin\\openclaw.cmd"]
+
   agy:
     command: agy
     env: UCN_AGY_BIN

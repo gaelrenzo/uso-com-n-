@@ -6,6 +6,11 @@
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 REPO_SKILLS_DIR="$SCRIPT_DIR/agent-skills"
+PLATFORM_SCRIPT="$SCRIPT_DIR/../scripts/ucn-platform.sh"
+[ -f "$PLATFORM_SCRIPT" ] && source "$PLATFORM_SCRIPT"
+UCN_DATA_DIR="${UCN_DATA_DIR:-$HOME/universida-datos}"
+UCN_SHARED_MEMORY_DIR="${UCN_SHARED_MEMORY_DIR:-$UCN_DATA_DIR/ia/memoria-compartida}"
+mkdir -p "$UCN_SHARED_MEMORY_DIR/skills"
 
 echo "🔄 Sincronizando skills de agentes desde: $REPO_SKILLS_DIR"
 
@@ -70,5 +75,9 @@ for skill_path in "$REPO_SKILLS_DIR"/*; do
     fi
   done
 done
+
+shared_skill_dir="$UCN_SHARED_MEMORY_DIR/skills/ucn-shared-memory"
+mkdir -p "$shared_skill_dir"
+cp "$REPO_SKILLS_DIR/ucn-shared-memory/SKILL.md" "$shared_skill_dir/SKILL.md"
 
 echo "🎉 ¡Sincronización de skills completada con éxito!"

@@ -8,16 +8,27 @@ import (
 	"runtime"
 	"strings"
 	"ucn/internal/config"
+	"ucn/internal/memory"
 )
 
 // SyncSkills loops through all agent skill directories and creates links
 func SyncSkills(cfg *config.Config, repoRoot string) error {
 	skillsDir := filepath.Join(repoRoot, "skills", "agent-skills")
+	sharedMemoryDir, err := memory.SharedDir()
+	if err != nil {
+		return fmt.Errorf("no se pudo resolver la memoria compartida: %w", err)
+	}
+	if err := memory.InitAt(sharedMemoryDir); err != nil {
+		return fmt.Errorf("no se pudo inicializar la memoria compartida: %w", err)
+	}
 	fmt.Printf("🔄 Sincronizando skills de agentes desde: %s\n", skillsDir)
 
 	// Ensure the skills source directory exists
 	if err := os.MkdirAll(skillsDir, 0755); err != nil {
 		return fmt.Errorf("error al crear el directorio de origen: %w", err)
+	}
+	if err := syncSharedMemorySkill(skillsDir, sharedMemoryDir); err != nil {
+		return fmt.Errorf("no se pudo copiar la skill de memoria al workspace de OpenClaw: %w", err)
 	}
 
 	// 1. Gather default and configured target directories
@@ -199,4 +210,21 @@ func ActiveTargetDirs(cfg *config.Config) ([]string, error) {
 	}
 
 	return targets, nil
+}
+
+func syncSharedMemorySkill(sourceDir, sharedDir string) error {
+	content, err := os.ReadFile(filepath.Join(sourceDir, "ucn-shared-memory", "SKILL.md"))
+	if err != nil {
+		return err
+	}
+	destDir := filepath.Join(sharedDir, "skills", "ucn-shared-memory")
+	if info, err := os.Lstat(destDir); err == nil && info.Mode()&os.ModeSymlink != 0 {
+		if err := os.Remove(destDir); err != nil {
+			return err
+		}
+	}
+	if err := os.MkdirAll(destDir, 0755); err != nil {
+		return err
+	}
+	return os.WriteFile(filepath.Join(destDir, "SKILL.md"), content, 0644)
 }

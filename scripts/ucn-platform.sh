@@ -30,6 +30,7 @@ fi
 UCN_REPO_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 
 # --- Directorio base de datos del usuario ---
+if [ -z "${UCN_DATA_DIR:-}" ]; then
 case "$UCN_PLATFORM" in
   termux)
     # En Termux: usar sdcard. Probar varios puntos de montaje comunes.
@@ -59,8 +60,10 @@ case "$UCN_PLATFORM" in
     UCN_DATA_DIR="$HOME/universida-datos"
     ;;
 esac
+fi
 
 # --- Rutas derivadas ---
+UCN_SHARED_MEMORY_DIR="${UCN_SHARED_MEMORY_DIR:-$UCN_DATA_DIR/ia/memoria-compartida}"
 UCN_NOTES_DIR="${UCN_NOTES_DIR:-$UCN_DATA_DIR/notas}"
 UCN_CLASE_DIR="${UCN_CLASE_DIR:-$UCN_DATA_DIR}"
 UCN_INFORMES_DIR="${UCN_INFORMES_DIR:-$UCN_DATA_DIR/informes}"
@@ -88,6 +91,7 @@ fi
 export UCN_PLATFORM
 export UCN_REPO_DIR
 export UCN_DATA_DIR
+export UCN_SHARED_MEMORY_DIR
 export UCN_NOTES_DIR
 export UCN_CLASE_DIR
 export UCN_INFORMES_DIR

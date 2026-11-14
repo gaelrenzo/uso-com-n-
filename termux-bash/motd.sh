@@ -80,6 +80,7 @@ Gemini CLI|gemini|gem|gem-full
 OpenCode|opencode|ocode|ocode-full
 Antigravity|agy|anti|anti-full
 Hermes Agent|hermes|hermes|hermes-full
+OpenClaw|openclaw|claw|-
 Qwen Code|qwen|qwen|qwen-full
 Crush|crush|crush|crush-full
 GitHub Copilot|copilot|copilot|copilot-full
