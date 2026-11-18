@@ -43,7 +43,8 @@ def detectar_trabajo():
 LOCAL = REMOTE = WORK = None
 HAY_PDFTOTEXT = bool(shutil.which("pdftotext"))
 SIN = "98_Por_Clasificar/Desde_celular_" + dt.date.today().strftime("%Y-%m")
-BASURA = re.compile(r"\.(aux|log|out|toc|fls|fdb_latexmk|synctex\.gz|bbl|bcf|blg|run\.xml|nav|snm)$|^~\$|^\.", re.I)
+BASURA = re.compile(r"\.(aux|log|out|toc|fls|fdb_latexmk|bbl|bcf|blg|run\.xml|nav|snm|vrb|lof|lot|xdv|pyc)$|\.synctex(\(busy\))?( \(\d+\))?\.gz$|^~\$|^\.", re.I)
+CARPETAS_TECNICAS = {"__pycache__", "node_modules", ".venv", "venv", ".ipynb_checkpoints"}
 
 # Semestre por fecha de modificación (S09 = 2026-II). Solo desempata.
 SEM = [("S06", "2025-03", "2025-07"), ("S07", "2025-08", "2026-01"),
@@ -171,7 +172,7 @@ def plan(raiz, cursos, subdirs, hashes):
     excep = dict((l.rstrip("\n").split("\t") + [""])[:2] for l in open(fe) if l.strip()) if os.path.exists(fe) else {}
     filas = []
     for dp, dns, fns in os.walk(raiz):
-        dns[:] = [d for d in dns if not d.startswith(".")]
+        dns[:] = [d for d in dns if not d.startswith(".") and d not in CARPETAS_TECNICAS]
         for f in sorted(fns):
             p = os.path.join(dp, f)
             rel = os.path.relpath(p, LOCAL).replace(os.sep, "/")
