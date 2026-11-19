@@ -9,6 +9,8 @@
 
 El MOTD muestra la plataforma, la ruta actual y solo los agentes cuyo ejecutable se detecta en el equipo. Bash lo limita a sesiones interactivas; PowerShell lo omite cuando la salida está redirigida.
 
+Los textos, comandos rápidos, agentes y accesos de productividad salen de un solo archivo: **`config/terminal-ui.conf`**. Lo leen los tres shells (`termux-bash/motd.sh`, `laptop-powershell/Microsoft.PowerShell_profile.ps1` y `laptop-cmd/ucn.cmd`), así que un cambio ahí se ve igual en el celular, la tablet y la laptop. Para editarlo usa `editui` en cualquier dispositivo (o `nano config/terminal-ui.conf` en Termux/Linux). `./scripts/test-all.sh quick` verifica que cada agente de `config/agents.yaml` tenga su fila en ese archivo.
+
 Para una bienvenida compacta, define `UCN_MOTD_COMPACT=1` antes de iniciar la consola. En Bash, por ejemplo: `export UCN_MOTD_COMPACT=1`; en PowerShell: `$env:UCN_MOTD_COMPACT = "1"`. En Termux el modo compacto viene activado por defecto; define `UCN_MOTD_COMPACT=0` para ver el panel completo. En las demás plataformas el valor `0` o vacío conserva el panel completo, y en Bash también se usa el compacto si la terminal tiene menos de 70 columnas.
 
 ---
@@ -88,7 +90,7 @@ Consulta la [guía oficial de WhatsApp](https://docs.openclaw.ai/whatsapp) y
 | `update` | `apt update && apt upgrade -y` | `winget upgrade --all` | `winget upgrade --all` |
 | `weather` | `curl wttr.in/Puno` | `curl.exe -s wttr.in/Puno` | `curl.exe -s wttr.in/Puno` |
 | `sysinfo` | `fastfetch` | `fastfetch` / `systeminfo` | `systeminfo` |
-| `editui` | `nano ~/.bashrc` | `notepad $PROFILE` | `notepad ucn.cmd` |
+| `editui` | `nano config/terminal-ui.conf` | `notepad config\terminal-ui.conf` | `notepad config\terminal-ui.conf` |
 | `cls` | limpia y recarga el MOTD | limpia y recarga el MOTD | limpiar pantalla (nativo) |
 | `uni` | `$UCN_DATA_DIR` | `$env:UCN_DATA_DIR` | `%USERPROFILE%\universida-datos` |
 | `notas` / `informes` / `cursos` / `labs` | carpetas de datos (crea si faltan) | mismas carpetas (crea si faltan) | mismas carpetas |
@@ -210,6 +212,8 @@ que consultan el CLI Go (`ucn doctor`, `ucn agents`) y los tests. Por cada agent
 1. **Instalar** el binario en cada dispositivo (o al menos en el PATH).
 2. **`config/agents.yaml`**: anadir la entrada con `command`, `env`, `wrapper`,
    `full_args` y `known_paths`. El doctor y la suite de tests lo detectan solo.
+   Anade tambien su fila `agent|Nombre|binario|normal|full` en
+   `config/terminal-ui.conf` para que aparezca en el MOTD de todos los shells.
 3. **`termux-bash/ia-tools.sh`**: anadir su caso en `ucn_resolve` (rutas conocidas)
    y su lanzador `nombre() { ucn_run <tool> "$@"; }`.
 4. **`laptop-powershell/Microsoft.PowerShell_profile.ps1`**: anadir la ruta al hash

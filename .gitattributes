@@ -1,2 +1,4 @@
 # Scripts siempre en LF (evita romper Termux/Linux desde copias Windows)
 *.sh text eol=lf
+# Datos del MOTD: CRLF para que "for /f" de CMD los lea igual en Windows
+config/terminal-ui.conf text eol=crlf

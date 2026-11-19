@@ -12,6 +12,7 @@ El sistema utiliza una arquitectura híbrida dividida en dos archivos para garan
 | :--- | :--- | :--- |
 | **`config.yaml`** | Configuración de comportamiento y rutas del sistema. | **Excluido** (Ignorado en `.gitignore`). Se crea a partir de `config.yaml.example`. |
 | **`.env`** | Credenciales, tokens y variables de entorno sensibles. | **Excluido** (Ignorado en `.gitignore`). Se crea a partir de `.env.example`. |
+| **`terminal-ui.conf`** | Textos, comandos, agentes y accesos del MOTD para Bash, PowerShell y CMD. | **Versionado**. Fuente única de personalización; editarlo con `editui`. |
 
 ---
 

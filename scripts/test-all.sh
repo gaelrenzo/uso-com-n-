@@ -164,6 +164,7 @@ check_structure() {
   header "Estructura del repositorio"
   local required=(
     config/agents.yaml
+    config/terminal-ui.conf
     config/config.yaml.example
     config/.env.example
     profiles/default/profile.yaml
@@ -310,6 +311,17 @@ check_wrapper_parity() {
     ok "config/agents.yaml registra los $(echo "$UCN_IA_TOOLS_EXPECTED" | wc -w) agentes"
   else
     bad "agentes sin registrar en agents.yaml: ${reg[*]}"
+  fi
+
+  # La tabla del MOTD sale de config/terminal-ui.conf y debe cubrir el registro.
+  local uic="$REPO_ROOT/config/terminal-ui.conf" ui=()
+  for tool in $UCN_IA_TOOLS_EXPECTED; do
+    awk -F'|' -v t="$tool" '$1=="agent" && $3==t {found=1} END {exit !found}' "$uic" || ui+=("$tool")
+  done
+  if [ ${#ui[@]} -eq 0 ]; then
+    ok "config/terminal-ui.conf lista los $(echo "$UCN_IA_TOOLS_EXPECTED" | wc -w) agentes"
+  else
+    bad "agentes sin fila en terminal-ui.conf: ${ui[*]}"
   fi
 }
 

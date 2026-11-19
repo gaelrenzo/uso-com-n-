@@ -59,7 +59,7 @@ doskey ll=dir /a
 doskey update=winget upgrade --all
 doskey weather=curl.exe -s wttr.in/Puno
 doskey sysinfo=systeminfo
-doskey editui=notepad "%UCN_CMD_DIR%ucn.cmd"
+doskey editui=notepad "%UCN_REPO_CMD%\config\terminal-ui.conf"
 
 REM --- Navegacion (equivale a aliases.sh) ---
 doskey uni=cd /d %USERPROFILE%\universida-datos
@@ -74,30 +74,69 @@ REM --- Menu solo en sesiones interactivas (AutoRun tambien corre en "cmd /c") -
 echo %CMDCMDLINE% | find /i "/c" >nul && goto :eof
 REM ESC para colores ANSI (Windows 10+)
 for /F "delims=#" %%a in ('"prompt #$E# & for %%a in (1) do rem"') do set "E=%%a"
+
+REM --- MOTD: datos en config\terminal-ui.conf (fuente unica) ---
+set "UCN_UI_CONF=%UCN_REPO_CMD%\config\terminal-ui.conf"
+if not exist "%UCN_UI_CONF%" goto :ucn_motd_missing
+
 ECHO.
-ECHO   %E%[35m+-----------%E%[1;33m HERRAMIENTAS IA %E%[35m------------+%E%[0m
+for /f "usebackq eol=# tokens=1,2,3 delims=|" %%A in ("%UCN_UI_CONF%") do (
+  if /i "%%A"=="section" if /i "%%B"=="commands" ECHO   %E%[33m%%C:%E%[0m
+)
+for /f "usebackq eol=# tokens=1,2,3 delims=|" %%A in ("%UCN_UI_CONF%") do (
+  if /i "%%A"=="command" ECHO   %E%[32m%%~B%E%[0m = %%~C
+)
+ECHO.
+
+for /f "usebackq eol=# tokens=1,2,3 delims=|" %%A in ("%UCN_UI_CONF%") do (
+  if /i "%%A"=="section" if /i "%%B"=="agents" ECHO   %E%[33m%%C:%E%[0m
+)
+ECHO   %E%[35m+----------------------------------------+%E%[0m
 ECHO   %E%[35m^|%E%[0m %E%[1;36mAgente          Normal   Full (yolo)  %E%[0m %E%[35m^|%E%[0m
 ECHO   %E%[35m^|----------------------------------------^|%E%[0m
-ECHO   %E%[35m^|%E%[0m Claude Code     %E%[1;32mcl      %E%[0m %E%[33mcl-full      %E%[0m %E%[35m^|%E%[0m
-ECHO   %E%[35m^|%E%[0m Codex           %E%[1;32mcodex   %E%[0m %E%[33mcodex-full   %E%[0m %E%[35m^|%E%[0m
-ECHO   %E%[35m^|%E%[0m Gemini CLI      %E%[1;32mgem     %E%[0m %E%[33mgem-full     %E%[0m %E%[35m^|%E%[0m
-ECHO   %E%[35m^|%E%[0m OpenCode        %E%[1;32mocode   %E%[0m %E%[33mocode-full   %E%[0m %E%[35m^|%E%[0m
-ECHO   %E%[35m^|%E%[0m Antigravity     %E%[1;32manti    %E%[0m %E%[33manti-full    %E%[0m %E%[35m^|%E%[0m
-ECHO   %E%[35m^|%E%[0m Hermes Agent    %E%[1;32mhermes  %E%[0m %E%[33mhermes-full  %E%[0m %E%[35m^|%E%[0m
-ECHO   %E%[35m^|%E%[0m OpenClaw        %E%[1;32mclaw    %E%[0m %E%[33m-            %E%[0m %E%[35m^|%E%[0m
-ECHO   %E%[35m^|%E%[0m Qwen Code       %E%[1;32mqwen    %E%[0m %E%[33mqwen-full    %E%[0m %E%[35m^|%E%[0m
-ECHO   %E%[35m^|%E%[0m Crush           %E%[1;32mcrush   %E%[0m %E%[33mcrush-full   %E%[0m %E%[35m^|%E%[0m
-ECHO   %E%[35m^|%E%[0m GitHub Copilot  %E%[1;32mcopilot %E%[0m %E%[33mcopilot-full %E%[0m %E%[35m^|%E%[0m
-ECHO   %E%[35m^|%E%[0m Amp             %E%[1;32mamp     %E%[0m %E%[33mamp-full     %E%[0m %E%[35m^|%E%[0m
-ECHO   %E%[35m^|%E%[0m iFlow           %E%[1;32miflow   %E%[0m %E%[33miflow-full   %E%[0m %E%[35m^|%E%[0m
-ECHO   %E%[35m^|%E%[0m Aider           %E%[1;32maider   %E%[0m %E%[33maider-full   %E%[0m %E%[35m^|%E%[0m
-ECHO   %E%[35m^|%E%[0m Kimi CLI        %E%[1;32mkimi    %E%[0m %E%[33mkimi-full    %E%[0m %E%[35m^|%E%[0m
-ECHO   %E%[35m^|%E%[0m Cursor Agent    %E%[1;32mcursor  %E%[0m %E%[33mcursor-full  %E%[0m %E%[35m^|%E%[0m
-ECHO   %E%[35m^|%E%[0m Kilo Code       %E%[1;32mkilo    %E%[0m %E%[33m-            %E%[0m %E%[35m^|%E%[0m
-ECHO   %E%[35m^|%E%[0m Augment         %E%[1;32mauggie  %E%[0m %E%[33m-            %E%[0m %E%[35m^|%E%[0m
-ECHO   %E%[35m^|----------------------------------------^|%E%[0m
-ECHO   %E%[35m^|%E%[0m %E%[36mucn-agents    %E%[0m ver instaladas          %E%[35m^|%E%[0m
-ECHO   %E%[35m^|%E%[0m %E%[36mucn-install-ia%E%[0m instalar las que falten %E%[35m^|%E%[0m
+set "UCN_MOTD_ANY=0"
+for /f "usebackq eol=# tokens=1,2,3,4,5 delims=|" %%A in ("%UCN_UI_CONF%") do (
+  if /i "%%A"=="agent" (
+    where /q "%%C" >nul 2>&1
+    if not errorlevel 1 (
+      call :ucn_cmd_agent "%%B" "%%D" "%%E"
+      set "UCN_MOTD_ANY=1"
+    )
+  )
+)
+if "%UCN_MOTD_ANY%"=="0" ECHO   %E%[35m^|%E%[0m No se detectaron agentes instalados.   %E%[35m^|%E%[0m
 ECHO   %E%[35m+----------------------------------------+%E%[0m
 ECHO.
+
+for /f "usebackq eol=# tokens=1,2,3 delims=|" %%A in ("%UCN_UI_CONF%") do (
+  if /i "%%A"=="section" if /i "%%B"=="productivity" ECHO   %E%[33m%%C:%E%[0m
+)
+for /f "usebackq eol=# tokens=1,2,3 delims=|" %%A in ("%UCN_UI_CONF%") do (
+  if /i "%%A"=="nav" ECHO   %E%[32m%%~B%E%[0m = %%~C
+)
+ECHO.
+goto :ucn_motd_done
+
+:ucn_motd_missing
+ECHO.
+ECHO   [UCN] No se encontro config\terminal-ui.conf
+ECHO.
+
+:ucn_motd_done
 set "E="
+set "UCN_MOTD_ANY="
+set "UCN_UI_CONF="
+goto :eof
+
+REM --- Fila del cuadro de agentes (ancho fijo 15/8/13) ---
+:ucn_cmd_agent
+setlocal EnableDelayedExpansion
+set "N=%~1                              "
+set "R=%~2                        "
+set "F=%~3                              "
+set "N=!N:~0,15!"
+set "R=!R:~0,8!"
+set "F=!F:~0,13!"
+ECHO   !E![35m^|!E![0m !N! !E![1;32m! !R! !E![33m! !F! !E![35m^|!E![0m
+endlocal
+exit /b

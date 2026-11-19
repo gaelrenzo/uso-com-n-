@@ -33,27 +33,42 @@ _ucn_motd_memory() {
   fi
 }
 
-_ucn_motd_agent() {
-  local name="$1" tool="$2" normal="$3" full="$4"
-  if command -v ucn_resolve >/dev/null 2>&1 && ucn_resolve "$tool" >/dev/null 2>&1; then
-    printf '  %-15s %-10s %s\n' "$name" "$normal" "$full"
-    return 0
+# --- Fuente unica de personalizacion (config/terminal-ui.conf) ---
+_ucn_motd_ui_file() {
+  local f
+  if [ -n "${UCN_REPO_DIR:-}" ]; then
+    f="$UCN_REPO_DIR/config/terminal-ui.conf"
+    if [ -f "$f" ]; then
+      printf '%s\n' "$f"
+      return 0
+    fi
   fi
-  return 1
+  f="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." 2>/dev/null && pwd)/config/terminal-ui.conf"
+  [ -f "$f" ] && printf '%s\n' "$f"
+}
+
+_ucn_motd_ui_text() {
+  awk -F'|' -v t="$1" -v k="$2" '{sub(/\r$/,"")} $1==t && $2==k {print $3; exit}' "$3"
 }
 
 # Compacto si se pide o si la pantalla es angosta (celular en vertical)
 if [ "${UCN_MOTD_COMPACT:-0}" = 1 ] || [ "${COLUMNS:-$(tput cols 2>/dev/null || echo 80)}" -lt 70 ]; then
   printf '%s UCN %s %s  %s  %s\n' "$(_ucn_motd_color '30;45')" "$(_ucn_motd_reset)" "$(date '+%a %d %b %H:%M')" "$(_ucn_motd_memory 2>/dev/null)" "${UCN_PLATFORM:-bash}"
   printf '%sucn-agents · sysinfo · btop · lazygit · z <dir>%s\n' "$(_ucn_motd_color 90)" "$(_ucn_motd_reset)"
-  unset -f _ucn_motd_color _ucn_motd_reset _ucn_motd_memory _ucn_motd_agent
+  unset -f _ucn_motd_color _ucn_motd_reset _ucn_motd_memory _ucn_motd_ui_file _ucn_motd_ui_text
   return 0
 fi
 
+_ucn_motd_ui="$(_ucn_motd_ui_file)"
+_ucn_motd_title="UCN - Mochila Digital"
+_ucn_motd_welcome="Bienvenido de vuelta"
+[ -n "$_ucn_motd_ui" ] && _ucn_motd_title="$(_ucn_motd_ui_text label title "$_ucn_motd_ui")"
+[ -n "$_ucn_motd_ui" ] && _ucn_motd_welcome="$(_ucn_motd_ui_text label welcome "$_ucn_motd_ui")"
+
 clear
 printf '%s=====================================================%s\n' "$(_ucn_motd_color 35)" "$(_ucn_motd_reset)"
-printf '        %sBienvenido de vuelta%s\n' "$(_ucn_motd_color 32)" "$(_ucn_motd_reset)"
-printf '        %sUCN - Mochila Digital%s\n' "$(_ucn_motd_color 33)" "$(_ucn_motd_reset)"
+printf '        %s%s%s\n' "$(_ucn_motd_color 32)" "$_ucn_motd_welcome" "$(_ucn_motd_reset)"
+printf '        %s%s%s\n' "$(_ucn_motd_color 33)" "$_ucn_motd_title" "$(_ucn_motd_reset)"
 printf '        %s%s%s\n' "$(_ucn_motd_color 33)" "${UCN_PLATFORM:-bash}" "$(_ucn_motd_reset)"
 printf '%s=====================================================%s\n\n' "$(_ucn_motd_color 35)" "$(_ucn_motd_reset)"
 printf '%sFecha:%s      %s\n' "$(_ucn_motd_color 36)" "$(_ucn_motd_reset)" "$(date '+%A, %d %B %Y')"
@@ -64,39 +79,45 @@ if _ucn_motd_mem="$(_ucn_motd_memory 2>/dev/null)" && [ -n "$_ucn_motd_mem" ]; t
   printf '%sMemoria:%s    %s\n' "$(_ucn_motd_color 36)" "$(_ucn_motd_reset)" "$_ucn_motd_mem"
 fi
 
-printf '\n%sComandos rapidos:%s\n' "$(_ucn_motd_color 33)" "$(_ucn_motd_reset)"
-printf '  update   = Actualiza paquetes\n  cls      = Limpia y recarga\n  ll       = Lista detallada\n  uni      = Ir a universida-datos\n  weather  = Clima en Puno\n  sysinfo  = Info del sistema\n  editui   = Editar configuracion\n'
+if [ -z "$_ucn_motd_ui" ]; then
+  printf '\n%sNo se encontro config/terminal-ui.conf%s\n' "$(_ucn_motd_color 33)" "$(_ucn_motd_reset)"
+else
+  printf '\n%s%s:%s\n' "$(_ucn_motd_color 33)" "$(_ucn_motd_ui_text section commands "$_ucn_motd_ui")" "$(_ucn_motd_reset)"
+  while IFS='|' read -r _ucn_kind _ucn_name _ucn_desc _; do
+    [ "$_ucn_kind" = command ] || continue
+    _ucn_desc="${_ucn_desc%$'\r'}"
+    printf '  %s%-15s%s= %s\n' "$(_ucn_motd_color 32)" "$_ucn_name" "$(_ucn_motd_reset)" "$_ucn_desc"
+  done < "$_ucn_motd_ui"
 
-printf '\n%sAgentes instalados:%s\n' "$(_ucn_motd_color 33)" "$(_ucn_motd_reset)"
-_ucn_motd_found=0
-while IFS='|' read -r _ucn_name _ucn_tool _ucn_normal _ucn_full; do
-  if _ucn_motd_agent "$_ucn_name" "$_ucn_tool" "$_ucn_normal" "$_ucn_full"; then
-    _ucn_motd_found=1
+  printf '\n%s%s:%s\n' "$(_ucn_motd_color 33)" "$(_ucn_motd_ui_text section agents "$_ucn_motd_ui")" "$(_ucn_motd_reset)"
+  _ucn_motd_found=0
+  while IFS='|' read -r _ucn_kind _ucn_name _ucn_tool _ucn_normal _ucn_full; do
+    [ "$_ucn_kind" = agent ] || continue
+    _ucn_full="${_ucn_full%$'\r'}"
+    if command -v ucn_resolve >/dev/null 2>&1 && ucn_resolve "$_ucn_tool" >/dev/null 2>&1; then
+      printf '  %-15s %s%-8s%s %s%-12s%s\n' "$_ucn_name" "$(_ucn_motd_color 32)" "$_ucn_normal" "$(_ucn_motd_reset)" "$(_ucn_motd_color 33)" "$_ucn_full" "$(_ucn_motd_reset)"
+      _ucn_motd_found=1
+    fi
+  done < "$_ucn_motd_ui"
+  if [ "$_ucn_motd_found" = 0 ]; then
+    printf '  No se detectaron agentes instalados.\n'
   fi
-done <<'UCN_AGENTS'
-Claude Code|claude|cl|cl-full
-Codex|codex|codex|codex-full
-Gemini CLI|gemini|gem|gem-full
-OpenCode|opencode|ocode|ocode-full
-Antigravity|agy|anti|anti-full
-Hermes Agent|hermes|hermes|hermes-full
-OpenClaw|openclaw|claw|-
-Qwen Code|qwen|qwen|qwen-full
-Crush|crush|crush|crush-full
-GitHub Copilot|copilot|copilot|copilot-full
-Amp|amp|amp|amp-full
-iFlow|iflow|iflow|iflow-full
-Aider|aider|aider|aider-full
-Kimi CLI|kimi|kimi|kimi-full
-Cursor Agent|cursor-agent|cursor|cursor-full
-Kilo Code|kilocode|kilo|-
-Augment|auggie|auggie|-
-UCN_AGENTS
-if [ "$_ucn_motd_found" = 0 ]; then
-  printf '  No se detectaron agentes instalados.\n'
+
+  printf '\n%s%s:%s ' "$(_ucn_motd_color 33)" "$(_ucn_motd_ui_text section productivity "$_ucn_motd_ui")" "$(_ucn_motd_reset)"
+  _ucn_motd_first=1
+  while IFS='|' read -r _ucn_kind _ucn_name _ucn_desc; do
+    [ "$_ucn_kind" = nav ] || continue
+    if [ "$_ucn_motd_first" = 1 ]; then
+      _ucn_motd_first=0
+    else
+      printf ' | '
+    fi
+    printf '%s' "$_ucn_name"
+  done < "$_ucn_motd_ui"
+  printf '\n'
 fi
 
-printf '\n%sProductividad:%s notas | informes | cursos | labs | workspace\n' "$(_ucn_motd_color 33)" "$(_ucn_motd_reset)"
 printf '%s=====================================================%s\n' "$(_ucn_motd_color 35)" "$(_ucn_motd_reset)"
-unset _ucn_motd_mem _ucn_motd_found _ucn_name _ucn_tool _ucn_normal _ucn_full
-unset -f _ucn_motd_color _ucn_motd_reset _ucn_motd_memory _ucn_motd_agent
+unset _ucn_motd_ui _ucn_motd_title _ucn_motd_welcome _ucn_motd_mem _ucn_motd_found _ucn_motd_first
+unset _ucn_kind _ucn_name _ucn_tool _ucn_normal _ucn_full _ucn_desc
+unset -f _ucn_motd_color _ucn_motd_reset _ucn_motd_memory _ucn_motd_ui_file _ucn_motd_ui_text

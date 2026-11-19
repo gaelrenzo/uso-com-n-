@@ -53,6 +53,7 @@ UCN/
 │   └── install-arch-xfce.sh   # Instalador Arch Linux ARM + XFCE
 ├── config/
 │   ├── agents.yaml          # Registro central de agentes IA
+│   ├── terminal-ui.conf     # MOTD unico para Bash, PowerShell y CMD
 │   ├── config.yaml.example  # Config con paths por plataforma
 │   └── .env.example         # Tokens y UCN_<AGENTE>_BIN (nunca subir el .env)
 ├── .github/workflows/ci.yml # CI: gofmt, vet, build, tests, bash syntax

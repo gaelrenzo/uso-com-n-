@@ -8,7 +8,7 @@ alias cls="clear && source ~/.bashrc"
 alias ll="ls -la"
 alias weather="curl wttr.in/Puno"
 alias sysinfo="fastfetch"
-alias editui="nano ~/.bashrc"
+alias editui='nano "$UCN_REPO_DIR/config/terminal-ui.conf"'
 
 # ==========================================
 # ALIASES UCN (Mochila Digital)

@@ -238,7 +238,7 @@ function ports { Get-NetTCPConnection -State Listen }
 function ipinfo { (Invoke-WebRequest -UseBasicParsing "https://ipinfo.io").Content }
 Set-UcnAlias -Name weather -Target Get-Weather
 Set-UcnAlias -Name sysinfo -Target Get-SysInfo
-Set-UcnAlias -Name editui -Target Edit-Profile
+Set-UcnAlias -Name editui -Target Edit-UiConf
 Set-UcnAlias -Name update -Target Update-System
 
 # --- FUNCTIONS ---
@@ -256,6 +256,10 @@ function Get-SysInfo {
 
 function Edit-Profile {
     notepad $PROFILE
+}
+
+function Edit-UiConf {
+    notepad (Join-Path $RepoDir "config\terminal-ui.conf")
 }
 
 function Update-System {
@@ -314,23 +318,64 @@ if ((Get-Module PSReadLine).Version -ge [version]"2.1" -and -not [Console]::IsOu
 }
 $env:BAT_THEME = "ansi"
 
-# --- MOTD ---
+# --- MOTD (datos en config\terminal-ui.conf) ---
+function Read-UcnTerminalUi {
+    param([string]$Path)
+    $Ui = @{
+        Labels   = @{}
+        Sections = @{}
+        Commands = @()
+        Agents   = @()
+        Nav      = @()
+    }
+    if (-not $Path -or -not (Test-Path -LiteralPath $Path)) { return $null }
+    foreach ($Line in Get-Content -LiteralPath $Path) {
+        if ($Line -match '^\s*#' -or $Line -match '^\s*$') { continue }
+        $p = $Line.Split('|')
+        switch ($p[0]) {
+            'label'   { if ($p.Count -ge 3) { $Ui.Labels[$p[1]] = $p[2] } }
+            'section' { if ($p.Count -ge 3) { $Ui.Sections[$p[1]] = $p[2] } }
+            'command' { if ($p.Count -ge 3) { $Ui.Commands += ,@($p[1], $p[2]) } }
+            'agent'   { if ($p.Count -ge 5) { $Ui.Agents += ,@($p[1], $p[2], $p[3], $p[4]) } }
+            'nav'     {
+                if ($p.Count -ge 2) {
+                    $Desc = ""
+                    if ($p.Count -ge 3) { $Desc = $p[2] }
+                    $Ui.Nav += ,@($p[1], $Desc)
+                }
+            }
+        }
+    }
+    return $Ui
+}
+
+function Get-UcnUiText {
+    param($Ui, [string]$Type, [string]$Key, [string]$Fallback)
+    if ($Ui -and $Ui.$Type -and $Ui.$Type[$Key]) { return $Ui.$Type[$Key] }
+    return $Fallback
+}
+
 function Show-MOTD {
     if ($env:UCN_MOTD_COMPACT -eq "1") {
         Write-Host ("UCN | Windows | {0}" -f (Get-Location)) -ForegroundColor Cyan
         return
     }
+    $Ui = Read-UcnTerminalUi (Join-Path $RepoDir "config\terminal-ui.conf")
+    $Welcome = Get-UcnUiText $Ui "Labels" "welcome" "Bienvenido de vuelta"
+    $Title = Get-UcnUiText $Ui "Labels" "title" "UCN - Mochila Digital"
+
     Clear-Host
     Write-Host "=====================================================" -ForegroundColor Magenta
-    Write-Host "        Bienvenido de vuelta (Windows)" -ForegroundColor Green
-    Write-Host "        UCN - Mochila Digital" -ForegroundColor Yellow
+    Write-Host "        $Welcome" -ForegroundColor Green
+    Write-Host "        $Title" -ForegroundColor Yellow
+    Write-Host "        Windows" -ForegroundColor Yellow
     Write-Host "=====================================================" -ForegroundColor Magenta
     Write-Host ""
-    Write-Host "  Fecha:      $((Get-Date).ToString('dddd, dd MMMM yyyy'))" -ForegroundColor Cyan
-    Write-Host "  Hora:       $((Get-Date).ToString('hh:mm tt'))" -ForegroundColor Cyan
-    Write-Host "  Directorio: $(Get-Location)" -ForegroundColor Cyan
-    Write-Host "  Repo:       $RepoDir" -ForegroundColor Cyan
-    
+    Write-Host "Fecha:      $((Get-Date).ToString('dddd, dd MMMM yyyy'))" -ForegroundColor Cyan
+    Write-Host "Hora:       $((Get-Date).ToString('hh:mm tt'))" -ForegroundColor Cyan
+    Write-Host "Directorio: $(Get-Location)" -ForegroundColor Cyan
+    Write-Host "Plataforma: Windows" -ForegroundColor Cyan
+
     try {
         $os = Get-CimInstance Win32_OperatingSystem -ErrorAction SilentlyContinue
         if ($os) {
@@ -338,43 +383,27 @@ function Show-MOTD {
             $free = [math]::Round($os.FreePhysicalMemory / 1MB, 2)
             $used = [math]::Round($total - $free, 2)
             $percent = [math]::Round(($used / $total) * 100, 2)
-            Write-Host "  Memoria:    $used GB / $total GB ($percent%)" -ForegroundColor Cyan
+            Write-Host "Memoria:    $used GB / $total GB ($percent%)" -ForegroundColor Cyan
         }
     } catch {}
     Write-Host ""
-    
-    Write-Host "  [ATAJOS RAPIDOS]" -ForegroundColor Yellow
-    Write-Host "  update      = Actualiza paquetes (winget)" -ForegroundColor Green
-    Write-Host "  cls         = Limpia pantalla y recarga MOTD" -ForegroundColor Green
-    Write-Host "  ll          = Listar archivos" -ForegroundColor Green
-    Write-Host "  uni         = Ir a universida-datos" -ForegroundColor Green
-    Write-Host "  weather     = Clima en Puno" -ForegroundColor Green
-    Write-Host "  sysinfo     = Info del sistema" -ForegroundColor Green
-    Write-Host "  editui      = Editar perfil PowerShell" -ForegroundColor Green
+
+    if (-not $Ui) {
+        Write-Host "No se encontro config\terminal-ui.conf" -ForegroundColor Yellow
+        Write-Host "=====================================================" -ForegroundColor Magenta
+        return
+    }
+
+    Write-Host ("{0}:" -f $Ui.Sections['commands']) -ForegroundColor Yellow
+    foreach ($c in $Ui.Commands) {
+        Write-Host ("  {0,-15}= {1}" -f $c[0], $c[1]) -ForegroundColor Green
+    }
     Write-Host ""
-    
+
     # Mostrar solo agentes cuyo ejecutable existe en este equipo.
     $line = "-" * 40
-    $agents = @(
-        @("Claude Code","claude","cl","cl-full"),
-        @("Codex","codex","codex","codex-full"),
-        @("Gemini CLI","gemini","gem","gem-full"),
-        @("OpenCode","opencode","ocode","ocode-full"),
-        @("Antigravity","agy","anti","anti-full"),
-        @("Hermes Agent","hermes","hermes","hermes-full"),
-        @("OpenClaw","openclaw","claw","-"),
-        @("Qwen Code","qwen","qwen","qwen-full"),
-        @("Crush","crush","crush","crush-full"),
-        @("GitHub Copilot","copilot","copilot","copilot-full"),
-        @("Amp","amp","amp","amp-full"),
-        @("iFlow","iflow","iflow","iflow-full"),
-        @("Aider","aider","aider","aider-full"),
-        @("Kimi CLI","kimi","kimi","kimi-full"),
-        @("Cursor Agent","cursor-agent","cursor","cursor-full"),
-        @("Kilo Code","kilocode","kilo","-"),
-        @("Augment","auggie","auggie","-")
-    ) | Where-Object { Get-UcnAgentBin $_[1] }
-    Write-Host "  [AGENTES INSTALADOS]" -ForegroundColor Yellow
+    $agents = @($Ui.Agents | Where-Object { Get-UcnAgentBin $_[1] })
+    Write-Host ("{0}:" -f $Ui.Sections['agents']) -ForegroundColor Yellow
     if (-not $agents) {
         Write-Host "  No se detectaron agentes instalados." -ForegroundColor DarkGray
     }
@@ -385,23 +414,13 @@ function Show-MOTD {
         Write-Host ("{0,-13} " -f $r[3]) -ForegroundColor Yellow -NoNewline
         Write-Host "|" -ForegroundColor Magenta
     }
-    Write-Host "  |$line|" -ForegroundColor Magenta
-    foreach ($r in @(@("ucn-agents","ver instaladas"), @("ucn-install-ia","instalar las que falten"))) {
-        Write-Host "  |" -ForegroundColor Magenta -NoNewline
-        Write-Host (" {0,-14} " -f $r[0]) -ForegroundColor Cyan -NoNewline
-        Write-Host ("{0,-23} " -f $r[1]) -NoNewline
-        Write-Host "|" -ForegroundColor Magenta
-    }
     Write-Host "  +$line+" -ForegroundColor Magenta
     Write-Host ""
 
-    Write-Host "  [PRODUCTIVIDAD]" -ForegroundColor Yellow
-    Write-Host "  notas       = Ir a notas" -ForegroundColor Green
-    Write-Host "  informes    = Ir a informes" -ForegroundColor Green
-    Write-Host "  cursos      = Ir a cursos" -ForegroundColor Green
-    Write-Host "  labs        = Ir a laboratorios" -ForegroundColor Green
-    Write-Host "  workspace   = Ir a workspace" -ForegroundColor Green
-    Write-Host "  repos       = Listar repositorios" -ForegroundColor Green
+    Write-Host ("{0}:" -f $Ui.Sections['productivity']) -ForegroundColor Yellow
+    foreach ($n in $Ui.Nav) {
+        Write-Host ("  {0,-15}= {1}" -f $n[0], $n[1]) -ForegroundColor Green
+    }
     Write-Host ""
 
     Write-Host "=====================================================" -ForegroundColor Magenta
