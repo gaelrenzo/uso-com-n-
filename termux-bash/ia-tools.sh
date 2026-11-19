@@ -264,7 +264,7 @@ ucn-install-ia() {
     curl -fsSL https://openclaw.ai/install.sh | bash -s -- --no-onboard || echo "fallo OpenClaw"
   fi
   command -v uv >/dev/null || curl -LsSf https://astral.sh/uv/install.sh | sh
-  ucn_resolve aider >/dev/null || uv tool install --python 3.12 aider-chat || echo "✗ fallo aider"
+  ucn_resolve aider >/dev/null || UV_LINK_MODE=copy uv tool install --python 3.12 aider-chat || echo "✗ fallo aider"
   ucn_resolve kimi  >/dev/null || UV_LINK_MODE=copy uv tool install kimi-cli || echo "✗ fallo kimi"
   ucn_resolve cursor-agent >/dev/null || curl -fsS https://cursor.com/install | bash || echo "✗ fallo cursor"
   ucn-agents

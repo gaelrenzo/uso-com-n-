@@ -200,6 +200,19 @@ El resolutor busca el ejecutable en este **orden** (igual en bash y PowerShell):
   echo "$UCN_REPO_DIR" && cd "$UCN_REPO_DIR" && git pull
   ```
 
+### 4.8 `ucn-install-ia` falla al instalar `aider` con "Operation not permitted"
+- **Causa:** `uv` intenta crear hardlinks y Android/proot los bloquea (`os error 1`).
+  Un intento fallido deja el entorno `aider-chat` a medias (por ejemplo, sin
+  `watchfiles/__init__.py`).
+- **Solucion:** limpiar el entorno/cache y reinstalar copiando archivos:
+  ```shell
+  uv tool uninstall aider-chat 2>/dev/null
+  uv cache clean
+  UV_LINK_MODE=copy uv tool install --python 3.12 aider-chat
+  aider --version
+  ```
+  `ucn-install-ia` ya usa `UV_LINK_MODE=copy` para evitarlo.
+
 ---
 
 ## 5. Registro central de agentes (`config/agents.yaml`)
