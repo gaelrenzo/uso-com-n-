@@ -11,7 +11,13 @@ El MOTD muestra la plataforma, la ruta actual y solo los agentes cuyo ejecutable
 
 Los textos, comandos rápidos, agentes y accesos de productividad salen de un solo archivo: **`config/terminal-ui.conf`**. Lo leen los tres shells (`termux-bash/motd.sh`, `laptop-powershell/Microsoft.PowerShell_profile.ps1` y `laptop-cmd/ucn.cmd`), así que un cambio ahí se ve igual en el celular, la tablet y la laptop. Para editarlo usa `editui` en cualquier dispositivo (o `nano config/terminal-ui.conf` en Termux/Linux). `./scripts/test-all.sh quick` verifica que cada agente de `config/agents.yaml` tenga su fila en ese archivo.
 
-Para una bienvenida compacta, define `UCN_MOTD_COMPACT=1` antes de iniciar la consola. En Bash, por ejemplo: `export UCN_MOTD_COMPACT=1`; en PowerShell: `$env:UCN_MOTD_COMPACT = "1"`. En Termux el modo compacto viene activado por defecto; define `UCN_MOTD_COMPACT=0` para ver el panel completo. En las demás plataformas el valor `0` o vacío conserva el panel completo, y en Bash también se usa el compacto si la terminal tiene menos de 70 columnas.
+El modo del panel se controla con `UCN_MOTD_COMPACT`:
+
+- `0` → panel completo siempre, aunque la terminal sea angosta (valor actual en `config/compartido.env`).
+- `1` → bienvenida compacta.
+- sin definir → automático: en Termux se usa el compacto y en Bash también si la terminal tiene menos de 70 columnas.
+
+Para forzarlo en una sesión: `export UCN_MOTD_COMPACT=1` (Bash) o `$env:UCN_MOTD_COMPACT = "1"` (PowerShell).
 
 ---
 

@@ -51,13 +51,17 @@ _ucn_motd_ui_text() {
   awk -F'|' -v t="$1" -v k="$2" '{sub(/\r$/,"")} $1==t && $2==k {print $3; exit}' "$3"
 }
 
-# Compacto si se pide o si la pantalla es angosta (celular en vertical)
-if [ "${UCN_MOTD_COMPACT:-0}" = 1 ] || [ "${COLUMNS:-$(tput cols 2>/dev/null || echo 80)}" -lt 70 ]; then
+# Compacto si se pide (1), automatico si esta sin definir y la pantalla es angosta.
+# UCN_MOTD_COMPACT=0 fuerza el panel completo aunque la terminal sea angosta.
+_ucn_motd_mode="${UCN_MOTD_COMPACT:-auto}"
+if [ "$_ucn_motd_mode" = 1 ] || { [ "$_ucn_motd_mode" != 0 ] && [ "${COLUMNS:-$(tput cols 2>/dev/null || echo 80)}" -lt 70 ]; }; then
   printf '%s UCN %s %s  %s  %s\n' "$(_ucn_motd_color '30;45')" "$(_ucn_motd_reset)" "$(date '+%a %d %b %H:%M')" "$(_ucn_motd_memory 2>/dev/null)" "${UCN_PLATFORM:-bash}"
   printf '%sucn-agents · sysinfo · btop · lazygit · z <dir>%s\n' "$(_ucn_motd_color 90)" "$(_ucn_motd_reset)"
+  unset _ucn_motd_mode
   unset -f _ucn_motd_color _ucn_motd_reset _ucn_motd_memory _ucn_motd_ui_file _ucn_motd_ui_text
   return 0
 fi
+unset _ucn_motd_mode
 
 _ucn_motd_ui="$(_ucn_motd_ui_file)"
 _ucn_motd_title="UCN - Mochila Digital"
